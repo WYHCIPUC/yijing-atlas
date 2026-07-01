@@ -3,30 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>易经 · 六十四卦查阅</title>
+  <title>易象图谱 · 六十四卦</title>
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
+  <div class="loading-screen" id="loading">星辰排列中…</div>
+
   <header class="topbar">
-    <h1 class="logo">易經</h1>
-    <nav class="tabs">
-      <a href="#/library" class="tab" data-route="library">查阅</a>
-      <a href="#/trigrams" class="tab" data-route="trigrams">八卦</a>
-      <a href="#/study" class="tab" data-route="study">学习</a>
-      <a href="#/almanac" class="tab" data-route="almanac">黄历</a>
-      <a href="#/review" class="tab" data-route="review">复习</a>
-      <a href="#/quiz" class="tab" data-route="quiz">测验</a>
-      <a href="#/divination" class="tab" data-route="divination">占筮</a>
+    <div class="logo">易象图谱</div>
+    <nav class="mode-switcher" id="mode-switcher">
+      <button class="mode-btn active" data-mode="explore">探索</button>
+      <button class="mode-btn" data-mode="review">复习</button>
+      <button class="mode-btn" data-mode="quiz">测验</button>
+      <button class="mode-btn" data-mode="divination">占筮</button>
+      <button class="mode-btn" data-mode="almanac">黄历</button>
     </nav>
+    <div class="search-box">
+      <input id="search" type="search" placeholder="搜索卦名…" />
+    </div>
   </header>
 
-  <main id="app">
-    <div class="loading">加载中…</div>
-  </main>
+  <canvas id="star-canvas"></canvas>
 
-  <footer class="footer">
-    <small>公版《周易》原文 · 离线可用</small>
-  </footer>
+  <aside class="detail-panel" id="detail-panel">
+    <button class="detail-close" id="detail-close">✕</button>
+    <div class="detail-content" id="detail-content"></div>
+  </aside>
+
+  <div class="hint-bar" id="hint">悬停星辰看见它的变化 · 点击进入经文</div>
 
   <script type="module" src="js/main.js"></script>
 </body>

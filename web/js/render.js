@@ -1,6 +1,6 @@
 // 渲染层：把领域数据渲染为 HTML。纯函数，输入数据 + 挂载点。
 import { hexagramSvg, trigramSvg } from './svg-painter.js';
-import { yaoLabel } from './hexagram-utils.js';
+import { yaoLabel, allRelations } from './hexagram-utils.js';
 
 // HTML 转义，防注入
 function esc(s) {
@@ -8,6 +8,12 @@ function esc(s) {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
+}
+
+// 由二进制码查卦名（关系 chip 显示用）
+function codeToName(code, hexagrams) {
+  const h = hexagrams.find(x => x.binaryCode === code);
+  return h ? h.name : '?';
 }
 
 // 64 卦总览网格。onPick(code) 为点击回调。
@@ -25,40 +31,58 @@ export function renderHexagramList(hexagrams, mountEl, onPick) {
   });
 }
 
-// 卦象详情
-export function renderHexagramDetail(hex, mountEl) {
-  // 自上而下展示（上九→初九），符合阅读习惯
+// 长卷阅读式详情：渲染到指定挂载点。
+// hex - 卦对象；mountEl - 挂载点；hexagrams - 全部卦（用于关系查名）；onPickRelation - 关系chip点击回调
+export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
   const lines = [...hex.lines].reverse()
     .map((y) => {
-      if (!y.text && !y.xiang) {
-        return `<div class="yao yao-empty"><span class="yao-label">${esc(yaoLabel(y.position, y.isYang))}</span>（经文待补）</div>`;
-      }
-      return `
-        <details class="yao">
-          <summary><span class="yao-label">${esc(yaoLabel(y.position, y.isYang))}</span> ${esc(y.text)}</summary>
-          ${y.xiang ? `<div class="yao-xiang">象曰：${esc(y.xiang)}</div>` : ''}
-        </details>`;
+      const label = yaoLabel(y.position, y.isYang);
+      const textHtml = y.text
+        ? `<div class="original-text">${esc(y.text)}</div>`
+        : `<div class="original-text" style="color:#999">（经文待补）</div>`;
+      const xiangHtml = y.xiang ? `<div class="note-text">象曰：${esc(y.xiang)}</div>` : '';
+      const noteHtml = y.note ? `<div class="note-text">${esc(y.note)}</div>` : '';
+      return `<div class="yao-item"><span class="yao-label">${esc(label)}</span>${textHtml}${xiangHtml}${noteHtml}</div>`;
     }).join('');
 
   const section = (title, body) =>
-    body ? `<section class="hex-section"><h4>${esc(title)}</h4><p>${esc(body)}</p></section>` : '';
+    body ? `<h3 class="section-title">${esc(title)}</h3>${body}` : '';
+
+  const rels = allRelations(hex.binaryCode);
+  const relChip = (label, code) =>
+    `<span class="relation-chip" data-code="${esc(code)}">${esc(label)}→${esc(codeToName(code, hexagrams))}</span>`;
+  const relHtml = `
+    <h3 class="section-title">它如何变</h3>
+    <div class="relation-chips">
+      ${relChip('错', rels.opposite)}
+      ${relChip('综', rels.reversed)}
+      ${relChip('互', rels.interlocking)}
+    </div>
+    <div class="relation-chips">${rels.changing.map((c,i) => relChip('第'+(i+1)+'爻变', c)).join('')}</div>
+  `;
 
   mountEl.innerHTML = `
-    <div class="detail-view">
-      <div class="detail-header">
-        ${hexagramSvg(hex.binaryCode, { size: 140 })}
-        <h2>${hex.number}.${esc(hex.name)} · ${esc(hex.fullName)}</h2>
-      </div>
-      ${section('卦辞', hex.judgement)}
-      ${section('彖传', hex.tuan)}
-      ${section('大象', hex.image)}
-      <hr/>
-      <div class="yao-list">${lines}</div>
-      ${section('用九', hex.useNine)}
-      ${section('用六', hex.useSix)}
-      <hr/>
-      ${section('序卦传', hex.orderRemark)}
-    </div>`;
+    <div class="detail-header">
+      ${hexagramSvg(hex.binaryCode, { size: 160 })}
+      <h1>${esc(hex.name)} · ${esc(hex.fullName)}</h1>
+      <div class="subtitle">第 ${hex.number} 卦 · ${esc(hex.binaryCode)} · 下${esc(hex.trigramLower)} 上${esc(hex.trigramUpper)}</div>
+    </div>
+    ${section('卦辞', `<div class="original-text">${esc(hex.judgement)}</div>${hex.judgementNote ? `<div class="note-text">${esc(hex.judgementNote)}</div>` : ''}`)}
+    ${section('彖传', `<div class="original-text">${esc(hex.tuan)}</div>${hex.tuanNote ? `<div class="note-text">${esc(hex.tuanNote)}</div>` : ''}`)}
+    ${section('大象', `<div class="original-text">${esc(hex.image)}</div>${hex.imageNote ? `<div class="note-text">${esc(hex.imageNote)}</div>` : ''}`)}
+    ${relHtml}
+    <h3 class="section-title">六爻</h3>
+    <div class="yao-list">${lines}</div>
+    ${hex.useNine ? section('用九', `<div class="original-text">${esc(hex.useNine)}</div>`) : ''}
+    ${hex.useSix ? section('用六', `<div class="original-text">${esc(hex.useSix)}</div>`) : ''}
+    ${section('序卦传', `<div class="original-text">${esc(hex.orderRemark)}</div>`)}
+  `;
+
+  if (onPickRelation) {
+    mountEl.querySelectorAll('.relation-chip').forEach(chip => {
+      chip.addEventListener('click', () => onPickRelation(chip.dataset.code));
+    });
+  }
 }
 
 // 八卦基础页

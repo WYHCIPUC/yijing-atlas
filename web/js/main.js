@@ -1,87 +1,50 @@
-// 入口：初始化、路由、加载数据。
+// 易象图谱入口：模式切换器 + 星图 + 详情抽屉。
 import { loadAllData, buildHexagramIndex, searchHexagrams } from './data-loader.js';
-import { renderHexagramList, renderHexagramDetail, renderTrigrams } from './render.js';
-import { renderReviewPage } from './review-page.js';
-import { renderQuizPage } from './quiz-page.js';
-import { renderWingsPage, renderTheoremsPage, renderStudyPathPage } from './study-page.js';
-import { renderDivinationPage } from './divination-page.js';
-import { renderAlmanacPage } from './almanac-page.js';
-import { renderAlmanacKnowledgePage } from './almanac-knowledge.js';
+import { buildRelationGraph } from './star-relations.js';
+import { StarMap } from './star-map.js';
+import { renderHexagramDetail } from './render.js';
 
-const state = { hexagrams: [], trigrams: [], wings: [], theorems: [], almanacTerms: [], almanacYiji: {}, index: null };
-const appEl = document.getElementById('app');
+const state = { hexagrams: [], trigrams: [], index: null, starMap: null, currentDetail: null };
 
-function showError(msg) {
-  appEl.innerHTML = `<div class="error">⚠ ${msg}</div>`;
-}
+const loadingEl = document.getElementById('loading');
+const canvas = document.getElementById('star-canvas');
+const panel = document.getElementById('detail-panel');
+const panelContent = document.getElementById('detail-content');
+const searchInput = document.getElementById('search');
 
-// 路由：基于 location.hash
-function route() {
-  const hash = location.hash || '#/library';
-  const path = hash.replace(/^#/, '');
-
-  // 高亮当前 Tab（wings/theorems 归入 study）
-  const activeRoute = path.startsWith('/wings') || path.startsWith('/theorems')
-      ? 'study'
-      : path.split('/')[1];
-  document.querySelectorAll('.tab').forEach((t) => {
-    t.classList.toggle('active', t.dataset.route === activeRoute);
-  });
-
-  if (path.startsWith('/hexagram/')) {
-    const code = path.replace('/hexagram/', '');
-    showDetail(code);
-  } else if (path.startsWith('/trigrams')) {
-    showTrigrams();
-  } else if (path.startsWith('/study')) {
-    renderStudyPathPage(appEl, state);
-  } else if (path.startsWith('/wings')) {
-    renderWingsPage(appEl, state);
-  } else if (path.startsWith('/theorems')) {
-    renderTheoremsPage(appEl, state);
-  } else if (path.startsWith('/review')) {
-    renderReviewPage(appEl, state);
-  } else if (path.startsWith('/quiz')) {
-    renderQuizPage(appEl, state);
-  } else if (path.startsWith('/divination')) {
-    renderDivinationPage(appEl, state);
-  } else if (path.startsWith('/almanac-knowledge')) {
-    renderAlmanacKnowledgePage(appEl, state);
-  } else if (path.startsWith('/almanac')) {
-    renderAlmanacPage(appEl, state);
-  } else {
-    showLibrary();
-  }
-}
-
-function showLibrary() {
-  appEl.innerHTML = `
-    <div class="search-bar"><input id="search" type="search" placeholder="搜索卦名/卦辞/爻辞…" /></div>
-    <div id="list-mount"></div>`;
-  const input = document.getElementById('search');
-  const listMount = document.getElementById('list-mount');
-  const draw = () => {
-    const kw = input.value.trim();
-    const list = kw ? searchHexagrams(state.hexagrams, kw) : state.hexagrams;
-    renderHexagramList(list, listMount, (code) => { location.hash = `/hexagram/${code}`; });
-    if (kw && list.length === 0) {
-      listMount.insertAdjacentHTML('beforeend', '<p class="loading">未找到匹配的卦</p>');
-    }
-  };
-  input.addEventListener('input', draw);
-  draw();
-}
-
-function showDetail(code) {
+function openDetail(code) {
   const hex = state.index.byCode.get(code);
-  if (!hex) { showError('未找到该卦'); return; }
-  renderHexagramDetail(hex, appEl);
-  appEl.insertAdjacentHTML('afterbegin', '<a class="back-btn" href="#/library">← 返回</a>');
-  window.scrollTo(0, 0);
+  if (!hex) return;
+  renderHexagramDetail(hex, panelContent, state.hexagrams, (relCode) => {
+    openDetail(relCode);
+  });
+  panel.classList.add('open');
+  state.currentDetail = code;
+  state.starMap && state.starMap.focusStar(code);
 }
 
-function showTrigrams() {
-  renderTrigrams(state.trigrams, appEl);
+function closeDetail() {
+  panel.classList.remove('open');
+  state.currentDetail = null;
+}
+
+function setMode(mode) {
+  document.querySelectorAll('.mode-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.mode === mode);
+  });
+  state.starMap && state.starMap.setMode(mode);
+  if (mode !== 'explore') {
+    const labels = {review:'复习',quiz:'测验',divination:'占筮',almanac:'黄历'};
+    const phase = (mode==='review'||mode==='quiz') ? 2 : 3;
+    panelContent.innerHTML = `<div style="padding:60px;text-align:center;color:#7a6a4a">
+      <h2 style="color:#a08850;margin-bottom:12px">${labels[mode]}模式</h2>
+      <p>此模式将在第 ${phase} 期实现。</p>
+      <p style="margin-top:8px">当前请使用「探索」模式漫游星图。</p>
+    </div>`;
+    panel.classList.add('open');
+  } else {
+    closeDetail();
+  }
 }
 
 async function init() {
@@ -89,15 +52,33 @@ async function init() {
     const data = await loadAllData();
     state.hexagrams = data.hexagrams;
     state.trigrams = data.trigrams;
-    state.wings = data.wings;
-    state.theorems = data.theorems;
-    state.almanacTerms = data.almanacTerms;
-    state.almanacYiji = data.almanacYiji;
     state.index = buildHexagramIndex(data.hexagrams);
-    window.addEventListener('hashchange', route);
-    route();
+
+    const graph = buildRelationGraph(data.hexagrams);
+    state.starMap = new StarMap(canvas, graph, {
+      onPick: (code) => openDetail(code),
+      onHover: (code) => {},
+    });
+
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+      btn.addEventListener('click', () => setMode(btn.dataset.mode));
+    });
+    document.getElementById('detail-close').addEventListener('click', closeDetail);
+    searchInput.addEventListener('input', (e) => {
+      const kw = e.target.value.trim();
+      if (!kw) return;
+      const results = searchHexagrams(state.hexagrams, kw);
+      if (results.length > 0) {
+        state.starMap.focusStar(results[0].binaryCode);
+      }
+    });
+    window.addEventListener('resize', () => state.starMap && state.starMap.resize());
+
+    loadingEl.style.display = 'none';
   } catch (e) {
-    showError(`数据加载/校验失败：${e.message}`);
+    loadingEl.innerHTML = `⚠ 数据加载失败：${e.message}`;
+    loadingEl.classList.remove('loading-screen');
+    loadingEl.classList.add('error-screen');
     console.error(e);
   }
 }
