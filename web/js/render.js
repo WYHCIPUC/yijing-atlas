@@ -7,7 +7,27 @@ function esc(s) {
   return (s || '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// 八卦二进制码 → 名称/自然属性映射
+const TRIGRAM_NAMES = {
+  '111': { name: '乾', nature: '天' },
+  '011': { name: '兑', nature: '泽' },
+  '101': { name: '离', nature: '火' },
+  '001': { name: '震', nature: '雷' },
+  '110': { name: '巽', nature: '风' },
+  '010': { name: '坎', nature: '水' },
+  '100': { name: '艮', nature: '山' },
+  '000': { name: '坤', nature: '地' },
+};
+
+// 把二进制码转成八卦标签，如 "111" → "乾(天)"；未知码原样返回
+function trigramLabel(code) {
+  const t = TRIGRAM_NAMES[code];
+  return t ? `${t.name}(${t.nature})` : code;
 }
 
 // 由二进制码查卦名（关系 chip 显示用）
@@ -65,7 +85,7 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
     <div class="detail-header">
       ${hexagramSvg(hex.binaryCode, { size: 160 })}
       <h1>${esc(hex.name)} · ${esc(hex.fullName)}</h1>
-      <div class="subtitle">第 ${hex.number} 卦 · ${esc(hex.binaryCode)} · 下${esc(hex.trigramLower)} 上${esc(hex.trigramUpper)}</div>
+      <div class="subtitle">第 ${hex.number} 卦 · ${esc(hex.binaryCode)} · 下${esc(trigramLabel(hex.trigramLower))} 上${esc(trigramLabel(hex.trigramUpper))}</div>
     </div>
     ${section('卦辞', `<div class="original-text">${esc(hex.judgement)}</div>${hex.judgementNote ? `<div class="note-text">${esc(hex.judgementNote)}</div>` : ''}`)}
     ${section('彖传', `<div class="original-text">${esc(hex.tuan)}</div>${hex.tuanNote ? `<div class="note-text">${esc(hex.tuanNote)}</div>` : ''}`)}

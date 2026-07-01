@@ -86,7 +86,7 @@ export class StarMap {
   }
 
   _nodeAt(sx, sy) {
-    const r = 10 * this.view.scale;
+    const r = Math.max(8, 10 * this.view.scale);
     for (const n of this.graph.nodes) {
       const p = this._worldToScreen(n.x, n.y);
       if (Math.hypot(p.x - sx, p.y - sy) < r) return n;
@@ -211,6 +211,12 @@ export class StarMap {
     if (!node) return;
     this.activeNode = node;
     this.autoRotate = false;
+    // 平移视图使该节点居中（节点世界坐标 → 当前应居中的屏幕位置）
+    // node 的屏幕位置 = _worldToScreen(node.x, node.y)
+    // 要让它落在画布中心 (width/2, height/2)，需调整 view.x/y
+    const p = this._worldToScreen(node.x, node.y);
+    this.view.x += (this.width / 2 - p.x);
+    this.view.y += (this.height / 2 - p.y);
   }
 
   setMode(mode) { this.mode = mode; }
