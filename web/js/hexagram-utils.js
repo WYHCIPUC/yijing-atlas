@@ -51,3 +51,33 @@ export function yaoLabel(position, isYang) {
 export function isCorrectPosition(position, isYang) {
   return isYang ? position % 2 === 1 : position % 2 === 0;
 }
+
+// 互卦（内含之卦）：取 2-3-4 爻为下卦，3-4-5 爻为上卦。
+// code 索引 0-5 对应爻 1-6（自下而上）。
+// 下卦 = code[1]+code[2]+code[3]，上卦 = code[2]+code[3]+code[4]
+export function interlockingCode(code) {
+  validate(code);
+  return code[1] + code[2] + code[3] + code[2] + code[3] + code[4];
+}
+
+// 变卦（动爻）：翻转指定爻位。position 为 1-6（自下而上）。
+export function changingCode(code, position) {
+  validate(code);
+  if (position < 1 || position > 6) throw new Error(`position 需 1-6，得到 ${position}`);
+  const idx = position - 1;
+  const arr = code.split('');
+  arr[idx] = arr[idx] === '1' ? '0' : '1';
+  return arr.join('');
+}
+
+// 一次返回某卦的全部四条关系。
+// changing 为 6 个变卦的数组（每爻各变一次）。
+export function allRelations(code) {
+  validate(code);
+  return {
+    opposite: oppositeCode(code),
+    reversed: reversedCode(code),
+    interlocking: interlockingCode(code),
+    changing: [1,2,3,4,5,6].map(p => changingCode(code, p)),
+  };
+}
