@@ -112,6 +112,9 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
     ${hex.useNine ? section('用九', `<div class="original-text">${esc(hex.useNine)}</div>`) : ''}
     ${hex.useSix ? section('用六', `<div class="original-text">${esc(hex.useSix)}</div>`) : ''}
     ${section('序卦传', `<div class="original-text">${esc(hex.orderRemark)}</div>`)}
+    <h3 class="section-title">我的笔记</h3>
+    <textarea class="note-input" id="note-input" placeholder="写下你对这一卦的理解…" data-code="${esc(hex.binaryCode)}"></textarea>
+    <button class="note-save" id="note-save">保存笔记</button>
   `;
 
   // 六爻折叠交互
@@ -138,7 +141,28 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       const toName = codeToName(toCode, hexagrams);
       showRelationAnimation(hex.binaryCode, toCode, relType, hex.name, toName);
     });
-  });
+  }
+
+  // 个人笔记：加载已有笔记 + 绑定保存
+  const noteInput = mountEl.querySelector('#note-input');
+  const noteSave = mountEl.querySelector('#note-save');
+  if (noteInput && noteSave) {
+    try {
+      const notes = JSON.parse(localStorage.getItem('yijing-notes') || '{}');
+      noteInput.value = notes[hex.binaryCode] || '';
+    } catch (e) {}
+    noteSave.addEventListener('click', () => {
+      try {
+        const notes = JSON.parse(localStorage.getItem('yijing-notes') || '{}');
+        notes[hex.binaryCode] = noteInput.value;
+        localStorage.setItem('yijing-notes', JSON.stringify(notes));
+        noteSave.textContent = '已保存 ✓';
+        setTimeout(() => { noteSave.textContent = '保存笔记'; }, 1500);
+      } catch (e) {
+        noteSave.textContent = '保存失败';
+      }
+    });
+  }
 }
 
 // 八卦基础页
