@@ -8,6 +8,7 @@ import { loadReviewCards, initAllCards, getDueCards, getDueCount, saveReview, ge
 import { generateQuestion, checkAnswer, addWrong, recordResult, loadStats } from './quiz-engine.js';
 import { castHexagram, getReading } from './divination-engine.js';
 import { yaoLabel } from './hexagram-utils.js';
+import { playHexagramSound, initAudio } from './audio-engine.js';
 
 const reviewCards = loadReviewCards();
 
@@ -70,6 +71,8 @@ function openDetail(code, fromCode = null) {
     openDetail(relCode, code); // 关系跳转：记录从哪来
   });
   panel.classList.add('open');
+  // 播放卦象音律
+  try { playHexagramSound(code); } catch (e) {}
   // 记录漫游轨迹
   if (fromCode && state.starMap) state.starMap.addTrail(fromCode, code);
   state.currentDetail = code;
