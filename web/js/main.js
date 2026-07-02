@@ -5,7 +5,7 @@ import { StarMap } from './star-map.js';
 import { renderHexagramDetail } from './render.js';
 import { hexagramSvg } from './svg-painter.js';
 import { loadReviewCards, initAllCards, getDueCards, getDueCount, saveReview, getMastery } from './review-engine.js';
-import { generateQuestion, checkAnswer, addWrong, recordResult, loadStats } from './quiz-engine.js';
+import { generateQuestion, checkAnswer, addWrong, recordResult, loadStats, generateAlmanacQuestion } from './quiz-engine.js';
 import { castHexagram, getReading } from './divination-engine.js';
 import { yaoLabel } from './hexagram-utils.js';
 import { playHexagramSound, initAudio } from './audio-engine.js';
@@ -202,9 +202,23 @@ function startReviewCard(code) {
 // 测验模式：出题 + 候选选择 + 判题反馈
 let currentQuiz = null;
 function startQuiz() {
-  currentQuiz = generateQuestion(state.hexagrams);
-  const answerHex = state.index.byCode.get(currentQuiz.answer);
+  // 混合出题：80% 卦象题，20% 黄历术语题
+  if (state.almanacTerms && state.almanacTerms.length >= 4 && Math.random() < 0.2) {
+    currentQuiz = generateAlmanacQuestion(state.almanacTerms);
+  } else {
+    currentQuiz = generateQuestion(state.hexagrams);
+  }
+  if (!currentQuiz) { currentQuiz = generateQuestion(state.hexagrams); }
+  const isAlmanac = currentQuiz.type === 'almanac';
+  const answerHex = isAlmanac ? null : state.index.byCode.get(currentQuiz.answer);
   const stats = loadStats();
+  // 选项渲染：卦象题用 binaryCode 查名，术语题用 {text,code}
+  const optHtml = isAlmanac
+    ? currentQuiz.candidates.map(c => `<button class="quiz-option" data-code="${c.code}">${c.text}</button>`).join('')
+    : currentQuiz.candidates.map(c => {
+        const h = state.index.byCode.get(c);
+        return `<button class="quiz-option" data-code="${c}">${h.name} · ${h.fullName}</button>`;
+      }).join('');
   panelContent.innerHTML = `
     <div style="padding:36px 26px">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
@@ -216,10 +230,7 @@ function startQuiz() {
       </div>
       <p style="color:#888;font-size:0.8rem;margin-bottom:12px">选择你的答案：</p>
       <div class="quiz-options" id="quiz-options">
-        ${currentQuiz.candidates.map(c => {
-          const h = state.index.byCode.get(c);
-          return `<button class="quiz-option" data-code="${c}">${h.name} · ${h.fullName}</button>`;
-        }).join('')}
+        ${optHtml}
       </div>
       <div id="quiz-feedback" style="margin-top:20px"></div>
     </div>
@@ -239,9 +250,10 @@ function startQuiz() {
         b.disabled = true;
       });
       const fb = document.getElementById('quiz-feedback');
+      const answerName = isAlmanac ? (currentQuiz.answerText || '—') : (answerHex ? answerHex.name : '—');
       fb.innerHTML = `
         <p style="text-align:center;font-size:1rem;margin-bottom:12px">
-          ${correct ? '<span style="color:#34e89e">✓ 正确！</span>' : '<span style="color:#e94560">✗ 正确答案是「'+answerHex.name+'」</span>'}
+          ${correct ? '<span style="color:#34e89e">✓ 正确！</span>' : '<span style="color:#e94560">✗ 正确答案是「'+answerName+'」</span>'}
         </p>
         <button class="quiz-next" id="quiz-next">下一题 →</button>
       `;

@@ -66,3 +66,29 @@ export function recordResult(correct) {
   localStorage.setItem(STATS_KEY, JSON.stringify(s));
   return s;
 }
+
+// 黄历术语题：给术语名称，选其含义（或反过来）
+export function generateAlmanacQuestion(terms) {
+  if (!terms || terms.length < 4) return null;
+  const target = terms[Math.floor(Math.random() * terms.length)];
+  // 题型：给名称选含义，或给含义选名称
+  const reverse = Math.random() < 0.5;
+  // 取含义前 20 字作为选项（避免太长）
+  const shortMeaning = (target.meaning || '').slice(0, 18);
+  // 生成 3 个干扰项
+  const others = terms.filter(t => t.id !== target.id).sort(() => Math.random() - 0.5).slice(0, 3);
+  const answerObj = reverse
+    ? { text: target.name, code: target.id }
+    : { text: shortMeaning, code: target.id };
+  const distractors = others.map(t => reverse
+    ? { text: t.name, code: t.id }
+    : { text: (t.meaning || '').slice(0, 18), code: t.id });
+  const candidates = [answerObj, ...distractors].sort(() => Math.random() - 0.5);
+  return {
+    type: 'almanac',
+    question: reverse ? `「${shortMeaning}…」是哪个黄历术语？` : `黄历术语「${target.name}」（${target.category}）的含义是？`,
+    answer: target.id,
+    answerText: target.name,
+    candidates,
+  };
+}
