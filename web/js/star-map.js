@@ -534,27 +534,29 @@ export class StarMap {
     // 卦名标签：8 纯卦常显书法大字 + focus 星显示（带 z 深度）
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
+    // 所有 64 卦都显示卦名：纯卦字大（突出），普通卦字小
     for (const n of this.graph.nodes) {
-      if (!n.isPure) continue;
       const delay = (n.number - 1) / 64 * 0.5;
       const localP = Math.max(0, Math.min(1, (this.appearProgress - delay) / 0.4));
       if (localP <= 0) continue;
       const p = this._worldToScreen(n.x, n.y, n.z);
       const isFocus = focus && n.id === focus.id;
-      const fontSize = (isFocus ? 34 : 26) * (0.6 + p.depthFactor * 0.5);
-      const baseA = isFocus ? 1 : (0.5 + 0.15 * Math.sin(this.time * 0.01 + n.binaryCode.charCodeAt(0)));
-      const alpha = isFocus ? baseA : baseA * (0.5 + p.depthFactor * 0.5);
-      ctx.font = `${fontSize}px "Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
-      ctx.fillStyle = isFocus ? 'rgba(255,240,200,1)' : `rgba(212,165,116,${alpha})`;
-      ctx.fillText(n.name, p.x, p.y - 36 * (0.6 + p.depthFactor * 0.5));
-    }
-    // focus 星若非纯卦，也显示其名（较小）
-    if (focus && !focus.isPure) {
-      const p = this._worldToScreen(focus.x, focus.y, focus.z);
-      const fs = 24 * (0.6 + p.depthFactor * 0.5);
-      ctx.font = `${fs}px "Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
-      ctx.fillStyle = 'rgba(255,240,200,1)';
-      ctx.fillText(focus.name, p.x, p.y - 42 * (0.6 + p.depthFactor * 0.5));
+      const depthS = 0.6 + p.depthFactor * 0.5;
+      if (n.isPure) {
+        // 纯卦：书法大字，突出显示
+        const fontSize = (isFocus ? 38 : 30) * depthS;
+        const alpha = isFocus ? 1 : (0.6 + 0.15 * Math.sin(this.time * 0.01 + n.binaryCode.charCodeAt(0))) * (0.6 + p.depthFactor * 0.4);
+        ctx.font = `${fontSize}px "Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
+        ctx.fillStyle = isFocus ? 'rgba(255,240,200,1)' : `rgba(212,165,116,${alpha})`;
+        ctx.fillText(n.name, p.x, p.y - 40 * depthS);
+      } else {
+        // 普通卦：小字，淡金，按深度调节
+        const fontSize = (isFocus ? 20 : 14) * depthS;
+        const alpha = isFocus ? 1 : (0.4 + p.depthFactor * 0.4);
+        ctx.font = `${fontSize}px "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
+        ctx.fillStyle = isFocus ? 'rgba(255,240,200,1)' : `rgba(180,160,110,${alpha})`;
+        ctx.fillText(n.name, p.x, p.y - 22 * depthS);
+      }
     }
   }
 
