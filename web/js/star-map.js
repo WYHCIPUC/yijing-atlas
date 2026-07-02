@@ -51,6 +51,7 @@ export class StarMap {
     this.cameraPos = { x: 0, y: 0, z: 0 };  // 当前相机焦点（平滑过渡用）
 
     this._setupDpr();
+    this._preRenderGlows();     // 预渲染光晕贴图（性能关键）
     this._loadKeywords();       // 异步加载关键词，构建星云布局
     this._initBackground();
     this._initLayout();
@@ -71,6 +72,40 @@ export class StarMap {
     this.cy = this.height / 2;
     // 锚点圆半径（8 纯卦所在的圆）
     this.anchorR = Math.min(this.width, this.height) * 0.32;
+  }
+
+  // 预渲染光晕贴图到离屏 canvas（避免每帧 createRadialGradient，性能关键）
+  // 生成两张：halo（外光晕，柔和弥散）和 core（亮核，集中）
+  _preRenderGlows() {
+    const size = 128;
+    // 外光晕贴图（白金色径向渐变，渲染时用 globalAlpha + drawImage 缩放控制）
+    this.glowHalo = document.createElement('canvas');
+    this.glowHalo.width = this.glowHalo.height = size;
+    const hc = this.glowHalo.getContext('2d');
+    const hg = hc.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+    hg.addColorStop(0, 'rgba(255,248,220,1)');
+    hg.addColorStop(0.15, 'rgba(245,230,192,0.6)');
+    hg.addColorStop(0.4, 'rgba(216,184,120,0.18)');
+    hg.addColorStop(0.7, 'rgba(138,122,90,0.04)');
+    hg.addColorStop(1, 'rgba(0,0,0,0)');
+    hc.fillStyle = hg;
+    hc.fillRect(0, 0, size, size);
+    // 亮核贴图（更集中明亮）
+    this.glowCore = document.createElement('canvas');
+    this.glowCore.width = this.glowCore.height = size;
+    const cc = this.glowCore.getContext('2d');
+    const cg = cc.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+    cg.addColorStop(0, 'rgba(255,252,240,1)');
+    cg.addColorStop(0.3, 'rgba(245,230,192,0.5)');
+    cg.addColorStop(1, 'rgba(0,0,0,0)');
+    cc.fillStyle = cg;
+    cc.fillRect(0, 0, size, size);
+  }
+
+  // 用预渲染贴图绘制光晕（替代每帧 createRadialGradient）
+  _drawGlow(ctx, tex, x, y, radius, alpha) {
+    ctx.globalAlpha = alpha;
+    ctx.drawImage(tex, x - radius, y - radius, radius * 2, radius * 2);
   }
 
   // 异步加载关键词数据，为每个卦预计算星云内关键词的散布布局
@@ -106,32 +141,50 @@ export class StarMap {
     }
   }
 
-  // 背景星 + 星云
+  // 背景星 + 星云（预渲染到离屏 canvas，性能优化）
   _initBackground() {
     const area = this.width * this.height;
-    this.bgStars = [];
+    // 减少数量（预渲染后视觉密度足够）
     const layers = [
-      { count: Math.floor(area / 350), rMin: 0.3, rMax: 0.8, aMin: 0.06, aMax: 0.22 },
-      { count: Math.floor(area / 2200), rMin: 0.6, rMax: 1.3, aMin: 0.18, aMax: 0.45 },
-      { count: Math.floor(area / 10000), rMin: 1.0, rMax: 1.8, aMin: 0.4, aMax: 0.72 },
+      { count: Math.floor(area / 900), rMin: 0.3, rMax: 0.8, aMin: 0.08, aMax: 0.25 },
+      { count: Math.floor(area / 5000), rMin: 0.6, rMax: 1.3, aMin: 0.2, aMax: 0.5 },
+      { count: Math.floor(area / 22000), rMin: 1.0, rMax: 1.8, aMin: 0.4, aMax: 0.72 },
     ];
-    for (const layer of layers) {
-      for (let i = 0; i < layer.count; i++) {
-        const roll = Math.random();
-        const hue = roll < 0.12 ? 'warm' : (roll < 0.22 ? 'cool' : 'gold');
-        this.bgStars.push({
-          x: Math.random() * this.width, y: Math.random() * this.height,
-          r: layer.rMin + Math.random() * (layer.rMax - layer.rMin),
-          baseAlpha: layer.aMin + Math.random() * (layer.aMax - layer.aMin),
-          twinkleSpeed: Math.random() * 0.04 + 0.002,  // 频率范围扩大4倍，差异更明显
-          twinklePhase: Math.random() * Math.PI * 2,
-          twinkleAmp: 0.35 + Math.random() * 0.45,
-          pulseSpeed: 0.0008 + Math.random() * 0.004,   // 脉冲频率差异更大
-          pulseOffset: Math.random() * Math.PI * 2,
-          hue,
-        });
+    // 分两组（奇偶），各自预渲染，每组整体呼吸（保留一定闪烁差异）
+    this.bgStarLayers = [null, null];
+    for (let grp = 0; grp < 2; grp++) {
+      const cv = document.createElement('canvas');
+      cv.width = this.width; cv.height = this.height;
+      const cc = cv.getContext('2d');
+      let idx = 0;
+      for (const layer of layers) {
+        for (let i = 0; i < layer.count; i++) {
+          if (idx % 2 !== grp) { idx++; continue; }
+          idx++;
+          const roll = Math.random();
+          const hue = roll < 0.12 ? 'warm' : (roll < 0.22 ? 'cool' : 'gold');
+          let r, g, b;
+          if (hue === 'warm') { r = 220; g = 170; b = 130; }
+          else if (hue === 'cool') { r = 170; g = 195; b = 230; }
+          else { r = 215; g = 200; b = 165; }
+          const alpha = layer.aMin + Math.random() * (layer.aMax - layer.aMin);
+          const radius = layer.rMin + Math.random() * (layer.rMax - layer.rMin);
+          const x = Math.random() * this.width, y = Math.random() * this.height;
+          // 较亮的星画小光晕
+          if (radius > 1.0) {
+            const gr = cc.createRadialGradient(x, y, 0, x, y, radius * 4);
+            gr.addColorStop(0, `rgba(${r},${g},${b},${alpha * 0.4})`);
+            gr.addColorStop(1, 'rgba(0,0,0,0)');
+            cc.fillStyle = gr;
+            cc.beginPath(); cc.arc(x, y, radius * 4, 0, Math.PI * 2); cc.fill();
+          }
+          cc.fillStyle = `rgba(${r},${g},${b},${alpha})`;
+          cc.beginPath(); cc.arc(x, y, radius, 0, Math.PI * 2); cc.fill();
+        }
       }
+      this.bgStarLayers[grp] = cv;
     }
+    this.bgStarPhase = [Math.random() * Math.PI * 2, Math.random() * Math.PI * 2];
     this.nebulae = [
       { bx: this.width * 0.28, by: this.height * 0.42, dr: 40, ds: 0.0003, dp: 0, r: this.width * 0.28, color: 'rgba(80, 65, 120, 0.05)' },
       { bx: this.width * 0.72, by: this.height * 0.58, dr: 55, ds: 0.0002, dp: 1.5, r: this.width * 0.32, color: 'rgba(120, 95, 55, 0.045)' },
@@ -345,36 +398,14 @@ export class StarMap {
       ctx.fill();
     }
 
-    // 第三层：远景星点（每颗星完全独立的明灭节奏 + 偶发亮脉冲）
-    for (const s of this.bgStars) {
-      // 三频叠加，频率差异大，确保不同步
-      const tw1 = Math.sin(t * s.twinkleSpeed + s.twinklePhase);
-      const tw2 = Math.sin(t * s.twinkleSpeed * 3.3 + s.twinklePhase * 2.1);
-      const tw3 = Math.sin(t * s.twinkleSpeed * 0.4 + s.twinklePhase * 0.7);
-      let alpha = s.baseAlpha * (1 - s.twinkleAmp + s.twinkleAmp * (0.3 * tw1 + 0.25 * tw2 + 0.2 * tw3 + 0.25));
-      // 偶发亮脉冲：每颗星独立周期
-      const pulsePhase = (t * s.pulseSpeed + s.pulseOffset) % (Math.PI * 2);
-      const pulseStrength = Math.pow(Math.max(0, Math.cos(pulsePhase)), 14);
-      alpha = Math.min(1, alpha + s.baseAlpha * pulseStrength * 1.5);
-      let r, g, b;
-      if (s.hue === 'warm') { r = 220; g = 170; b = 130; }
-      else if (s.hue === 'cool') { r = 170; g = 195; b = 230; }
-      else { r = 215; g = 200; b = 165; }
-      // 亮脉冲时画一个小光晕
-      if (pulseStrength > 0.3) {
-        const gr = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 5);
-        gr.addColorStop(0, `rgba(${r},${g},${b},${alpha * 0.4})`);
-        gr.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = gr;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r * 5, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r * (1 + pulseStrength * 0.5), 0, Math.PI * 2);
-      ctx.fill();
+    // 第三层：远景星点（预渲染图层 drawImage，两组各自呼吸——性能优化）
+    // 从每帧绘制数千星点 → 每帧仅 2 次 drawImage，性能提升数十倍
+    for (let grp = 0; grp < 2; grp++) {
+      const breath = 0.6 + 0.4 * (0.5 + 0.5 * Math.sin(t * 0.012 + this.bgStarPhase[grp]));
+      ctx.globalAlpha = breath;
+      ctx.drawImage(this.bgStarLayers[grp], 0, 0);
     }
+    ctx.globalAlpha = 1;
 
     // 流星
     this._renderMeteors(ctx);
@@ -444,41 +475,16 @@ export class StarMap {
       const baseR = n.isPure ? 5 : (isFocus ? 6.5 : (isRel ? 4.5 : 1.8 + degFactor * 3));
       const r = baseR * breathe * ease * depthScale * glowBoost;
 
-      // 外光晕（按深度缩放，脉冲时放大）
+      // 外光晕（用预渲染贴图，性能优化）—— drawImage 替代 createRadialGradient
       const haloR = (isFocus ? 60 : (isRel ? 38 : (n.isPure ? 26 : 16 + degFactor * 24))) * ease * depthScale * glowBoost;
-      const haloGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, haloR);
       const da = (a) => a * depthAlpha; // 深度调暗 × 脉冲增亮
-      if (isFocus) {
-        haloGrad.addColorStop(0, `rgba(245,230,192,${da(0.35)})`);
-        haloGrad.addColorStop(0.2, `rgba(232,208,154,${da(0.18)})`);
-        haloGrad.addColorStop(0.5, `rgba(201,169,106,${da(0.06)})`);
-      } else if (isRel) {
-        haloGrad.addColorStop(0, `rgba(232,208,154,${da(0.28)})`);
-        haloGrad.addColorStop(0.25, `rgba(201,169,106,${da(0.12)})`);
-      } else if (n.isPure) {
-        haloGrad.addColorStop(0, `rgba(212,165,116,${da(0.22)})`);
-        haloGrad.addColorStop(0.3, `rgba(160,136,80,${da(0.06)})`);
-      } else {
-        haloGrad.addColorStop(0, `rgba(216,184,120,${da(0.16 + degFactor * 0.14)})`);
-        haloGrad.addColorStop(0.3, `rgba(160,136,80,${da(0.04)})`);
-      }
-      haloGrad.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = haloGrad;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, haloR, 0, Math.PI * 2);
-      ctx.fill();
+      const haloA = isFocus ? da(0.5) : (isRel ? da(0.42) : (n.isPure ? da(0.34) : da(0.22 + degFactor * 0.16)));
+      this._drawGlow(ctx, this.glowHalo, p.x, p.y, haloR, haloA);
 
-      // 亮核光晕（按深度缩放）
-      const coreGlowR = r * 3;
-      const cgGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, coreGlowR);
-      const coreA = da(isFocus ? 0.9 : (isRel ? 0.7 : (n.isPure ? 0.65 : 0.5 + degFactor * 0.3)));
-      cgGrad.addColorStop(0, `rgba(255,248,220,${coreA})`);
-      cgGrad.addColorStop(0.4, `rgba(232,208,154,${coreA * 0.4})`);
-      cgGrad.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = cgGrad;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, coreGlowR, 0, Math.PI * 2);
-      ctx.fill();
+      // 亮核光晕（用预渲染贴图）
+      const coreGlowR = r * 3.2;
+      const coreA = da(isFocus ? 0.95 : (isRel ? 0.75 : (n.isPure ? 0.68 : 0.52 + degFactor * 0.3)));
+      this._drawGlow(ctx, this.glowCore, p.x, p.y, coreGlowR, coreA);
 
       // 实心核（按深度调透明度）
       const coreAlpha = depthAlpha;
