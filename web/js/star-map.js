@@ -35,11 +35,37 @@ export class StarMap {
     this.rotation = 0;
     this.autoRotate = true;
     this.mode = 'explore';
+    this.time = 0; // 用于呼吸/流动动画
 
     this._setupDpr();
+    this._initBackgroundStars(); // 银河远景星
     this._initSimulation();
     this._bindEvents();
     this._startRenderLoop();
+  }
+
+  // 生成银河远景星点（静态背景层，独立于 64 卦，营造深邃感）
+  _initBackgroundStars() {
+    const count = Math.floor(this.width * this.height / 2500); // 密度
+    this.bgStars = [];
+    for (let i = 0; i < count; i++) {
+      this.bgStars.push({
+        x: Math.random() * this.width,
+        y: Math.random() * this.height,
+        r: Math.random() * 1.1 + 0.2,          // 很小
+        baseAlpha: Math.random() * 0.5 + 0.1,  // 暗淡
+        twinkleSpeed: Math.random() * 0.02 + 0.005,
+        twinklePhase: Math.random() * Math.PI * 2,
+        // 偶尔有微微暖色（远星红移感）
+        hue: Math.random() < 0.15 ? 'warm' : (Math.random() < 0.1 ? 'cool' : 'neutral'),
+      });
+    }
+    // 星云团块（几个柔和的暖紫/暖金色光斑，模拟银河尘埃）
+    this.nebulae = [
+      { x: this.width * 0.3, y: this.height * 0.4, r: 320, color: 'rgba(90, 70, 130, 0.06)' },
+      { x: this.width * 0.7, y: this.height * 0.6, r: 380, color: 'rgba(130, 100, 60, 0.05)' },
+      { x: this.width * 0.5, y: this.height * 0.2, r: 260, color: 'rgba(60, 80, 120, 0.05)' },
+    ];
   }
 
   _setupDpr() {
@@ -134,6 +160,7 @@ export class StarMap {
 
   _startRenderLoop() {
     const loop = () => {
+      this.time += 1;
       if (this.autoRotate) this.rotation += 0.0002;
       this._render();
       requestAnimationFrame(loop);
@@ -143,14 +170,48 @@ export class StarMap {
 
   _render() {
     const ctx = this.ctx;
-    ctx.fillStyle = COLORS.bg;
+    const t = this.time;
+
+    // === 第一层：深空径向渐变背景（中心微亮，边缘深邃）===
+    const bgGrad = ctx.createRadialGradient(
+      this.width / 2, this.height / 2, 0,
+      this.width / 2, this.height / 2, Math.max(this.width, this.height) * 0.75
+    );
+    bgGrad.addColorStop(0, '#111a30');
+    bgGrad.addColorStop(0.5, '#0a0f1e');
+    bgGrad.addColorStop(1, '#05070f');
+    ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, this.width, this.height);
 
+    // === 第二层：星云尘埃团块（柔和的光斑）===
+    for (const neb of this.nebulae) {
+      const ng = ctx.createRadialGradient(neb.x, neb.y, 0, neb.x, neb.y, neb.r);
+      ng.addColorStop(0, neb.color);
+      ng.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = ng;
+      ctx.beginPath();
+      ctx.arc(neb.x, neb.y, neb.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // === 第三层：远景银河星点（闪烁，独立于 64 卦）===
+    for (const s of this.bgStars) {
+      const alpha = s.baseAlpha * (0.6 + 0.4 * Math.sin(t * s.twinkleSpeed + s.twinklePhase));
+      let color;
+      if (s.hue === 'warm') color = `rgba(200, 170, 130, ${alpha})`;
+      else if (s.hue === 'cool') color = `rgba(160, 180, 220, ${alpha})`;
+      else color = `rgba(210, 200, 180, ${alpha})`;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // === 第四层：64 卦关系边（动态流光）===
     const focus = this.hoveredNode || this.activeNode;
     const focusRels = focus ? new Set([focus.id, ...this._relationTargets(focus.id)]) : null;
-
-    // 边
     const nodeById = new Map(this.graph.nodes.map(n => [n.id, n]));
+
     for (const e of this.graph.edges) {
       const s = nodeById.get(e.source), t = nodeById.get(e.target);
       if (!s || !t) continue;
@@ -158,44 +219,78 @@ export class StarMap {
       const tp = this._worldToScreen(t.x, t.y);
       const isActive = focusRels && focusRels.has(e.source) && focusRels.has(e.target) &&
         (e.source === focus.id || e.target === focus.id);
-      ctx.strokeStyle = isActive ? COLORS.edgeActive : COLORS.edge;
-      ctx.lineWidth = isActive ? 1.5 : 0.4;
-      ctx.globalAlpha = isActive ? 0.85 : (focus ? 0.15 : 1);
-      ctx.beginPath();
-      ctx.moveTo(sp.x, sp.y);
-      ctx.lineTo(tp.x, tp.y);
-      ctx.stroke();
+
+      if (isActive) {
+        // 激活边：亮金色渐变 + 流动虚线
+        const grad = ctx.createLinearGradient(sp.x, sp.y, tp.x, tp.y);
+        grad.addColorStop(0, 'rgba(232, 208, 154, 0.9)');
+        grad.addColorStop(0.5, 'rgba(201, 169, 106, 0.7)');
+        grad.addColorStop(1, 'rgba(232, 208, 154, 0.9)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.3;
+        ctx.globalAlpha = 0.9;
+        ctx.setLineDash([4, 6]);
+        ctx.lineDashOffset = -t * 0.5; // 流动
+        ctx.beginPath();
+        ctx.moveTo(sp.x, sp.y);
+        ctx.lineTo(tp.x, tp.y);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      } else {
+        // 静默边：极淡的金色，带细微流动
+        const pulseAlpha = 0.08 + 0.04 * Math.sin(t * 0.01 + e.source.charCodeAt(0));
+        ctx.strokeStyle = `rgba(138, 122, 90, ${focus ? pulseAlpha * 0.4 : pulseAlpha})`;
+        ctx.lineWidth = 0.5;
+        ctx.beginPath();
+        ctx.moveTo(sp.x, sp.y);
+        ctx.lineTo(tp.x, tp.y);
+        ctx.stroke();
+      }
     }
     ctx.globalAlpha = 1;
 
-    // 节点
+    // === 第五层：64 卦星点（光晕 + 内核 + 呼吸）===
     for (const n of this.graph.nodes) {
       const p = this._worldToScreen(n.x, n.y);
       const isFocus = focus && n.id === focus.id;
       const isRel = focusRels && focusRels.has(n.id) && !isFocus;
-      const r = isFocus ? 7 : (isRel ? 4.5 : 2.5 + Math.min(n.degree * 0.15, 1.5));
+      // 呼吸：每颗星不同相位
+      const breathe = 0.85 + 0.15 * Math.sin(t * 0.02 + n.binaryCode.charCodeAt(0) + n.binaryCode.charCodeAt(3));
+      const baseR = isFocus ? 7 : (isRel ? 4.5 : 2.5 + Math.min(n.degree * 0.15, 1.5));
+      const r = baseR * breathe;
 
-      if (isFocus || isRel) {
-        const glowR = isFocus ? 20 : 12;
-        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowR);
-        grad.addColorStop(0, COLORS.glow);
-        grad.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
-        ctx.fill();
-      }
+      // 外光晕（径向渐变，营造星辉）
+      const glowR = isFocus ? 28 : (isRel ? 18 : 9 + Math.min(n.degree * 0.4, 4));
+      const glowGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowR);
+      const glowColor = isFocus ? 'rgba(232, 208, 154, 0.5)' : (isRel ? 'rgba(201, 169, 106, 0.4)' : 'rgba(138, 122, 90, 0.28)');
+      glowGrad.addColorStop(0, glowColor);
+      glowGrad.addColorStop(0.4, isFocus ? 'rgba(201, 169, 106, 0.18)' : 'rgba(138, 122, 90, 0.08)');
+      glowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = glowGrad;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
+      ctx.fill();
 
-      ctx.fillStyle = isFocus ? COLORS.starActive : (isRel ? COLORS.starHover : COLORS.star);
+      // 内核（亮）
+      const coreColor = isFocus ? '#f5e6c0' : (isRel ? '#e8d09a' : '#c9a96a');
+      ctx.fillStyle = coreColor;
       ctx.beginPath();
       ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
       ctx.fill();
+
+      // 高光点（最亮中心，给星点"活气"）
+      if (isFocus || isRel || n.degree > 8) {
+        ctx.fillStyle = isFocus ? 'rgba(255, 250, 230, 0.9)' : 'rgba(245, 230, 192, 0.6)';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r * 0.4, 0, Math.PI * 2);
+        ctx.fill();
+      }
 
       if (isFocus) {
         ctx.fillStyle = COLORS.text;
         ctx.font = '14px "Noto Serif SC", serif';
         ctx.textAlign = 'center';
-        ctx.fillText(n.name, p.x, p.y - 16);
+        ctx.fillText(n.name, p.x, p.y - glowR - 4);
       }
     }
   }
