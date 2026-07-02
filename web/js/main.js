@@ -5,6 +5,7 @@ import { StarMap } from './star-map.js';
 import { renderHexagramDetail } from './render.js';
 import { hexagramSvg } from './svg-painter.js';
 import { loadReviewCards, initAllCards, getDueCards, getDueCount, saveReview, getMastery } from './review-engine.js';
+import { generateQuestion, checkAnswer, addWrong, recordResult, loadStats } from './quiz-engine.js';
 
 const reviewCards = loadReviewCards();
 
@@ -92,12 +93,15 @@ function setMode(mode) {
     const dueCodes = getDueCards(reviewCards);
     state.starMap && state.starMap.setReviewDue(dueCodes);
     showReviewPanel(dueCodes);
+  } else if (mode === 'quiz') {
+    // 测验模式
+    state.starMap && state.starMap.setReviewDue(null);
+    startQuiz();
   } else {
-    const labels = {quiz:'测验',divination:'占筮',almanac:'黄历'};
-    const phase = (mode==='quiz') ? 2 : 3;
+    const labels = {divination:'占筮',almanac:'黄历'};
     panelContent.innerHTML = `<div style="padding:60px;text-align:center;color:#7a6a4a">
       <h2 style="color:#a08850;margin-bottom:12px">${labels[mode]}模式</h2>
-      <p>此模式将在第 ${phase} 期实现。</p>
+      <p>此模块待开发。</p>
     </div>`;
     panel.classList.add('open');
   }
@@ -176,6 +180,57 @@ function startReviewCard(code) {
       const dueCodes = getDueCards(reviewCards);
       state.starMap && state.starMap.setReviewDue(dueCodes);
       showReviewPanel(dueCodes);
+    });
+  });
+}
+
+// 测验模式：出题 + 候选选择 + 判题反馈
+let currentQuiz = null;
+function startQuiz() {
+  currentQuiz = generateQuestion(state.hexagrams);
+  const answerHex = state.index.byCode.get(currentQuiz.answer);
+  const stats = loadStats();
+  panelContent.innerHTML = `
+    <div style="padding:36px 26px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+        <h2 style="color:#e8d09a;font-size:1.4rem">测验</h2>
+        <span style="color:#888;font-size:0.8rem">正确率 ${stats.correct}/${stats.total}</span>
+      </div>
+      <div style="background:rgba(201,169,106,0.08);border-radius:8px;padding:20px;margin-bottom:20px;text-align:center">
+        <p style="color:#e8d09a;font-size:1.1rem;line-height:1.7">${currentQuiz.question}</p>
+      </div>
+      <p style="color:#888;font-size:0.8rem;margin-bottom:12px">选择你的答案：</p>
+      <div class="quiz-options" id="quiz-options">
+        ${currentQuiz.candidates.map(c => {
+          const h = state.index.byCode.get(c);
+          return `<button class="quiz-option" data-code="${c}">${h.name} · ${h.fullName}</button>`;
+        }).join('')}
+      </div>
+      <div id="quiz-feedback" style="margin-top:20px"></div>
+    </div>
+  `;
+  panel.classList.add('open');
+  // 绑定选项
+  panelContent.querySelectorAll('.quiz-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const picked = btn.dataset.code;
+      const correct = checkAnswer(currentQuiz, picked);
+      recordResult(correct);
+      if (!correct) addWrong(currentQuiz.targetCode);
+      // 高亮对错
+      panelContent.querySelectorAll('.quiz-option').forEach(b => {
+        if (b.dataset.code === currentQuiz.answer) b.classList.add('quiz-correct');
+        else if (b.dataset.code === picked) b.classList.add('quiz-wrong');
+        b.disabled = true;
+      });
+      const fb = document.getElementById('quiz-feedback');
+      fb.innerHTML = `
+        <p style="text-align:center;font-size:1rem;margin-bottom:12px">
+          ${correct ? '<span style="color:#34e89e">✓ 正确！</span>' : '<span style="color:#e94560">✗ 正确答案是「'+answerHex.name+'」</span>'}
+        </p>
+        <button class="quiz-next" id="quiz-next">下一题 →</button>
+      `;
+      document.getElementById('quiz-next').addEventListener('click', () => startQuiz());
     });
   });
 }
