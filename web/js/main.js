@@ -10,6 +10,7 @@ import { castHexagram, getReading } from './divination-engine.js';
 import { yaoLabel } from './hexagram-utils.js';
 import { playHexagramSound, initAudio } from './audio-engine.js';
 import { castByNumber, castByTime, analyzeTiYong } from './meihua-engine.js';
+import { renderAlmanacPage } from './almanac-page.js';
 
 const reviewCards = loadReviewCards();
 
@@ -109,6 +110,10 @@ function setMode(mode) {
   } else if (mode === 'guaxu') {
     state.starMap && state.starMap.setReviewDue(null);
     showGuaxuPanel();
+  } else if (mode === 'almanac') {
+    state.starMap && state.starMap.setReviewDue(null);
+    renderAlmanacPage(panelContent, state);
+    panel.classList.add('open');
   } else {
     panelContent.innerHTML = `<div style="padding:60px;text-align:center;color:#7a6a4a">
       <h2 style="color:#a08850;margin-bottom:12px">此模块待开发</h2>
@@ -442,6 +447,8 @@ async function init() {
     const data = await loadAllData();
     state.hexagrams = data.hexagrams;
     state.trigrams = data.trigrams;
+    state.almanacTerms = data.almanacTerms;
+    state.almanacYiji = data.almanacYiji;
     state.index = buildHexagramIndex(data.hexagrams);
 
     const graph = buildRelationGraph(data.hexagrams);
