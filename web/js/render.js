@@ -83,7 +83,7 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
 
   mountEl.innerHTML = `
     <div class="detail-header">
-      ${hexagramSvg(hex.binaryCode, { size: 160 })}
+      ${hexagramSvg(hex.binaryCode, { size: 140 })}
       <h1>${esc(hex.name)} · ${esc(hex.fullName)}</h1>
       <div class="subtitle">第 ${hex.number} 卦 · ${esc(hex.binaryCode)} · 下${esc(trigramLabel(hex.trigramLower))} 上${esc(trigramLabel(hex.trigramUpper))}</div>
     </div>
@@ -91,12 +91,22 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
     ${section('彖传', `<div class="original-text">${esc(hex.tuan)}</div>${hex.tuanNote ? `<div class="note-text">${esc(hex.tuanNote)}</div>` : ''}`)}
     ${section('大象', `<div class="original-text">${esc(hex.image)}</div>${hex.imageNote ? `<div class="note-text">${esc(hex.imageNote)}</div>` : ''}`)}
     ${relHtml}
-    <h3 class="section-title">六爻</h3>
-    <div class="yao-list">${lines}</div>
+    <h3 class="section-title yao-collapse-toggle" id="yao-toggle">六爻<span class="toggle-arrow">▶</span></h3>
+    <div class="yao-list yao-collapse-body" id="yao-body">${lines}</div>
     ${hex.useNine ? section('用九', `<div class="original-text">${esc(hex.useNine)}</div>`) : ''}
     ${hex.useSix ? section('用六', `<div class="original-text">${esc(hex.useSix)}</div>`) : ''}
     ${section('序卦传', `<div class="original-text">${esc(hex.orderRemark)}</div>`)}
   `;
+
+  // 六爻折叠交互
+  const yaoToggle = mountEl.querySelector('#yao-toggle');
+  const yaoBody = mountEl.querySelector('#yao-body');
+  if (yaoToggle && yaoBody) {
+    yaoToggle.addEventListener('click', () => {
+      yaoToggle.classList.toggle('open');
+      yaoBody.classList.toggle('open');
+    });
+  }
 
   if (onPickRelation) {
     mountEl.querySelectorAll('.relation-chip').forEach(chip => {
