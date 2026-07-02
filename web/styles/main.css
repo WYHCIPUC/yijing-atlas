@@ -118,6 +118,59 @@ body {
 .yao-collapse-body { display: none; }
 .yao-collapse-body.open { display: flex; flex-direction: column; gap: 10px; }
 
+/* 今日卦首页欢迎层 */
+.daily-overlay {
+  position: fixed; inset: 0; z-index: 50;
+  background: radial-gradient(ellipse at center, rgba(17,26,48,0.92) 0%, rgba(5,7,15,0.97) 100%);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.daily-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.daily-card {
+  text-align: center; max-width: 440px; padding: 40px 30px;
+  animation: dailyFadeIn 0.8s ease;
+}
+@keyframes dailyFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.daily-date {
+  color: var(--text-dim); font-size: 0.9rem; letter-spacing: 0.15em;
+  margin-bottom: 24px; font-family: monospace;
+}
+.daily-hex-svg { display: flex; justify-content: center; margin-bottom: 16px; }
+.daily-hex-svg svg { filter: drop-shadow(0 0 12px rgba(201,169,106,0.4)); }
+.daily-hex-name {
+  font-size: 3.5rem; color: var(--gold-bright);
+  font-family: "Ma Shan Zheng", "ZCOOL XiaoWei", serif;
+  margin-bottom: 6px; letter-spacing: 0.1em;
+  text-shadow: 0 0 20px rgba(232,208,154,0.3);
+}
+.daily-hex-full {
+  color: var(--gold-dim); font-size: 1rem; margin-bottom: 28px;
+  letter-spacing: 0.1em;
+}
+.daily-verse {
+  color: var(--text-secondary); font-size: 1.15rem; line-height: 2;
+  font-family: "Noto Serif SC", serif; margin-bottom: 8px;
+  padding: 0 20px;
+}
+.daily-verse-src {
+  color: var(--text-dim); font-size: 0.82rem; margin-bottom: 32px;
+}
+.daily-enter {
+  background: rgba(201,169,106,0.12); color: var(--gold-main);
+  border: 1px solid rgba(201,169,106,0.4);
+  padding: 12px 36px; border-radius: 24px;
+  font-size: 1rem; font-family: inherit; cursor: pointer;
+  transition: all 0.25s; letter-spacing: 0.1em;
+}
+.daily-enter:hover {
+  background: rgba(201,169,106,0.25); border-color: var(--gold-main);
+  box-shadow: 0 0 16px rgba(201,169,106,0.2);
+}
+
 /* 缩放控件 */
 .zoom-controls {
   position: fixed; right: 20px; bottom: 60px; z-index: 12;

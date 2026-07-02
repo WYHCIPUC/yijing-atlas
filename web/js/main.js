@@ -3,8 +3,53 @@ import { loadAllData, buildHexagramIndex, searchHexagrams } from './data-loader.
 import { buildRelationGraph } from './star-relations.js';
 import { StarMap } from './star-map.js';
 import { renderHexagramDetail } from './render.js';
+import { hexagramSvg } from './svg-painter.js';
 
 const state = { hexagrams: [], trigrams: [], index: null, starMap: null, currentDetail: null };
+
+// === 今日卦 ===
+// 按今年第N天对64取模推算今日卦，每天一卦循环
+function getDailyHexagram(hexagrams) {
+  const now = new Date();
+  const yearStart = new Date(now.getFullYear(), 0, 0);
+  const dayOfYear = Math.floor((now - yearStart) / 86400000);
+  const idx = dayOfYear % 64;
+  return hexagrams[idx];
+}
+
+// 选取一句核心爻辞作为今日箴言
+function getDailyVerse(hex) {
+  // 优先九五/六五，其次卦辞
+  const yao5 = hex.lines.find(y => y.position === 5);
+  if (yao5 && yao5.text) {
+    const text = yao5.text.replace(/^[^：]*：/, '').replace(/。$/, '');
+    return { text, src: `${hex.name}·${yao5.position === 5 ? (yao5.isYang ? '九五' : '六五') : ''}` };
+  }
+  const j = hex.judgement.replace(/^[^：]*：/, '').replace(/。$/, '');
+  return { text: j, src: `${hex.name}·卦辞` };
+}
+
+function showDailyHexagram() {
+  const hex = getDailyHexagram(state.hexagrams);
+  if (!hex) return;
+  const now = new Date();
+  const dateStr = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+  document.getElementById('daily-date').textContent = dateStr;
+  document.getElementById('daily-hex-svg').innerHTML = hexagramSvg(hex.binaryCode, { size: 100 });
+  document.getElementById('daily-hex-name').textContent = hex.name;
+  document.getElementById('daily-hex-full').textContent = hex.fullName;
+  const verse = getDailyVerse(hex);
+  document.getElementById('daily-verse').textContent = `「${verse.text}」`;
+  document.getElementById('daily-verse-src').textContent = `—— ${verse.src}`;
+  // 进入星图按钮：淡出欢迎层，星图聚焦今日卦
+  document.getElementById('daily-enter').addEventListener('click', () => {
+    document.getElementById('daily-overlay').classList.add('hidden');
+    // 短暂延迟后聚焦今日卦
+    setTimeout(() => {
+      if (state.starMap) state.starMap.focusStar(hex.binaryCode);
+    }, 300);
+  });
+}
 
 const loadingEl = document.getElementById('loading');
 const canvas = document.getElementById('star-canvas');
@@ -84,6 +129,8 @@ async function init() {
     canvas.addEventListener('wheel', () => setTimeout(updateZoom, 50), { passive: true });
 
     loadingEl.style.display = 'none';
+    // 显示今日卦首页
+    showDailyHexagram();
   } catch (e) {
     loadingEl.innerHTML = `⚠ 数据加载失败：${e.message}`;
     loadingEl.classList.remove('loading-screen');
