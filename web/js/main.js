@@ -105,10 +105,12 @@ function setMode(mode) {
   } else if (mode === 'divination') {
     state.starMap && state.starMap.setReviewDue(null);
     showDivinationPanel();
+  } else if (mode === 'guaxu') {
+    state.starMap && state.starMap.setReviewDue(null);
+    showGuaxuPanel();
   } else {
     panelContent.innerHTML = `<div style="padding:60px;text-align:center;color:#7a6a4a">
-      <h2 style="color:#a08850;margin-bottom:12px">黄历模式</h2>
-      <p>此模块待开发。</p>
+      <h2 style="color:#a08850;margin-bottom:12px">此模块待开发</h2>
     </div>`;
     panel.classList.add('open');
   }
@@ -292,6 +294,38 @@ function performDivination() {
     <button class="divine-btn" id="divine-again" style="font-size:0.88rem;padding:8px 24px">再掷一卦</button>
   `;
   document.getElementById('divine-again').addEventListener('click', performDivination);
+}
+
+// 卦序长河：64卦按周易顺序排成时间线，序卦传串讲
+function showGuaxuPanel() {
+  const sorted = [...state.hexagrams].sort((a, b) => a.number - b.number);
+  panelContent.innerHTML = `
+    <div style="padding:36px 22px">
+      <h2 style="color:#e8d09a;font-size:1.4rem;margin-bottom:8px">卦序长河</h2>
+      <p style="color:#a89878;font-size:0.85rem;margin-bottom:24px;line-height:1.7">
+        序卦传述说六十四卦的演化逻辑——从天地创生，到万物萌发，再到既济未济的循环。
+        点击任一卦进入星图。
+      </p>
+      <div class="guaxu-river">
+        ${sorted.map(h => `
+          <div class="guaxu-node" data-code="${h.binaryCode}">
+            <div class="guaxu-num">${h.number}</div>
+            <div class="guaxu-name">${h.name}</div>
+            <div class="guaxu-remark">${h.orderRemark ? h.orderRemark.slice(0, 12) : ''}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  panel.classList.add('open');
+  panelContent.querySelectorAll('.guaxu-node').forEach(node => {
+    node.addEventListener('click', () => {
+      // 切回探索模式并打开详情
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === 'explore'));
+      state.starMap && state.starMap.setMode('explore');
+      openDetail(node.dataset.code);
+    });
+  });
 }
 
 async function init() {

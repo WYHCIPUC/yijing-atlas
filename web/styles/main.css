@@ -225,6 +225,18 @@ body {
   background: linear-gradient(135deg, rgba(201,169,106,0.3), rgba(201,169,106,0.15));
   box-shadow: 0 0 20px rgba(201,169,106,0.2); transform: translateY(-2px);
 }
+
+/* 卦序长河 */
+.guaxu-river { display: flex; flex-direction: column; gap: 2px; }
+.guaxu-node {
+  display: flex; align-items: baseline; gap: 12px;
+  padding: 8px 10px; border-radius: 6px; cursor: pointer;
+  transition: all 0.15s; border-left: 2px solid transparent;
+}
+.guaxu-node:hover { background: rgba(201,169,106,0.1); border-left-color: var(--gold-main); }
+.guaxu-num { color: var(--text-dim); font-size: 0.72rem; font-family: monospace; min-width: 24px; }
+.guaxu-name { color: var(--gold-bright); font-size: 1.1rem; font-family: "Ma Shan Zheng", serif; min-width: 32px; }
+.guaxu-remark { color: var(--text-secondary); font-size: 0.78rem; line-height: 1.5; flex: 1; }
 .relation-chip {
   background: rgba(201, 169, 106, 0.08); border: 1px solid rgba(201, 169, 106, 0.25);
   padding: 5px 11px; border-radius: 14px;
