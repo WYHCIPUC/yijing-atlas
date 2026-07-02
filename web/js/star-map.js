@@ -231,10 +231,11 @@ export class StarMap {
       .map(e => ({ source: nodeById.get(e.source), target: nodeById.get(e.target), weight: e.weight }));
 
     this.simulation = forceSimulation(this.graph.nodes)
-      .force('charge', forceManyBody().strength(-60))
-      .force('link', forceLink(links).id(d => d.index).distance(80).strength(0.08))
-      .force('xA', forceX(d => d.targetX).strength(d => d.isPure ? 1 : 0.25))
-      .force('yA', forceY(d => d.targetY).strength(d => d.isPure ? 1 : 0.25))
+      .force('charge', forceManyBody().strength(-50))
+      .force('link', forceLink(links).id(d => d.index).distance(80).strength(0.06))
+      .force('xA', forceX(d => d.targetX).strength(d => d.isPure ? 0.9 : 0.18))
+      .force('yA', forceY(d => d.targetY).strength(d => d.isPure ? 0.9 : 0.18))
+      .force('center', forceCenter(this.cx, this.cy))
       .alphaDecay(0.015);
   }
 
@@ -494,29 +495,37 @@ export class StarMap {
       ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
       ctx.fill();
 
-      // ★ 关键词星云（LOD：需明显放大才显示关键词文字，默认只看光晕）
-      const lod = this.view.scale * depthScale; // 细节层次系数
-      if (this.keywordLayouts && this.keywordLayouts[n.id] && lod > 1.6) {
-        const kwAlpha = Math.min(1, (lod - 1.6) / 0.8) * ease * (0.5 + depth * 0.5);
+      // ★ 关键词小星团（LOD：需明显放大才显示，每个关键词是发光星点 + 文字）
+      const lod = this.view.scale * depthScale;
+      if (this.keywordLayouts && this.keywordLayouts[n.id] && lod > 1.4) {
+        const kwAlpha = Math.min(1, (lod - 1.4) / 0.7) * ease * (0.5 + depth * 0.5);
         const layout = this.keywordLayouts[n.id];
+        const twinkle = 0.7 + 0.3 * Math.sin(this.time * 0.03 + n.binaryCode.charCodeAt(1));
         for (const kw of layout) {
-          // 关键词微浮动
+          if (kw.level === 0) continue; // 卦名由标签层处理
+          // 关键词星点位置（带微浮动）
           const floatX = Math.sin(this.time * 0.01 + kw.phase) * 1.5;
           const floatY = Math.cos(this.time * 0.012 + kw.phase) * 1.5;
           const kx = p.x + (kw.dx + floatX) * depthScale;
           const ky = p.y + (kw.dy + floatY) * depthScale;
-          // 字号按层级和深度
-          const fontSizes = [0, 13, 10, 8]; // L0 不在这里画（卦名另画）
-          if (kw.level === 0) continue; // 卦名由后面的标签层处理
-          const fs = fontSizes[kw.level] * depthScale * (0.7 + lod * 0.3);
+          // 关键词发光星点（用预渲染贴图）
+          const starR = (kw.level === 1 ? 8 : (kw.level === 2 ? 6 : 5)) * depthScale;
+          const starA = (kw.level === 1 ? 0.7 : (kw.level === 2 ? 0.55 : 0.42)) * kwAlpha * twinkle;
+          this._drawGlow(ctx, this.glowCore, kx, ky, starR, starA);
+          // 关键词实心小点
+          const dotR = (kw.level === 1 ? 2 : 1.5) * depthScale;
+          ctx.globalAlpha = starA;
+          ctx.fillStyle = kw.level === 1 ? '#e8d09a' : (kw.level === 2 ? '#c9a96a' : '#a89878');
+          ctx.beginPath();
+          ctx.arc(kx, ky, dotR, 0, Math.PI * 2);
+          ctx.fill();
+          // 关键词文字标签（在星点旁）
+          const fs = (kw.level === 1 ? 11 : (kw.level === 2 ? 9 : 8)) * depthScale * (0.7 + lod * 0.2);
           ctx.font = `${fs}px "ZCOOL XiaoWei", "Ma Shan Zheng", "STKaiti", serif`;
-          ctx.textAlign = 'center';
+          ctx.textAlign = 'left';
           ctx.textBaseline = 'middle';
-          // L1 卦辞核心最亮，L3 爻辞最暗
-          const levelAlpha = kw.level === 1 ? kwAlpha : (kw.level === 2 ? kwAlpha * 0.75 : kwAlpha * 0.55);
-          const levelColor = kw.level === 1 ? `rgba(232,208,154,${levelAlpha})` : (kw.level === 2 ? `rgba(200,175,120,${levelAlpha})` : `rgba(160,140,95,${levelAlpha})`);
-          ctx.fillStyle = levelColor;
-          ctx.fillText(kw.text, kx, ky);
+          ctx.fillStyle = kw.level === 1 ? `rgba(232,208,154,${kwAlpha})` : (kw.level === 2 ? `rgba(200,175,120,${kwAlpha * 0.85})` : `rgba(160,140,95,${kwAlpha * 0.7})`);
+          ctx.fillText(kw.text, kx + dotR + 3, ky);
         }
       }
     }
@@ -596,6 +605,17 @@ export class StarMap {
   }
 
   setMode(mode) { this.mode = mode; }
+
+  // 缩放控制（供 UI 按钮调用）
+  zoomBy(factor) {
+    this.view.scale = Math.max(0.3, Math.min(4, this.view.scale * factor));
+  }
+  zoomReset() {
+    this.view.scale = 1;
+  }
+  getZoomPercent() {
+    return Math.round(this.view.scale * 100);
+  }
 
   resize() {
     this._setupDpr();

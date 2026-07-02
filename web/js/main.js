@@ -74,6 +74,15 @@ async function init() {
     });
     window.addEventListener('resize', () => state.starMap && state.starMap.resize());
 
+    // 缩放控件
+    const zoomLevel = document.getElementById('zoom-level');
+    const updateZoom = () => { if (zoomLevel) zoomLevel.textContent = state.starMap.getZoomPercent() + '%'; };
+    document.getElementById('zoom-in').addEventListener('click', () => { state.starMap.zoomBy(1.25); updateZoom(); });
+    document.getElementById('zoom-out').addEventListener('click', () => { state.starMap.zoomBy(0.8); updateZoom(); });
+    document.getElementById('zoom-reset').addEventListener('click', () => { state.starMap.zoomReset(); updateZoom(); });
+    // 滚轮缩放也实时更新百分比
+    canvas.addEventListener('wheel', () => setTimeout(updateZoom, 50), { passive: true });
+
     loadingEl.style.display = 'none';
   } catch (e) {
     loadingEl.innerHTML = `⚠ 数据加载失败：${e.message}`;
