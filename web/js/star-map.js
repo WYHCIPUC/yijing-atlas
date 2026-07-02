@@ -46,6 +46,7 @@ export class StarMap {
     this.appearProgress = 0;
     this.keywords = null;
     this.keywordLayouts = null;
+    this.trail = [];          // 关系漫游旅行轨迹：[{from, to}] 序列
     // 相机焦点：点击星后"飞入"该星，以其为中心看 360°
     this.cameraTarget = null;  // {x,y,z} 目标相机焦点，null=以球心为焦点
     this.cameraPos = { x: 0, y: 0, z: 0 };  // 当前相机焦点（平滑过渡用）
@@ -411,6 +412,31 @@ export class StarMap {
     // 流星
     this._renderMeteors(ctx);
 
+    // 关系漫游轨迹层（金色路径，渐显动画）
+    if (this.trail.length > 0) {
+      ctx.globalCompositeOperation = 'lighter';
+      const nodeMap = new Map(this.graph.nodes.map(n => [n.id, n]));
+      for (const seg of this.trail) {
+        const s = nodeMap.get(seg.from), e = nodeMap.get(seg.to);
+        if (!s || !e) continue;
+        seg.t = Math.min(1, seg.t + 0.04); // 渐显进度
+        const sp = this._worldToScreen(s.x, s.y, s.z);
+        const tp = this._worldToScreen(e.x, e.y, e.z);
+        // 金色轨迹线，带流光
+        const alpha = seg.t * 0.6;
+        ctx.strokeStyle = `rgba(232, 208, 154, ${alpha * 0.3})`;
+        ctx.lineWidth = 5;
+        ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(tp.x, tp.y); ctx.stroke();
+        ctx.strokeStyle = `rgba(245, 230, 192, ${alpha})`;
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 4]);
+        ctx.lineDashOffset = -t * 0.3;
+        ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(tp.x, tp.y); ctx.stroke();
+        ctx.setLineDash([]);
+      }
+      ctx.globalCompositeOperation = 'source-over';
+    }
+
     // 第四层：关系边
     const focus = this.hoveredNode || this.activeNode;
     const focusRels = focus ? new Set([focus.id, ...this._relationTargets(focus.id)]) : null;
@@ -619,6 +645,15 @@ export class StarMap {
   }
 
   setMode(mode) { this.mode = mode; }
+
+  // === 关系漫游轨迹 ===
+  // 添加一段轨迹（从 fromCode 到 toCode）
+  addTrail(fromCode, toCode) {
+    if (fromCode && toCode && fromCode !== toCode) {
+      this.trail.push({ from: fromCode, to: toCode, t: 0 }); // t=动画进度
+    }
+  }
+  clearTrail() { this.trail = []; }
 
   // 缩放控制（供 UI 按钮调用）
   zoomBy(factor) {

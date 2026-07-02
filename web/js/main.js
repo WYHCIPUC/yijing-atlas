@@ -57,13 +57,15 @@ const panel = document.getElementById('detail-panel');
 const panelContent = document.getElementById('detail-content');
 const searchInput = document.getElementById('search');
 
-function openDetail(code) {
+function openDetail(code, fromCode = null) {
   const hex = state.index.byCode.get(code);
   if (!hex) return;
   renderHexagramDetail(hex, panelContent, state.hexagrams, (relCode) => {
-    openDetail(relCode);
+    openDetail(relCode, code); // 关系跳转：记录从哪来
   });
   panel.classList.add('open');
+  // 记录漫游轨迹
+  if (fromCode && state.starMap) state.starMap.addTrail(fromCode, code);
   state.currentDetail = code;
   state.starMap && state.starMap.focusStar(code);
 }
@@ -125,6 +127,7 @@ async function init() {
     document.getElementById('zoom-in').addEventListener('click', () => { state.starMap.zoomBy(1.25); updateZoom(); });
     document.getElementById('zoom-out').addEventListener('click', () => { state.starMap.zoomBy(0.8); updateZoom(); });
     document.getElementById('zoom-reset').addEventListener('click', () => { state.starMap.zoomReset(); updateZoom(); });
+    document.getElementById('trail-clear').addEventListener('click', () => { state.starMap.clearTrail(); state.starMap.clearFocus(); });
     // 滚轮缩放也实时更新百分比
     canvas.addEventListener('wheel', () => setTimeout(updateZoom, 50), { passive: true });
 
