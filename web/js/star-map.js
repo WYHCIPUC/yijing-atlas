@@ -198,7 +198,7 @@ export class StarMap {
   _startRenderLoop() {
     const loop = () => {
       this.time += 1;
-      if (this.autoRotate) this.rotation += 0.0002;
+      if (this.autoRotate) this.rotation += 0.0006;
       if (this.appearProgress < 1) this.appearProgress = Math.min(1, this.appearProgress + 0.006);
       for (const neb of this.nebulae) {
         neb.x = neb.bx + Math.cos(this.time * neb.ds + neb.dp) * neb.dr;
@@ -365,13 +365,31 @@ export class StarMap {
     }
     ctx.globalCompositeOperation = 'source-over';
 
-    // 卦名标签（纯卦常显，focus 星显示）
-    if (focus) {
+    // 卦名标签：8 纯卦常显书法大字 + focus 星显示
+    // 书法字体优先 Ma Shan Zheng（马善政体），降级 ZCOOL XiaoWei，再降级衬线
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    // 先画 8 纯卦的书法大字（常显，淡金，给星系命名感）
+    for (const n of this.graph.nodes) {
+      if (!n.isPure) continue;
+      const delay = (n.number - 1) / 64 * 0.5;
+      const localP = Math.max(0, Math.min(1, (this.appearProgress - delay) / 0.4));
+      if (localP <= 0) continue;
+      const p = this._worldToScreen(n.x, n.y);
+      const isFocus = focus && n.id === focus.id;
+      // 纯卦字大、淡金；focus 时更亮更大
+      const fontSize = isFocus ? 34 : 26;
+      const alpha = isFocus ? 1 : (0.5 + 0.15 * Math.sin(this.time * 0.01 + n.binaryCode.charCodeAt(0)));
+      ctx.font = `${fontSize}px "Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
+      ctx.fillStyle = isFocus ? 'rgba(255,240,200,1)' : `rgba(212,165,116,${alpha})`;
+      ctx.fillText(n.name, p.x, p.y - 40);
+    }
+    // focus 星若非纯卦，也显示其名（较小）
+    if (focus && !focus.isPure) {
       const p = this._worldToScreen(focus.x, focus.y);
-      ctx.fillStyle = '#f0d8a0';
-      ctx.font = '15px "Noto Serif SC", serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(focus.name, p.x, p.y - 60);
+      ctx.font = '24px "Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif';
+      ctx.fillStyle = 'rgba(255,240,200,1)';
+      ctx.fillText(focus.name, p.x, p.y - 45);
     }
   }
 
