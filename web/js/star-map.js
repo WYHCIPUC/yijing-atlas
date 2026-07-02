@@ -36,15 +36,19 @@ export class StarMap {
     this.activeNode = null;
     this.isDragging = false;
     this.dragStart = null;
-    this.rotation = 0;
+    this.yaw = 0;          // 偏航（左右转）
+    this.pitch = 0;        // 俯仰（上下看）
     this.autoRotate = true;
     this.mode = 'explore';
     this.time = 0;
     this.meteors = [];
     this.nextMeteorAt = 150;
     this.appearProgress = 0;
-    this.keywords = null;       // 关键词数据（异步加载）
-    this.keywordLayouts = null; // 每卦关键词的星云内偏移布局
+    this.keywords = null;
+    this.keywordLayouts = null;
+    // 相机焦点：点击星后"飞入"该星，以其为中心看 360°
+    this.cameraTarget = null;  // {x,y,z} 目标相机焦点，null=以球心为焦点
+    this.cameraPos = { x: 0, y: 0, z: 0 };  // 当前相机焦点（平滑过渡用）
 
     this._setupDpr();
     this._loadKeywords();       // 异步加载关键词，构建星云布局
@@ -119,11 +123,11 @@ export class StarMap {
           x: Math.random() * this.width, y: Math.random() * this.height,
           r: layer.rMin + Math.random() * (layer.rMax - layer.rMin),
           baseAlpha: layer.aMin + Math.random() * (layer.aMax - layer.aMin),
-          twinkleSpeed: Math.random() * 0.015 + 0.003,
+          twinkleSpeed: Math.random() * 0.04 + 0.002,  // 频率范围扩大4倍，差异更明显
           twinklePhase: Math.random() * Math.PI * 2,
-          twinkleAmp: 0.3 + Math.random() * 0.4,
-          pulseSpeed: 0.001 + Math.random() * 0.003,   // 偶发亮脉冲频率
-          pulseOffset: Math.random() * Math.PI * 2,     // 脉冲相位
+          twinkleAmp: 0.35 + Math.random() * 0.45,
+          pulseSpeed: 0.0008 + Math.random() * 0.004,   // 脉冲频率差异更大
+          pulseOffset: Math.random() * Math.PI * 2,
           hue,
         });
       }
@@ -181,24 +185,28 @@ export class StarMap {
       .alphaDecay(0.015);
   }
 
-  // 真 3D 透视投影：世界坐标(x,y,z) → 屏幕坐标 + 深度系数
-  // 自转是绕 Y 轴的三维旋转（球体转动，z 轴的卦转到前/后）
+  // 真 3D 透视投影：双轴旋转(yaw/pitch) + 相机焦点偏移
   _worldToScreen(wx, wy, wz = 0) {
-    const cos = Math.cos(this.rotation), sin = Math.sin(this.rotation);
-    // 相对中心的坐标
-    const ox = wx - this.cx;
-    const oy = wy - this.cy;
-    // 绕 Y 轴旋转：x 和 z 参与旋转，y 不变
-    const rx = ox * cos - wz * sin;
-    const rz = ox * sin + wz * cos;
-    const ry = oy;
-    // 透视投影：相机在 z = -perspective 看向 +z
+    // 减去相机焦点（点击星后以该星为中心）
+    const ox = wx - this.cx - this.cameraPos.x;
+    const oy = wy - this.cy - this.cameraPos.y;
+    const oz = wz - this.cameraPos.z;
+    // 先绕 Y 轴旋转（yaw 偏航：左右看）
+    const cy = Math.cos(this.yaw), sy = Math.sin(this.yaw);
+    const x1 = ox * cy - oz * sy;
+    const z1 = ox * sy + oz * cy;
+    let y1 = oy;
+    // 再绕 X 轴旋转（pitch 俯仰：上下看）
+    const cp = Math.cos(this.pitch), sp = Math.sin(this.pitch);
+    const y2 = y1 * cp - z1 * sp;
+    const z2 = y1 * sp + z1 * cp;
+    // 透视投影
     const perspective = 700;
-    const dz = rz + perspective; // 旋转后的深度
-    const scale = perspective / Math.max(perspective * 0.25, dz);
+    const dz = z2 + perspective;
+    const scale = perspective / Math.max(perspective * 0.2, dz);
     return {
-      x: rx * scale * this.view.scale + this.cx + this.view.x,
-      y: ry * scale * this.view.scale + this.cy + this.view.y,
+      x: x1 * scale * this.view.scale + this.cx + this.view.x,
+      y: y2 * scale * this.view.scale + this.cy + this.view.y,
       scale,
       depthFactor: scale,
     };
@@ -227,17 +235,19 @@ export class StarMap {
         this.callbacks.onPick && this.callbacks.onPick(node.id);
       } else {
         this.isDragging = true;
-        this.dragStart = { x: sx, y: sy, rot: this.rotation };
+        this.dragStart = { x: sx, y: sy, yaw: this.yaw, pitch: this.pitch };
+        this.autoRotate = false; // 拖拽时暂停自转，松手可恢复
       }
     });
     c.addEventListener('mousemove', (e) => {
       const rect = c.getBoundingClientRect();
       const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
       if (this.isDragging) {
-        // 拖拽改为调整视角（倾斜 + 加速自转），而非平移星团——保证星团始终居中
+        // 双轴自由旋转：左右拖改 yaw，上下拖改 pitch
         const dx = sx - this.dragStart.x;
-        this.rotation = this.dragStart.rot + dx * 0.005;
-        this.autoRotate = true; // 拖拽后继续自转
+        const dy = sy - this.dragStart.y;
+        this.yaw = this.dragStart.yaw + dx * 0.006;
+        this.pitch = Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, this.dragStart.pitch + dy * 0.006));
       } else {
         const node = this._nodeAt(sx, sy);
         if (node !== this.hoveredNode) {
@@ -252,15 +262,32 @@ export class StarMap {
     c.addEventListener('wheel', (e) => {
       e.preventDefault();
       const factor = e.deltaY > 0 ? 0.9 : 1.1;
-      this.view.scale = Math.max(0.3, Math.min(3, this.view.scale * factor));
+      this.view.scale = Math.max(0.3, Math.min(4, this.view.scale * factor));
     }, { passive: false });
+    // 双击空白退出焦点，回到球心
+    c.addEventListener('dblclick', (e) => {
+      const rect = c.getBoundingClientRect();
+      const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+      const node = this._nodeAt(sx, sy);
+      if (!node) this.clearFocus();
+    });
   }
 
   _startRenderLoop() {
     const loop = () => {
       this.time += 1;
-      if (this.autoRotate) this.rotation += 0.0006;
+      if (this.autoRotate) this.yaw += 0.0006;
       if (this.appearProgress < 1) this.appearProgress = Math.min(1, this.appearProgress + 0.006);
+      // 相机焦点平滑过渡（点击星后飞入）
+      if (this.cameraTarget) {
+        this.cameraPos.x += (this.cameraTarget.x - this.cameraPos.x) * 0.06;
+        this.cameraPos.y += (this.cameraTarget.y - this.cameraPos.y) * 0.06;
+        this.cameraPos.z += (this.cameraTarget.z - this.cameraPos.z) * 0.06;
+      } else {
+        this.cameraPos.x += (0 - this.cameraPos.x) * 0.06;
+        this.cameraPos.y += (0 - this.cameraPos.y) * 0.06;
+        this.cameraPos.z += (0 - this.cameraPos.z) * 0.06;
+      }
       // z 轴：球状结构基准 + 缓慢振荡漂浮
       for (const n of this.graph.nodes) {
         n.z = n._zBase + Math.sin(this.time * n.zSpeed + n.zPhase) * n.zAmp;
@@ -318,15 +345,16 @@ export class StarMap {
       ctx.fill();
     }
 
-    // 第三层：远景星点（多频叠加明灭 + 偶发亮脉冲）
+    // 第三层：远景星点（每颗星完全独立的明灭节奏 + 偶发亮脉冲）
     for (const s of this.bgStars) {
-      // 双频叠加：慢呼吸 + 快闪烁，产生不规律的明灭
+      // 三频叠加，频率差异大，确保不同步
       const tw1 = Math.sin(t * s.twinkleSpeed + s.twinklePhase);
-      const tw2 = Math.sin(t * s.twinkleSpeed * 2.7 + s.twinklePhase * 1.3);
-      let alpha = s.baseAlpha * (1 - s.twinkleAmp + s.twinkleAmp * (0.5 + 0.3 * tw1 + 0.2 * tw2));
-      // 偶发亮脉冲：每颗星有自己的脉冲周期，短暂变亮
+      const tw2 = Math.sin(t * s.twinkleSpeed * 3.3 + s.twinklePhase * 2.1);
+      const tw3 = Math.sin(t * s.twinkleSpeed * 0.4 + s.twinklePhase * 0.7);
+      let alpha = s.baseAlpha * (1 - s.twinkleAmp + s.twinkleAmp * (0.3 * tw1 + 0.25 * tw2 + 0.2 * tw3 + 0.25));
+      // 偶发亮脉冲：每颗星独立周期
       const pulsePhase = (t * s.pulseSpeed + s.pulseOffset) % (Math.PI * 2);
-      const pulseStrength = Math.pow(Math.max(0, Math.cos(pulsePhase)), 12); // 尖锐脉冲
+      const pulseStrength = Math.pow(Math.max(0, Math.cos(pulsePhase)), 14);
       alpha = Math.min(1, alpha + s.baseAlpha * pulseStrength * 1.5);
       let r, g, b;
       if (s.hue === 'warm') { r = 220; g = 170; b = 130; }
@@ -550,7 +578,15 @@ export class StarMap {
     const node = this.graph.nodes.find(n => n.id === code);
     if (!node) return;
     this.activeNode = node;
-    // 星团始终居中，搜索定位只高亮该星，不平移视图
+    // 设置相机焦点：飞入该星位置，以其为中心看 360° 景象
+    this.cameraTarget = { x: node.x - this.cx, y: node.y - this.cy, z: node.z };
+  }
+
+  // 退出焦点，回到球心俯瞰
+  clearFocus() {
+    this.cameraTarget = null;
+    this.activeNode = null;
+    this.autoRotate = true;
   }
 
   setMode(mode) { this.mode = mode; }
