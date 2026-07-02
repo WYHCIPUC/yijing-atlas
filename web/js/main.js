@@ -9,6 +9,7 @@ import { generateQuestion, checkAnswer, addWrong, recordResult, loadStats } from
 import { castHexagram, getReading } from './divination-engine.js';
 import { yaoLabel } from './hexagram-utils.js';
 import { playHexagramSound, initAudio } from './audio-engine.js';
+import { castByNumber, castByTime, analyzeTiYong } from './meihua-engine.js';
 
 const reviewCards = loadReviewCards();
 
@@ -248,19 +249,126 @@ function startQuiz() {
 function showDivinationPanel() {
   panelContent.innerHTML = `
     <div style="padding:36px 26px;text-align:center">
-      <h2 style="color:#e8d09a;font-size:1.4rem;margin-bottom:8px">占筮 · 金钱卦</h2>
-      <p style="color:#a89878;font-size:0.88rem;margin-bottom:24px;line-height:1.7">
-        心中默念所问之事，静心凝神。<br>点击下方按钮掷卦。
-      </p>
-      <button class="divine-btn" id="divine-btn">☯ 掷卦</button>
-      <div id="divine-result" style="margin-top:24px"></div>
+      <h2 style="color:#e8d09a;font-size:1.4rem;margin-bottom:16px">占筮</h2>
+      <div class="divine-tabs">
+        <button class="divine-tab active" data-sub="coin">金钱卦</button>
+        <button class="divine-tab" data-sub="meihua">梅花易数</button>
+      </div>
+      <div id="divine-body"></div>
     </div>
   `;
   panel.classList.add('open');
-  document.getElementById('divine-btn').addEventListener('click', performDivination);
+  // 子模式切换
+  panelContent.querySelectorAll('.divine-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      panelContent.querySelectorAll('.divine-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      if (tab.dataset.sub === 'coin') showCoinDivination();
+      else showMeihuaDivination();
+    });
+  });
+  showCoinDivination();
 }
 
-function performDivination() {
+// 金钱卦子模式
+function showCoinDivination() {
+  const body = document.getElementById('divine-body');
+  body.innerHTML = `
+    <p style="color:#a89878;font-size:0.85rem;margin:20px 0;line-height:1.7">
+      三枚铜钱掷六次。<br>心中默念所问之事，静心凝神。
+    </p>
+    <button class="divine-btn" id="coin-btn">☯ 掷卦</button>
+    <div id="coin-result" style="margin-top:20px"></div>
+  `;
+  document.getElementById('coin-btn').addEventListener('click', () => {
+    performDivination(document.getElementById('coin-result'));
+  });
+}
+
+// 梅花易数子模式
+function showMeihuaDivination() {
+  const body = document.getElementById('divine-body');
+  const now = new Date();
+  body.innerHTML = `
+    <p style="color:#a89878;font-size:0.82rem;margin:16px 0;line-height:1.6">
+      邵康节所传，以数起卦，体用断吉凶。
+    </p>
+    <div style="margin-bottom:16px">
+      <p style="color:#888;font-size:0.8rem;margin-bottom:8px">数字起卦（输入两个数）</p>
+      <div style="display:flex;gap:10px;justify-content:center;align-items:center">
+        <input type="number" id="mh-upper" class="mh-input" placeholder="上数" value="${Math.floor(Math.random()*99)+1}">
+        <span style="color:#888">·</span>
+        <input type="number" id="mh-lower" class="mh-input" placeholder="下数" value="${Math.floor(Math.random()*99)+1}">
+        <button class="mh-btn" id="mh-cast">起卦</button>
+      </div>
+    </div>
+    <div style="margin-bottom:16px">
+      <button class="mh-btn" id="mh-time">🕐 以当前时间起卦</button>
+    </div>
+    <div id="mh-result"></div>
+  `;
+  document.getElementById('mh-cast').addEventListener('click', () => {
+    const u = parseInt(document.getElementById('mh-upper').value) || 1;
+    const l = parseInt(document.getElementById('mh-lower').value) || 1;
+    performMeihua(castByNumber(u, l));
+  });
+  document.getElementById('mh-time').addEventListener('click', () => {
+    performMeihua(castByTime(now));
+  });
+}
+
+// 执行梅花易数断卦并显示
+function performMeihua(cast) {
+  const primaryHex = state.index.byCode.get(cast.primaryCode);
+  const changedHex = state.index.byCode.get(cast.changedCode);
+  const ty = analyzeTiYong(cast);
+  // 星图高亮
+  state.starMap && state.starMap.focusStar(cast.primaryCode);
+  // 关系颜色
+  const relColors = {
+    yongshengti: '#34e89e', tikeyong: '#c9a96a', bihe: '#8d6e63',
+    tishengyong: '#e0a060', yongketi: '#e94560',
+  };
+  const relColor = relColors[ty.relation] || '#888';
+  document.getElementById('mh-result').innerHTML = `
+    <div style="background:rgba(201,169,106,0.08);border-radius:8px;padding:16px;margin-bottom:12px">
+      <div style="display:flex;justify-content:space-around;align-items:center;margin-bottom:8px">
+        <div style="text-align:center">
+          <div style="color:#e8d09a;font-size:1.3rem;font-family:'Ma Shan Zheng',serif">${primaryHex.name}</div>
+          <div style="color:#888;font-size:0.72rem">${primaryHex.fullName}</div>
+          <div style="color:#666;font-size:0.68rem">本卦</div>
+        </div>
+        <span style="color:#666;font-size:1.2rem">→</span>
+        <div style="text-align:center">
+          <div style="color:#34e89e;font-size:1.3rem;font-family:'Ma Shan Zheng',serif">${changedHex.name}</div>
+          <div style="color:#888;font-size:0.72rem">${changedHex.fullName}</div>
+          <div style="color:#666;font-size:0.68rem">变卦（第${cast.changingPos}爻动）</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:${relColor}15;border:1px solid ${relColor}40;border-radius:8px;padding:16px;margin-bottom:12px">
+      <p style="color:#888;font-size:0.75rem;margin-bottom:8px">体用分析（${cast.source}）</p>
+      <div style="display:flex;justify-content:space-around;margin-bottom:10px">
+        <div style="text-align:center">
+          <div style="color:${relColor};font-size:1rem;font-weight:bold">体（${ty.bodyPos}）</div>
+          <div style="color:#c9a96a;font-size:0.85rem">${ty.bodyWuxingName}</div>
+        </div>
+        <div style="text-align:center">
+          <div style="color:#888;font-size:1rem">用（${ty.usePos}）</div>
+          <div style="color:#a89878;font-size:0.85rem">${ty.useWuxingName}</div>
+        </div>
+      </div>
+      <p style="color:${relColor};font-size:0.95rem;text-align:center;font-weight:600;margin-bottom:6px">${ty.relationName}</p>
+      <p style="color:#bbb;font-size:0.85rem;line-height:1.7">${ty.verdict}</p>
+    </div>
+    <p style="color:#666;font-size:0.72rem;text-align:center;margin-top:8px">
+      动爻：第${cast.changingPos}爻 ·
+      ${primaryHex.lines[cast.changingPos-1] ? primaryHex.lines[cast.changingPos-1].text : ''}
+    </p>
+  `;
+}
+
+function performDivination(targetEl) {
   const cast = castHexagram();
   const primaryHex = state.index.byCode.get(cast.primaryCode);
   const changedHex = cast.hasChange ? state.index.byCode.get(cast.changedCode) : null;
@@ -268,6 +376,7 @@ function performDivination() {
 
   // 在星图上高亮本卦和变卦
   state.starMap && state.starMap.focusStar(cast.primaryCode);
+  const el = targetEl || document.getElementById('divine-result');
 
   const yaosHtml = cast.yaos.map((y, i) => {
     const label = yaoLabel(i + 1, y.isYang);
@@ -276,7 +385,7 @@ function performDivination() {
     return `<div style="color:${y.changing?'#e94560':'#c9a96a'};font-size:1rem;margin:2px 0">${dot} ${label}${changeMark} (${y.name})</div>`;
   }).reverse().join('');
 
-  document.getElementById('divine-result').innerHTML = `
+  el.innerHTML = `
     <div style="background:rgba(201,169,106,0.08);border-radius:8px;padding:20px;margin-bottom:16px">
       ${yaosHtml}
     </div>
@@ -293,7 +402,7 @@ function performDivination() {
     </div>
     <button class="divine-btn" id="divine-again" style="font-size:0.88rem;padding:8px 24px">再掷一卦</button>
   `;
-  document.getElementById('divine-again').addEventListener('click', performDivination);
+  document.getElementById('divine-again').addEventListener('click', () => performDivination(el));
 }
 
 // 卦序长河：64卦按周易顺序排成时间线，序卦传串讲

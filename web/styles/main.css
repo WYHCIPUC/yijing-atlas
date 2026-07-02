@@ -226,6 +226,17 @@ body {
   box-shadow: 0 0 20px rgba(201,169,106,0.2); transform: translateY(-2px);
 }
 
+/* 占筮子切换 */
+.divine-tabs { display: flex; gap: 4px; background: rgba(12,18,34,0.6); border-radius: 8px; padding: 4px; margin-bottom: 8px; }
+.divine-tab { flex: 1; padding: 8px; border: none; background: transparent; color: var(--text-dim); border-radius: 6px; font-size: 0.88rem; font-family: inherit; cursor: pointer; transition: all 0.2s; }
+.divine-tab.active { background: rgba(201,169,106,0.2); color: var(--gold-bright); }
+
+/* 梅花易数输入 */
+.mh-input { width: 70px; background: rgba(201,169,106,0.06); border: 1px solid rgba(201,169,106,0.25); color: var(--gold-light); padding: 6px 10px; border-radius: 6px; font-size: 0.9rem; font-family: inherit; text-align: center; }
+.mh-input:focus { outline: none; border-color: var(--gold-main); }
+.mh-btn { background: rgba(201,169,106,0.12); color: var(--gold-main); border: 1px solid rgba(201,169,106,0.3); padding: 6px 16px; border-radius: 6px; font-size: 0.82rem; font-family: inherit; cursor: pointer; transition: all 0.2s; }
+.mh-btn:hover { background: rgba(201,169,106,0.25); }
+
 /* 卦序长河 */
 .guaxu-river { display: flex; flex-direction: column; gap: 2px; }
 .guaxu-node {
