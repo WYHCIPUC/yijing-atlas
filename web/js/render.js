@@ -87,8 +87,9 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       <h1>${esc(hex.name)} · ${esc(hex.fullName)}</h1>
       <div class="subtitle">第 ${hex.number} 卦 · ${esc(hex.binaryCode)} · 下${esc(trigramLabel(hex.trigramLower))} 上${esc(trigramLabel(hex.trigramUpper))}</div>
     </div>
+    ${hex.scenario ? section('今日处境', `<div class="scenario-text">${esc(hex.scenario)}</div>`) : ''}
     ${section('卦辞', `<div class="original-text">${esc(hex.judgement)}</div>${hex.judgementNote ? `<div class="note-text">${esc(hex.judgementNote)}</div>` : ''}`)}
-    ${section('彖传', `<div class="original-text">${esc(hex.tuan)}</div>${hex.tuanNote ? `<div class="note-text">${esc(hex.tuanNote)}</div>` : ''}`)}
+    ${section('彖传', `<div class="original-text">${esc(hex.tuan)}</div>`)}
     ${section('大象', `<div class="original-text">${esc(hex.image)}</div>${hex.imageNote ? `<div class="note-text">${esc(hex.imageNote)}</div>` : ''}`)}
     ${relHtml}
     <h3 class="section-title yao-collapse-toggle" id="yao-toggle">六爻<span class="toggle-arrow">▶</span></h3>

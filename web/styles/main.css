@@ -98,6 +98,12 @@ body {
   font-size: 0.86rem; line-height: 1.7; color: var(--text-secondary);
   margin: 6px 0 12px; padding-left: 12px; border-left: 2px solid rgba(201, 169, 106, 0.3);
 }
+.scenario-text {
+  font-size: 0.95rem; line-height: 1.8; color: var(--gold-light);
+  margin: 8px 0; padding: 12px 14px;
+  background: rgba(201, 169, 106, 0.06); border-radius: 6px;
+  border-left: 3px solid var(--gold-main);
+}
 
 .relation-chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
 .relation-chip {
