@@ -86,6 +86,8 @@ export class StarMap {
           twinkleSpeed: Math.random() * 0.015 + 0.003,
           twinklePhase: Math.random() * Math.PI * 2,
           twinkleAmp: 0.3 + Math.random() * 0.4,
+          pulseSpeed: 0.001 + Math.random() * 0.003,   // 偶发亮脉冲频率
+          pulseOffset: Math.random() * Math.PI * 2,     // 脉冲相位
           hue,
         });
       }
@@ -281,17 +283,33 @@ export class StarMap {
       ctx.fill();
     }
 
-    // 第三层：远景星点（闪烁）
+    // 第三层：远景星点（多频叠加明灭 + 偶发亮脉冲）
     for (const s of this.bgStars) {
-      const tw = Math.sin(t * s.twinkleSpeed + s.twinklePhase);
-      const alpha = s.baseAlpha * (1 - s.twinkleAmp + s.twinkleAmp * (0.5 + 0.5 * tw));
+      // 双频叠加：慢呼吸 + 快闪烁，产生不规律的明灭
+      const tw1 = Math.sin(t * s.twinkleSpeed + s.twinklePhase);
+      const tw2 = Math.sin(t * s.twinkleSpeed * 2.7 + s.twinklePhase * 1.3);
+      let alpha = s.baseAlpha * (1 - s.twinkleAmp + s.twinkleAmp * (0.5 + 0.3 * tw1 + 0.2 * tw2));
+      // 偶发亮脉冲：每颗星有自己的脉冲周期，短暂变亮
+      const pulsePhase = (t * s.pulseSpeed + s.pulseOffset) % (Math.PI * 2);
+      const pulseStrength = Math.pow(Math.max(0, Math.cos(pulsePhase)), 12); // 尖锐脉冲
+      alpha = Math.min(1, alpha + s.baseAlpha * pulseStrength * 1.5);
       let r, g, b;
       if (s.hue === 'warm') { r = 220; g = 170; b = 130; }
       else if (s.hue === 'cool') { r = 170; g = 195; b = 230; }
       else { r = 215; g = 200; b = 165; }
+      // 亮脉冲时画一个小光晕
+      if (pulseStrength > 0.3) {
+        const gr = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 5);
+        gr.addColorStop(0, `rgba(${r},${g},${b},${alpha * 0.4})`);
+        gr.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = gr;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
       ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
       ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.arc(s.x, s.y, s.r * (1 + pulseStrength * 0.5), 0, Math.PI * 2);
       ctx.fill();
     }
 
@@ -347,18 +365,26 @@ export class StarMap {
       const depth = p.depthFactor; // 0.5(远) ~ 1.6(近)
       const isFocus = focus && n.id === focus.id;
       const isRel = focusRels && focusRels.has(n.id) && !isFocus;
-      const breathe = 0.85 + 0.15 * Math.sin(t * 0.022 + n.binaryCode.charCodeAt(0) + n.binaryCode.charCodeAt(3));
+      // 多频明灭：慢呼吸 + 快闪烁，每颗星独立节奏
+      const seed = n.binaryCode.charCodeAt(0) + n.binaryCode.charCodeAt(3);
+      const tw1 = Math.sin(t * 0.022 + seed);
+      const tw2 = Math.sin(t * 0.055 + seed * 1.7);
+      const breathe = 0.78 + 0.14 * tw1 + 0.08 * tw2;
+      // 偶发亮脉冲：卦象偶尔明显亮一下（如恒星耀斑）
+      const hexPulse = Math.pow(Math.max(0, Math.cos(t * 0.012 + seed * 2.3)), 14);
+      const glowBoost = 1 + hexPulse * 0.6; // 脉冲时光晕放大
+      const brightBoost = 1 + hexPulse * 0.5; // 脉冲时亮度提升
       const degFactor = Math.min(n.degree / 13, 1);
-      // 大小、亮度、光晕均按深度缩放：近大亮，远小暗
+      // 大小、亮度、光晕均按深度缩放：近大亮，远小暗；脉冲时光晕放大
       const depthScale = 0.45 + depth * 0.6; // 深度缩放因子
-      const depthAlpha = 0.4 + depth * 0.6;  // 深度透明度
+      const depthAlpha = (0.4 + depth * 0.6) * brightBoost;  // 深度透明度 × 脉冲增亮
       const baseR = n.isPure ? 5 : (isFocus ? 6.5 : (isRel ? 4.5 : 1.8 + degFactor * 3));
-      const r = baseR * breathe * ease * depthScale;
+      const r = baseR * breathe * ease * depthScale * glowBoost;
 
-      // 外光晕（按深度缩放）
-      const haloR = (isFocus ? 60 : (isRel ? 38 : (n.isPure ? 26 : 16 + degFactor * 24))) * ease * depthScale;
+      // 外光晕（按深度缩放，脉冲时放大）
+      const haloR = (isFocus ? 60 : (isRel ? 38 : (n.isPure ? 26 : 16 + degFactor * 24))) * ease * depthScale * glowBoost;
       const haloGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, haloR);
-      const da = (a) => a * depthAlpha; // 深度调暗
+      const da = (a) => a * depthAlpha; // 深度调暗 × 脉冲增亮
       if (isFocus) {
         haloGrad.addColorStop(0, `rgba(245,230,192,${da(0.35)})`);
         haloGrad.addColorStop(0.2, `rgba(232,208,154,${da(0.18)})`);
