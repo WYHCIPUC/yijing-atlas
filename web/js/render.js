@@ -71,14 +71,23 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
   const rels = allRelations(hex.binaryCode);
   const relChip = (label, code) =>
     `<span class="relation-chip" data-code="${esc(code)}">${esc(label)}→${esc(codeToName(code, hexagrams))}</span>`;
+  // 关系说明
+  const relExplain = (type, name, desc) =>
+    `<div class="rel-explain"><span class="rel-type rel-${type}">${name}</span><span class="rel-desc">${desc}</span></div>`;
   const relHtml = `
     <h3 class="section-title">它如何变</h3>
-    <div class="relation-chips">
-      ${relChip('错', rels.opposite)}
-      ${relChip('综', rels.reversed)}
-      ${relChip('互', rels.interlocking)}
+    <div class="rel-list">
+      ${relExplain('opposite', '错卦', `阴阳全换。${esc(hex.name)}之对极为「${esc(codeToName(rels.opposite, hexagrams))}」。`)}
+      ${relExplain('reversed', '综卦', `上下倒转。${esc(hex.name)}倒看为「${esc(codeToName(rels.reversed, hexagrams))}」。`)}
+      ${relExplain('interlocking', '互卦', `取2-3-4/3-4-5爻。${esc(hex.name)}内含「${esc(codeToName(rels.interlocking, hexagrams))}」。`)}
     </div>
-    <div class="relation-chips">${rels.changing.map((c,i) => relChip('第'+(i+1)+'爻变', c)).join('')}</div>
+    <div class="relation-chips">
+      ${relChip('错→', rels.opposite)}
+      ${relChip('综→', rels.reversed)}
+      ${relChip('互→', rels.interlocking)}
+    </div>
+    <p class="rel-changing-hint">变卦（动爻，点击查看）：</p>
+    <div class="relation-chips">${rels.changing.map((c,i) => relChip('第'+(i+1)+'爻', c)).join('')}</div>
   `;
 
   mountEl.innerHTML = `

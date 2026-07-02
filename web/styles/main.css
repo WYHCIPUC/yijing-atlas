@@ -106,6 +106,16 @@ body {
 }
 
 .relation-chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+
+/* 关系详解 */
+.rel-list { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+.rel-explain { display: flex; align-items: baseline; gap: 8px; font-size: 0.82rem; line-height: 1.6; }
+.rel-type { display: inline-block; min-width: 36px; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.78rem; text-align: center; }
+.rel-opposite { background: rgba(201,169,106,0.2); color: #e8d09a; }
+.rel-reversed { background: rgba(180,150,200,0.2); color: #d8c0e8; }
+.rel-interlocking { background: rgba(150,180,200,0.2); color: #b8d0e8; }
+.rel-desc { color: var(--text-secondary); }
+.rel-changing-hint { font-size: 0.78rem; color: var(--text-dim); margin: 8px 0 4px; }
 .relation-chip {
   background: rgba(201, 169, 106, 0.08); border: 1px solid rgba(201, 169, 106, 0.25);
   padding: 5px 11px; border-radius: 14px;
