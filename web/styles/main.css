@@ -161,6 +161,19 @@ body {
 }
 .rel-anim-play:hover:not(:disabled) { background: rgba(201, 169, 106, 0.28); }
 .rel-anim-play:disabled { opacity: 0.5; cursor: default; }
+
+/* 复习翻转卡片 */
+.flip-card { perspective: 1000px; cursor: pointer; padding: 30px 20px; min-height: 220px; display: flex; align-items: center; justify-content: center; }
+.flip-card-inner { position: relative; width: 100%; transition: transform 0.6s; transform-style: preserve-3d; text-align: center; }
+.flip-card-inner.flipped { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back { position: absolute; width: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+.flip-card-back { transform: rotateY(180deg); }
+.review-rating { margin-top: 200px; padding: 20px; }
+.rate-btn { padding: 10px 24px; border-radius: 18px; font-size: 0.9rem; font-family: inherit; cursor: pointer; border: 1px solid; transition: all 0.2s; }
+.rate-forgot { background: rgba(233,69,96,0.1); color: #e94560; border-color: rgba(233,69,96,0.3); }
+.rate-fuzzy { background: rgba(201,169,106,0.1); color: var(--gold-light); border-color: rgba(201,169,106,0.3); }
+.rate-remember { background: rgba(52,232,158,0.1); color: #34e89e; border-color: rgba(52,232,158,0.3); }
+.rate-btn:hover { transform: translateY(-2px); }
 .relation-chip {
   background: rgba(201, 169, 106, 0.08); border: 1px solid rgba(201, 169, 106, 0.25);
   padding: 5px 11px; border-radius: 14px;

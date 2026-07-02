@@ -533,6 +533,17 @@ export class StarMap {
       ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
       ctx.fill();
 
+      // 复习模式：待复习卦金色脉冲环
+      if (this.reviewDueSet && this.reviewDueSet.has(n.id)) {
+        const pulse = 0.5 + 0.5 * Math.sin(t * 0.06);
+        const ringR = r + 8 + pulse * 8;
+        ctx.strokeStyle = `rgba(232, 208, 154, ${0.4 + pulse * 0.3})`;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, ringR * depthScale, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
       // ★ 关键词小星团（LOD：需明显放大才显示，每个关键词是发光星点 + 文字）
       const lod = this.view.scale * depthScale;
       if (this.keywordLayouts && this.keywordLayouts[n.id] && lod > 1.4) {
@@ -645,6 +656,11 @@ export class StarMap {
   }
 
   setMode(mode) { this.mode = mode; }
+
+  // 设置待复习卦列表（复习模式状态层）
+  setReviewDue(codes) {
+    this.reviewDueSet = codes ? new Set(codes) : null;
+  }
 
   // === 关系漫游轨迹 ===
   // 添加一段轨迹（从 fromCode 到 toCode）

@@ -4,6 +4,9 @@ import { buildRelationGraph } from './star-relations.js';
 import { StarMap } from './star-map.js';
 import { renderHexagramDetail } from './render.js';
 import { hexagramSvg } from './svg-painter.js';
+import { loadReviewCards, initAllCards, getDueCards, getDueCount, saveReview, getMastery } from './review-engine.js';
+
+const reviewCards = loadReviewCards();
 
 const state = { hexagrams: [], trigrams: [], index: null, starMap: null, currentDetail: null };
 
@@ -80,18 +83,101 @@ function setMode(mode) {
     b.classList.toggle('active', b.dataset.mode === mode);
   });
   state.starMap && state.starMap.setMode(mode);
-  if (mode !== 'explore') {
-    const labels = {review:'复习',quiz:'测验',divination:'占筮',almanac:'黄历'};
-    const phase = (mode==='review'||mode==='quiz') ? 2 : 3;
+  if (mode === 'explore') {
+    state.starMap && state.starMap.setReviewDue(null);
+    closeDetail();
+  } else if (mode === 'review') {
+    // 复习模式：初始化复习卡，高亮待复习卦
+    initAllCards(reviewCards, state.hexagrams.map(h => h.binaryCode));
+    const dueCodes = getDueCards(reviewCards);
+    state.starMap && state.starMap.setReviewDue(dueCodes);
+    showReviewPanel(dueCodes);
+  } else {
+    const labels = {quiz:'测验',divination:'占筮',almanac:'黄历'};
+    const phase = (mode==='quiz') ? 2 : 3;
     panelContent.innerHTML = `<div style="padding:60px;text-align:center;color:#7a6a4a">
       <h2 style="color:#a08850;margin-bottom:12px">${labels[mode]}模式</h2>
       <p>此模式将在第 ${phase} 期实现。</p>
-      <p style="margin-top:8px">当前请使用「探索」模式漫游星图。</p>
     </div>`;
     panel.classList.add('open');
-  } else {
-    closeDetail();
   }
+}
+
+// 复习模式面板：显示待复习列表 + 翻转卡片
+function showReviewPanel(dueCodes) {
+  const dueHex = dueCodes.map(c => state.index.byCode.get(c)).filter(Boolean);
+  panelContent.innerHTML = `
+    <div style="padding:36px 26px">
+      <h2 style="color:#e8d09a;font-size:1.4rem;margin-bottom:8px">复习</h2>
+      <p style="color:#a89878;font-size:0.88rem;margin-bottom:20px">
+        今日待复习 <strong style="color:#e8d09a">${dueHex.length}</strong> 卦。
+        点击星图上脉冲闪烁的卦开始复习。
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        ${dueHex.slice(0, 20).map(h => `<span class="relation-chip" data-code="${h.binaryCode}">${h.name}</span>`).join('')}
+      </div>
+      ${dueHex.length === 0 ? '<p style="color:#888;margin-top:20px">今日无待复习卦。明天再来！</p>' : ''}
+    </div>
+  `;
+  panel.classList.add('open');
+  // chip 点击进入翻转卡片复习
+  panelContent.querySelectorAll('.relation-chip').forEach(chip => {
+    chip.addEventListener('click', () => startReviewCard(chip.dataset.code));
+  });
+}
+
+// 翻转卡片复习某卦
+function startReviewCard(code) {
+  const hex = state.index.byCode.get(code);
+  if (!hex) return;
+  panelContent.innerHTML = `
+    <div class="flip-card" id="flip-card">
+      <div class="flip-card-inner" id="flip-inner">
+        <div class="flip-card-front">
+          <div style="color:#888;font-size:0.78rem;margin-bottom:12px">回忆一下这卦</div>
+          <div style="font-size:0.9rem;color:#a89878;margin-bottom:8px">第 ${hex.number} 卦 · 下${hex.trigramLower} 上${hex.trigramUpper}</div>
+          <div style="color:#5a6680;font-size:0.82rem;margin-top:24px">点击翻转看答案</div>
+        </div>
+        <div class="flip-card-back">
+          ${hexagramSvg(hex.binaryCode, { size: 80 })}
+          <div style="font-size:1.6rem;color:#e8d09a;font-family:'Ma Shan Zheng',serif;margin:8px 0">${hex.name} · ${hex.fullName}</div>
+          <div style="color:#c9a96a;font-size:0.92rem;line-height:1.7">${hex.judgement || ''}</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-rating" id="review-rating" style="display:none">
+      <p style="color:#888;font-size:0.82rem;text-align:center;margin-bottom:14px">你记得吗？</p>
+      <div style="display:flex;gap:10px;justify-content:center">
+        <button class="rate-btn rate-forgot" data-rate="0">忘了</button>
+        <button class="rate-btn rate-fuzzy" data-rate="1">模糊</button>
+        <button class="rate-btn rate-remember" data-rate="2">记得</button>
+      </div>
+    </div>
+  `;
+  // 翻转交互
+  const flipCard = document.getElementById('flip-card');
+  const flipInner = document.getElementById('flip-inner');
+  const rating = document.getElementById('review-rating');
+  let flipped = false;
+  flipCard.addEventListener('click', () => {
+    if (!flipped) {
+      flipInner.classList.add('flipped');
+      rating.style.display = 'block';
+      flipped = true;
+    }
+  });
+  // 评分
+  rating.querySelectorAll('.rate-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const rate = parseInt(btn.dataset.rate);
+      saveReview(reviewCards, code, rate);
+      // 返回复习列表
+      const dueCodes = getDueCards(reviewCards);
+      state.starMap && state.starMap.setReviewDue(dueCodes);
+      showReviewPanel(dueCodes);
+    });
+  });
 }
 
 async function init() {
