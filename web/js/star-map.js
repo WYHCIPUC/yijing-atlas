@@ -43,8 +43,11 @@ export class StarMap {
     this.meteors = [];
     this.nextMeteorAt = 150;
     this.appearProgress = 0;
+    this.keywords = null;       // 关键词数据（异步加载）
+    this.keywordLayouts = null; // 每卦关键词的星云内偏移布局
 
     this._setupDpr();
+    this._loadKeywords();       // 异步加载关键词，构建星云布局
     this._initBackground();
     this._initLayout();
     this._bindEvents();
@@ -64,6 +67,39 @@ export class StarMap {
     this.cy = this.height / 2;
     // 锚点圆半径（8 纯卦所在的圆）
     this.anchorR = Math.min(this.width, this.height) * 0.32;
+  }
+
+  // 异步加载关键词数据，为每个卦预计算星云内关键词的散布布局
+  async _loadKeywords() {
+    try {
+      const res = await fetch('data/hexagram-keywords.json');
+      if (!res.ok) return;
+      this.keywords = await res.json();
+      // 为每卦的每个关键词分配星云内的相对偏移（围绕卦星中心散布）
+      // level 越低（越重要）越靠近中心，字号越大
+      this.keywordLayouts = {};
+      for (const code of Object.keys(this.keywords)) {
+        const kws = this.keywords[code];
+        const layout = kws.map((kw, i) => {
+          // 按层级确定半径：L0 在中心，L1 近，L2 中，L3 远
+          const baseR = [0, 14, 24, 34][kw.level] || 30;
+          // 角度：均匀散布 + 微随机，避免堆叠
+          const ang = (i / kws.length) * Math.PI * 2 + (kw.text.charCodeAt(0) % 7) * 0.4;
+          const r = baseR + (kw.text.charCodeAt(0) % 5);
+          return {
+            text: kw.text,
+            level: kw.level,
+            dx: Math.cos(ang) * r,
+            dy: Math.sin(ang) * r,
+            // 微振荡相位（关键词轻微浮动）
+            phase: kw.text.charCodeAt(0) * 0.7,
+          };
+        });
+        this.keywordLayouts[code] = layout;
+      }
+    } catch (e) {
+      console.warn('关键词数据加载失败，退化为普通光晕点', e);
+    }
   }
 
   // 背景星 + 星云
@@ -193,16 +229,17 @@ export class StarMap {
         this.callbacks.onPick && this.callbacks.onPick(node.id);
       } else {
         this.isDragging = true;
-        this.dragStart = { x: sx, y: sy, vx: this.view.x, vy: this.view.y };
+        this.dragStart = { x: sx, y: sy, rot: this.rotation };
       }
     });
     c.addEventListener('mousemove', (e) => {
       const rect = c.getBoundingClientRect();
       const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
       if (this.isDragging) {
-        this.view.x = this.dragStart.vx + (sx - this.dragStart.x);
-        this.view.y = this.dragStart.vy + (sy - this.dragStart.y);
-        this.autoRotate = false;
+        // 拖拽改为调整视角（倾斜 + 加速自转），而非平移星团——保证星团始终居中
+        const dx = sx - this.dragStart.x;
+        this.rotation = this.dragStart.rot + dx * 0.005;
+        this.autoRotate = true; // 拖拽后继续自转
       } else {
         const node = this._nodeAt(sx, sy);
         if (node !== this.hoveredNode) {
@@ -424,6 +461,32 @@ export class StarMap {
       ctx.beginPath();
       ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
       ctx.fill();
+
+      // ★ 关键词星云（LOD：仅当放大或星在近处时显示关键词文字）
+      const lod = this.view.scale * depthScale; // 细节层次系数
+      if (this.keywordLayouts && this.keywordLayouts[n.id] && lod > 0.85) {
+        const kwAlpha = Math.min(1, (lod - 0.85) / 0.5) * ease * (0.5 + depth * 0.5);
+        const layout = this.keywordLayouts[n.id];
+        for (const kw of layout) {
+          // 关键词微浮动
+          const floatX = Math.sin(this.time * 0.01 + kw.phase) * 1.5;
+          const floatY = Math.cos(this.time * 0.012 + kw.phase) * 1.5;
+          const kx = p.x + (kw.dx + floatX) * depthScale;
+          const ky = p.y + (kw.dy + floatY) * depthScale;
+          // 字号按层级和深度
+          const fontSizes = [0, 13, 10, 8]; // L0 不在这里画（卦名另画）
+          if (kw.level === 0) continue; // 卦名由后面的标签层处理
+          const fs = fontSizes[kw.level] * depthScale * (0.7 + lod * 0.3);
+          ctx.font = `${fs}px "ZCOOL XiaoWei", "Ma Shan Zheng", "STKaiti", serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          // L1 卦辞核心最亮，L3 爻辞最暗
+          const levelAlpha = kw.level === 1 ? kwAlpha : (kw.level === 2 ? kwAlpha * 0.75 : kwAlpha * 0.55);
+          const levelColor = kw.level === 1 ? `rgba(232,208,154,${levelAlpha})` : (kw.level === 2 ? `rgba(200,175,120,${levelAlpha})` : `rgba(160,140,95,${levelAlpha})`);
+          ctx.fillStyle = levelColor;
+          ctx.fillText(kw.text, kx, ky);
+        }
+      }
     }
     ctx.globalCompositeOperation = 'source-over';
 
@@ -489,10 +552,7 @@ export class StarMap {
     const node = this.graph.nodes.find(n => n.id === code);
     if (!node) return;
     this.activeNode = node;
-    // 点击/搜索定位不再停止自转，星图始终保持转动
-    const p = this._worldToScreen(node.x, node.y, node.z);
-    this.view.x += (this.cx - p.x);
-    this.view.y += (this.cy - p.y);
+    // 星团始终居中，搜索定位只高亮该星，不平移视图
   }
 
   setMode(mode) { this.mode = mode; }
