@@ -1,176 +1,95 @@
-// 占筮引擎：三种起卦法 + 变爻解读规则。
-// 纯逻辑模块。爻值：6=老阴(变)、7=少阳、8=少阴、9=老阳(变)。
-// 6位爻值数组（自下而上）→ 本卦 binaryCode、变卦 binaryCode、变爻位置。
+// 占筮引擎：金钱卦起卦法。
+// 三枚铜钱掷六次，每次得一爻：老阳(3正) 少阴(2正) 老阴(0正) 少阳(1正)。
+// 老阳老阴为变爻。
 
-const _6 = (arr) => arr.map((v) => (v === 6 || v === 9 ? 1 : v === 7 ? 1 : 0)).join('');
-// 爻值→阴阳：6老阴(变)、7少阳、8少阴、9老阳(变)
-const isYang = (v) => v === 7 || v === 9;
-const isChanging = (v) => v === 6 || v === 9;
+// 单次掷三枚铜钱（每枚正反面），返回爻象
+// 正面=2，反面=3。三枚之和：6=老阴(变) 7=少阳 8=少阴 9=老阳(变)
+export function tossCoins() {
+  const c1 = Math.random() < 0.5 ? 2 : 3;
+  const c2 = Math.random() < 0.5 ? 2 : 3;
+  const c3 = Math.random() < 0.5 ? 2 : 3;
+  const sum = c1 + c2 + c3;
+  // sum 6=老阴(0变阳) 7=少阳(1) 8=少阴(0) 9=老阳(1变阴)
+  let yao;
+  if (sum === 6) yao = { value: 0, isYang: false, changing: true, name: '老阴', coins: [c1, c2, c3] };
+  else if (sum === 7) yao = { value: 1, isYang: true, changing: false, name: '少阳', coins: [c1, c2, c3] };
+  else if (sum === 8) yao = { value: 0, isYang: false, changing: false, name: '少阴', coins: [c1, c2, c3] };
+  else yao = { value: 1, isYang: true, changing: true, name: '老阳', coins: [c1, c2, c3] };
+  return yao;
+}
 
-// 由 6 个爻值（自下而上）算出本卦、变卦、变爻位
-export function resolveLineValues(values) {
+// 完整起卦：掷六次，得本卦 + 变卦
+export function castHexagram() {
+  const yaos = [];
+  for (let i = 0; i < 6; i++) yaos.push(tossCoins());
   // 本卦 binaryCode（自下而上）
-  const primary = values.map((v) => (isYang(v) ? '1' : '0')).join('');
-  // 变卦：变爻阴阳翻转
-  const changed = values.map((v) => {
-    if (v === 9) return '0'; // 老阳→阴
-    if (v === 6) return '1'; // 老阴→阳
-    return isYang(v) ? '1' : '0';
-  }).join('');
-  const changing = [];
-  values.forEach((v, i) => { if (isChanging(v)) changing.push(i + 1); });
-  return { primary, changed, changing, values };
-}
-
-// ---- 金钱卦 ----
-// 三枚铜钱：正面(字)记2，反面(背)记3。总和：6/7/8/9。
-// 6=三反(老阴)、7=两反一正(少阳)、8=一反两正(少阴)、9=三正(老阳)。
-// 这里铜钱表示：每个 coin true=正面(2分)，false=反面(3分)
-function coinToValue(threeCoins) {
-  const sum = threeCoins.reduce((s, c) => s + (c ? 2 : 3), 0); // 6..9
-  return sum; // 6/7/8/9
-}
-
-// 掷一爻（三枚铜钱随机）
-function tossOneYao() {
-  return [Math.random() < 0.5, Math.random() < 0.5, Math.random() < 0.5];
-}
-
-export function castCoins() {
-  const values = [];
-  const tosses = [];
-  for (let i = 0; i < 6; i++) {
-    const coins = tossOneYao();
-    tosses.push(coins);
-    values.push(coinToValue(coins));
+  const primaryCode = yaos.map(y => y.value).join('');
+  // 变卦：变爻翻转
+  const changingIdxs = yaos.map((y, i) => y.changing ? i : -1).filter(i => i >= 0);
+  let changedCode = primaryCode;
+  if (changingIdxs.length > 0) {
+    const arr = primaryCode.split('');
+    changingIdxs.forEach(i => { arr[i] = arr[i] === '1' ? '0' : '1'; });
+    changedCode = arr.join('');
   }
-  return { method: 'coins', values, tosses, ...resolveLineValues(values) };
-}
-
-// ---- 大衍筮法（简化模拟）----
-// 传统：50蓍取1用49，四营（分二、挂一、揲四、归奇）三变成一爻。
-// 这里按大衍之法概率分布模拟出 6/7/8/9：
-// 老阳(9)概率3/16、少阴(8)概率7/16、少阳(7)概率5/16、老阴(6)概率1/16
-function yarrowOneYao() {
-  const r = Math.random() * 16;
-  if (r < 5) return 7;       // 少阳 5/16
-  if (r < 12) return 8;      // 少阴 7/16
-  if (r < 15) return 9;      // 老阳 3/16
-  return 6;                   // 老阴 1/16
-}
-
-export function castYarrow() {
-  const values = [];
-  for (let i = 0; i < 6; i++) values.push(yarrowOneYao());
-  return { method: 'yarrow', values, ...resolveLineValues(values) };
-}
-
-// ---- 梅花易数（时间起卦，确定性）----
-// 以起卦时刻的年月日时数起卦。
-// 上卦 = (年+月+日) % 8，下卦 = (年+月+日+时) % 8，动爻 = (年+月+日+时) % 6
-// 八卦序：乾1 兑2 离3 震4 巽5 坎6 艮7 坤8（余0当坤8）
-const MEIHUA_TRIGRAMS = ['111', '110', '101', '100', '011', '010', '001', '000'];
-// index 0=乾(余数1对应index0)，故 (n-1)%8 取数组
-
-export function castMeihua({ year, month, day, hour }) {
-  // year 用地支序或年数；这里用农历年数（简化用公历年份末两位+100 偏移，保证非0）
-  const y = year || (new Date().getFullYear() % 100);
-  const m = month || (new Date().getMonth() + 1);
-  const d = day || new Date().getDate();
-  const h = hour || (new Date().getHours() === 0 ? 12 : Math.ceil(new Date().getHours() / 2)); // 时辰(1-12)
-
-  const upperNum = (y + m + d) % 8 || 8;
-  const lowerNum = (y + m + d + h) % 8 || 8;
-  const changingPos = (y + m + d + h) % 6 || 6;
-
-  // 梅花卦以上卦为外(爻4-6)、下卦为内(爻1-3)
-  const upper = MEIHUA_TRIGRAMS[upperNum - 1];
-  const lower = MEIHUA_TRIGRAMS[lowerNum - 1];
-  const primary = lower + upper; // 自下而上：下卦+上卦
-
-  // 动爻：changingPos 位置阴阳翻转
-  const changedArr = primary.split('');
-  changedArr[changingPos - 1] = changedArr[changingPos - 1] === '1' ? '0' : '1';
-  const changed = changedArr.join('');
-
-  // 构造 values（仅用于统一结构，梅花无6789概念，按翻转标记变爻）
-  const values = primary.split('').map((b, i) => {
-    const yang = b === '1';
-    // 动爻位标为老阳9/老阴6，否则少阳7/少阴8
-    if (i + 1 === changingPos) return yang ? 9 : 6;
-    return yang ? 7 : 8;
-  });
-
   return {
-    method: 'meihua', values,
-    meta: { upperNum, lowerNum, changingPos, year: y, month: m, day: d, hour: h },
-    primary, changed, changing: [changingPos],
+    yaos,
+    primaryCode,
+    changedCode,
+    changingIdxs,
+    hasChange: changingIdxs.length > 0 && changedCode !== primaryCode,
   };
 }
 
-// ---- 变爻解读规则 ----
-// 经典占断法则（朱熹《启蒙》之说为通行本）：
-// 0 变爻：以本卦卦辞断
-// 1 变爻：以本卦变爻爻辞断
-// 2 变爻：以本卦两变爻爻辞断，以上爻为主
-// 3 变爻：以本卦卦辞、变卦卦辞合参
-// 4 变爻：以变卦两不变爻爻辞断，以下爻为主
-// 5 变爻：以变卦不变爻爻辞断
-// 6 变爻：以变卦卦辞断（乾/坤看用九/用六）
-export function readingRule(changingCount) {
-  const rules = {
-    0: { focus: '本卦卦辞', desc: '本卦无变爻，以本卦卦辞为占。' },
-    1: { focus: '本卦变爻', desc: '一爻变，以本卦变爻爻辞为占。' },
-    2: { focus: '本卦变爻（上为主）', desc: '二爻变，以本卦两变爻爻辞合参，以上变爻为主。' },
-    3: { focus: '本卦+变卦卦辞', desc: '三爻变，以本卦卦辞与变卦卦辞合参。' },
-    4: { focus: '变卦不变爻（下为主）', desc: '四爻变，以变卦两不变爻爻辞合参，以下不变爻为主。' },
-    5: { focus: '变卦不变爻', desc: '五爻变，以变卦不变爻爻辞为占。' },
-    6: { focus: '变卦卦辞', desc: '六爻全变，以变卦卦辞为占（乾坤看用九/用六）。' },
-  };
-  return rules[changingCount] || rules[0];
-}
-
-// 根据解读规则 + 卦数据，提取要展示的经文片段
-export function extractReading(result, hexIndex) {
-  const rule = readingRule(result.changing.length);
-  const primary = hexIndex.byCode.get(result.primary);
-  const changed = result.changed !== result.primary ? hexIndex.byCode.get(result.changed) : null;
-  const out = { rule, primary, changed, refs: [] };
-
-  const n = result.changing.length;
+// 变爻取辞规则
+// 0 变爻：看本卦卦辞
+// 1 变爻：看本卦变爻爻辞
+// 2 变爻：看本卦上变爻爻辞 + 变卦下变爻爻辞
+// 3 变爻：看本卦卦辞 + 变卦卦辞
+// 4 变爻：看变卦下不变爻爻辞
+// 5 变爻：看变卦不变爻爻辞
+// 6 变爻（全变）：看变卦卦辞（乾坤看用九/用六）
+export function getReading(cast, primaryHex, changedHex) {
+  const n = cast.changingIdxs.length;
+  const readings = [];
   if (n === 0) {
-    out.refs.push({ label: '本卦卦辞', text: primary?.judgement });
+    readings.push({ src: `${primaryHex.name}·卦辞`, text: primaryHex.judgement });
   } else if (n === 1) {
-    const y = primary?.lines[result.changing[0] - 1];
-    out.refs.push({ label: '本卦变爻', text: y?.text, xiang: y?.xiang });
-  } else if (n === 2) {
-    result.changing.forEach((p) => {
-      const y = primary?.lines[p - 1];
-      out.refs.push({ label: `本卦·${primary?.lines[p-1] ? yaoLbl(y) : '爻'+p}`, text: y?.text });
-    });
-  } else if (n === 3) {
-    out.refs.push({ label: '本卦卦辞', text: primary?.judgement });
-    if (changed) out.refs.push({ label: '变卦卦辞', text: changed.judgement });
-  } else if (n === 4 || n === 5) {
-    const baseHex = changed;
-    const unchanged = [1,2,3,4,5,6].filter((p) => !result.changing.includes(p));
-    unchanged.forEach((p) => {
-      const y = baseHex?.lines[p - 1];
-      out.refs.push({ label: `变卦·爻${p}`, text: y?.text });
-    });
+    const pos = cast.changingIdxs[0] + 1;
+    const yao = primaryHex.lines[cast.changingIdxs[0]];
+    readings.push({ src: `${primaryHex.name}·${yaoLabel(pos, yao.isYang)}`, text: yao.text });
   } else if (n === 6) {
-    if (changed) out.refs.push({ label: '变卦卦辞', text: changed.judgement });
-    if (primary?.name === '乾') out.refs.push({ label: '用九', text: primary.useNine });
-    if (primary?.name === '坤') out.refs.push({ label: '用六', text: primary.useSix });
+    if (changedHex.useNine || changedHex.useSix) {
+      readings.push({ src: `${changedHex.name}·${changedHex.useNine ? '用九' : '用六'}`, text: changedHex.useNine || changedHex.useSix });
+    } else {
+      readings.push({ src: `${changedHex.name}·卦辞`, text: changedHex.judgement });
+    }
+  } else if (n <= 2) {
+    const upper = cast.changingIdxs[n - 1];
+    const yao = primaryHex.lines[upper];
+    readings.push({ src: `${primaryHex.name}·${yaoLabel(upper + 1, yao.isYang)}`, text: yao.text });
+  } else {
+    readings.push({ src: `${primaryHex.name}·卦辞`, text: primaryHex.judgement });
+    if (changedHex) readings.push({ src: `${changedHex.name}·卦辞`, text: changedHex.judgement });
   }
-  return out;
+  return { n, readings, rule: getRuleText(n) };
 }
 
-function yaoLbl(y) {
-  if (!y) return '';
+function getRuleText(n) {
+  const rules = {
+    0: '无变爻，以本卦卦辞断之。',
+    1: '一爻变，以本卦变爻爻辞断之。',
+    2: '二爻变，以本卦上变爻爻辞为主断之。',
+    3: '三爻变，以本卦卦辞与变卦卦辞合断之。',
+    4: '四爻变，以变卦下不变爻爻辞断之。',
+    5: '五爻变，以变卦不变爻爻辞断之。',
+    6: '六爻全变，以变卦卦辞断之。',
+  };
+  return rules[n] || '';
+}
+
+function yaoLabel(position, isYang) {
   const names = ['', '初', '二', '三', '四', '五', '上'];
-  const yy = y.isYang ? '九' : '六';
-  return (y.position === 1 || y.position === 6) ? `${names[y.position]}${yy}` : `${yy}${names[y.position]}`;
+  const yinYang = isYang ? '九' : '六';
+  return (position === 1 || position === 6) ? `${names[position]}${yinYang}` : `${yinYang}${names[position]}`;
 }
-
-export { isYang, isChanging };

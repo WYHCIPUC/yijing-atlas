@@ -6,6 +6,8 @@ import { renderHexagramDetail } from './render.js';
 import { hexagramSvg } from './svg-painter.js';
 import { loadReviewCards, initAllCards, getDueCards, getDueCount, saveReview, getMastery } from './review-engine.js';
 import { generateQuestion, checkAnswer, addWrong, recordResult, loadStats } from './quiz-engine.js';
+import { castHexagram, getReading } from './divination-engine.js';
+import { yaoLabel } from './hexagram-utils.js';
 
 const reviewCards = loadReviewCards();
 
@@ -97,10 +99,12 @@ function setMode(mode) {
     // 测验模式
     state.starMap && state.starMap.setReviewDue(null);
     startQuiz();
+  } else if (mode === 'divination') {
+    state.starMap && state.starMap.setReviewDue(null);
+    showDivinationPanel();
   } else {
-    const labels = {divination:'占筮',almanac:'黄历'};
     panelContent.innerHTML = `<div style="padding:60px;text-align:center;color:#7a6a4a">
-      <h2 style="color:#a08850;margin-bottom:12px">${labels[mode]}模式</h2>
+      <h2 style="color:#a08850;margin-bottom:12px">黄历模式</h2>
       <p>此模块待开发。</p>
     </div>`;
     panel.classList.add('open');
@@ -233,6 +237,58 @@ function startQuiz() {
       document.getElementById('quiz-next').addEventListener('click', () => startQuiz());
     });
   });
+}
+
+// 占筮模式：金钱卦起卦
+function showDivinationPanel() {
+  panelContent.innerHTML = `
+    <div style="padding:36px 26px;text-align:center">
+      <h2 style="color:#e8d09a;font-size:1.4rem;margin-bottom:8px">占筮 · 金钱卦</h2>
+      <p style="color:#a89878;font-size:0.88rem;margin-bottom:24px;line-height:1.7">
+        心中默念所问之事，静心凝神。<br>点击下方按钮掷卦。
+      </p>
+      <button class="divine-btn" id="divine-btn">☯ 掷卦</button>
+      <div id="divine-result" style="margin-top:24px"></div>
+    </div>
+  `;
+  panel.classList.add('open');
+  document.getElementById('divine-btn').addEventListener('click', performDivination);
+}
+
+function performDivination() {
+  const cast = castHexagram();
+  const primaryHex = state.index.byCode.get(cast.primaryCode);
+  const changedHex = cast.hasChange ? state.index.byCode.get(cast.changedCode) : null;
+  const reading = getReading(cast, primaryHex, changedHex);
+
+  // 在星图上高亮本卦和变卦
+  state.starMap && state.starMap.focusStar(cast.primaryCode);
+
+  const yaosHtml = cast.yaos.map((y, i) => {
+    const label = yaoLabel(i + 1, y.isYang);
+    const dot = y.isYang ? '▬' : '▬ ▬';
+    const changeMark = y.changing ? ' <span style="color:#e94560">○变</span>' : '';
+    return `<div style="color:${y.changing?'#e94560':'#c9a96a'};font-size:1rem;margin:2px 0">${dot} ${label}${changeMark} (${y.name})</div>`;
+  }).reverse().join('');
+
+  document.getElementById('divine-result').innerHTML = `
+    <div style="background:rgba(201,169,106,0.08);border-radius:8px;padding:20px;margin-bottom:16px">
+      ${yaosHtml}
+    </div>
+    <div style="margin-bottom:16px">
+      <span style="color:#e8d09a;font-size:1.2rem">${primaryHex.name}（${primaryHex.fullName}）</span>
+      ${cast.hasChange ? `<span style="color:#888;margin:0 8px">→</span><span style="color:#34e89e;font-size:1.2rem">${changedHex.name}（${changedHex.fullName}）</span>` : ''}
+    </div>
+    <div style="background:rgba(52,232,158,0.05);border-radius:8px;padding:16px;margin-bottom:12px">
+      <p style="color:#888;font-size:0.78rem;margin-bottom:8px">${reading.rule}</p>
+      ${reading.readings.map(r => `
+        <p style="color:#a89878;font-size:0.8rem;margin-bottom:4px">${r.src}</p>
+        <p style="color:#e8d09a;font-size:1rem;line-height:1.8;margin-bottom:10px">${r.text}</p>
+      `).join('')}
+    </div>
+    <button class="divine-btn" id="divine-again" style="font-size:0.88rem;padding:8px 24px">再掷一卦</button>
+  `;
+  document.getElementById('divine-again').addEventListener('click', performDivination);
 }
 
 async function init() {
