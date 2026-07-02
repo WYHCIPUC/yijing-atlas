@@ -420,28 +420,40 @@ export class StarMap {
       if (!s || !tn) continue;
       const sp = this._worldToScreen(s.x, s.y, s.z);
       const tp = this._worldToScreen(tn.x, tn.y, tn.z);
-      const avgDepth = (sp.depthFactor + tp.depthFactor) / 2; // 边的平均深度
-      const isActive = focusRels && focusRels.has(e.source) && focusRels.has(e.target) &&
-        (e.source === focus.id || e.target === focus.id);
+      const avgDepth = (sp.depthFactor + tp.depthFactor) / 2;
+      // 判断这条边是否与 focus 卦相关（任一端是 focus，且另一端在关系集里）
+      const involvesFocus = focus && (e.source === focus.id || e.target === focus.id);
+      const isActive = involvesFocus && focusRels && focusRels.has(e.source) && focusRels.has(e.target);
       if (isActive) {
+        // 激活连线：按关系类型用不同颜色和样式
         ctx.globalCompositeOperation = 'lighter';
-        ctx.strokeStyle = `rgba(201,169,106,${0.16 * avgDepth})`;
-        ctx.lineWidth = 4 * (0.6 + avgDepth * 0.6);
+        // 底层柔光
+        const relType = e.types[0];
+        const lineColor = relType === 'opposite' ? 'rgba(201,169,106,' : (relType === 'reversed' ? 'rgba(180,150,200,' : (relType === 'interlocking' ? 'rgba(150,180,200,' : 'rgba(200,180,140,'));
+        ctx.strokeStyle = lineColor + (0.14 * avgDepth) + ')';
+        ctx.lineWidth = 5 * (0.6 + avgDepth * 0.6);
         ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(tp.x, tp.y); ctx.stroke();
+        // 上层流动线
         const grad = ctx.createLinearGradient(sp.x, sp.y, tp.x, tp.y);
-        grad.addColorStop(0, `rgba(245,230,192,${0.9 * avgDepth})`);
-        grad.addColorStop(0.5, `rgba(216,184,120,${0.65 * avgDepth})`);
-        grad.addColorStop(1, `rgba(245,230,192,${0.9 * avgDepth})`);
+        const brightColor = relType === 'opposite' ? '245,230,192' : (relType === 'reversed' ? '220,200,235' : (relType === 'interlocking' ? '200,225,240' : '232,210,170'));
+        grad.addColorStop(0, `rgba(${brightColor},${0.85 * avgDepth})`);
+        grad.addColorStop(0.5, `rgba(${brightColor},${0.5 * avgDepth})`);
+        grad.addColorStop(1, `rgba(${brightColor},${0.85 * avgDepth})`);
         ctx.strokeStyle = grad;
-        ctx.lineWidth = 1.2 * (0.6 + avgDepth * 0.6);
-        ctx.setLineDash([3, 8]);
-        ctx.lineDashOffset = -t * 0.4;
+        ctx.lineWidth = 1.3 * (0.6 + avgDepth * 0.6);
+        // 不同关系用不同虚线节奏
+        if (relType === 'opposite') ctx.setLineDash([5, 6]);
+        else if (relType === 'reversed') ctx.setLineDash([8, 4]);
+        else if (relType === 'interlocking') ctx.setLineDash([2, 5]);
+        else ctx.setLineDash([3, 8]);
+        ctx.lineDashOffset = -t * 0.5;
         ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(tp.x, tp.y); ctx.stroke();
         ctx.setLineDash([]);
         ctx.globalCompositeOperation = 'source-over';
       } else {
-        const baseA = focus ? 0.02 : 0.04;
-        const pulse = baseA + 0.012 * Math.sin(t * 0.008 + e.source.charCodeAt(0) * 0.3);
+        // 非激活边：极淡，几乎隐形
+        const baseA = focus ? 0.015 : 0.035;
+        const pulse = baseA + 0.01 * Math.sin(t * 0.008 + e.source.charCodeAt(0) * 0.3);
         ctx.strokeStyle = `rgba(120,105,75,${pulse * avgDepth})`;
         ctx.lineWidth = 0.4 * (0.6 + avgDepth * 0.6);
         ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(tp.x, tp.y); ctx.stroke();
