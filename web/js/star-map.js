@@ -136,37 +136,33 @@ export class StarMap {
     ];
   }
 
-  // 结构约束布局：8 纯卦为锚点 + 其余卦被上下卦锚点吸引
+  // 三维球状布局：64 卦分布在球面/球体内，上下卦映射到球坐标经纬度
   _initLayout() {
-    // 标记纯卦并计算锚点目标位置
+    const ballR = this.anchorR; // 球半径
     for (const n of this.graph.nodes) {
       const lower = n.binaryCode.slice(0, 3);
       const upper = n.binaryCode.slice(3, 6);
       n.isPure = lower === upper;
-      // 锚点目标（纯卦）或引力中心（普通卦：上下卦锚点的中点方向）
-      if (n.isPure) {
-        const ang = TRIGRAM_ANGLE[lower];
-        n.targetX = this.cx + Math.cos(ang) * this.anchorR;
-        n.targetY = this.cy + Math.sin(ang) * this.anchorR;
-      } else {
-        // 普通卦：被下卦和上卦锚点双向吸引，目标在两者之间
-        const lang = TRIGRAM_ANGLE[lower];
-        const uang = TRIGRAM_ANGLE[upper];
-        const lx = this.cx + Math.cos(lang) * this.anchorR;
-        const ly = this.cy + Math.sin(lang) * this.anchorR;
-        const ux = this.cx + Math.cos(uang) * this.anchorR;
-        const uy = this.cy + Math.sin(uang) * this.anchorR;
-        n.targetX = (lx + ux) / 2;
-        n.targetY = (ly + uy) / 2;
-      }
-      // 初始随机位置（从中心扩散）
+      // 球坐标：下卦决定经度，上卦决定纬度
+      const lowerAng = TRIGRAM_ANGLE[lower]; // -π/2 ~ π
+      const upperAng = TRIGRAM_ANGLE[upper];
+      const lon = lowerAng;                           // 经度（下卦方位）
+      const lat = (upperAng / Math.PI) * Math.PI / 2; // 纬度（上卦方位映射到 ±π/2）
+      // 半径：纯卦在球面（最外），普通卦在球内（有体积感）
+      const r = n.isPure ? ballR : (ballR * (0.55 + Math.random() * 0.4));
+      // 球坐标 → 三维笛卡尔目标
+      const cosLat = Math.cos(lat);
+      n.targetX = this.cx + r * cosLat * Math.cos(lon);
+      n.targetY = this.cy + r * cosLat * Math.sin(lon);
+      n.targetZ = r * Math.sin(lat); // z 目标（球状分布的关键）
+      // 初始位置
       n.x = this.cx + (Math.random() - 0.5) * 100;
       n.y = this.cy + (Math.random() - 0.5) * 100;
       n.vx = 0; n.vy = 0;
-      // ★ z 轴深度：纯卦居中深度，普通卦按 degree 散布前后；每颗有缓慢振荡相位
-      n._zBase = n.isPure ? 0 : (Math.random() - 0.5) * 220;
+      // z 轴：以球坐标 z 为基准，加缓慢振荡
+      n._zBase = n.targetZ;
       n.z = n._zBase;
-      n.zAmp = n.isPure ? 20 : (40 + Math.random() * 60); // 振荡幅度
+      n.zAmp = 25 + Math.random() * 35;
       n.zPhase = Math.random() * Math.PI * 2;
       n.zSpeed = 0.003 + Math.random() * 0.004;
     }
@@ -185,24 +181,26 @@ export class StarMap {
       .alphaDecay(0.015);
   }
 
-  // 伪 3D 透视投影：世界坐标(x,y,z) → 屏幕坐标 + 深度系数
-  // depthFactor: 0(最远) ~ 1(最近)，用于缩放大小/亮度/光晕
+  // 真 3D 透视投影：世界坐标(x,y,z) → 屏幕坐标 + 深度系数
+  // 自转是绕 Y 轴的三维旋转（球体转动，z 轴的卦转到前/后）
   _worldToScreen(wx, wy, wz = 0) {
     const cos = Math.cos(this.rotation), sin = Math.sin(this.rotation);
-    // xy 平面旋转（星系自转）
-    const rx = (wx - this.cx) * cos - (wy - this.cy) * sin;
-    const ry = (wx - this.cx) * sin + (wy - this.cy) * cos;
-    // z 轴透视：相机在 z = -perspective 处看向 +z
-    // z 大（近）→ 物体大；z 小（远）→ 物体小
-    const perspective = 600;
-    const dz = wz + perspective; // 相机到点的距离
-    const scale = perspective / Math.max(perspective * 0.3, dz); // 透视缩放
-    // 视差：近的星偏向中心少，远的星向中心收缩（轻微）
+    // 相对中心的坐标
+    const ox = wx - this.cx;
+    const oy = wy - this.cy;
+    // 绕 Y 轴旋转：x 和 z 参与旋转，y 不变
+    const rx = ox * cos - wz * sin;
+    const rz = ox * sin + wz * cos;
+    const ry = oy;
+    // 透视投影：相机在 z = -perspective 看向 +z
+    const perspective = 700;
+    const dz = rz + perspective; // 旋转后的深度
+    const scale = perspective / Math.max(perspective * 0.25, dz);
     return {
       x: rx * scale * this.view.scale + this.cx + this.view.x,
       y: ry * scale * this.view.scale + this.cy + this.view.y,
       scale,
-      depthFactor: scale, // 用于亮度/大小调节
+      depthFactor: scale,
     };
   }
 
@@ -263,7 +261,7 @@ export class StarMap {
       this.time += 1;
       if (this.autoRotate) this.rotation += 0.0006;
       if (this.appearProgress < 1) this.appearProgress = Math.min(1, this.appearProgress + 0.006);
-      // z 轴缓慢振荡：星点前后漂浮，营造三维悬浮感
+      // z 轴：球状结构基准 + 缓慢振荡漂浮
       for (const n of this.graph.nodes) {
         n.z = n._zBase + Math.sin(this.time * n.zSpeed + n.zPhase) * n.zAmp;
       }
@@ -462,10 +460,10 @@ export class StarMap {
       ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
       ctx.fill();
 
-      // ★ 关键词星云（LOD：仅当放大或星在近处时显示关键词文字）
+      // ★ 关键词星云（LOD：需明显放大才显示关键词文字，默认只看光晕）
       const lod = this.view.scale * depthScale; // 细节层次系数
-      if (this.keywordLayouts && this.keywordLayouts[n.id] && lod > 0.85) {
-        const kwAlpha = Math.min(1, (lod - 0.85) / 0.5) * ease * (0.5 + depth * 0.5);
+      if (this.keywordLayouts && this.keywordLayouts[n.id] && lod > 1.6) {
+        const kwAlpha = Math.min(1, (lod - 1.6) / 0.8) * ease * (0.5 + depth * 0.5);
         const layout = this.keywordLayouts[n.id];
         for (const kw of layout) {
           // 关键词微浮动
