@@ -125,6 +125,12 @@ export class StarMap {
       n.x = this.cx + (Math.random() - 0.5) * 100;
       n.y = this.cy + (Math.random() - 0.5) * 100;
       n.vx = 0; n.vy = 0;
+      // ★ z 轴深度：纯卦居中深度，普通卦按 degree 散布前后；每颗有缓慢振荡相位
+      n._zBase = n.isPure ? 0 : (Math.random() - 0.5) * 220;
+      n.z = n._zBase;
+      n.zAmp = n.isPure ? 20 : (40 + Math.random() * 60); // 振荡幅度
+      n.zPhase = Math.random() * Math.PI * 2;
+      n.zSpeed = 0.003 + Math.random() * 0.004;
     }
 
     // 用 d3-force：节点斥力 + 强力 X/Y 定位（拉向 targetX/Y）+ 弱连线
@@ -141,20 +147,38 @@ export class StarMap {
       .alphaDecay(0.015);
   }
 
-  _worldToScreen(wx, wy) {
+  // 伪 3D 透视投影：世界坐标(x,y,z) → 屏幕坐标 + 深度系数
+  // depthFactor: 0(最远) ~ 1(最近)，用于缩放大小/亮度/光晕
+  _worldToScreen(wx, wy, wz = 0) {
     const cos = Math.cos(this.rotation), sin = Math.sin(this.rotation);
+    // xy 平面旋转（星系自转）
     const rx = (wx - this.cx) * cos - (wy - this.cy) * sin;
     const ry = (wx - this.cx) * sin + (wy - this.cy) * cos;
-    return { x: rx * this.view.scale + this.cx + this.view.x, y: ry * this.view.scale + this.cy + this.view.y };
+    // z 轴透视：相机在 z = -perspective 处看向 +z
+    // z 大（近）→ 物体大；z 小（远）→ 物体小
+    const perspective = 600;
+    const dz = wz + perspective; // 相机到点的距离
+    const scale = perspective / Math.max(perspective * 0.3, dz); // 透视缩放
+    // 视差：近的星偏向中心少，远的星向中心收缩（轻微）
+    return {
+      x: rx * scale * this.view.scale + this.cx + this.view.x,
+      y: ry * scale * this.view.scale + this.cy + this.view.y,
+      scale,
+      depthFactor: scale, // 用于亮度/大小调节
+    };
   }
 
   _nodeAt(sx, sy) {
-    const r = Math.max(8, 10 * this.view.scale);
+    const baseR = Math.max(8, 10 * this.view.scale);
+    // 从近到远遍历（近的优先命中）
+    let best = null, bestDist = Infinity;
     for (const n of this.graph.nodes) {
-      const p = this._worldToScreen(n.x, n.y);
-      if (Math.hypot(p.x - sx, p.y - sy) < r) return n;
+      const p = this._worldToScreen(n.x, n.y, n.z);
+      const r = baseR * (0.6 + p.depthFactor * 0.6); // 近的星命中范围大
+      const d = Math.hypot(p.x - sx, p.y - sy);
+      if (d < r && p.depthFactor > bestDist) { best = n; bestDist = p.depthFactor; }
     }
-    return null;
+    return best;
   }
 
   _bindEvents() {
@@ -200,6 +224,10 @@ export class StarMap {
       this.time += 1;
       if (this.autoRotate) this.rotation += 0.0006;
       if (this.appearProgress < 1) this.appearProgress = Math.min(1, this.appearProgress + 0.006);
+      // z 轴缓慢振荡：星点前后漂浮，营造三维悬浮感
+      for (const n of this.graph.nodes) {
+        n.z = n._zBase + Math.sin(this.time * n.zSpeed + n.zPhase) * n.zAmp;
+      }
       for (const neb of this.nebulae) {
         neb.x = neb.bx + Math.cos(this.time * neb.ds + neb.dp) * neb.dr;
         neb.y = neb.by + Math.sin(this.time * neb.ds + neb.dp) * neb.dr;
@@ -277,21 +305,22 @@ export class StarMap {
     for (const e of this.graph.edges) {
       const s = nodeById.get(e.source), tn = nodeById.get(e.target);
       if (!s || !tn) continue;
-      const sp = this._worldToScreen(s.x, s.y);
-      const tp = this._worldToScreen(tn.x, tn.y);
+      const sp = this._worldToScreen(s.x, s.y, s.z);
+      const tp = this._worldToScreen(tn.x, tn.y, tn.z);
+      const avgDepth = (sp.depthFactor + tp.depthFactor) / 2; // 边的平均深度
       const isActive = focusRels && focusRels.has(e.source) && focusRels.has(e.target) &&
         (e.source === focus.id || e.target === focus.id);
       if (isActive) {
         ctx.globalCompositeOperation = 'lighter';
-        ctx.strokeStyle = 'rgba(201,169,106,0.16)';
-        ctx.lineWidth = 4;
+        ctx.strokeStyle = `rgba(201,169,106,${0.16 * avgDepth})`;
+        ctx.lineWidth = 4 * (0.6 + avgDepth * 0.6);
         ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(tp.x, tp.y); ctx.stroke();
         const grad = ctx.createLinearGradient(sp.x, sp.y, tp.x, tp.y);
-        grad.addColorStop(0, 'rgba(245,230,192,0.9)');
-        grad.addColorStop(0.5, 'rgba(216,184,120,0.65)');
-        grad.addColorStop(1, 'rgba(245,230,192,0.9)');
+        grad.addColorStop(0, `rgba(245,230,192,${0.9 * avgDepth})`);
+        grad.addColorStop(0.5, `rgba(216,184,120,${0.65 * avgDepth})`);
+        grad.addColorStop(1, `rgba(245,230,192,${0.9 * avgDepth})`);
         ctx.strokeStyle = grad;
-        ctx.lineWidth = 1.2;
+        ctx.lineWidth = 1.2 * (0.6 + avgDepth * 0.6);
         ctx.setLineDash([3, 8]);
         ctx.lineDashOffset = -t * 0.4;
         ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(tp.x, tp.y); ctx.stroke();
@@ -300,43 +329,49 @@ export class StarMap {
       } else {
         const baseA = focus ? 0.02 : 0.04;
         const pulse = baseA + 0.012 * Math.sin(t * 0.008 + e.source.charCodeAt(0) * 0.3);
-        ctx.strokeStyle = `rgba(120,105,75,${pulse})`;
-        ctx.lineWidth = 0.4;
+        ctx.strokeStyle = `rgba(120,105,75,${pulse * avgDepth})`;
+        ctx.lineWidth = 0.4 * (0.6 + avgDepth * 0.6);
         ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(tp.x, tp.y); ctx.stroke();
       }
     }
 
-    // 第五层：卦星（光晕 + 入场动画）
+    // 第五层：卦星（光晕 + 入场动画 + 伪3D深度）—— 按 z 排序，远先画
     ctx.globalCompositeOperation = 'lighter';
-    for (const n of this.graph.nodes) {
+    const sortedNodes = [...this.graph.nodes].sort((a, b) => a.z - b.z);
+    for (const n of sortedNodes) {
       const delay = (n.number - 1) / 64 * 0.5;
       const localP = Math.max(0, Math.min(1, (this.appearProgress - delay) / 0.4));
       if (localP <= 0) continue;
       const ease = localP * localP * (3 - 2 * localP);
-      const p = this._worldToScreen(n.x, n.y);
+      const p = this._worldToScreen(n.x, n.y, n.z);
+      const depth = p.depthFactor; // 0.5(远) ~ 1.6(近)
       const isFocus = focus && n.id === focus.id;
       const isRel = focusRels && focusRels.has(n.id) && !isFocus;
       const breathe = 0.85 + 0.15 * Math.sin(t * 0.022 + n.binaryCode.charCodeAt(0) + n.binaryCode.charCodeAt(3));
       const degFactor = Math.min(n.degree / 13, 1);
+      // 大小、亮度、光晕均按深度缩放：近大亮，远小暗
+      const depthScale = 0.45 + depth * 0.6; // 深度缩放因子
+      const depthAlpha = 0.4 + depth * 0.6;  // 深度透明度
       const baseR = n.isPure ? 5 : (isFocus ? 6.5 : (isRel ? 4.5 : 1.8 + degFactor * 3));
-      const r = baseR * breathe * ease;
+      const r = baseR * breathe * ease * depthScale;
 
-      // 外光晕
-      const haloR = (isFocus ? 60 : (isRel ? 38 : (n.isPure ? 26 : 16 + degFactor * 24))) * ease;
+      // 外光晕（按深度缩放）
+      const haloR = (isFocus ? 60 : (isRel ? 38 : (n.isPure ? 26 : 16 + degFactor * 24))) * ease * depthScale;
       const haloGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, haloR);
+      const da = (a) => a * depthAlpha; // 深度调暗
       if (isFocus) {
-        haloGrad.addColorStop(0, 'rgba(245,230,192,0.35)');
-        haloGrad.addColorStop(0.2, 'rgba(232,208,154,0.18)');
-        haloGrad.addColorStop(0.5, 'rgba(201,169,106,0.06)');
+        haloGrad.addColorStop(0, `rgba(245,230,192,${da(0.35)})`);
+        haloGrad.addColorStop(0.2, `rgba(232,208,154,${da(0.18)})`);
+        haloGrad.addColorStop(0.5, `rgba(201,169,106,${da(0.06)})`);
       } else if (isRel) {
-        haloGrad.addColorStop(0, 'rgba(232,208,154,0.28)');
-        haloGrad.addColorStop(0.25, 'rgba(201,169,106,0.12)');
+        haloGrad.addColorStop(0, `rgba(232,208,154,${da(0.28)})`);
+        haloGrad.addColorStop(0.25, `rgba(201,169,106,${da(0.12)})`);
       } else if (n.isPure) {
-        haloGrad.addColorStop(0, 'rgba(212,165,116,0.22)');
-        haloGrad.addColorStop(0.3, 'rgba(160,136,80,0.06)');
+        haloGrad.addColorStop(0, `rgba(212,165,116,${da(0.22)})`);
+        haloGrad.addColorStop(0.3, `rgba(160,136,80,${da(0.06)})`);
       } else {
-        haloGrad.addColorStop(0, `rgba(216,184,120,${0.16 + degFactor * 0.14})`);
-        haloGrad.addColorStop(0.3, 'rgba(160,136,80,0.04)');
+        haloGrad.addColorStop(0, `rgba(216,184,120,${da(0.16 + degFactor * 0.14)})`);
+        haloGrad.addColorStop(0.3, `rgba(160,136,80,${da(0.04)})`);
       }
       haloGrad.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = haloGrad;
@@ -344,10 +379,10 @@ export class StarMap {
       ctx.arc(p.x, p.y, haloR, 0, Math.PI * 2);
       ctx.fill();
 
-      // 亮核光晕
+      // 亮核光晕（按深度缩放）
       const coreGlowR = r * 3;
       const cgGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, coreGlowR);
-      const coreA = isFocus ? 0.9 : (isRel ? 0.7 : (n.isPure ? 0.65 : 0.5 + degFactor * 0.3));
+      const coreA = da(isFocus ? 0.9 : (isRel ? 0.7 : (n.isPure ? 0.65 : 0.5 + degFactor * 0.3)));
       cgGrad.addColorStop(0, `rgba(255,248,220,${coreA})`);
       cgGrad.addColorStop(0.4, `rgba(232,208,154,${coreA * 0.4})`);
       cgGrad.addColorStop(1, 'rgba(0,0,0,0)');
@@ -356,8 +391,9 @@ export class StarMap {
       ctx.arc(p.x, p.y, coreGlowR, 0, Math.PI * 2);
       ctx.fill();
 
-      // 实心核
-      const coreColor = isFocus ? 'rgba(255,252,240,1)' : (isRel ? 'rgba(252,240,205,1)' : (n.isPure ? 'rgba(245,220,160,0.95)' : `rgba(232,208,154,${0.85 + degFactor * 0.15})`));
+      // 实心核（按深度调透明度）
+      const coreAlpha = depthAlpha;
+      const coreColor = isFocus ? `rgba(255,252,240,${coreAlpha})` : (isRel ? `rgba(252,240,205,${coreAlpha})` : (n.isPure ? `rgba(245,220,160,${0.95 * coreAlpha})` : `rgba(232,208,154,${(0.85 + degFactor * 0.15) * coreAlpha})`));
       ctx.fillStyle = coreColor;
       ctx.beginPath();
       ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
@@ -365,31 +401,30 @@ export class StarMap {
     }
     ctx.globalCompositeOperation = 'source-over';
 
-    // 卦名标签：8 纯卦常显书法大字 + focus 星显示
-    // 书法字体优先 Ma Shan Zheng（马善政体），降级 ZCOOL XiaoWei，再降级衬线
+    // 卦名标签：8 纯卦常显书法大字 + focus 星显示（带 z 深度）
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    // 先画 8 纯卦的书法大字（常显，淡金，给星系命名感）
     for (const n of this.graph.nodes) {
       if (!n.isPure) continue;
       const delay = (n.number - 1) / 64 * 0.5;
       const localP = Math.max(0, Math.min(1, (this.appearProgress - delay) / 0.4));
       if (localP <= 0) continue;
-      const p = this._worldToScreen(n.x, n.y);
+      const p = this._worldToScreen(n.x, n.y, n.z);
       const isFocus = focus && n.id === focus.id;
-      // 纯卦字大、淡金；focus 时更亮更大
-      const fontSize = isFocus ? 34 : 26;
-      const alpha = isFocus ? 1 : (0.5 + 0.15 * Math.sin(this.time * 0.01 + n.binaryCode.charCodeAt(0)));
+      const fontSize = (isFocus ? 34 : 26) * (0.6 + p.depthFactor * 0.5);
+      const baseA = isFocus ? 1 : (0.5 + 0.15 * Math.sin(this.time * 0.01 + n.binaryCode.charCodeAt(0)));
+      const alpha = isFocus ? baseA : baseA * (0.5 + p.depthFactor * 0.5);
       ctx.font = `${fontSize}px "Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
       ctx.fillStyle = isFocus ? 'rgba(255,240,200,1)' : `rgba(212,165,116,${alpha})`;
-      ctx.fillText(n.name, p.x, p.y - 40);
+      ctx.fillText(n.name, p.x, p.y - 36 * (0.6 + p.depthFactor * 0.5));
     }
     // focus 星若非纯卦，也显示其名（较小）
     if (focus && !focus.isPure) {
-      const p = this._worldToScreen(focus.x, focus.y);
-      ctx.font = '24px "Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif';
+      const p = this._worldToScreen(focus.x, focus.y, focus.z);
+      const fs = 24 * (0.6 + p.depthFactor * 0.5);
+      ctx.font = `${fs}px "Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
       ctx.fillStyle = 'rgba(255,240,200,1)';
-      ctx.fillText(focus.name, p.x, p.y - 45);
+      ctx.fillText(focus.name, p.x, p.y - 42 * (0.6 + p.depthFactor * 0.5));
     }
   }
 
@@ -428,8 +463,8 @@ export class StarMap {
     const node = this.graph.nodes.find(n => n.id === code);
     if (!node) return;
     this.activeNode = node;
-    this.autoRotate = false;
-    const p = this._worldToScreen(node.x, node.y);
+    // 点击/搜索定位不再停止自转，星图始终保持转动
+    const p = this._worldToScreen(node.x, node.y, node.z);
     this.view.x += (this.cx - p.x);
     this.view.y += (this.cy - p.y);
   }
