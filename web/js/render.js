@@ -1,6 +1,7 @@
 // 渲染层：把领域数据渲染为 HTML。纯函数，输入数据 + 挂载点。
 import { hexagramSvg, trigramSvg } from './svg-painter.js';
 import { yaoLabel, allRelations } from './hexagram-utils.js';
+import { showRelationAnimation } from './relation-animation.js';
 
 // HTML 转义，防注入
 function esc(s) {
@@ -71,22 +72,27 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
   const rels = allRelations(hex.binaryCode);
   const relChip = (label, code) =>
     `<span class="relation-chip" data-code="${esc(code)}">${esc(label)}→${esc(codeToName(code, hexagrams))}</span>`;
-  // 关系说明
-  const relExplain = (type, name, desc) =>
-    `<div class="rel-explain"><span class="rel-type rel-${type}">${name}</span><span class="rel-desc">${desc}</span></div>`;
+  // 关系说明 + 演示按钮
+  const relExplain = (type, name, desc, code) =>
+    `<div class="rel-explain">
+      <span class="rel-type rel-${type}">${name}</span>
+      <span class="rel-desc">${desc}</span>
+      <button class="rel-demo-btn" data-rel="${type}" data-code="${esc(code)}">演示</button>
+    </div>`;
   const relHtml = `
     <h3 class="section-title">它如何变</h3>
     <div class="rel-list">
-      ${relExplain('opposite', '错卦', `阴阳全换。${esc(hex.name)}之对极为「${esc(codeToName(rels.opposite, hexagrams))}」。`)}
-      ${relExplain('reversed', '综卦', `上下倒转。${esc(hex.name)}倒看为「${esc(codeToName(rels.reversed, hexagrams))}」。`)}
-      ${relExplain('interlocking', '互卦', `取2-3-4/3-4-5爻。${esc(hex.name)}内含「${esc(codeToName(rels.interlocking, hexagrams))}」。`)}
+      ${relExplain('opposite', '错卦', `阴阳全换。${esc(hex.name)}之对极为「${esc(codeToName(rels.opposite, hexagrams))}」。`, rels.opposite)}
+      ${relExplain('reversed', '综卦', `上下倒转。${esc(hex.name)}倒看为「${esc(codeToName(rels.reversed, hexagrams))}」。`, rels.reversed)}
+      ${relExplain('interlocking', '互卦', `取2-3-4/3-4-5爻。${esc(hex.name)}内含「${esc(codeToName(rels.interlocking, hexagrams))}」。`, rels.interlocking)}
     </div>
+    <p class="rel-changing-hint">点击卦名跳转 · 点击「演示」观看变化动画</p>
     <div class="relation-chips">
       ${relChip('错→', rels.opposite)}
       ${relChip('综→', rels.reversed)}
       ${relChip('互→', rels.interlocking)}
     </div>
-    <p class="rel-changing-hint">变卦（动爻，点击查看）：</p>
+    <p class="rel-changing-hint">变卦（动爻）：</p>
     <div class="relation-chips">${rels.changing.map((c,i) => relChip('第'+(i+1)+'爻', c)).join('')}</div>
   `;
 
@@ -123,6 +129,16 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       chip.addEventListener('click', () => onPickRelation(chip.dataset.code));
     });
   }
+
+  // 关系演示按钮：弹出阴阳流变动画
+  mountEl.querySelectorAll('.rel-demo-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const relType = btn.dataset.rel;
+      const toCode = btn.dataset.code;
+      const toName = codeToName(toCode, hexagrams);
+      showRelationAnimation(hex.binaryCode, toCode, relType, hex.name, toName);
+    });
+  });
 }
 
 // 八卦基础页
