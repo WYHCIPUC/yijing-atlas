@@ -141,7 +141,7 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       const toName = codeToName(toCode, hexagrams);
       showRelationAnimation(hex.binaryCode, toCode, relType, hex.name, toName);
     });
-  }
+  });
 
   // 个人笔记：加载已有笔记 + 绑定保存
   const noteInput = mountEl.querySelector('#note-input');
