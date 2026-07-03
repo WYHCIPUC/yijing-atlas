@@ -425,31 +425,78 @@ function performDivination(targetEl) {
 // 卦序长河：64卦按周易顺序排成时间线，序卦传串讲
 function showGuaxuPanel() {
   const sorted = [...state.hexagrams].sort((a, b) => a.number - b.number);
+  // 圆形卦序盘：64卦围成一圈，序号在外、卦名在内
+  const items = sorted.map((h, i) => {
+    const angle = (i / 64) * 360 - 90; // 从顶部(乾)开始顺时针
+    const rad = angle * Math.PI / 180;
+    const r1 = 140; // 外圈（序号）
+    const r2 = 100; // 内圈（卦名）
+    const x1 = 160 + Math.cos(rad) * r1;
+    const y1 = 160 + Math.sin(rad) * r1;
+    const x2 = 160 + Math.cos(rad) * r2;
+    const y2 = 160 + Math.sin(rad) * r2;
+    return { h, angle, x1, y1, x2, y2, rad };
+  });
+
   panelContent.innerHTML = `
-    <div style="padding:36px 22px">
-      <h2 style="color:#e8d09a;font-size:1.4rem;margin-bottom:8px">卦序长河</h2>
-      <p style="color:#a89878;font-size:0.85rem;margin-bottom:24px;line-height:1.7">
-        序卦传述说六十四卦的演化逻辑——从天地创生，到万物萌发，再到既济未济的循环。
-        点击任一卦进入星图。
+    <div style="padding:36px 20px">
+      <h2 style="color:#e8d09a;font-size:1.4rem;margin-bottom:6px;text-align:center">卦序盘</h2>
+      <p style="color:#a89878;font-size:0.82rem;margin-bottom:16px;text-align:center;line-height:1.6">
+        序卦传述说六十四卦的演化之理<br>悬停查看，点击进入星图
       </p>
-      <div class="guaxu-river">
-        ${sorted.map(h => `
-          <div class="guaxu-node" data-code="${h.binaryCode}">
-            <div class="guaxu-num">${h.number}</div>
-            <div class="guaxu-name">${h.name}</div>
-            <div class="guaxu-remark">${h.orderRemark ? h.orderRemark.slice(0, 12) : ''}</div>
-          </div>
-        `).join('')}
+      <div class="guaxu-wheel-wrap">
+        <svg class="guaxu-wheel" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+          <!-- 外圈装饰圆 -->
+          <circle cx="160" cy="160" r="150" fill="none" stroke="rgba(201,169,106,0.1)" stroke-width="0.5"/>
+          <circle cx="160" cy="160" r="108" fill="none" stroke="rgba(201,169,106,0.08)" stroke-width="0.5"/>
+          <!-- 中心 -->
+          <circle cx="160" cy="160" r="50" fill="rgba(201,169,106,0.04)" stroke="rgba(201,169,106,0.15)" stroke-width="0.5"/>
+          <text x="160" y="155" text-anchor="middle" fill="#d4a574" font-size="11" font-family="serif">序卦</text>
+          <text x="160" y="170" text-anchor="middle" fill="#8a7a5a" font-size="8" font-family="serif">演化之理</text>
+          <!-- 连接线（每8卦一组，分组标记） -->
+          ${items.map((it, i) => i % 8 === 0 ? `<line x1="${it.x2}" y1="${it.y2}" x2="160" y2="160" stroke="rgba(201,169,106,0.06)" stroke-width="0.5"/>` : '').join('')}
+          <!-- 卦名（内圈）和序号（外圈） -->
+          ${items.map(it => `
+            <g class="guaxu-svg-node" data-code="${it.h.binaryCode}" style="cursor:pointer">
+              <text x="${it.x1}" y="${it.y1}" text-anchor="middle" dominant-baseline="central"
+                fill="#5a6680" font-size="6" font-family="monospace"
+                transform="rotate(${it.angle + 90}, ${it.x1}, ${it.y1})">${it.h.number}</text>
+              <text x="${it.x2}" y="${it.y2}" text-anchor="middle" dominant-baseline="central"
+                fill="${it.h.binaryCode.slice(0,3) === it.h.binaryCode.slice(3,6) ? '#e8d09a' : '#c9a96a'}"
+                font-size="${it.h.binaryCode.slice(0,3) === it.h.binaryCode.slice(3,6) ? '10' : '8'}"
+                font-family="serif" font-weight="${it.h.binaryCode.slice(0,3) === it.h.binaryCode.slice(3,6) ? 'bold' : 'normal'}"
+                transform="rotate(${it.angle + 90}, ${it.x2}, ${it.y2})">${it.h.name}</text>
+              <circle cx="${it.x2}" cy="${it.y2}" r="8" fill="transparent"/>
+            </g>
+          `).join('')}
+        </svg>
+        <div class="guaxu-detail" id="guaxu-detail">
+          <p style="color:#666;font-size:0.8rem;text-align:center">悬停或点击卦象查看序卦传</p>
+        </div>
       </div>
     </div>
   `;
   panel.classList.add('open');
-  panelContent.querySelectorAll('.guaxu-node').forEach(node => {
+
+  // 交互：悬停显示序卦说明，点击进入星图
+  panelContent.querySelectorAll('.guaxu-svg-node').forEach(node => {
+    const code = node.dataset.code;
+    const hex = state.index.byCode.get(code);
+    node.addEventListener('mouseenter', () => {
+      const detail = document.getElementById('guaxu-detail');
+      if (hex) {
+        detail.innerHTML = `
+          <div class="gd-name">${hex.name} · ${hex.fullName}</div>
+          <div class="gd-num">第 ${hex.number} 卦</div>
+          <div class="gd-remark">${hex.orderRemark || ''}</div>
+          ${hex.scenario ? `<div class="gd-scenario">${hex.scenario}</div>` : ''}
+        `;
+      }
+    });
     node.addEventListener('click', () => {
-      // 切回探索模式并打开详情
       document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === 'explore'));
       state.starMap && state.starMap.setMode('explore');
-      openDetail(node.dataset.code);
+      openDetail(code);
     });
   });
 }

@@ -300,17 +300,16 @@ body {
 .alm-popup-close { position: absolute; top: 12px; right: 14px; background: none; border: none; color: var(--text-dim); font-size: 1.3rem; cursor: pointer; }
 .alm-popup-close:hover { color: var(--gold-main); }
 
-/* 卦序长河 */
-.guaxu-river { display: flex; flex-direction: column; gap: 2px; }
-.guaxu-node {
-  display: flex; align-items: baseline; gap: 12px;
-  padding: 8px 10px; border-radius: 6px; cursor: pointer;
-  transition: all 0.15s; border-left: 2px solid transparent;
-}
-.guaxu-node:hover { background: rgba(201,169,106,0.1); border-left-color: var(--gold-main); }
-.guaxu-num { color: var(--text-dim); font-size: 0.72rem; font-family: monospace; min-width: 24px; }
-.guaxu-name { color: var(--gold-bright); font-size: 1.1rem; font-family: "Ma Shan Zheng", serif; min-width: 32px; }
-.guaxu-remark { color: var(--text-secondary); font-size: 0.78rem; line-height: 1.5; flex: 1; }
+/* 卦序盘 */
+.guaxu-wheel-wrap { display: flex; flex-direction: column; align-items: center; }
+.guaxu-wheel { width: 100%; max-width: 340px; height: auto; }
+.guaxu-wheel .guaxu-svg-node text { transition: fill 0.15s; }
+.guaxu-wheel .guaxu-svg-node:hover text { fill: #fbf0d0 !important; }
+.guaxu-detail { width: 100%; margin-top: 16px; padding: 14px; background: rgba(201,169,106,0.06); border: 1px solid rgba(201,169,106,0.12); border-radius: 8px; min-height: 80px; }
+.guaxu-detail .gd-name { color: var(--gold-bright); font-size: 1.1rem; font-family: "Ma Shan Zheng", serif; margin-bottom: 2px; }
+.guaxu-detail .gd-num { color: var(--text-dim); font-size: 0.72rem; margin-bottom: 8px; }
+.guaxu-detail .gd-remark { color: var(--text-secondary); font-size: 0.82rem; line-height: 1.7; margin-bottom: 6px; }
+.guaxu-detail .gd-scenario { color: var(--gold-light); font-size: 0.8rem; padding: 6px 10px; background: rgba(201,169,106,0.06); border-radius: 4px; border-left: 2px solid var(--gold-main); }
 .relation-chip {
   background: rgba(201, 169, 106, 0.08); border: 1px solid rgba(201, 169, 106, 0.25);
   padding: 5px 11px; border-radius: 14px;
