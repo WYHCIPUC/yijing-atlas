@@ -52,7 +52,7 @@ function showDailyHexagram() {
   document.getElementById('daily-verse-src').textContent = `—— ${verse.src}`;
   // 进入星图按钮：淡出欢迎层，星图聚焦今日卦
   document.getElementById('daily-enter').addEventListener('click', () => {
-    document.getElementById('daily-overlay').classList.add('hidden');
+    document.getElementById('daily-overlay').style.display = 'none';
     // 短暂延迟后聚焦今日卦
     setTimeout(() => {
       if (state.starMap) state.starMap.focusStar(hex.binaryCode);

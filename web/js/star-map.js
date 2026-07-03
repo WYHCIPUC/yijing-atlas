@@ -269,14 +269,18 @@ export class StarMap {
   }
 
   _nodeAt(sx, sy) {
-    const baseR = Math.max(8, 10 * this.view.scale);
-    // 从近到远遍历（近的优先命中）
-    let best = null, bestDist = Infinity;
+    // 命中检测：找距离最近且在命中半径内的星（近的优先）
+    const baseR = Math.max(14, 16 * this.view.scale); // 加大基础命中半径
+    let best = null, bestScore = -Infinity;
     for (const n of this.graph.nodes) {
       const p = this._worldToScreen(n.x, n.y, n.z);
-      const r = baseR * (0.6 + p.depthFactor * 0.6); // 近的星命中范围大
+      const r = baseR * (0.5 + p.depthFactor * 0.8); // 近的星命中范围更大
       const d = Math.hypot(p.x - sx, p.y - sy);
-      if (d < r && p.depthFactor > bestDist) { best = n; bestDist = p.depthFactor; }
+      if (d < r) {
+        // 综合评分：距离越近 + 深度越近（越在前方）= 优先
+        const score = (1 - d / r) * p.depthFactor;
+        if (score > bestScore) { best = n; bestScore = score; }
+      }
     }
     return best;
   }
@@ -287,6 +291,7 @@ export class StarMap {
       const rect = c.getBoundingClientRect();
       const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
       const node = this._nodeAt(sx, sy);
+      console.log('[star-map] mousedown at', sx, sy, '-> node:', node ? node.name : 'none');
       if (node) {
         this.callbacks.onPick && this.callbacks.onPick(node.id);
       } else {
