@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <title>易象图谱 · 六十四卦</title>
-  <link rel="stylesheet" href="styles/main.css?v=5" />
+  <link rel="stylesheet" href="styles/main.css?v=6" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
@@ -21,7 +22,7 @@
       <div class="daily-hex-full" id="daily-hex-full"></div>
       <div class="daily-verse" id="daily-verse"></div>
       <div class="daily-verse-src" id="daily-verse-src"></div>
-      <button class="daily-enter" id="daily-enter">进入星图</button>
+      <button class="daily-enter" id="daily-enter" onclick="document.getElementById('daily-overlay').classList.add('hidden')">进入星图</button>
     </div>
   </div>
 
@@ -57,6 +58,6 @@
     <button class="zoom-btn" id="trail-clear" title="清除轨迹" style="margin-top:8px">✕</button>
   </div>
 
-  <script type="module" src="js/main.js?v=5"></script>
+  <script type="module" src="js/main.js?v=6"></script>
 </body>
 </html>
