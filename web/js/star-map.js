@@ -488,7 +488,27 @@ export class StarMap {
         ctx.lineDashOffset = -t * 0.5;
         ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(tp.x, tp.y); ctx.stroke();
         ctx.setLineDash([]);
+        // 连线中点标注关系类型
+        const relLabel = relType === 'opposite' ? '错' : (relType === 'reversed' ? '综' : (relType === 'interlocking' ? '互' : '变'));
+        const midX = (sp.x + tp.x) / 2, midY = (sp.y + tp.y) / 2;
         ctx.globalCompositeOperation = 'source-over';
+        ctx.font = `${11 * (0.7 + avgDepth * 0.4)}px "ZCOOL XiaoWei", serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        // 标签背景（小圆角暗底，提高可读性）
+        const lblW = 20, lblH = 16;
+        ctx.fillStyle = 'rgba(10,14,26,0.7)';
+        ctx.beginPath();
+        ctx.arc(midX, midY, lblH * 0.7, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = `rgba(${brightColor},${0.6 * avgDepth})`;
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.arc(midX, midY, lblH * 0.7, 0, Math.PI * 2);
+        ctx.stroke();
+        // 关系文字
+        ctx.fillStyle = `rgba(${brightColor},${0.95 * avgDepth})`;
+        ctx.fillText(relLabel, midX, midY);
       } else {
         // 非激活边：极淡，focus 模式下隐藏
         const baseA = focus ? 0 : 0.035;
