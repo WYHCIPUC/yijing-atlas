@@ -105,8 +105,9 @@ export class StarMap {
 
   // 用预渲染贴图绘制光晕（替代每帧 createRadialGradient）
   _drawGlow(ctx, tex, x, y, radius, alpha) {
-    ctx.globalAlpha = alpha;
+    ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
     ctx.drawImage(tex, x - radius, y - radius, radius * 2, radius * 2);
+    ctx.globalAlpha = 1;
   }
 
   // 异步加载关键词数据，为每个卦预计算星云内关键词的散布布局
@@ -381,6 +382,14 @@ export class StarMap {
     const ctx = this.ctx;
     const t = this.time;
 
+    // 强制清屏 + 重置 Canvas 状态（防止缩放时虚影/拖影）
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 1;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    const dpr = window.devicePixelRatio || 1;
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, this.width, this.height);
+
     // 第一层：深空径向渐变
     const bgGrad = ctx.createRadialGradient(this.cx, this.cy, 0, this.cx, this.cy, Math.max(this.width, this.height) * 0.75);
     bgGrad.addColorStop(0, '#111a30');
@@ -568,6 +577,7 @@ export class StarMap {
           ctx.beginPath();
           ctx.arc(kx, ky, dotR, 0, Math.PI * 2);
           ctx.fill();
+          ctx.globalAlpha = 1;
           // 关键词文字标签（在星点旁）
           const fs = (kw.level === 1 ? 11 : (kw.level === 2 ? 9 : 8)) * depthScale * (0.7 + lod * 0.2);
           ctx.font = `${fs}px "ZCOOL XiaoWei", "Ma Shan Zheng", "STKaiti", serif`;
