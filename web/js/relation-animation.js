@@ -54,7 +54,7 @@ const REL_INFO = {
  * @param {string} fromName - 原卦名
  * @param {string} toName - 目标卦名
  */
-export function showRelationAnimation(fromCode, toCode, relType, fromName, toName) {
+export function showRelationAnimation(fromCode, toCode, relType, fromName, toName, fromHex, toHex) {
   _ensureOverlay();
   const info = REL_INFO[relType] || REL_INFO.changing;
   const fromLines = codeToLines(fromCode);
@@ -67,6 +67,10 @@ export function showRelationAnimation(fromCode, toCode, relType, fromName, toNam
   }
   // 互卦特殊：高亮 2-3-4-5 爻（索引1-4）
   const interlockingIdxs = relType === 'interlocking' ? [1, 2, 3, 4] : changedIdxs;
+
+  // 爻位名称
+  const posNames = ['初', '二', '三', '四', '五', '上'];
+  const yinYang = (isYang) => isYang ? '阳' : '阴';
 
   overlayEl.innerHTML = `
     <div class="rel-anim-card">
@@ -89,6 +93,7 @@ export function showRelationAnimation(fromCode, toCode, relType, fromName, toNam
         </div>
       </div>
       <p class="rel-anim-hint" id="rel-anim-hint">点击「变化」观看演示</p>
+      <div class="rel-anim-meaning" id="rel-anim-meaning"></div>
       <button class="rel-anim-play" id="rel-anim-play">▶ 变化</button>
     </div>
   `;
@@ -100,19 +105,46 @@ export function showRelationAnimation(fromCode, toCode, relType, fromName, toNam
 
   // 播放动画
   document.getElementById('rel-anim-play').addEventListener('click', () => {
-    playAnimation(relType, fromLines, toLines, interlockingIdxs);
+    playAnimation(relType, fromLines, toLines, interlockingIdxs, fromHex, toHex);
   });
 }
 
+// 获取某爻的爻辞摘要
+function getYaoText(hex, idx) {
+  if (!hex || !hex.lines || !hex.lines[idx]) return '';
+  const yao = hex.lines[idx];
+  const text = (yao.text || '').replace(/^[^：]*：/, '').replace(/。$/, '');
+  return text.slice(0, 12);
+}
+
+// 更新含义说明
+function updateMeaning(relType, idx, fromHex, toHex) {
+  const el = document.getElementById('rel-anim-meaning');
+  if (!el) return;
+  const posName = posNames[idx];
+  if (relType === 'opposite') {
+    const fromYinYang = fromHex ? yinYang(fromHex.lines[idx].isYang) : '';
+    const toYinYang = toHex ? yinYang(toHex.lines[idx].isYang) : '';
+    el.innerHTML = `<span class="mn-pos">${posName}爻</span> 由<span class="mn-from">${fromYinYang}</span>变为<span class="mn-to">${toYinYang}</span><br><span class="mn-quote">「${getYaoText(fromHex, idx)}」→「${getYaoText(toHex, idx)}」</span>`;
+  } else if (relType === 'reversed') {
+    el.innerHTML = `<span class="mn-pos">${posName}爻</span>与<span class="mn-pos">${posNames[5-idx]}爻</span>互换位置<br><span class="mn-note">视角倒转，上下卦互换，所见不同。</span>`;
+  } else if (relType === 'interlocking') {
+    el.innerHTML = `<span class="mn-pos">${posName}爻</span>参与构成互卦<br><span class="mn-note">取2-3-4爻为下卦，3-4-5爻为上卦，揭示内在本质。</span>`;
+  } else {
+    el.innerHTML = `<span class="mn-pos">${posName}爻</span>发生变动<br><span class="mn-quote">「${getYaoText(fromHex, idx)}」→「${getYaoText(toHex, idx)}」</span>`;
+  }
+}
+
 // 播放变化动画
-function playAnimation(relType, fromLines, toLines, highlightIdxs) {
+function playAnimation(relType, fromLines, toLines, highlightIdxs, fromHex, toHex) {
   const toContainer = document.getElementById('rel-anim-to');
   const hint = document.getElementById('rel-anim-hint');
   const playBtn = document.getElementById('rel-anim-play');
+  const meaning = document.getElementById('rel-anim-meaning');
   playBtn.disabled = true;
+  if (meaning) meaning.innerHTML = '';
 
   if (relType === 'reversed') {
-    // 综卦：整体翻转——逐步倒转爻序
     hint.textContent = '上下翻转中…';
     let step = 0;
     const current = [...fromLines];
@@ -121,18 +153,18 @@ function playAnimation(relType, fromLines, toLines, highlightIdxs) {
         clearInterval(interval);
         toContainer.querySelector('svg').outerHTML = renderHex(toLines, [], 110);
         hint.textContent = '翻转完成。同一卦换个角度看，意义不同。';
+        if (meaning) meaning.innerHTML = '<span class="mn-note">综卦是将原卦整体倒转——把卦倒过来看，会得到不同的卦象和含义。事物换个角度，意义便不同。</span>';
         playBtn.disabled = false;
         return;
       }
-      // 从两端向中间交换
       const tmp = current[step];
       current[step] = current[5 - step];
       current[5 - step] = tmp;
       toContainer.querySelector('svg').outerHTML = renderHex(current, [step, 5 - step], 110);
+      updateMeaning(relType, step, fromHex, toHex);
       step++;
-    }, 250);
+    }, 400);
   } else {
-    // 错卦/变卦/互卦：逐爻翻转变化的部分
     const changeList = relType === 'interlocking' ? [1, 2, 3, 4] : highlightIdxs;
     let stepIdx = 0;
     const current = [...fromLines];
@@ -141,15 +173,25 @@ function playAnimation(relType, fromLines, toLines, highlightIdxs) {
       if (stepIdx >= changeList.length) {
         clearInterval(interval);
         toContainer.querySelector('svg').outerHTML = renderHex(toLines, [], 110);
-        hint.textContent = relType === 'opposite' ? '全部阴阳互换完成。' : (relType === 'interlocking' ? '内含之卦已显现。' : '变卦完成。');
+        const doneMsg = relType === 'opposite' ? '全部阴阳互换完成。' : (relType === 'interlocking' ? '内含之卦已显现。' : '变卦完成。');
+        hint.textContent = doneMsg;
+        if (meaning) {
+          const summary = relType === 'opposite'
+            ? '<span class="mn-note">错卦是每根爻阴阳全换——阳变阴、阴变阳。代表事物走向了对立面，如泰(通)变为否(塞)。</span>'
+            : (relType === 'interlocking'
+              ? '<span class="mn-note">互卦是取原卦的2-3-4爻为下卦、3-4-5爻为上卦，揭示事物内在的本质和发展趋势。</span>'
+              : '<span class="mn-note">变卦是某根爻阴阳转化，代表事物发展的方向变化。</span>');
+          meaning.innerHTML = summary;
+        }
         playBtn.disabled = false;
         return;
       }
       const idx = changeList[stepIdx];
-      current[idx] = toLines[idx]; // 翻转这一爻
+      current[idx] = toLines[idx];
       toContainer.querySelector('svg').outerHTML = renderHex(current, [idx], 110);
+      updateMeaning(relType, idx, fromHex, toHex);
       stepIdx++;
-    }, 300);
+    }, 500);
   }
 }
 

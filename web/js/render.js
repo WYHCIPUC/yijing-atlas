@@ -139,7 +139,8 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       const relType = btn.dataset.rel;
       const toCode = btn.dataset.code;
       const toName = codeToName(toCode, hexagrams);
-      showRelationAnimation(hex.binaryCode, toCode, relType, hex.name, toName);
+      const toHex = hexagrams.find(h => h.binaryCode === toCode);
+      showRelationAnimation(hex.binaryCode, toCode, relType, hex.name, toName, hex, toHex);
     });
   });
 
