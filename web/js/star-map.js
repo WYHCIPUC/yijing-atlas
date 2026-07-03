@@ -291,7 +291,6 @@ export class StarMap {
       const rect = c.getBoundingClientRect();
       const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
       const node = this._nodeAt(sx, sy);
-      console.log('[star-map] mousedown at', sx, sy, '-> node:', node ? node.name : 'none');
       if (node) {
         this.callbacks.onPick && this.callbacks.onPick(node.id);
       } else {
@@ -491,8 +490,8 @@ export class StarMap {
         ctx.setLineDash([]);
         ctx.globalCompositeOperation = 'source-over';
       } else {
-        // 非激活边：极淡，几乎隐形
-        const baseA = focus ? 0.015 : 0.035;
+        // 非激活边：极淡，focus 模式下隐藏
+        const baseA = focus ? 0 : 0.035;
         const pulse = baseA + 0.01 * Math.sin(t * 0.008 + e.source.charCodeAt(0) * 0.3);
         ctx.strokeStyle = `rgba(120,105,75,${pulse * avgDepth})`;
         ctx.lineWidth = 0.4 * (0.6 + avgDepth * 0.6);
@@ -512,6 +511,9 @@ export class StarMap {
       const depth = p.depthFactor; // 0.5(远) ~ 1.6(近)
       const isFocus = focus && n.id === focus.id;
       const isRel = focusRels && focusRels.has(n.id) && !isFocus;
+      // focus 模式：非关系卦淡入星空背景（大幅降低可见度）
+      const isHidden = this.focusVisible && !this.focusVisible.has(n.id);
+      const visibility = isHidden ? 0.08 : 1; // 非关系卦只剩 8% 可见度
       // 多频明灭：慢呼吸 + 快闪烁，每颗星独立节奏
       const seed = n.binaryCode.charCodeAt(0) + n.binaryCode.charCodeAt(3);
       const tw1 = Math.sin(t * 0.022 + seed);
@@ -524,7 +526,7 @@ export class StarMap {
       const degFactor = Math.min(n.degree / 13, 1);
       // 大小、亮度、光晕均按深度缩放：近大亮，远小暗；脉冲时光晕放大
       const depthScale = 0.45 + depth * 0.6; // 深度缩放因子
-      const depthAlpha = (0.4 + depth * 0.6) * brightBoost;  // 深度透明度 × 脉冲增亮
+      const depthAlpha = (0.4 + depth * 0.6) * brightBoost * visibility;  // 深度透明度 × 脉冲增亮 × focus可见度
       const baseR = n.isPure ? 5 : (isFocus ? 6.5 : (isRel ? 4.5 : 1.8 + degFactor * 3));
       const r = baseR * breathe * ease * depthScale * glowBoost;
 
@@ -605,18 +607,20 @@ export class StarMap {
       if (localP <= 0) continue;
       const p = this._worldToScreen(n.x, n.y, n.z);
       const isFocus = focus && n.id === focus.id;
+      const isHiddenName = this.focusVisible && !this.focusVisible.has(n.id);
+      const nameVis = isHiddenName ? 0.1 : 1;
       const depthS = 0.6 + p.depthFactor * 0.5;
       if (n.isPure) {
         // 纯卦：书法大字，突出显示
         const fontSize = (isFocus ? 38 : 30) * depthS;
-        const alpha = isFocus ? 1 : (0.6 + 0.15 * Math.sin(this.time * 0.01 + n.binaryCode.charCodeAt(0))) * (0.6 + p.depthFactor * 0.4);
+        const alpha = isFocus ? 1 : (0.6 + 0.15 * Math.sin(this.time * 0.01 + n.binaryCode.charCodeAt(0))) * (0.6 + p.depthFactor * 0.4) * nameVis;
         ctx.font = `${fontSize}px "Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
         ctx.fillStyle = isFocus ? 'rgba(255,240,200,1)' : `rgba(212,165,116,${alpha})`;
         ctx.fillText(n.name, p.x, p.y - 40 * depthS);
       } else {
         // 普通卦：小字，淡金，按深度调节
         const fontSize = (isFocus ? 20 : 14) * depthS;
-        const alpha = isFocus ? 1 : (0.4 + p.depthFactor * 0.4);
+        const alpha = isFocus ? 1 : (0.4 + p.depthFactor * 0.4) * nameVis;
         ctx.font = `${fontSize}px "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
         ctx.fillStyle = isFocus ? 'rgba(255,240,200,1)' : `rgba(180,160,110,${alpha})`;
         ctx.fillText(n.name, p.x, p.y - 22 * depthS);
@@ -659,7 +663,10 @@ export class StarMap {
     const node = this.graph.nodes.find(n => n.id === code);
     if (!node) return;
     this.activeNode = node;
-    // 设置相机焦点：飞入该星位置，以其为中心看 360° 景象
+    // 计算所有关系目标（错综互变），focus 模式只显示这些
+    const rels = allRelations(code);
+    this.focusVisible = new Set([code, rels.opposite, rels.reversed, rels.interlocking, ...rels.changing]);
+    // 相机飞入该星位置，居中显示
     this.cameraTarget = { x: node.x - this.cx, y: node.y - this.cy, z: node.z };
   }
 
@@ -667,6 +674,7 @@ export class StarMap {
   clearFocus() {
     this.cameraTarget = null;
     this.activeNode = null;
+    this.focusVisible = null;
     this.autoRotate = true;
   }
 
