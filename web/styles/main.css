@@ -302,7 +302,9 @@ body {
 
 /* 卦序盘 */
 .guaxu-wheel-wrap { display: flex; flex-direction: column; align-items: center; }
-.guaxu-wheel { width: 100%; max-width: 340px; height: auto; }
+.guaxu-wheel { width: 100%; max-width: 340px; height: auto; animation: guaxuSpin 120s linear infinite; transform-origin: center; }
+@keyframes guaxuSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.guaxu-wheel-wrap:hover .guaxu-wheel { animation-play-state: paused; }
 .guaxu-wheel .guaxu-svg-node text { transition: fill 0.15s; }
 .guaxu-wheel .guaxu-svg-node:hover text { fill: #fbf0d0 !important; }
 .guaxu-detail { width: 100%; margin-top: 16px; padding: 14px; background: rgba(201,169,106,0.06); border: 1px solid rgba(201,169,106,0.12); border-radius: 8px; min-height: 80px; }

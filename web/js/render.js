@@ -104,7 +104,7 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
     </div>
     ${hex.scenario ? section('今日处境', `<div class="scenario-text">${esc(hex.scenario)}</div>`) : ''}
     ${section('卦辞', `<div class="original-text">${esc(hex.judgement)}</div>${hex.judgementNote ? `<div class="note-text">${esc(hex.judgementNote)}</div>` : ''}`)}
-    ${section('彖传', `<div class="original-text">${esc(hex.tuan)}</div>`)}
+    ${section('彖传', `<div class="original-text">${esc(hex.tuan)}</div>${hex.tuanNote ? `<div class="note-text">${esc(hex.tuanNote)}</div>` : ''}`)}
     ${section('大象', `<div class="original-text">${esc(hex.image)}</div>${hex.imageNote ? `<div class="note-text">${esc(hex.imageNote)}</div>` : ''}`)}
     ${relHtml}
     <h3 class="section-title yao-collapse-toggle" id="yao-toggle">六爻<span class="toggle-arrow">▶</span></h3>
