@@ -9,6 +9,8 @@ export const USER_DATA_KEYS = [
   'yijing.study.v1',
   'yijing-notes',
   'yijing-activity-v1',
+  'yijing-learning-record-v2',
+  'yijing-learning-review-config-v1',
   'yijing-divination-history-v1',
 ];
 
@@ -33,6 +35,8 @@ function validateSnapshot(snapshot) {
     'yijing.study.v1': isPlainObject,
     'yijing-notes': isPlainObject,
     'yijing-activity-v1': isPlainObject,
+    'yijing-learning-record-v2': isPlainObject,
+    'yijing-learning-review-config-v1': isPlainObject,
     'yijing-divination-history-v1': Array.isArray,
   };
   for (const [key, check] of Object.entries(expected)) {

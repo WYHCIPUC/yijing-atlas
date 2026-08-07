@@ -10,6 +10,7 @@ Thumbs.db
 # Node
 node_modules/
 coverage/
+dist/
 
 # 临时文件
 .pdf-preview/

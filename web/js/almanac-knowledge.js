@@ -22,7 +22,7 @@ export function renderAlmanacKnowledgePage(mountEl, appState, { showBackLink = t
       <div class="study-group">
         <h4 class="group-title">${esc(cat)}（${cats[cat].length}）</h4>
         ${cats[cat].map((t) => `
-          <details class="theorem-item">
+          <details class="theorem-item" data-content-category="${esc(cat)}">
             <summary><b>${esc(t.name)}</b> ${t.yi || t.ji ? '<small>' + (t.yi ? '宜' : '') + (t.yi && t.ji ? '/' : '') + (t.ji ? '忌' : '') + '</small>' : ''}</summary>
             <div class="alm-kn-body">
               <p>${esc(t.meaning)}</p>
@@ -39,7 +39,7 @@ export function renderAlmanacKnowledgePage(mountEl, appState, { showBackLink = t
       <div class="study-group">
         <h4 class="group-title">${esc(cat)}</h4>
         ${cats[cat].map((t) => `
-          <details class="theorem-item">
+          <details class="theorem-item" data-content-category="${esc(cat)}">
             <summary><b>${esc(t.name)}</b></summary>
             <div class="alm-kn-body"><p>${esc(t.meaning)}</p></div>
           </details>`).join('')}

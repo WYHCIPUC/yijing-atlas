@@ -1,5 +1,6 @@
 import { castHexagram, getReading } from '../divination-engine.js';
 import { addDivinationHistory, clearDivinationHistory, loadDivinationHistory } from '../divination-history.js';
+import { buildCoinInterpretation, buildMeihuaInterpretation } from '../divination-interpretation.js';
 import { yaoLabel } from '../hexagram-utils.js';
 import { recordActivity } from '../learning-progress.js';
 import { analyzeTiYong, castByNumber, castByTime } from '../meihua-engine.js';
@@ -98,6 +99,60 @@ function recordCast(entry) {
   renderHistory();
 }
 
+function renderInterpretation(interpretation) {
+  const focusCards = interpretation.focus.map((item) => `
+    <article class="divine-evidence-card">
+      <small>${esc(item.source)}</small>
+      <blockquote>${esc(item.quote)}</blockquote>
+      <p>${esc(item.plain)}</p>
+      ${item.xiang ? `<p class="divine-xiang"><small>${esc(item.xiangSource)}</small>${esc(item.xiang)}</p>` : ''}
+    </article>
+  `).join('');
+  return `
+    <section class="divine-interpretation" aria-label="占筮结果说明">
+      <div class="divine-interpretation-heading">
+        <div>
+          <small>断辞依据层</small>
+          <h3>从经文到当下</h3>
+        </div>
+        <span>${esc(interpretation.method)}</span>
+      </div>
+      <div class="divine-insight-grid">
+        <article><small>当前处境</small><p>${esc(interpretation.situation)}</p></article>
+        <article><small>关键提醒</small><p>${esc(interpretation.keyPoint)}</p></article>
+        <article><small>变化方向</small><p>${esc(interpretation.transition)}</p></article>
+      </div>
+      <details class="divine-reading-details" open>
+        <summary>查看取辞方法、经传原文与现实参照</summary>
+        <div class="divine-method-grid">
+          <article><h4>为什么这样取辞</h4><p>${esc(interpretation.basis)}</p></article>
+          <article><h4>专业术语怎么理解</h4><p>${esc(interpretation.terminology)}</p></article>
+        </div>
+        <section class="divine-evidence" aria-label="经文意象与典籍依据">
+          <h4>经文意象与典籍依据</h4>
+          ${focusCards}
+          <article class="divine-evidence-card divine-classic-reference">
+            <small>${esc(interpretation.classic.source)}</small>
+            <blockquote>${esc(interpretation.classic.quote)}</blockquote>
+            <p>${esc(interpretation.classic.plain)}</p>
+          </article>
+        </section>
+        <section class="divine-analogy">
+          <h4>放进现实情境</h4>
+          <p>${esc(interpretation.analogy)}</p>
+          <p class="divine-analogy-label">这是帮助理解的类比，不是对具体事件的预言。</p>
+        </section>
+        <section class="divine-prompts">
+          <h4>反思三问</h4>
+          <ol>${interpretation.prompts.map((prompt) => `<li>${esc(prompt)}</li>`).join('')}</ol>
+        </section>
+        <p class="divine-method-caveat">方法边界：${esc(interpretation.caveat)}</p>
+      </details>
+      <p class="divine-safety-note">本解读用于传统文化学习与自我反思，不替代医疗、法律、财务、婚姻或其他现实决策。</p>
+    </section>
+  `;
+}
+
 function renderCoin() {
   const body = mountEl.querySelector('.divine-body');
   body.innerHTML = `
@@ -132,6 +187,7 @@ function renderMeihuaResult(cast) {
   const primaryHex = appState.index.byCode.get(cast.primaryCode);
   const changedHex = appState.index.byCode.get(cast.changedCode);
   const analysis = analyzeTiYong(cast);
+  const interpretation = buildMeihuaInterpretation({ cast, primaryHex, changedHex, analysis });
   appState.starMap?.focusStar(cast.primaryCode);
   const result = mountEl.querySelector('.mh-result');
   result.innerHTML = `
@@ -146,6 +202,7 @@ function renderMeihuaResult(cast) {
       <p>${esc(analysis.verdict)}</p>
     </div>
     <p class="divine-line-text">动爻：${esc(primaryHex.lines[cast.changingPos - 1]?.text || '')}</p>
+    ${renderInterpretation(interpretation)}
   `;
   recordCast({
     type: 'meihua',
@@ -161,6 +218,7 @@ function renderCoinResult(result) {
   const primaryHex = appState.index.byCode.get(cast.primaryCode);
   const changedHex = cast.hasChange ? appState.index.byCode.get(cast.changedCode) : null;
   const reading = getReading(cast, primaryHex, changedHex);
+  const interpretation = buildCoinInterpretation({ cast, primaryHex, changedHex, reading });
   appState.starMap?.focusStar(cast.primaryCode);
 
   const lines = cast.yaos.map((yao, index) => {
@@ -175,10 +233,7 @@ function renderCoinResult(result) {
       ${esc(primaryHex.name)}（${esc(primaryHex.fullName)}）
       ${changedHex ? `→ ${esc(changedHex.name)}（${esc(changedHex.fullName)}）` : ''}
     </p>
-    <div class="mode-card cast-reading">
-      <p>${esc(reading.rule)}</p>
-      ${reading.readings.map((item) => `<p><small>${esc(item.src)}</small>${esc(item.text)}</p>`).join('')}
-    </div>
+    ${renderInterpretation(interpretation)}
     <button type="button" class="divine-btn divine-again">再掷一卦</button>
   `;
   recordCast({

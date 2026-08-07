@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "0.1.0-draft",
+  "releaseReady": false,
+  "requiredAuthorities": [
+    "wang-bi",
+    "kong-yingda",
+    "li-dingzuo",
+    "cheng-yi",
+    "zhu-xi",
+    "lai-zhide"
+  ],
+  "requiredAnchors": [
+    "hexagram",
+    "judgement",
+    "line-1",
+    "line-2",
+    "line-3",
+    "line-4",
+    "line-5",
+    "line-6",
+    "tuan",
+    "image"
+  ],
+  "reviewersPerRecord": 2,
+  "progress": {
+    "hexagramsComplete": 0,
+    "hexagramsTotal": 64,
+    "recordsVerified": 0,
+    "recordsTotal": 3840
+  },
+  "releaseRule": "六家、六十四卦与全部锚点完成来源定位和双人校对后，方可设为 true。"
+}

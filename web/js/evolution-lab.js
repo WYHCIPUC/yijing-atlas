@@ -10,6 +10,7 @@ import {
   toggleEvolutionLine,
   undoEvolution,
 } from './evolution-state.js';
+import { evolutionSemantics } from './evolution-semantics.js';
 import { yaoLabel } from './hexagram-utils.js';
 import { hexagramSvg } from './svg-painter.js';
 
@@ -71,6 +72,57 @@ function renderChangeNotes(session, snapshot) {
   }).join('')}</ol>`;
 }
 
+function renderLineReading(title, line) {
+  if (!line) return '';
+  return `<article class="evolution-line-reading">
+    <div class="evolution-reading-kicker">${esc(title)} · ${esc(line.hexagramName)}卦 ${esc(line.label)}</div>
+    ${line.text ? `<p class="evolution-classic-text">${esc(line.text)}</p><cite>${esc(line.textCitation)}</cite>` : ''}
+    ${line.image ? `<p class="evolution-line-image">象曰：${esc(line.image)}</p><cite>${esc(line.imageCitation)}</cite>` : ''}
+    ${line.note ? `<p class="evolution-project-note"><span>项目释义</span>${esc(line.note)}</p>` : ''}
+  </article>`;
+}
+
+function renderMeaningPanel(session, snapshot, activePosition) {
+  const playback = session.playback;
+  const previousCode = playback.index > 0 ? playback.frames[playback.index - 1] : null;
+  const previousHex = previousCode
+    ? session.hexagrams.find((hexagram) => hexagram.binaryCode === previousCode) || null
+    : null;
+  const meaning = evolutionSemantics(snapshot.currentHexagram, previousHex, activePosition);
+  const evidence = meaning.current.evidence.map((item, index) => `
+    <details class="evolution-evidence" ${index === 0 ? 'open' : ''}>
+      <summary><span>${esc(item.label)}</span><cite>${esc(item.citation)}</cite></summary>
+      <p class="evolution-classic-text">${esc(item.text)}</p>
+      ${item.note ? `<p class="evolution-project-note"><span>项目释义</span>${esc(item.note)}</p>` : ''}
+    </details>`).join('');
+  const transition = meaning.transition ? `
+    <section class="evolution-transition-reading" aria-label="本步爻义对读">
+      <div class="evolution-transition-head">
+        <h4>本步爻义对读</h4>
+        <span>第 ${meaning.transition.position} 爻</span>
+      </div>
+      <div class="evolution-line-readings">
+        ${renderLineReading('变化前', meaning.transition.before)}
+        ${renderLineReading('变化后', meaning.transition.after)}
+      </div>
+      <p class="evolution-method-note">${esc(meaning.transition.disclaimer)}</p>
+    </section>` : '';
+  return `<section class="evolution-meaning" aria-labelledby="evolution-meaning-title">
+    <div class="evolution-meaning-head">
+      <div>
+        <span>随动画同步</span>
+        <h3 id="evolution-meaning-title">${esc(meaning.current.name)}卦 · 卦义与典籍依据</h3>
+      </div>
+      <code>${esc(meaning.current.binaryCode)}</code>
+    </div>
+    ${meaning.current.scenario ? `<p class="evolution-scenario">${esc(meaning.current.scenario)}</p>` : ''}
+    ${meaning.current.summary ? `<p class="evolution-summary"><span>卦义提要</span>${esc(meaning.current.summary)}</p>` : ''}
+    <div class="evolution-evidence-list">${evidence}</div>
+    ${transition}
+    <p class="evolution-source-note">${esc(meaning.sourceNote)}</p>
+  </section>`;
+}
+
 function createPlayback(session, speed = session.playback?.speed || 'normal') {
   const targetCode = currentEvolutionCode(session.state);
   const frames = createEvolutionFrames(session.baseHex.binaryCode, targetCode);
@@ -119,6 +171,7 @@ function renderLab(focusSelector = null) {
     ? `演示第 ${playback.index}/${playbackTotal} 步`
     : `${snapshot.action} · 历史第 ${snapshot.step}/${snapshot.totalSteps} 步`;
   const result = snapshot.currentHexagram;
+  const activePosition = currentPlaybackPosition(playback);
   const body = overlayEl.querySelector('.evolution-body');
   if (!body) return;
   body.innerHTML = `
@@ -135,7 +188,7 @@ function renderLab(focusSelector = null) {
       </figure>
       <div class="evolution-direction" aria-hidden="true"><span>→</span><small>${snapshot.changedPositions.length} 爻变化</small></div>
       <figure class="evolution-figure evolution-result">
-        <div class="evolution-lines" role="group" aria-label="可编辑六爻">${renderInteractiveLines(snapshot, playbackLocked, currentPlaybackPosition(playback))}</div>
+        <div class="evolution-lines" role="group" aria-label="可编辑六爻">${renderInteractiveLines(snapshot, playbackLocked, activePosition)}</div>
         <figcaption><strong>${esc(result?.name || '未知卦')}</strong><span>结果 · ${snapshot.currentCode}</span></figcaption>
       </figure>
     </div>
@@ -164,6 +217,7 @@ function renderLab(focusSelector = null) {
       </div>
       ${renderChangeNotes(activeSession, snapshot)}
     </section>
+    ${result ? renderMeaningPanel(activeSession, snapshot, activePosition) : ''}
     <div class="evolution-actions">
       <div class="evolution-history-actions" role="group" aria-label="演变历史">
         <button type="button" data-evolution-action="undo" ${snapshot.canUndo && !playbackLocked ? '' : 'disabled'}>↶ 撤销</button>
@@ -310,7 +364,7 @@ function ensureOverlay() {
   document.body.appendChild(overlayEl);
 }
 
-export function showEvolutionLab(baseHex, hexagrams, onOpenHexagram) {
+export function showEvolutionLab(baseHex, hexagrams, onOpenHexagram, onClose = null) {
   const initialState = createEvolutionState(baseHex?.binaryCode);
   ensureOverlay();
   previousFocus = document.activeElement;
@@ -318,6 +372,7 @@ export function showEvolutionLab(baseHex, hexagrams, onOpenHexagram) {
     baseHex,
     hexagrams,
     onOpenHexagram,
+    onClose,
     state: initialState,
   };
   activeSession.playback = createPlayback(activeSession);
@@ -341,9 +396,11 @@ export function showEvolutionLab(baseHex, hexagrams, onOpenHexagram) {
 export function closeEvolutionLab() {
   if (!overlayEl) return;
   clearPlaybackTimer();
+  const onClose = activeSession?.onClose;
   overlayEl.classList.remove('open');
   overlayEl.setAttribute('aria-hidden', 'true');
   activeSession = null;
   previousFocus?.focus?.();
   previousFocus = null;
+  onClose?.();
 }

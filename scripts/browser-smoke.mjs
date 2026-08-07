@@ -154,6 +154,78 @@ try {
   })()`);
   await waitFor(() => client.evaluate('document.querySelector("#daily-overlay").hidden === true'), '今日卦入口未关闭');
 
+  const navigation = await client.evaluate(`(() => ({
+    modes: [...document.querySelectorAll('.mode-btn')].map((button) => button.dataset.mode),
+    hasLegacyGuaxuMode: Boolean(document.querySelector('[data-mode="guaxu"]')),
+    guaxuToolRight: document.querySelector('[data-explore-tool="guaxu"]').getBoundingClientRect().right,
+    viewportRight: innerWidth,
+  }))()`);
+  if (navigation.modes.join(',') !== 'almanac,explore,learning,review,quiz,divination') {
+    throw new Error('主导航顺序不符合黄历优先的产品约定');
+  }
+  if (navigation.hasLegacyGuaxuMode || navigation.viewportRight - navigation.guaxuToolRight > 180) {
+    throw new Error('卦序入口未正确迁移到星图右上角');
+  }
+
+  const audioPreference = await client.evaluate(`(() => {
+    const button = document.querySelector('#audio-toggle');
+    button.click();
+    const muted = { pressed: button.getAttribute('aria-pressed'), stored: localStorage.getItem('yijing-interface-sound') };
+    button.click();
+    return {
+      muted,
+      enabled: { pressed: button.getAttribute('aria-pressed'), stored: localStorage.getItem('yijing-interface-sound') },
+    };
+  })()`);
+  if (audioPreference.muted.pressed !== 'false' || audioPreference.muted.stored !== 'off' ||
+      audioPreference.enabled.pressed !== 'true' || audioPreference.enabled.stored !== 'on') {
+    throw new Error('界面音效开关未正确持久化');
+  }
+
+  await client.evaluate('document.querySelector("[data-mode=divination]").click()');
+  await waitFor(() => client.evaluate('document.querySelector(".coin-cast") !== null'), '占筮模块未加载');
+  await client.evaluate('document.querySelector(".coin-cast").click()');
+  const coinInterpretation = await waitFor(() => client.evaluate(`(() => {
+    const panel = document.querySelector('.coin-result .divine-interpretation');
+    if (!panel) return null;
+    return {
+      insights: panel.querySelectorAll('.divine-insight-grid article').length,
+      source: panel.querySelector('.divine-evidence-card small')?.textContent,
+      hasBoundary: panel.querySelector('.divine-method-caveat')?.textContent.includes('方法边界'),
+    };
+  })()`), '金钱卦未生成完整解释');
+  if (coinInterpretation.insights !== 3 || !coinInterpretation.source?.includes('《周易·') || !coinInterpretation.hasBoundary) {
+    throw new Error('金钱卦解释缺少处境、典籍出处或方法边界');
+  }
+
+  await client.evaluate('document.querySelector("[data-sub=meihua]").click()');
+  await waitFor(() => client.evaluate('document.querySelector(".mh-cast") !== null'), '梅花易数页未加载');
+  await client.evaluate('document.querySelector(".mh-cast").click()');
+  await waitFor(() => client.evaluate(`(() => {
+    const panel = document.querySelector('.mh-result .divine-interpretation');
+    return panel?.textContent.includes('按八取卦') && panel.textContent.includes('体卦');
+  })()`), '梅花易数未说明起卦公式与体用术语');
+  await client.evaluate('document.querySelector("[data-mode=explore]").click()');
+  await waitFor(() => client.evaluate('document.querySelector("#star-canvas")?.hidden === false'), '占筮后未返回星图');
+
+  await client.send('Emulation.setEmulatedMedia', {
+    features: [{ name: 'prefers-reduced-motion', value: 'reduce' }],
+  });
+  await client.evaluate('document.querySelector("[data-explore-tool=guaxu]").click()');
+  await waitFor(() => client.evaluate('document.querySelector(".guaxu-overlay.open") !== null'), '卦序转盘未居中打开');
+  await client.evaluate('document.querySelector(".guaxu-spin").click()');
+  const guaxuResult = await waitFor(() => client.evaluate(`(() => {
+    const selected = document.querySelectorAll('.guaxu-wheel-sector.selected').length;
+    const title = document.querySelector('#guaxu-result-title')?.textContent?.trim();
+    const openButton = document.querySelector('[data-guaxu-open]');
+    return selected === 1 && title && openButton ? { selected, title } : null;
+  })()`), '卦序转盘未生成唯一抽取结果');
+  if (!guaxuResult.title) throw new Error('卦序结果摘要缺少卦名');
+  await client.evaluate('document.querySelector("[data-guaxu-open]").click()');
+  await waitFor(() => client.evaluate('document.querySelector("#detail-panel").classList.contains("open") && location.search.includes("hex=")'), '卦序结果无法打开完整详解');
+  await client.evaluate('document.querySelector("#detail-close").click()');
+  await client.send('Emulation.setEmulatedMedia', { features: [] });
+
   const resultCount = await client.evaluate(`(() => {
     const input = document.querySelector('#search');
     input.value = '乾';
@@ -163,6 +235,23 @@ try {
   if (resultCount < 1) throw new Error('搜索没有返回结果');
   await client.evaluate('document.querySelector(".search-option").click()');
   await waitFor(() => client.evaluate('document.querySelector("#detail-panel").classList.contains("open") && location.search.includes("hex=")'), '详情深链接未打开');
+
+  await client.evaluate('document.querySelector(".share-hexagram").click()');
+  const shareCard = await waitFor(() => client.evaluate(`(() => {
+    const image = document.querySelector('.share-card-preview img');
+    if (!image?.complete || !image.naturalWidth) return null;
+    return {
+      width: image.naturalWidth,
+      height: image.naturalHeight,
+      sendVisible: !document.querySelector('.share-card-send')?.hidden,
+      downloadText: document.querySelector('.share-card-download')?.textContent,
+    };
+  })()`), '分享图片未生成或预览未加载');
+  if (shareCard.width !== 1080 || shareCard.height !== 1440 || !shareCard.downloadText?.includes('下载')) {
+    throw new Error('分享图片尺寸或下载操作不符合约定');
+  }
+  await client.evaluate('document.querySelector(".share-card-close").click()');
+  await waitFor(() => client.evaluate('document.querySelector(".share-card-overlay") === null'), '分享图片预览未关闭');
 
   await client.evaluate('document.querySelector(".evolution-launch").click()');
   await waitFor(() => client.evaluate('document.querySelector(".evolution-overlay.open") !== null'), '卦象演变实验室未打开');

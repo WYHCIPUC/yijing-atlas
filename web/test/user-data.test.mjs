@@ -14,11 +14,15 @@ function storage(initial = {}) {
 test('导出仅包含项目数据并可重新导入', () => {
   const source = storage({
     'yijing.study.v1': '{"l1-1":true}',
+    'yijing-learning-record-v2': '{"version":2,"lessons":{},"spotChecks":[],"exams":[],"oralReviews":[]}',
+    'yijing-learning-review-config-v1': '{"endpoint":"/api/learning-review"}',
     unrelated: 'secret',
   });
   const snapshot = exportUserData(source);
   assert.equal(snapshot.format, 'yijing-atlas-user-data');
   assert.deepEqual(snapshot.data['yijing.study.v1'], { 'l1-1': true });
+  assert.equal(snapshot.data['yijing-learning-record-v2'].version, 2);
+  assert.equal(snapshot.data['yijing-learning-review-config-v1'].endpoint, '/api/learning-review');
   assert.equal(snapshot.data.unrelated, undefined);
 
   const target = storage();

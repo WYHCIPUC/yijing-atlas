@@ -1,8 +1,13 @@
-// 学习区：十翼浏览、象数理论、学习路径（L1-L4 分级课程）。
-// 进度（已学章节）存 localStorage。
-import { trigramSvg, hexagramSvg } from './svg-painter.js';
-import { recordActivity } from './learning-progress.js';
-import { calculateStreak, loadActivity } from './learning-progress.js';
+// 学习区：十翼浏览、象数理论与书院式分级课程。
+import { LEARNING_LEVELS, LEARNING_LESSONS } from './learning-curriculum.js';
+import {
+  calculateStreak,
+  loadActivity,
+  loadLearningRecord,
+  markLessonViewed,
+  recordActivity,
+  summarizeLearning,
+} from './learning-progress.js';
 import { loadStats, loadWrongBook } from './quiz-engine.js';
 import { getDueCount, loadReviewCards } from './review-engine.js';
 import { isPlainObject, readJson, writeJson } from './storage.js';
@@ -39,7 +44,7 @@ export function renderWingsPage(mountEl, appState) {
       <div class="study-group">
         <h4 class="group-title">${esc(cat)}</h4>
         ${list.map((w) => `
-          <details class="wing-item">
+          <details class="wing-item" data-content-id="${esc(w.id)}">
             <summary><b>${esc(w.name)}</b> <small>${esc(w.desc)}</small></summary>
             <div class="wing-sections">
               ${w.sections.map((s, i) => `<p class="wing-sec"><span class="sec-num">§${i + 1}</span> ${esc(s)}</p>`).join('')}
@@ -63,7 +68,7 @@ export function renderTheoremsPage(mountEl, appState) {
       <div class="study-group">
         <h4 class="group-title">${esc(cat)}</h4>
         ${list.map((t) => `
-          <details class="theorem-item">
+          <details class="theorem-item" data-content-id="${esc(t.id)}">
             <summary><b>${esc(t.name)}</b> <small>${esc(t.desc)}</small></summary>
             <ul class="theorem-points">
               ${t.points.map((p) => `<li>${esc(p)}</li>`).join('')}
@@ -74,63 +79,31 @@ export function renderTheoremsPage(mountEl, appState) {
     `).join('')}`;
 }
 
-// ---------- 学习路径（L1-L4）----------
-const LEVELS = [
-  {
-    id: 'L1', name: 'L1 · 入门', desc: '阴阳、八卦、卦的组成',
-    steps: [
-      { id: 'l1-1', title: '阴阳之道', type: 'theory', ref: 'yinyang' },
-      { id: 'l1-2', title: '八卦生成', type: 'theory', ref: 'bagua-gen' },
-      { id: 'l1-3', title: '爻位与当位', type: 'theory', ref: 'yao-positions' },
-      { id: 'l1-4', title: '认识八卦符号', type: 'trigrams' },
-    ],
-  },
-  {
-    id: 'L2', name: 'L2 · 本经', desc: '六十四卦卦爻辞',
-    steps: [
-      { id: 'l2-1', title: '上经前八卦（乾-比）', type: 'hexagrams', range: [1, 8] },
-      { id: 'l2-2', title: '上经中段', type: 'hexagrams', range: [9, 22] },
-      { id: 'l2-3', title: '上经后段', type: 'hexagrams', range: [23, 30] },
-      { id: 'l2-4', title: '下经前段', type: 'hexagrams', range: [31, 47] },
-      { id: 'l2-5', title: '下经后段', type: 'hexagrams', range: [48, 64] },
-    ],
-  },
-  {
-    id: 'L3', name: 'L3 · 十翼', desc: '易传精读',
-    steps: [
-      { id: 'l3-1', title: '系辞传', type: 'wings', ref: 'xici' },
-      { id: 'l3-2', title: '文言·说卦', type: 'wings', ref: 'wenyan' },
-      { id: 'l3-3', title: '序卦·杂卦', type: 'wings', ref: 'xugua' },
-    ],
-  },
-  {
-    id: 'L4', name: 'L4 · 象数', desc: '河洛五行、先后天八卦、卦际关系',
-    steps: [
-      { id: 'l4-1', title: '五行生克', type: 'theory', ref: 'wuxing' },
-      { id: 'l4-2', title: '河图洛书', type: 'theory', ref: 'hetu-luoshu' },
-      { id: 'l4-3', title: '先天/后天八卦', type: 'theory', ref: 'xiantian' },
-      { id: 'l4-4', title: '错卦与综卦', type: 'theory', ref: 'cuo-zong' },
-    ],
-  },
-];
-
-export function renderStudyPathPage(mountEl, appState, { onNavigate } = {}) {
-  const progress = loadStudyProgress();
-  const totalSteps = LEVELS.reduce((s, l) => s + l.steps.length, 0);
-  const doneSteps = Object.values(progress).filter(Boolean).length;
+// ---------- 学习路径与掌握度 ----------
+export function renderStudyPathPage(mountEl, appState, { onNavigate, onAssess } = {}) {
+  const record = loadLearningRecord();
+  const summary = summarizeLearning(record, LEARNING_LESSONS);
   const quizStats = loadStats();
   const wrongCount = loadWrongBook().length;
   const dueCount = getDueCount(loadReviewCards());
   const streak = calculateStreak(loadActivity().days);
 
   mountEl.innerHTML = `
-    <h3>学习路径</h3>
+    <div class="academy-heading">
+      <div><span class="academy-kicker">循序学易</span><h3>学习进度</h3></div>
+      <p>课程完全开放；小试、抽查与考评只帮助辨明薄弱处，不锁定后续内容。</p>
+    </div>
+    <section class="academy-rank-card" data-rank="${summary.rank.id}">
+      <div class="academy-rank-seal">${summary.rank.label}</div>
+      <div><small>当前书院学阶</small><strong>${summary.mastery}% 综合掌握度</strong><p>${summary.rank.hint}</p></div>
+      <button type="button" class="quick-btn" data-action="assessment-center">进入日课考评</button>
+    </section>
     <div class="learning-dashboard" aria-label="学习概览">
-      <div><strong>${doneSteps}/${totalSteps}</strong><span>课程完成</span></div>
+      <div><strong>${summary.viewed}/${summary.total}</strong><span>已浏览小节</span></div>
+      <div><strong>${summary.checked}/${summary.total}</strong><span>已完成小试</span></div>
       <div><strong>${streak}</strong><span>连续学习天数</span></div>
       <div><strong>${dueCount}</strong><span>今日待复习</span></div>
-      <div><strong>${wrongCount}</strong><span>待回练错题</span></div>
-      <div><strong>${quizStats.total ? Math.round(quizStats.correct / quizStats.total * 100) : 0}%</strong><span>测验正确率</span></div>
+      <div><strong>${quizStats.total ? Math.round(quizStats.correct / quizStats.total * 100) : 0}%</strong><span>自由测验正确率</span></div>
     </div>
     <div class="study-quick">
       <button type="button" class="quick-btn" data-target="/wings">十翼（易传）</button>
@@ -138,46 +111,55 @@ export function renderStudyPathPage(mountEl, appState, { onNavigate } = {}) {
       <button type="button" class="quick-btn" data-target="/almanac">黄历知识</button>
     </div>
     <div class="path-overview">
-      <div class="progress-bar"><div class="progress-fill" style="width:${Math.round(doneSteps / totalSteps * 100)}%"></div></div>
-      <p class="progress-text">总进度 ${doneSteps}/${totalSteps}（${Math.round(doneSteps / totalSteps * 100)}%）</p>
+      <div class="progress-bar"><div class="progress-fill" style="width:${summary.mastery}%"></div></div>
+      <p class="progress-text">综合掌握度由学习 10%、小试 35%、抽查 20%、复讲 15%、阶段考评 20% 组成。</p>
     </div>
-    ${LEVELS.map((level) => {
-      const lvlDone = level.steps.filter((s) => progress[s.id]).length;
+    ${LEARNING_LEVELS.map((level) => {
+      const levelMastery = Math.round(level.lessons.reduce((total, lesson) =>
+        total + summary.masteryByLesson[lesson.id], 0) / level.lessons.length);
       return `
         <div class="level-block">
-          <h4 class="level-title">${esc(level.name)} · ${esc(level.desc)} <small>（${lvlDone}/${level.steps.length}）</small></h4>
+          <div class="level-heading"><div><span>${esc(level.id)} · ${esc(level.name)}</span><h4>${esc(level.title)}</h4><small>${esc(level.desc)}</small></div><strong>${levelMastery}%</strong></div>
           <div class="step-list">
-            ${level.steps.map((step) => {
-              const done = !!progress[step.id];
-              const target = stepTarget(step);
+            ${level.lessons.map((lesson) => {
+              const mastery = summary.masteryByLesson[lesson.id];
+              const progress = record.lessons[lesson.id] || {};
+              const status = progress.attempts ? `小试 ${Math.round((progress.bestScore || 0) * 100)}%` :
+                progress.viewedAt ? '已浏览 · 待小试' : '未开始';
               return `
-                <button type="button" class="step-row ${done ? 'step-done' : ''}" data-step="${step.id}" data-target="${esc(target)}">
-                  <span class="step-check">${done ? '✅' : '⬜'}</span>
-                  <span class="step-title">${esc(step.title)}</span>
-                  <span class="step-go">前往 →</span>
-                </button>`;
+                <article class="step-row ${mastery >= 80 ? 'step-mastered' : ''}" data-step="${lesson.id}">
+                  <span class="step-mastery" aria-label="掌握度 ${mastery}%">${mastery}</span>
+                  <div><strong>${esc(lesson.title)}</strong><small>${esc(status)}</small></div>
+                  <div class="step-actions">
+                    <button type="button" class="text-button" data-action="learn" data-target="${esc(lesson.target)}">学习</button>
+                    <button type="button" class="text-button" data-action="assess">小试</button>
+                  </div>
+                </article>`;
             }).join('')}
           </div>
         </div>
       `;
     }).join('')}
-    <div class="study-hint"><small>点击章节前往学习；学完可勾选标记，进度自动保存。</small></div>
+    <div class="academy-source-note"><strong>教学取法</strong><span>“学而时习之”用于日课与温故；《学记》的阶段考校用于小试与考评；保留自我进度，不作排名。</span></div>
+    ${wrongCount ? `<div class="study-hint"><small>自由测验另有 ${wrongCount} 道错题待回练。</small></div>` : ''}
   `;
 
-  // 点击：跳转 + 标记完成
-  mountEl.querySelectorAll('.step-row').forEach((row) => {
-    row.addEventListener('click', () => {
-      const id = row.dataset.step;
-      const p = loadStudyProgress();
-      p[id] = true;
-      const saved = saveStudyProgress(p);
+  mountEl.querySelector('[data-action="assessment-center"]').addEventListener('click', () => onAssess?.());
+  mountEl.querySelectorAll('[data-action="learn"]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const row = button.closest('[data-step]');
+      const result = markLessonViewed(row.dataset.step);
       recordActivity();
-      if (!saved) row.setAttribute('title', '本地存储不可用，进度未保存');
-      if (onNavigate) onNavigate(row.dataset.target);
-      else location.hash = `#${row.dataset.target}`;
+      if (!result.saved) row.setAttribute('title', '本地存储不可用，进度未保存');
+      if (onNavigate) onNavigate(button.dataset.target, row.dataset.step);
+      else location.hash = button.dataset.target === 'explore' ? '#/library' : `#/${button.dataset.target}`;
     });
   });
+  mountEl.querySelectorAll('[data-action="assess"]').forEach((button) => {
+    button.addEventListener('click', () => onAssess?.(button.closest('[data-step]').dataset.step));
+  });
   mountEl.querySelectorAll('.quick-btn').forEach((button) => {
+    if (!button.dataset.target) return;
     button.addEventListener('click', () => {
       if (onNavigate) onNavigate(button.dataset.target);
       else location.hash = `#${button.dataset.target}`;
@@ -186,14 +168,5 @@ export function renderStudyPathPage(mountEl, appState, { onNavigate } = {}) {
 }
 
 export function getStudyStepCount() {
-  return LEVELS.reduce((total, level) => total + level.steps.length, 0);
-}
-
-// 步骤 → 跳转 hash
-function stepTarget(step) {
-  if (step.type === 'theory') return '/theorems';
-  if (step.type === 'trigrams') return '/trigrams';
-  if (step.type === 'hexagrams') return '/library';
-  if (step.type === 'wings') return '/wings';
-  return '/library';
+  return LEARNING_LESSONS.length;
 }

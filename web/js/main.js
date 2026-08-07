@@ -1,6 +1,15 @@
 // 易象图谱入口：只负责数据初始化、全局状态与模式调度。
-import { playHexagramSound } from './audio-engine.js';
+import {
+  bindInterfaceSounds,
+  isSoundEnabled,
+  playHexagramSound,
+  playInterfaceSound,
+  setSoundEnabled,
+} from './audio-engine.js';
 import * as dataLoader from './data-loader.js';
+import { closeEvolutionLab, showEvolutionLab } from './evolution-lab.js';
+import { deliverShareImage, generateHexagramShareImage } from './share-card.js';
+import { closeGuaxuWheel, showGuaxuWheel } from './modes/guaxu-mode.js';
 import { renderHexagramDetail } from './render.js';
 import { getHexCodeFromUrl, moveSelection, withHexCode } from './search-controller.js';
 import { buildRelationGraph } from './star-relations.js';
@@ -12,7 +21,6 @@ const { buildHexagramIndex, searchHexagrams } = dataLoader;
 const modeLoaders = {
   almanac: () => import('./almanac-page.js').then((module) => module.renderAlmanacPage),
   divination: () => import('./modes/divination-mode.js').then((module) => module.renderDivinationMode),
-  guaxu: () => import('./modes/guaxu-mode.js').then((module) => module.renderGuaxuMode),
   learning: () => import('./modes/learning-mode.js').then((module) => module.renderLearningMode),
   quiz: () => import('./modes/quiz-mode.js').then((module) => module.renderQuizMode),
   review: () => import('./modes/review-mode.js').then((module) => module.renderReviewMode),
@@ -29,6 +37,7 @@ const state = {
   starMap: null,
   currentDetail: null,
   currentMode: 'explore',
+  commentaryReleaseReady: false,
 };
 
 const loadingEl = document.getElementById('loading');
@@ -41,6 +50,8 @@ const searchInput = document.getElementById('search');
 const searchResultsEl = document.getElementById('search-results');
 const dailyOverlay = document.getElementById('daily-overlay');
 const modeSwitcher = document.getElementById('mode-switcher');
+const exploreTools = document.getElementById('explore-tools');
+const audioToggle = document.getElementById('audio-toggle');
 const compactPanelQuery = window.matchMedia('(max-width: 900px)');
 let modeRequestId = 0;
 let panelReturnFocus = null;
@@ -183,18 +194,94 @@ function closeDetail({ restoreFocus = false, resetMode = true, updateUrl = true 
   }
 }
 
-function bindShareAction(code) {
+function showShareCardDialog(payload, hexagram) {
+  document.querySelector('.share-card-overlay')?.remove();
+  const returnFocus = document.activeElement;
+  const overlay = document.createElement('div');
+  overlay.className = 'share-card-overlay';
+  overlay.innerHTML = `
+    <section class="share-card-dialog" role="dialog" aria-modal="true" aria-labelledby="share-card-title">
+      <button type="button" class="share-card-close" aria-label="关闭分享图片预览">✕</button>
+      <div class="share-card-copy">
+        <small>分享图片已生成</small>
+        <h2 id="share-card-title">${hexagram.name} · ${hexagram.fullName}</h2>
+        <p>可先检查卡片内容，再发送给朋友或下载 PNG。</p>
+      </div>
+      <div class="share-card-preview"><img src="${payload.previewUrl}" alt="${hexagram.name}卦分享卡片预览"></div>
+      <div class="share-card-actions">
+        <button type="button" class="share-card-send">发送图片</button>
+        <button type="button" class="share-card-download">下载 PNG</button>
+      </div>
+      <p class="share-card-status" role="status" aria-live="polite"></p>
+    </section>
+  `;
+  document.body.appendChild(overlay);
+
+  const closeButton = overlay.querySelector('.share-card-close');
+  const sendButton = overlay.querySelector('.share-card-send');
+  const downloadButton = overlay.querySelector('.share-card-download');
+  const dialogStatus = overlay.querySelector('.share-card-status');
+  let systemShareSupported = false;
+  try {
+    const file = new File([payload.blob], payload.filename, { type: 'image/png' });
+    systemShareSupported = Boolean(navigator.share && navigator.canShare?.({ files: [file] }));
+  } catch {}
+  if (!systemShareSupported) sendButton.hidden = true;
+
+  const close = () => {
+    document.removeEventListener('keydown', onKeydown);
+    overlay.remove();
+    returnFocus?.focus?.();
+  };
+  const onKeydown = (event) => {
+    if (event.key === 'Escape') close();
+  };
+  closeButton.addEventListener('click', close);
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) close();
+  });
+  document.addEventListener('keydown', onKeydown);
+  sendButton.addEventListener('click', async () => {
+    sendButton.disabled = true;
+    try {
+      await deliverShareImage(payload);
+      close();
+    } catch (error) {
+      dialogStatus.textContent = error?.name === 'AbortError' ? '已取消分享' : '发送失败，请改用下载 PNG';
+      sendButton.disabled = false;
+    }
+  });
+  downloadButton.addEventListener('click', async () => {
+    downloadButton.disabled = true;
+    try {
+      await deliverShareImage({ ...payload, navigatorRef: {} });
+      close();
+    } catch {
+      dialogStatus.textContent = '下载失败，请稍后重试';
+      downloadButton.disabled = false;
+    }
+  });
+  closeButton.focus();
+}
+
+function bindShareAction(hexagram) {
   const button = panelContent.querySelector('.share-hexagram');
   const status = panelContent.querySelector('.share-status');
   if (!button || !status) return;
   button.addEventListener('click', async () => {
-    const url = withHexCode(window.location.href, code);
+    const url = withHexCode(window.location.href, hexagram.binaryCode);
+    button.disabled = true;
+    button.textContent = '正在生成图片…';
+    status.textContent = '';
     try {
-      if (navigator.share) await navigator.share({ title: document.title, url });
-      else await navigator.clipboard.writeText(url);
-      status.textContent = navigator.share ? '已打开分享面板' : '链接已复制';
+      const payload = await generateHexagramShareImage(hexagram, url);
+      showShareCardDialog(payload, hexagram);
+      status.textContent = '分享图片已生成';
     } catch (error) {
-      if (error?.name !== 'AbortError') status.textContent = '分享失败，请复制浏览器地址';
+      status.textContent = error?.name === 'AbortError' ? '已取消分享' : '图片生成失败，请稍后重试';
+    } finally {
+      button.disabled = false;
+      button.textContent = '生成分享图片';
     }
   });
 }
@@ -204,7 +291,7 @@ function openDetail(code, fromCode = null, { historyMode = 'push' } = {}) {
   if (!hex) return;
   renderHexagramDetail(hex, panelContent, state.hexagrams, (relatedCode) => openDetail(relatedCode, code));
   if (historyMode !== 'none') updateDetailUrl(code, historyMode);
-  bindShareAction(code);
+  bindShareAction(hex);
   openPanel();
   try { playHexagramSound(code); } catch {}
   if (fromCode) state.starMap?.addTrail(fromCode, code);
@@ -224,9 +311,22 @@ function updateModeButtons(mode) {
   });
 }
 
+function updateExploreTools(selected = 'star') {
+  exploreTools.hidden = state.currentMode !== 'explore';
+  exploreTools.querySelectorAll('.explore-tool').forEach((button) => {
+    if (button.dataset.exploreTool === 'evolution') button.hidden = !state.commentaryReleaseReady;
+    const active = button.dataset.exploreTool === selected;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+}
+
 async function loadModeResources(mode) {
   if (mode === 'learning' && dataLoader.loadLearningData) {
-    Object.assign(state, await dataLoader.loadLearningData());
+    const resources = [dataLoader.loadLearningData()];
+    if (dataLoader.loadAlmanacData) resources.push(dataLoader.loadAlmanacData());
+    const [learning, almanac] = await Promise.all(resources);
+    Object.assign(state, learning, almanac || {});
   }
   if ((mode === 'almanac' || mode === 'quiz') && dataLoader.loadAlmanacData) {
     Object.assign(state, await dataLoader.loadAlmanacData());
@@ -239,6 +339,11 @@ async function setMode(mode) {
   updateModeButtons(mode);
   state.starMap?.setReviewDue(null);
   state.starMap?.setMode(mode);
+  if (mode !== 'explore') {
+    closeEvolutionLab();
+    closeGuaxuWheel({ restoreFocus: false, immediate: true });
+  }
+  updateExploreTools('star');
 
   if (mode === 'explore') {
     closeDetail({ resetMode: false });
@@ -260,12 +365,7 @@ async function setMode(mode) {
   try {
     const [renderer] = await Promise.all([loadRenderer(), loadModeResources(mode)]);
     if (requestId !== modeRequestId || state.currentMode !== mode) return;
-    if (mode === 'guaxu') {
-      renderer(panelContent, state, (code) => {
-        setMode('explore');
-        openDetail(code);
-      });
-    } else if (mode === 'learning') {
+    if (mode === 'learning') {
       renderer(panelContent, state, () => setMode('explore'));
     } else {
       renderer(panelContent, state);
@@ -281,6 +381,20 @@ async function setMode(mode) {
 }
 
 function bindGlobalInteractions() {
+  const updateAudioToggle = () => {
+    const enabled = isSoundEnabled();
+    const label = enabled ? '关闭界面音效' : '开启界面音效';
+    audioToggle.setAttribute('aria-pressed', String(enabled));
+    audioToggle.setAttribute('aria-label', label);
+    audioToggle.title = label;
+  };
+  updateAudioToggle();
+  audioToggle.addEventListener('click', () => {
+    const enabled = setSoundEnabled(!isSoundEnabled());
+    updateAudioToggle();
+    if (enabled) playInterfaceSound('complete');
+  });
+  bindInterfaceSounds(document);
   const modeButtons = [...document.querySelectorAll('.mode-btn')];
   modeButtons.forEach((button) => {
     button.addEventListener('click', () => setMode(button.dataset.mode));
@@ -292,6 +406,43 @@ function bindGlobalInteractions() {
     const next = moveSelection(current, event.key === 'ArrowRight' ? 'ArrowDown' :
       event.key === 'ArrowLeft' ? 'ArrowUp' : event.key, modeButtons.length);
     modeButtons[next]?.focus();
+  });
+  exploreTools.addEventListener('click', (event) => {
+    const button = event.target.closest('.explore-tool');
+    if (!button) return;
+    if (button.dataset.exploreTool === 'star') {
+      closeEvolutionLab();
+      closeGuaxuWheel({ restoreFocus: false, immediate: true });
+      updateExploreTools('star');
+      return;
+    }
+    if (button.dataset.exploreTool === 'guaxu') {
+      closeEvolutionLab();
+      state.starMap?.pause?.();
+      updateExploreTools('guaxu');
+      showGuaxuWheel(
+        state.hexagrams,
+        (code) => {
+          updateExploreTools('star');
+          openDetail(code);
+        },
+        () => {
+          updateExploreTools('star');
+          state.starMap?.resume?.();
+        },
+      );
+      return;
+    }
+    if (!state.commentaryReleaseReady) return;
+    const code = state.currentDetail || getHexCodeFromUrl(window.location.href) || '111111';
+    const baseHex = state.index.byCode.get(code) || state.hexagrams[0];
+    updateExploreTools('evolution');
+    showEvolutionLab(
+      baseHex,
+      state.hexagrams,
+      (resultCode) => openDetail(resultCode, baseHex.binaryCode),
+      () => updateExploreTools('star'),
+    );
   });
   document.getElementById('detail-close').addEventListener('click', () => closeDetail({ restoreFocus: true }));
   panelLayoutSelect.addEventListener('change', () => {
@@ -438,6 +589,12 @@ async function init() {
     if (!loadInitialData) throw new Error('缺少数据加载入口');
     const data = await loadInitialData();
     Object.assign(state, data);
+    try {
+      const commentaryManifest = await dataLoader.loadCommentaryManifest?.();
+      state.commentaryReleaseReady = commentaryManifest?.releaseReady === true;
+    } catch {
+      state.commentaryReleaseReady = false;
+    }
     state.index = buildHexagramIndex(data.hexagrams);
     state.starMap = new StarMap(canvas, buildRelationGraph(data.hexagrams), {
       onPick: (code) => openDetail(code),
@@ -445,6 +602,7 @@ async function init() {
     });
     bindGlobalInteractions();
     updateModeButtons('explore');
+    updateExploreTools('star');
     loadingEl.hidden = true;
     const initialCode = getHexCodeFromUrl(window.location.href);
     let dailySeen = false;

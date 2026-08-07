@@ -20,6 +20,7 @@ test('预缓存条目全部指向现有静态资源', () => {
 test('预缓存只包含首屏核心模块，功能数据按访问缓存', () => {
   const core = [
     './js/main.js', './js/data-loader.js', './js/evolution-lab.js', './js/evolution-state.js',
+    './js/guaxu-wheel.js', './js/modes/guaxu-mode.js',
     './js/render.js', './js/star-map.js',
     './js/relation-animation.js', './js/star-relations.js', './js/storage.js',
     './data/hexagrams.json', './data/trigrams.json',

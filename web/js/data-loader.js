@@ -7,9 +7,11 @@ const WINGS_PATH = 'data/wings.json';
 const THEOREMS_PATH = 'data/theorems.json';
 const ALMANAC_TERMS_PATH = 'data/almanac-terms.json';
 const ALMANAC_YIJI_PATH = 'data/almanac-yiji.json';
+const COMMENTARY_MANIFEST_PATH = 'data/commentaries/manifest.json';
 
 let learningDataPromise = null;
 let almanacDataPromise = null;
+let commentaryManifestPromise = null;
 
 async function fetchJson(path) {
   const res = await fetch(path);
@@ -38,6 +40,11 @@ function validateHexagrams(list) {
       const lineIsYang = h.lines[i].isYang;
       if (codeIsYang !== lineIsYang) {
         throw new Error(`${h.name} 爻${i + 1} binaryCode 与 lines 不一致`);
+      }
+      const lineLabel = h.lines[i].text?.split('：')[0] || '';
+      const expectedPolarity = lineIsYang ? '九' : '六';
+      if (!lineLabel.includes(expectedPolarity)) {
+        throw new Error(`${h.name} 爻${i + 1} 阴阳与爻题不一致`);
       }
     }
   });
@@ -87,9 +94,20 @@ export function loadAlmanacData() {
   return almanacDataPromise;
 }
 
+export function loadCommentaryManifest() {
+  if (!commentaryManifestPromise) {
+    commentaryManifestPromise = fetchJson(COMMENTARY_MANIFEST_PATH).catch((error) => {
+      commentaryManifestPromise = null;
+      throw error;
+    });
+  }
+  return commentaryManifestPromise;
+}
+
 export function resetOptionalDataCache() {
   learningDataPromise = null;
   almanacDataPromise = null;
+  commentaryManifestPromise = null;
 }
 
 // 完整加载保留给数据校验工具；浏览器启动使用 loadCoreData。

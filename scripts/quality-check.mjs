@@ -42,6 +42,8 @@ function runChecks() {
   for (const file of dataFiles) JSON.parse(readFileSync(file, 'utf8'));
   console.log(`✓ JSON 可解析：${dataFiles.length} 个文件`);
 
+  execFileSync(process.execPath, [join(root, 'scripts', 'validate-commentaries.mjs')], { stdio: 'inherit' });
+
   const forbiddenTracked = ['.pdf', '.pem', '.key', '.p12'];
   const tracked = execFileSync('git', ['ls-files'], { cwd: root, encoding: 'utf8' })
     .split(/\r?\n/)

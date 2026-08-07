@@ -126,11 +126,6 @@ await tryRender('占筮模式', async () => {
   renderDivinationMode(mount, appState);
 });
 
-await tryRender('卦序模式', async () => {
-  const { renderGuaxuMode } = await import('../../web/js/modes/guaxu-mode.js');
-  renderGuaxuMode(mount, appState, () => {});
-});
-
 await tryRender('黄历主页', async () => {
   const { renderAlmanacPage } = await import('../../web/js/almanac-page.js');
   renderAlmanacPage(mount, appState);

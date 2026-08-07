@@ -18,12 +18,12 @@ function esc(s) {
 // 八卦二进制码 → 名称/自然属性映射
 const TRIGRAM_NAMES = {
   '111': { name: '乾', nature: '天' },
-  '011': { name: '兑', nature: '泽' },
+  '110': { name: '兑', nature: '泽' },
   '101': { name: '离', nature: '火' },
-  '001': { name: '震', nature: '雷' },
-  '110': { name: '巽', nature: '风' },
+  '100': { name: '震', nature: '雷' },
+  '011': { name: '巽', nature: '风' },
   '010': { name: '坎', nature: '水' },
-  '100': { name: '艮', nature: '山' },
+  '001': { name: '艮', nature: '山' },
   '000': { name: '坤', nature: '地' },
 };
 
@@ -123,7 +123,7 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
         <h1 tabindex="-1">${esc(hex.name)} · ${esc(hex.fullName)}</h1>
         <div class="subtitle">下${esc(trigramLabel(hex.trigramLower))} · 上${esc(trigramLabel(hex.trigramUpper))}</div>
         <div class="detail-actions">
-          <button type="button" class="text-button share-hexagram" data-code="${esc(hex.binaryCode)}">分享此卦</button>
+          <button type="button" class="text-button share-hexagram" data-code="${esc(hex.binaryCode)}">生成分享图片</button>
           <span class="share-status" role="status" aria-live="polite"></span>
         </div>
       </div>

@@ -53,26 +53,65 @@ export function getReading(cast, primaryHex, changedHex) {
   const n = cast.changingIdxs.length;
   const readings = [];
   if (n === 0) {
-    readings.push({ src: `${primaryHex.name}·卦辞`, text: primaryHex.judgement });
+    readings.push(createJudgementReading(primaryHex));
   } else if (n === 1) {
     const pos = cast.changingIdxs[0] + 1;
-    const yao = primaryHex.lines[cast.changingIdxs[0]];
-    readings.push({ src: `${primaryHex.name}·${yaoLabel(pos, yao.isYang)}`, text: yao.text });
+    readings.push(createLineReading(primaryHex, pos));
   } else if (n === 6) {
     if (changedHex.useNine || changedHex.useSix) {
-      readings.push({ src: `${changedHex.name}·${changedHex.useNine ? '用九' : '用六'}`, text: changedHex.useNine || changedHex.useSix });
+      const kind = changedHex.useNine ? 'useNine' : 'useSix';
+      readings.push(createUseReading(changedHex, kind));
     } else {
-      readings.push({ src: `${changedHex.name}·卦辞`, text: changedHex.judgement });
+      readings.push(createJudgementReading(changedHex));
     }
-  } else if (n <= 2) {
+  } else if (n === 2) {
     const upper = cast.changingIdxs[n - 1];
-    const yao = primaryHex.lines[upper];
-    readings.push({ src: `${primaryHex.name}·${yaoLabel(upper + 1, yao.isYang)}`, text: yao.text });
-  } else {
-    readings.push({ src: `${primaryHex.name}·卦辞`, text: primaryHex.judgement });
-    if (changedHex) readings.push({ src: `${changedHex.name}·卦辞`, text: changedHex.judgement });
+    readings.push(createLineReading(primaryHex, upper + 1));
+  } else if (n === 3) {
+    readings.push(createJudgementReading(primaryHex));
+    readings.push(createJudgementReading(changedHex));
+  } else if (n === 4) {
+    const unchangedIdxs = cast.changingIdxs.reduce((items, index) => {
+      items.delete(index);
+      return items;
+    }, new Set([0, 1, 2, 3, 4, 5]));
+    const lower = Math.min(...unchangedIdxs);
+    readings.push(createLineReading(changedHex, lower + 1));
+  } else if (n === 5) {
+    const unchanged = [0, 1, 2, 3, 4, 5].find((index) => !cast.changingIdxs.includes(index));
+    readings.push(createLineReading(changedHex, unchanged + 1));
   }
   return { n, readings, rule: getRuleText(n) };
+}
+
+function createJudgementReading(hexagram) {
+  return {
+    src: `${hexagram.name}·卦辞`,
+    text: hexagram.judgement,
+    kind: 'judgement',
+    hexCode: hexagram.binaryCode,
+  };
+}
+
+function createLineReading(hexagram, position) {
+  const line = hexagram.lines[position - 1];
+  return {
+    src: `${hexagram.name}·${yaoLabel(position, line.isYang)}`,
+    text: line.text,
+    kind: 'line',
+    position,
+    hexCode: hexagram.binaryCode,
+  };
+}
+
+function createUseReading(hexagram, kind) {
+  const label = kind === 'useNine' ? '用九' : '用六';
+  return {
+    src: `${hexagram.name}·${label}`,
+    text: hexagram[kind],
+    kind,
+    hexCode: hexagram.binaryCode,
+  };
 }
 
 function getRuleText(n) {
@@ -81,9 +120,9 @@ function getRuleText(n) {
     1: '一爻变，以本卦变爻爻辞断之。',
     2: '二爻变，以本卦上变爻爻辞为主断之。',
     3: '三爻变，以本卦卦辞与变卦卦辞合断之。',
-    4: '四爻变，以变卦下不变爻爻辞断之。',
+    4: '四爻变，以变卦两个不变爻中较下者的爻辞为主断之。',
     5: '五爻变，以变卦不变爻爻辞断之。',
-    6: '六爻全变，以变卦卦辞断之。',
+    6: '六爻全变，乾坤优先参看用九、用六，其余以变卦卦辞断之。',
   };
   return rules[n] || '';
 }

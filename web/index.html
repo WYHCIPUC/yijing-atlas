@@ -40,18 +40,19 @@
       <div class="brand-subtitle">观象 · 读经 · 知变</div>
     </div>
     <nav class="mode-switcher" id="mode-switcher" aria-label="主要功能">
+      <button type="button" class="mode-btn" data-mode="almanac" aria-pressed="false">黄历</button>
       <button type="button" class="mode-btn active" data-mode="explore" aria-pressed="true">探索</button>
       <button type="button" class="mode-btn" data-mode="learning" aria-pressed="false">学习</button>
-      <button type="button" class="mode-btn" data-mode="guaxu" aria-pressed="false">卦序</button>
       <button type="button" class="mode-btn" data-mode="review" aria-pressed="false">复习</button>
       <button type="button" class="mode-btn" data-mode="quiz" aria-pressed="false">测验</button>
-      <button type="button" class="mode-btn" data-mode="almanac" aria-pressed="false">黄历</button>
       <button type="button" class="mode-btn" data-mode="divination" aria-pressed="false">占筮</button>
     </nav>
     <div class="search-box">
       <span class="search-icon" aria-hidden="true">⌕</span>
       <input id="search" type="search" placeholder="搜索卦名…" aria-label="搜索六十四卦" autocomplete="off"
         role="combobox" aria-autocomplete="list" aria-controls="search-results" aria-expanded="false" />
+      <button type="button" class="audio-toggle" id="audio-toggle" aria-label="关闭界面音效"
+        aria-pressed="true" title="关闭界面音效"><span aria-hidden="true">♪</span></button>
       <div class="search-results" id="search-results" role="listbox" aria-label="搜索结果" hidden></div>
     </div>
   </header>
@@ -59,6 +60,12 @@
   <canvas id="star-canvas" tabindex="0" role="img" aria-label="六十四卦关系星图，可拖动、缩放并选择卦象">
     你的浏览器不支持星图画布。仍可通过搜索、学习、复习和黄历功能浏览内容。
   </canvas>
+
+  <nav class="explore-tools" id="explore-tools" aria-label="探索功能" hidden>
+    <button type="button" class="explore-tool active" data-explore-tool="star" aria-pressed="true">星图探索</button>
+    <button type="button" class="explore-tool" data-explore-tool="evolution" aria-pressed="false">演变实验室</button>
+    <button type="button" class="explore-tool guaxu-tool" data-explore-tool="guaxu" aria-pressed="false">卦序转盘</button>
+  </nav>
 
   <aside class="detail-panel" id="detail-panel" role="dialog" aria-modal="true" aria-label="内容面板" aria-hidden="true" inert>
     <div class="detail-panel-tools">

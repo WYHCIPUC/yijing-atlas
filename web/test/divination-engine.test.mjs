@@ -49,13 +49,22 @@ test('六爻全变优先取乾坤用辞', () => {
   assert.match(reading.readings[0].src, /用六/);
 });
 
-test('二爻变取上变爻，三爻及以上合看本卦与变卦', () => {
+test('二爻变取上变爻，三爻变合看本卦与变卦', () => {
   const two = getReading({ changingIdxs: [1, 4] }, primaryHex, changedHex);
   assert.equal(two.readings[0].text, '第5爻');
   const three = getReading({ changingIdxs: [0, 2, 5] }, primaryHex, changedHex);
   assert.deepEqual(three.readings.map((item) => item.text), [primaryHex.judgement, changedHex.judgement]);
-  const four = getReading({ changingIdxs: [0, 1, 2, 3] }, primaryHex, null);
-  assert.deepEqual(four.readings.map((item) => item.text), [primaryHex.judgement]);
+});
+
+test('四爻变取变卦较下不变爻，五爻变取变卦唯一不变爻', () => {
+  const four = getReading({ changingIdxs: [0, 1, 2, 3] }, primaryHex, changedHex);
+  assert.equal(four.readings[0].text, '第5爻');
+  assert.equal(four.readings[0].position, 5);
+  assert.match(four.rule, /较下者/);
+
+  const five = getReading({ changingIdxs: [0, 1, 2, 3, 4] }, primaryHex, changedHex);
+  assert.equal(five.readings[0].text, '第6爻');
+  assert.equal(five.readings[0].kind, 'line');
 });
 
 test('六爻全变且无用辞时回退到变卦卦辞', () => {

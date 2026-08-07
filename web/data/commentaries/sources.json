@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "reusePolicy": "数字文本仅作索引与录入辅助；公开原文须由项目独立转录，并与公版影印页逐条复核。",
+  "authorities": [
+    {
+      "id": "wang-bi",
+      "author": "王弼",
+      "dynasty": "三国魏",
+      "work": "周易注",
+      "scopeNote": "王弼注经部分；《系辞》等传文所附注须区分韩康伯，不得误署王弼。",
+      "edition": "《武英殿十三经注疏》本《周易正义》所收注文",
+      "editionStatus": "indexed",
+      "digitalIndex": "https://ctext.org/library.pl?author=%E7%8E%8B%E5%BC%BC&if=gb"
+    },
+    {
+      "id": "kong-yingda",
+      "author": "孔颖达",
+      "dynasty": "唐",
+      "work": "周易正义",
+      "scopeNote": "孔疏须与王弼、韩康伯注文分层录入。",
+      "edition": "《武英殿十三经注疏》本",
+      "editionStatus": "indexed",
+      "digitalIndex": "https://ctext.org/library.pl?author=%E5%AD%94%E7%A9%8E%E9%81%94&if=gb"
+    },
+    {
+      "id": "li-dingzuo",
+      "author": "李鼎祚",
+      "dynasty": "唐",
+      "work": "周易集解",
+      "scopeNote": "保留书中所引汉唐注家署名，李鼎祚仅作为纂集者。",
+      "edition": "《钦定四库全书》本",
+      "editionStatus": "indexed",
+      "digitalIndex": "https://ctext.org/wiki.pl?if=gb&remap=gb&res=469302"
+    },
+    {
+      "id": "cheng-yi",
+      "author": "程颐",
+      "dynasty": "北宋",
+      "work": "伊川易传",
+      "scopeNote": "按原书卷次和卦爻层级建立锚点。",
+      "edition": "待影印底本校勘后登记",
+      "editionStatus": "pending",
+      "digitalIndex": "https://ctext.org/wiki.pl?if=gb&res=646714"
+    },
+    {
+      "id": "zhu-xi",
+      "author": "朱熹",
+      "dynasty": "南宋",
+      "work": "周易本义",
+      "scopeNote": "数字文本存在 OCR 初稿版本，必须逐条查看影印页。",
+      "edition": "待选定《周易本义》公版影印底本后登记",
+      "editionStatus": "pending",
+      "digitalIndex": "https://ctext.org/wiki.pl?if=gb&res=589140"
+    },
+    {
+      "id": "lai-zhide",
+      "author": "来知德",
+      "dynasty": "明",
+      "work": "周易集注",
+      "scopeNote": "图说与注文分别录入，保留错综等术语原貌。",
+      "edition": "《钦定四库全书》本《周易集注》",
+      "editionStatus": "indexed",
+      "digitalIndex": "https://ctext.org/wiki.pl?if=gb&res=767327"
+    }
+  ]
+}

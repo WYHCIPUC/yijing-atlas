@@ -8,6 +8,7 @@ import {
   loadAlmanacData,
   loadAllData,
   loadCoreData,
+  loadCommentaryManifest,
   loadLearningData,
   resetOptionalDataCache,
   searchHexagrams,
@@ -42,6 +43,8 @@ test('浏览器启动只取核心数据，功能数据首次进入时加载并�
 
     const almanac = await loadAlmanacData();
     assert.ok(almanac.almanacTerms.length >= 50);
+    const commentaryManifest = await loadCommentaryManifest();
+    assert.equal(commentaryManifest.releaseReady, false);
     const all = await loadAllData();
     assert.equal(all.hexagrams.length, 64);
     assert.equal(calls.filter((path) => path === 'data/hexagrams.json').length, 2);
@@ -69,6 +72,7 @@ test('核心数据自检覆盖数量、唯一性、卦序和爻码一致性', as
     ['重复的 binaryCode', (() => { const value = structuredClone(originalHexagrams); value[1].binaryCode = value[0].binaryCode; return value; })(), originalTrigrams],
     ['卦序必须', (() => { const value = structuredClone(originalHexagrams); value[0].number = 2; return value; })(), originalTrigrams],
     ['不一致', (() => { const value = structuredClone(originalHexagrams); value[0].lines[0].isYang = !value[0].lines[0].isYang; return value; })(), originalTrigrams],
+    ['爻题不一致', (() => { const value = structuredClone(originalHexagrams); value[0].lines[0].text = '初六：测试。'; return value; })(), originalTrigrams],
     ['八卦数量', originalHexagrams, originalTrigrams.slice(0, 7)],
     ['重复的八卦', originalHexagrams, (() => { const value = structuredClone(originalTrigrams); value[1].binaryCode = value[0].binaryCode; return value; })()],
   ];

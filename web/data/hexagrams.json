@@ -871,9 +871,9 @@
     "number": 15,
     "name": "谦",
     "fullName": "地山谦",
-    "binaryCode": "000100",
-    "trigramLower": "000",
-    "trigramUpper": "100",
+    "binaryCode": "001000",
+    "trigramLower": "001",
+    "trigramUpper": "000",
     "judgement": "谦：亨，君子有终。",
     "image": "地中有山，谦；君子以裒多益寡，称物平施。",
     "tuan": "谦亨，天道下济而光明，地道卑而上行。天道亏盈而益谦，地道变盈而流谦，鬼神害盈而福谦，人道恶盈而好谦。谦尊而光，卑而不可逾，君子之终也。",
@@ -894,14 +894,14 @@
       },
       {
         "position": 3,
-        "isYang": false,
+        "isYang": true,
         "text": "九三：劳谦，君子有终，吉。",
         "xiang": "劳谦君子，万民服也。",
         "note": "勤劳而能谦虚，万民归服，终得善果。"
       },
       {
         "position": 4,
-        "isYang": true,
+        "isYang": false,
         "text": "六四：无不利，撝谦。",
         "xiang": "无不利撝谦，不违则也。",
         "note": "处处发挥谦德，无所不利。"
@@ -933,9 +933,9 @@
     "number": 16,
     "name": "豫",
     "fullName": "雷地豫",
-    "binaryCode": "001000",
-    "trigramLower": "001",
-    "trigramUpper": "000",
+    "binaryCode": "000100",
+    "trigramLower": "000",
+    "trigramUpper": "100",
     "judgement": "豫：利建侯行师。",
     "image": "雷出地奋，豫；先王以作乐崇德，殷荐之上帝，以配祖考。",
     "tuan": "豫，刚应而志行，顺以动，豫。豫顺以动，故天地如之，而况建侯行师乎。天地以顺动，故日月不过，而四时不忒。圣人以顺动，则刑罚清而民服。豫之时义大矣哉。",
@@ -956,14 +956,14 @@
       },
       {
         "position": 3,
-        "isYang": true,
+        "isYang": false,
         "text": "六三：盱豫，悔。迟有悔。",
         "xiang": "盱豫有悔，位不当也。",
         "note": "谄媚求宠以图逸乐，必有悔恨，迟疑不改则悔更深。"
       },
       {
         "position": 4,
-        "isYang": false,
+        "isYang": true,
         "text": "九四：由豫，大有得。勿疑，朋盍簪。",
         "xiang": "由豫大有得，志大行也。",
         "note": "众人因己而得安乐，大有收获，诚信不疑则朋友云集。"
@@ -2607,16 +2607,16 @@
     "number": 43,
     "name": "夬",
     "fullName": "泽天夬",
-    "binaryCode": "011111",
-    "trigramLower": "011",
-    "trigramUpper": "111",
+    "binaryCode": "111110",
+    "trigramLower": "111",
+    "trigramUpper": "110",
     "judgement": "夬：扬于王庭，孚号有厉，告自邑，不利即戎，利有攸往。",
     "image": "泽上于天，夬；君子以施禄及下，居德则忌。",
     "tuan": "夬，决也，刚决柔也。健而说，决而和。扬于王庭，柔乘五刚也。孚号有厉，其危乃光也。告自邑，不利即戎，所尚乃穷也。利有攸往，刚长乃终也。",
     "lines": [
       {
         "position": 1,
-        "isYang": false,
+        "isYang": true,
         "text": "初九：壮于前趾，往不胜为咎。",
         "xiang": "不胜而往，咎也。",
         "note": "壮于前趾，冒进而不胜，反成咎害。"
@@ -2651,7 +2651,7 @@
       },
       {
         "position": 6,
-        "isYang": true,
+        "isYang": false,
         "text": "上六：无号，终有凶。",
         "xiang": "无号之凶，终不可长也。",
         "note": "无人呼号告警，纵容小人，终有凶。"
@@ -2669,16 +2669,16 @@
     "number": 44,
     "name": "姤",
     "fullName": "天风姤",
-    "binaryCode": "111110",
-    "trigramLower": "111",
-    "trigramUpper": "110",
+    "binaryCode": "011111",
+    "trigramLower": "011",
+    "trigramUpper": "111",
     "judgement": "姤：女壮，勿用取女。",
     "image": "天下有风，姤；后以施命诰四方。",
     "tuan": "姤，遇也，柔遇刚也。勿用取女，不可与长也。天地相遇，品物咸章也。刚遇中正，天下大行也。姤之时义大矣哉。",
     "lines": [
       {
         "position": 1,
-        "isYang": true,
+        "isYang": false,
         "text": "初六：系于金柅，贞吉。有攸往，见凶，羸豕孚蹢躅。",
         "xiang": "系于金柅，柔道牵也。",
         "note": "系于金属刹车木，守正得吉，若有所往则见凶，猪虽缚仍躁动。"
@@ -2713,7 +2713,7 @@
       },
       {
         "position": 6,
-        "isYang": false,
+        "isYang": true,
         "text": "上九：姤其角，吝，无咎。",
         "xiang": "姤其角，上穷吝也。",
         "note": "如角般硬碰而遇，虽吝但无咎。"
