@@ -749,7 +749,7 @@ body {
 .daily-verse {
   color: var(--text-secondary); font-size: 1.2rem; line-height: 2.1;
   font-family: "Songti SC", "STSong", serif; margin-bottom: 10px;
-  padding: 0 24px; letter-spacing: 0.05em;
+  padding: 0 24px; letter-spacing: 0.05em; white-space: nowrap;
 }
 .daily-verse-src {
   color: var(--text-dim); font-size: 0.8rem; margin-bottom: 40px;
@@ -1024,7 +1024,7 @@ body {
   .daily-date { margin-bottom: 22px; }
   .daily-hex-name { font-size: 3.1rem; }
   .daily-divider { margin: 24px auto; }
-  .daily-verse { font-size: 1.05rem; padding: 0; }
+  .daily-verse { font-size: min(1.05rem, 4vw); padding: 0; }
   .daily-verse-src { margin-bottom: 28px; }
   .daily-enter { min-height: 48px; }
   .alm-date-bar { gap: 6px; }
