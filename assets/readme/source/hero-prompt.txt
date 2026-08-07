@@ -1,0 +1,10 @@
+Use case: stylized-concept
+Asset type: atmospheric raster layer for a GitHub README hero about an interactive I Ching learning project
+Primary request: create a cinematic, sophisticated celestial atlas inspired by the sixty-four I Ching hexagrams, where a precise constellation network of many warm-gold nodes and thin orbital paths emerges from deep indigo ink darkness around a central ancient bronze cosmological instrument; subtle broken and unbroken yao-line motifs are integrated into the chart geometry, making it unmistakably about the I Ching rather than a generic space scene
+Scene/backdrop: deep ink-blue void with restrained Chinese ink-wash clouds, faint aged-paper fibers, bronze patina and sparse starlight; no landscape and no people
+Style/medium: premium editorial concept art combining Chinese ink wash, antique astronomical chart engraving, and subtle cinematic lighting; refined and scholarly, not fantasy-game art
+Composition/framing: wide landscape composition; reserve calm dark negative space across the left 45 percent for later typography; concentrate the bronze instrument and brightest constellation structure on the right; maintain useful detail when cropped to a 1200 by 420 banner
+Lighting/mood: soft warm-gold rim light from the right, contemplative, mysterious, intelligent, museum-grade
+Color palette: #0a0e1a deep ink, #11172a soft navy, #c9a96a antique gold, #e8d9b8 warm paper, restrained muted teal highlights
+Materials/textures: engraved bronze, rice paper fibers, ink diffusion, fine star-map linework
+Constraints: no text, no Chinese characters, no letters, no numbers, no logos, no watermark, no UI mockup; keep the left area low-detail and high-contrast for typography; avoid obvious zodiac symbols and avoid generic neon sci-fi aesthetics

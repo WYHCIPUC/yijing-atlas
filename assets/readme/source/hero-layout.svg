@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="420" viewBox="0 0 1200 420"
+     role="img" aria-labelledby="title desc">
+  <title id="title">易象图谱 README 主视觉排版层</title>
+  <desc id="desc">在深色星图氛围图上叠加项目名称、价值说明和功能元数据。</desc>
+
+  <defs>
+    <linearGradient id="left-shade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#080c16" stop-opacity="0.98"/>
+      <stop offset="0.47" stop-color="#080c16" stop-opacity="0.86"/>
+      <stop offset="0.72" stop-color="#080c16" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#080c16" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bottom-shade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.55" stop-color="#0a0e1a" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0a0e1a" stop-opacity="0.72"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="420" fill="url(#left-shade)"/>
+  <rect width="1200" height="420" fill="url(#bottom-shade)"/>
+  <rect x="0.75" y="0.75" width="1198.5" height="418.5" rx="25"
+        fill="none" stroke="#c9a96a" stroke-opacity="0.32" stroke-width="1.5"/>
+
+  <g id="title-block" transform="translate(66 55)">
+    <text x="0" y="0" fill="#c9a96a" font-size="17" letter-spacing="5"
+          font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+      INTERACTIVE I CHING ATLAS
+    </text>
+    <text x="0" y="88" fill="#f0e4ca" font-size="72" font-weight="650"
+          letter-spacing="8" font-family="Songti SC, STSong, Georgia, serif">
+      易象图谱
+    </text>
+    <text x="2" y="137" fill="#e8d9b8" font-size="25"
+          font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif">
+      把六十四卦放进一张可探索、可学习、可演变的关系星图
+    </text>
+    <text x="2" y="178" fill="#a89878" font-size="19"
+          font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif">
+      典籍线索 · 五阶学习 · 演变实验 · 占筮文化
+    </text>
+
+    <g id="metadata" transform="translate(0 226)"
+       font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17">
+      <rect width="142" height="42" rx="21" fill="#c9a96a" fill-opacity="0.14"
+            stroke="#c9a96a" stroke-opacity="0.56"/>
+      <text x="71" y="27" text-anchor="middle" fill="#e8d09a">64 HEXAGRAMS</text>
+
+      <rect x="156" width="154" height="42" rx="21" fill="#c9a96a" fill-opacity="0.08"
+            stroke="#c9a96a" stroke-opacity="0.34"/>
+      <text x="233" y="27" text-anchor="middle" fill="#d4bc8a">OFFLINE PWA</text>
+
+      <rect x="324" width="130" height="42" rx="21" fill="#34e89e" fill-opacity="0.08"
+            stroke="#34e89e" stroke-opacity="0.34"/>
+      <circle cx="348" cy="21" r="4.5" fill="#34e89e"/>
+      <text x="395" y="27" text-anchor="middle" fill="#b8ead4">LIVE DEMO</text>
+    </g>
+  </g>
+
+  <g id="hexagram-mark" transform="translate(1082 300)" stroke="#e8d09a" stroke-width="6" stroke-linecap="round" opacity="0.9">
+    <path d="M0 0h22m11 0h22M0 18h55M0 36h22m11 0h22M0 54h55M0 72h22m11 0h22M0 90h55"/>
+  </g>
+</svg>
