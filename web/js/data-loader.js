@@ -8,6 +8,9 @@ const THEOREMS_PATH = 'data/theorems.json';
 const ALMANAC_TERMS_PATH = 'data/almanac-terms.json';
 const ALMANAC_YIJI_PATH = 'data/almanac-yiji.json';
 
+let learningDataPromise = null;
+let almanacDataPromise = null;
+
 async function fetchJson(path) {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`加载 ${path} 失败：HTTP ${res.status}`);
@@ -50,17 +53,55 @@ function validateTrigrams(list) {
   }
 }
 
-export async function loadAllData() {
-  const [hexagrams, trigrams, wings, theorems, almanacTerms, almanacYiji] = await Promise.all([
+export async function loadCoreData() {
+  const [hexagrams, trigrams] = await Promise.all([
     fetchJson(HEXAGRAM_PATH),
     fetchJson(TRIGRAM_PATH),
-    fetchJson(WINGS_PATH),
-    fetchJson(THEOREMS_PATH),
-    fetchJson(ALMANAC_TERMS_PATH),
-    fetchJson(ALMANAC_YIJI_PATH),
   ]);
   validateHexagrams(hexagrams);
   validateTrigrams(trigrams);
+  return { hexagrams, trigrams };
+}
+
+export function loadLearningData() {
+  if (!learningDataPromise) {
+    learningDataPromise = Promise.all([fetchJson(WINGS_PATH), fetchJson(THEOREMS_PATH)])
+      .then(([wings, theorems]) => ({ wings, theorems }))
+      .catch((error) => {
+        learningDataPromise = null;
+        throw error;
+      });
+  }
+  return learningDataPromise;
+}
+
+export function loadAlmanacData() {
+  if (!almanacDataPromise) {
+    almanacDataPromise = Promise.all([fetchJson(ALMANAC_TERMS_PATH), fetchJson(ALMANAC_YIJI_PATH)])
+      .then(([almanacTerms, almanacYiji]) => ({ almanacTerms, almanacYiji }))
+      .catch((error) => {
+        almanacDataPromise = null;
+        throw error;
+      });
+  }
+  return almanacDataPromise;
+}
+
+export function resetOptionalDataCache() {
+  learningDataPromise = null;
+  almanacDataPromise = null;
+}
+
+// 完整加载保留给数据校验工具；浏览器启动使用 loadCoreData。
+export async function loadAllData() {
+  const [core, learning, almanac] = await Promise.all([
+    loadCoreData(),
+    loadLearningData(),
+    loadAlmanacData(),
+  ]);
+  const { hexagrams, trigrams } = core;
+  const { wings, theorems } = learning;
+  const { almanacTerms, almanacYiji } = almanac;
   return { hexagrams, trigrams, wings, theorems, almanacTerms, almanacYiji };
 }
 

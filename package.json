@@ -1,0 +1,20 @@
+{
+  "name": "yijing-atlas",
+  "version": "0.9.0",
+  "private": true,
+  "type": "module",
+  "description": "易象图谱：用于学习《易经》的纯静态交互网站",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "check": "node scripts/quality-check.mjs --checks-only",
+    "test:unit": "node scripts/quality-check.mjs --tests-only",
+    "test:smoke": "node scripts/quality-check.mjs --tests-only --include-smoke",
+    "test:e2e": "node scripts/browser-smoke.mjs",
+    "test:coverage": "node --test --experimental-test-coverage --test-coverage-lines=90 --test-coverage-branches=90 --test-coverage-functions=90 --test-coverage-include=web/js/data-loader.js --test-coverage-include=web/js/divination-engine.js --test-coverage-include=web/js/divination-history.js --test-coverage-include=web/js/evolution-state.js --test-coverage-include=web/js/hexagram-utils.js --test-coverage-include=web/js/learning-progress.js --test-coverage-include=web/js/meihua-engine.js --test-coverage-include=web/js/quiz-engine.js --test-coverage-include=web/js/review-engine.js --test-coverage-include=web/js/search-controller.js --test-coverage-include=web/js/star-relations.js --test-coverage-include=web/js/storage.js web/test/*.test.mjs",
+    "test": "node scripts/quality-check.mjs --include-smoke",
+    "validate": "node scripts/quality-check.mjs --include-smoke && npm run test:coverage"
+  }
+}

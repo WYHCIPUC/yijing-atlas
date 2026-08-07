@@ -1,5 +1,6 @@
 // 复习引擎：SM-2 简化版间隔算法 + localStorage 持久化。
 // 每个卦一张复习卡，按掌握度安排到期时间。
+import { isPlainObject, readJson, writeJson } from './storage.js';
 
 const STORAGE_KEY = 'yijing-review-cards';
 const DAY_MS = 86400000;
@@ -7,23 +8,23 @@ const DAY_MS = 86400000;
 // SM-2 简化间隔序列（天）
 const INTERVALS = [0, 1, 2, 4, 7, 15, 30, 60];
 
-export function loadReviewCards() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return {};
-    return JSON.parse(raw);
-  } catch (e) {
-    console.warn('复习数据加载失败', e);
-    return {};
-  }
+function isReviewCard(card, code) {
+  return isPlainObject(card) && card.code === code && /^[01]{6}$/.test(code) &&
+    Number.isInteger(card.stage) && card.stage >= 0 && card.stage < INTERVALS.length &&
+    Number.isFinite(card.due) && Number.isInteger(card.lapses) && card.lapses >= 0 &&
+    Number.isInteger(card.reps) && card.reps >= 0 && Number.isFinite(card.lastReview);
 }
 
-function saveReviewCards(cards) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(cards));
-  } catch (e) {
-    console.warn('复习数据保存失败', e);
-  }
+function isReviewCards(value) {
+  return isPlainObject(value) && Object.entries(value).every(([code, card]) => isReviewCard(card, code));
+}
+
+export function loadReviewCards(storage) {
+  return readJson(STORAGE_KEY, {}, isReviewCards, storage);
+}
+
+function saveReviewCards(cards, storage) {
+  return writeJson(STORAGE_KEY, cards, storage).ok;
 }
 
 export function getOrCreateCard(cards, hexCode) {
@@ -63,20 +64,19 @@ export function getDueCount(cards) {
   return getDueCards(cards).length;
 }
 
-export function initAllCards(cards, hexCodes) {
+export function initAllCards(cards, hexCodes, storage) {
   let changed = false;
   for (const code of hexCodes) {
     if (!cards[code]) { getOrCreateCard(cards, code); changed = true; }
   }
-  if (changed) saveReviewCards(cards);
+  if (changed) saveReviewCards(cards, storage);
   return cards;
 }
 
-export function saveReview(cards, code, rating) {
+export function saveReview(cards, code, rating, storage) {
   const card = getOrCreateCard(cards, code);
   reviewCard(card, rating);
-  saveReviewCards(cards);
-  return card;
+  return { card, saved: saveReviewCards(cards, storage) };
 }
 
 export function getMastery(card) {

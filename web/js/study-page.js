@@ -1,6 +1,11 @@
 // 学习区：十翼浏览、象数理论、学习路径（L1-L4 分级课程）。
 // 进度（已学章节）存 localStorage。
 import { trigramSvg, hexagramSvg } from './svg-painter.js';
+import { recordActivity } from './learning-progress.js';
+import { calculateStreak, loadActivity } from './learning-progress.js';
+import { loadStats, loadWrongBook } from './quiz-engine.js';
+import { getDueCount, loadReviewCards } from './review-engine.js';
+import { isPlainObject, readJson, writeJson } from './storage.js';
 
 const PROGRESS_KEY = 'yijing.study.v1';
 
@@ -8,12 +13,17 @@ function esc(s) {
   return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-function loadStudyProgress() {
-  try { return JSON.parse(localStorage.getItem(PROGRESS_KEY) || '{}'); }
-  catch { return {}; }
+export function loadStudyProgress(storage) {
+  return readJson(
+    PROGRESS_KEY,
+    {},
+    (value) => isPlainObject(value) && Object.values(value).every((done) => typeof done === 'boolean'),
+    storage,
+  );
 }
-function saveStudyProgress(p) {
-  try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(p)); } catch {}
+
+export function saveStudyProgress(progress, storage) {
+  return writeJson(PROGRESS_KEY, progress, storage).ok;
 }
 
 // ---------- 十翼浏览 ----------
@@ -104,17 +114,28 @@ const LEVELS = [
   },
 ];
 
-export function renderStudyPathPage(mountEl, appState) {
+export function renderStudyPathPage(mountEl, appState, { onNavigate } = {}) {
   const progress = loadStudyProgress();
   const totalSteps = LEVELS.reduce((s, l) => s + l.steps.length, 0);
   const doneSteps = Object.values(progress).filter(Boolean).length;
+  const quizStats = loadStats();
+  const wrongCount = loadWrongBook().length;
+  const dueCount = getDueCount(loadReviewCards());
+  const streak = calculateStreak(loadActivity().days);
 
   mountEl.innerHTML = `
     <h3>学习路径</h3>
+    <div class="learning-dashboard" aria-label="学习概览">
+      <div><strong>${doneSteps}/${totalSteps}</strong><span>课程完成</span></div>
+      <div><strong>${streak}</strong><span>连续学习天数</span></div>
+      <div><strong>${dueCount}</strong><span>今日待复习</span></div>
+      <div><strong>${wrongCount}</strong><span>待回练错题</span></div>
+      <div><strong>${quizStats.total ? Math.round(quizStats.correct / quizStats.total * 100) : 0}%</strong><span>测验正确率</span></div>
+    </div>
     <div class="study-quick">
-      <a class="quick-btn" href="#/wings">📖 十翼（易传）</a>
-      <a class="quick-btn" href="#/theorems">🔮 象数理论</a>
-      <a class="quick-btn" href="#/almanac-knowledge">📅 黄历知识</a>
+      <button type="button" class="quick-btn" data-target="/wings">十翼（易传）</button>
+      <button type="button" class="quick-btn" data-target="/theorems">象数理论</button>
+      <button type="button" class="quick-btn" data-target="/almanac">黄历知识</button>
     </div>
     <div class="path-overview">
       <div class="progress-bar"><div class="progress-fill" style="width:${Math.round(doneSteps / totalSteps * 100)}%"></div></div>
@@ -130,11 +151,11 @@ export function renderStudyPathPage(mountEl, appState) {
               const done = !!progress[step.id];
               const target = stepTarget(step);
               return `
-                <div class="step-row ${done ? 'step-done' : ''}" data-step="${step.id}" data-target="${esc(target)}">
+                <button type="button" class="step-row ${done ? 'step-done' : ''}" data-step="${step.id}" data-target="${esc(target)}">
                   <span class="step-check">${done ? '✅' : '⬜'}</span>
                   <span class="step-title">${esc(step.title)}</span>
                   <span class="step-go">前往 →</span>
-                </div>`;
+                </button>`;
             }).join('')}
           </div>
         </div>
@@ -149,10 +170,23 @@ export function renderStudyPathPage(mountEl, appState) {
       const id = row.dataset.step;
       const p = loadStudyProgress();
       p[id] = true;
-      saveStudyProgress(p);
-      location.hash = row.dataset.target;
+      const saved = saveStudyProgress(p);
+      recordActivity();
+      if (!saved) row.setAttribute('title', '本地存储不可用，进度未保存');
+      if (onNavigate) onNavigate(row.dataset.target);
+      else location.hash = `#${row.dataset.target}`;
     });
   });
+  mountEl.querySelectorAll('.quick-btn').forEach((button) => {
+    button.addEventListener('click', () => {
+      if (onNavigate) onNavigate(button.dataset.target);
+      else location.hash = `#${button.dataset.target}`;
+    });
+  });
+}
+
+export function getStudyStepCount() {
+  return LEVELS.reduce((total, level) => total + level.steps.length, 0);
 }
 
 // 步骤 → 跳转 hash

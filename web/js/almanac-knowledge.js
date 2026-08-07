@@ -8,14 +8,14 @@ const CATEGORY_ORDER = [
   '建除十二神', '二十八宿', '彭祖百忌', '二十四节气', '神煞',
 ];
 
-export function renderAlmanacKnowledgePage(mountEl, appState) {
+export function renderAlmanacKnowledgePage(mountEl, appState, { showBackLink = true } = {}) {
   const terms = appState.almanacTerms || [];
   // 按类分组
   const cats = {};
   terms.forEach((t) => { (cats[t.category] = cats[t.category] || []).push(t); });
 
   mountEl.innerHTML = `
-    <a class="back-btn" href="#/almanac">← 返回黄历</a>
+    ${showBackLink ? '<a class="back-btn" href="#/almanac">← 返回黄历</a>' : ''}
     <h3>黄历知识</h3>
     <p class="study-intro">中国传统黄历术语释义。点击展开查看各术语的含义、宜忌与出处依据。</p>
     ${CATEGORY_ORDER.filter(c => cats[c]).map(cat => `

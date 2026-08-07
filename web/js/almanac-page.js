@@ -11,6 +11,8 @@ function esc(s) {
 }
 
 let st = null;
+const MIN_YEAR = 1900;
+const MAX_YEAR = 2199;
 
 export function renderAlmanacPage(mountEl, appState) {
   st = { terms: appState.almanacTerms || [], yiji: appState.almanacYiji || {} };
@@ -45,12 +47,12 @@ function draw(mountEl, date) {
   mountEl.innerHTML = `
     <div class="almanac-view">
       <div class="alm-date-bar">
-        <button class="alm-nav" id="alm-prev">◀ 前一天</button>
+        <button type="button" class="alm-nav" id="alm-prev" ${dateKey(date) <= MIN_YEAR * 10000 + 101 ? 'disabled' : ''}>◀ 前一天</button>
         <div class="alm-date">
           <div class="alm-date-main">${dateStr}${isToday ? ' <span class="alm-today">今天</span>' : ''}</div>
-          <input type="date" id="alm-picker" value="${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}">
+          <input type="date" id="alm-picker" min="${MIN_YEAR}-01-01" max="${MAX_YEAR}-12-31" value="${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}" aria-label="选择公历日期">
         </div>
-        <button class="alm-nav" id="alm-next">后一天 ▶</button>
+        <button type="button" class="alm-nav" id="alm-next" ${dateKey(date) >= MAX_YEAR * 10000 + 1231 ? 'disabled' : ''}>后一天 ▶</button>
       </div>
 
       <div class="alm-card">
@@ -102,7 +104,7 @@ function draw(mountEl, date) {
           `).join('') : '<p class="alm-empty">暂无解读</p>'}
         </div>
       </div>
-      <p class="alm-foot"><small>宜忌依《协纪辨方书》传统择日通例，流派差异已在解读中注明。辞以明象，反求诸己。</small></p>
+      <p class="alm-foot"><small>计算范围为 ${MIN_YEAR}—${MAX_YEAR} 年，按设备本地时区显示；自动化结果仅供历法与民俗文化学习，不作为医疗、法律、财务或其他现实决策依据。</small></p>
     </div>`;
 
   bindEvents(mountEl);
@@ -110,15 +112,15 @@ function draw(mountEl, date) {
 }
 
 function bindEvents(mountEl) {
-  document.getElementById('alm-prev').onclick = () => {
+  mountEl.querySelector('#alm-prev').onclick = () => {
     const d = new Date(st.date); d.setDate(d.getDate() - 1); draw(mountEl, d);
   };
-  document.getElementById('alm-next').onclick = () => {
+  mountEl.querySelector('#alm-next').onclick = () => {
     const d = new Date(st.date); d.setDate(d.getDate() + 1); draw(mountEl, d);
   };
-  document.getElementById('alm-picker').onchange = (e) => {
+  mountEl.querySelector('#alm-picker').onchange = (e) => {
     const [y, m, d] = e.target.value.split('-').map(Number);
-    if (y) draw(mountEl, new Date(y, m - 1, d));
+    if (y >= MIN_YEAR && y <= MAX_YEAR) draw(mountEl, new Date(y, m - 1, d));
   };
   // 术语点击：弹出解读
   mountEl.querySelectorAll('.term-clickable, .yj-tag').forEach(el => {
@@ -135,7 +137,7 @@ function showTermPopup(termName) {
   overlay.className = 'alm-popup-overlay';
   overlay.innerHTML = `
     <div class="alm-popup">
-      <button class="alm-popup-close">×</button>
+      <button type="button" class="alm-popup-close" aria-label="关闭术语解读">×</button>
       ${t ? `
         <h3>${esc(t.name)} <small>${esc(t.category)}</small></h3>
         <p>${esc(t.meaning)}</p>
@@ -149,6 +151,7 @@ function showTermPopup(termName) {
 }
 
 function sameDay(a, b) { return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
+function dateKey(date) { return date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate(); }
 function pad(n) { return String(n).padStart(2, '0'); }
 function cnNum(n) {
   if (n === 30) return '三十';

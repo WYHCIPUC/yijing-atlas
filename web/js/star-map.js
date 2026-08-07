@@ -24,6 +24,11 @@ const COLORS = {
   text: '#e8d09a',
 };
 
+export function chooseRenderFps({ reducedMotion, isDragging, cameraDistance }) {
+  if (reducedMotion) return 10;
+  return isDragging || cameraDistance > 0.5 ? 60 : 30;
+}
+
 export class StarMap {
   constructor(canvas, graph, callbacks = {}) {
     this.canvas = canvas;
@@ -38,7 +43,15 @@ export class StarMap {
     this.dragStart = null;
     this.yaw = 0;          // 偏航（左右转）
     this.pitch = 0;        // 俯仰（上下看）
-    this.autoRotate = true;
+    this.motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    this.reducedMotion = this.motionPreference.matches;
+    this.autoRotate = !this.reducedMotion;
+    this.isPaused = false;
+    this.pauseReasons = new Set();
+    this.animationFrame = null;
+    this.frameCount = 0;
+    this.lastRenderAt = 0;
+    this.frameStep = 1;
     this.mode = 'explore';
     this.time = 0;
     this.meteors = [];
@@ -61,7 +74,8 @@ export class StarMap {
   }
 
   _setupDpr() {
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    this.dpr = dpr;
     const rect = this.canvas.getBoundingClientRect();
     this.canvas.width = rect.width * dpr;
     this.canvas.height = rect.height * dpr;
@@ -193,6 +207,27 @@ export class StarMap {
       { bx: this.width * 0.5, by: this.height * 0.18, dr: 35, ds: 0.0004, dp: 3, r: this.width * 0.22, color: 'rgba(55, 75, 115, 0.04)' },
       { bx: this.width * 0.6, by: this.height * 0.85, dr: 45, ds: 0.00025, dp: 4.5, r: this.width * 0.26, color: 'rgba(95, 75, 100, 0.035)' },
     ];
+
+    // 深空底色与星云变化极慢，合并为静态图层，避免每帧创建 5 个大渐变。
+    this.backgroundLayer = document.createElement('canvas');
+    this.backgroundLayer.width = this.width;
+    this.backgroundLayer.height = this.height;
+    const bg = this.backgroundLayer.getContext('2d');
+    const bgGrad = bg.createRadialGradient(this.cx, this.cy, 0, this.cx, this.cy, Math.max(this.width, this.height) * 0.75);
+    bgGrad.addColorStop(0, '#111a30');
+    bgGrad.addColorStop(0.5, '#0a0f1e');
+    bgGrad.addColorStop(1, '#05070f');
+    bg.fillStyle = bgGrad;
+    bg.fillRect(0, 0, this.width, this.height);
+    for (const neb of this.nebulae) {
+      const ng = bg.createRadialGradient(neb.bx, neb.by, 0, neb.bx, neb.by, neb.r);
+      ng.addColorStop(0, neb.color);
+      ng.addColorStop(1, 'rgba(0,0,0,0)');
+      bg.fillStyle = ng;
+      bg.beginPath();
+      bg.arc(neb.bx, neb.by, neb.r, 0, Math.PI * 2);
+      bg.fill();
+    }
   }
 
   // 三维球状布局：64 卦分布在球面/球体内，上下卦映射到球坐标经纬度
@@ -227,10 +262,11 @@ export class StarMap {
     }
 
     // 用 d3-force：节点斥力 + 强力 X/Y 定位（拉向 targetX/Y）+ 弱连线
-    const nodeById = new Map(this.graph.nodes.map((n, i) => [n.id, i]));
+    this.nodeById = new Map(this.graph.nodes.map((n) => [n.id, n]));
+    const nodeIndexById = new Map(this.graph.nodes.map((n, i) => [n.id, i]));
     const links = this.graph.edges
       .filter(e => e.types.includes('opposite') || e.types.includes('reversed'))
-      .map(e => ({ source: nodeById.get(e.source), target: nodeById.get(e.target), weight: e.weight }));
+      .map(e => ({ source: nodeIndexById.get(e.source), target: nodeIndexById.get(e.target), weight: e.weight }));
 
     this.simulation = forceSimulation(this.graph.nodes)
       .force('charge', forceManyBody().strength(-50))
@@ -287,19 +323,20 @@ export class StarMap {
 
   _bindEvents() {
     const c = this.canvas;
-    c.addEventListener('mousedown', (e) => {
+    c.addEventListener('pointerdown', (e) => {
       const rect = c.getBoundingClientRect();
       const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
       const node = this._nodeAt(sx, sy);
       if (node) {
         this.callbacks.onPick && this.callbacks.onPick(node.id);
       } else {
+        c.setPointerCapture?.(e.pointerId);
         this.isDragging = true;
         this.dragStart = { x: sx, y: sy, yaw: this.yaw, pitch: this.pitch };
         this.autoRotate = false; // 拖拽时暂停自转，松手可恢复
       }
     });
-    c.addEventListener('mousemove', (e) => {
+    c.addEventListener('pointermove', (e) => {
       const rect = c.getBoundingClientRect();
       const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
       if (this.isDragging) {
@@ -317,8 +354,13 @@ export class StarMap {
         }
       }
     });
-    c.addEventListener('mouseup', () => { this.isDragging = false; });
-    c.addEventListener('mouseleave', () => { this.isDragging = false; this.hoveredNode = null; });
+    const stopDragging = (event) => {
+      this.isDragging = false;
+      if (event?.pointerId !== undefined) c.releasePointerCapture?.(event.pointerId);
+    };
+    c.addEventListener('pointerup', stopDragging);
+    c.addEventListener('pointercancel', stopDragging);
+    c.addEventListener('pointerleave', () => { this.hoveredNode = null; });
     c.addEventListener('wheel', (e) => {
       e.preventDefault();
       const factor = e.deltaY > 0 ? 0.9 : 1.1;
@@ -331,39 +373,108 @@ export class StarMap {
       const node = this._nodeAt(sx, sy);
       if (!node) this.clearFocus();
     });
+    c.addEventListener('keydown', (event) => {
+      const step = event.shiftKey ? 0.18 : 0.08;
+      if (event.key === 'ArrowLeft') this.yaw -= step;
+      else if (event.key === 'ArrowRight') this.yaw += step;
+      else if (event.key === 'ArrowUp') this.pitch = Math.max(-Math.PI / 2.2, this.pitch - step);
+      else if (event.key === 'ArrowDown') this.pitch = Math.min(Math.PI / 2.2, this.pitch + step);
+      else if (event.key === '+' || event.key === '=') this.zoomBy(1.15);
+      else if (event.key === '-') this.zoomBy(0.87);
+      else if (event.key === 'Home') this.zoomReset();
+      else if (event.key === 'Escape') this.clearFocus();
+      else return;
+      event.preventDefault();
+      this.autoRotate = false;
+    });
+    this.handleVisibilityChange = () => {
+      if (document.hidden) this.pause('visibility');
+      else this.resume('visibility');
+    };
+    this.handleMotionPreferenceChange = (event) => {
+      this.reducedMotion = event.matches;
+      if (this.reducedMotion) {
+        this.autoRotate = false;
+        this.meteors = [];
+        this.appearProgress = 1;
+        if (this.cameraTarget) this.cameraPos = { ...this.cameraTarget };
+      }
+    };
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
+    if (this.motionPreference.addEventListener) {
+      this.motionPreference.addEventListener('change', this.handleMotionPreferenceChange);
+    } else {
+      this.motionPreference.addListener?.(this.handleMotionPreferenceChange);
+    }
   }
 
   _startRenderLoop() {
-    const loop = () => {
-      this.time += 1;
-      if (this.autoRotate) this.yaw += 0.0006;
-      if (this.appearProgress < 1) this.appearProgress = Math.min(1, this.appearProgress + 0.006);
-      // 相机焦点平滑过渡（点击星后飞入）
-      if (this.cameraTarget) {
-        this.cameraPos.x += (this.cameraTarget.x - this.cameraPos.x) * 0.06;
-        this.cameraPos.y += (this.cameraTarget.y - this.cameraPos.y) * 0.06;
-        this.cameraPos.z += (this.cameraTarget.z - this.cameraPos.z) * 0.06;
-      } else {
-        this.cameraPos.x += (0 - this.cameraPos.x) * 0.06;
-        this.cameraPos.y += (0 - this.cameraPos.y) * 0.06;
-        this.cameraPos.z += (0 - this.cameraPos.z) * 0.06;
+    this.renderLoop = (timestamp) => {
+      this.animationFrame = null;
+      if (this.isPaused) return;
+      this.frameCount += 1;
+
+      const target = this.cameraTarget || { x: 0, y: 0, z: 0 };
+      const cameraDistance = Math.hypot(
+        target.x - this.cameraPos.x,
+        target.y - this.cameraPos.y,
+        target.z - this.cameraPos.z,
+      );
+      const targetFps = chooseRenderFps({
+        reducedMotion: this.reducedMotion,
+        isDragging: this.isDragging,
+        cameraDistance,
+      });
+      const minFrameMs = 1000 / targetFps;
+      const elapsed = this.lastRenderAt ? timestamp - this.lastRenderAt : minFrameMs;
+      if (elapsed < minFrameMs - 1) {
+        this.animationFrame = requestAnimationFrame(this.renderLoop);
+        return;
       }
+      this.lastRenderAt = timestamp;
+      const deltaMs = Math.min(50, elapsed);
+      this.frameStep = deltaMs / (1000 / 60);
+      this.time += this.frameStep;
+      if (this.autoRotate) this.yaw += 0.0006 * this.frameStep;
+      if (this.reducedMotion) this.appearProgress = 1;
+      else if (this.appearProgress < 1) this.appearProgress = Math.min(1, this.appearProgress + deltaMs / 900);
+      // 相机焦点平滑过渡（点击星后飞入）
+      const cameraEase = this.reducedMotion ? 1 : 1 - Math.pow(0.94, this.frameStep);
+      this.cameraPos.x += (target.x - this.cameraPos.x) * cameraEase;
+      this.cameraPos.y += (target.y - this.cameraPos.y) * cameraEase;
+      this.cameraPos.z += (target.z - this.cameraPos.z) * cameraEase;
       // z 轴：球状结构基准 + 缓慢振荡漂浮
       for (const n of this.graph.nodes) {
-        n.z = n._zBase + Math.sin(this.time * n.zSpeed + n.zPhase) * n.zAmp;
+        n.z = this.reducedMotion ? n._zBase : n._zBase + Math.sin(this.time * n.zSpeed + n.zPhase) * n.zAmp;
       }
-      for (const neb of this.nebulae) {
-        neb.x = neb.bx + Math.cos(this.time * neb.ds + neb.dp) * neb.dr;
-        neb.y = neb.by + Math.sin(this.time * neb.ds + neb.dp) * neb.dr;
-      }
-      this._updateMeteors();
+      if (!this.reducedMotion) this._updateMeteors(this.frameStep);
       this._render();
-      requestAnimationFrame(loop);
+      this.animationFrame = requestAnimationFrame(this.renderLoop);
     };
-    loop();
+    this.resume('startup');
   }
 
-  _updateMeteors() {
+  pause(reason = 'manual') {
+    this.pauseReasons.add(reason);
+    this.isPaused = true;
+    if (this.animationFrame !== null) cancelAnimationFrame(this.animationFrame);
+    this.animationFrame = null;
+  }
+
+  resume(reason = 'manual') {
+    this.pauseReasons.delete(reason);
+    if (document.hidden) this.pauseReasons.add('visibility');
+    if (this.pauseReasons.size > 0) {
+      this.isPaused = true;
+      return;
+    }
+    if (!this.isPaused && this.animationFrame !== null) return;
+    this.isPaused = false;
+    this.lastRenderAt = 0;
+    this.animationFrame = requestAnimationFrame(this.renderLoop);
+  }
+
+  _updateMeteors(step = 1) {
     if (this.time >= this.nextMeteorAt) {
       const fromTop = Math.random() < 0.5;
       this.meteors.push({
@@ -375,43 +486,27 @@ export class StarMap {
       this.nextMeteorAt = this.time + 180 + Math.floor(Math.random() * 300);
     }
     for (const m of this.meteors) {
-      m.x += Math.cos(m.angle) * m.speed;
-      m.y += Math.sin(m.angle) * m.speed;
-      m.life++;
+      m.x += Math.cos(m.angle) * m.speed * step;
+      m.y += Math.sin(m.angle) * m.speed * step;
+      m.life += step;
     }
     this.meteors = this.meteors.filter(m => m.life < m.maxLife && m.x < this.width + 100 && m.y < this.height + 100);
   }
 
   _render() {
     const ctx = this.ctx;
-    const t = this.time;
+    const t = this.reducedMotion ? 0 : this.time;
 
     // 强制清屏 + 重置 Canvas 状态（防止缩放时虚影/拖影）
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 1;
     ctx.setTransform(1, 0, 0, 1, 0, 0);
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = this.dpr;
     ctx.scale(dpr, dpr);
     ctx.clearRect(0, 0, this.width, this.height);
 
-    // 第一层：深空径向渐变
-    const bgGrad = ctx.createRadialGradient(this.cx, this.cy, 0, this.cx, this.cy, Math.max(this.width, this.height) * 0.75);
-    bgGrad.addColorStop(0, '#111a30');
-    bgGrad.addColorStop(0.5, '#0a0f1e');
-    bgGrad.addColorStop(1, '#05070f');
-    ctx.fillStyle = bgGrad;
-    ctx.fillRect(0, 0, this.width, this.height);
-
-    // 第二层：星云尘埃（漂移）
-    for (const neb of this.nebulae) {
-      const ng = ctx.createRadialGradient(neb.x, neb.y, 0, neb.x, neb.y, neb.r);
-      ng.addColorStop(0, neb.color);
-      ng.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = ng;
-      ctx.beginPath();
-      ctx.arc(neb.x, neb.y, neb.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
+    // 第一、二层：预渲染的深空底色与星云。
+    ctx.drawImage(this.backgroundLayer, 0, 0);
 
     // 第三层：远景星点（预渲染图层 drawImage，两组各自呼吸——性能优化）
     // 从每帧绘制数千星点 → 每帧仅 2 次 drawImage，性能提升数十倍
@@ -425,16 +520,18 @@ export class StarMap {
     // 流星
     this._renderMeteors(ctx);
 
+    // 每帧只投影一次节点；边、星体和标签共享结果。
+    for (const n of this.graph.nodes) n._screen = this._worldToScreen(n.x, n.y, n.z);
+
     // 关系漫游轨迹层（金色路径，渐显动画）
     if (this.trail.length > 0) {
       ctx.globalCompositeOperation = 'lighter';
-      const nodeMap = new Map(this.graph.nodes.map(n => [n.id, n]));
       for (const seg of this.trail) {
-        const s = nodeMap.get(seg.from), e = nodeMap.get(seg.to);
+        const s = this.nodeById.get(seg.from), e = this.nodeById.get(seg.to);
         if (!s || !e) continue;
-        seg.t = Math.min(1, seg.t + 0.04); // 渐显进度
-        const sp = this._worldToScreen(s.x, s.y, s.z);
-        const tp = this._worldToScreen(e.x, e.y, e.z);
+        seg.t = Math.min(1, seg.t + 0.04 * this.frameStep); // 渐显进度
+        const sp = s._screen;
+        const tp = e._screen;
         // 金色轨迹线，带流光
         const alpha = seg.t * 0.6;
         ctx.strokeStyle = `rgba(232, 208, 154, ${alpha * 0.3})`;
@@ -453,12 +550,11 @@ export class StarMap {
     // 第四层：关系边
     const focus = this.hoveredNode || this.activeNode;
     const focusRels = focus ? new Set([focus.id, ...this._relationTargets(focus.id)]) : null;
-    const nodeById = new Map(this.graph.nodes.map(n => [n.id, n]));
     for (const e of this.graph.edges) {
-      const s = nodeById.get(e.source), tn = nodeById.get(e.target);
+      const s = this.nodeById.get(e.source), tn = this.nodeById.get(e.target);
       if (!s || !tn) continue;
-      const sp = this._worldToScreen(s.x, s.y, s.z);
-      const tp = this._worldToScreen(tn.x, tn.y, tn.z);
+      const sp = s._screen;
+      const tp = tn._screen;
       const avgDepth = (sp.depthFactor + tp.depthFactor) / 2;
       // 判断这条边是否与 focus 卦相关（任一端是 focus，且另一端在关系集里）
       const involvesFocus = focus && (e.source === focus.id || e.target === focus.id);
@@ -527,7 +623,7 @@ export class StarMap {
       const localP = Math.max(0, Math.min(1, (this.appearProgress - delay) / 0.4));
       if (localP <= 0) continue;
       const ease = localP * localP * (3 - 2 * localP);
-      const p = this._worldToScreen(n.x, n.y, n.z);
+      const p = n._screen;
       const depth = p.depthFactor; // 0.5(远) ~ 1.6(近)
       const isFocus = focus && n.id === focus.id;
       const isRel = focusRels && focusRels.has(n.id) && !isFocus;
@@ -585,12 +681,12 @@ export class StarMap {
       if (this.keywordLayouts && this.keywordLayouts[n.id] && lod > 1.4) {
         const kwAlpha = Math.min(1, (lod - 1.4) / 0.7) * ease * (0.5 + depth * 0.5);
         const layout = this.keywordLayouts[n.id];
-        const twinkle = 0.7 + 0.3 * Math.sin(this.time * 0.03 + n.binaryCode.charCodeAt(1));
+        const twinkle = 0.7 + 0.3 * Math.sin(t * 0.03 + n.binaryCode.charCodeAt(1));
         for (const kw of layout) {
           if (kw.level === 0) continue; // 卦名由标签层处理
           // 关键词星点位置（带微浮动）
-          const floatX = Math.sin(this.time * 0.01 + kw.phase) * 1.5;
-          const floatY = Math.cos(this.time * 0.012 + kw.phase) * 1.5;
+          const floatX = Math.sin(t * 0.01 + kw.phase) * 1.5;
+          const floatY = Math.cos(t * 0.012 + kw.phase) * 1.5;
           const kx = p.x + (kw.dx + floatX) * depthScale;
           const ky = p.y + (kw.dy + floatY) * depthScale;
           // 关键词发光星点（用预渲染贴图）
@@ -625,7 +721,7 @@ export class StarMap {
       const delay = (n.number - 1) / 64 * 0.5;
       const localP = Math.max(0, Math.min(1, (this.appearProgress - delay) / 0.4));
       if (localP <= 0) continue;
-      const p = this._worldToScreen(n.x, n.y, n.z);
+      const p = n._screen;
       const isFocus = focus && n.id === focus.id;
       const isHiddenName = this.focusVisible && !this.focusVisible.has(n.id);
       const nameVis = isHiddenName ? 0.1 : 1;
@@ -633,7 +729,7 @@ export class StarMap {
       if (n.isPure) {
         // 纯卦：书法大字，突出显示
         const fontSize = (isFocus ? 38 : 30) * depthS;
-        const alpha = isFocus ? 1 : (0.6 + 0.15 * Math.sin(this.time * 0.01 + n.binaryCode.charCodeAt(0))) * (0.6 + p.depthFactor * 0.4) * nameVis;
+        const alpha = isFocus ? 1 : (0.6 + 0.15 * Math.sin(t * 0.01 + n.binaryCode.charCodeAt(0))) * (0.6 + p.depthFactor * 0.4) * nameVis;
         ctx.font = `${fontSize}px "Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
         ctx.fillStyle = isFocus ? 'rgba(255,240,200,1)' : `rgba(212,165,116,${alpha})`;
         ctx.fillText(n.name, p.x, p.y - 40 * depthS);
@@ -695,7 +791,7 @@ export class StarMap {
     this.cameraTarget = null;
     this.activeNode = null;
     this.focusVisible = null;
-    this.autoRotate = true;
+    this.autoRotate = !this.reducedMotion;
   }
 
   setMode(mode) { this.mode = mode; }
@@ -725,10 +821,34 @@ export class StarMap {
     return Math.round(this.view.scale * 100);
   }
 
+  destroy() {
+    this.pause('destroy');
+    this.simulation.stop();
+    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+    if (this.motionPreference.removeEventListener) {
+      this.motionPreference.removeEventListener('change', this.handleMotionPreferenceChange);
+    } else {
+      this.motionPreference.removeListener?.(this.handleMotionPreferenceChange);
+    }
+  }
+
   resize() {
+    const previous = { width: this.width, height: this.height, cx: this.cx, cy: this.cy, anchorR: this.anchorR };
     this._setupDpr();
+    const scale = previous.anchorR ? this.anchorR / previous.anchorR : 1;
+    for (const node of this.graph.nodes) {
+      node.x = this.cx + (node.x - previous.cx) * scale;
+      node.y = this.cy + (node.y - previous.cy) * scale;
+      node.targetX = this.cx + (node.targetX - previous.cx) * scale;
+      node.targetY = this.cy + (node.targetY - previous.cy) * scale;
+      node._zBase *= scale;
+      node.z *= scale;
+      node.zAmp *= scale;
+    }
+    this._initBackground();
     this.simulation.force('xA', forceX(d => d.targetX).strength(d => d.isPure ? 1 : 0.25));
     this.simulation.force('yA', forceY(d => d.targetY).strength(d => d.isPure ? 1 : 0.25));
+    this.simulation.force('center', forceCenter(this.cx, this.cy));
     this.simulation.alpha(0.3).restart();
   }
 }

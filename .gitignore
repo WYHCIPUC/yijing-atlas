@@ -9,6 +9,14 @@ Thumbs.db
 
 # Node
 node_modules/
+coverage/
 
 # 临时文件
 .pdf-preview/
+web/.nocache-server.mjs
+
+# 本地参考资料与敏感配置（不得发布）
+*.pdf
+.env
+.env.*
+!.env.example

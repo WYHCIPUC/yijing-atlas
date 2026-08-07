@@ -1,7 +1,9 @@
 // 渲染层：把领域数据渲染为 HTML。纯函数，输入数据 + 挂载点。
 import { hexagramSvg, trigramSvg } from './svg-painter.js';
 import { yaoLabel, allRelations } from './hexagram-utils.js';
+import { showEvolutionLab } from './evolution-lab.js';
 import { showRelationAnimation } from './relation-animation.js';
+import { isPlainObject, readJson, writeJson } from './storage.js';
 
 // HTML 转义，防注入
 function esc(s) {
@@ -66,20 +68,29 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       return `<div class="yao-item"><span class="yao-label">${esc(label)}</span>${textHtml}${xiangHtml}${noteHtml}</div>`;
     }).join('');
 
-  const section = (title, body) =>
-    body ? `<h3 class="section-title">${esc(title)}</h3>${body}` : '';
+  const section = (title, body, className = '') =>
+    body ? `<section class="detail-section ${className}">
+      <h3 class="section-title">${esc(title)}</h3>
+      ${body}
+    </section>` : '';
 
   const rels = allRelations(hex.binaryCode);
   const relChip = (label, code) =>
-    `<span class="relation-chip" data-code="${esc(code)}">${esc(label)}→${esc(codeToName(code, hexagrams))}</span>`;
+    `<button type="button" class="relation-chip" data-code="${esc(code)}">${esc(label)}→${esc(codeToName(code, hexagrams))}</button>`;
   // 关系说明 + 演示按钮
   const relExplain = (type, name, desc, code) =>
     `<div class="rel-explain">
       <span class="rel-type rel-${type}">${name}</span>
       <span class="rel-desc">${desc}</span>
-      <button class="rel-demo-btn" data-rel="${type}" data-code="${esc(code)}">演示</button>
+      <button class="rel-demo-btn" type="button" data-rel="${type}" data-code="${esc(code)}" aria-haspopup="dialog" aria-label="演示${name}变化">演示</button>
     </div>`;
+  const changingRelation = (code, index) => `
+    <span class="rel-changing-item">
+      ${relChip(`第${index + 1}爻`, code)}
+      <button class="rel-demo-btn" type="button" data-rel="changing" data-code="${esc(code)}" aria-haspopup="dialog" aria-label="演示第${index + 1}爻变卦">演示</button>
+    </span>`;
   const relHtml = `
+    <section class="detail-section relation-section">
     <h3 class="section-title">它如何变</h3>
     <div class="rel-list">
       ${relExplain('opposite', '错卦', `阴阳全换。${esc(hex.name)}之对极为「${esc(codeToName(rels.opposite, hexagrams))}」。`, rels.opposite)}
@@ -93,28 +104,47 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       ${relChip('互→', rels.interlocking)}
     </div>
     <p class="rel-changing-hint">变卦（动爻）：</p>
-    <div class="relation-chips">${rels.changing.map((c,i) => relChip('第'+(i+1)+'爻', c)).join('')}</div>
+    <div class="relation-chips">${rels.changing.map(changingRelation).join('')}</div>
+    <div class="evolution-launch-card">
+      <div>
+        <strong>自己动手推演</strong>
+        <span>切换任意爻，实时查看结果卦与变化说明。</span>
+      </div>
+      <button type="button" class="evolution-launch">进入演变实验室</button>
+    </div>
+    </section>
   `;
 
   mountEl.innerHTML = `
     <div class="detail-header">
-      ${hexagramSvg(hex.binaryCode, { size: 140 })}
-      <h1>${esc(hex.name)} · ${esc(hex.fullName)}</h1>
-      <div class="subtitle">第 ${hex.number} 卦 · ${esc(hex.binaryCode)} · 下${esc(trigramLabel(hex.trigramLower))} 上${esc(trigramLabel(hex.trigramUpper))}</div>
+      <div class="detail-symbol">${hexagramSvg(hex.binaryCode, { size: 140 })}</div>
+      <div class="detail-heading-copy">
+        <div class="detail-kicker">第 ${hex.number} 卦 · ${esc(hex.binaryCode)}</div>
+        <h1 tabindex="-1">${esc(hex.name)} · ${esc(hex.fullName)}</h1>
+        <div class="subtitle">下${esc(trigramLabel(hex.trigramLower))} · 上${esc(trigramLabel(hex.trigramUpper))}</div>
+        <div class="detail-actions">
+          <button type="button" class="text-button share-hexagram" data-code="${esc(hex.binaryCode)}">分享此卦</button>
+          <span class="share-status" role="status" aria-live="polite"></span>
+        </div>
+      </div>
     </div>
     ${hex.scenario ? section('今日处境', `<div class="scenario-text">${esc(hex.scenario)}</div>`) : ''}
     ${section('卦辞', `<div class="original-text">${esc(hex.judgement)}</div>${hex.judgementNote ? `<div class="note-text">${esc(hex.judgementNote)}</div>` : ''}`)}
     ${section('彖传', `<div class="original-text">${esc(hex.tuan)}</div>${hex.tuanNote ? `<div class="note-text">${esc(hex.tuanNote)}</div>` : ''}`)}
     ${section('大象', `<div class="original-text">${esc(hex.image)}</div>${hex.imageNote ? `<div class="note-text">${esc(hex.imageNote)}</div>` : ''}`)}
     ${relHtml}
-    <h3 class="section-title yao-collapse-toggle" id="yao-toggle">六爻<span class="toggle-arrow">▶</span></h3>
-    <div class="yao-list yao-collapse-body" id="yao-body">${lines}</div>
+    <section class="detail-section yao-section">
+      <h3 class="section-title yao-collapse-toggle" id="yao-toggle">六爻<span class="toggle-arrow">▶</span></h3>
+      <div class="yao-list yao-collapse-body" id="yao-body">${lines}</div>
+    </section>
     ${hex.useNine ? section('用九', `<div class="original-text">${esc(hex.useNine)}</div>`) : ''}
     ${hex.useSix ? section('用六', `<div class="original-text">${esc(hex.useSix)}</div>`) : ''}
     ${section('序卦传', `<div class="original-text">${esc(hex.orderRemark)}</div>`)}
-    <h3 class="section-title">我的笔记</h3>
-    <textarea class="note-input" id="note-input" placeholder="写下你对这一卦的理解…" data-code="${esc(hex.binaryCode)}"></textarea>
-    <button class="note-save" id="note-save">保存笔记</button>
+    <section class="detail-section notes-section">
+      <h3 class="section-title">我的笔记</h3>
+      <textarea class="note-input" id="note-input" placeholder="写下你对这一卦的理解…" data-code="${esc(hex.binaryCode)}"></textarea>
+      <button class="note-save" id="note-save">保存笔记</button>
+    </section>
   `;
 
   // 六爻折叠交互
@@ -144,22 +174,23 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
     });
   });
 
+  mountEl.querySelector('.evolution-launch')?.addEventListener('click', () => {
+    showEvolutionLab(hex, hexagrams, onPickRelation);
+  });
+
   // 个人笔记：加载已有笔记 + 绑定保存
   const noteInput = mountEl.querySelector('#note-input');
   const noteSave = mountEl.querySelector('#note-save');
   if (noteInput && noteSave) {
-    try {
-      const notes = JSON.parse(localStorage.getItem('yijing-notes') || '{}');
-      noteInput.value = notes[hex.binaryCode] || '';
-    } catch (e) {}
+    const notes = readJson('yijing-notes', {}, isPlainObject);
+    noteInput.value = typeof notes[hex.binaryCode] === 'string' ? notes[hex.binaryCode] : '';
     noteSave.addEventListener('click', () => {
-      try {
-        const notes = JSON.parse(localStorage.getItem('yijing-notes') || '{}');
-        notes[hex.binaryCode] = noteInput.value;
-        localStorage.setItem('yijing-notes', JSON.stringify(notes));
+      const currentNotes = readJson('yijing-notes', {}, isPlainObject);
+      currentNotes[hex.binaryCode] = noteInput.value;
+      if (writeJson('yijing-notes', currentNotes).ok) {
         noteSave.textContent = '已保存 ✓';
         setTimeout(() => { noteSave.textContent = '保存笔记'; }, 1500);
-      } catch (e) {
+      } else {
         noteSave.textContent = '保存失败';
       }
     });

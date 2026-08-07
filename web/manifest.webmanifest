@@ -1,0 +1,19 @@
+{
+  "name": "易象图谱 · 六十四卦",
+  "short_name": "易象图谱",
+  "description": "以关系星图探索六十四卦，循序学习《易经》、十翼与象数知识。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0e1a",
+  "theme_color": "#0a0e1a",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

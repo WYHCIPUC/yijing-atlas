@@ -5,11 +5,14 @@
 
 // ---- 最小 DOM mock ----
 function makeEl() {
+  const attributes = new Map();
   const el = {
     innerHTML: '',
     querySelector: () => makeEl(),
     querySelectorAll: () => [],
     addEventListener: () => {},
+    setAttribute: (name, value) => attributes.set(name, String(value)),
+    getAttribute: (name) => attributes.get(name) ?? null,
     insertAdjacentHTML: () => {},
     dataset: {},
     style: {},
@@ -28,8 +31,8 @@ globalThis.document = {
 globalThis.window = {
   addEventListener: () => {},
   scrollTo: () => {},
-  localStorage: { getItem: () => null, setItem: () => {} },
 };
+globalThis.localStorage = { getItem: () => null, setItem: () => {}, removeItem: () => {} };
 globalThis.location = { hash: '#/library', pathname: '/' };
 globalThis.prompt = () => null;
 globalThis.confirm = () => true;
@@ -74,13 +77,13 @@ await tryRender('查阅-64卦列表', async () => {
 await tryRender('查阅-卦象详情(乾)', async () => {
   const { renderHexagramDetail } = await import('../../web/js/render.js');
   const qian = byCode.get('111111');
-  renderHexagramDetail(qian, mount);
+  renderHexagramDetail(qian, mount, appState.hexagrams, () => {});
 });
 
 await tryRender('查阅-卦象详情(未填经文的卦也测)', async () => {
   const { renderHexagramDetail } = await import('../../web/js/render.js');
   // 全部 64 卦都试，确保没有因数据差异崩溃
-  for (const h of appState.hexagrams) renderHexagramDetail(h, makeEl());
+  for (const h of appState.hexagrams) renderHexagramDetail(h, makeEl(), appState.hexagrams, () => {});
 });
 
 await tryRender('八卦基础页', async () => {
@@ -103,19 +106,29 @@ await tryRender('学习-学习路径', async () => {
   renderStudyPathPage(mount, appState);
 });
 
-await tryRender('复习页', async () => {
-  const { renderReviewPage } = await import('../../web/js/review-page.js');
-  renderReviewPage(mount, appState);
+await tryRender('学习-统一入口', async () => {
+  const { renderLearningMode } = await import('../../web/js/modes/learning-mode.js');
+  renderLearningMode(mount, appState, () => {});
 });
 
-await tryRender('测验页', async () => {
-  const { renderQuizPage } = await import('../../web/js/quiz-page.js');
-  renderQuizPage(mount, appState);
+await tryRender('复习模式', async () => {
+  const { renderReviewMode } = await import('../../web/js/modes/review-mode.js');
+  renderReviewMode(mount, appState);
 });
 
-await tryRender('占筮页', async () => {
-  const { renderDivinationPage } = await import('../../web/js/divination-page.js');
-  renderDivinationPage(mount, appState);
+await tryRender('测验模式', async () => {
+  const { renderQuizMode } = await import('../../web/js/modes/quiz-mode.js');
+  renderQuizMode(mount, appState);
+});
+
+await tryRender('占筮模式', async () => {
+  const { renderDivinationMode } = await import('../../web/js/modes/divination-mode.js');
+  renderDivinationMode(mount, appState);
+});
+
+await tryRender('卦序模式', async () => {
+  const { renderGuaxuMode } = await import('../../web/js/modes/guaxu-mode.js');
+  renderGuaxuMode(mount, appState, () => {});
 });
 
 await tryRender('黄历主页', async () => {

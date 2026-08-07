@@ -1,0 +1,106 @@
+import { renderAlmanacKnowledgePage } from '../almanac-knowledge.js';
+import { renderTrigrams } from '../render.js';
+import { renderStudyPathPage, renderTheoremsPage, renderWingsPage } from '../study-page.js';
+import { downloadUserData, importUserData, parseUserData } from '../user-data.js';
+
+const sections = [
+  { id: 'path', label: '路径' },
+  { id: 'trigrams', label: '八卦' },
+  { id: 'wings', label: '十翼' },
+  { id: 'theorems', label: '象数' },
+  { id: 'almanac', label: '黄历知识' },
+  { id: 'data', label: '数据' },
+];
+
+function renderDataSection(content) {
+  content.innerHTML = `
+    <section class="data-tools" aria-labelledby="data-tools-title">
+      <h3 id="data-tools-title">学习数据</h3>
+      <p class="study-intro">进度、笔记、复习卡和测验记录仅保存在当前浏览器。建议定期导出 JSON 备份。</p>
+      <div class="data-actions">
+        <button type="button" class="quick-btn" data-action="export">导出备份</button>
+        <label class="quick-btn file-button">导入备份<input type="file" accept="application/json,.json" data-action="import" /></label>
+      </div>
+      <p class="data-status" role="status" aria-live="polite">导入会覆盖备份中包含的同类本地数据。</p>
+    </section>`;
+
+  const status = content.querySelector('.data-status');
+  content.querySelector('[data-action="export"]').addEventListener('click', () => {
+    try {
+      downloadUserData();
+      status.textContent = '备份已下载。';
+    } catch (error) {
+      status.textContent = `导出失败：${error.message}`;
+    }
+  });
+  content.querySelector('[data-action="import"]').addEventListener('change', async (event) => {
+    const [file] = event.target.files;
+    if (!file) return;
+    try {
+      const snapshot = parseUserData(await file.text());
+      importUserData(snapshot);
+      status.textContent = '导入完成，刷新页面后全部生效。';
+    } catch (error) {
+      status.textContent = `导入失败：${error.message}`;
+    } finally {
+      event.target.value = '';
+    }
+  });
+}
+
+export function renderLearningMode(mountEl, appState, onExplore) {
+  mountEl.innerHTML = `
+    <div class="mode-panel learning-panel">
+      <h2 class="mode-panel-title">循序学易</h2>
+      <p class="mode-panel-sub">从阴阳八卦入门，逐步阅读本经、十翼与象数理论。</p>
+      <div class="learning-tabs" role="tablist" aria-label="学习内容">
+        ${sections.map((section, index) => `
+          <button type="button" class="learning-tab ${index === 0 ? 'active' : ''}" role="tab"
+            id="learning-tab-${section.id}" aria-controls="learning-content" tabindex="${index === 0 ? '0' : '-1'}"
+            aria-selected="${index === 0}" data-section="${section.id}">${section.label}</button>
+        `).join('')}
+      </div>
+      <div class="learning-content" id="learning-content" role="tabpanel" aria-labelledby="learning-tab-path" tabindex="0"></div>
+    </div>
+  `;
+
+  const content = mountEl.querySelector('.learning-content');
+  const showSection = (sectionId) => {
+    mountEl.querySelectorAll('.learning-tab').forEach((tab) => {
+      const selected = tab.dataset.section === sectionId;
+      tab.classList.toggle('active', selected);
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      if (selected) content.setAttribute('aria-labelledby', tab.id);
+    });
+    if (sectionId === 'trigrams') renderTrigrams(appState.trigrams, content);
+    else if (sectionId === 'wings') renderWingsPage(content, appState);
+    else if (sectionId === 'theorems') renderTheoremsPage(content, appState);
+    else if (sectionId === 'almanac') renderAlmanacKnowledgePage(content, appState, { showBackLink: false });
+    else if (sectionId === 'data') renderDataSection(content);
+    else {
+      renderStudyPathPage(content, appState, {
+        onNavigate(target) {
+          const section = target.replace('/', '');
+          if (['trigrams', 'wings', 'theorems'].includes(section)) showSection(section);
+          else onExplore();
+        },
+      });
+    }
+  };
+
+  const tabs = [...mountEl.querySelectorAll('.learning-tab')];
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => showSection(tab.dataset.section));
+  });
+  mountEl.querySelector('.learning-tabs').addEventListener('keydown', (event) => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const current = tabs.indexOf(document.activeElement);
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 :
+      (current + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+    tabs[next].focus();
+    showSection(tabs[next].dataset.section);
+  });
+  showSection('path');
+}

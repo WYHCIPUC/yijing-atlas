@@ -1,554 +1,477 @@
-// 易象图谱入口：模式切换器 + 星图 + 详情抽屉。
-import { loadAllData, buildHexagramIndex, searchHexagrams } from './data-loader.js';
+// 易象图谱入口：只负责数据初始化、全局状态与模式调度。
+import { playHexagramSound } from './audio-engine.js';
+import * as dataLoader from './data-loader.js';
+import { renderHexagramDetail } from './render.js';
+import { getHexCodeFromUrl, moveSelection, withHexCode } from './search-controller.js';
 import { buildRelationGraph } from './star-relations.js';
 import { StarMap } from './star-map.js';
-import { renderHexagramDetail } from './render.js';
 import { hexagramSvg } from './svg-painter.js';
-import { loadReviewCards, initAllCards, getDueCards, getDueCount, saveReview, getMastery } from './review-engine.js';
-import { generateQuestion, checkAnswer, addWrong, recordResult, loadStats, generateAlmanacQuestion } from './quiz-engine.js';
-import { castHexagram, getReading } from './divination-engine.js';
-import { yaoLabel } from './hexagram-utils.js';
-import { playHexagramSound, initAudio } from './audio-engine.js';
-import { castByNumber, castByTime, analyzeTiYong } from './meihua-engine.js';
-import { renderAlmanacPage } from './almanac-page.js';
 
-const reviewCards = loadReviewCards();
+const { buildHexagramIndex, searchHexagrams } = dataLoader;
 
-const state = { hexagrams: [], trigrams: [], index: null, starMap: null, currentDetail: null };
+const modeLoaders = {
+  almanac: () => import('./almanac-page.js').then((module) => module.renderAlmanacPage),
+  divination: () => import('./modes/divination-mode.js').then((module) => module.renderDivinationMode),
+  guaxu: () => import('./modes/guaxu-mode.js').then((module) => module.renderGuaxuMode),
+  learning: () => import('./modes/learning-mode.js').then((module) => module.renderLearningMode),
+  quiz: () => import('./modes/quiz-mode.js').then((module) => module.renderQuizMode),
+  review: () => import('./modes/review-mode.js').then((module) => module.renderReviewMode),
+};
 
-// === 今日卦 ===
-// 按今年第N天对64取模推算今日卦，每天一卦循环
-function getDailyHexagram(hexagrams) {
-  const now = new Date();
-  const yearStart = new Date(now.getFullYear(), 0, 0);
-  const dayOfYear = Math.floor((now - yearStart) / 86400000);
-  const idx = dayOfYear % 64;
-  return hexagrams[idx];
-}
-
-// 选取一句核心爻辞作为今日箴言
-function getDailyVerse(hex) {
-  // 优先九五/六五，其次卦辞
-  const yao5 = hex.lines.find(y => y.position === 5);
-  if (yao5 && yao5.text) {
-    const text = yao5.text.replace(/^[^：]*：/, '').replace(/。$/, '');
-    return { text, src: `${hex.name}·${yao5.position === 5 ? (yao5.isYang ? '九五' : '六五') : ''}` };
-  }
-  const j = hex.judgement.replace(/^[^：]*：/, '').replace(/。$/, '');
-  return { text: j, src: `${hex.name}·卦辞` };
-}
-
-function showDailyHexagram() {
-  const hex = getDailyHexagram(state.hexagrams);
-  if (!hex) return;
-  const now = new Date();
-  const dateStr = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
-  document.getElementById('daily-date').textContent = dateStr;
-  document.getElementById('daily-hex-svg').innerHTML = hexagramSvg(hex.binaryCode, { size: 100 });
-  document.getElementById('daily-hex-name').textContent = hex.name;
-  document.getElementById('daily-hex-full').textContent = hex.fullName;
-  const verse = getDailyVerse(hex);
-  document.getElementById('daily-verse').textContent = `「${verse.text}」`;
-  document.getElementById('daily-verse-src').textContent = `—— ${verse.src}`;
-  // 进入星图按钮：淡出欢迎层，星图聚焦今日卦
-  document.getElementById('daily-enter').addEventListener('click', () => {
-    document.getElementById('daily-overlay').style.display = 'none';
-    // 短暂延迟后聚焦今日卦
-    setTimeout(() => {
-      if (state.starMap) state.starMap.focusStar(hex.binaryCode);
-    }, 300);
-  });
-}
+const state = {
+  hexagrams: [],
+  trigrams: [],
+  wings: [],
+  theorems: [],
+  almanacTerms: [],
+  almanacYiji: {},
+  index: null,
+  starMap: null,
+  currentDetail: null,
+  currentMode: 'explore',
+};
 
 const loadingEl = document.getElementById('loading');
 const canvas = document.getElementById('star-canvas');
 const panel = document.getElementById('detail-panel');
 const panelContent = document.getElementById('detail-content');
+const panelLayoutSelect = document.getElementById('detail-layout');
+const panelSizeButton = document.getElementById('detail-size');
 const searchInput = document.getElementById('search');
+const searchResultsEl = document.getElementById('search-results');
+const dailyOverlay = document.getElementById('daily-overlay');
+const modeSwitcher = document.getElementById('mode-switcher');
+const compactPanelQuery = window.matchMedia('(max-width: 900px)');
+let modeRequestId = 0;
+let panelReturnFocus = null;
+let searchResults = [];
+let searchIndex = -1;
 
-function openDetail(code, fromCode = null) {
-  const hex = state.index.byCode.get(code);
-  if (!hex) return;
-  renderHexagramDetail(hex, panelContent, state.hexagrams, (relCode) => {
-    openDetail(relCode, code); // 关系跳转：记录从哪来
-  });
-  panel.classList.add('open');
-  // 播放卦象音律
-  try { playHexagramSound(code); } catch (e) {}
-  // 记录漫游轨迹
-  if (fromCode && state.starMap) state.starMap.addTrail(fromCode, code);
-  state.currentDetail = code;
-  state.starMap && state.starMap.focusStar(code);
-}
+const DAILY_SEEN_KEY = 'yijing-daily-seen';
+const PANEL_LAYOUT_KEY = 'yijing-panel-layout';
+const DRAWER_SIZE_KEY = 'yijing-drawer-size';
+const DRAWER_SIZES = ['compact', 'medium', 'large'];
 
-function closeDetail() {
-  panel.classList.remove('open');
-  state.currentDetail = null;
-}
-
-function setMode(mode) {
-  document.querySelectorAll('.mode-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.mode === mode);
-  });
-  state.starMap && state.starMap.setMode(mode);
-  if (mode === 'explore') {
-    state.starMap && state.starMap.setReviewDue(null);
-    closeDetail();
-  } else if (mode === 'review') {
-    // 复习模式：初始化复习卡，高亮待复习卦
-    initAllCards(reviewCards, state.hexagrams.map(h => h.binaryCode));
-    const dueCodes = getDueCards(reviewCards);
-    state.starMap && state.starMap.setReviewDue(dueCodes);
-    showReviewPanel(dueCodes);
-  } else if (mode === 'quiz') {
-    // 测验模式
-    state.starMap && state.starMap.setReviewDue(null);
-    startQuiz();
-  } else if (mode === 'divination') {
-    state.starMap && state.starMap.setReviewDue(null);
-    showDivinationPanel();
-  } else if (mode === 'guaxu') {
-    state.starMap && state.starMap.setReviewDue(null);
-    showGuaxuPanel();
-  } else if (mode === 'almanac') {
-    state.starMap && state.starMap.setReviewDue(null);
-    renderAlmanacPage(panelContent, state);
-    panel.classList.add('open');
-  } else {
-    panelContent.innerHTML = `<div style="padding:60px;text-align:center;color:#7a6a4a">
-      <h2 style="color:#a08850;margin-bottom:12px">此模块待开发</h2>
-    </div>`;
-    panel.classList.add('open');
+function readPanelLayout() {
+  try {
+    const layout = localStorage.getItem(PANEL_LAYOUT_KEY);
+    return ['bottom', 'left', 'right'].includes(layout) ? layout : 'bottom';
+  } catch {
+    return 'bottom';
   }
 }
 
-// 复习模式面板：显示待复习列表 + 翻转卡片
-function showReviewPanel(dueCodes) {
-  const dueHex = dueCodes.map(c => state.index.byCode.get(c)).filter(Boolean);
-  panelContent.innerHTML = `
-    <div style="padding:36px 26px">
-      <h2 style="color:#e8d09a;font-size:1.4rem;margin-bottom:8px">复习</h2>
-      <p style="color:#a89878;font-size:0.88rem;margin-bottom:20px">
-        今日待复习 <strong style="color:#e8d09a">${dueHex.length}</strong> 卦。
-        点击星图上脉冲闪烁的卦开始复习。
-      </p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px">
-        ${dueHex.slice(0, 20).map(h => `<span class="relation-chip" data-code="${h.binaryCode}">${h.name}</span>`).join('')}
-      </div>
-      ${dueHex.length === 0 ? '<p style="color:#888;margin-top:20px">今日无待复习卦。明天再来！</p>' : ''}
-    </div>
-  `;
-  panel.classList.add('open');
-  // chip 点击进入翻转卡片复习
-  panelContent.querySelectorAll('.relation-chip').forEach(chip => {
-    chip.addEventListener('click', () => startReviewCard(chip.dataset.code));
-  });
+function readDrawerSize() {
+  try {
+    const size = localStorage.getItem(DRAWER_SIZE_KEY);
+    return DRAWER_SIZES.includes(size) ? size : 'medium';
+  } catch {
+    return 'medium';
+  }
 }
 
-// 翻转卡片复习某卦
-function startReviewCard(code) {
-  const hex = state.index.byCode.get(code);
+function setPanelLayout(layout, { persist = false } = {}) {
+  const nextLayout = ['bottom', 'left', 'right'].includes(layout) ? layout : 'bottom';
+  panel.dataset.layout = nextLayout;
+  ['bottom', 'left', 'right'].forEach((name) => {
+    document.body.classList.toggle(`panel-${name}`, nextLayout === name);
+  });
+  panelLayoutSelect.value = nextLayout;
+  if (persist) {
+    try { localStorage.setItem(PANEL_LAYOUT_KEY, nextLayout); } catch {}
+  }
+  state.starMap?.resize();
+}
+
+function setDrawerSize(size, { persist = false } = {}) {
+  const nextSize = DRAWER_SIZES.includes(size) ? size : 'medium';
+  panel.dataset.drawerSize = nextSize;
+  DRAWER_SIZES.forEach((name) => {
+    document.body.classList.toggle(`drawer-${name}`, nextSize === name);
+  });
+  const labels = { compact: '紧凑', medium: '中等', large: '展开' };
+  panelSizeButton.setAttribute('aria-label', `切换底部详情高度，当前：${labels[nextSize]}`);
+  if (persist) {
+    try { localStorage.setItem(DRAWER_SIZE_KEY, nextSize); } catch {}
+  }
+  state.starMap?.resize();
+}
+
+setDrawerSize(readDrawerSize());
+setPanelLayout(readPanelLayout());
+
+function getDailyHexagram(hexagrams, now = new Date()) {
+  const yearStart = new Date(now.getFullYear(), 0, 0);
+  const dayOfYear = Math.floor((now - yearStart) / 86400000);
+  return hexagrams[dayOfYear % 64];
+}
+
+function getDailyVerse(hex) {
+  const fifthLine = hex.lines.find((line) => line.position === 5);
+  if (fifthLine?.text) {
+    const text = fifthLine.text.replace(/^[^：]*：/, '').replace(/。$/, '');
+    return { text, source: `${hex.name}·${fifthLine.isYang ? '九五' : '六五'}` };
+  }
+  return {
+    text: hex.judgement.replace(/^[^：]*：/, '').replace(/。$/, ''),
+    source: `${hex.name}·卦辞`,
+  };
+}
+
+function showDailyHexagram() {
+  const hex = getDailyHexagram(state.hexagrams);
   if (!hex) return;
-  panelContent.innerHTML = `
-    <div class="flip-card" id="flip-card">
-      <div class="flip-card-inner" id="flip-inner">
-        <div class="flip-card-front">
-          <div style="color:#888;font-size:0.78rem;margin-bottom:12px">回忆一下这卦</div>
-          <div style="font-size:0.9rem;color:#a89878;margin-bottom:8px">第 ${hex.number} 卦 · 下${hex.trigramLower} 上${hex.trigramUpper}</div>
-          <div style="color:#5a6680;font-size:0.82rem;margin-top:24px">点击翻转看答案</div>
-        </div>
-        <div class="flip-card-back">
-          ${hexagramSvg(hex.binaryCode, { size: 80 })}
-          <div style="font-size:1.6rem;color:#e8d09a;font-family:'Ma Shan Zheng',serif;margin:8px 0">${hex.name} · ${hex.fullName}</div>
-          <div style="color:#c9a96a;font-size:0.92rem;line-height:1.7">${hex.judgement || ''}</div>
-        </div>
-      </div>
-    </div>
-    <div class="review-rating" id="review-rating" style="display:none">
-      <p style="color:#888;font-size:0.82rem;text-align:center;margin-bottom:14px">你记得吗？</p>
-      <div style="display:flex;gap:10px;justify-content:center">
-        <button class="rate-btn rate-forgot" data-rate="0">忘了</button>
-        <button class="rate-btn rate-fuzzy" data-rate="1">模糊</button>
-        <button class="rate-btn rate-remember" data-rate="2">记得</button>
-      </div>
-    </div>
-  `;
-  // 翻转交互
-  const flipCard = document.getElementById('flip-card');
-  const flipInner = document.getElementById('flip-inner');
-  const rating = document.getElementById('review-rating');
-  let flipped = false;
-  flipCard.addEventListener('click', () => {
-    if (!flipped) {
-      flipInner.classList.add('flipped');
-      rating.style.display = 'block';
-      flipped = true;
+  state.starMap?.pause?.();
+  const now = new Date();
+  const verse = getDailyVerse(hex);
+  document.getElementById('daily-date').textContent = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+  document.getElementById('daily-hex-svg').innerHTML = hexagramSvg(hex.binaryCode, { size: 100 });
+  document.getElementById('daily-hex-name').textContent = hex.name;
+  document.getElementById('daily-hex-full').textContent = hex.fullName;
+  document.getElementById('daily-verse').textContent = `「${verse.text}」`;
+  document.getElementById('daily-verse-src').textContent = `—— ${verse.source}`;
+
+  document.getElementById('daily-enter').addEventListener('click', () => {
+    try { sessionStorage.setItem(DAILY_SEEN_KEY, '1'); } catch {}
+    dailyOverlay.classList.add('hidden');
+    setMode('explore');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.setTimeout(() => {
+      dailyOverlay.hidden = true;
+      state.starMap?.resume?.();
+      state.starMap?.focusStar(hex.binaryCode);
+      canvas.focus();
+    }, reducedMotion ? 0 : 180);
+  }, { once: true });
+}
+
+function openPanel() {
+  if (!panel.classList.contains('open')) panelReturnFocus = document.activeElement;
+  panel.inert = false;
+  panel.classList.add('open');
+  panel.setAttribute('aria-hidden', 'false');
+  panel.setAttribute('aria-modal', String(compactPanelQuery.matches));
+  document.body.classList.add('panel-open');
+  state.starMap?.resize();
+  panel.scrollTop = 0;
+  window.requestAnimationFrame(() => panel.querySelector('h1, h2, button')?.focus());
+}
+
+function updateDetailUrl(code, mode = 'push') {
+  const next = withHexCode(window.location.href, code);
+  if (next === window.location.href) return;
+  window.history[mode === 'replace' ? 'replaceState' : 'pushState']({ hex: code }, '', next);
+}
+
+function closeDetail({ restoreFocus = false, resetMode = true, updateUrl = true } = {}) {
+  panel.classList.remove('open');
+  panel.setAttribute('aria-hidden', 'true');
+  panel.inert = true;
+  document.body.classList.remove('panel-open');
+  state.starMap?.resize();
+  state.currentDetail = null;
+  if (updateUrl) updateDetailUrl(null);
+  if (resetMode && state.currentMode !== 'explore') {
+    state.currentMode = 'explore';
+    updateModeButtons('explore');
+    state.starMap?.setReviewDue(null);
+    state.starMap?.setMode('explore');
+  }
+  if (restoreFocus) {
+    const target = panelReturnFocus?.isConnected ? panelReturnFocus : canvas;
+    target.focus();
+  }
+}
+
+function bindShareAction(code) {
+  const button = panelContent.querySelector('.share-hexagram');
+  const status = panelContent.querySelector('.share-status');
+  if (!button || !status) return;
+  button.addEventListener('click', async () => {
+    const url = withHexCode(window.location.href, code);
+    try {
+      if (navigator.share) await navigator.share({ title: document.title, url });
+      else await navigator.clipboard.writeText(url);
+      status.textContent = navigator.share ? '已打开分享面板' : '链接已复制';
+    } catch (error) {
+      if (error?.name !== 'AbortError') status.textContent = '分享失败，请复制浏览器地址';
     }
   });
-  // 评分
-  rating.querySelectorAll('.rate-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const rate = parseInt(btn.dataset.rate);
-      saveReview(reviewCards, code, rate);
-      // 返回复习列表
-      const dueCodes = getDueCards(reviewCards);
-      state.starMap && state.starMap.setReviewDue(dueCodes);
-      showReviewPanel(dueCodes);
-    });
+}
+
+function openDetail(code, fromCode = null, { historyMode = 'push' } = {}) {
+  const hex = state.index.byCode.get(code);
+  if (!hex) return;
+  renderHexagramDetail(hex, panelContent, state.hexagrams, (relatedCode) => openDetail(relatedCode, code));
+  if (historyMode !== 'none') updateDetailUrl(code, historyMode);
+  bindShareAction(code);
+  openPanel();
+  try { playHexagramSound(code); } catch {}
+  if (fromCode) state.starMap?.addTrail(fromCode, code);
+  state.currentDetail = code;
+  state.starMap?.focusStar(code);
+}
+
+function updateModeButtons(mode) {
+  document.querySelectorAll('.mode-btn').forEach((button) => {
+    const selected = button.dataset.mode === mode;
+    button.classList.toggle('active', selected);
+    button.setAttribute('aria-pressed', String(selected));
+    button.tabIndex = selected ? 0 : -1;
+    if (selected && modeSwitcher.scrollWidth > modeSwitcher.clientWidth) {
+      window.requestAnimationFrame(() => button.scrollIntoView({ block: 'nearest', inline: 'center' }));
+    }
   });
 }
 
-// 测验模式：出题 + 候选选择 + 判题反馈
-let currentQuiz = null;
-function startQuiz() {
-  // 混合出题：80% 卦象题，20% 黄历术语题
-  if (state.almanacTerms && state.almanacTerms.length >= 4 && Math.random() < 0.2) {
-    currentQuiz = generateAlmanacQuestion(state.almanacTerms);
-  } else {
-    currentQuiz = generateQuestion(state.hexagrams);
+async function loadModeResources(mode) {
+  if (mode === 'learning' && dataLoader.loadLearningData) {
+    Object.assign(state, await dataLoader.loadLearningData());
   }
-  if (!currentQuiz) { currentQuiz = generateQuestion(state.hexagrams); }
-  const isAlmanac = currentQuiz.type === 'almanac';
-  const answerHex = isAlmanac ? null : state.index.byCode.get(currentQuiz.answer);
-  const stats = loadStats();
-  // 选项渲染：卦象题用 binaryCode 查名，术语题用 {text,code}
-  const optHtml = isAlmanac
-    ? currentQuiz.candidates.map(c => `<button class="quiz-option" data-code="${c.code}">${c.text}</button>`).join('')
-    : currentQuiz.candidates.map(c => {
-        const h = state.index.byCode.get(c);
-        return `<button class="quiz-option" data-code="${c}">${h.name} · ${h.fullName}</button>`;
-      }).join('');
-  panelContent.innerHTML = `
-    <div style="padding:36px 26px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-        <h2 style="color:#e8d09a;font-size:1.4rem">测验</h2>
-        <span style="color:#888;font-size:0.8rem">正确率 ${stats.correct}/${stats.total}</span>
-      </div>
-      <div style="background:rgba(201,169,106,0.08);border-radius:8px;padding:20px;margin-bottom:20px;text-align:center">
-        <p style="color:#e8d09a;font-size:1.1rem;line-height:1.7">${currentQuiz.question}</p>
-      </div>
-      <p style="color:#888;font-size:0.8rem;margin-bottom:12px">选择你的答案：</p>
-      <div class="quiz-options" id="quiz-options">
-        ${optHtml}
-      </div>
-      <div id="quiz-feedback" style="margin-top:20px"></div>
-    </div>
-  `;
-  panel.classList.add('open');
-  // 绑定选项
-  panelContent.querySelectorAll('.quiz-option').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const picked = btn.dataset.code;
-      const correct = checkAnswer(currentQuiz, picked);
-      recordResult(correct);
-      if (!correct) addWrong(currentQuiz.targetCode);
-      // 高亮对错
-      panelContent.querySelectorAll('.quiz-option').forEach(b => {
-        if (b.dataset.code === currentQuiz.answer) b.classList.add('quiz-correct');
-        else if (b.dataset.code === picked) b.classList.add('quiz-wrong');
-        b.disabled = true;
+  if ((mode === 'almanac' || mode === 'quiz') && dataLoader.loadAlmanacData) {
+    Object.assign(state, await dataLoader.loadAlmanacData());
+  }
+}
+
+async function setMode(mode) {
+  const requestId = ++modeRequestId;
+  state.currentMode = mode;
+  updateModeButtons(mode);
+  state.starMap?.setReviewDue(null);
+  state.starMap?.setMode(mode);
+
+  if (mode === 'explore') {
+    closeDetail({ resetMode: false });
+    return;
+  }
+
+  if (state.currentDetail) {
+    updateDetailUrl(null);
+    state.currentDetail = null;
+  }
+
+  const loadRenderer = modeLoaders[mode];
+  if (!loadRenderer) {
+    setMode('explore');
+    return;
+  }
+  openPanel();
+  panelContent.innerHTML = '<div class="mode-loading" role="status">正在载入内容…</div>';
+  try {
+    const [renderer] = await Promise.all([loadRenderer(), loadModeResources(mode)]);
+    if (requestId !== modeRequestId || state.currentMode !== mode) return;
+    if (mode === 'guaxu') {
+      renderer(panelContent, state, (code) => {
+        setMode('explore');
+        openDetail(code);
       });
-      const fb = document.getElementById('quiz-feedback');
-      const answerName = isAlmanac ? (currentQuiz.answerText || '—') : (answerHex ? answerHex.name : '—');
-      fb.innerHTML = `
-        <p style="text-align:center;font-size:1rem;margin-bottom:12px">
-          ${correct ? '<span style="color:#34e89e">✓ 正确！</span>' : '<span style="color:#e94560">✗ 正确答案是「'+answerName+'」</span>'}
-        </p>
-        <button class="quiz-next" id="quiz-next">下一题 →</button>
-      `;
-      document.getElementById('quiz-next').addEventListener('click', () => startQuiz());
-    });
-  });
+    } else if (mode === 'learning') {
+      renderer(panelContent, state, () => setMode('explore'));
+    } else {
+      renderer(panelContent, state);
+    }
+  } catch (error) {
+    if (requestId !== modeRequestId) return;
+    const errorMessage = document.createElement('div');
+    errorMessage.className = 'mode-error';
+    errorMessage.setAttribute('role', 'alert');
+    errorMessage.textContent = `内容加载失败：${String(error.message || error)}`;
+    panelContent.replaceChildren(errorMessage);
+  }
 }
 
-// 占筮模式：金钱卦起卦
-function showDivinationPanel() {
-  panelContent.innerHTML = `
-    <div style="padding:36px 26px;text-align:center">
-      <h2 style="color:#e8d09a;font-size:1.4rem;margin-bottom:16px">占筮</h2>
-      <div class="divine-tabs">
-        <button class="divine-tab active" data-sub="coin">金钱卦</button>
-        <button class="divine-tab" data-sub="meihua">梅花易数</button>
-      </div>
-      <div id="divine-body"></div>
-    </div>
-  `;
-  panel.classList.add('open');
-  // 子模式切换
-  panelContent.querySelectorAll('.divine-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      panelContent.querySelectorAll('.divine-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      if (tab.dataset.sub === 'coin') showCoinDivination();
-      else showMeihuaDivination();
-    });
+function bindGlobalInteractions() {
+  const modeButtons = [...document.querySelectorAll('.mode-btn')];
+  modeButtons.forEach((button) => {
+    button.addEventListener('click', () => setMode(button.dataset.mode));
   });
-  showCoinDivination();
-}
-
-// 金钱卦子模式
-function showCoinDivination() {
-  const body = document.getElementById('divine-body');
-  body.innerHTML = `
-    <p style="color:#a89878;font-size:0.85rem;margin:20px 0;line-height:1.7">
-      三枚铜钱掷六次。<br>心中默念所问之事，静心凝神。
-    </p>
-    <button class="divine-btn" id="coin-btn">☯ 掷卦</button>
-    <div id="coin-result" style="margin-top:20px"></div>
-  `;
-  document.getElementById('coin-btn').addEventListener('click', () => {
-    performDivination(document.getElementById('coin-result'));
+  modeSwitcher.addEventListener('keydown', (event) => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const current = modeButtons.indexOf(document.activeElement);
+    const next = moveSelection(current, event.key === 'ArrowRight' ? 'ArrowDown' :
+      event.key === 'ArrowLeft' ? 'ArrowUp' : event.key, modeButtons.length);
+    modeButtons[next]?.focus();
   });
-}
-
-// 梅花易数子模式
-function showMeihuaDivination() {
-  const body = document.getElementById('divine-body');
-  const now = new Date();
-  body.innerHTML = `
-    <p style="color:#a89878;font-size:0.82rem;margin:16px 0;line-height:1.6">
-      邵康节所传，以数起卦，体用断吉凶。
-    </p>
-    <div style="margin-bottom:16px">
-      <p style="color:#888;font-size:0.8rem;margin-bottom:8px">数字起卦（输入两个数）</p>
-      <div style="display:flex;gap:10px;justify-content:center;align-items:center">
-        <input type="number" id="mh-upper" class="mh-input" placeholder="上数" value="${Math.floor(Math.random()*99)+1}">
-        <span style="color:#888">·</span>
-        <input type="number" id="mh-lower" class="mh-input" placeholder="下数" value="${Math.floor(Math.random()*99)+1}">
-        <button class="mh-btn" id="mh-cast">起卦</button>
-      </div>
-    </div>
-    <div style="margin-bottom:16px">
-      <button class="mh-btn" id="mh-time">🕐 以当前时间起卦</button>
-    </div>
-    <div id="mh-result"></div>
-  `;
-  document.getElementById('mh-cast').addEventListener('click', () => {
-    const u = parseInt(document.getElementById('mh-upper').value) || 1;
-    const l = parseInt(document.getElementById('mh-lower').value) || 1;
-    performMeihua(castByNumber(u, l));
+  document.getElementById('detail-close').addEventListener('click', () => closeDetail({ restoreFocus: true }));
+  panelLayoutSelect.addEventListener('change', () => {
+    setPanelLayout(panelLayoutSelect.value, { persist: true });
   });
-  document.getElementById('mh-time').addEventListener('click', () => {
-    performMeihua(castByTime(now));
+  panelSizeButton.addEventListener('click', () => {
+    const current = DRAWER_SIZES.indexOf(panel.dataset.drawerSize);
+    setDrawerSize(DRAWER_SIZES[(current + 1) % DRAWER_SIZES.length], { persist: true });
   });
-}
-
-// 执行梅花易数断卦并显示
-function performMeihua(cast) {
-  const primaryHex = state.index.byCode.get(cast.primaryCode);
-  const changedHex = state.index.byCode.get(cast.changedCode);
-  const ty = analyzeTiYong(cast);
-  // 星图高亮
-  state.starMap && state.starMap.focusStar(cast.primaryCode);
-  // 关系颜色
-  const relColors = {
-    yongshengti: '#34e89e', tikeyong: '#c9a96a', bihe: '#8d6e63',
-    tishengyong: '#e0a060', yongketi: '#e94560',
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && panel.classList.contains('open')) {
+      closeDetail({ restoreFocus: true });
+      return;
+    }
+    if (event.key !== 'Tab' || !compactPanelQuery.matches || !panel.classList.contains('open')) return;
+    const focusable = [...panel.querySelectorAll('button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')]
+      .filter((element) => !element.hidden && element.getClientRects().length > 0);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+  const syncPanelModality = () => {
+    panel.setAttribute('aria-modal', String(compactPanelQuery.matches));
   };
-  const relColor = relColors[ty.relation] || '#888';
-  document.getElementById('mh-result').innerHTML = `
-    <div style="background:rgba(201,169,106,0.08);border-radius:8px;padding:16px;margin-bottom:12px">
-      <div style="display:flex;justify-content:space-around;align-items:center;margin-bottom:8px">
-        <div style="text-align:center">
-          <div style="color:#e8d09a;font-size:1.3rem;font-family:'Ma Shan Zheng',serif">${primaryHex.name}</div>
-          <div style="color:#888;font-size:0.72rem">${primaryHex.fullName}</div>
-          <div style="color:#666;font-size:0.68rem">本卦</div>
-        </div>
-        <span style="color:#666;font-size:1.2rem">→</span>
-        <div style="text-align:center">
-          <div style="color:#34e89e;font-size:1.3rem;font-family:'Ma Shan Zheng',serif">${changedHex.name}</div>
-          <div style="color:#888;font-size:0.72rem">${changedHex.fullName}</div>
-          <div style="color:#666;font-size:0.68rem">变卦（第${cast.changingPos}爻动）</div>
-        </div>
-      </div>
-    </div>
-    <div style="background:${relColor}15;border:1px solid ${relColor}40;border-radius:8px;padding:16px;margin-bottom:12px">
-      <p style="color:#888;font-size:0.75rem;margin-bottom:8px">体用分析（${cast.source}）</p>
-      <div style="display:flex;justify-content:space-around;margin-bottom:10px">
-        <div style="text-align:center">
-          <div style="color:${relColor};font-size:1rem;font-weight:bold">体（${ty.bodyPos}）</div>
-          <div style="color:#c9a96a;font-size:0.85rem">${ty.bodyWuxingName}</div>
-        </div>
-        <div style="text-align:center">
-          <div style="color:#888;font-size:1rem">用（${ty.usePos}）</div>
-          <div style="color:#a89878;font-size:0.85rem">${ty.useWuxingName}</div>
-        </div>
-      </div>
-      <p style="color:${relColor};font-size:0.95rem;text-align:center;font-weight:600;margin-bottom:6px">${ty.relationName}</p>
-      <p style="color:#bbb;font-size:0.85rem;line-height:1.7">${ty.verdict}</p>
-    </div>
-    <p style="color:#666;font-size:0.72rem;text-align:center;margin-top:8px">
-      动爻：第${cast.changingPos}爻 ·
-      ${primaryHex.lines[cast.changingPos-1] ? primaryHex.lines[cast.changingPos-1].text : ''}
-    </p>
-  `;
-}
+  if (compactPanelQuery.addEventListener) compactPanelQuery.addEventListener('change', syncPanelModality);
+  else compactPanelQuery.addListener?.(syncPanelModality);
+  syncPanelModality();
 
-function performDivination(targetEl) {
-  const cast = castHexagram();
-  const primaryHex = state.index.byCode.get(cast.primaryCode);
-  const changedHex = cast.hasChange ? state.index.byCode.get(cast.changedCode) : null;
-  const reading = getReading(cast, primaryHex, changedHex);
-
-  // 在星图上高亮本卦和变卦
-  state.starMap && state.starMap.focusStar(cast.primaryCode);
-  const el = targetEl || document.getElementById('divine-result');
-
-  const yaosHtml = cast.yaos.map((y, i) => {
-    const label = yaoLabel(i + 1, y.isYang);
-    const dot = y.isYang ? '▬' : '▬ ▬';
-    const changeMark = y.changing ? ' <span style="color:#e94560">○变</span>' : '';
-    return `<div style="color:${y.changing?'#e94560':'#c9a96a'};font-size:1rem;margin:2px 0">${dot} ${label}${changeMark} (${y.name})</div>`;
-  }).reverse().join('');
-
-  el.innerHTML = `
-    <div style="background:rgba(201,169,106,0.08);border-radius:8px;padding:20px;margin-bottom:16px">
-      ${yaosHtml}
-    </div>
-    <div style="margin-bottom:16px">
-      <span style="color:#e8d09a;font-size:1.2rem">${primaryHex.name}（${primaryHex.fullName}）</span>
-      ${cast.hasChange ? `<span style="color:#888;margin:0 8px">→</span><span style="color:#34e89e;font-size:1.2rem">${changedHex.name}（${changedHex.fullName}）</span>` : ''}
-    </div>
-    <div style="background:rgba(52,232,158,0.05);border-radius:8px;padding:16px;margin-bottom:12px">
-      <p style="color:#888;font-size:0.78rem;margin-bottom:8px">${reading.rule}</p>
-      ${reading.readings.map(r => `
-        <p style="color:#a89878;font-size:0.8rem;margin-bottom:4px">${r.src}</p>
-        <p style="color:#e8d09a;font-size:1rem;line-height:1.8;margin-bottom:10px">${r.text}</p>
-      `).join('')}
-    </div>
-    <button class="divine-btn" id="divine-again" style="font-size:0.88rem;padding:8px 24px">再掷一卦</button>
-  `;
-  document.getElementById('divine-again').addEventListener('click', () => performDivination(el));
-}
-
-// 卦序长河：64卦按周易顺序排成时间线，序卦传串讲
-function showGuaxuPanel() {
-  const sorted = [...state.hexagrams].sort((a, b) => a.number - b.number);
-  // 圆形卦序盘：64卦围成一圈，序号在外、卦名在内
-  const items = sorted.map((h, i) => {
-    const angle = (i / 64) * 360 - 90; // 从顶部(乾)开始顺时针
-    const rad = angle * Math.PI / 180;
-    const r1 = 140; // 外圈（序号）
-    const r2 = 100; // 内圈（卦名）
-    const x1 = 160 + Math.cos(rad) * r1;
-    const y1 = 160 + Math.sin(rad) * r1;
-    const x2 = 160 + Math.cos(rad) * r2;
-    const y2 = 160 + Math.sin(rad) * r2;
-    return { h, angle, x1, y1, x2, y2, rad };
-  });
-
-  panelContent.innerHTML = `
-    <div style="padding:36px 20px">
-      <h2 style="color:#e8d09a;font-size:1.4rem;margin-bottom:6px;text-align:center">卦序盘</h2>
-      <p style="color:#a89878;font-size:0.82rem;margin-bottom:16px;text-align:center;line-height:1.6">
-        序卦传述说六十四卦的演化之理<br>悬停查看，点击进入星图
-      </p>
-      <div class="guaxu-wheel-wrap">
-        <svg class="guaxu-wheel" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-          <!-- 外圈装饰圆 -->
-          <circle cx="160" cy="160" r="150" fill="none" stroke="rgba(201,169,106,0.1)" stroke-width="0.5"/>
-          <circle cx="160" cy="160" r="108" fill="none" stroke="rgba(201,169,106,0.08)" stroke-width="0.5"/>
-          <!-- 中心 -->
-          <circle cx="160" cy="160" r="50" fill="rgba(201,169,106,0.04)" stroke="rgba(201,169,106,0.15)" stroke-width="0.5"/>
-          <text x="160" y="155" text-anchor="middle" fill="#d4a574" font-size="11" font-family="serif">序卦</text>
-          <text x="160" y="170" text-anchor="middle" fill="#8a7a5a" font-size="8" font-family="serif">演化之理</text>
-          <!-- 连接线（每8卦一组，分组标记） -->
-          ${items.map((it, i) => i % 8 === 0 ? `<line x1="${it.x2}" y1="${it.y2}" x2="160" y2="160" stroke="rgba(201,169,106,0.06)" stroke-width="0.5"/>` : '').join('')}
-          <!-- 卦名（内圈）和序号（外圈） -->
-          ${items.map(it => `
-            <g class="guaxu-svg-node" data-code="${it.h.binaryCode}" style="cursor:pointer">
-              <text x="${it.x1}" y="${it.y1}" text-anchor="middle" dominant-baseline="central"
-                fill="#5a6680" font-size="6" font-family="monospace"
-                transform="rotate(${it.angle + 90}, ${it.x1}, ${it.y1})">${it.h.number}</text>
-              <text x="${it.x2}" y="${it.y2}" text-anchor="middle" dominant-baseline="central"
-                fill="${it.h.binaryCode.slice(0,3) === it.h.binaryCode.slice(3,6) ? '#e8d09a' : '#c9a96a'}"
-                font-size="${it.h.binaryCode.slice(0,3) === it.h.binaryCode.slice(3,6) ? '10' : '8'}"
-                font-family="serif" font-weight="${it.h.binaryCode.slice(0,3) === it.h.binaryCode.slice(3,6) ? 'bold' : 'normal'}"
-                transform="rotate(${it.angle + 90}, ${it.x2}, ${it.y2})">${it.h.name}</text>
-              <circle cx="${it.x2}" cy="${it.y2}" r="8" fill="transparent"/>
-            </g>
-          `).join('')}
-        </svg>
-        <div class="guaxu-detail" id="guaxu-detail">
-          <p style="color:#666;font-size:0.8rem;text-align:center">悬停或点击卦象查看序卦传</p>
-        </div>
-      </div>
-    </div>
-  `;
-  panel.classList.add('open');
-
-  // 交互：悬停显示序卦说明，点击进入星图
-  panelContent.querySelectorAll('.guaxu-svg-node').forEach(node => {
-    const code = node.dataset.code;
-    const hex = state.index.byCode.get(code);
-    node.addEventListener('mouseenter', () => {
-      const detail = document.getElementById('guaxu-detail');
-      if (hex) {
-        detail.innerHTML = `
-          <div class="gd-name">${hex.name} · ${hex.fullName}</div>
-          <div class="gd-num">第 ${hex.number} 卦</div>
-          <div class="gd-remark">${hex.orderRemark || ''}</div>
-          ${hex.scenario ? `<div class="gd-scenario">${hex.scenario}</div>` : ''}
-        `;
+  const closeSearch = () => {
+    searchResultsEl.hidden = true;
+    searchInput.setAttribute('aria-expanded', 'false');
+    searchInput.removeAttribute('aria-activedescendant');
+    searchIndex = -1;
+  };
+  const selectSearchResult = (index) => {
+    const result = searchResults[index];
+    if (!result) return;
+    searchInput.value = result.name;
+    closeSearch();
+    openDetail(result.binaryCode);
+  };
+  const renderSearch = () => {
+    const keyword = searchInput.value.trim();
+    searchResults = keyword ? searchHexagrams(state.hexagrams, keyword).slice(0, 8) : [];
+    searchIndex = -1;
+    searchResultsEl.replaceChildren();
+    if (!keyword) {
+      closeSearch();
+      return;
+    }
+    if (!searchResults.length) {
+      const empty = document.createElement('p');
+      empty.className = 'search-empty';
+      empty.textContent = '没有找到相关卦象';
+      searchResultsEl.append(empty);
+    } else {
+      searchResults.forEach((hexagram, index) => {
+        const option = document.createElement('button');
+        option.type = 'button';
+        option.id = `search-option-${index}`;
+        option.className = 'search-option';
+        option.setAttribute('role', 'option');
+        option.dataset.index = String(index);
+        option.textContent = `${hexagram.number}. ${hexagram.name} · ${hexagram.fullName}`;
+        searchResultsEl.append(option);
+      });
+      state.starMap?.focusStar(searchResults[0].binaryCode);
+    }
+    searchResultsEl.hidden = false;
+    searchInput.setAttribute('aria-expanded', 'true');
+  };
+  const updateSearchSelection = () => {
+    searchResultsEl.querySelectorAll('.search-option').forEach((option, index) => {
+      const selected = index === searchIndex;
+      option.classList.toggle('active', selected);
+      option.setAttribute('aria-selected', String(selected));
+      if (selected) {
+        searchInput.setAttribute('aria-activedescendant', option.id);
+        option.scrollIntoView({ block: 'nearest' });
+        state.starMap?.focusStar(searchResults[index].binaryCode);
       }
     });
-    node.addEventListener('click', () => {
-      document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === 'explore'));
-      state.starMap && state.starMap.setMode('explore');
-      openDetail(code);
+  };
+  searchInput.addEventListener('input', renderSearch);
+  searchInput.addEventListener('focus', renderSearch);
+  searchInput.addEventListener('keydown', (event) => {
+    if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
+      event.preventDefault();
+      searchIndex = moveSelection(searchIndex, event.key, searchResults.length);
+      updateSearchSelection();
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      selectSearchResult(searchIndex >= 0 ? searchIndex : 0);
+    } else if (event.key === 'Escape') {
+      closeSearch();
+    }
+  });
+  searchResultsEl.addEventListener('mousedown', (event) => event.preventDefault());
+  searchResultsEl.addEventListener('click', (event) => {
+    const option = event.target.closest('.search-option');
+    if (option) selectSearchResult(Number.parseInt(option.dataset.index, 10));
+  });
+  document.querySelector('.search-box').addEventListener('focusout', (event) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) closeSearch();
+  });
+  window.addEventListener('popstate', () => {
+    const code = getHexCodeFromUrl(window.location.href);
+    if (code && state.index.byCode.has(code)) openDetail(code, null, { historyMode: 'none' });
+    else closeDetail({ updateUrl: false });
+  });
+
+  let resizeFrame = null;
+  window.addEventListener('resize', () => {
+    if (resizeFrame) return;
+    resizeFrame = window.requestAnimationFrame(() => {
+      resizeFrame = null;
+      state.starMap?.resize();
     });
   });
+
+  const zoomLevel = document.getElementById('zoom-level');
+  const updateZoom = () => { zoomLevel.textContent = `${state.starMap.getZoomPercent()}%`; };
+  document.getElementById('zoom-in').addEventListener('click', () => { state.starMap.zoomBy(1.25); updateZoom(); });
+  document.getElementById('zoom-out').addEventListener('click', () => { state.starMap.zoomBy(0.8); updateZoom(); });
+  document.getElementById('zoom-reset').addEventListener('click', () => { state.starMap.zoomReset(); updateZoom(); });
+  document.getElementById('trail-clear').addEventListener('click', () => {
+    state.starMap.clearTrail();
+    state.starMap.clearFocus();
+  });
+  canvas.addEventListener('wheel', () => window.setTimeout(updateZoom, 50), { passive: true });
 }
 
 async function init() {
   try {
-    const data = await loadAllData();
-    state.hexagrams = data.hexagrams;
-    state.trigrams = data.trigrams;
-    state.almanacTerms = data.almanacTerms;
-    state.almanacYiji = data.almanacYiji;
+    // 旧版 Service Worker 可能仍缓存只导出 loadAllData 的模块；首次升级时保持兼容。
+    const loadInitialData = dataLoader.loadCoreData || dataLoader.loadAllData;
+    if (!loadInitialData) throw new Error('缺少数据加载入口');
+    const data = await loadInitialData();
+    Object.assign(state, data);
     state.index = buildHexagramIndex(data.hexagrams);
-
-    const graph = buildRelationGraph(data.hexagrams);
-    state.starMap = new StarMap(canvas, graph, {
+    state.starMap = new StarMap(canvas, buildRelationGraph(data.hexagrams), {
       onPick: (code) => openDetail(code),
-      onHover: (code) => {},
+      onHover: () => {},
     });
-
-    document.querySelectorAll('.mode-btn').forEach(btn => {
-      btn.addEventListener('click', () => setMode(btn.dataset.mode));
-    });
-    document.getElementById('detail-close').addEventListener('click', closeDetail);
-    searchInput.addEventListener('input', (e) => {
-      const kw = e.target.value.trim();
-      if (!kw) return;
-      const results = searchHexagrams(state.hexagrams, kw);
-      if (results.length > 0) {
-        state.starMap.focusStar(results[0].binaryCode);
-      }
-    });
-    window.addEventListener('resize', () => state.starMap && state.starMap.resize());
-
-    // 缩放控件
-    const zoomLevel = document.getElementById('zoom-level');
-    const updateZoom = () => { if (zoomLevel) zoomLevel.textContent = state.starMap.getZoomPercent() + '%'; };
-    document.getElementById('zoom-in').addEventListener('click', () => { state.starMap.zoomBy(1.25); updateZoom(); });
-    document.getElementById('zoom-out').addEventListener('click', () => { state.starMap.zoomBy(0.8); updateZoom(); });
-    document.getElementById('zoom-reset').addEventListener('click', () => { state.starMap.zoomReset(); updateZoom(); });
-    document.getElementById('trail-clear').addEventListener('click', () => { state.starMap.clearTrail(); state.starMap.clearFocus(); });
-    // 滚轮缩放也实时更新百分比
-    canvas.addEventListener('wheel', () => setTimeout(updateZoom, 50), { passive: true });
-
-    loadingEl.style.display = 'none';
-    // 显示今日卦首页
-    showDailyHexagram();
-  } catch (e) {
-    loadingEl.innerHTML = `⚠ 数据加载失败：${e.message}`;
-    loadingEl.classList.remove('loading-screen');
-    loadingEl.classList.add('error-screen');
-    console.error(e);
+    bindGlobalInteractions();
+    updateModeButtons('explore');
+    loadingEl.hidden = true;
+    const initialCode = getHexCodeFromUrl(window.location.href);
+    let dailySeen = false;
+    try { dailySeen = sessionStorage.getItem(DAILY_SEEN_KEY) === '1'; } catch {}
+    if (initialCode && state.index.byCode.has(initialCode)) {
+      dailyOverlay.hidden = true;
+      openDetail(initialCode, null, { historyMode: 'replace' });
+    } else if (dailySeen) {
+      dailyOverlay.hidden = true;
+      state.starMap.resume?.();
+    } else {
+      showDailyHexagram();
+    }
+  } catch (error) {
+    loadingEl.hidden = false;
+    loadingEl.textContent = `数据加载失败：${error.message}`;
+    loadingEl.className = 'error-screen';
+    console.error(error);
   }
 }
 
 init();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).catch((error) => {
+      console.warn('离线缓存注册失败', error);
+    });
+  });
+}

@@ -1,4 +1,7 @@
-import { oppositeCode, reversedCode, interlockingCode, changingCode, allRelations } from '../js/hexagram-utils.js';
+import {
+  oppositeCode, reversedCode, interlockingCode, changingCode, allRelations,
+  lowerOf, upperOf, combine, yaoLabel, isCorrectPosition,
+} from '../js/hexagram-utils.js';
 
 const asserts = [];
 function ok(name, cond) { asserts.push({name, ok: cond}); console.log(`${cond?'✓':'✗'} ${name}`); }
@@ -21,6 +24,16 @@ ok('泰综=否000111', r.reversed === '000111');
 ok('泰互=归妹110100', r.interlocking === '110100');
 ok('泰变是数组(6个)', Array.isArray(r.changing) && r.changing.length === 6);
 ok('泰变[0]=升011000', r.changing[0] === '011000');
+ok('下卦/上卦拆分', lowerOf('111000') === '111' && upperOf('111000') === '000');
+ok('上下卦组合', combine('111', '000') === '111000');
+ok('初九/六五/上六爻题', yaoLabel(1, true) === '初九' && yaoLabel(5, false) === '六五' && yaoLabel(6, false) === '上六');
+ok('阴阳当位判断', isCorrectPosition(1, true) && isCorrectPosition(2, false) && !isCorrectPosition(2, true));
+let invalidRejected = false;
+try { oppositeCode('102'); } catch { invalidRejected = true; }
+ok('非法卦码会拒绝', invalidRejected);
+let positionRejected = false;
+try { changingCode('111111', 0); } catch { positionRejected = true; }
+ok('非法爻位会拒绝', positionRejected);
 
 const failed = asserts.filter(a => !a.ok);
 console.log(failed.length ? `\n${failed.length} 项失败` : '\n全部通过');

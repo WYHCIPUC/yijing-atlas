@@ -121,15 +121,15 @@ export function analyzeTiYong(cast) {
   // 判定生克关系
   let relation, verdict;
   if (bodyWx === useWx) {
-    relation = 'bihe'; verdict = '体用比和，五行相同。顺其自然，平稳无碍。';
+    relation = 'bihe'; verdict = '传统解释作“体用比和”，常取平稳之意。';
   } else if (wuxingSheng(useWx, bodyWx)) {
-    relation = 'yongshengti'; verdict = '用生体，所测之事助益自己。大吉，事可成，多有助益。';
+    relation = 'yongshengti'; verdict = '传统解释作“用生体”，常取有助益之意。';
   } else if (wuxingSheng(bodyWx, useWx)) {
-    relation = 'tishengyong'; verdict = '体生用，自己耗费精力。小凶，事难成，劳神费力。';
+    relation = 'tishengyong'; verdict = '传统解释作“体生用”，常提醒留意精力耗费。';
   } else if (wuxingKe(bodyWx, useWx)) {
-    relation = 'tikeyong'; verdict = '体克用，自己能控制局面。小吉，费力可成。';
+    relation = 'tikeyong'; verdict = '传统解释作“体克用”，常取费力而可控之意。';
   } else if (wuxingKe(useWx, bodyWx)) {
-    relation = 'yongketi'; verdict = '用克体，所测之事阻碍自己。大凶，不宜妄动，事多不成。';
+    relation = 'yongketi'; verdict = '传统解释作“用克体”，常提醒审慎评估阻力。';
   }
   return {
     bodyTrigram, useTrigram, bodyPos, usePos,

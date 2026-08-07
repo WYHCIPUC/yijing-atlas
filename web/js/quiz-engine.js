@@ -1,13 +1,16 @@
 // 测验引擎：出题 + 判题 + 错题记录。
 // 题型：错卦辨识、综卦辨识、卦象→卦名、上下卦拆解。
 import { allRelations } from './hexagram-utils.js';
+import { readJson, removeStored, writeJson } from './storage.js';
 
 // 生成一道题
 // type: 'opposite' | 'reversed' | 'interlocking' | 'name'
-export function generateQuestion(hexagrams, type = null) {
+export function generateQuestion(hexagrams, type = null, targetCode = null) {
   const types = type ? [type] : ['opposite', 'reversed', 'interlocking', 'name'];
   const qType = types[Math.floor(Math.random() * types.length)];
-  const target = hexagrams[Math.floor(Math.random() * hexagrams.length)];
+  const target = hexagrams.find((hexagram) => hexagram.binaryCode === targetCode) ||
+    hexagrams[Math.floor(Math.random() * hexagrams.length)];
+  if (!target) return null;
   const rels = allRelations(target.binaryCode);
 
   let question, answer, candidates;
@@ -45,26 +48,54 @@ export function checkAnswer(question, pickedCode) {
 
 // 错题本（localStorage）
 const WRONG_KEY = 'yijing-quiz-wrong';
-export function loadWrongBook() {
-  try { return JSON.parse(localStorage.getItem(WRONG_KEY) || '[]'); } catch (e) { return []; }
+const CODE_PATTERN = /^[01]{6}$/;
+
+export function loadWrongBook(storage) {
+  const values = readJson(
+    WRONG_KEY,
+    [],
+    (value) => Array.isArray(value) && value.every((code) => CODE_PATTERN.test(code)),
+    storage,
+  );
+  return [...new Set(values)];
 }
-export function addWrong(code) {
-  const list = loadWrongBook();
-  if (!list.includes(code)) { list.push(code); localStorage.setItem(WRONG_KEY, JSON.stringify(list)); }
+
+export function addWrong(code, storage) {
+  if (!CODE_PATTERN.test(code || '')) return false;
+  const list = loadWrongBook(storage);
+  if (list.includes(code)) return true;
+  return writeJson(WRONG_KEY, [...list, code], storage).ok;
 }
-export function clearWrongBook() { localStorage.removeItem(WRONG_KEY); }
+
+export function removeWrong(code, storage) {
+  const list = loadWrongBook(storage);
+  if (!list.includes(code)) return true;
+  return writeJson(WRONG_KEY, list.filter((item) => item !== code), storage).ok;
+}
+
+export function clearWrongBook(storage) {
+  return removeStored(WRONG_KEY, storage).ok;
+}
 
 // 统计
 const STATS_KEY = 'yijing-quiz-stats';
-export function loadStats() {
-  try { return JSON.parse(localStorage.getItem(STATS_KEY) || '{"total":0,"correct":0}'); } catch (e) { return {total:0,correct:0}; }
+export function loadStats(storage) {
+  return readJson(
+    STATS_KEY,
+    { total: 0, correct: 0 },
+    (value) => Number.isInteger(value?.total) && value.total >= 0 &&
+      Number.isInteger(value?.correct) && value.correct >= 0 && value.correct <= value.total,
+    storage,
+  );
 }
-export function recordResult(correct) {
-  const s = loadStats();
-  s.total++;
-  if (correct) s.correct++;
-  localStorage.setItem(STATS_KEY, JSON.stringify(s));
-  return s;
+
+export function recordResult(correct, storage) {
+  const previous = loadStats(storage);
+  const stats = {
+    total: previous.total + 1,
+    correct: previous.correct + (correct ? 1 : 0),
+  };
+  return { ...stats, saved: writeJson(STATS_KEY, stats, storage).ok };
 }
 
 // 黄历术语题：给术语名称，选其含义（或反过来）

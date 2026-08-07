@@ -1,84 +1,50 @@
-# 易经学习项目
+# 易象图谱
 
-一个纯静态网站，用于学习《易经》：查阅六十四卦、记忆复习、测验、占筮，以及内置完整农历算法的黄历功能。
+易象图谱是一个零后端、零运行时依赖的《易经》学习网站。它以六十四卦关系星图为入口，整合学习路径、卦序、复习、测验、传统黄历知识和占筮文化演示，并支持安装为 PWA 与离线再次访问。
 
-## 怎么运行
+## 功能概览
 
-网站在 `web/` 目录。需要本地 HTTP 服务器（不能直接双击 index.html，浏览器安全策略会阻止加载 JSON）。
+- 六十四卦关系星图、全文检索和卦爻辞详情
+- 八卦、十翼、象数理论与 L1–L4 学习路径
+- 学习进度总览、连续学习、错题回练、本地复习卡及 JSON 备份
+- 金钱卦、梅花易数简化演示、占筮历史和传统黄历知识
+- 可分享卦象深链接、键盘搜索结果与浏览器前进/后退
+- 响应式布局、键盘操作、减少动态效果偏好和离线缓存
 
-**最简单**：进入 `web/` 目录，双击 `serve.bat`（Windows）或运行 `bash serve.sh`，然后浏览器打开 **http://localhost:3030/**
+## 本地运行
 
-或手动：
-```bash
-cd web
-python -m http.server 3030
-```
-
-## 目录说明
-
-```
-易经学习项目/
-├── web/                    # ★ 网站主体（双击 serve.bat 即可运行）
-│   ├── index.html          # 入口（7 个功能 Tab）
-│   ├── serve.bat / serve.sh  # 启动脚本（固定 3030 端口）
-│   ├── data/               # 6 个 JSON 数据文件
-│   │   ├── hexagrams.json    # 64 卦完整经文（卦辞/彖/大象/爻辞/序卦）
-│   │   ├── trigrams.json     # 八卦
-│   │   ├── wings.json        # 十翼（系辞/文言/说卦/序卦/杂卦）
-│   │   ├── theorems.json     # 象数理论（阴阳/五行/河洛等）
-│   │   ├── almanac-terms.json  # 黄历术语解读（98 条）
-│   │   └── almanac-yiji.json   # 宜忌事项映射
-│   ├── js/                 # 20 个 ES 模块
-│   │   ├── main.js           # 入口：路由/初始化
-│   │   ├── render.js         # 查阅库渲染
-│   │   ├── review-*.js       # 复习（艾宾浩斯 SM-2 算法）
-│   │   ├── quiz-*.js         # 测验（易经+黄历题型）
-│   │   ├── divination-*.js   # 占筮（金钱卦/大衍/梅花）
-│   │   ├── study-page.js     # 学习路径
-│   │   ├── almanac-page.js   # 黄历主页
-│   │   └── almanac/          # 黄历算法引擎
-│   │       ├── astronomy.js    # 天文算法（VSOP87 太阳黄经）
-│   │       ├── solar-terms.js  # 二十四节气
-│   │       ├── lunar.js        # 农历编排（定朔/闰月）
-│   │       ├── ganzhi.js       # 干支体系
-│   │       ├── selection.js    # 择日（建除/宿/百忌）
-│   │       └── reading.js      # 解读提取
-│   ├── styles/main.css     # 样式
-│   └── tool/               # 数据生成脚本（开发用）
-├── test/almanac/           # 黄历算法回归测试（node 跑）
-│   ├── astronomy.test.mjs    # 天文算法（节气精度<15分钟）
-│   ├── lunar.test.mjs        # 农历（含2023闰二月验证）
-│   ├── render-smoke.test.mjs # 全页面渲染冒烟测试
-│   └── load-all-data.test.mjs # 数据加载集成测试
-├── docs/                   # 设计文档与实施计划
-│   ├── specs/              # 设计规格
-│   └── plans/              # 实施计划
-└── legacy-flutter/         # 早期 Flutter APP 尝试（已废弃，项目已转 Web）
-```
-
-## 功能（7 大模块）
-
-| Tab | 功能 |
-|---|---|
-| 查阅 | 64 卦完整经文 + 全文检索 |
-| 八卦 | 先天八卦符号 + 属性表 |
-| 学习 | 十翼 / 象数理论 / L1-L4 学习路径 |
-| 黄历 | 完整农历算法 + 择日 + 全面解读（节气精度<15分钟） |
-| 复习 | 艾宾浩斯卡片（易经+黄历，SM-2 间隔算法） |
-| 测验 | 多题型（易经+黄历） |
-| 占筮 | 金钱卦/大衍筮法/梅花易数 + 变爻解读 |
-
-## 跑测试
+需要 Node.js 22 或更高版本，无需安装依赖：
 
 ```bash
-cd test/almanac
-node astronomy.test.mjs    # 天文算法
-node lunar.test.mjs        # 农历
-node selection.test.mjs    # 择日
-# 全页面冒烟测试需在 web/ 目录运行：
-cd ../../web && node ../test/almanac/render-smoke.test.mjs
+npm start
 ```
 
-## 技术栈
+打开 `http://127.0.0.1:3030/`。请勿直接使用 `file://` 打开 `web/index.html`，否则浏览器无法加载 JSON 模块数据。
 
-纯静态网站，原生 HTML/CSS/JavaScript（ES Modules），零构建链、零依赖。进度用 localStorage 存储，无需服务器后端。
+## 质量检查
+
+```bash
+npm test             # 单元、历法回归与页面渲染冒烟测试
+npm run test:coverage # 核心算法 90% 覆盖率门槛
+npm run test:e2e     # 使用本机 Chromium 检查桌面与移动主流程
+npm run validate     # 发布前完整语法、数据、测试与覆盖率检查
+```
+
+## 目录
+
+```text
+web/             静态网站、ES 模块、样式和 JSON 数据
+web/js/modes/    学习、卦序、复习、测验、占筮模式
+web/test/        核心算法测试
+test/almanac/    历法、数据集成与页面渲染回归测试
+docs/            设计、计划和内容来源说明
+legacy-flutter/  已归档的早期 Flutter 原型
+```
+
+学习数据仅存于当前浏览器，请在“学习 → 数据”中定期导出备份。黄历、占筮和体用解释只用于传统文化学习，不构成专业建议；日期按设备本地时区计算。内容来源和校对边界见 [docs/CONTENT-SOURCES.md](docs/CONTENT-SOURCES.md)，发布步骤见 [docs/RELEASE-CHECKLIST.md](docs/RELEASE-CHECKLIST.md)。
+
+## 贡献与发布
+
+提交前请阅读 [AGENTS.md](AGENTS.md) 与 [CONTRIBUTING.md](CONTRIBUTING.md)，并运行 `npm run validate`。`main` 分支通过 GitHub Actions 校验后可部署 `web/` 到 GitHub Pages。
+
+源代码采用 [MIT License](LICENSE)。传统文本、整理数据与引用内容的来源和适用边界以 [docs/CONTENT-SOURCES.md](docs/CONTENT-SOURCES.md) 为准；第三方组件见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
