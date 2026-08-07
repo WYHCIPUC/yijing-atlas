@@ -394,5 +394,9 @@ try {
   client?.close();
   await stopProcess(browser);
   await stopProcess(server);
-  rmSync(profileDir, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 });
+  try {
+    rmSync(profileDir, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 });
+  } catch (error) {
+    console.warn(`浏览器临时目录清理失败，将由系统回收：${error.message}`);
+  }
 }
