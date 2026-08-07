@@ -138,7 +138,7 @@ try {
     const response = await fetch(`http://127.0.0.1:${debugPort}/json/list`);
     const targets = await response.json();
     return targets.find((item) => item.type === 'page' && item.url.startsWith(siteUrl));
-  }, '浏览器页面启动超时');
+  }, '浏览器页面启动超时', 30000);
 
   client = new CdpClient(target.webSocketDebuggerUrl);
   await client.open();
