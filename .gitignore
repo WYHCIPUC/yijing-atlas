@@ -11,10 +11,15 @@ Thumbs.db
 node_modules/
 coverage/
 dist/
+promo-video/out/
+promo-video/public/textures/raw/
+promo-video/.remotion/
 
 # 临时文件
 .pdf-preview/
 web/.nocache-server.mjs
+.promo-server.log
+.promo-server.err.log
 
 # 本地参考资料与敏感配置（不得发布）
 *.pdf

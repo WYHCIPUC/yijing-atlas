@@ -1,0 +1,15 @@
+export const theme = {
+  ink: '#0a0e1a',
+  inkSoft: '#11172a',
+  inkElevated: '#182039',
+  gold: '#c9a96a',
+  goldBright: '#ead39b',
+  paper: '#e8d9b8',
+  paperSoft: '#f2e9d6',
+  text: '#f2ead7',
+  textMuted: '#a89e8a',
+  shadow: 'rgba(0, 0, 0, 0.52)',
+  serif: '"Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif',
+  kai: '"STKaiti", "KaiTi", "Songti SC", serif',
+  mono: '"Cascadia Mono", "Consolas", monospace',
+} as const;

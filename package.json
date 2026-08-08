@@ -10,6 +10,11 @@
   "scripts": {
     "start": "node scripts/serve.mjs",
     "build:windows": "node scripts/build-windows.mjs",
+    "video:install": "npm --prefix promo-video install",
+    "video:capture": "npm --prefix promo-video run capture",
+    "video:studio": "npm --prefix promo-video run dev",
+    "video:render": "npm --prefix promo-video run render:all",
+    "video:qa": "npm --prefix promo-video run qa",
     "test:windows": "node scripts/test-windows-build.mjs",
     "check": "node scripts/quality-check.mjs --checks-only",
     "test:unit": "node scripts/quality-check.mjs --tests-only",

@@ -1,0 +1,240 @@
+{
+  "pageW": 1920,
+  "pageH": 1080,
+  "scale": 2,
+  "states": {
+    "star": {
+      "boxes": {
+        ".topbar": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 1920,
+            "height": 84.53125
+          }
+        ],
+        ".explore-tools": [
+          {
+            "x": 1718,
+            "y": 100,
+            "width": 174,
+            "height": 46
+          }
+        ],
+        ".zoom-controls": [
+          {
+            "x": 1842,
+            "y": 789.984375,
+            "width": 56,
+            "height": 226.015625
+          }
+        ]
+      }
+    },
+    "star-detail": {
+      "boxes": {
+        "#detail-panel": [
+          {
+            "x": 0,
+            "y": 480,
+            "width": 1920,
+            "height": 600
+          }
+        ],
+        ".hex-detail": [],
+        ".relation-grid": []
+      }
+    },
+    "evolution": {
+      "boxes": {
+        ".evolution-card": [
+          {
+            "x": 480,
+            "y": 90,
+            "width": 960,
+            "height": 900
+          }
+        ],
+        ".evolution-stage": [
+          {
+            "x": 600,
+            "y": 354.65625,
+            "width": 720,
+            "height": 340.359375
+          }
+        ],
+        ".evolution-meaning": [
+          {
+            "x": 580,
+            "y": 1038.671875,
+            "width": 760,
+            "height": 754.96875
+          }
+        ]
+      }
+    },
+    "wheel": {
+      "boxes": {
+        ".guaxu-dialog": [
+          {
+            "x": 440,
+            "y": 191.8125,
+            "width": 1040,
+            "height": 774.359375
+          }
+        ],
+        ".guaxu-wheel-frame": [
+          {
+            "x": 471,
+            "y": 380.4375,
+            "width": 455.03125,
+            "height": 455.03125
+          }
+        ],
+        ".guaxu-result": [
+          {
+            "x": 956.03125,
+            "y": 380.4375,
+            "width": 492.953125,
+            "height": 552.734375
+          }
+        ]
+      }
+    },
+    "almanac": {
+      "boxes": {
+        ".almanac-view": [
+          {
+            "x": 440,
+            "y": 539,
+            "width": 510,
+            "height": 1330.21875
+          }
+        ],
+        ".alm-date-card": [],
+        ".alm-grid": []
+      }
+    },
+    "learning": {
+      "boxes": {
+        ".academy-rank-card": [
+          {
+            "x": 440,
+            "y": 903.78125,
+            "width": 510,
+            "height": 114.65625
+          }
+        ],
+        ".learning-dashboard": [
+          {
+            "x": 440,
+            "y": 1036.4375,
+            "width": 510,
+            "height": 69.71875
+          }
+        ],
+        ".level-block": [
+          {
+            "x": 440,
+            "y": 1255.6875,
+            "width": 510,
+            "height": 412.203125
+          },
+          {
+            "x": 440,
+            "y": 1689.890625,
+            "width": 510,
+            "height": 490.9375
+          },
+          {
+            "x": 440,
+            "y": 2202.828125,
+            "width": 510,
+            "height": 333.46875
+          },
+          {
+            "x": 440,
+            "y": 2558.296875,
+            "width": 510,
+            "height": 412.203125
+          },
+          {
+            "x": 440,
+            "y": 2992.5,
+            "width": 510,
+            "height": 490.9375
+          }
+        ]
+      }
+    },
+    "review": {
+      "boxes": {
+        ".review-due-list": [
+          {
+            "x": 440,
+            "y": 661.796875,
+            "width": 510,
+            "height": 42.46875
+          }
+        ],
+        ".mode-panel": [
+          {
+            "x": 440,
+            "y": 539,
+            "width": 510,
+            "height": 247.265625
+          }
+        ]
+      }
+    },
+    "quiz": {
+      "boxes": {
+        ".mode-panel": [
+          {
+            "x": 440,
+            "y": 539,
+            "width": 510,
+            "height": 631.140625
+          }
+        ],
+        ".quiz-grid": [],
+        ".quiz-question": [
+          {
+            "x": 440,
+            "y": 683.484375,
+            "width": 510,
+            "height": 106.21875
+          }
+        ]
+      }
+    },
+    "divination": {
+      "boxes": {
+        ".divine-panel": [
+          {
+            "x": 440,
+            "y": 539,
+            "width": 510,
+            "height": 2425.296875
+          }
+        ],
+        ".cast-lines": [
+          {
+            "x": 440,
+            "y": 863.546875,
+            "width": 510,
+            "height": 247.5625
+          }
+        ],
+        ".divine-interpretation": [
+          {
+            "x": 440,
+            "y": 1181.703125,
+            "width": 510,
+            "height": 1434.75
+          }
+        ]
+      }
+    }
+  }
+}

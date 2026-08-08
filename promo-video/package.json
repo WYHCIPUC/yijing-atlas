@@ -1,0 +1,36 @@
+{
+  "name": "yijing-atlas-promo-video",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "capture": "node scripts/capture.mjs && node scripts/optimize.mjs",
+    "analyze:bgm": "node scripts/analyze-bgm.mjs",
+    "render:main": "remotion render src/index.ts YijingAtlasPromo out/yijing-atlas-promo-1080p.mp4",
+    "render:main:nobgm": "remotion render src/index.ts YijingAtlasPromo out/yijing-atlas-promo-1080p-nobgm.mp4 --props=props-nobgm.json",
+    "render:teaser": "remotion render src/index.ts YijingAtlasTeaser out/yijing-atlas-teaser-vertical.mp4",
+    "render:teaser:nobgm": "remotion render src/index.ts YijingAtlasTeaser out/yijing-atlas-teaser-vertical-nobgm.mp4 --props=props-nobgm.json",
+    "render:all": "node scripts/render-all.mjs",
+    "render:audio-remux": "node scripts/render-audio-remux.mjs",
+    "poster": "node scripts/render-posters.mjs",
+    "qa": "node scripts/qa.mjs",
+    "verify:renders": "node scripts/verify-renders.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.484",
+    "playwright-core": "1.62.0",
+    "qrcode": "1.5.4",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "remotion": "4.0.484",
+    "sharp": "0.35.3"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.3",
+    "@types/qrcode": "1.5.5",
+    "@types/react": "19.2.17",
+    "typescript": "6.0.3"
+  }
+}
