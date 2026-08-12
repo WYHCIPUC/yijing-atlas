@@ -22,6 +22,17 @@ export const SHOTS = {
 export const MAIN_DURATION = 3000;
 export const TEASER_DURATION = 900;
 
+export const TEASER_SHOTS = {
+  hook: { from: 0, duration: 90 },
+  opening: { from: 90, duration: 90 },
+  starMap: { from: 180, duration: 120 },
+  evolution: { from: 300, duration: 120 },
+  almanac: { from: 420, duration: 105 },
+  learning: { from: 525, duration: 105 },
+  assessment: { from: 630, duration: 120 },
+  outro: { from: 750, duration: 150 },
+} as const satisfies Record<string, Shot>;
+
 // House Vibez measures at 123.04 BPM with an onset phase of 0.081s. It is played
 // at 0.975293× so the effective tempo is exactly 120 BPM: one beat every 15
 // frames and every authored shot boundary lands on a full beat.

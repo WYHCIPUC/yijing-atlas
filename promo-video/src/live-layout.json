@@ -29,6 +29,44 @@
             "height": 226.015625
           }
         ]
+      },
+      "elements": {
+        ".topbar": [
+          {
+            "file": "textures/elements/star-topbar-0.png",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1920,
+              "height": 84.53125
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".explore-tools": [
+          {
+            "file": "textures/elements/star-explore-tools-0.png",
+            "box": {
+              "x": 1718,
+              "y": 100,
+              "width": 174,
+              "height": 46
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".zoom-controls": [
+          {
+            "file": "textures/elements/star-zoom-controls-0.png",
+            "box": {
+              "x": 1842,
+              "y": 789.984375,
+              "width": 56,
+              "height": 226.015625
+            },
+            "pixelScale": 2
+          }
+        ]
       }
     },
     "star-detail": {
@@ -43,6 +81,88 @@
         ],
         ".hex-detail": [],
         ".relation-grid": []
+      },
+      "elements": {
+        "#detail-panel": [
+          {
+            "file": "textures/elements/star-detail-detail-panel-0.png",
+            "box": {
+              "x": 0,
+              "y": 480,
+              "width": 1920,
+              "height": 600
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".hex-detail": [],
+        ".relation-grid": []
+      }
+    },
+    "share": {
+      "boxes": {
+        ".share-card-dialog": [
+          {
+            "x": 530,
+            "y": 252.671875,
+            "width": 860,
+            "height": 574.65625
+          }
+        ],
+        ".share-card-preview": [
+          {
+            "x": 561,
+            "y": 283.671875,
+            "width": 390,
+            "height": 512.65625
+          }
+        ],
+        ".share-card-preview img": [
+          {
+            "x": 572,
+            "y": 294.671875,
+            "width": 368,
+            "height": 490.65625
+          }
+        ]
+      },
+      "elements": {
+        ".share-card-dialog": [
+          {
+            "file": "textures/elements/share-share-card-dialog-0.png",
+            "box": {
+              "x": 530,
+              "y": 252.671875,
+              "width": 860,
+              "height": 574.65625
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".share-card-preview": [
+          {
+            "file": "textures/elements/share-share-card-preview-0.png",
+            "box": {
+              "x": 561,
+              "y": 283.671875,
+              "width": 390,
+              "height": 512.65625
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".share-card-preview img": [
+          {
+            "file": "textures/elements/share-share-card-preview-img-0.png",
+            "box": {
+              "x": 572,
+              "y": 294.671875,
+              "width": 368,
+              "height": 490.65625
+            },
+            "pixelScale": 2
+          }
+        ]
       }
     },
     "evolution": {
@@ -69,6 +189,44 @@
             "y": 1038.671875,
             "width": 760,
             "height": 754.96875
+          }
+        ]
+      },
+      "elements": {
+        ".evolution-card": [
+          {
+            "file": "textures/elements/evolution-evolution-card-0.png",
+            "box": {
+              "x": 480,
+              "y": 90,
+              "width": 960,
+              "height": 900
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".evolution-stage": [
+          {
+            "file": "textures/elements/evolution-evolution-stage-0.png",
+            "box": {
+              "x": 600,
+              "y": 354.65625,
+              "width": 720,
+              "height": 340.359375
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".evolution-meaning": [
+          {
+            "file": "textures/elements/evolution-evolution-meaning-0.png",
+            "box": {
+              "x": 580,
+              "y": 1038.671875,
+              "width": 760,
+              "height": 754.96875
+            },
+            "pixelScale": 2
           }
         ]
       }
@@ -99,6 +257,44 @@
             "height": 552.734375
           }
         ]
+      },
+      "elements": {
+        ".guaxu-dialog": [
+          {
+            "file": "textures/elements/wheel-guaxu-dialog-0.png",
+            "box": {
+              "x": 440,
+              "y": 191.8125,
+              "width": 1040,
+              "height": 774.359375
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".guaxu-wheel-frame": [
+          {
+            "file": "textures/elements/wheel-guaxu-wheel-frame-0.png",
+            "box": {
+              "x": 471,
+              "y": 380.4375,
+              "width": 455.03125,
+              "height": 455.03125
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".guaxu-result": [
+          {
+            "file": "textures/elements/wheel-guaxu-result-0.png",
+            "box": {
+              "x": 956.03125,
+              "y": 380.4375,
+              "width": 492.953125,
+              "height": 552.734375
+            },
+            "pixelScale": 2
+          }
+        ]
       }
     },
     "almanac": {
@@ -109,6 +305,22 @@
             "y": 539,
             "width": 510,
             "height": 1330.21875
+          }
+        ],
+        ".alm-date-card": [],
+        ".alm-grid": []
+      },
+      "elements": {
+        ".almanac-view": [
+          {
+            "file": "textures/elements/almanac-almanac-view-0.png",
+            "box": {
+              "x": 440,
+              "y": 539,
+              "width": 510,
+              "height": 1330.21875
+            },
+            "pixelScale": 2
           }
         ],
         ".alm-date-card": [],
@@ -165,6 +377,84 @@
             "height": 490.9375
           }
         ]
+      },
+      "elements": {
+        ".academy-rank-card": [
+          {
+            "file": "textures/elements/learning-academy-rank-card-0.png",
+            "box": {
+              "x": 440,
+              "y": 903.78125,
+              "width": 510,
+              "height": 114.65625
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".learning-dashboard": [
+          {
+            "file": "textures/elements/learning-learning-dashboard-0.png",
+            "box": {
+              "x": 440,
+              "y": 1036.4375,
+              "width": 510,
+              "height": 69.71875
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".level-block": [
+          {
+            "file": "textures/elements/learning-level-block-0.png",
+            "box": {
+              "x": 440,
+              "y": 1229.6875,
+              "width": 510,
+              "height": 412.203125
+            },
+            "pixelScale": 2
+          },
+          {
+            "file": "textures/elements/learning-level-block-1.png",
+            "box": {
+              "x": 440,
+              "y": 1008.890625,
+              "width": 510,
+              "height": 490.9375
+            },
+            "pixelScale": 2
+          },
+          {
+            "file": "textures/elements/learning-level-block-2.png",
+            "box": {
+              "x": 440,
+              "y": 1101.828125,
+              "width": 510,
+              "height": 333.46875
+            },
+            "pixelScale": 2
+          },
+          {
+            "file": "textures/elements/learning-level-block-3.png",
+            "box": {
+              "x": 440,
+              "y": 969.296875,
+              "width": 510,
+              "height": 412.203125
+            },
+            "pixelScale": 2
+          },
+          {
+            "file": "textures/elements/learning-level-block-4.png",
+            "box": {
+              "x": 440,
+              "y": 1101.5,
+              "width": 510,
+              "height": 490.9375
+            },
+            "pixelScale": 2
+          }
+        ]
       }
     },
     "review": {
@@ -174,7 +464,7 @@
             "x": 440,
             "y": 661.796875,
             "width": 510,
-            "height": 42.46875
+            "height": 92.9375
           }
         ],
         ".mode-panel": [
@@ -182,7 +472,33 @@
             "x": 440,
             "y": 539,
             "width": 510,
-            "height": 247.265625
+            "height": 297.734375
+          }
+        ]
+      },
+      "elements": {
+        ".review-due-list": [
+          {
+            "file": "textures/elements/review-review-due-list-0.png",
+            "box": {
+              "x": 440,
+              "y": 661.796875,
+              "width": 510,
+              "height": 92.9375
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".mode-panel": [
+          {
+            "file": "textures/elements/review-mode-panel-0.png",
+            "box": {
+              "x": 440,
+              "y": 539,
+              "width": 510,
+              "height": 297.734375
+            },
+            "pixelScale": 2
           }
         ]
       }
@@ -204,6 +520,33 @@
             "y": 683.484375,
             "width": 510,
             "height": 106.21875
+          }
+        ]
+      },
+      "elements": {
+        ".mode-panel": [
+          {
+            "file": "textures/elements/quiz-mode-panel-0.png",
+            "box": {
+              "x": 440,
+              "y": 539,
+              "width": 510,
+              "height": 631.140625
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".quiz-grid": [],
+        ".quiz-question": [
+          {
+            "file": "textures/elements/quiz-quiz-question-0.png",
+            "box": {
+              "x": 440,
+              "y": 625.484375,
+              "width": 510,
+              "height": 106.21875
+            },
+            "pixelScale": 2
           }
         ]
       }
@@ -232,6 +575,44 @@
             "y": 1181.703125,
             "width": 510,
             "height": 1434.75
+          }
+        ]
+      },
+      "elements": {
+        ".divine-panel": [
+          {
+            "file": "textures/elements/divination-divine-panel-0.png",
+            "box": {
+              "x": 440,
+              "y": 539,
+              "width": 510,
+              "height": 2425.296875
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".cast-lines": [
+          {
+            "file": "textures/elements/divination-cast-lines-0.png",
+            "box": {
+              "x": 440,
+              "y": 805.546875,
+              "width": 510,
+              "height": 247.5625
+            },
+            "pixelScale": 2
+          }
+        ],
+        ".divine-interpretation": [
+          {
+            "file": "textures/elements/divination-divine-interpretation-0.png",
+            "box": {
+              "x": 440,
+              "y": 1123.703125,
+              "width": 510,
+              "height": 1434.75
+            },
+            "pixelScale": 2
           }
         ]
       }

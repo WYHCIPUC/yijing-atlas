@@ -1,6 +1,6 @@
 import React from 'react';
 import { Audio, interpolate, Sequence, staticFile, useCurrentFrame } from 'remotion';
-import { MAIN_DURATION, SHOTS, TEASER_DURATION } from './timing';
+import { MAIN_DURATION, SHOTS, TEASER_DURATION, TEASER_SHOTS } from './timing';
 
 type SoundCue = {
   from: number;
@@ -33,18 +33,20 @@ const mainSfx: SoundCue[] = [
 ];
 
 const teaserSfx: SoundCue[] = [
-  { from: 0, file: 'transition/sweep-fast.mp3', volume: 0.34 },
-  { from: 12, file: 'transition/sweep-fast.mp3', volume: 0.28 },
-  { from: 24, file: 'transition/sweep-fast.mp3', volume: 0.24 },
-  { from: 90, file: 'light/shimmer-sparkle-sweep.mp3', volume: 0.75, duration: 90 },
-  { from: 180, file: 'transition/transition-soft.mp3', volume: 0.34 },
-  { from: 330, file: 'paper/paper-page-turn-big.mp3', volume: 0.36 },
-  { from: 480, file: 'mech/mech-tech-movement.mp3', volume: 0.28, duration: 110 },
-  { from: 576, file: 'mech/gear-lock-metallic.mp3', volume: 0.48 },
-  { from: 600, file: 'transition/transition-soft.mp3', volume: 0.32 },
-  { from: 750, file: 'transition/transition-soft.mp3', volume: 0.36, duration: 110 },
-  { from: 798, file: 'impact/impact-deep-whoosh.mp3', volume: 0.54 },
-  { from: 836, file: 'light/shimmer-sparkle-sweep.mp3', volume: 0.75, duration: 64 },
+  { from: TEASER_SHOTS.hook.from, file: 'transition/sweep-fast.mp3', volume: 0.34, duration: 60 },
+  { from: TEASER_SHOTS.hook.from + 15, file: 'transition/sweep-fast.mp3', volume: 0.24, duration: 54 },
+  { from: TEASER_SHOTS.opening.from, file: 'light/shimmer-sparkle-sweep.mp3', volume: 0.72, duration: 90 },
+  { from: TEASER_SHOTS.starMap.from, file: 'transition/transition-soft.mp3', volume: 0.34, duration: 84 },
+  { from: TEASER_SHOTS.evolution.from, file: 'paper/paper-page-turn-big.mp3', volume: 0.36, duration: 92 },
+  { from: TEASER_SHOTS.evolution.from + 60, file: 'text/marker-pen-line.mp3', volume: 0.30, duration: 54 },
+  { from: TEASER_SHOTS.almanac.from, file: 'paper/paper-slide.mp3', volume: 0.34, duration: 82 },
+  { from: TEASER_SHOTS.learning.from, file: 'transition/transition-soft.mp3', volume: 0.32, duration: 82 },
+  { from: TEASER_SHOTS.assessment.from + 18, file: 'camera/click-camera.mp3', volume: 0.34, duration: 28 },
+  { from: TEASER_SHOTS.assessment.from + 46, file: 'camera/click-camera.mp3', volume: 0.30, duration: 28 },
+  { from: TEASER_SHOTS.assessment.from + 74, file: 'camera/click-camera.mp3', volume: 0.28, duration: 28 },
+  { from: TEASER_SHOTS.outro.from, file: 'transition/transition-soft.mp3', volume: 0.36, duration: 110 },
+  { from: TEASER_SHOTS.outro.from + 45, file: 'impact/impact-deep-whoosh.mp3', volume: 0.54, duration: 72 },
+  { from: TEASER_SHOTS.outro.from + 78, file: 'light/shimmer-sparkle-sweep.mp3', volume: 0.75, duration: 64 },
 ];
 
 const Music: React.FC<{ duration: number }> = ({ duration }) => {
@@ -53,7 +55,7 @@ const Music: React.FC<{ duration: number }> = ({ duration }) => {
   const fadeOut = Math.min(1, (duration - frame) / 50);
   const sparkleFrames = duration === MAIN_DURATION
     ? [SHOTS.opening.from + 70, SHOTS.outro.from + 78]
-    : [90, 836];
+    : [TEASER_SHOTS.opening.from, TEASER_SHOTS.outro.from + 78];
   const duck = sparkleFrames.reduce((current, cue) => Math.min(current, interpolate(
     frame,
     [cue - 18, cue - 8, cue + 35, cue + 48],

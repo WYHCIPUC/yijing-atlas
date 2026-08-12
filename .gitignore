@@ -12,8 +12,13 @@ node_modules/
 coverage/
 dist/
 promo-video/out/
+promo-video/preproduction-v2/output/
+promo-video/styleframes-v2/output/
 promo-video/public/textures/raw/
 promo-video/.remotion/
+
+# 本地社交媒体交付包（成片通过 GitHub Release 发布）
+项目发布成品/
 
 # 临时文件
 .pdf-preview/

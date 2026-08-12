@@ -59,6 +59,33 @@ export const HookScene: React.FC<{ duration: number; vertical?: boolean }> = ({ 
   );
 };
 
+export const TeaserPosterScene: React.FC<{ duration: number }> = ({ duration }) => {
+  const frame = useCurrentFrame();
+  const push = interpolate(frame, [0, duration], [0.94, 0.985], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+    easing: Easing.inOut(Easing.cubic),
+  });
+  const fade = interpolate(frame, [duration - 12, duration], [1, 0], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+  return (
+    <AbsoluteFill style={{ ...full('#050811'), opacity: fade }}>
+      <Img
+        src={staticFile('textures/xhs-cover.png')}
+        style={{ position: 'absolute', inset: -60, width: 1200, height: 2040, objectFit: 'cover', filter: 'blur(38px) brightness(.46)', opacity: 0.72 }}
+      />
+      <Img
+        src={staticFile('textures/xhs-cover.png')}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', transform: `scale(${push})`, filter: 'drop-shadow(0 28px 70px rgba(0,0,0,.55))' }}
+      />
+      <AbsoluteFill style={{ background: 'radial-gradient(circle at 55% 46%, transparent 42%, rgba(3,6,14,.32) 100%)' }} />
+      <Grain />
+    </AbsoluteFill>
+  );
+};
+
 const StarLines: React.FC<{ progress: number; vertical?: boolean }> = ({ progress, vertical = false }) => {
   const w = vertical ? 1080 : 1920;
   const h = vertical ? 1920 : 1080;
@@ -109,7 +136,7 @@ export const StarMapScene: React.FC<{ duration: number; vertical?: boolean }> = 
     <AbsoluteFill style={full()}>
       <PageTexture name="star-detail" scale={scale} x={x} y={vertical ? -20 : -10} rotateX={vertical ? 0 : 2.6} rotateY={vertical ? 0 : -3.6} />
       <AbsoluteFill style={{ background: vertical ? 'linear-gradient(180deg, rgba(10,14,26,.3), transparent 24%, transparent 70%, rgba(10,14,26,.9))' : 'linear-gradient(90deg, rgba(10,14,26,.55), transparent 36%, transparent 72%, rgba(10,14,26,.38))' }} />
-      <Caption duration={duration} kicker="RELATION ATLAS" vertical={vertical}>在星图中，看见综、错、互、变。</Caption>
+      <Caption duration={duration} kicker="RELATION ATLAS" vertical={vertical}>{vertical ? '星图呈现综、错、互、变。' : '在星图中，看见综、错、互、变。'}</Caption>
       <Vignette strength={0.6} />
     </AbsoluteFill>
   );
@@ -129,11 +156,11 @@ export const EvolutionScene: React.FC<{ duration: number; vertical?: boolean }> 
         <div style={{ marginTop: 36, color: theme.goldBright, fontFamily: theme.kai, fontSize: 44, textAlign: 'center' }}>{flip < 0.5 ? '革卦' : '泰卦'}</div>
       </div>
       <div style={{ position: 'absolute', right: vertical ? 86 : 180, left: vertical ? 86 : 'auto', top: vertical ? 1040 : 210, width: vertical ? 'auto' : 720, opacity: cardIn, transform: `translateX(${(1 - cardIn) * 50}px)`, padding: vertical ? '42px 44px' : '48px 56px', background: 'rgba(17,23,42,.92)', border: '1px solid rgba(201,169,106,.35)', borderRadius: 24 }}>
-        <div style={{ fontFamily: theme.mono, color: theme.gold, fontSize: vertical ? 25 : 28, letterSpacing: '0.16em' }}>CLASSIC EVIDENCE</div>
+        <div style={{ fontFamily: theme.mono, color: theme.gold, fontSize: vertical ? 32 : 28, letterSpacing: '0.16em' }}>CLASSIC EVIDENCE</div>
         <div style={{ fontFamily: theme.kai, fontSize: vertical ? 48 : 54, lineHeight: 1.48, marginTop: 18 }}>卦象变化，含义与典籍依据同步更新。</div>
-        <div style={{ marginTop: 24, paddingTop: 22, borderTop: '1px solid rgba(201,169,106,.25)', color: theme.textMuted, fontFamily: theme.serif, fontSize: vertical ? 28 : 30, lineHeight: 1.6 }}>“穷则变，变则通，通则久。”——《周易·系辞下》</div>
+        <div style={{ marginTop: 24, paddingTop: 22, borderTop: '1px solid rgba(201,169,106,.25)', color: theme.textMuted, fontFamily: theme.serif, fontSize: vertical ? 32 : 30, lineHeight: 1.6 }}>“穷则变，变则通，通则久。”——《周易·系辞下》</div>
       </div>
-      <Caption duration={duration} kicker="EVOLUTION LAB" vertical={vertical}>每一次爻变，都有意义，也有出处。</Caption>
+      <Caption duration={duration} kicker="EVOLUTION LAB" vertical={vertical}>{vertical ? '逐爻观察卦象与意义的变化。' : '每一次爻变，都有意义，也有出处。'}</Caption>
       <Vignette strength={0.58} />
     </AbsoluteFill>
   );
@@ -149,9 +176,26 @@ export const WheelScene: React.FC<{ duration: number; vertical?: boolean }> = ({
   </AbsoluteFill>
 );
 
-export const AlmanacScene: React.FC<{ duration: number }> = ({ duration }) => {
+export const AlmanacScene: React.FC<{ duration: number; vertical?: boolean }> = ({ duration, vertical = false }) => {
   const frame = useCurrentFrame();
   const p = interpolate(frame, [0, duration * 0.55], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic) });
+  if (vertical) {
+    return (
+      <AbsoluteFill style={full()}>
+        <PageTexture name="almanac" scale={1.72} x={-250} opacity={0.24} />
+        <AbsoluteFill style={{ background: 'linear-gradient(180deg, rgba(10,14,26,.06), rgba(10,14,26,.72) 55%, rgba(10,14,26,.94))' }} />
+        <div style={{ position: 'absolute', left: 80, top: 150, opacity: 0.72 + p * 0.28, transform: `translateY(${(1 - p) * 34}px)` }}>
+          <ScreenFrame name="almanac" width={920} height={518} rotate={-1} />
+        </div>
+        <div style={{ position: 'absolute', left: 110, top: 670, width: 860, height: 600, overflow: 'hidden', borderRadius: 28, border: '1px solid rgba(201,169,106,.42)', background: theme.inkElevated, boxShadow: '0 34px 90px rgba(0,0,0,.52)', opacity: 0.7 + p * 0.3, transform: `translateY(${(1 - p) * 42}px)` }}>
+          <Img src={staticFile('textures/almanac.webp')} style={{ position: 'absolute', left: -420, top: -455, width: 1800, height: 1013, maxWidth: 'none' }} />
+          <div style={{ position: 'absolute', right: 24, top: 22, padding: '8px 16px', borderRadius: 999, background: 'rgba(10,14,26,.86)', border: '1px solid rgba(201,169,106,.42)', color: theme.gold, fontFamily: theme.serif, fontSize: 30 }}>演示数据</div>
+        </div>
+        <Caption duration={duration} kicker="DAILY ALMANAC" vertical>黄历，让抽象术语落回日常。</Caption>
+        <Vignette strength={0.58} />
+      </AbsoluteFill>
+    );
+  }
   return (
     <AbsoluteFill style={full()}>
       <PageTexture name="almanac" scale={1 + p * 0.11} x={-80 * p} y={-20 * p} />
@@ -223,8 +267,31 @@ export const LearningScene: React.FC<{ duration: number; vertical?: boolean }> =
 
 const assessmentLabels = ['小试', '抽查', '复讲', '阶考', '错题回炉'];
 
-export const AssessmentScene: React.FC<{ duration: number }> = ({ duration }) => {
+export const AssessmentScene: React.FC<{ duration: number; vertical?: boolean }> = ({ duration, vertical = false }) => {
   const frame = useCurrentFrame();
+  if (vertical) {
+    return (
+      <AbsoluteFill style={{ ...full('#080c16'), perspective: 1500 }}>
+        <div style={{ position: 'absolute', left: 92, top: 180, transform: 'rotateY(3deg) rotateX(1deg)' }}>
+          <ScreenFrame name="review" width={896} height={504} rotate={-1.2} />
+        </div>
+        <div style={{ position: 'absolute', left: 170, top: 610, transform: 'rotateY(-3deg) rotateX(1deg)' }}>
+          <ScreenFrame name="quiz" width={740} height={416} rotate={1.2} />
+        </div>
+        <div style={{ position: 'absolute', left: 78, right: 78, top: 1030, display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {assessmentLabels.map((label, index) => {
+            const cue = 18 + index * 14;
+            const p = interpolate(frame, [cue, cue + 16], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.bezier(0.2, 1.15, 0.3, 1) });
+            return (
+              <div key={label} style={{ padding: '14px 28px', borderRadius: 16, background: index === 4 ? 'rgba(201,169,106,.17)' : 'rgba(17,23,42,.96)', border: `1px solid rgba(201,169,106,${0.25 + index * 0.05})`, color: index === 4 ? theme.goldBright : theme.text, fontFamily: theme.kai, fontSize: 38, textAlign: 'center', transform: `translateX(${(1 - p) * 90}px)`, opacity: p, boxShadow: '0 18px 40px rgba(0,0,0,.32)' }}>{label}</div>
+            );
+          })}
+        </div>
+        <Caption duration={duration} kicker="ACTIVE RECALL" vertical>主动回忆与间隔复习，把看过变成记住。</Caption>
+        <Vignette strength={0.58} />
+      </AbsoluteFill>
+    );
+  }
   return (
     <AbsoluteFill style={{ ...full('#080c16'), perspective: 1500 }}>
       <div style={{ position: 'absolute', left: 90, top: 100, transform: 'rotateY(5deg) rotateX(2deg)' }}><ScreenFrame name="review" width={820} height={462} rotate={-1.5} /></div>
@@ -306,6 +373,45 @@ export const OutroScene: React.FC<{ duration: number; vertical?: boolean }> = ({
       </div>
       <AbsoluteFill style={{ background: 'radial-gradient(circle at 50% 50%, rgba(201,169,106,.14), transparent 44%)' }} />
       <Vignette strength={0.65} />
+      <Grain />
+    </AbsoluteFill>
+  );
+};
+
+const teaserOutroScreens = [
+  ['star-detail', -420, -420, -7],
+  ['evolution', 420, -390, 6],
+  ['almanac', -430, 350, 5],
+  ['learning', 420, 360, -5],
+] as const;
+
+export const TeaserOutroScene: React.FC<{ duration: number }> = ({ duration }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const logo = spring({ frame: frame - 42, fps, config: { damping: 14, stiffness: 120 }, durationInFrames: 42 });
+  const sub = interpolate(frame, [72, 92], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const hold = interpolate(frame, [duration - 10, duration], [1, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  return (
+    <AbsoluteFill style={{ ...full('#050811'), alignItems: 'center', justifyContent: 'center', opacity: hold }}>
+      <StarLines progress={Math.min(1, frame / 48)} vertical />
+      <div style={{ position: 'absolute', left: '50%', top: '46%', width: 0, height: 0 }}>
+        {teaserOutroScreens.map(([name, x, y, rot], index) => {
+          const p = spring({ frame: frame - index * 6, fps, config: { damping: 13, stiffness: 145 }, durationInFrames: 38 });
+          return (
+            <div key={name} style={{ position: 'absolute', left: -180 + x * p, top: -102 + y * p, opacity: p * 0.64, transform: `scale(${0.5 + p * 0.08}) rotate(${rot * p}deg)` }}>
+              <ScreenFrame name={name} width={360} height={203} />
+            </div>
+          );
+        })}
+      </div>
+      <div style={{ position: 'absolute', left: 68, right: 68, top: 590, bottom: 465, borderRadius: 34, background: 'rgba(8,12,23,.94)', border: '1px solid rgba(201,169,106,.44)', boxShadow: '0 0 100px rgba(201,169,106,.14), 0 42px 100px rgba(0,0,0,.58)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '56px 50px', opacity: logo, transform: `scale(${0.92 + logo * 0.08})`, textAlign: 'center' }}>
+        <div style={{ fontFamily: theme.kai, color: theme.goldBright, fontSize: 104, letterSpacing: '0.14em' }}>易象图谱</div>
+        <div style={{ marginTop: 26, width: 360 }}><GoldRule progress={logo} width={360} /></div>
+        <div style={{ marginTop: 34, fontFamily: theme.serif, fontSize: 42, lineHeight: 1.55, opacity: sub }}>一个正在打磨中的《易经》学习工具</div>
+        <div style={{ marginTop: 22, fontFamily: theme.kai, fontSize: 34, lineHeight: 1.55, color: theme.gold, opacity: sub }}>正式发布前，先留下一个预告。</div>
+      </div>
+      <AbsoluteFill style={{ background: 'radial-gradient(circle at 50% 50%, rgba(201,169,106,.15), transparent 44%)' }} />
+      <Vignette strength={0.66} />
       <Grain />
     </AbsoluteFill>
   );

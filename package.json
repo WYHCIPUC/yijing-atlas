@@ -1,6 +1,6 @@
 {
   "name": "yijing-atlas",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "description": "易象图谱：用于学习《易经》的纯静态交互网站",

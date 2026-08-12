@@ -21,15 +21,15 @@
 ## 百秒认识易象图谱
 
 <p align="center">
-  <a href="https://github.com/WYHCIPUC/yijing-atlas/releases/latest/download/yijing-atlas-promo-1080p.mp4">
+  <a href="https://github.com/WYHCIPUC/yijing-atlas/releases/latest/download/yijing-atlas-75s-full.mp4">
     <img src="./assets/readme/promo-poster.webp" width="100%" alt="易象图谱宣传片：星图、演变实验室、卦序转盘与五阶学习闭环">
   </a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/WYHCIPUC/yijing-atlas/releases/latest/download/yijing-atlas-promo-1080p.mp4"><strong>▶ 观看横屏主片</strong></a>
+  <a href="https://github.com/WYHCIPUC/yijing-atlas/releases/latest/download/yijing-atlas-75s-full.mp4"><strong>▶ 观看横屏主片</strong></a>
   &nbsp;&nbsp;·&nbsp;&nbsp;
-  <a href="https://github.com/WYHCIPUC/yijing-atlas/releases/latest/download/yijing-atlas-teaser-vertical.mp4"><strong>竖屏预告</strong></a>
+  <a href="https://github.com/WYHCIPUC/yijing-atlas/releases/latest/download/yijing-atlas-30s.mp4"><strong>30 秒横屏预告</strong></a>
 </p>
 
 宣传片以真实页面为主体，重点呈现“观察关系—理解变化—主动回忆—间隔复习—阶段考评”的学习机制；占筮内容明确限定为传统文化学习与自我反思。

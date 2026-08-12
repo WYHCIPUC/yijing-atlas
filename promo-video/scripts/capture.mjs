@@ -6,11 +6,13 @@ import { chromium } from 'playwright-core';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, '..');
 const rawDir = path.join(projectRoot, 'public', 'textures', 'raw');
+const elementsDir = path.join(projectRoot, 'public', 'textures', 'elements');
 const layoutPath = path.join(projectRoot, 'src', 'live-layout.json');
 const edgePath = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
 const baseUrl = process.env.YIJING_BASE_URL || 'http://localhost:3030/';
 
 await fs.mkdir(rawDir, { recursive: true });
+await fs.mkdir(elementsDir, { recursive: true });
 
 const fixedNow = Date.parse('2026-08-07T10:00:00+08:00');
 const lessonIds = ['l1-1', 'l1-2', 'l1-3', 'l1-4', 'l2-1', 'l2-2', 'l3-1', 'l4-1', 'l5-1'];
@@ -82,6 +84,7 @@ async function openApp(pathname = '') {
 
 async function capture(name, selectors = []) {
   const boxes = {};
+  const elements = {};
   for (const selector of selectors) {
     const handles = await page.locator(selector).all();
     boxes[selector] = [];
@@ -90,8 +93,27 @@ async function capture(name, selectors = []) {
       if (box) boxes[selector].push(box);
     }
   }
-  layout.states[name] = { boxes };
   await page.screenshot({ path: path.join(rawDir, `${name}.png`), fullPage: false });
+  for (const selector of selectors) {
+    const slug = selector.replace(/^[.#]/, '').replace(/[^a-z0-9]+/gi, '-');
+    const handles = await page.locator(selector).all();
+    elements[selector] = [];
+    for (const [index, handle] of handles.slice(0, 5).entries()) {
+      const box = await handle.boundingBox();
+      if (!box) continue;
+      const filename = `${name}-${slug}-${index}.png`;
+      await handle.screenshot({
+        path: path.join(elementsDir, filename),
+        animations: 'disabled',
+      });
+      elements[selector].push({
+        file: `textures/elements/${filename}`,
+        box,
+        pixelScale: 2,
+      });
+    }
+  }
+  layout.states[name] = { boxes, elements };
   console.log(`captured ${name}`);
 }
 
@@ -102,6 +124,28 @@ await openApp('?hex=010001');
 await page.waitForSelector('#detail-panel.open');
 await settle(500);
 await capture('star-detail', ['#detail-panel', '.hex-detail', '.relation-grid']);
+
+await page.locator('.share-hexagram').click();
+await page.waitForSelector('.share-card-overlay');
+await page.waitForSelector('.share-card-preview img');
+await page.evaluate(async () => {
+  const [{ loadCoreData }, { generateHexagramShareImage }] = await Promise.all([
+    import('./js/data-loader.js'),
+    import('./js/share-card.js'),
+  ]);
+  const { hexagrams } = await loadCoreData();
+  const hexagram = hexagrams.find((item) => item.binaryCode === '010001') || hexagrams[0];
+  const payload = await generateHexagramShareImage(
+    hexagram,
+    'https://wyhcipuc.github.io/yijing-atlas/?hex=010001',
+  );
+  const preview = document.querySelector('.share-card-preview img');
+  if (preview) preview.src = payload.previewUrl;
+});
+await settle(500);
+await capture('share', ['.share-card-dialog', '.share-card-preview', '.share-card-preview img']);
+await page.locator('.share-card-close').click();
+await settle(250);
 
 // The production manifest deliberately keeps the laboratory hidden until all
 // commentary citations are released. For the public promo fixture we open the

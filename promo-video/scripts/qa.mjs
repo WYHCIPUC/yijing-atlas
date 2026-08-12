@@ -26,8 +26,8 @@ const mainShots = {
   assessment: [2235, 330], divination: [2565, 300], outro: [2865, 135],
 };
 const teaserShots = {
-  hook: [0, 90], opening: [90, 90], starMap: [180, 150], evolution: [330, 150],
-  wheel: [480, 120], learning: [600, 150], outro: [750, 150],
+  hook: [0, 90], opening: [90, 90], starMap: [180, 120], evolution: [300, 120],
+  almanac: [420, 105], learning: [525, 105], assessment: [630, 120], outro: [750, 150],
 };
 const samples = (shots) => Object.entries(shots).flatMap(([name, [from, duration]]) => [
   [`${name}-entry`, from + Math.min(12, Math.floor(duration * 0.12))],

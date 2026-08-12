@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>易象图谱 · 宣传片 V2 Styleframes</title>
+  <style>
+    :root {
+      --ink: #070b14;
+      --ink-soft: #101727;
+      --gold: #c9a96a;
+      --gold-bright: #ead39b;
+      --paper: #e8d9b8;
+      --paper-soft: #f2e9d6;
+      --muted: #a89e8a;
+      --cinnabar: #9d3f35;
+      --serif: "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", serif;
+      --kai: "STKaiti", "KaiTi", "Songti SC", serif;
+      --sans: "Microsoft YaHei UI", "Noto Sans CJK SC", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--ink); }
+    body { color: var(--paper-soft); font-family: var(--serif); }
+
+    .frame {
+      position: relative;
+      display: none;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      isolation: isolate;
+      background: var(--ink);
+    }
+    .frame.active { display: block; }
+    .texture, .veil, .grain, .edge, .glow { position: absolute; inset: 0; pointer-events: none; }
+    .texture { background-position: center; background-size: cover; }
+    .grain {
+      opacity: 0.14;
+      mix-blend-mode: soft-light;
+      background-image:
+        repeating-radial-gradient(circle at 20% 10%, rgba(255,255,255,.08) 0 1px, transparent 1px 4px),
+        repeating-linear-gradient(115deg, transparent 0 7px, rgba(232,217,184,.025) 7px 8px);
+    }
+    .edge { box-shadow: inset 0 0 180px 70px rgba(0, 0, 0, 0.68); }
+    .safe { position: absolute; inset: 72px 96px; z-index: 5; }
+    .eyebrow {
+      color: var(--gold);
+      font: 600 24px/1 var(--sans);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .rule { width: 74px; height: 1px; margin: 24px 0; background: linear-gradient(90deg, var(--gold), transparent); }
+    .stamp {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(201,169,106,.55);
+      color: var(--gold-bright);
+      font: 28px/1 var(--kai);
+      box-shadow: inset 0 0 0 4px rgba(201,169,106,.06);
+    }
+
+    /* 01 · 品牌开场：深空典籍 */
+    #brand .texture {
+      transform: scale(1.08);
+      filter: blur(1px) saturate(.78) brightness(.54);
+      background-image: url('../public/textures/star.webp');
+    }
+    #brand .veil {
+      background:
+        radial-gradient(circle at 50% 45%, rgba(201,169,106,.16), transparent 22%),
+        linear-gradient(180deg, rgba(7,11,20,.16), rgba(7,11,20,.72));
+    }
+    #brand .orbit {
+      position: absolute;
+      left: 50%;
+      top: 46%;
+      width: 680px;
+      height: 680px;
+      border: 1px solid rgba(201,169,106,.13);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 90px rgba(201,169,106,.05), inset 0 0 90px rgba(201,169,106,.04);
+    }
+    #brand .orbit::before, #brand .orbit::after {
+      content: '';
+      position: absolute;
+      border: 1px solid rgba(201,169,106,.08);
+      border-radius: 50%;
+    }
+    #brand .orbit::before { inset: 86px; }
+    #brand .orbit::after { inset: 190px; }
+    #brand .brand-center {
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      width: 1200px;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 6;
+    }
+    #brand .prelude { margin-bottom: 35px; color: var(--gold); font: 29px/1.4 var(--kai); letter-spacing: .36em; }
+    #brand h1 { margin: 0; color: var(--paper-soft); font-size: 144px; font-weight: 500; letter-spacing: .18em; text-indent: .18em; text-shadow: 0 8px 48px rgba(0,0,0,.75); }
+    #brand .brand-rule { width: 360px; height: 1px; margin: 42px auto 34px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    #brand .subtitle { margin: 0; color: var(--paper); font-size: 38px; letter-spacing: .12em; }
+    #brand .top-meta { display: flex; justify-content: space-between; align-items: flex-start; }
+    #brand .bottom-note { position: absolute; bottom: 0; left: 0; color: var(--muted); font: 24px/1.5 var(--sans); letter-spacing: .08em; }
+    #brand .hexagram {
+      position: absolute;
+      right: 0;
+      bottom: -3px;
+      display: grid;
+      gap: 8px;
+      width: 126px;
+      opacity: .8;
+    }
+    #brand .hexagram i { display: block; height: 8px; background: linear-gradient(90deg, transparent, var(--gold-bright)); }
+    #brand .hexagram i:nth-child(2), #brand .hexagram i:nth-child(5) { margin-left: 46px; width: 80px; }
+
+    /* 02 · 星图核心：真实页面 + 正视信息 */
+    #star .texture { background-image: url('../public/textures/star.webp'); filter: brightness(.72) saturate(.92); }
+    #star .veil {
+      background:
+        linear-gradient(90deg, rgba(7,11,20,.98) 0%, rgba(7,11,20,.88) 29%, rgba(7,11,20,.18) 61%, rgba(7,11,20,.06) 100%),
+        linear-gradient(180deg, rgba(7,11,20,.22), transparent 42%, rgba(7,11,20,.38));
+    }
+    #star .copy {
+      position: absolute;
+      left: 96px;
+      top: 190px;
+      width: 650px;
+      z-index: 7;
+    }
+    #star h2 { margin: 0; width: 680px; color: var(--paper-soft); font-size: 76px; font-weight: 520; line-height: 1.24; letter-spacing: .03em; }
+    #star .desc { margin: 38px 0 36px; width: 570px; color: #cfc3aa; font-size: 31px; line-height: 1.75; }
+    #star .relations { display: flex; gap: 14px; }
+    #star .relations span {
+      min-width: 84px;
+      padding: 13px 18px;
+      border: 1px solid rgba(201,169,106,.35);
+      border-radius: 999px;
+      background: rgba(16,23,39,.7);
+      color: var(--gold-bright);
+      font: 26px/1 var(--kai);
+      text-align: center;
+      box-shadow: 0 16px 42px rgba(0,0,0,.24);
+    }
+    #star .index {
+      position: absolute;
+      right: 96px;
+      top: 140px;
+      z-index: 7;
+      color: rgba(234,211,155,.82);
+      text-align: right;
+    }
+    #star .index strong { display: block; font: 300 104px/.9 var(--sans); letter-spacing: -.06em; }
+    #star .index small { font: 22px/1.5 var(--sans); letter-spacing: .18em; }
+    #star .footline {
+      position: absolute;
+      left: 96px;
+      right: 96px;
+      bottom: 74px;
+      z-index: 7;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font: 23px/1.5 var(--sans);
+      letter-spacing: .08em;
+    }
+    #star .footline::before { content: ''; width: 150px; height: 1px; background: var(--gold); }
+
+    /* 03 · 学习机制：当代书院 */
+    #learning .texture {
+      background-image: url('../public/textures/learning.webp');
+      background-position: center 45%;
+      filter: brightness(.46) saturate(.72);
+      transform: scale(1.025);
+    }
+    #learning .veil {
+      background:
+        radial-gradient(circle at 74% 27%, rgba(201,169,106,.13), transparent 30%),
+        linear-gradient(180deg, rgba(7,11,20,.26), rgba(7,11,20,.93) 62%);
+    }
+    #learning .headline { position: absolute; left: 96px; top: 98px; z-index: 7; width: 950px; }
+    #learning h2 { margin: 22px 0 0; color: var(--paper-soft); font-size: 70px; font-weight: 520; line-height: 1.18; }
+    #learning .headline p { margin: 24px 0 0; color: #cfc3aa; font-size: 29px; line-height: 1.55; }
+    #learning .seal { position: absolute; right: 100px; top: 100px; z-index: 7; border-color: rgba(157,63,53,.8); color: #d58475; }
+    #learning .curriculum {
+      position: absolute;
+      left: 96px;
+      right: 96px;
+      bottom: 102px;
+      z-index: 8;
+      padding: 34px 38px 36px;
+      border: 1px solid rgba(201,169,106,.28);
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(17,24,40,.92), rgba(8,12,21,.96));
+      box-shadow: 0 34px 90px rgba(0,0,0,.5), inset 0 1px rgba(255,255,255,.035);
+    }
+    #learning .stages { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
+    #learning .stages::before { content: ''; position: absolute; left: 9%; right: 9%; top: 29px; height: 1px; background: linear-gradient(90deg, var(--gold), rgba(201,169,106,.16)); }
+    #learning .stage { position: relative; text-align: center; }
+    #learning .node {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 18px;
+      border: 1px solid rgba(201,169,106,.48);
+      border-radius: 50%;
+      background: #111827;
+      color: var(--gold-bright);
+      font: 23px/1 var(--sans);
+      box-shadow: 0 0 28px rgba(201,169,106,.12);
+    }
+    #learning .stage strong { display: block; color: var(--paper-soft); font-size: 31px; font-weight: 500; }
+    #learning .stage small { display: block; margin-top: 9px; color: var(--muted); font: 21px/1.4 var(--sans); }
+    #learning .mechanism {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 34px;
+      margin-top: 32px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(201,169,106,.14);
+    }
+    #learning .checks, #learning .spacing { display: flex; align-items: center; gap: 16px; }
+    #learning .label { color: var(--gold); font: 22px/1 var(--sans); letter-spacing: .1em; white-space: nowrap; }
+    #learning .checks b, #learning .spacing b {
+      padding: 9px 13px;
+      border-radius: 8px;
+      background: rgba(232,217,184,.07);
+      color: #d6ccb8;
+      font: 21px/1 var(--sans);
+      white-space: nowrap;
+    }
+    #learning .checks b:last-child { color: #dc8f81; background: rgba(157,63,53,.16); }
+  </style>
+</head>
+<body>
+  <section class="frame" id="brand" aria-label="品牌开场 styleframe">
+    <div class="texture"></div><div class="veil"></div><div class="grain"></div><div class="edge"></div>
+    <div class="orbit"></div>
+    <div class="safe">
+      <div class="top-meta"><span class="eyebrow">STYLEFRAME 01 · 深空典籍</span><span class="stamp">易</span></div>
+      <div class="brand-center">
+        <div class="prelude">觀象 · 讀經 · 知變</div>
+        <h1>易象图谱</h1>
+        <div class="brand-rule"></div>
+        <p class="subtitle">一座可以观察、推演、学习与复习的数字空间</p>
+      </div>
+      <div class="bottom-note">16:9 HORIZONTAL VISUAL SYSTEM<br>墨蓝 · 铜金 · 宣纸</div>
+      <div class="hexagram" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <section class="frame" id="star" aria-label="星图核心 styleframe">
+    <div class="texture"></div><div class="veil"></div><div class="grain"></div><div class="edge"></div>
+    <div class="copy">
+      <span class="eyebrow">01 / 看见关系</span><div class="rule"></div>
+      <h2>六十四卦，<br>不再是孤立的名字</h2>
+      <p class="desc">沿着星线观察卦象之间的结构联系，让抽象的知识先变得可见。</p>
+      <div class="relations"><span>错</span><span>综</span><span>互</span><span>变</span></div>
+    </div>
+    <div class="index"><strong>64</strong><small>HEXAGRAM RELATIONS</small></div>
+    <div class="footline">真实产品界面 · 正视可读 · 局部空间推进</div>
+  </section>
+
+  <section class="frame" id="learning" aria-label="学习机制 styleframe">
+    <div class="texture"></div><div class="veil"></div><div class="grain"></div><div class="edge"></div>
+    <div class="headline">
+      <span class="eyebrow">02 / 建立学习路径</span>
+      <h2>真正的学习，<br>不只发生在阅读的时候</h2>
+      <p>从理解到回忆，再到间隔复习，每一步都留下可以检验的学习证据。</p>
+    </div>
+    <div class="seal stamp">习</div>
+    <div class="curriculum">
+      <div class="stages">
+        <div class="stage"><span class="node">01</span><strong>蒙学</strong><small>认识阴阳与爻位</small></div>
+        <div class="stage"><span class="node">02</span><strong>习经</strong><small>研读卦辞与爻辞</small></div>
+        <div class="stage"><span class="node">03</span><strong>研传</strong><small>进入十翼与象数</small></div>
+        <div class="stage"><span class="node">04</span><strong>明辨</strong><small>比较关系与变化</small></div>
+        <div class="stage"><span class="node">05</span><strong>通用</strong><small>迁移到完整情境</small></div>
+      </div>
+      <div class="mechanism">
+        <div class="checks"><span class="label">检验</span><b>小试</b><b>抽查</b><b>复讲</b><b>阶考</b><b>错题回炉</b></div>
+        <div class="spacing"><span class="label">间隔复习</span><b>0</b><b>1</b><b>2</b><b>4</b><b>7</b><b>15</b><b>30</b><b>60 天</b></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const requested = new URLSearchParams(location.search).get('frame') || 'brand';
+    const active = document.getElementById(requested) || document.getElementById('brand');
+    active.classList.add('active');
+    document.documentElement.dataset.ready = 'true';
+  </script>
+</body>
+</html>

@@ -101,7 +101,7 @@ export const Caption: React.FC<{
         position: 'absolute',
         left: vertical ? 68 : 118,
         right: vertical ? 68 : 118,
-        bottom: vertical ? 170 : 68,
+        bottom: vertical ? 230 : 68,
         zIndex: 20,
         opacity,
         transform: `translateY(${rise}px)`,
@@ -117,7 +117,7 @@ export const Caption: React.FC<{
         style={{
           color: theme.text,
           fontFamily: theme.serif,
-          fontSize: vertical ? 62 : 66,
+          fontSize: vertical ? 58 : 66,
           lineHeight: 1.28,
           letterSpacing: '0.035em',
           fontWeight: 650,
