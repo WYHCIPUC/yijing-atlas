@@ -18,13 +18,15 @@
 
 ---
 
-## 百秒认识易象图谱
+## 75 秒认识易象图谱
 
 <p align="center">
   <a href="https://github.com/WYHCIPUC/yijing-atlas/releases/latest/download/yijing-atlas-75s-full.mp4">
-    <img src="./assets/readme/promo-poster.webp" width="100%" alt="易象图谱宣传片：星图、演变实验室、卦序转盘与五阶学习闭环">
+    <img src="./assets/readme/promo-preview.gif" width="100%" alt="易象图谱自动循环预览：关系星图、五阶学习、检验复习与 Windows 本地版">
   </a>
 </p>
+
+<p align="center"><sub>自动循环预览 · 点击画面观看 75 秒完整宣传片</sub></p>
 
 <p align="center">
   <a href="https://github.com/WYHCIPUC/yijing-atlas/releases/latest/download/yijing-atlas-75s-full.mp4"><strong>▶ 观看横屏主片</strong></a>
