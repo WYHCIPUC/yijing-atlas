@@ -352,8 +352,11 @@ try {
   })()`);
   await waitFor(() => client.evaluate(`(() => {
     const panel = document.querySelector('#detail-panel').getBoundingClientRect();
+    const canvas = document.querySelector('#star-canvas').getBoundingClientRect();
     const controls = document.querySelector('.zoom-controls').getBoundingClientRect();
-    return controls.right < panel.left;
+    return Math.abs(canvas.left) < 2
+      && Math.abs(panel.left - canvas.width) < 2
+      && controls.right < panel.left;
   })()`), '切换右侧后星图控件未完成避让');
   const rightLayout = await client.evaluate(`(() => {
     const panel = document.querySelector('#detail-panel').getBoundingClientRect();
@@ -375,7 +378,12 @@ try {
     select.value = 'bottom';
     select.dispatchEvent(new Event('change', { bubbles: true }));
   })()`);
-  await waitFor(() => client.evaluate('document.querySelector("#detail-panel").dataset.layout === "bottom"'), '详情栏未切回底部');
+  await waitFor(() => client.evaluate(`(() => {
+    const panel = document.querySelector('#detail-panel').getBoundingClientRect();
+    const canvas = document.querySelector('#star-canvas').getBoundingClientRect();
+    return document.querySelector('#detail-panel').dataset.layout === 'bottom'
+      && Math.abs(panel.top - canvas.bottom) < 2;
+  })()`), '详情栏未切回底部');
 
   await client.evaluate('document.querySelector(".rel-demo-btn").click()');
   await waitFor(() => client.evaluate('document.querySelector(".rel-anim-overlay.open") !== null'), '关系动画浮层未打开');
