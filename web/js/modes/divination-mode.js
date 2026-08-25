@@ -4,21 +4,42 @@ import { buildCoinInterpretation, buildMeihuaInterpretation } from '../divinatio
 import { yaoLabel } from '../hexagram-utils.js';
 import { recordActivity } from '../learning-progress.js';
 import { analyzeTiYong, castByNumber, castByTime } from '../meihua-engine.js';
+import { hexagramSvg } from '../svg-painter.js';
 
 let appState = null;
 let mountEl = null;
+let openDetail = null;
 
 function esc(value) {
   return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-export function renderDivinationMode(target, state) {
+function revealDivinationArea(target, focusSelector) {
+  const schedule = window.requestAnimationFrame || ((callback) => callback());
+  schedule(() => {
+    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    target.scrollIntoView?.({
+      behavior: reducedMotion ? 'auto' : 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
+    });
+    if (!focusSelector) return;
+    target.querySelector(focusSelector)?.focus({ preventScroll: true });
+  });
+}
+
+export function renderDivinationMode(target, state, onOpenDetail) {
   appState = state;
   mountEl = target;
+  openDetail = onOpenDetail;
   mountEl.innerHTML = `
     <div class="mode-panel divine-panel">
-      <h2 class="mode-panel-title">占筮问道</h2>
-      <p class="mode-panel-sub">传统术数仅供文化学习与自我反思，不替代现实中的专业判断。</p>
+      <header class="mode-hero divine-hero">
+        <div><span class="academy-kicker">文化演练</span><h2 class="mode-panel-title" data-page-heading>占筮问道</h2>
+          <p class="mode-panel-sub">从卦象返回经文，以处境、提醒和变化三层理解结果。</p></div>
+        <div class="mode-hero-stat"><strong>三层</strong><span>经文 · 义理 · 反思</span></div>
+      </header>
+      <p class="divine-boundary">传统术数仅供文化学习与自我反思，不替代现实中的专业判断。</p>
       <div class="divine-tabs" role="tablist" aria-label="起卦方式">
         <button type="button" class="divine-tab active" id="divine-tab-coin" role="tab" aria-controls="divine-body"
           aria-selected="true" tabindex="0" data-sub="coin">金钱卦</button>
@@ -48,6 +69,7 @@ export function renderDivinationMode(target, state) {
     mountEl.querySelector('.divine-body').setAttribute('aria-labelledby', tab.id);
     if (tab.dataset.sub === 'coin') renderCoin();
     else renderMeihua();
+    revealDivinationArea(mountEl.querySelector('.divine-body'));
   };
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => activateTab(tab));
@@ -86,7 +108,10 @@ function renderHistory() {
       </button>`;
   }).join('') : '<p class="mode-empty">尚无记录；每次起卦后会自动保存在当前浏览器。</p>';
   list.querySelectorAll('.history-item').forEach((button) => {
-    button.addEventListener('click', () => appState.starMap?.focusStar(button.dataset.code));
+    button.addEventListener('click', () => {
+      if (openDetail) openDetail(button.dataset.code);
+      else appState.starMap?.focusStar(button.dataset.code);
+    });
   });
 }
 
@@ -156,9 +181,14 @@ function renderInterpretation(interpretation) {
 function renderCoin() {
   const body = mountEl.querySelector('.divine-body');
   body.innerHTML = `
-    <p class="divine-intro">三枚铜钱掷六次。心中默念所问之事，静心凝神。</p>
-    <button type="button" class="divine-btn coin-cast">☯ 掷卦</button>
-    <div class="coin-result" aria-live="polite"></div>
+    <section class="divine-cast-stage" aria-labelledby="coin-stage-title">
+      <span class="academy-kicker">金钱卦 · 六掷成象</span>
+      <h3 id="coin-stage-title">先定所问，再观其变</h3>
+      <p>三枚铜钱掷六次。心中只留一个明确问题，所得结果用于阅读经文与梳理处境。</p>
+      <ol class="divine-ritual"><li><b>01</b><span>净心<small>放下预设答案</small></span></li><li><b>02</b><span>定问<small>聚焦一件具体之事</small></span></li><li><b>03</b><span>六掷<small>自下而上生成六爻</small></span></li><li><b>04</b><span>读经<small>核对卦辞与动爻</small></span></li></ol>
+      <button type="button" class="divine-btn coin-cast">静心掷卦</button>
+    </section>
+    <div class="coin-result" aria-live="off"></div>
   `;
   body.querySelector('.coin-cast').addEventListener('click', () => renderCoinResult(body.querySelector('.coin-result')));
 }
@@ -191,7 +221,7 @@ function renderMeihuaResult(cast) {
   appState.starMap?.focusStar(cast.primaryCode);
   const result = mountEl.querySelector('.mh-result');
   result.innerHTML = `
-    <div class="mode-card divine-result-summary">
+    <div class="mode-card divine-result-summary" role="group" aria-label="梅花易数起卦结果">
       <div><strong>${esc(primaryHex.name)}</strong><small>${esc(primaryHex.fullName)} · 本卦</small></div>
       <span>→</span>
       <div><strong>${esc(changedHex.name)}</strong><small>${esc(changedHex.fullName)} · 第${cast.changingPos}爻动</small></div>
@@ -204,6 +234,7 @@ function renderMeihuaResult(cast) {
     <p class="divine-line-text">动爻：${esc(primaryHex.lines[cast.changingPos - 1]?.text || '')}</p>
     ${renderInterpretation(interpretation)}
   `;
+  result.querySelector('.divine-interpretation-heading h3')?.setAttribute('tabindex', '-1');
   recordCast({
     type: 'meihua',
     primaryCode: cast.primaryCode,
@@ -211,6 +242,7 @@ function renderMeihuaResult(cast) {
     changingPos: cast.changingPos,
     summary: `${primaryHex.name} → ${changedHex.name} · ${analysis.relationName}`,
   });
+  revealDivinationArea(result, '.divine-interpretation-heading h3');
 }
 
 function renderCoinResult(result) {
@@ -223,16 +255,16 @@ function renderCoinResult(result) {
 
   const lines = cast.yaos.map((yao, index) => {
     const label = yaoLabel(index + 1, yao.isYang);
-    const symbol = yao.isYang ? '━━━━' : '━━  ━━';
-    return `<li class="${yao.changing ? 'changing-line' : ''}">${symbol} ${label}${yao.changing ? ' · 变' : ''}</li>`;
+    return `<li class="${yao.changing ? 'changing-line' : ''}"><span>${label}</span><small>${yao.isYang ? '阳爻' : '阴爻'}${yao.changing ? ' · 动' : ' · 静'}</small></li>`;
   }).reverse().join('');
 
   result.innerHTML = `
-    <ol class="cast-lines" aria-label="六爻，自上而下显示">${lines}</ol>
-    <p class="cast-title">
-      ${esc(primaryHex.name)}（${esc(primaryHex.fullName)}）
-      ${changedHex ? `→ ${esc(changedHex.name)}（${esc(changedHex.fullName)}）` : ''}
-    </p>
+    <section class="cast-result-head" aria-labelledby="coin-result-title">
+      <div class="cast-result-symbol">${hexagramSvg(cast.primaryCode, { size: 132, changingPositions: cast.changingIdxs.map((index) => index + 1) })}</div>
+      <div><span class="academy-kicker">本次得卦</span><h3 id="coin-result-title" tabindex="-1">${esc(primaryHex.name)} · ${esc(primaryHex.fullName)}</h3>
+        <p>${changedHex ? `之卦 ${esc(changedHex.name)} · ${esc(changedHex.fullName)}` : '六爻皆静，以本卦卦辞为主要研读入口。'}</p></div>
+      <ol class="cast-lines" aria-label="六爻，自上而下显示">${lines}</ol>
+    </section>
     ${renderInterpretation(interpretation)}
     <button type="button" class="divine-btn divine-again">再掷一卦</button>
   `;
@@ -244,4 +276,5 @@ function renderCoinResult(result) {
     summary: `${primaryHex.name}${changedHex ? ` → ${changedHex.name}` : ''}`,
   });
   result.querySelector('.divine-again').addEventListener('click', () => renderCoinResult(result));
+  revealDivinationArea(result, '#coin-result-title');
 }

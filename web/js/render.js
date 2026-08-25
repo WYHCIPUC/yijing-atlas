@@ -120,7 +120,7 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       <div class="detail-symbol">${hexagramSvg(hex.binaryCode, { size: 140 })}</div>
       <div class="detail-heading-copy">
         <div class="detail-kicker">第 ${hex.number} 卦 · ${esc(hex.binaryCode)}</div>
-        <h1 tabindex="-1">${esc(hex.name)} · ${esc(hex.fullName)}</h1>
+        <h1 id="hexagram-detail-title" data-page-heading tabindex="-1">${esc(hex.name)} · ${esc(hex.fullName)}</h1>
         <div class="subtitle">下${esc(trigramLabel(hex.trigramLower))} · 上${esc(trigramLabel(hex.trigramUpper))}</div>
         <div class="detail-actions">
           <button type="button" class="text-button share-hexagram" data-code="${esc(hex.binaryCode)}">生成分享图片</button>
@@ -134,8 +134,8 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
     ${section('大象', `<div class="original-text">${esc(hex.image)}</div>${hex.imageNote ? `<div class="note-text">${esc(hex.imageNote)}</div>` : ''}`)}
     ${relHtml}
     <section class="detail-section yao-section">
-      <h3 class="section-title yao-collapse-toggle" id="yao-toggle">六爻<span class="toggle-arrow">▶</span></h3>
-      <div class="yao-list yao-collapse-body" id="yao-body">${lines}</div>
+      <button type="button" class="section-title yao-collapse-toggle" id="yao-toggle" aria-expanded="false" aria-controls="yao-body" style="width:100%; border-top:0; border-right:0; border-left:0; background:transparent; text-align:left;">六爻<span class="toggle-arrow" aria-hidden="true">▶</span></button>
+      <div class="yao-list yao-collapse-body" id="yao-body" role="region" aria-labelledby="yao-toggle">${lines}</div>
     </section>
     ${hex.useNine ? section('用九', `<div class="original-text">${esc(hex.useNine)}</div>`) : ''}
     ${hex.useSix ? section('用六', `<div class="original-text">${esc(hex.useSix)}</div>`) : ''}
@@ -152,8 +152,9 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
   const yaoBody = mountEl.querySelector('#yao-body');
   if (yaoToggle && yaoBody) {
     yaoToggle.addEventListener('click', () => {
-      yaoToggle.classList.toggle('open');
-      yaoBody.classList.toggle('open');
+      const isOpen = yaoToggle.classList.toggle('open');
+      yaoBody.classList.toggle('open', isOpen);
+      yaoToggle.setAttribute('aria-expanded', String(isOpen));
     });
   }
 

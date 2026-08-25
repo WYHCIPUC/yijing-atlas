@@ -149,7 +149,11 @@ try {
 
   await client.evaluate(`(() => {
     const overlay = document.querySelector('#daily-overlay');
-    if (!overlay.hidden) document.querySelector('#daily-enter').click();
+    const exploreEntry = document.querySelector('[data-entry="explore"]');
+    if (!overlay.hidden) {
+      if (!exploreEntry) throw new Error('探索星图入口不存在');
+      exploreEntry.click();
+    }
     return true;
   })()`);
   await waitFor(() => client.evaluate('document.querySelector("#daily-overlay").hidden === true'), '今日卦入口未关闭');
@@ -283,6 +287,12 @@ try {
   await waitFor(() => client.evaluate(`document.querySelector('.evolution-result figcaption span')?.textContent.includes('000000')
     && document.querySelector('[data-evolution-playback=play]')?.textContent.includes('播放')`), '实验室自动播放未完成');
   await client.evaluate('document.querySelector(".evolution-close").click()');
+  await client.evaluate(`(() => {
+    const select = document.querySelector('#detail-layout');
+    select.value = 'bottom';
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    return true;
+  })()`);
   await waitFor(() => client.evaluate(`(() => {
     const panel = document.querySelector('#detail-panel').getBoundingClientRect();
     const canvas = document.querySelector('#star-canvas').getBoundingClientRect();

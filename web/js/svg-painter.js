@@ -27,7 +27,7 @@ export function hexagramSvg(binaryCode, { size = 120, changingPositions = [] } =
     }
   }
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg" class="hexagram-svg">
-    <g stroke="#3e2723" stroke-linecap="round">${lines.join('')}</g>
+    <g stroke="currentColor" stroke-linecap="round">${lines.join('')}</g>
   </svg>`;
 }
 
@@ -49,6 +49,6 @@ export function trigramSvg(binaryCode, { size = 64 } = {}) {
     }
   }
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg" class="trigram-svg">
-    <g stroke="#3e2723" stroke-linecap="round">${lines.join('')}</g>
+    <g stroke="currentColor" stroke-linecap="round">${lines.join('')}</g>
   </svg>`;
 }

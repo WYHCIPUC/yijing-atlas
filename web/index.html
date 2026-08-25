@@ -15,7 +15,7 @@
   <title>易象图谱 · 六十四卦</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/main.css?v=28" />
 </head>
 <body>
   <div class="loading-screen" id="loading">星辰排列中…</div>
@@ -23,14 +23,31 @@
   <!-- 今日卦首页欢迎层 -->
   <div class="daily-overlay" id="daily-overlay">
     <div class="daily-card" id="daily-card">
-      <div class="daily-date" id="daily-date"></div>
-      <div class="daily-hex-svg" id="daily-hex-svg"></div>
-      <div class="daily-hex-name" id="daily-hex-name"></div>
-      <div class="daily-hex-full" id="daily-hex-full"></div>
-      <div class="daily-divider"></div>
-      <div class="daily-verse" id="daily-verse"></div>
-      <div class="daily-verse-src" id="daily-verse-src"></div>
-      <button type="button" class="daily-enter" id="daily-enter">进入星图</button>
+      <section class="daily-intro" aria-labelledby="daily-title">
+        <span class="daily-kicker">易学入门 · 书院日课</span>
+        <h1 id="daily-title">从看见卦象，<br />到真正学会《易经》</h1>
+        <p>把六十四卦放进星图关系、原典阅读与间隔复习之中。先辨象，再读经，最后用小试与温故留下记忆。</p>
+        <div class="daily-roadmap" aria-label="学习路径">
+          <span><b>01</b> 观象</span><i aria-hidden="true"></i>
+          <span><b>02</b> 读经</span><i aria-hidden="true"></i>
+          <span><b>03</b> 温故</span>
+        </div>
+        <div class="daily-entry-actions" role="group" aria-label="选择开始方式">
+          <button type="button" class="daily-enter daily-enter-primary" data-entry="beginner">零基础开始</button>
+          <button type="button" class="daily-enter" data-entry="explore">探索星图</button>
+          <button type="button" class="daily-enter daily-enter-text" data-entry="daily">阅读今日一卦</button>
+        </div>
+      </section>
+      <section class="daily-oracle" aria-label="今日一卦">
+        <div class="daily-oracle-label"><span>今日一卦</span><i aria-hidden="true"></i></div>
+        <div class="daily-date" id="daily-date"></div>
+        <div class="daily-hex-svg" id="daily-hex-svg"></div>
+        <div class="daily-hex-name" id="daily-hex-name"></div>
+        <div class="daily-hex-full" id="daily-hex-full"></div>
+        <div class="daily-divider"></div>
+        <div class="daily-verse" id="daily-verse"></div>
+        <div class="daily-verse-src" id="daily-verse-src"></div>
+      </section>
     </div>
   </div>
 
@@ -61,6 +78,28 @@
     你的浏览器不支持星图画布。仍可通过搜索、学习、复习和黄历功能浏览内容。
   </canvas>
 
+  <aside class="star-map-intro" aria-label="星图阅读提示">
+    <span class="star-map-kicker">六十四卦关系星图</span>
+    <strong>观其象 · 察其变</strong>
+    <p>一卦为星，错、综、互、变织成可探索的关系路径。</p>
+    <ol class="star-map-sequence">
+      <li><b>01</b><span>选卦</span></li>
+      <li><b>02</b><span>察变</span></li>
+      <li><b>03</b><span>读经</span></li>
+    </ol>
+  </aside>
+
+  <div class="academy-celestial-scene" aria-hidden="true"></div>
+
+  <div class="atlas-scripture" aria-hidden="true">
+    <div class="atlas-trigram-list">
+      <span>乾 · 天 · 健</span><span>兑 · 泽 · 悦</span><span>离 · 火 · 丽</span><span>震 · 雷 · 动</span>
+      <span>巽 · 风 · 入</span><span>坎 · 水 · 陷</span><span>艮 · 山 · 止</span><span>坤 · 地 · 顺</span>
+    </div>
+    <blockquote>易有太极，是生两仪；两仪生四象，四象生八卦。</blockquote>
+    <cite>《周易·系辞上传》</cite>
+  </div>
+
   <nav class="explore-tools" id="explore-tools" aria-label="探索功能" hidden>
     <button type="button" class="explore-tool active" data-explore-tool="star" aria-pressed="true">星图探索</button>
     <button type="button" class="explore-tool" data-explore-tool="evolution" aria-pressed="false">演变实验室</button>
@@ -71,8 +110,8 @@
     <div class="detail-panel-tools">
       <label class="detail-layout-control">布局
         <select id="detail-layout" aria-label="详情面板布局">
-          <option value="bottom">底部</option>
           <option value="left">左侧</option>
+          <option value="bottom">底部</option>
           <option value="right">右侧</option>
         </select>
       </label>
@@ -82,7 +121,7 @@
     <div class="detail-content" id="detail-content"></div>
   </aside>
 
-  <div class="hint-bar" id="hint" aria-live="polite">悬停星辰看见它的变化 · 点击进入经文</div>
+  <div class="hint-bar" id="hint" aria-live="polite">拖拽旋转 · 滚轮缩放 · 点击星辰读经</div>
 
   <div class="zoom-controls" role="group" aria-label="星图视图控制">
     <button type="button" class="zoom-btn" id="zoom-in" title="放大" aria-label="放大星图">＋</button>
@@ -92,6 +131,13 @@
     <button type="button" class="zoom-btn trail-clear" id="trail-clear" title="清除轨迹" aria-label="清除漫游轨迹">✕</button>
   </div>
 
-  <script type="module" src="js/main.js"></script>
+  <aside class="workspace-insight-bar" aria-label="当前模块提示">
+    <div><small data-insight-label>本课对应卦象</small><strong data-insight-value>乾为天 · 坤为地</strong></div>
+    <div><small data-insight-label>学习目标</small><strong data-insight-value>理解阴阳是万物变化的根源</strong></div>
+    <div><small data-insight-label>核心能力</small><strong data-insight-value>观象 · 察变 · 明理</strong></div>
+    <div><small data-insight-label>推荐专注时长</small><strong data-insight-value>25 分钟</strong></div>
+  </aside>
+
+  <script type="module" src="js/main.js?v=28"></script>
 </body>
 </html>

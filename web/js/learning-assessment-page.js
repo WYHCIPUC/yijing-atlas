@@ -28,11 +28,26 @@ function sessionTitle(session) {
   return `${getLesson(session.lessonId)?.title || '课程'} · 课后小试`;
 }
 
+function resetAssessmentViewport(container) {
+  const detailPanel = container.closest?.('.detail-panel');
+  const detailContent = container.closest?.('.detail-content');
+  if (detailPanel) detailPanel.scrollTop = 0;
+  if (detailContent) detailContent.scrollTop = 0;
+  container.scrollTop = 0;
+  const schedule = window.requestAnimationFrame || ((callback) => callback());
+  schedule(() => {
+    const heading = container.querySelector('[data-page-heading]');
+    if (!heading) return;
+    heading.tabIndex = -1;
+    heading.focus?.({ preventScroll: true });
+  });
+}
+
 function renderQuestionForm(container, session, onComplete) {
   container.innerHTML = `
     <section class="assessment-sheet" aria-labelledby="assessment-sheet-title">
       <div class="assessment-sheet-head">
-        <div><span class="academy-kicker">明辨</span><h3 id="assessment-sheet-title">${esc(sessionTitle(session))}</h3></div>
+        <div><span class="academy-kicker">明辨</span><h3 id="assessment-sheet-title" data-page-heading>${esc(sessionTitle(session))}</h3></div>
         <span>${session.questions.length} 题</span>
       </div>
       <form class="assessment-form">
@@ -71,6 +86,7 @@ function renderQuestionForm(container, session, onComplete) {
     }
     onComplete(gradeAssessment(session, answers));
   });
+  resetAssessmentViewport(container);
 }
 
 function renderResult(container, session, result, onBack) {
@@ -78,7 +94,7 @@ function renderResult(container, session, result, onBack) {
   container.innerHTML = `
     <section class="assessment-result" aria-labelledby="assessment-result-title">
       <span class="academy-kicker">考校</span>
-      <h3 id="assessment-result-title">${esc(sessionTitle(session))}</h3>
+      <h3 id="assessment-result-title" data-page-heading>${esc(sessionTitle(session))}</h3>
       <div class="assessment-score"><strong>${percent}</strong><span>分</span></div>
       <p>${result.correct}/${result.total} 题正确。${percent >= 80 ? '本轮掌握稳定，可继续温习或进入下一课。' : '建议查看辨析后回到原课温习，再进行一次小试。'}</p>
       <div class="assessment-review-list">
@@ -95,6 +111,7 @@ function renderResult(container, session, result, onBack) {
       <button type="button" class="quick-btn" data-action="back">返回考评中心</button>
     </section>`;
   container.querySelector('[data-action="back"]').addEventListener('click', onBack);
+  resetAssessmentViewport(container);
 }
 
 function renderRubric(container, lessonId, appState, message = '') {
@@ -171,7 +188,7 @@ export function renderLearningAssessmentPage(mountEl, appState, { onNavigate, in
   const renderHub = () => {
     mountEl.innerHTML = `
       <div class="academy-heading">
-        <div><span class="academy-kicker">书院考校</span><h3>日课与考评</h3></div>
+        <div><span class="academy-kicker">书院考校</span><h3 data-page-heading>日课与考评</h3></div>
         <p>学而时习，考而知缺。成绩用于提示温习方向，不限制课程浏览。</p>
       </div>
       <section class="daily-study-card">
@@ -229,6 +246,7 @@ export function renderLearningAssessmentPage(mountEl, appState, { onNavigate, in
       startSession('exam', { levelId: mountEl.querySelector('[data-field="level"]').value });
     });
     bindOralReview(mountEl, appState);
+    resetAssessmentViewport(mountEl);
   };
 
   const startSession = (kind, options) => {

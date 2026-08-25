@@ -4,7 +4,7 @@ import { LEARNING_LESSONS } from '../learning-curriculum.js';
 import { markLessonViewed, recordActivity } from '../learning-progress.js';
 import { loadReviewConfig, saveReviewConfig } from '../learning-review.js';
 import { renderTrigrams } from '../render.js';
-import { renderStudyPathPage, renderTheoremsPage, renderWingsPage } from '../study-page.js';
+import { renderLearningLessonPage, renderStudyPathPage, renderTheoremsPage, renderWingsPage } from '../study-page.js?v=28';
 import { downloadUserData, importUserData, parseUserData } from '../user-data.js';
 
 const sections = [
@@ -117,7 +117,7 @@ function renderDataSection(content) {
 export function renderLearningMode(mountEl, appState, onExplore) {
   mountEl.innerHTML = `
     <div class="mode-panel learning-panel">
-      <h2 class="mode-panel-title">循序学易</h2>
+      <h2 class="mode-panel-title" data-page-heading>循序学易</h2>
       <p class="mode-panel-sub">从阴阳八卦入门，逐步阅读本经、十翼与象数理论。</p>
       <div class="learning-tabs" role="tablist" aria-label="学习内容">
         ${sections.map((section, index) => `
@@ -132,6 +132,8 @@ export function renderLearningMode(mountEl, appState, onExplore) {
 
   const content = mountEl.querySelector('.learning-content');
   const showSection = (sectionId, options = {}) => {
+    document.body.classList.remove('lesson-overview-open');
+    mountEl.querySelector('.learning-panel').classList.toggle('lesson-active', Boolean(options.lessonId && sectionId === 'path'));
     mountEl.querySelectorAll('.learning-tab').forEach((tab) => {
       const selected = tab.dataset.section === sectionId;
       tab.classList.toggle('active', selected);
@@ -139,7 +141,12 @@ export function renderLearningMode(mountEl, appState, onExplore) {
       tab.tabIndex = selected ? 0 : -1;
       if (selected) content.setAttribute('aria-labelledby', tab.id);
     });
-    if (sectionId === 'assessment') {
+    if (options.lessonId && sectionId === 'path') {
+      renderLearningLessonPage(content, appState, options.lessonId, {
+        onBack() { showSection('path'); },
+        onAssess(lessonId) { showSection('assessment', { lessonId }); },
+      });
+    } else if (sectionId === 'assessment') {
       renderLearningAssessmentPage(content, appState, {
         initialLessonId: options.lessonId,
         onNavigate(target, lessonId) {
@@ -154,7 +161,11 @@ export function renderLearningMode(mountEl, appState, onExplore) {
     else if (sectionId === 'data') renderDataSection(content);
     else {
       renderStudyPathPage(content, appState, {
-        onNavigate(target) {
+        onNavigate(target, lessonId) {
+          if (lessonId) {
+            showSection('path', { lessonId });
+            return;
+          }
           const section = target.replace('/', '');
           if (['trigrams', 'wings', 'theorems'].includes(section)) showSection(section);
           else if (section === 'almanac') showSection('almanac');
@@ -163,9 +174,19 @@ export function renderLearningMode(mountEl, appState, onExplore) {
         onAssess(lessonId) { showSection('assessment', { lessonId }); },
       });
     }
-    if (['trigrams', 'wings', 'theorems', 'almanac'].includes(sectionId)) {
+    if (!options.lessonId && ['trigrams', 'wings', 'theorems', 'almanac'].includes(sectionId)) {
       bindSectionLearning(content, sectionId, (lessonId) => showSection('assessment', { lessonId }));
     }
+    const panel = mountEl.closest?.('.detail-panel');
+    if (panel) panel.scrollTop = 0;
+    content.scrollTop = 0;
+    const schedule = window.requestAnimationFrame || ((callback) => callback());
+    schedule(() => {
+      const heading = content.querySelector('[data-page-heading], h3');
+      if (!heading) return;
+      heading.tabIndex = -1;
+      heading.focus?.({ preventScroll: true });
+    });
   };
 
   const tabs = [...mountEl.querySelectorAll('.learning-tab')];

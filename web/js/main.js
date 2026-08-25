@@ -10,7 +10,9 @@ import * as dataLoader from './data-loader.js';
 import { closeEvolutionLab, showEvolutionLab } from './evolution-lab.js';
 import { deliverShareImage, generateHexagramShareImage } from './share-card.js';
 import { closeGuaxuWheel, showGuaxuWheel } from './modes/guaxu-mode.js';
+import { initMotionSystem } from './motion-system.js';
 import { renderHexagramDetail } from './render.js';
+import { addReviewCard } from './review-engine.js';
 import { getHexCodeFromUrl, moveSelection, withHexCode } from './search-controller.js';
 import { buildRelationGraph } from './star-relations.js';
 import { StarMap } from './star-map.js';
@@ -19,11 +21,11 @@ import { hexagramSvg } from './svg-painter.js';
 const { buildHexagramIndex, searchHexagrams } = dataLoader;
 
 const modeLoaders = {
-  almanac: () => import('./almanac-page.js').then((module) => module.renderAlmanacPage),
-  divination: () => import('./modes/divination-mode.js').then((module) => module.renderDivinationMode),
-  learning: () => import('./modes/learning-mode.js').then((module) => module.renderLearningMode),
-  quiz: () => import('./modes/quiz-mode.js').then((module) => module.renderQuizMode),
-  review: () => import('./modes/review-mode.js').then((module) => module.renderReviewMode),
+  almanac: () => import('./almanac-page.js?v=28').then((module) => module.renderAlmanacPage),
+  divination: () => import('./modes/divination-mode.js?v=28').then((module) => module.renderDivinationMode),
+  learning: () => import('./modes/learning-mode.js?v=28').then((module) => module.renderLearningMode),
+  quiz: () => import('./modes/quiz-mode.js?v=28').then((module) => module.renderQuizMode),
+  review: () => import('./modes/review-mode.js?v=28').then((module) => module.renderReviewMode),
 };
 
 const state = {
@@ -52,7 +54,9 @@ const dailyOverlay = document.getElementById('daily-overlay');
 const modeSwitcher = document.getElementById('mode-switcher');
 const exploreTools = document.getElementById('explore-tools');
 const audioToggle = document.getElementById('audio-toggle');
+const workspaceInsightBar = document.querySelector('.workspace-insight-bar');
 const compactPanelQuery = window.matchMedia('(max-width: 900px)');
+const motionSystem = initMotionSystem();
 let modeRequestId = 0;
 let panelReturnFocus = null;
 let searchResults = [];
@@ -62,13 +66,89 @@ const DAILY_SEEN_KEY = 'yijing-daily-seen';
 const PANEL_LAYOUT_KEY = 'yijing-panel-layout';
 const DRAWER_SIZE_KEY = 'yijing-drawer-size';
 const DRAWER_SIZES = ['compact', 'medium', 'large'];
+const FOCUS_MODES = new Set(['learning', 'review', 'quiz']);
+const WORKSPACE_MODES = new Set(['almanac', 'learning', 'review', 'quiz', 'divination']);
+const WORKSPACE_INSIGHTS = {
+  almanac: [
+    ['今日历法', '把节气、干支与宜忌放回时间现场'],
+    ['阅读方法', '先辨日期，再看节气与建除'],
+    ['核心能力', '辨时 · 识名 · 明边界'],
+    ['每日建议', '5 分钟'],
+  ],
+  learning: [
+    ['本课对应卦象', '乾为天 · 坤为地'],
+    ['学习目标', '理解阴阳是万物变化的根源'],
+    ['核心能力', '观象 · 察变 · 明理'],
+    ['推荐专注时长', '25 分钟'],
+  ],
+  review: [
+    ['今日温故', '先忆象，再对经，后自评'],
+    ['记忆方法', '主动提取，而非重复浏览'],
+    ['核心能力', '提取 · 核对 · 自评'],
+    ['每卦建议', '2 分钟'],
+  ],
+  quiz: [
+    ['即时小试', '用判断暴露真正的薄弱点'],
+    ['错题去向', '自动进入温故队列'],
+    ['核心能力', '辨象 · 纠错 · 回炉'],
+    ['每题建议', '60 秒'],
+  ],
+  divination: [
+    ['文化演练', '从经文理解处境与变化'],
+    ['研读次序', '定问 · 起卦 · 读经'],
+    ['使用边界', '辅助反思，不替代现实判断'],
+    ['一次建议', '8 分钟'],
+  ],
+};
+
+function updateWorkspaceInsight(mode) {
+  const insight = WORKSPACE_INSIGHTS[mode];
+  if (!workspaceInsightBar || !insight) return;
+  const labels = workspaceInsightBar.querySelectorAll('[data-insight-label]');
+  const values = workspaceInsightBar.querySelectorAll('[data-insight-value]');
+  insight.forEach(([label, value], index) => {
+    labels[index].textContent = label;
+    values[index].textContent = value;
+  });
+}
+
+function setFocusMode(mode) {
+  const focused = FOCUS_MODES.has(mode);
+  const workspace = WORKSPACE_MODES.has(mode);
+  panel.dataset.focus = String(focused);
+  panel.dataset.presentation = workspace ? (focused ? 'study' : 'workspace') : 'detail';
+  panel.dataset.mode = mode;
+  document.body.classList.toggle('focus-mode', focused);
+  document.body.classList.toggle('workspace-mode', workspace);
+  document.body.classList.remove('lesson-overview-open');
+  document.body.dataset.activeMode = mode;
+  canvas.tabIndex = workspace ? -1 : 0;
+  updateWorkspaceInsight(mode);
+  if (workspace) {
+    panel.removeAttribute('aria-labelledby');
+    panel.setAttribute('aria-label', `${mode === 'almanac' ? '黄历' : mode === 'learning' ? '学习' : mode === 'review' ? '复习' : mode === 'quiz' ? '测验' : '占筮'}内容面板`);
+  }
+}
+
+function resetPanelViewport({ focusHeading = false } = {}) {
+  panel.scrollTop = 0;
+  panelContent.scrollTop = 0;
+  if (!focusHeading) return;
+  window.requestAnimationFrame(() => {
+    const heading = panelContent.querySelector('[data-page-heading], .mode-panel-title, h2, h3');
+    if (!heading) return;
+    heading.tabIndex = -1;
+    heading.focus({ preventScroll: true });
+  });
+}
 
 function readPanelLayout() {
+  const defaultLayout = compactPanelQuery.matches ? 'bottom' : 'left';
   try {
     const layout = localStorage.getItem(PANEL_LAYOUT_KEY);
-    return ['bottom', 'left', 'right'].includes(layout) ? layout : 'bottom';
+    return ['bottom', 'left', 'right'].includes(layout) ? layout : defaultLayout;
   } catch {
-    return 'bottom';
+    return defaultLayout;
   }
 }
 
@@ -132,7 +212,7 @@ function getDailyVerse(hex) {
 function showDailyHexagram() {
   const hex = getDailyHexagram(state.hexagrams);
   if (!hex) return;
-  state.starMap?.pause?.();
+  state.starMap?.pause?.('welcome');
   const now = new Date();
   const verse = getDailyVerse(hex);
   document.getElementById('daily-date').textContent = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
@@ -142,18 +222,28 @@ function showDailyHexagram() {
   document.getElementById('daily-verse').textContent = `「${verse.text}」`;
   document.getElementById('daily-verse-src').textContent = `—— ${verse.source}`;
 
-  document.getElementById('daily-enter').addEventListener('click', () => {
+  const enter = (destination) => {
     try { sessionStorage.setItem(DAILY_SEEN_KEY, '1'); } catch {}
     dailyOverlay.classList.add('hidden');
-    setMode('explore');
+    setMode(destination === 'beginner' ? 'learning' : 'explore');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.setTimeout(() => {
       dailyOverlay.hidden = true;
-      state.starMap?.resume?.();
-      state.starMap?.focusStar(hex.binaryCode);
-      canvas.focus();
+      state.starMap?.resume?.('welcome');
+      if (destination === 'beginner') return;
+      if (destination === 'daily') openDetail(hex.binaryCode);
+      else {
+        state.starMap?.clearFocus?.();
+        canvas.focus();
+      }
     }, reducedMotion ? 0 : 180);
-  }, { once: true });
+  };
+  document.querySelector('.daily-entry-actions').addEventListener('click', (event) => {
+    const button = event.target.closest('[data-entry]');
+    if (!button || dailyOverlay.classList.contains('hidden')) return;
+    enter(button.dataset.entry);
+  });
+  motionSystem.reveal(dailyOverlay);
 }
 
 function openPanel() {
@@ -164,8 +254,7 @@ function openPanel() {
   panel.setAttribute('aria-modal', String(compactPanelQuery.matches));
   document.body.classList.add('panel-open');
   state.starMap?.resize();
-  panel.scrollTop = 0;
-  window.requestAnimationFrame(() => panel.querySelector('h1, h2, button')?.focus());
+  resetPanelViewport();
 }
 
 function updateDetailUrl(code, mode = 'push') {
@@ -184,6 +273,7 @@ function closeDetail({ restoreFocus = false, resetMode = true, updateUrl = true 
   if (updateUrl) updateDetailUrl(null);
   if (resetMode && state.currentMode !== 'explore') {
     state.currentMode = 'explore';
+    setFocusMode('explore');
     updateModeButtons('explore');
     state.starMap?.setReviewDue(null);
     state.starMap?.setMode('explore');
@@ -216,6 +306,8 @@ function showShareCardDialog(payload, hexagram) {
     </section>
   `;
   document.body.appendChild(overlay);
+  state.starMap?.pause?.('share');
+  motionSystem.reveal(overlay);
 
   const closeButton = overlay.querySelector('.share-card-close');
   const sendButton = overlay.querySelector('.share-card-send');
@@ -231,10 +323,28 @@ function showShareCardDialog(payload, hexagram) {
   const close = () => {
     document.removeEventListener('keydown', onKeydown);
     overlay.remove();
+    state.starMap?.resume?.('share');
     returnFocus?.focus?.();
   };
   const onKeydown = (event) => {
-    if (event.key === 'Escape') close();
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      close();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+    const focusable = [...overlay.querySelectorAll('button:not([disabled]):not([hidden]), [href], [tabindex]:not([tabindex="-1"])')]
+      .filter((element) => element.getClientRects().length > 0);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   };
   closeButton.addEventListener('click', close);
   overlay.addEventListener('click', (event) => {
@@ -289,10 +399,21 @@ function bindShareAction(hexagram) {
 function openDetail(code, fromCode = null, { historyMode = 'push' } = {}) {
   const hex = state.index.byCode.get(code);
   if (!hex) return;
+  state.currentMode = 'explore';
+  setFocusMode('explore');
+  updateModeButtons('explore');
+  state.starMap?.setReviewDue(null);
+  state.starMap?.setMode('explore');
+  updateExploreTools('star');
   renderHexagramDetail(hex, panelContent, state.hexagrams, (relatedCode) => openDetail(relatedCode, code));
+  panel.setAttribute('aria-labelledby', 'hexagram-detail-title');
+  panel.removeAttribute('aria-label');
   if (historyMode !== 'none') updateDetailUrl(code, historyMode);
   bindShareAction(hex);
+  addReviewCard(code);
   openPanel();
+  motionSystem.reveal(panelContent);
+  resetPanelViewport({ focusHeading: true });
   try { playHexagramSound(code); } catch {}
   if (fromCode) state.starMap?.addTrail(fromCode, code);
   state.currentDetail = code;
@@ -336,6 +457,7 @@ async function loadModeResources(mode) {
 async function setMode(mode) {
   const requestId = ++modeRequestId;
   state.currentMode = mode;
+  setFocusMode(mode);
   updateModeButtons(mode);
   state.starMap?.setReviewDue(null);
   state.starMap?.setMode(mode);
@@ -367,9 +489,15 @@ async function setMode(mode) {
     if (requestId !== modeRequestId || state.currentMode !== mode) return;
     if (mode === 'learning') {
       renderer(panelContent, state, () => setMode('explore'));
+    } else if (mode === 'review') {
+      renderer(panelContent, state, () => setMode('learning'));
+    } else if (mode === 'divination') {
+      renderer(panelContent, state, (code) => openDetail(code));
     } else {
       renderer(panelContent, state);
     }
+    motionSystem.reveal(panelContent);
+    resetPanelViewport({ focusHeading: true });
   } catch (error) {
     if (requestId !== modeRequestId) return;
     const errorMessage = document.createElement('div');
@@ -418,7 +546,7 @@ function bindGlobalInteractions() {
     }
     if (button.dataset.exploreTool === 'guaxu') {
       closeEvolutionLab();
-      state.starMap?.pause?.();
+      state.starMap?.pause?.('guaxu');
       updateExploreTools('guaxu');
       showGuaxuWheel(
         state.hexagrams,
@@ -428,7 +556,7 @@ function bindGlobalInteractions() {
         },
         () => {
           updateExploreTools('star');
-          state.starMap?.resume?.();
+          state.starMap?.resume?.('guaxu');
         },
       );
       return;
@@ -437,11 +565,15 @@ function bindGlobalInteractions() {
     const code = state.currentDetail || getHexCodeFromUrl(window.location.href) || '111111';
     const baseHex = state.index.byCode.get(code) || state.hexagrams[0];
     updateExploreTools('evolution');
+    state.starMap?.pause?.('evolution');
     showEvolutionLab(
       baseHex,
       state.hexagrams,
       (resultCode) => openDetail(resultCode, baseHex.binaryCode),
-      () => updateExploreTools('star'),
+      () => {
+        updateExploreTools('star');
+        state.starMap?.resume?.('evolution');
+      },
     );
   });
   document.getElementById('detail-close').addEventListener('click', () => closeDetail({ restoreFocus: true }));
@@ -453,11 +585,13 @@ function bindGlobalInteractions() {
     setDrawerSize(DRAWER_SIZES[(current + 1) % DRAWER_SIZES.length], { persist: true });
   });
   document.addEventListener('keydown', (event) => {
+    if (document.querySelector('.share-card-overlay')) return;
     if (event.key === 'Escape' && panel.classList.contains('open')) {
       closeDetail({ restoreFocus: true });
       return;
     }
-    if (event.key !== 'Tab' || !compactPanelQuery.matches || !panel.classList.contains('open')) return;
+    if (event.key !== 'Tab' || (!compactPanelQuery.matches && panel.dataset.focus !== 'true') ||
+      !panel.classList.contains('open')) return;
     const focusable = [...panel.querySelectorAll('button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')]
       .filter((element) => !element.hidden && element.getClientRects().length > 0);
     if (!focusable.length) return;
@@ -503,6 +637,7 @@ function bindGlobalInteractions() {
     if (!searchResults.length) {
       const empty = document.createElement('p');
       empty.className = 'search-empty';
+      empty.setAttribute('role', 'status');
       empty.textContent = '没有找到相关卦象';
       searchResultsEl.append(empty);
     } else {
@@ -512,8 +647,22 @@ function bindGlobalInteractions() {
         option.id = `search-option-${index}`;
         option.className = 'search-option';
         option.setAttribute('role', 'option');
+        option.setAttribute('aria-selected', 'false');
+        option.setAttribute('aria-label', `第 ${hexagram.number} 卦，${hexagram.name}，${hexagram.fullName}`);
         option.dataset.index = String(index);
-        option.textContent = `${hexagram.number}. ${hexagram.name} · ${hexagram.fullName}`;
+        const number = document.createElement('span');
+        number.className = 'search-option-number';
+        number.textContent = String(hexagram.number).padStart(2, '0');
+        const identity = document.createElement('span');
+        identity.className = 'search-option-identity';
+        const name = document.createElement('strong');
+        name.textContent = hexagram.name;
+        const fullName = document.createElement('small');
+        fullName.textContent = hexagram.fullName;
+        identity.append(name, fullName);
+        const code = document.createElement('code');
+        code.textContent = hexagram.binaryCode;
+        option.append(number, identity, code);
         searchResultsEl.append(option);
       });
       state.starMap?.focusStar(searchResults[0].binaryCode);
@@ -579,7 +728,14 @@ function bindGlobalInteractions() {
     state.starMap.clearTrail();
     state.starMap.clearFocus();
   });
-  canvas.addEventListener('wheel', () => window.setTimeout(updateZoom, 50), { passive: true });
+  let zoomFrame = null;
+  canvas.addEventListener('wheel', () => {
+    if (zoomFrame !== null) return;
+    zoomFrame = window.requestAnimationFrame(() => {
+      zoomFrame = null;
+      updateZoom();
+    });
+  }, { passive: true });
 }
 
 async function init() {
@@ -625,6 +781,10 @@ async function init() {
 }
 
 init();
+
+window.addEventListener('pagehide', (event) => {
+  if (!event.persisted) motionSystem.destroy();
+}, { once: true });
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

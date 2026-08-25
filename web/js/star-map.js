@@ -24,9 +24,124 @@ const COLORS = {
   text: '#e8d09a',
 };
 
-export function chooseRenderFps({ reducedMotion, isDragging, cameraDistance }) {
+const LABEL_COLLISION_GAP = 7;
+const MIN_NORMAL_LABEL_FONT_SIZE = 12;
+
+function labelBoxesOverlap(a, b, gap) {
+  return !(
+    a.right + gap <= b.left
+    || b.right + gap <= a.left
+    || a.bottom + gap <= b.top
+    || b.bottom + gap <= a.top
+  );
+}
+
+// 先按交互状态、纯卦、可见性、重要度与景深选取标签，再反向绘制，
+// 让高优先级标签最后落笔。排序末尾固定使用原始顺序，避免同分标签闪烁。
+export function layoutStarNameLabels(ctx, nodes, {
+  hoveredNode = null,
+  activeNode = null,
+  focusVisible = null,
+  appearProgress = 1,
+  time = 0,
+  collisionGap = LABEL_COLLISION_GAP,
+} = {}) {
+  const focus = hoveredNode || activeNode;
+  const candidates = [];
+
+  for (let index = 0; index < nodes.length; index += 1) {
+    const node = nodes[index];
+    const isHovered = hoveredNode?.id === node.id;
+    const isActive = activeNode?.id === node.id;
+    const delay = (node.number - 1) / 64 * 0.5;
+    const localProgress = Math.max(0, Math.min(1, (appearProgress - delay) / 0.4));
+    if ((!isHovered && !isActive && localProgress <= 0) || !node._screen) continue;
+
+    const screen = node._screen;
+    const isFocus = focus?.id === node.id;
+    const isHidden = focusVisible && !focusVisible.has(node.id);
+    const nameVisibility = isHidden ? 0.1 : 1;
+    const depthScale = 0.6 + screen.depthFactor * 0.5;
+    const fontSize = node.isPure
+      ? (isFocus ? 38 : 30) * depthScale
+      : Math.max(MIN_NORMAL_LABEL_FONT_SIZE, (isFocus ? 20 : 14) * depthScale);
+    const fontFamily = node.isPure
+      ? '"Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif'
+      : '"ZCOOL XiaoWei", "STKaiti", "KaiTi", serif';
+    const font = `${fontSize}px ${fontFamily}`;
+    const x = screen.x;
+    const y = screen.y - (node.isPure ? 40 : 22) * depthScale;
+
+    ctx.font = font;
+    const metrics = ctx.measureText(node.name);
+    const measuredWidth = Number.isFinite(metrics.width) ? metrics.width : 0;
+    const measuredHeight = Number.isFinite(metrics.actualBoundingBoxAscent)
+      && Number.isFinite(metrics.actualBoundingBoxDescent)
+      ? metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent
+      : fontSize;
+    const width = Math.max(1, measuredWidth);
+    const height = Math.max(fontSize, measuredHeight);
+
+    let priorityTier = isHidden ? 0 : 1;
+    if (node.isPure) priorityTier = 2;
+    if (isActive) priorityTier = 3;
+    if (isHovered) priorityTier = 4;
+
+    const importance = (Number(node.degree) || 0) + screen.depthFactor * 4;
+    const alpha = node.isPure
+      ? (isFocus
+        ? 1
+        : (0.6 + 0.15 * Math.sin(time * 0.01 + node.binaryCode.charCodeAt(0)))
+          * (0.6 + screen.depthFactor * 0.4) * nameVisibility)
+      : (isFocus ? 1 : (0.4 + screen.depthFactor * 0.4) * nameVisibility);
+
+    candidates.push({
+      node,
+      text: node.name,
+      x,
+      y,
+      font,
+      fontSize,
+      fillStyle: isFocus
+        ? 'rgba(255,240,200,1)'
+        : (node.isPure
+          ? `rgba(212,165,116,${alpha})`
+          : `rgba(180,160,110,${alpha})`),
+      forceVisible: isHovered || isActive || node.isPure,
+      priorityTier,
+      importance,
+      sourceIndex: index,
+      box: {
+        left: x - width / 2,
+        right: x + width / 2,
+        top: y - height / 2,
+        bottom: y + height / 2,
+      },
+    });
+  }
+
+  candidates.sort((a, b) => (
+    b.priorityTier - a.priorityTier
+    || b.importance - a.importance
+    || a.sourceIndex - b.sourceIndex
+  ));
+
+  const occupied = [];
+  const visible = [];
+  for (const candidate of candidates) {
+    const collides = occupied.some(box => labelBoxesOverlap(candidate.box, box, collisionGap));
+    if (collides && !candidate.forceVisible) continue;
+    occupied.push(candidate.box);
+    visible.push(candidate);
+  }
+
+  return visible.reverse();
+}
+
+export function chooseRenderFps({ reducedMotion, isDragging, cameraDistance, mode = 'explore' }) {
   if (reducedMotion) return 10;
-  return isDragging || cameraDistance > 0.5 ? 60 : 30;
+  if (isDragging || cameraDistance > 0.5) return 60;
+  return mode === 'explore' ? 30 : 15;
 }
 
 export class StarMap {
@@ -74,9 +189,11 @@ export class StarMap {
   }
 
   _setupDpr() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    this.dpr = dpr;
     const rect = this.canvas.getBoundingClientRect();
+    const cssPixelArea = Math.max(1, rect.width * rect.height);
+    const areaLimitedDpr = Math.max(0.85, Math.sqrt(5_000_000 / cssPixelArea));
+    const dpr = Math.min(window.devicePixelRatio || 1, 2, areaLimitedDpr);
+    this.dpr = dpr;
     this.canvas.width = rect.width * dpr;
     this.canvas.height = rect.height * dpr;
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -424,6 +541,7 @@ export class StarMap {
         reducedMotion: this.reducedMotion,
         isDragging: this.isDragging,
         cameraDistance,
+        mode: this.mode,
       });
       const minFrameMs = 1000 / targetFps;
       const elapsed = this.lastRenderAt ? timestamp - this.lastRenderAt : minFrameMs;
@@ -459,6 +577,8 @@ export class StarMap {
     this.isPaused = true;
     if (this.animationFrame !== null) cancelAnimationFrame(this.animationFrame);
     this.animationFrame = null;
+    this.simulation?.stop?.();
+    if (this.canvas?.dataset) this.canvas.dataset.animationActive = 'false';
   }
 
   resume(reason = 'manual') {
@@ -466,11 +586,14 @@ export class StarMap {
     if (document.hidden) this.pauseReasons.add('visibility');
     if (this.pauseReasons.size > 0) {
       this.isPaused = true;
+      if (this.canvas?.dataset) this.canvas.dataset.animationActive = 'false';
       return;
     }
     if (!this.isPaused && this.animationFrame !== null) return;
     this.isPaused = false;
     this.lastRenderAt = 0;
+    this.simulation?.restart?.();
+    if (this.canvas?.dataset) this.canvas.dataset.animationActive = 'true';
     this.animationFrame = requestAnimationFrame(this.renderLoop);
   }
 
@@ -713,34 +836,20 @@ export class StarMap {
     }
     ctx.globalCompositeOperation = 'source-over';
 
-    // 卦名标签：8 纯卦常显书法大字 + focus 星显示（带 z 深度）
+    // 卦名标签：交互标签与 8 纯卦强制保留，普通标签按优先级防碰撞。
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    // 所有 64 卦都显示卦名：纯卦字大（突出），普通卦字小
-    for (const n of this.graph.nodes) {
-      const delay = (n.number - 1) / 64 * 0.5;
-      const localP = Math.max(0, Math.min(1, (this.appearProgress - delay) / 0.4));
-      if (localP <= 0) continue;
-      const p = n._screen;
-      const isFocus = focus && n.id === focus.id;
-      const isHiddenName = this.focusVisible && !this.focusVisible.has(n.id);
-      const nameVis = isHiddenName ? 0.1 : 1;
-      const depthS = 0.6 + p.depthFactor * 0.5;
-      if (n.isPure) {
-        // 纯卦：书法大字，突出显示
-        const fontSize = (isFocus ? 38 : 30) * depthS;
-        const alpha = isFocus ? 1 : (0.6 + 0.15 * Math.sin(t * 0.01 + n.binaryCode.charCodeAt(0))) * (0.6 + p.depthFactor * 0.4) * nameVis;
-        ctx.font = `${fontSize}px "Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
-        ctx.fillStyle = isFocus ? 'rgba(255,240,200,1)' : `rgba(212,165,116,${alpha})`;
-        ctx.fillText(n.name, p.x, p.y - 40 * depthS);
-      } else {
-        // 普通卦：小字，淡金，按深度调节
-        const fontSize = (isFocus ? 20 : 14) * depthS;
-        const alpha = isFocus ? 1 : (0.4 + p.depthFactor * 0.4) * nameVis;
-        ctx.font = `${fontSize}px "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif`;
-        ctx.fillStyle = isFocus ? 'rgba(255,240,200,1)' : `rgba(180,160,110,${alpha})`;
-        ctx.fillText(n.name, p.x, p.y - 22 * depthS);
-      }
+    const nameLabels = layoutStarNameLabels(ctx, this.graph.nodes, {
+      hoveredNode: this.hoveredNode,
+      activeNode: this.activeNode,
+      focusVisible: this.focusVisible,
+      appearProgress: this.appearProgress,
+      time: t,
+    });
+    for (const label of nameLabels) {
+      ctx.font = label.font;
+      ctx.fillStyle = label.fillStyle;
+      ctx.fillText(label.text, label.x, label.y);
     }
   }
 
@@ -806,6 +915,7 @@ export class StarMap {
   addTrail(fromCode, toCode) {
     if (fromCode && toCode && fromCode !== toCode) {
       this.trail.push({ from: fromCode, to: toCode, t: 0 }); // t=动画进度
+      if (this.trail.length > 48) this.trail.splice(0, this.trail.length - 48);
     }
   }
   clearTrail() { this.trail = []; }

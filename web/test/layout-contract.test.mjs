@@ -5,6 +5,8 @@ const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const css = readFileSync(new URL('../styles/main.css', import.meta.url), 'utf8');
 const main = readFileSync(new URL('../js/main.js', import.meta.url), 'utf8');
 const render = readFileSync(new URL('../js/render.js', import.meta.url), 'utf8');
+const reviewMode = readFileSync(new URL('../js/modes/review-mode.js', import.meta.url), 'utf8');
+const quizMode = readFileSync(new URL('../js/modes/quiz-mode.js', import.meta.url), 'utf8');
 
 assert.match(html, /class="brand-lockup"/);
 assert.match(html, /class="brand-subtitle">观象 · 读经 · 知变/);
@@ -16,6 +18,17 @@ const modeOrder = [...html.matchAll(/class="mode-btn(?: active)?" data-mode="([^
 assert.deepEqual(modeOrder, ['almanac', 'explore', 'learning', 'review', 'quiz', 'divination']);
 assert.doesNotMatch(html, /data-mode="guaxu"/);
 assert.match(html, /class="explore-tool guaxu-tool" data-explore-tool="guaxu"/);
+const entryOrder = [...html.matchAll(/data-entry="([^"]+)"/g)].map((match) => match[1]);
+assert.deepEqual(entryOrder, ['beginner', 'explore', 'daily']);
+assert.match(html, /class="daily-intro"[^>]*aria-labelledby="daily-title"/);
+assert.match(html, /class="daily-oracle"[^>]*aria-label="今日一卦"/);
+assert.equal((html.match(/data-insight-label/g) || []).length, 4);
+assert.equal((html.match(/data-insight-value/g) || []).length, 4);
+assert.match(html, /class="atlas-scripture"[^>]*aria-hidden="true"/);
+assert.match(html, /class="star-map-intro"[^>]*aria-label="星图阅读提示"/);
+assert.match(html, /一卦为星，错、综、互、变织成可探索的关系路径/);
+assert.match(html, /易有太极，是生两仪；两仪生四象，四象生八卦/);
+assert.match(html, /乾 · 天 · 健/);
 
 assert.match(css, /--panel-width:\s*clamp\(520px,\s*42vw,\s*640px\)/);
 assert.match(css, /body\.panel-open\.panel-left #star-canvas\s*{[^}]*left:\s*var\(--panel-width\)/s);
@@ -30,15 +43,39 @@ assert.match(css, /\.explore-tools\s*{[^}]*right:\s*28px/s);
 assert.match(css, /\.guaxu-overlay\s*{[^}]*position:\s*fixed[^}]*place-items:\s*center/s);
 assert.match(css, /\.guaxu-wheel-rotor\s*{[^}]*transform-origin:\s*center/s);
 
+assert.match(css, /body\.workspace-mode \.detail-panel\[data-presentation\]\s*\{[^}]*width:\s*min\(1100px/s);
+assert.match(css, /body\.workspace-mode\.panel-open #star-canvas\s*\{[^}]*pointer-events:\s*none[^}]*opacity:\s*0\.5/s);
+assert.match(css, /\.lesson-editorial-grid\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\) 270px/s);
+assert.match(css, /\.almanac-view\s*\{[^}]*grid-template-columns:\s*repeat\(12/s);
+assert.match(css, /body\.workspace-mode\.panel-open \.workspace-insight-bar\s*\{[^}]*opacity:\s*1/s);
+assert.match(css, /\.search-option\s*\{[^}]*grid-template-columns:\s*38px minmax\(0,\s*1fr\) auto/s);
+
 assert.match(main, /document\.body\.classList\.add\('panel-open'\)/);
 assert.match(main, /document\.body\.classList\.remove\('panel-open'\)/);
 assert.match(main, /panel\.setAttribute\('aria-modal', String\(compactPanelQuery\.matches\)\)/);
 assert.match(main, /const PANEL_LAYOUT_KEY = 'yijing-panel-layout'/);
+assert.match(main, /const defaultLayout = compactPanelQuery\.matches \? 'bottom' : 'left'/);
 assert.match(main, /const DRAWER_SIZES = \['compact', 'medium', 'large'\]/);
+assert.match(main, /const FOCUS_MODES = new Set\(\['learning', 'review', 'quiz'\]\)/);
+assert.match(main, /const WORKSPACE_MODES = new Set\(\['almanac', 'learning', 'review', 'quiz', 'divination'\]\)/);
+assert.match(main, /const WORKSPACE_INSIGHTS = \{/);
+assert.match(main, /function updateWorkspaceInsight\(mode\)/);
+assert.match(main, /panel\.dataset\.presentation = workspace/);
+assert.match(main, /resetPanelViewport\(\{ focusHeading: true \}\)/);
+assert.match(main, /renderer\(panelContent, state, \(\) => setMode\('learning'\)\)/);
+assert.match(main, /addReviewCard\(code\)/);
+assert.match(main, /state\.currentMode = 'explore';[\s\S]*?updateModeButtons\('explore'\)/);
+assert.match(main, /if \(document\.querySelector\('\.share-card-overlay'\)\) return/);
+assert.match(main, /className = 'search-option-number'/);
 assert.match(main, /showGuaxuWheel\(\s*state\.hexagrams/);
 assert.match(main, /bindInterfaceSounds\(document\)/);
 assert.match(main, /setPanelLayout\(panelLayoutSelect\.value, \{ persist: true \}\)/);
 assert.match(render, /<section class="detail-section/);
 assert.match(render, /class="detail-heading-copy"/);
+assert.match(reviewMode, /reviewCards = loadReviewCards\(\)/);
+assert.doesNotMatch(reviewMode, /if \(!reviewCards\) reviewCards = loadReviewCards\(\)/);
+assert.match(reviewMode, /aria-controls="review-answer"/);
+assert.match(reviewMode, /id="review-answer" hidden aria-hidden="true"/);
+assert.match(quizMode, /feedback\.scrollIntoView\?\.\(\{[\s\S]*?block:\s*'nearest'/);
 
 console.log('✓ 布局响应式契约测试通过');

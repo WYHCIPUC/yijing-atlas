@@ -1,11 +1,13 @@
-const CACHE_NAME = 'yijing-atlas-v20';
+const CACHE_NAME = 'yijing-atlas-v28';
 const PRECACHE = [
   './',
   './index.html',
-  './styles/main.css',
-  './js/main.js',
+  './styles/main.css?v=28',
+  './js/main.js?v=28',
   './manifest.webmanifest',
   './assets/favicon.svg',
+  './assets/academy-astrolabe-bg.webp',
+  './assets/taiji-mechanism.webp',
   './js/audio-engine.js',
   './js/data-loader.js',
   './js/evolution-lab.js',
@@ -18,6 +20,7 @@ const PRECACHE = [
   './js/learning-curriculum.js',
   './js/learning-progress.js',
   './js/learning-review.js',
+  './js/motion-system.js',
   './js/relation-animation.js',
   './js/render.js',
   './js/share-card.js',
@@ -57,6 +60,19 @@ self.addEventListener('fetch', (event) => {
           return response;
         })
         .catch(() => caches.match(request).then((cached) => cached || caches.match('./index.html'))),
+    );
+    return;
+  }
+
+  // HTML 与入口模块必须同代更新，避免新版结构加载到旧版 JS/CSS。
+  if (['script', 'style', 'worker'].includes(request.destination)) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          if (response.ok) caches.open(CACHE_NAME).then((cache) => cache.put(request, response.clone()));
+          return response;
+        })
+        .catch(() => caches.match(request)),
     );
     return;
   }

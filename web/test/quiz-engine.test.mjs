@@ -39,6 +39,8 @@ for (const type of ['opposite', 'reversed', 'interlocking', 'name']) {
     const expected = type === 'name' ? question.targetCode : relations[type];
     assert.equal(question.answer, expected);
     assert.equal(checkAnswer(question, expected), true);
+    assert.equal(typeof question.explanation, 'string');
+    assert.ok(question.explanation.length > 10);
   });
 }
 
@@ -53,6 +55,7 @@ test('黄历题生成四个带稳定 id 的候选项', () => {
   assert.equal(question.type, 'almanac');
   assert.equal(question.candidates.length, 4);
   assert.ok(question.candidates.some((candidate) => candidate.code === question.answer));
+  assert.match(question.explanation, /完整释义/);
 });
 
 test('黄历题不足四项时拒绝出题', () => {
