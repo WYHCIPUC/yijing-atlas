@@ -25,6 +25,7 @@
     "validate": "node scripts/quality-check.mjs --include-smoke && npm run test:coverage"
   },
   "devDependencies": {
-    "postject": "1.0.0-alpha.6"
+    "postject": "1.0.0-alpha.6",
+    "uisfx": "^0.4.0"
   }
 }

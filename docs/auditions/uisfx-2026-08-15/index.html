@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>易象图谱 · 界面音色试音室</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #080d17;
+      --ink-soft: #101827;
+      --paper: #e9ddbf;
+      --paper-muted: #a99f88;
+      --bronze: #c7a46a;
+      --bronze-bright: #e4c78f;
+      --line: rgba(199, 164, 106, 0.22);
+      --panel: rgba(15, 23, 36, 0.86);
+      --green: #7eaf8b;
+      --red: #c27a70;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 980px;
+      min-height: 100vh;
+      color: var(--paper);
+      background:
+        radial-gradient(circle at 75% 12%, rgba(56, 83, 112, 0.25), transparent 28%),
+        radial-gradient(circle at 8% 86%, rgba(102, 72, 37, 0.18), transparent 30%),
+        linear-gradient(145deg, #070b13, var(--ink) 52%, #0c1420);
+      font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", SimSun, serif;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      content: "观乎天文，以察时变；观乎人文，以化成天下。\A 穷则变，变则通，通则久。";
+      white-space: pre;
+      color: rgba(232, 217, 184, 0.028);
+      font-size: 56px;
+      line-height: 2.1;
+      letter-spacing: 0.32em;
+      transform: rotate(-7deg) scale(1.08);
+      transform-origin: center;
+      pointer-events: none;
+    }
+
+    button, input { font: inherit; }
+
+    button:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--bronze-bright);
+      outline-offset: 3px;
+    }
+
+    .shell {
+      width: min(1380px, calc(100% - 72px));
+      margin: 0 auto;
+      padding: 52px 0 64px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--bronze);
+      font-family: "Segoe UI", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .locked-direction {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      margin-top: 18px;
+      padding: 0 12px;
+      border: 1px solid rgba(228, 199, 143, 0.55);
+      border-radius: 999px;
+      color: var(--bronze-bright);
+      background: rgba(199, 164, 106, 0.1);
+      font: 700 11px/1 "Segoe UI", sans-serif;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 4.3vw, 68px);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      line-height: 1.06;
+    }
+
+    .lede {
+      width: min(760px, 68%);
+      margin: 20px 0 0;
+      color: var(--paper-muted);
+      font-size: 17px;
+      line-height: 1.85;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-top: 34px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(8, 14, 23, 0.72);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(14px);
+    }
+
+    .volume {
+      display: grid;
+      grid-template-columns: auto 220px 38px;
+      align-items: center;
+      gap: 12px;
+      color: var(--paper-muted);
+      font-family: "Segoe UI", sans-serif;
+      font-size: 13px;
+    }
+
+    input[type="range"] { accent-color: var(--bronze); }
+
+    .toolbar,
+    .section-actions,
+    .decision-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .playback-status {
+      margin-right: auto;
+      color: var(--paper-muted);
+      font-size: 12px;
+    }
+
+    .button {
+      min-height: 38px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--paper);
+      background: rgba(255, 255, 255, 0.035);
+      cursor: pointer;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .button:hover {
+      border-color: rgba(228, 199, 143, 0.58);
+      background: rgba(199, 164, 106, 0.09);
+      transform: translateY(-1px);
+    }
+
+    .button.primary {
+      color: #10141a;
+      border-color: var(--bronze);
+      background: linear-gradient(135deg, var(--bronze-bright), var(--bronze));
+      font-weight: 700;
+    }
+
+    .group {
+      margin-top: 48px;
+    }
+
+    .group-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+
+    .group-index {
+      color: var(--bronze);
+      font: 700 11px/1 "Segoe UI", sans-serif;
+      letter-spacing: 0.18em;
+    }
+
+    h2 {
+      margin: 7px 0 0;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .group-note {
+      margin: 7px 0 0;
+      color: var(--paper-muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .cue {
+      min-height: 202px;
+      padding: 19px;
+      border: 1px solid rgba(199, 164, 106, 0.16);
+      border-radius: 15px;
+      background: linear-gradient(150deg, rgba(22, 33, 49, 0.92), rgba(10, 17, 28, 0.9));
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
+      transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .cue.is-playing {
+      border-color: var(--bronze-bright);
+      box-shadow: 0 0 0 1px rgba(228, 199, 143, 0.22), 0 18px 55px rgba(0, 0, 0, 0.24);
+      transform: translateY(-2px);
+    }
+
+    .cue-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .cue h3 {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    .cue-code {
+      display: block;
+      margin-top: 5px;
+      color: var(--bronze);
+      font: 600 11px/1.2 "Segoe UI", sans-serif;
+      letter-spacing: 0.08em;
+    }
+
+    .play-compare {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 6px;
+    }
+
+    .play {
+      min-width: 54px;
+      height: 34px;
+      padding: 0 10px;
+      border: 1px solid rgba(228, 199, 143, 0.38);
+      border-radius: 999px;
+      color: var(--bronze-bright);
+      background: rgba(199, 164, 106, 0.08);
+      font: 600 11px/1 "Segoe UI", sans-serif;
+      cursor: pointer;
+    }
+
+    .play[data-version="enhanced"] {
+      color: #10141a;
+      border-color: var(--bronze);
+      background: linear-gradient(135deg, var(--bronze-bright), var(--bronze));
+    }
+
+    .cue-use {
+      min-height: 48px;
+      margin: 16px 0 14px;
+      color: var(--paper-muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .cue-meta {
+      margin-bottom: 12px;
+      color: rgba(232, 217, 184, 0.48);
+      font: 11px/1.3 "Segoe UI", sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    .decision-actions { gap: 5px; }
+
+    .decision {
+      flex: 1;
+      min-height: 29px;
+      padding: 0 7px;
+      border: 1px solid rgba(232, 217, 184, 0.12);
+      border-radius: 7px;
+      color: rgba(232, 217, 184, 0.58);
+      background: transparent;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .decision[aria-pressed="true"][data-status="keep"] {
+      color: #d7eadb;
+      border-color: rgba(126, 175, 139, 0.62);
+      background: rgba(126, 175, 139, 0.14);
+    }
+
+    .decision[aria-pressed="true"][data-status="review"] {
+      color: #f0d7a5;
+      border-color: rgba(199, 164, 106, 0.58);
+      background: rgba(199, 164, 106, 0.13);
+    }
+
+    .decision[aria-pressed="true"][data-status="drop"] {
+      color: #edc3bd;
+      border-color: rgba(194, 122, 112, 0.58);
+      background: rgba(194, 122, 112, 0.13);
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .note-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(9, 15, 25, 0.68);
+    }
+
+    .note-card h2 { margin: 0 0 12px; font-size: 19px; }
+
+    .note-card p,
+    .note-card li {
+      color: var(--paper-muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .note-card ul { margin: 0; padding-left: 20px; }
+
+    #copy-status {
+      min-height: 22px;
+      margin: 10px 0 0;
+      color: var(--green);
+      font-size: 12px;
+    }
+
+    @media (max-width: 1180px) {
+      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">Yijing Atlas · Sound Direction 01</p>
+      <h1>界面音色试音室</h1>
+      <div class="locked-direction">已确认方向 · B 质感增强</div>
+      <p class="lede">B 已选为正式音色方向：在大致响度匹配的前提下补入主体、触点与短尾韵。A 原声仅保留作历史对照。</p>
+    </header>
+
+    <div class="topbar">
+      <label class="volume">
+        <span>试听音量</span>
+        <input id="master-volume" type="range" min="0" max="100" value="66">
+        <output id="volume-value">66%</output>
+      </label>
+      <div class="toolbar">
+        <span class="playback-status" id="playback-status" role="status" aria-live="polite">尚未试听</span>
+        <button class="button" id="stop-all" type="button">停止播放</button>
+        <button class="button" id="reset-decisions" type="button">恢复建议</button>
+        <button class="button primary" id="copy-decisions" type="button">复制评审结果</button>
+      </div>
+    </div>
+
+    <div id="groups"></div>
+
+    <footer class="footer">
+      <section class="note-card">
+        <h2>已确定的声音边界</h2>
+        <ul>
+          <li>不为悬停、滚动、打字、星图缩放等高频动作配音。</li>
+          <li>Zen 只承担轻量确认和学习反馈；Mechanical 只用于少数实体感节点。</li>
+          <li>铜钱、转盘棘轮、落锁、纸张、毛笔与印章仍使用独立真实拟音，不由本库替代。</li>
+          <li>正式页面必须由首次用户手势解锁声音，并保留静音与音量控制。</li>
+        </ul>
+      </section>
+      <section class="note-card">
+        <h2>素材与许可</h2>
+        <p>uisfx 0.4.0。试听素材复制自本地 npm 包。代码许可 MIT；<code>sounds/</code> 下音频采用 CC0-1.0，可修改、分发及商业使用。</p>
+        <p id="copy-status" role="status" aria-live="polite"></p>
+      </section>
+    </footer>
+  </main>
+
+  <script>
+    const cues = [
+      { group: 'routine', pack: 'zen', cue: 'select', label: '轻选定', use: '导航切换、列表选中、卦象焦点确认', duration: 0.254, gain: 0.2, status: 'review' },
+      { group: 'routine', pack: 'zen', cue: 'toggle-on', label: '开关启用', use: '音效、辅助显示等明确开关进入开启态', duration: 0.268, gain: 0.2, status: 'review' },
+      { group: 'routine', pack: 'zen', cue: 'toggle-off', label: '开关关闭', use: '明确开关回到关闭态', duration: 0.262, gain: 0.18, status: 'review' },
+      { group: 'routine', pack: 'zen', cue: 'volume-change', label: '音量落点', use: '音量拖动结束时单次反馈，不随拖动连续播放', duration: 0.221, gain: 0.11, status: 'keep' },
+      { group: 'routine', pack: 'zen', cue: 'open', label: '展开进入', use: '打开独立阅读层、说明层或次级面板', duration: 0.327, gain: 0.18, status: 'keep' },
+      { group: 'routine', pack: 'zen', cue: 'close', label: '收束退出', use: '关闭独立阅读层、说明层或次级面板', duration: 0.303, gain: 0.17, status: 'keep' },
+      { group: 'routine', pack: 'zen', cue: 'expand', label: '内容展开', use: '卡片内部展开；只用于低频、信息量明显变化的动作', duration: 0.327, gain: 0.16, status: 'keep' },
+      { group: 'routine', pack: 'zen', cue: 'collapse', label: '内容折叠', use: '卡片内部收起；与展开成对使用', duration: 0.311, gain: 0.15, status: 'keep' },
+
+      { group: 'learning', pack: 'zen', cue: 'check', label: '判断正确', use: '答案方向正确或解卦关键依据成立', duration: 0.262, gain: 0.17, status: 'drop' },
+      { group: 'learning', pack: 'zen', cue: 'progress-step', label: '进度一格', use: '完成一个小环节，不用于每次点击', duration: 0.213, gain: 0.12, status: 'drop' },
+      { group: 'learning', pack: 'zen', cue: 'checkpoint', label: '小节验收', use: '抽查、复讲或阶段性检查完成', duration: 0.434, gain: 0.18, status: 'drop' },
+      { group: 'learning', pack: 'zen', cue: 'success', label: '记录成功', use: '笔记、进度或设置确实保存成功；不用于答对单题', duration: 0.571, gain: 0.23, status: 'drop' },
+      { group: 'learning', pack: 'zen', cue: 'info', label: '温和纠偏', use: '答案需要回看依据时的轻提示，不制造失败惩罚', duration: 0.39, gain: 0.16, status: 'drop' },
+      { group: 'learning', pack: 'zen', cue: 'error', label: '错误提示（对照）', use: '只作试听对照；默认不用于普通错题', duration: 0.481, gain: 0.22, status: 'drop' },
+      { group: 'learning', pack: 'zen', cue: 'warning', label: '警示提示（对照）', use: '只作试听对照；普通“依据不足”不应像系统告警', duration: 0.52, gain: 0.22, status: 'drop' },
+      { group: 'learning', pack: 'zen', cue: 'complete', label: '课程完成', use: '完成一个完整课次或阶段考评', duration: 0.637, gain: 0.24, status: 'drop' },
+      { group: 'learning', pack: 'zen', cue: 'achievement', label: '成就达成', use: '稀有荣誉解锁；不得与日常反馈混用', duration: 0.911, gain: 0.26, status: 'drop' },
+
+      { group: 'mechanical', pack: 'mechanical', cue: 'snap', label: '构件吸附', use: '爻线、关系节点或机械构件准确归位', duration: 0.163, gain: 0.2, status: 'review' },
+      { group: 'mechanical', pack: 'mechanical', cue: 'lock', label: '机械锁定', use: '转盘最终停止后的锁销动作；真实转盘拟音之下轻叠', duration: 0.263, gain: 0.2, status: 'drop' },
+      { group: 'mechanical', pack: 'mechanical', cue: 'unlock', label: '机构释放', use: '转盘重新启动或实验机构解除锁定', duration: 0.34, gain: 0.2, status: 'drop' }
+    ];
+
+    const groups = [
+      { id: 'routine', index: '01', title: '常规界面 · Zen', note: '轻、短、克制，只确认有意义的状态变化。' },
+      { id: 'learning', index: '02', title: '学习反馈 · Zen', note: '形成进步感，但避免游戏厅式奖励与负面惩罚。' },
+      { id: 'mechanical', index: '03', title: '机械节点 · Mechanical', note: '少量叠加于转盘、爻变与构件归位，建立铜质机构的触感。' }
+    ];
+
+    const statusLabels = { keep: '保留', review: '待定', drop: '弃用' };
+    const storageKey = 'yijing-uisfx-audition-v3';
+    let decisions = loadDecisions();
+    let activeAudio = null;
+    let audioContext = null;
+    let activeSources = [];
+    const bufferCache = new Map();
+    let playRun = 0;
+
+    function loadDecisions() {
+      try {
+        return { ...Object.fromEntries(cues.map((item) => [keyOf(item), item.status])), ...JSON.parse(localStorage.getItem(storageKey) || '{}') };
+      } catch {
+        return Object.fromEntries(cues.map((item) => [keyOf(item), item.status]));
+      }
+    }
+
+    function keyOf(item) {
+      return `${item.pack}/${item.cue}`;
+    }
+
+    function render() {
+      const root = document.querySelector('#groups');
+      root.innerHTML = groups.map((group) => {
+        const cards = cues.filter((cue) => cue.group === group.id).map(renderCue).join('');
+        return `<section class="group" aria-labelledby="heading-${group.id}">
+          <div class="group-head">
+            <div>
+              <div class="group-index">GROUP ${group.index}</div>
+              <h2 id="heading-${group.id}">${group.title}</h2>
+              <p class="group-note">${group.note}</p>
+            </div>
+            <div class="section-actions">
+              <button class="button" type="button" data-play-group="${group.id}" data-version="raw">A 原声连播</button>
+              <button class="button primary" type="button" data-play-group="${group.id}" data-version="enhanced">B 质感连播</button>
+            </div>
+          </div>
+          <div class="grid">${cards}</div>
+        </section>`;
+      }).join('');
+    }
+
+    function renderCue(item) {
+      const itemKey = keyOf(item);
+      const decisionsHtml = Object.entries(statusLabels).map(([status, label]) =>
+        `<button class="decision" type="button" data-key="${itemKey}" data-status="${status}" aria-pressed="${decisions[itemKey] === status}">${label}</button>`
+      ).join('');
+      return `<article class="cue" data-cue-card="${itemKey}">
+        <div class="cue-head">
+          <div><h3>${item.label}</h3><span class="cue-code">${item.pack} / ${item.cue}</span></div>
+          <div class="play-compare">
+            <button class="play" type="button" data-play="${itemKey}" data-version="raw" aria-label="试听${item.label}原声">A 原声</button>
+            <button class="play" type="button" data-play="${itemKey}" data-version="enhanced" aria-label="试听${item.label}质感增强版">B 质感</button>
+          </div>
+        </div>
+        <p class="cue-use">${item.use}</p>
+        <div class="cue-meta">${Math.round(item.duration * 1000)} ms · 建议相对增益 ${item.gain.toFixed(2)}</div>
+        <div class="decision-actions" aria-label="${item.label}评审状态">${decisionsHtml}</div>
+      </article>`;
+    }
+
+    function stopAudio() {
+      playRun += 1;
+      if (activeAudio) {
+        activeAudio.pause();
+        activeAudio.currentTime = 0;
+      }
+      activeAudio = null;
+      activeSources.forEach((source) => {
+        try { source.stop(); } catch { /* source may already be stopped */ }
+      });
+      activeSources = [];
+      document.querySelectorAll('.cue.is-playing').forEach((card) => card.classList.remove('is-playing'));
+      document.querySelector('#playback-status').textContent = '播放已停止';
+    }
+
+    function clearCurrentPlayback() {
+      if (activeAudio) activeAudio.pause();
+      activeAudio = null;
+      activeSources.forEach((source) => {
+        try { source.stop(); } catch { /* source may already be stopped */ }
+      });
+      activeSources = [];
+      document.querySelectorAll('.cue.is-playing').forEach((card) => card.classList.remove('is-playing'));
+    }
+
+    async function getAudioContext() {
+      if (!audioContext) audioContext = new AudioContext();
+      if (audioContext.state === 'suspended') await audioContext.resume();
+      return audioContext;
+    }
+
+    async function getBuffer(context, item) {
+      const itemKey = keyOf(item);
+      if (!bufferCache.has(itemKey)) {
+        bufferCache.set(itemKey, fetch(`audio/${item.pack}/${item.cue}.mp3`)
+          .then((response) => {
+            if (!response.ok) throw new Error(`Audio ${response.status}`);
+            return response.arrayBuffer();
+          })
+          .then((data) => context.decodeAudioData(data)));
+      }
+      return bufferCache.get(itemKey);
+    }
+
+    function playRawCue(item, runId = ++playRun) {
+      clearCurrentPlayback();
+      const card = document.querySelector(`[data-cue-card="${keyOf(item)}"]`);
+      card?.classList.add('is-playing');
+      const audio = new Audio(`audio/${item.pack}/${item.cue}.mp3`);
+      const master = Number(document.querySelector('#master-volume').value) / 100;
+      audio.volume = Math.min(1, master * (item.gain / 0.2));
+      activeAudio = audio;
+      document.querySelector('#playback-status').textContent = `正在试听 A 原声：${item.label}`;
+      return new Promise((resolve) => {
+        let settled = false;
+        const finish = (result) => {
+          if (settled) return;
+          settled = true;
+          if (runId === playRun) card?.classList.remove('is-playing');
+          document.querySelector('#playback-status').textContent = result === 'ended'
+            ? `已试听 A 原声：${item.label}`
+            : `无法播放：${item.label}`;
+          resolve();
+        };
+        audio.addEventListener('ended', () => finish('ended'), { once: true });
+        audio.addEventListener('error', () => finish('error'), { once: true });
+        audio.play().catch(() => finish('blocked'));
+      });
+    }
+
+    function addTextureLayer(context, buffer, destination, startAt, settings) {
+      const source = context.createBufferSource();
+      source.buffer = buffer;
+      source.playbackRate.value = settings.rate;
+
+      const tone = context.createBiquadFilter();
+      tone.type = settings.filterType;
+      tone.frequency.value = settings.frequency;
+      tone.Q.value = settings.q || 0.7;
+      if (settings.filterType === 'lowshelf' || settings.filterType === 'highshelf') {
+        tone.gain.value = settings.filterGain || 0;
+      }
+
+      const gain = context.createGain();
+      gain.gain.value = settings.gain;
+      source.connect(tone).connect(gain).connect(destination);
+      source.start(startAt + settings.delay);
+      activeSources.push(source);
+      return buffer.duration / settings.rate + settings.delay;
+    }
+
+    async function playEnhancedCue(item, runId = ++playRun) {
+      clearCurrentPlayback();
+      const card = document.querySelector(`[data-cue-card="${keyOf(item)}"]`);
+      card?.classList.add('is-playing');
+      document.querySelector('#playback-status').textContent = `正在试听 B 质感：${item.label}`;
+
+      try {
+        const context = await getAudioContext();
+        const buffer = await getBuffer(context, item);
+        if (runId !== playRun) return;
+
+        const compressor = context.createDynamicsCompressor();
+        compressor.threshold.value = -24;
+        compressor.knee.value = 18;
+        compressor.ratio.value = 3.2;
+        compressor.attack.value = 0.004;
+        compressor.release.value = 0.12;
+
+        const masterGain = context.createGain();
+        const master = Number(document.querySelector('#master-volume').value) / 100;
+        masterGain.gain.value = Math.min(0.82, master * (item.gain / 0.2) * 0.58);
+        masterGain.connect(compressor).connect(context.destination);
+
+        const startAt = context.currentTime + 0.025;
+        const isMechanical = item.pack === 'mechanical';
+        const layers = isMechanical
+          ? [
+              { rate: 0.92, gain: 0.66, delay: 0, filterType: 'lowshelf', frequency: 260, filterGain: 3.5 },
+              { rate: 0.68, gain: 0.22, delay: 0.009, filterType: 'lowpass', frequency: 920, q: 0.8 },
+              { rate: 1.06, gain: 0.12, delay: 0.015, filterType: 'highpass', frequency: 1850, q: 0.65 },
+              { rate: 0.78, gain: 0.1, delay: 0.042, filterType: 'bandpass', frequency: 680, q: 1.1 }
+            ]
+          : [
+              { rate: 0.97, gain: 0.74, delay: 0, filterType: 'lowshelf', frequency: 360, filterGain: 2.2 },
+              { rate: 0.84, gain: 0.13, delay: 0.012, filterType: 'lowpass', frequency: 1320, q: 0.7 },
+              { rate: 1.02, gain: 0.07, delay: 0.028, filterType: 'highpass', frequency: 2450, q: 0.55 },
+              { rate: 0.91, gain: 0.08, delay: 0.058, filterType: 'bandpass', frequency: 1180, q: 0.8 }
+            ];
+        const duration = Math.max(...layers.map((layer) => addTextureLayer(context, buffer, masterGain, startAt, layer)));
+
+        await new Promise((resolve) => setTimeout(resolve, Math.ceil((duration + 0.12) * 1000)));
+        if (runId === playRun) {
+          card?.classList.remove('is-playing');
+          activeSources = [];
+          document.querySelector('#playback-status').textContent = `已试听 B 质感：${item.label}`;
+        }
+      } catch {
+        if (runId === playRun) {
+          card?.classList.remove('is-playing');
+          document.querySelector('#playback-status').textContent = `无法播放 B 质感：${item.label}`;
+        }
+      }
+    }
+
+    function playCue(item, version, runId = ++playRun) {
+      return version === 'enhanced' ? playEnhancedCue(item, runId) : playRawCue(item, runId);
+    }
+
+    async function playGroup(groupId, version) {
+      stopAudio();
+      const runId = playRun;
+      const groupCues = cues.filter((cue) => cue.group === groupId);
+      for (const cue of groupCues) {
+        if (runId !== playRun) return;
+        await playCue(cue, version, runId);
+        await new Promise((resolve) => setTimeout(resolve, 520));
+      }
+    }
+
+    function saveDecisions() {
+      localStorage.setItem(storageKey, JSON.stringify(decisions));
+    }
+
+    function decisionText() {
+      const review = groups.map((group) => {
+        const lines = cues.filter((cue) => cue.group === group.id).map((cue) => `- ${cue.label} (${cue.pack}/${cue.cue})：${statusLabels[decisions[keyOf(cue)]]}`);
+        return `${group.title}\n${lines.join('\n')}`;
+      }).join('\n\n');
+      return `已确认音色方向：B 质感增强\n\n${review}`;
+    }
+
+    document.addEventListener('click', async (event) => {
+      const playButton = event.target.closest('[data-play]');
+      if (playButton) {
+        stopAudio();
+        const item = cues.find((cue) => keyOf(cue) === playButton.dataset.play);
+        if (item) await playCue(item, playButton.dataset.version);
+        return;
+      }
+      const groupButton = event.target.closest('[data-play-group]');
+      if (groupButton) {
+        playGroup(groupButton.dataset.playGroup, groupButton.dataset.version);
+        return;
+      }
+      const decisionButton = event.target.closest('.decision');
+      if (decisionButton) {
+        decisions[decisionButton.dataset.key] = decisionButton.dataset.status;
+        saveDecisions();
+        render();
+      }
+    });
+
+    document.querySelector('#stop-all').addEventListener('click', stopAudio);
+    document.querySelector('#master-volume').addEventListener('input', (event) => {
+      document.querySelector('#volume-value').textContent = `${event.target.value}%`;
+    });
+    document.querySelector('#reset-decisions').addEventListener('click', () => {
+      decisions = Object.fromEntries(cues.map((item) => [keyOf(item), item.status]));
+      saveDecisions();
+      render();
+      document.querySelector('#copy-status').textContent = '已恢复设计建议。';
+    });
+    document.querySelector('#copy-decisions').addEventListener('click', async () => {
+      const status = document.querySelector('#copy-status');
+      try {
+        await navigator.clipboard.writeText(decisionText());
+        status.textContent = '评审结果已复制，可以直接粘贴给我。';
+      } catch {
+        status.textContent = '当前浏览器不允许复制；请按卡片状态直接告诉我。';
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
