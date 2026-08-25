@@ -398,7 +398,9 @@ try {
   await waitFor(() => client.evaluate(`(() => {
     const panel = document.querySelector('#detail-panel').getBoundingClientRect();
     const canvas = document.querySelector('#star-canvas').getBoundingClientRect();
-    return Math.abs(canvas.height + panel.height - innerHeight) < 2;
+    return Math.abs(panel.width - innerWidth) < 2
+      && Math.abs(canvas.width - innerWidth) < 2
+      && Math.abs(canvas.height + panel.height - innerHeight) < 2;
   })()`), '宽屏底部布局高度动画未完成');
   const wideLayout = await client.evaluate(`(() => {
     const panel = document.querySelector('#detail-panel').getBoundingClientRect();
