@@ -21,6 +21,13 @@
   --surface-glass: rgba(14, 20, 36, 0.82);
   --surface-raised: rgba(201, 169, 106, 0.055);
   --drawer-height: clamp(340px, 44vh, 460px);
+  --font-ui: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  --font-reading: "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", serif;
+  --font-display: "Kaiti SC", "STKaiti", "KaiTi", "Source Han Serif SC", serif;
+  --type-micro: 0.72rem;
+  --type-caption: 0.76rem;
+  --type-small: 0.82rem;
+  --type-body: 0.94rem;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,12 +37,13 @@ button, input, select, textarea { font: inherit; }
 
 body {
   --mode-accent: #e8d09a;
-  font-family: "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  font-family: var(--font-ui);
   background: var(--ink-bg);
   color: var(--text-primary);
   line-height: 1.8;
   overflow: hidden;
 }
+
 body[data-active-mode="almanac"] { --mode-accent: #88c9b8; }
 body[data-active-mode="learning"] { --mode-accent: #e0ba72; }
 body[data-active-mode="review"] { --mode-accent: #75bfa5; }
@@ -3341,4 +3349,72 @@ body.motion-paused *, body.motion-paused *::before, body.motion-paused *::after,
     margin-bottom: 20px; padding-block: 14px 20px;
   }
   body:not(.workspace-mode) .detail-symbol svg { width: 118px; height: auto; }
+}
+
+/* V41 字体系统：小字优先清晰，标题与经文保留宋楷层次。 */
+body { font-kerning: normal; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+:is(h1, h2, h3, h4, .logo, .mode-panel-title, .detail-title, .daily-hex-name, .review-answer-title) {
+  font-family: var(--font-display);
+}
+:is(.original-text, blockquote, .daily-verse, .evolution-classic-text, .divine-evidence-card blockquote, .lesson-thesis) {
+  font-family: var(--font-reading);
+}
+
+/* 顶部导航与星图信息必须在持续观图时仍能轻松辨认。 */
+.brand-subtitle { font-size: var(--type-micro); line-height: 1.45; }
+.mode-btn { font-size: 0.9rem; font-weight: 500; }
+.search-hint { font-size: 0.7rem; }
+.atlas-trigram-list span { font-size: var(--type-caption); }
+.atlas-scripture { font-size: 0.94rem; }
+.atlas-scripture cite { font-size: var(--type-micro); }
+.view-readout b { font-size: var(--type-micro); }
+.view-readout small { font: 0.72rem/1.35 var(--font-ui); letter-spacing: 0.03em; }
+.hint-guide { font-size: var(--type-caption); }
+
+/* 图式与关系控制采用可读下限，不再使用 9–11px 的装饰小字。 */
+.relation-layers-heading small { font-size: var(--type-micro); }
+.relation-layers-heading strong { font-size: 0.94rem; }
+.relation-layers-heading > span { font-size: var(--type-caption); }
+.star-layout-control label { font-size: var(--type-micro); }
+.star-layout-control select { font: var(--type-small)/1.35 var(--font-ui); }
+.star-layout-description { font-size: var(--type-micro); line-height: 1.65; }
+.changing-position-buttons > span { font-size: var(--type-micro); }
+.changing-position-buttons button { font-size: var(--type-caption); }
+.star-text-relations summary, .star-text-relations li { font-size: var(--type-caption); }
+.star-text-relations li em { font: normal 0.68rem/1.35 var(--font-ui); }
+
+/* 详情、学习与功能工作区统一正文和注释层级。 */
+.detail-panel small,
+.daily-overlay small,
+.evolution-overlay small,
+.guaxu-overlay small { font-size: var(--type-caption); line-height: 1.55; }
+:is(.mode-panel-sub, .detail-header .subtitle, .translated-text, .divine-intro,
+  .academy-heading p, .library-heading p, .profile-heading p) {
+  font-size: 0.88rem; line-height: 1.8;
+}
+:is(.today-primary-copy p, .today-practice-foot p, .profile-empty p,
+  .divine-cast-stage > p, .cast-result-head p, .cast-lines li) {
+  font-size: var(--type-small); line-height: 1.72;
+}
+.lesson-thesis > p, .lesson-thesis blockquote, .lesson-core-note p { font-size: var(--type-small); line-height: 1.72; }
+.lesson-stage-rail b { font-size: 0.86rem; }
+.lesson-stage-rail small { font-size: var(--type-micro); }
+.workspace-insight-bar small { font-size: var(--type-micro); }
+.workspace-insight-bar strong { font-size: var(--type-small); }
+.quiz-option small, .divine-ritual small, .review-due-copy > span { font-size: var(--type-micro); }
+.divine-ritual span { font-size: var(--type-small); }
+
+/* 悬停卡片虽短暂出现，也必须无需贴近屏幕阅读。 */
+.star-hover-card small { font-size: var(--type-micro); }
+.star-hover-card span { font-size: var(--type-small); }
+.star-hover-card i, .star-hover-card em, .star-hover-stats { font-size: 0.7rem; }
+.star-hover-relations span { font-size: 0.7rem; }
+
+@media (max-width: 600px) {
+  .mode-btn { font-size: 0.84rem; }
+  .brand-subtitle { font-size: 0.7rem; }
+  .view-readout { min-width: 166px; }
+  .view-readout small { font-size: 0.75rem; }
+  .relation-layers-heading > span { font-size: 0.74rem; }
+  .star-layout-description { font-size: 0.75rem; }
 }

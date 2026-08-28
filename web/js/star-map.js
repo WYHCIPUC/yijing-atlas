@@ -106,13 +106,13 @@ export function layoutStarNameLabels(ctx, nodes, {
     const nameVisibility = isHidden ? 0.1 : 1;
     const depthScale = 0.6 + screen.depthFactor * 0.5;
     const fontSize = classic
-      ? (isFocus ? 20 : (node.layoutForceLabel ? 14 : 11)) * depthScale
+      ? (isFocus ? 21 : (node.layoutForceLabel ? 15 : 12.5)) * depthScale
       : node.isPure
       ? (isFocus ? 38 : 30) * depthScale
       : Math.max(MIN_NORMAL_LABEL_FONT_SIZE, (isFocus ? 20 : 14) * depthScale);
     const fontFamily = !classic && node.isPure
       ? '"Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif'
-      : '"ZCOOL XiaoWei", "STKaiti", "KaiTi", serif';
+      : '"Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", sans-serif';
     const font = `${fontSize}px ${fontFamily}`;
     const x = screen.x;
     const y = classic
@@ -954,14 +954,14 @@ export class StarMap {
     if (this.layoutMode === 'earlier-heaven') {
       circle(0.86, [3, 7]);
       circle(0.22);
-      ctx.font = '12px "ZCOOL XiaoWei", serif';
+      ctx.font = '13px "Microsoft YaHei UI", "Microsoft YaHei", sans-serif';
       const directions = [['南', 0, -1], ['东', -1, 0], ['北', 0, 1], ['西', 1, 0]];
       directions.forEach(([label, x, y]) => ctx.fillText(label, center.x + x * radius * 1.02, center.y + y * radius * 1.02));
-      ctx.font = '14px "ZCOOL XiaoWei", serif';
+      ctx.font = '15px "Microsoft YaHei UI", "Microsoft YaHei", sans-serif';
       ctx.fillText('先天方位', center.x, center.y);
     } else if (this.layoutMode === 'king-wen') {
       for (const ratio of [0.28, 0.48, 0.68, 0.88]) circle(ratio, [2, 8]);
-      ctx.font = '12px "ZCOOL XiaoWei", serif';
+      ctx.font = '13px "Microsoft YaHei UI", "Microsoft YaHei", sans-serif';
       ctx.fillText('上经 1–30', center.x, center.y - 10);
       ctx.fillText('下经 31–64', center.x, center.y + 10);
     } else if (this.layoutMode === 'eight-palaces') {
@@ -976,10 +976,10 @@ export class StarMap {
         ctx.moveTo(center.x + Math.cos(angle) * radius * 0.18, center.y + Math.sin(angle) * radius * 0.18);
         ctx.lineTo(center.x + Math.cos(angle) * radius * 0.98, center.y + Math.sin(angle) * radius * 0.98);
         ctx.stroke();
-        ctx.font = '11px "ZCOOL XiaoWei", serif';
+        ctx.font = '12px "Microsoft YaHei UI", "Microsoft YaHei", sans-serif';
         ctx.fillText(group.name, center.x + Math.cos(angle) * radius * 1.03, center.y + Math.sin(angle) * radius * 1.03);
       });
-      ctx.font = '11px "ZCOOL XiaoWei", serif';
+      ctx.font = '12px "Microsoft YaHei UI", "Microsoft YaHei", sans-serif';
       ctx.fillText('本宫 → 归魂', center.x, center.y);
     } else if (this.layoutMode === 'twelve-messages') {
       circle(0.82);
@@ -993,10 +993,10 @@ export class StarMap {
         ctx.lineTo(center.x + Math.cos(angle) * outer, center.y + Math.sin(angle) * outer);
         ctx.stroke();
       }
-      ctx.font = '12px "ZCOOL XiaoWei", serif';
+      ctx.font = '13px "Microsoft YaHei UI", "Microsoft YaHei", sans-serif';
       ctx.fillText('阳息', center.x - 26, center.y);
       ctx.fillText('阴消', center.x + 26, center.y);
-      ctx.font = '10px "ZCOOL XiaoWei", serif';
+      ctx.font = '11.5px "Microsoft YaHei UI", "Microsoft YaHei", sans-serif';
       ctx.fillText(time % 240 < 120 ? '复 · 一阳来复' : '姤 · 一阴初生', center.x, center.y + 20);
     }
     ctx.setLineDash([]);
