@@ -180,7 +180,7 @@ function updateMeaning(relType, idx, fromHex, toHex) {
   } else if (relType === 'reversed') {
     el.innerHTML = `<span class="mn-pos">${posName}爻</span>与<span class="mn-pos">${POSITION_NAMES[5-idx]}爻</span>互换位置<br><span class="mn-note">视角倒转，上下卦互换，所见不同。</span>`;
   } else if (relType === 'interlocking') {
-    el.innerHTML = `<span class="mn-pos">${posName}爻</span>参与构成互卦<br><span class="mn-note">取2-3-4爻为下卦，3-4-5爻为上卦，揭示内在本质。</span>`;
+    el.innerHTML = `<span class="mn-pos">${posName}爻</span>参与构成互卦<br><span class="mn-note">取2-3-4爻为下卦、3-4-5爻为上卦，用于比较卦中所含结构。</span>`;
   } else {
     el.innerHTML = `<span class="mn-pos">${posName}爻</span>发生变动<br><span class="mn-quote">「${esc(getYaoText(fromHex, idx))}」→「${esc(getYaoText(toHex, idx))}」</span>`;
   }
@@ -189,7 +189,7 @@ function updateMeaning(relType, idx, fromHex, toHex) {
 function completionContent(relType) {
   if (relType === 'opposite') return {
     hint: '全部阴阳互换完成。',
-    summary: '错卦是每根爻阴阳全换——阳变阴、阴变阳。代表事物走向了对立面，如泰（通）变为否（塞）。',
+    summary: '错卦是每根爻阴阳全换——阳变阴、阴变阳。象数传统常用它比较结构上的相反条件，如泰与否；这不表示现实必然走向对立。',
   };
   if (relType === 'reversed') return {
     hint: '翻转完成。同一卦换个角度看，意义不同。',
@@ -197,7 +197,7 @@ function completionContent(relType) {
   };
   if (relType === 'interlocking') return {
     hint: '内含之卦已显现。',
-    summary: '互卦是取原卦的2-3-4爻为下卦、3-4-5爻为上卦，揭示事物内在的本质和发展趋势。',
+    summary: '互卦取原卦的2-3-4爻为下卦、3-4-5爻为上卦。部分传统用它考察卦中所含结构，不把它写成唯一的“内在本质”。',
   };
   return {
     hint: '变卦完成。',

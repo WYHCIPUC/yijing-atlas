@@ -394,7 +394,7 @@ try {
   );
   await client.evaluate('document.querySelector(".rel-anim-close").click()');
 
-  await client.send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
+  await client.send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1024, deviceScaleFactor: 1, mobile: false });
   await waitFor(() => client.evaluate(`(() => {
     const panel = document.querySelector('#detail-panel').getBoundingClientRect();
     const canvas = document.querySelector('#star-canvas').getBoundingClientRect();
@@ -433,17 +433,45 @@ try {
   const mobileHeader = await client.evaluate(`(() => {
     const nav = document.querySelector('#mode-switcher');
     const buttons = [...nav.querySelectorAll('.mode-btn')].map((button) => button.getBoundingClientRect());
+    const navRect = nav.getBoundingClientRect();
     return {
       headerHeight: document.querySelector('.topbar').getBoundingClientRect().height,
-      navHeight: nav.getBoundingClientRect().height,
+      navHeight: navRect.height,
       rows: new Set(buttons.map((rect) => Math.round(rect.top))).size,
       scrollable: nav.scrollWidth > nav.clientWidth,
+      allVisible: buttons.every((rect) => rect.left >= navRect.left - 1 && rect.right <= navRect.right + 1
+        && rect.top >= navRect.top - 1 && rect.bottom <= navRect.bottom + 1),
       overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
     };
   })()`);
-  if (mobileHeader.headerHeight > 132 || mobileHeader.navHeight > 54 || mobileHeader.rows !== 1) throw new Error('手机顶部导航发生换行或高度异常');
-  if (!mobileHeader.scrollable) throw new Error('手机顶部导航未启用横向滚动');
+  if (mobileHeader.headerHeight > 180 || mobileHeader.navHeight > 104 || mobileHeader.rows !== 2) {
+    throw new Error(`手机顶部导航未形成紧凑的三列两行布局：${JSON.stringify(mobileHeader)}`);
+  }
+  if (mobileHeader.scrollable || !mobileHeader.allVisible) throw new Error('手机顶部导航仍依赖横向滚动或存在屏外入口');
   if (mobileHeader.overflow) throw new Error('390px 视口出现页面级横向溢出');
+
+  const mobileRelations = await client.evaluate(`(() => {
+    document.querySelector('#trail-clear').click();
+    const details = document.querySelector('.star-text-relations');
+    if (!details.open) details.querySelector('summary').click();
+    document.querySelector('#star-accessible-list [data-code="111111"]').click();
+    const header = document.querySelector('.topbar').getBoundingClientRect();
+    const panel = document.querySelector('#relation-layers').getBoundingClientRect();
+    return {
+      status: document.querySelector('#star-relation-status').textContent,
+      autoRotate: document.querySelector('#auto-rotate').getAttribute('aria-pressed'),
+      panelTop: panel.top,
+      panelRight: panel.right,
+      headerBottom: header.bottom,
+      viewportWidth: innerWidth,
+    };
+  })()`);
+  if (!mobileRelations.status.includes('乾 · 错卦') || mobileRelations.autoRotate !== 'false') {
+    throw new Error('手机文字关系列表未能聚焦卦象或停止自动巡天');
+  }
+  if (mobileRelations.panelTop < mobileRelations.headerBottom || mobileRelations.panelRight > mobileRelations.viewportWidth + 1) {
+    throw new Error('手机关系分层器与导航重叠或超出视口');
+  }
 
   const mobileResultCount = await client.evaluate(`(() => {
     const input = document.querySelector('#search');
@@ -491,6 +519,8 @@ try {
   await client.evaluate('document.querySelector("#detail-close").click()');
 
   await client.evaluate('document.querySelector("[data-mode=learning]").click()');
+  await waitFor(() => client.evaluate('document.querySelector(".learning-tabs") !== null'), '学习模式未渲染');
+  await client.evaluate('document.querySelector("[data-section=path]").click()');
   await waitFor(() => client.evaluate('document.querySelectorAll(".learning-dashboard > div").length === 5'), '学习仪表板未渲染');
   const overflow = await client.evaluate('document.documentElement.scrollWidth > document.documentElement.clientWidth');
   if (overflow) throw new Error('390px 视口出现横向溢出');
@@ -498,7 +528,7 @@ try {
   const seriousErrors = client.events.filter((event) => event.method === 'Runtime.exceptionThrown' ||
     (event.method === 'Log.entryAdded' && event.params.entry.level === 'error'));
   if (seriousErrors.length) throw new Error(`浏览器捕获 ${seriousErrors.length} 个脚本错误`);
-  console.log('✓ Chromium 1440/1280/768/390px 布局与主流程烟雾测试通过');
+  console.log('✓ Chromium 1440×1024 / 1280×720 / 768×1024 / 390×844 布局与主流程烟雾测试通过');
 } finally {
   client?.close();
   await stopProcess(browser);

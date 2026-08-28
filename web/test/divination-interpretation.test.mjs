@@ -46,8 +46,8 @@ test('无变爻解释当前结构并说明不会形成之卦', () => {
 
 test('乾坤全变引用用九、用六并给出对应通俗解释', () => {
   for (const [primaryCode, changedCode, label] of [
-    ['000000', '111111', '用九'],
-    ['111111', '000000', '用六'],
+    ['000000', '111111', '用六'],
+    ['111111', '000000', '用九'],
   ]) {
     const primaryHex = byCode.get(primaryCode);
     const changedHex = byCode.get(changedCode);
@@ -57,7 +57,7 @@ test('乾坤全变引用用九、用六并给出对应通俗解释', () => {
 
     assert.match(result.focus[0].source, new RegExp(label));
     assert.ok(result.focus[0].plain.length > 20);
-    assert.match(result.basis, /乾坤优先参看/);
+    assert.match(result.basis, /本卦为乾|本卦为坤/);
   }
 });
 

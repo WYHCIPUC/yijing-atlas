@@ -1,5 +1,5 @@
 // 学习区：十翼浏览、象数理论与书院式分级课程。
-import { LEARNING_LEVELS, LEARNING_LESSONS } from './learning-curriculum.js';
+import { CURRICULUM_TRACKS, LEARNING_LEVELS, LEARNING_LESSONS } from './learning-curriculum.js';
 import {
   calculateStreak,
   loadActivity,
@@ -12,6 +12,7 @@ import { loadStats, loadWrongBook } from './quiz-engine.js';
 import { getDueCount, loadReviewCards } from './review-engine.js';
 import { isPlainObject, readJson, writeJson } from './storage.js';
 import { hexagramSvg } from './svg-painter.js';
+import { getTheoremContentProvenance } from './content-provenance.js';
 
 const PROGRESS_KEY = 'yijing.study.v1';
 
@@ -46,7 +47,7 @@ export function renderWingsPage(mountEl, appState) {
         <h4 class="group-title">${esc(cat)}</h4>
         ${list.map((w) => `
           <details class="wing-item" data-content-id="${esc(w.id)}">
-            <summary><b>${esc(w.name)}</b> <small>${esc(w.desc)}</small></summary>
+            <summary><b>${esc(w.name)}</b> <small>${esc(w.desc)}</small><span class="content-provenance" data-layer="易传">易传 · 待校验</span></summary>
             <div class="wing-sections">
               ${w.sections.map((s, i) => `<p class="wing-sec"><span class="sec-num">§${i + 1}</span> ${esc(s)}</p>`).join('')}
             </div>
@@ -70,7 +71,7 @@ export function renderTheoremsPage(mountEl, appState) {
         <h4 class="group-title">${esc(cat)}</h4>
         ${list.map((t) => `
           <details class="theorem-item" data-content-id="${esc(t.id)}">
-            <summary><b>${esc(t.name)}</b> <small>${esc(t.desc)}</small></summary>
+            <summary><b>${esc(t.name)}</b> <small>${esc(t.desc)}</small><span class="content-provenance" data-layer="${esc(getTheoremContentProvenance(t).layer)}" title="${esc(getTheoremContentProvenance(t).disputeNote)}">${esc(getTheoremContentProvenance(t).layer)} · ${esc(getTheoremContentProvenance(t).validationStatus)}</span></summary>
             <ul class="theorem-points">
               ${t.points.map((p) => `<li>${esc(p)}</li>`).join('')}
             </ul>
@@ -92,26 +93,28 @@ function getLessonReading(lesson, appState) {
       entries,
       source: quote ? '《周易·系辞上传》' : '易象图谱 · 象数资料',
       quote: quote || entries[0]?.desc || lesson.title,
+      layer: quote ? '易传' : '象数传统',
     };
   }
   if (lesson.type === 'wings') {
     const entries = (appState.wings || []).filter((item) => lesson.refs?.includes(item.id));
-    return { entries, source: entries[0]?.name || '《易传》', quote: entries[0]?.sections?.[0] || entries[0]?.desc || '' };
+    return { entries, source: entries[0]?.name || '《易传》', quote: entries[0]?.sections?.[0] || entries[0]?.desc || '', layer: '易传' };
   }
   if (lesson.type === 'trigrams') {
     return {
       entries: appState.trigrams || [],
       source: '《周易·说卦传》与八卦基础资料',
       quote: '天地定位，山泽通气，雷风相薄，水火不相射，八卦相错。',
+      layer: '易传 · 基础资料',
     };
   }
   if (lesson.type === 'hexagrams') {
     const [start, end] = lesson.range;
     const entries = (appState.hexagrams || []).filter((item) => item.number >= start && item.number <= end);
-    return { entries, source: '《周易》本经', quote: `${entries[0]?.name || start}至${entries.at(-1)?.name || end}，依通行卦序研读卦辞与爻辞。` };
+    return { entries, source: '《周易》本经', quote: `${entries[0]?.name || start}至${entries.at(-1)?.name || end}，依通行卦序研读卦辞与爻辞。`, layer: '本经原文' };
   }
   const entries = (appState.almanacTerms || []).filter((item) => item.category === lesson.category);
-  return { entries, source: '传统历法与民俗术语资料', quote: entries[0]?.meaning || lesson.title };
+  return { entries, source: '传统历法与民俗术语资料', quote: entries[0]?.meaning || lesson.title, layer: '历法计算 · 民俗资料' };
 }
 
 export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, onAssess } = {}) {
@@ -130,6 +133,19 @@ export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, 
   const progress = summarizeLearning(loadLearningRecord(), LEARNING_LESSONS);
   const streak = calculateStreak(loadActivity().days);
   const sourceExcerpt = reading.quote.match(/^[^。]+。(?:[^。]+。)?/)?.[0] || reading.quote;
+  const observation = lesson.type === 'hexagrams'
+    ? '先看上下卦、六爻阴阳和位置，再进入卦名与卦辞；不要先用一句白话替代卦体。'
+    : lesson.type === 'wings'
+      ? '先辨认传文正在解释卦名、卦体、爻位还是卦序，再判断它与本经原文的关系。'
+      : lesson.type === 'almanac'
+        ? '先核对日期、时区与历法口径，再阅读术语；民俗宜忌不直接等同现实建议。'
+        : '先找出定义所依据的卦体、爻位、原文或象数规则，再进入解释。';
+  const application = `尝试用“${esc(lesson.title)}”分析一个例子，并分别写下可核实事实、文本依据和仍不确定之处。`;
+  const methodRail = `
+    <nav class="lesson-method-rail" aria-label="本课六步学习方法">
+      <a href="#lesson-lead">引</a><a href="#lesson-observe">观</a><a href="#lesson-read">读</a>
+      <a href="#lesson-explain">解</a><a href="#lesson-apply">用</a><a href="#lesson-test">试</a>
+    </nav>`;
   const stageRail = `
     <nav class="lesson-stage-rail" aria-label="五阶学程">
       ${LEARNING_LEVELS.map((item, index) => `<span class="${item.id === level.id ? 'active' : ''}"><i aria-hidden="true">${index + 1}</i><b>${esc(item.name)}</b><small>${esc(item.title)}</small></span>`).join('')}
@@ -204,11 +220,17 @@ export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, 
             <p class="academy-kicker">${esc(level.name)} · ${esc(level.title)}</p>
             <h3 data-page-heading>${esc(lesson.title)}</h3>
             <p class="lesson-lede">${esc(primary?.desc || level.desc)}</p>
+            ${methodRail}
             ${polarity}
-            <section class="lesson-key-points">
-              <h4>本节要义</h4>
+            <section class="lesson-method-section" id="lesson-lead"><span>引</span><h4>先明确本课要解决什么</h4><p>${esc(primary?.desc || level.desc)}</p></section>
+            <section class="lesson-method-section" id="lesson-observe"><span>观</span><h4>先看结构，不急着下结论</h4><p>${esc(observation)}</p></section>
+            <section class="lesson-method-section" id="lesson-read"><span>读</span><h4>${esc(reading.source)}</h4><blockquote>${esc(reading.quote)}</blockquote><small>${esc(reading.layer)} · 来源状态待逐条校验</small></section>
+            <section class="lesson-key-points lesson-method-section" id="lesson-explain">
+              <span>解</span><h4>逐条解释，并保留条件</h4>
               ${points.length ? `<ol>${points.map((point) => `<li>${esc(point)}</li>`).join('')}</ol>` : `<p>${esc(reading.quote)}</p>`}
             </section>
+            <section class="lesson-method-section lesson-application" id="lesson-apply"><span>用</span><h4>把知识放回可验证的问题</h4><p>${application}</p><div><b>证据检查</b><small>依据来自卦体、爻位、经传原文还是项目类比？若不足，可以明确回答“证据不足”。</small></div></section>
+            <section class="lesson-method-section lesson-test-entry" id="lesson-test"><span>试</span><h4>用小试检查依据，而非只背答案</h4><p>题目会要求辨认证据层；答错内容进入复习安排，不锁定后续课程。</p><button type="button" class="quick-btn lesson-assess">开始证据小试</button></section>
           </main>
           <aside class="lesson-margin-notes">
             <section><small>典籍依据</small><h4>${esc(reading.source)}</h4><blockquote>${esc(reading.quote)}</blockquote></section>
@@ -277,6 +299,10 @@ export function renderStudyPathPage(mountEl, appState, { onNavigate, onAssess } 
         <p class="progress-text">综合掌握度由学习 10%、小试 35%、抽查 20%、复讲 15%、阶段考评 20% 组成。</p>
       </div>
     </section>
+    <section class="curriculum-track-map" aria-labelledby="curriculum-track-title">
+      <div><span class="academy-kicker">分层综合</span><h4 id="curriculum-track-title">一条主干 · 三条旁支</h4></div>
+      <div>${Object.entries(CURRICULUM_TRACKS).map(([id, track]) => `<article data-track="${id}"><small>${id === 'core' ? '主干' : '旁支'}</small><strong>${esc(track.name)}</strong><p>${esc(track.desc)}</p></article>`).join('')}</div>
+    </section>
     ${levelSummaries.map(({ level, mastery: levelMastery }) => {
       return `
         <div class="level-block" data-level-id="${esc(level.id)}">
@@ -290,7 +316,7 @@ export function renderStudyPathPage(mountEl, appState, { onNavigate, onAssess } 
               return `
                 <article class="step-row ${mastery >= 80 ? 'step-mastered' : ''}" data-step="${lesson.id}">
                   <span class="step-mastery" aria-label="掌握度 ${mastery}%">${mastery}</span>
-                  <div><strong>${esc(lesson.title)}</strong><small>${esc(status)}</small></div>
+                  <div><strong>${esc(lesson.title)}</strong><small>${esc(CURRICULUM_TRACKS[lesson.track]?.name || '')} · ${esc(status)}</small></div>
                   <div class="step-actions">
                     <button type="button" class="text-button" data-action="learn" data-target="${esc(lesson.target)}">学习</button>
                     <button type="button" class="text-button" data-action="assess">小试</button>

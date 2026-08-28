@@ -11,7 +11,8 @@ let mountEl = null;
 let openDetail = null;
 
 function esc(value) {
-  return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 function revealDivinationArea(target, focusSelector) {
@@ -102,17 +103,66 @@ function renderHistory() {
     const createdAt = new Date(item.createdAt);
     const dateText = Number.isNaN(createdAt.getTime()) ? '' : createdAt.toLocaleString('zh-CN', { hour12: false });
     return `
-      <button type="button" class="history-item" data-code="${esc(item.primaryCode)}">
-        <span>${esc(primary?.name || item.primaryCode)}${changed ? ` → ${esc(changed.name)}` : ''}</span>
-        <small>${item.type === 'meihua' ? '梅花' : '金钱'} · ${esc(dateText)}</small>
+      <button type="button" class="history-item" data-history-id="${esc(item.id)}">
+        <span>${esc(primary?.name || item.primaryCode)}${changed ? ` → ${esc(changed.name)}` : ''}${item.legacySummaryOnly ? '<em>摘要</em>' : ''}</span>
+        <small>${item.type === 'meihua' ? '梅花' : '金钱'} · ${esc(dateText)}${item.legacySummaryOnly ? ' · 旧版记录' : ' · 可复现'}</small>
       </button>`;
   }).join('') : '<p class="mode-empty">尚无记录；每次起卦后会自动保存在当前浏览器。</p>';
   list.querySelectorAll('.history-item').forEach((button) => {
     button.addEventListener('click', () => {
-      if (openDetail) openDetail(button.dataset.code);
-      else appState.starMap?.focusStar(button.dataset.code);
+      const item = items.find((entry) => entry.id === button.dataset.historyId);
+      if (item) replayHistoryItem(item);
     });
   });
+}
+
+function activateHistoryTab(type) {
+  const tab = mountEl?.querySelector(type === 'meihua' ? '#divine-tab-meihua' : '#divine-tab-coin');
+  tab?.click();
+}
+
+function replayHistoryItem(item) {
+  activateHistoryTab(item.type);
+  const status = mountEl.querySelector('.history-status');
+  if (item.legacySummaryOnly) {
+    const primary = appState.index.byCode.get(item.primaryCode);
+    const changed = item.changedCode ? appState.index.byCode.get(item.changedCode) : null;
+    const result = mountEl.querySelector(item.type === 'meihua' ? '.mh-result' : '.coin-result');
+    result.innerHTML = `
+      <section class="mode-card history-legacy-notice" tabindex="-1">
+        <span class="academy-kicker">旧版记录 · 仅保留卦象摘要</span>
+        <h3>${esc(primary?.name || item.primaryCode)}${changed ? ` → ${esc(changed.name)}` : ''}</h3>
+        <p>这条记录没有保存六爻老少、全部动爻、取辞规则与当时解释，因此不能复现原来的推理过程。</p>
+        <button type="button" class="text-button history-open-primary">只研读本卦</button>
+      </section>`;
+    result.querySelector('.history-open-primary')?.addEventListener('click', () => {
+      if (openDetail) openDetail(item.primaryCode);
+      else appState.starMap?.focusStar(item.primaryCode);
+    });
+    status.textContent = '旧记录仅保留卦象摘要，未伪造缺失的取辞过程。';
+    revealDivinationArea(result, '.history-legacy-notice');
+    return;
+  }
+
+  if (item.type === 'coin') {
+    const cast = {
+      yaos: item.yaos.map((yao) => ({ ...yao, coins: [...yao.coins] })),
+      primaryCode: item.primaryCode,
+      changedCode: item.changedCode || item.primaryCode,
+      changingIdxs: item.changingPositions.map((position) => position - 1),
+      hasChange: item.changingPositions.length > 0 && Boolean(item.changedCode),
+    };
+    renderCoinResult(mountEl.querySelector('.coin-result'), cast, {
+      record: false,
+      interpretation: item.interpretation,
+    });
+  } else {
+    renderMeihuaResult({ ...item.cast }, {
+      record: false,
+      interpretation: item.interpretation,
+    });
+  }
+  status.textContent = `已按 ${item.interpretationVersion || '保存时版本'} 复现本次卦象、动爻、取辞与解释。`;
 }
 
 function recordCast(entry) {
@@ -127,7 +177,7 @@ function recordCast(entry) {
 function renderInterpretation(interpretation) {
   const focusCards = interpretation.focus.map((item) => `
     <article class="divine-evidence-card">
-      <small>${esc(item.source)}</small>
+      <small>${esc(item.source)}${interpretation.focus.length > 1 ? ` · ${item.priority === 'secondary' ? '参看' : '主断'}` : ''}</small>
       <blockquote>${esc(item.quote)}</blockquote>
       <p>${esc(item.plain)}</p>
       ${item.xiang ? `<p class="divine-xiang"><small>${esc(item.xiangSource)}</small>${esc(item.xiang)}</p>` : ''}
@@ -213,11 +263,11 @@ function renderMeihua() {
   body.querySelector('.mh-time').addEventListener('click', () => renderMeihuaResult(castByTime(new Date())));
 }
 
-function renderMeihuaResult(cast) {
+function renderMeihuaResult(cast, options = {}) {
   const primaryHex = appState.index.byCode.get(cast.primaryCode);
   const changedHex = appState.index.byCode.get(cast.changedCode);
   const analysis = analyzeTiYong(cast);
-  const interpretation = buildMeihuaInterpretation({ cast, primaryHex, changedHex, analysis });
+  const interpretation = options.interpretation || buildMeihuaInterpretation({ cast, primaryHex, changedHex, analysis });
   appState.starMap?.focusStar(cast.primaryCode);
   const result = mountEl.querySelector('.mh-result');
   result.innerHTML = `
@@ -235,22 +285,24 @@ function renderMeihuaResult(cast) {
     ${renderInterpretation(interpretation)}
   `;
   result.querySelector('.divine-interpretation-heading h3')?.setAttribute('tabindex', '-1');
-  recordCast({
-    type: 'meihua',
-    primaryCode: cast.primaryCode,
-    changedCode: cast.changedCode,
-    changingPos: cast.changingPos,
-    summary: `${primaryHex.name} → ${changedHex.name} · ${analysis.relationName}`,
-  });
+  if (options.record !== false) {
+    recordCast({
+      type: 'meihua',
+      primaryCode: cast.primaryCode,
+      changedCode: cast.changedCode,
+      cast,
+      interpretation,
+      summary: `${primaryHex.name} → ${changedHex.name} · ${analysis.relationName}`,
+    });
+  }
   revealDivinationArea(result, '.divine-interpretation-heading h3');
 }
 
-function renderCoinResult(result) {
-  const cast = castHexagram();
+function renderCoinResult(result, cast = castHexagram(), options = {}) {
   const primaryHex = appState.index.byCode.get(cast.primaryCode);
   const changedHex = cast.hasChange ? appState.index.byCode.get(cast.changedCode) : null;
   const reading = getReading(cast, primaryHex, changedHex);
-  const interpretation = buildCoinInterpretation({ cast, primaryHex, changedHex, reading });
+  const interpretation = options.interpretation || buildCoinInterpretation({ cast, primaryHex, changedHex, reading });
   appState.starMap?.focusStar(cast.primaryCode);
 
   const lines = cast.yaos.map((yao, index) => {
@@ -268,13 +320,17 @@ function renderCoinResult(result) {
     ${renderInterpretation(interpretation)}
     <button type="button" class="divine-btn divine-again">再掷一卦</button>
   `;
-  recordCast({
-    type: 'coin',
-    primaryCode: cast.primaryCode,
-    changedCode: changedHex ? cast.changedCode : null,
-    changingPos: cast.changingIdxs.length === 1 ? cast.changingIdxs[0] + 1 : null,
-    summary: `${primaryHex.name}${changedHex ? ` → ${changedHex.name}` : ''}`,
-  });
+  if (options.record !== false) {
+    recordCast({
+      type: 'coin',
+      primaryCode: cast.primaryCode,
+      changedCode: changedHex ? cast.changedCode : null,
+      yaos: cast.yaos,
+      readingPolicyId: reading.policyId,
+      interpretation,
+      summary: `${primaryHex.name}${changedHex ? ` → ${changedHex.name}` : ''}`,
+    });
+  }
   result.querySelector('.divine-again').addEventListener('click', () => renderCoinResult(result));
   revealDivinationArea(result, '#coin-result-title');
 }

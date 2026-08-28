@@ -14,6 +14,7 @@ assert.match(html, /id="mode-switcher"[^>]*aria-label="主要功能"/);
 assert.match(html, /id="detail-layout"[^>]*aria-label="详情面板布局"/);
 assert.match(html, /id="detail-size"[^>]*aria-label="切换底部详情高度，当前：中等"/);
 assert.match(html, /id="audio-toggle"[^>]*aria-label="关闭界面音效"[^>]*aria-pressed="true"/);
+assert.match(html, /class="search-shortcut"[^>]*>Ctrl K</);
 const modeOrder = [...html.matchAll(/class="mode-btn(?: active)?" data-mode="([^"]+)"/g)].map((match) => match[1]);
 assert.deepEqual(modeOrder, ['almanac', 'explore', 'learning', 'review', 'quiz', 'divination']);
 assert.doesNotMatch(html, /data-mode="guaxu"/);
@@ -26,11 +27,21 @@ assert.equal((html.match(/data-insight-label/g) || []).length, 4);
 assert.equal((html.match(/data-insight-value/g) || []).length, 4);
 assert.match(html, /class="atlas-scripture"[^>]*aria-hidden="true"/);
 assert.match(html, /class="star-map-intro"[^>]*aria-label="星图阅读提示"/);
+assert.match(html, /id="celestial-canvas"[^>]*aria-hidden="true"/);
+assert.match(html, /id="star-hover-card"[^>]*aria-hidden="true"/);
+assert.match(html, /class="view-bearing"/);
+assert.match(html, /data-view-level>星图层/);
+assert.match(html, /data-hover-balance>阳 3 · 阴 3/);
+assert.match(html, /class="mode-indicator"[^>]*aria-hidden="true"/);
+assert.match(html, /class="panel-reading-progress"[^>]*aria-hidden="true"><i><\/i><b><\/b><span>读<\/span>/);
+assert.match(html, /lib\/vendor\/gsap\.min\.js/);
+assert.match(html, /lib\/vendor\/lenis\.min\.js/);
 assert.match(html, /一卦为星，错、综、互、变织成可探索的关系路径/);
 assert.match(html, /易有太极，是生两仪；两仪生四象，四象生八卦/);
 assert.match(html, /乾 · 天 · 健/);
 
 assert.match(css, /--panel-width:\s*clamp\(520px,\s*42vw,\s*640px\)/);
+assert.match(css, /#celestial-canvas\s*{[^}]*pointer-events:\s*none[^}]*mix-blend-mode:\s*screen/s);
 assert.match(css, /body\.panel-open\.panel-left #star-canvas\s*{[^}]*left:\s*var\(--panel-width\)/s);
 assert.match(css, /body\.panel-open\.panel-bottom #star-canvas\s*{[^}]*height:\s*calc\(100vh - var\(--drawer-height\)\)/s);
 assert.match(css, /\.detail-panel\[data-layout="bottom"\][^}]*height:\s*var\(--drawer-height\)[^}]*translateY\(100%\)/s);
@@ -42,6 +53,13 @@ assert.match(css, /\.audio-toggle\s*{[^}]*position:\s*absolute[^}]*right:\s*7px/
 assert.match(css, /\.explore-tools\s*{[^}]*right:\s*28px/s);
 assert.match(css, /\.guaxu-overlay\s*{[^}]*position:\s*fixed[^}]*place-items:\s*center/s);
 assert.match(css, /\.guaxu-wheel-rotor\s*{[^}]*transform-origin:\s*center/s);
+assert.match(css, /\.star-hover-card\s*{[^}]*position:\s*fixed/s);
+assert.match(css, /\.view-bearing\s*{[^}]*border-radius:\s*50%/s);
+assert.match(css, /\.mode-indicator\s*{[^}]*position:\s*absolute/s);
+assert.match(css, /\.cursor-trail\s*{[^}]*pointer-events:\s*none/s);
+assert.match(css, /\.detail-section\.is-reading::after/);
+assert.match(css, /@keyframes modeIndicatorFlow/);
+assert.match(css, /@keyframes scriptureSpineBreath/);
 
 assert.match(css, /body\.workspace-mode \.detail-panel\[data-presentation\]\s*\{[^}]*width:\s*min\(1100px/s);
 assert.match(css, /body\.workspace-mode\.panel-open #star-canvas\s*\{[^}]*pointer-events:\s*none[^}]*opacity:\s*0\.5/s);
@@ -52,6 +70,8 @@ assert.match(css, /\.search-option\s*\{[^}]*grid-template-columns:\s*38px minmax
 
 assert.match(main, /document\.body\.classList\.add\('panel-open'\)/);
 assert.match(main, /document\.body\.classList\.remove\('panel-open'\)/);
+assert.match(main, /canvas\.addEventListener\('transitionend'/);
+assert.match(main, /\['width', 'height'\]\.includes\(event\.propertyName\)/);
 assert.match(main, /panel\.setAttribute\('aria-modal', String\(compactPanelQuery\.matches\)\)/);
 assert.match(main, /const PANEL_LAYOUT_KEY = 'yijing-panel-layout'/);
 assert.match(main, /const defaultLayout = compactPanelQuery\.matches \? 'bottom' : 'left'/);
@@ -60,6 +80,10 @@ assert.match(main, /const FOCUS_MODES = new Set\(\['learning', 'review', 'quiz'\
 assert.match(main, /const WORKSPACE_MODES = new Set\(\['almanac', 'learning', 'review', 'quiz', 'divination'\]\)/);
 assert.match(main, /const WORKSPACE_INSIGHTS = \{/);
 assert.match(main, /function updateWorkspaceInsight\(mode\)/);
+assert.match(main, /yijing:workspace-insight/);
+assert.match(main, /panel\.setAttribute\('aria-busy', 'true'\)/);
+assert.match(main, /document\.body\.classList\.add\('mode-transitioning'\)/);
+assert.match(main, /event\.key\.toLowerCase\(\) === 'k'/);
 assert.match(main, /panel\.dataset\.presentation = workspace/);
 assert.match(main, /resetPanelViewport\(\{ focusHeading: true \}\)/);
 assert.match(main, /renderer\(panelContent, state, \(\) => setMode\('learning'\)\)/);
@@ -69,6 +93,12 @@ assert.match(main, /if \(document\.querySelector\('\.share-card-overlay'\)\) ret
 assert.match(main, /className = 'search-option-number'/);
 assert.match(main, /showGuaxuWheel\(\s*state\.hexagrams/);
 assert.match(main, /bindInterfaceSounds\(document\)/);
+assert.match(main, /initCelestialStage\(celestialCanvas\)/);
+assert.match(main, /function syncStarViewHud\(view\)/);
+assert.match(main, /describeStarView\(view\)/);
+assert.match(main, /onFocus: \(code, point\)/);
+assert.match(main, /celestialStage\?\.clearSelection\(\)/);
+assert.match(main, /cinematicMotion\.enterSurface\(panelContent, mode\)/);
 assert.match(main, /setPanelLayout\(panelLayoutSelect\.value, \{ persist: true \}\)/);
 assert.match(render, /<section class="detail-section/);
 assert.match(render, /class="detail-heading-copy"/);

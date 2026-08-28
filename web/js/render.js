@@ -4,6 +4,7 @@ import { yaoLabel, allRelations } from './hexagram-utils.js';
 import { showEvolutionLab } from './evolution-lab.js';
 import { showRelationAnimation } from './relation-animation.js';
 import { isPlainObject, readJson, writeJson } from './storage.js';
+import { getHexagramContentProvenance } from './content-provenance.js';
 
 // HTML 转义，防注入
 function esc(s) {
@@ -39,6 +40,12 @@ function codeToName(code, hexagrams) {
   return h ? h.name : '?';
 }
 
+function provenanceTag(hexagram, field, position = null) {
+  const provenance = getHexagramContentProvenance(hexagram, field, position);
+  const title = `${provenance.authorTradition} · ${provenance.edition} · ${provenance.disputeNote}`;
+  return `<span class="content-provenance" data-layer="${esc(provenance.layer)}" title="${esc(title)}">${esc(provenance.layer)} · ${esc(provenance.validationStatus)}</span>`;
+}
+
 // 64 卦总览网格。onPick(code) 为点击回调。
 export function renderHexagramList(hexagrams, mountEl, onPick) {
   const cards = hexagrams.map((h) => `
@@ -61,15 +68,15 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
     .map((y) => {
       const label = yaoLabel(y.position, y.isYang);
       const textHtml = y.text
-        ? `<div class="original-text">${esc(y.text)}</div>`
+        ? `<div class="original-text">${provenanceTag(hex, 'lineText', y.position)}${esc(y.text)}</div>`
         : `<div class="original-text" style="color:#999">（经文待补）</div>`;
-      const xiangHtml = y.xiang ? `<div class="note-text">象曰：${esc(y.xiang)}</div>` : '';
-      const noteHtml = y.note ? `<div class="note-text">${esc(y.note)}</div>` : '';
+      const xiangHtml = y.xiang ? `<div class="note-text">${provenanceTag(hex, 'lineXiang', y.position)}象曰：${esc(y.xiang)}</div>` : '';
+      const noteHtml = y.note ? `<div class="note-text">${provenanceTag(hex, 'lineNote', y.position)}${esc(y.note)}</div>` : '';
       return `<div class="yao-item"><span class="yao-label">${esc(label)}</span>${textHtml}${xiangHtml}${noteHtml}</div>`;
     }).join('');
 
-  const section = (title, body, className = '') =>
-    body ? `<section class="detail-section ${className}">
+  const section = (title, body, className = '', id = '') =>
+    body ? `<section class="detail-section ${className}"${id ? ` id="${id}"` : ''}>
       <h3 class="section-title">${esc(title)}</h3>
       ${body}
     </section>` : '';
@@ -93,9 +100,9 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
     <section class="detail-section relation-section">
     <h3 class="section-title">它如何变</h3>
     <div class="rel-list">
-      ${relExplain('opposite', '错卦', `阴阳全换。${esc(hex.name)}之对极为「${esc(codeToName(rels.opposite, hexagrams))}」。`, rels.opposite)}
+      ${relExplain('opposite', '错卦', `阴阳全换。${esc(hex.name)}与「${esc(codeToName(rels.opposite, hexagrams))}」可比较结构上的相反条件。`, rels.opposite)}
       ${relExplain('reversed', '综卦', `上下倒转。${esc(hex.name)}倒看为「${esc(codeToName(rels.reversed, hexagrams))}」。`, rels.reversed)}
-      ${relExplain('interlocking', '互卦', `取2-3-4/3-4-5爻。${esc(hex.name)}内含「${esc(codeToName(rels.interlocking, hexagrams))}」。`, rels.interlocking)}
+      ${relExplain('interlocking', '互卦', `取2-3-4/3-4-5爻。部分传统据此考察${esc(hex.name)}卦中所含的「${esc(codeToName(rels.interlocking, hexagrams))}」结构。`, rels.interlocking)}
     </div>
     <p class="rel-changing-hint">点击卦名跳转 · 点击「演示」观看变化动画</p>
     <div class="relation-chips">
@@ -103,7 +110,7 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       ${relChip('综→', rels.reversed)}
       ${relChip('互→', rels.interlocking)}
     </div>
-    <p class="rel-changing-hint">变卦（动爻）：</p>
+    <p class="rel-changing-hint">变卦候选：只有选定具体动爻，才形成对应之卦。</p>
     <div class="relation-chips">${rels.changing.map(changingRelation).join('')}</div>
     <div class="evolution-launch-card">
       <div>
@@ -115,8 +122,19 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
     </section>
   `;
 
+  const readingSlip = `
+    <nav class="seven-step-slip" aria-label="七步研读笺">
+      <a href="#detail-identity"><b>定象</b><span>下${esc(trigramLabel(hex.trigramLower))} · 上${esc(trigramLabel(hex.trigramUpper))}</span></a>
+      <a href="#detail-scenario"><b>审时</b><span>先核对处境是否与事实相合</span></a>
+      <a href="#detail-lines"><b>辨位</b><span>逐爻看中正、应承乘与卦时</span></a>
+      <a href="#detail-judgement"><b>取辞</b><span>区分卦辞、爻辞及主参证据</span></a>
+      <a href="#detail-relations"><b>观变</b><span>说明关系规则与具体动爻</span></a>
+      <a href="#detail-commentary"><b>会通</b><span>分辨经、传、注、术与项目类比</span></a>
+      <a href="#detail-notes"><b>知止</b><span>证据不足时保留判断，不以卦代决策</span></a>
+    </nav>`;
+
   mountEl.innerHTML = `
-    <div class="detail-header">
+    <div class="detail-header" id="detail-identity">
       <div class="detail-symbol">${hexagramSvg(hex.binaryCode, { size: 140 })}</div>
       <div class="detail-heading-copy">
         <div class="detail-kicker">第 ${hex.number} 卦 · ${esc(hex.binaryCode)}</div>
@@ -128,19 +146,24 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
         </div>
       </div>
     </div>
-    ${hex.scenario ? section('今日处境', `<div class="scenario-text">${esc(hex.scenario)}</div>`) : ''}
-    ${section('卦辞', `<div class="original-text">${esc(hex.judgement)}</div>${hex.judgementNote ? `<div class="note-text">${esc(hex.judgementNote)}</div>` : ''}`)}
-    ${section('彖传', `<div class="original-text">${esc(hex.tuan)}</div>${hex.tuanNote ? `<div class="note-text">${esc(hex.tuanNote)}</div>` : ''}`)}
-    ${section('大象', `<div class="original-text">${esc(hex.image)}</div>${hex.imageNote ? `<div class="note-text">${esc(hex.imageNote)}</div>` : ''}`)}
-    ${relHtml}
-    <section class="detail-section yao-section">
-      <button type="button" class="section-title yao-collapse-toggle" id="yao-toggle" aria-expanded="false" aria-controls="yao-body" style="width:100%; border-top:0; border-right:0; border-left:0; background:transparent; text-align:left;">六爻<span class="toggle-arrow" aria-hidden="true">▶</span></button>
-      <div class="yao-list yao-collapse-body" id="yao-body" role="region" aria-labelledby="yao-toggle">${lines}</div>
+    ${readingSlip}
+    ${hex.scenario ? section('项目处境', `<div class="scenario-text">${provenanceTag(hex, 'scenario')}${esc(hex.scenario)}</div>`, 'scenario-section', 'detail-scenario') : ''}
+    ${section('卦辞', `<div class="original-text">${provenanceTag(hex, 'judgement')}${esc(hex.judgement)}</div>${hex.judgementNote ? `<div class="note-text">${provenanceTag(hex, 'judgementNote')}${esc(hex.judgementNote)}</div>` : ''}`, '', 'detail-judgement')}
+    ${section('彖传', `<div class="original-text">${provenanceTag(hex, 'tuan')}${esc(hex.tuan)}</div>${hex.tuanNote ? `<div class="note-text">${provenanceTag(hex, 'tuanNote')}${esc(hex.tuanNote)}</div>` : ''}`)}
+    ${section('大象', `<div class="original-text">${provenanceTag(hex, 'image')}${esc(hex.image)}</div>${hex.imageNote ? `<div class="note-text">${provenanceTag(hex, 'imageNote')}${esc(hex.imageNote)}</div>` : ''}`)}
+    <section class="detail-section yao-section" id="detail-lines">
+      <button type="button" class="section-title yao-collapse-toggle open" id="yao-toggle" aria-expanded="true" aria-controls="yao-body" style="width:100%; border-top:0; border-right:0; border-left:0; background:transparent; text-align:left;">六爻<span class="toggle-arrow" aria-hidden="true">▶</span></button>
+      <div class="yao-list yao-collapse-body open" id="yao-body" role="region" aria-labelledby="yao-toggle">${lines}</div>
     </section>
-    ${hex.useNine ? section('用九', `<div class="original-text">${esc(hex.useNine)}</div>`) : ''}
-    ${hex.useSix ? section('用六', `<div class="original-text">${esc(hex.useSix)}</div>`) : ''}
-    ${section('序卦传', `<div class="original-text">${esc(hex.orderRemark)}</div>`)}
-    <section class="detail-section notes-section">
+    ${hex.useNine ? section('用九', `<div class="original-text">${provenanceTag(hex, 'useNine')}${esc(hex.useNine)}</div>`) : ''}
+    ${hex.useSix ? section('用六', `<div class="original-text">${provenanceTag(hex, 'useSix')}${esc(hex.useSix)}</div>`) : ''}
+    <div id="detail-relations">${relHtml}</div>
+    <section class="detail-section commentary-gate" id="detail-commentary">
+      <h3 class="section-title">注疏与校读</h3>
+      ${section('序卦传', `<div class="original-text">${provenanceTag(hex, 'orderRemark')}${esc(hex.orderRemark)}</div>`, 'embedded-source')}
+      <div class="commentary-gate-note"><strong>历代注疏尚未开放</strong><span>六家注疏来源定位与双人校对进度 0 / 3840；完成前不与原典混排。</span></div>
+    </section>
+    <section class="detail-section notes-section" id="detail-notes">
       <h3 class="section-title">我的笔记</h3>
       <textarea class="note-input" id="note-input" placeholder="写下你对这一卦的理解…" data-code="${esc(hex.binaryCode)}"></textarea>
       <button class="note-save" id="note-save">保存笔记</button>

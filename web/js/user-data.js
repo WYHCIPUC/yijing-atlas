@@ -12,6 +12,7 @@ export const USER_DATA_KEYS = [
   'yijing-learning-record-v2',
   'yijing-learning-review-config-v1',
   'yijing-divination-history-v1',
+  'yijing-divination-history-v2',
 ];
 
 function getStorage(storage) {
@@ -38,6 +39,7 @@ function validateSnapshot(snapshot) {
     'yijing-learning-record-v2': isPlainObject,
     'yijing-learning-review-config-v1': isPlainObject,
     'yijing-divination-history-v1': Array.isArray,
+    'yijing-divination-history-v2': Array.isArray,
   };
   for (const [key, check] of Object.entries(expected)) {
     if (!Object.hasOwn(snapshot.data, key) || snapshot.data[key] === null) continue;

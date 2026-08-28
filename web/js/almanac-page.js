@@ -13,10 +13,22 @@ function esc(s) {
 let st = null;
 const MIN_YEAR = 1900;
 const MAX_YEAR = 2199;
+const CALENDAR_TIME_ZONE = 'Asia/Shanghai';
+
+export function shanghaiCalendarDate(now = new Date()) {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: CALENDAR_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(now);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return new Date(Number(values.year), Number(values.month) - 1, Number(values.day), 12);
+}
 
 export function renderAlmanacPage(mountEl, appState) {
   st = { terms: appState.almanacTerms || [], yiji: appState.almanacYiji || {} };
-  draw(mountEl, new Date());
+  draw(mountEl, shanghaiCalendarDate());
 }
 
 function draw(mountEl, date) {
@@ -32,7 +44,7 @@ function draw(mountEl, date) {
   const yiji = yiJiOfDay(date, st.yiji);
 
   const dateStr = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
-  const isToday = sameDay(date, new Date());
+  const isToday = sameDay(date, shanghaiCalendarDate());
 
   // 今日解读（传完整择日对象，供 reading.js 内部读取字段）
   const almanacInfo = {
@@ -104,7 +116,7 @@ function draw(mountEl, date) {
           `).join('') : '<p class="alm-empty">暂无解读</p>'}
         </div>
       </section>
-      <p class="alm-foot"><small>计算范围为 ${MIN_YEAR}—${MAX_YEAR} 年，按设备本地时区显示；自动化结果仅供历法与民俗文化学习，不作为医疗、法律、财务或其他现实决策依据。</small></p>
+      <p class="alm-foot"><small><b>历法口径：</b>历日统一按 Asia/Shanghai（北京时间，UTC+8）确定；农历年以正月初一换年，干支年以立春换年，日界按午夜 00:00。计算范围为 ${MIN_YEAR}—${MAX_YEAR} 年；自动化结果属于历法计算与民俗资料，仅供文化学习，不作为医疗、法律、财务或其他现实决策依据。</small></p>
     </div>`;
 
   bindEvents(mountEl);

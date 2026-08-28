@@ -2,7 +2,7 @@
 
 export const LEARNING_LEVELS = [
   {
-    id: 'L1', name: '蒙学', title: '阴阳八卦', desc: '辨阴阳、识八卦、明爻位',
+    id: 'L1', name: '蒙学', title: '阴阳八卦', desc: '辨阴阳、识八卦、明爻位', track: 'core',
     lessons: [
       { id: 'l1-1', title: '阴阳之道', type: 'theory', refs: ['yinyang'], target: 'theorems' },
       { id: 'l1-2', title: '八卦生成', type: 'theory', refs: ['bagua-gen'], target: 'theorems' },
@@ -11,7 +11,7 @@ export const LEARNING_LEVELS = [
     ],
   },
   {
-    id: 'L2', name: '习经', title: '六十四卦', desc: '按卦序研读本经卦爻辞',
+    id: 'L2', name: '习经', title: '六十四卦', desc: '按卦序研读本经卦爻辞', track: 'core',
     lessons: [
       { id: 'l2-1', title: '上经前八卦（乾至比）', type: 'hexagrams', range: [1, 8], target: 'explore' },
       { id: 'l2-2', title: '上经中段', type: 'hexagrams', range: [9, 22], target: 'explore' },
@@ -21,24 +21,28 @@ export const LEARNING_LEVELS = [
     ],
   },
   {
-    id: 'L3', name: '研传', title: '十翼精读', desc: '由传文理解义理与卦序',
+    id: 'L3', name: '研传', title: '经传与注疏', desc: '区分本经、易传与历代解释', track: 'commentary',
     lessons: [
       { id: 'l3-1', title: '系辞传', type: 'wings', refs: ['xici-shang', 'xici-xia'], target: 'wings' },
       { id: 'l3-2', title: '文言与说卦', type: 'wings', refs: ['wenyan', 'shuogua'], target: 'wings' },
       { id: 'l3-3', title: '序卦与杂卦', type: 'wings', refs: ['xugua', 'zagua'], target: 'wings' },
+      { id: 'l3-4', title: '彖传与大小象', type: 'theory', refs: ['tuan-xiang'], target: 'theorems' },
     ],
   },
   {
-    id: 'L4', name: '明辨', title: '象数义理', desc: '由河洛五行通向卦际关系',
+    id: 'L4', name: '明辨', title: '象数传统', desc: '分辨河洛、卦气、纳甲与卦序体系', track: 'xiangshu',
     lessons: [
       { id: 'l4-1', title: '五行生克', type: 'theory', refs: ['wuxing'], target: 'theorems' },
       { id: 'l4-2', title: '河图洛书', type: 'theory', refs: ['hetu-luoshu'], target: 'theorems' },
       { id: 'l4-3', title: '先天与后天八卦', type: 'theory', refs: ['xiantian', 'houtian'], target: 'theorems' },
       { id: 'l4-4', title: '错综互变', type: 'theory', refs: ['cuo-zong'], target: 'theorems' },
+      { id: 'l4-5', title: '纳甲基础', type: 'theory', refs: ['najia'], target: 'theorems' },
+      { id: 'l4-6', title: '十二消息与卦气', type: 'theory', refs: ['twelve-messages', 'guaqi'], target: 'theorems' },
+      { id: 'l4-7', title: '八宫卦序', type: 'theory', refs: ['bagong'], target: 'theorems' },
     ],
   },
   {
-    id: 'L5', name: '通用', title: '历法日用', desc: '辨识黄历术语与使用边界',
+    id: 'L5', name: '通用', title: '术数与民俗', desc: '辨识筮法、历法与民俗的年代和边界', track: 'practice',
     lessons: [
       { id: 'l5-1', title: '建除十二神', type: 'almanac', category: '建除十二神', target: 'almanac' },
       { id: 'l5-2', title: '二十八宿', type: 'almanac', category: '二十八宿', target: 'almanac' },
@@ -49,8 +53,15 @@ export const LEARNING_LEVELS = [
   },
 ];
 
+export const CURRICULUM_TRACKS = Object.freeze({
+  core: { name: '核心主干', desc: '阴阳爻卦 → 本经 → 彖象 → 爻位 → 卦时 → 观变' },
+  xiangshu: { name: '象数旁支', desc: '河洛、先后天、消息卦、卦气、纳甲与八宫' },
+  commentary: { name: '义理注疏', desc: '本经与易传分层，并为分家阅读保留来源位置' },
+  practice: { name: '术数民俗', desc: '筮法、梅花与黄历，明确年代、流派和使用边界' },
+});
+
 export const LEARNING_LESSONS = LEARNING_LEVELS.flatMap((level) =>
-  level.lessons.map((lesson) => ({ ...lesson, levelId: level.id, levelName: level.name })),
+  level.lessons.map((lesson) => ({ ...lesson, levelId: level.id, levelName: level.name, track: lesson.track || level.track })),
 );
 
 function compactText(value, size = 32) {
@@ -63,7 +74,7 @@ function optionSet(correct, pool) {
   return [...new Set(values)].slice(0, 4).map((label) => ({ value: label, label }));
 }
 
-function question(id, lesson, prompt, answer, distractors, explanation, source) {
+function question(id, lesson, prompt, answer, distractors, explanation, source, metadata = {}) {
   return {
     id,
     lessonId: lesson.id,
@@ -73,6 +84,8 @@ function question(id, lesson, prompt, answer, distractors, explanation, source) 
     options: optionSet(answer, distractors),
     explanation,
     source,
+    kind: metadata.kind || 'recall',
+    evidenceType: metadata.evidenceType || null,
   };
 }
 
@@ -97,6 +110,12 @@ function entityQuestions(lesson, entity, peers, prefix) {
     question(
       `${prefix}-${entity.id}-point`, lesson, `以下哪一要点属于“${entity.name}”？`, ownPoint,
       otherPoints, ownPoint, entity.name,
+    ),
+    question(
+      `${prefix}-${entity.id}-evidence`, lesson, `只凭项目中的一句白话，能否把“${entity.name}”判作现实中的确定结论？`,
+      '证据不足', ['卦体', '爻位', '经传原文', '项目类比'],
+      '项目白话用于辅助理解；若要形成判断，仍须说明原文、结构、流派与现实事实。',
+      entity.name, { kind: 'evidence', evidenceType: '证据不足' },
     ),
   ];
 }
@@ -130,6 +149,11 @@ function buildTrigramQuestions(lesson, appState) {
         `trigram-${trigram.binaryCode}-code`, lesson, `三爻编码“${trigram.binaryCode}”（自下而上）是哪一卦？`,
         trigram.name, peers.map((item) => item.name), `${trigram.name}的三爻编码为 ${trigram.binaryCode}。`, '八卦基础数据',
       ),
+      question(
+        `trigram-${trigram.binaryCode}-evidence`, lesson, `判断“${trigram.binaryCode} 是${trigram.name}卦”直接依据哪一层？`,
+        '卦体', ['爻位', '经传原文', '项目类比', '证据不足'],
+        '三条阴阳爻的组合属于卦体证据。', '八卦卦体', { kind: 'evidence', evidenceType: '卦体' },
+      ),
     ];
   });
 }
@@ -153,6 +177,17 @@ function buildHexagramQuestions(lesson, appState) {
       question(
         `hex-${hexagram.binaryCode}-judgement`, lesson, `卦辞“${judgement}”属于哪一卦？`, hexagram.name,
         peers.map((item) => item.name), `${hexagram.name}卦卦辞：${compactText(hexagram.judgement, 80)}`, '《周易》本经',
+      ),
+      question(
+        `hex-${hexagram.binaryCode}-evidence`, lesson, `“${judgement}”归属于${hexagram.name}卦，直接依据哪一层？`,
+        '经传原文', ['卦体', '爻位', '项目类比', '证据不足'],
+        '这是卦辞文本的归属问题，直接依据本经原文。', '《周易》本经', { kind: 'evidence', evidenceType: '经传原文' },
+      ),
+      question(
+        `hex-${hexagram.binaryCode}-boundary`, lesson, `只凭“${hexagram.name}”卦名，能否断定一件现实事情的结果？`,
+        '证据不足', ['卦体', '爻位', '经传原文', '项目类比'],
+        '现实判断还需要事实、卦时、取辞依据和解释边界；卦名不能单独决定结果。',
+        '研读边界', { kind: 'evidence', evidenceType: '证据不足' },
       ),
     ];
   });

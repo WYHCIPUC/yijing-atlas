@@ -26,10 +26,12 @@ test('动效协调器集中管理可见性、动态节点与清理', async () =>
 });
 
 test('入口、离线缓存与样式都接入同一代动效系统', async () => {
-  const [main, serviceWorker, css] = await Promise.all([
+  const [main, cinematic, serviceWorker, css, html] = await Promise.all([
     readFile(new URL('js/main.js', webRoot), 'utf8'),
+    readFile(new URL('js/cinematic-motion.js', webRoot), 'utf8'),
     readFile(new URL('sw.js', webRoot), 'utf8'),
     readFile(new URL('styles/main.css', webRoot), 'utf8'),
+    readFile(new URL('index.html', webRoot), 'utf8'),
   ]);
   assert.match(main, /initMotionSystem\(\)/);
   assert.match(main, /motionSystem\.reveal\(panelContent\)/);
@@ -39,4 +41,23 @@ test('入口、离线缓存与样式都接入同一代动效系统', async () =>
   assert.match(css, /\.daily-overlay\[hidden\]/);
   assert.match(css, /\.motion-offscreen/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(html, /class="mode-portal"/);
+  assert.match(html, /class="panel-reading-progress"/);
+  assert.match(html, /class="cursor-trail"/);
+  assert.match(html, /class="mode-indicator"/);
+  assert.match(html, /class="star-hover-card"/);
+  assert.match(cinematic, /MAGNETIC_SELECTOR/);
+  assert.match(cinematic, /className = 'motion-ripple'/);
+  assert.match(cinematic, /function previewHexagram\(hexagram, meta = \{\}\)/);
+  assert.match(cinematic, /data-hover-degree/);
+  assert.match(cinematic, /data-hover-depth/);
+  assert.match(cinematic, /data-hover-balance/);
+  assert.match(cinematic, /function syncModeIndicator\(button/);
+  assert.match(cinematic, /const trailMotes = \[\]/);
+  assert.match(cinematic, /cursorTrail\?\.replaceChildren\(\)/);
+  assert.match(cinematic, /removeEventListener\('visibilitychange', onVisibilityChange\)/);
+  assert.match(cinematic, /--reading-progress/);
+  assert.match(cinematic, /activeReadingSection\?\.classList\.remove\('is-reading'\)/);
+  assert.match(cinematic, /syncReadingProgress/);
+  assert.match(cinematic, /removeEventListener\('scroll', onPanelScroll\)/);
 });

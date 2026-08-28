@@ -63,18 +63,25 @@ test('卦象详情提供稳定页面标题与可同步的六爻折叠按钮', ()
   renderHexagramDetail(hexagrams[0], mount, hexagrams, () => {});
 
   assert.match(mount.innerHTML, /<h1 id="hexagram-detail-title" data-page-heading tabindex="-1">/);
-  assert.match(mount.innerHTML, /<button[^>]+id="yao-toggle"[^>]+aria-expanded="false"[^>]+aria-controls="yao-body"/);
+  assert.match(mount.innerHTML, /<button[^>]+id="yao-toggle"[^>]+aria-expanded="true"[^>]+aria-controls="yao-body"/);
   assert.match(mount.innerHTML, /id="yao-body" role="region" aria-labelledby="yao-toggle"/);
+  assert.match(mount.innerHTML, /class="seven-step-slip"/);
+  assert.match(mount.innerHTML, /本经原文 · 待校验/);
+  assert.match(mount.innerHTML, /项目导读 · 项目自撰/);
+  assert.ok(mount.innerHTML.indexOf('id="detail-lines"') < mount.innerHTML.indexOf('id="detail-relations"'));
 
-  onToggle();
-  assert.equal(attributes.get('aria-expanded'), 'true');
-  assert.equal(toggleClasses.has('open'), true);
-  assert.equal(bodyClasses.has('open'), true);
+  toggleClasses.add('open');
+  bodyClasses.add('open');
 
   onToggle();
   assert.equal(attributes.get('aria-expanded'), 'false');
   assert.equal(toggleClasses.has('open'), false);
   assert.equal(bodyClasses.has('open'), false);
+
+  onToggle();
+  assert.equal(attributes.get('aria-expanded'), 'true');
+  assert.equal(toggleClasses.has('open'), true);
+  assert.equal(bodyClasses.has('open'), true);
 });
 
 test('卦象与八卦 SVG 爻线继承当前文字颜色', () => {

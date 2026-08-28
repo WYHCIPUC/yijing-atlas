@@ -15,9 +15,17 @@
   <title>易象图谱 · 六十四卦</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="stylesheet" href="styles/main.css?v=28" />
+  <link rel="stylesheet" href="lib/vendor/lenis.css" />
+  <link rel="stylesheet" href="styles/main.css?v=39" />
 </head>
 <body>
+  <div class="pointer-aura" aria-hidden="true"></div>
+  <div class="cursor-trail" aria-hidden="true"></div>
+  <div class="mode-portal" aria-hidden="true">
+    <span class="mode-portal-ring"></span>
+    <span class="mode-portal-trigrams">☰ ☱ ☲ ☳ ☴ ☵ ☶ ☷</span>
+    <i>易</i>
+  </div>
   <div class="loading-screen" id="loading">星辰排列中…</div>
 
   <!-- 今日卦首页欢迎层 -->
@@ -57,6 +65,7 @@
       <div class="brand-subtitle">观象 · 读经 · 知变</div>
     </div>
     <nav class="mode-switcher" id="mode-switcher" aria-label="主要功能">
+      <span class="mode-indicator" aria-hidden="true"></span>
       <button type="button" class="mode-btn" data-mode="almanac" aria-pressed="false">黄历</button>
       <button type="button" class="mode-btn active" data-mode="explore" aria-pressed="true">探索</button>
       <button type="button" class="mode-btn" data-mode="learning" aria-pressed="false">学习</button>
@@ -68,15 +77,32 @@
       <span class="search-icon" aria-hidden="true">⌕</span>
       <input id="search" type="search" placeholder="搜索卦名…" aria-label="搜索六十四卦" autocomplete="off"
         role="combobox" aria-autocomplete="list" aria-controls="search-results" aria-expanded="false" />
+      <kbd class="search-shortcut" aria-hidden="true">Ctrl K</kbd>
       <button type="button" class="audio-toggle" id="audio-toggle" aria-label="关闭界面音效"
         aria-pressed="true" title="关闭界面音效"><span aria-hidden="true">♪</span></button>
       <div class="search-results" id="search-results" role="listbox" aria-label="搜索结果" hidden></div>
     </div>
   </header>
 
-  <canvas id="star-canvas" tabindex="0" role="img" aria-label="六十四卦关系星图，可拖动、缩放并选择卦象">
-    你的浏览器不支持星图画布。仍可通过搜索、学习、复习和黄历功能浏览内容。
-  </canvas>
+  <canvas id="celestial-canvas" aria-hidden="true"></canvas>
+  <p class="sr-only" id="star-canvas-description">当前为项目关系布局，并非传统固定图式。可用方向键旋转、加减号缩放；下方文字关系列表提供与画布等价的键盘入口。</p>
+  <canvas id="star-canvas" tabindex="0" role="img" aria-describedby="star-canvas-description star-relation-status"
+    aria-label="六十四卦项目关系星图，可拖动、缩放并选择卦象"></canvas>
+  <div class="star-hover-card" id="star-hover-card" aria-hidden="true">
+    <small>第 <b data-hover-number>01</b> 卦</small>
+    <strong data-hover-name>乾</strong>
+    <span data-hover-full-name>乾为天</span>
+    <i data-hover-code>111111</i>
+    <div class="star-hover-stats">
+      <span><b data-hover-degree>0</b> 条直连</span>
+      <span data-hover-depth>中景星位</span>
+      <span data-hover-balance>阳 3 · 阴 3</span>
+    </div>
+    <div class="star-hover-relations" aria-hidden="true">
+      <span>错</span><span>综</span><span>互</span><span>变 6</span>
+    </div>
+    <em>点击星辰 · 展开经文</em>
+  </div>
 
   <aside class="star-map-intro" aria-label="星图阅读提示">
     <span class="star-map-kicker">六十四卦关系星图</span>
@@ -106,7 +132,31 @@
     <button type="button" class="explore-tool guaxu-tool" data-explore-tool="guaxu" aria-pressed="false">卦序转盘</button>
   </nav>
 
+  <section class="relation-layers" id="relation-layers" aria-labelledby="relation-layers-title">
+    <div class="relation-layers-heading">
+      <div><small>项目关系布局</small><strong id="relation-layers-title">关系分层</strong></div>
+      <span id="star-relation-status" role="status" aria-live="polite">错卦层 · 请先选择一卦</span>
+    </div>
+    <div class="relation-layer-buttons" role="group" aria-label="选择星图关系层">
+      <button type="button" class="active" data-relation-layer="opposite" aria-pressed="true">错</button>
+      <button type="button" data-relation-layer="reversed" aria-pressed="false">综</button>
+      <button type="button" data-relation-layer="interlocking" aria-pressed="false">互</button>
+      <button type="button" data-relation-layer="changing" aria-pressed="false">变</button>
+    </div>
+    <div class="changing-position-buttons" role="group" aria-label="选择动爻位置" hidden>
+      <span>动爻</span>
+      <button type="button" data-changing-position="1">初</button><button type="button" data-changing-position="2">二</button>
+      <button type="button" data-changing-position="3">三</button><button type="button" data-changing-position="4">四</button>
+      <button type="button" data-changing-position="5">五</button><button type="button" data-changing-position="6">上</button>
+    </div>
+    <details class="star-text-relations">
+      <summary>文字关系列表</summary>
+      <ul id="star-accessible-list"><li>请先选择一卦；总览仅标出八卦锚点。</li></ul>
+    </details>
+  </section>
+
   <aside class="detail-panel" id="detail-panel" role="dialog" aria-modal="true" aria-label="内容面板" aria-hidden="true" inert>
+    <div class="panel-reading-progress" aria-hidden="true"><i></i><b></b><span>读</span></div>
     <div class="detail-panel-tools">
       <label class="detail-layout-control">布局
         <select id="detail-layout" aria-label="详情面板布局">
@@ -121,14 +171,24 @@
     <div class="detail-content" id="detail-content"></div>
   </aside>
 
-  <div class="hint-bar" id="hint" aria-live="polite">拖拽旋转 · 滚轮缩放 · 点击星辰读经</div>
+  <div class="hint-bar" id="hint" aria-label="星图视角与操作提示">
+    <span class="view-bearing" aria-hidden="true"><i></i></span>
+    <span class="view-readout" aria-hidden="true">
+      <b data-view-level>星图层</b>
+      <small data-view-angle>经向 0° · 纬向 0° · 100%</small>
+      <small data-view-rotation>自动巡天中</small>
+    </span>
+    <span class="hint-guide">拖拽旋转 · 滚轮缩放 · 点击星辰读经</span>
+  </div>
 
   <div class="zoom-controls" role="group" aria-label="星图视图控制">
+    <button type="button" class="zoom-btn" id="auto-rotate" title="停止自动巡天" aria-label="停止自动巡天" aria-pressed="true">巡</button>
     <button type="button" class="zoom-btn" id="zoom-in" title="放大" aria-label="放大星图">＋</button>
     <div class="zoom-level" id="zoom-level">100%</div>
     <button type="button" class="zoom-btn" id="zoom-out" title="缩小" aria-label="缩小星图">－</button>
     <button type="button" class="zoom-btn" id="zoom-reset" title="重置缩放" aria-label="重置星图缩放">⊙</button>
     <button type="button" class="zoom-btn trail-clear" id="trail-clear" title="清除轨迹" aria-label="清除漫游轨迹">✕</button>
+    <button type="button" class="zoom-btn" id="trail-back" title="返回上一步" aria-label="返回最近一次关系漫游的上一卦">↶</button>
   </div>
 
   <aside class="workspace-insight-bar" aria-label="当前模块提示">
@@ -138,6 +198,8 @@
     <div><small data-insight-label>推荐专注时长</small><strong data-insight-value>25 分钟</strong></div>
   </aside>
 
-  <script type="module" src="js/main.js?v=28"></script>
+  <script src="lib/vendor/gsap.min.js"></script>
+  <script src="lib/vendor/lenis.min.js"></script>
+  <script type="module" src="js/main.js?v=39"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 // 结构约束的力导向 64 卦星图：8 纯卦作骨架锚点 + Canvas 渲染 + 动效。
 // 卦的空间位置编码易学含义：每卦被它的上下卦锚点吸引，错卦连线穿过中心对称。
 import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from '../lib/d3-force.js';
-import { allRelations } from './hexagram-utils.js';
+import { getRelationOccurrences, relationTypesFrom } from './star-relations.js';
 
 // 先天八卦方位角（弧度），0=右(东)，顺时针。乾南=上。
 // 乾(南/上) 兑(东南) 离(东) 震(东北) 巽(西南) 坎(西) 艮(西北) 坤(北/下)
@@ -26,6 +26,37 @@ const COLORS = {
 
 const LABEL_COLLISION_GAP = 7;
 const MIN_NORMAL_LABEL_FONT_SIZE = 12;
+const RELATION_LABELS = { opposite: '错', reversed: '综', interlocking: '互', changing: '变' };
+const RELATION_FILTERS = new Set(Object.keys(RELATION_LABELS));
+
+export function relationPulseProgress(time, index, seed = 0, speed = 0.008) {
+  const phase = time * speed + index / 3 + seed;
+  return phase - Math.floor(phase);
+}
+
+export function getKeywordDetailLevel({ zoom = 1, depthScale = 1, isFocus = false, isRelated = false, isPure = false }) {
+  const lod = zoom * depthScale;
+  if (isFocus && lod >= 0.82) return 3;
+  if (isRelated && lod >= 1.05) return 1;
+  if (isPure && zoom >= 1.4 && lod >= 1.25) return 1;
+  return 0;
+}
+
+export function describeStarView({ scale = 1, yaw = 0, pitch = 0, autoRotate = false } = {}) {
+  const level = scale < 0.7 ? '总览层' : (scale < 1.35 ? '星图层' : (scale < 2.15 ? '关系层' : '释义层'));
+  const roundAngle = value => Math.round(value * 180 / Math.PI / 5) * 5;
+  const yawDegrees = ((roundAngle(yaw) % 360) + 360) % 360;
+  const pitchDegrees = roundAngle(pitch);
+  const signed = value => `${value > 0 ? '+' : ''}${value}°`;
+  return {
+    level,
+    zoomPercent: Math.round(scale * 100),
+    yawDegrees,
+    pitchDegrees,
+    angleText: `经向 ${yawDegrees}° · 纬向 ${signed(pitchDegrees)}`,
+    rotationText: autoRotate ? '自动巡天中' : '手动观测',
+  };
+}
 
 function labelBoxesOverlap(a, b, gap) {
   return !(
@@ -45,6 +76,7 @@ export function layoutStarNameLabels(ctx, nodes, {
   appearProgress = 1,
   time = 0,
   collisionGap = LABEL_COLLISION_GAP,
+  compact = false,
 } = {}) {
   const focus = hoveredNode || activeNode;
   const candidates = [];
@@ -56,10 +88,12 @@ export function layoutStarNameLabels(ctx, nodes, {
     const delay = (node.number - 1) / 64 * 0.5;
     const localProgress = Math.max(0, Math.min(1, (appearProgress - delay) / 0.4));
     if ((!isHovered && !isActive && localProgress <= 0) || !node._screen) continue;
+    if (!focus && !node.isPure) continue;
 
     const screen = node._screen;
     const isFocus = focus?.id === node.id;
     const isHidden = focusVisible && !focusVisible.has(node.id);
+    if (compact && isHidden && !isHovered && !isActive) continue;
     const nameVisibility = isHidden ? 0.1 : 1;
     const depthScale = 0.6 + screen.depthFactor * 0.5;
     const fontSize = node.isPure
@@ -161,6 +195,8 @@ export class StarMap {
     this.motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
     this.reducedMotion = this.motionPreference.matches;
     this.autoRotate = !this.reducedMotion;
+    this.relationFilter = { type: 'opposite', changingPosition: null };
+    this.relationReveal = 1;
     this.isPaused = false;
     this.pauseReasons = new Set();
     this.animationFrame = null;
@@ -175,9 +211,30 @@ export class StarMap {
     this.keywords = null;
     this.keywordLayouts = null;
     this.trail = [];          // 关系漫游旅行轨迹：[{from, to}] 序列
+    this.sortedNodes = [...this.graph.nodes];
+    this.renderFocusId = null;
+    this.renderFocusRelations = null;
     // 相机焦点：点击星后"飞入"该星，以其为中心看 360°
     this.cameraTarget = null;  // {x,y,z} 目标相机焦点，null=以球心为焦点
     this.cameraPos = { x: 0, y: 0, z: 0 };  // 当前相机焦点（平滑过渡用）
+    // 与 WebGL 天象层共享同一个视图模型；复用对象，避免动画帧持续制造垃圾。
+    this.sharedView = {
+      yaw: 0,
+      pitch: 0,
+      scale: 1,
+      centerX: 0,
+      centerY: 0,
+      radius: 0,
+      activeCode: null,
+      activeX: null,
+      activeY: null,
+      activeDepth: null,
+      hoverCode: null,
+      hoverX: null,
+      hoverY: null,
+      hoverDepth: null,
+      autoRotate: this.autoRotate,
+    };
 
     this._setupDpr();
     this._preRenderGlows();     // 预渲染光晕贴图（性能关键）
@@ -201,7 +258,8 @@ export class StarMap {
     this.width = rect.width;
     this.height = rect.height;
     this.cx = this.width / 2;
-    this.cy = this.height / 2;
+    const compactTopInset = this.width <= 600 ? Math.min(180, this.height * 0.24) : 0;
+    this.cy = compactTopInset + (this.height - compactTopInset) / 2;
     // 锚点圆半径（8 纯卦所在的圆）
     this.anchorR = Math.min(this.width, this.height) * 0.32;
   }
@@ -426,6 +484,7 @@ export class StarMap {
     const baseR = Math.max(14, 16 * this.view.scale); // 加大基础命中半径
     let best = null, bestScore = -Infinity;
     for (const n of this.graph.nodes) {
+      if (this.focusVisible && !this.focusVisible.has(n.id)) continue;
       const p = this._worldToScreen(n.x, n.y, n.z);
       const r = baseR * (0.5 + p.depthFactor * 0.8); // 近的星命中范围更大
       const d = Math.hypot(p.x - sx, p.y - sy);
@@ -438,6 +497,73 @@ export class StarMap {
     return best;
   }
 
+  _nodeViewportPoint(node, rect = this.canvas.getBoundingClientRect()) {
+    if (!node) return null;
+    const point = this._worldToScreen(node.x, node.y, node.z);
+    return {
+      x: rect.left + point.x,
+      y: rect.top + point.y,
+      depthFactor: point.depthFactor,
+    };
+  }
+
+  _nodeInteractionMeta(node, point) {
+    if (!node || !point) return null;
+    const yangCount = [...node.binaryCode].filter(bit => bit === '1').length;
+    return {
+      degree: Number(node.degree) || 0,
+      depthFactor: point.depthFactor,
+      relationshipCount: this._relationTargets(node.id).length,
+      yangCount,
+      yinCount: 6 - yangCount,
+    };
+  }
+
+  _emitSharedView() {
+    if (!this.callbacks.onViewChange) return;
+    let centerX = 0;
+    let centerY = 0;
+    let visibleCount = 0;
+    for (const node of this.graph.nodes) {
+      if (this.focusVisible && !this.focusVisible.has(node.id)) continue;
+      centerX += node._screen.x;
+      centerY += node._screen.y;
+      visibleCount += 1;
+    }
+    if (!visibleCount) return;
+    centerX /= visibleCount;
+    centerY /= visibleCount;
+
+    let squaredDistance = 0;
+    for (const node of this.graph.nodes) {
+      if (this.focusVisible && !this.focusVisible.has(node.id)) continue;
+      squaredDistance += (node._screen.x - centerX) ** 2 + (node._screen.y - centerY) ** 2;
+    }
+    const rmsRadius = Math.sqrt(squaredDistance / visibleCount) * 1.28;
+    const minRadius = this.anchorR * this.view.scale * 0.32;
+    const maxRadius = this.anchorR * this.view.scale * 1.25;
+    const rect = this.canvas.getBoundingClientRect();
+    const shared = this.sharedView;
+    shared.yaw = this.yaw;
+    shared.pitch = this.pitch;
+    shared.scale = this.view.scale;
+    shared.centerX = rect.left + centerX;
+    shared.centerY = rect.top + centerY;
+    shared.radius = Math.max(minRadius, Math.min(maxRadius, rmsRadius));
+    const activePoint = this.activeNode?._screen;
+    shared.activeCode = this.activeNode?.id || null;
+    shared.activeX = activePoint ? rect.left + activePoint.x : null;
+    shared.activeY = activePoint ? rect.top + activePoint.y : null;
+    shared.activeDepth = activePoint?.depthFactor ?? null;
+    const hoverPoint = this.hoveredNode?._screen;
+    shared.hoverCode = this.hoveredNode?.id || null;
+    shared.hoverX = hoverPoint ? rect.left + hoverPoint.x : null;
+    shared.hoverY = hoverPoint ? rect.top + hoverPoint.y : null;
+    shared.hoverDepth = hoverPoint?.depthFactor ?? null;
+    shared.autoRotate = Boolean(this.autoRotate);
+    this.callbacks.onViewChange(shared);
+  }
+
   _bindEvents() {
     const c = this.canvas;
     c.addEventListener('pointerdown', (e) => {
@@ -445,12 +571,14 @@ export class StarMap {
       const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
       const node = this._nodeAt(sx, sy);
       if (node) {
-        this.callbacks.onPick && this.callbacks.onPick(node.id);
+        this.setAutoRotate(false);
+        const point = this._nodeViewportPoint(node, rect);
+        this.callbacks.onPick?.(node.id, point, this._nodeInteractionMeta(node, point));
       } else {
         c.setPointerCapture?.(e.pointerId);
         this.isDragging = true;
         this.dragStart = { x: sx, y: sy, yaw: this.yaw, pitch: this.pitch };
-        this.autoRotate = false; // 拖拽时暂停自转，松手可恢复
+        this.setAutoRotate(false);
       }
     });
     c.addEventListener('pointermove', (e) => {
@@ -467,7 +595,8 @@ export class StarMap {
         if (node !== this.hoveredNode) {
           this.hoveredNode = node;
           c.style.cursor = node ? 'pointer' : 'grab';
-          this.callbacks.onHover && this.callbacks.onHover(node ? node.id : null);
+          const point = this._nodeViewportPoint(node, rect);
+          this.callbacks.onHover?.(node ? node.id : null, point, this._nodeInteractionMeta(node, point));
         }
       }
     });
@@ -477,9 +606,13 @@ export class StarMap {
     };
     c.addEventListener('pointerup', stopDragging);
     c.addEventListener('pointercancel', stopDragging);
-    c.addEventListener('pointerleave', () => { this.hoveredNode = null; });
+    c.addEventListener('pointerleave', () => {
+      this.hoveredNode = null;
+      this.callbacks.onHover?.(null);
+    });
     c.addEventListener('wheel', (e) => {
       e.preventDefault();
+      this.setAutoRotate(false);
       const factor = e.deltaY > 0 ? 0.9 : 1.1;
       this.view.scale = Math.max(0.3, Math.min(4, this.view.scale * factor));
     }, { passive: false });
@@ -502,7 +635,7 @@ export class StarMap {
       else if (event.key === 'Escape') this.clearFocus();
       else return;
       event.preventDefault();
-      this.autoRotate = false;
+      this.setAutoRotate(false);
     });
     this.handleVisibilityChange = () => {
       if (document.hidden) this.pause('visibility');
@@ -511,7 +644,7 @@ export class StarMap {
     this.handleMotionPreferenceChange = (event) => {
       this.reducedMotion = event.matches;
       if (this.reducedMotion) {
-        this.autoRotate = false;
+        this.setAutoRotate(false);
         this.meteors = [];
         this.appearProgress = 1;
         if (this.cameraTarget) this.cameraPos = { ...this.cameraTarget };
@@ -554,6 +687,7 @@ export class StarMap {
       this.frameStep = deltaMs / (1000 / 60);
       this.time += this.frameStep;
       if (this.autoRotate) this.yaw += 0.0006 * this.frameStep;
+      this.relationReveal = this.reducedMotion ? 1 : Math.min(1, this.relationReveal + deltaMs / 420);
       if (this.reducedMotion) this.appearProgress = 1;
       else if (this.appearProgress < 1) this.appearProgress = Math.min(1, this.appearProgress + deltaMs / 900);
       // 相机焦点平滑过渡（点击星后飞入）
@@ -616,6 +750,86 @@ export class StarMap {
     this.meteors = this.meteors.filter(m => m.life < m.maxLife && m.x < this.width + 100 && m.y < this.height + 100);
   }
 
+  _getFocusRelationSet(focus) {
+    if (!focus) {
+      this.renderFocusId = null;
+      this.renderFocusRelations = null;
+      return null;
+    }
+    const focusKey = `${focus.id}:${this.relationFilter.type}:${this.relationFilter.changingPosition || 0}`;
+    if (this.renderFocusId !== focusKey) {
+      this.renderFocusId = focusKey;
+      this.renderFocusRelations = new Set([focus.id, ...this._relationTargets(focus.id)]);
+    }
+    return this.renderFocusRelations;
+  }
+
+  _drawRelationPulse(ctx, from, to, color, time, seed, speed, depth) {
+    if (this.reducedMotion) return;
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    for (let index = 0; index < 3; index += 1) {
+      const progress = relationPulseProgress(time, index, seed, speed);
+      const energy = Math.sin(progress * Math.PI);
+      const x = from.x + dx * progress;
+      const y = from.y + dy * progress;
+      const tailProgress = Math.max(0, progress - 0.075);
+      const tailX = from.x + dx * tailProgress;
+      const tailY = from.y + dy * tailProgress;
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.strokeStyle = `rgba(${color},${energy * depth * 0.34})`;
+      ctx.lineWidth = 1.1 + depth * 0.45;
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      this._drawGlow(ctx, this.glowCore, x, y, (5 + depth * 4) * energy, energy * depth * 0.78);
+      ctx.fillStyle = `rgba(${color},${energy * depth})`;
+      ctx.beginPath();
+      ctx.arc(x, y, 0.8 + depth * 0.75, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  _drawFocusReticle(ctx, node, time) {
+    if (!node?._screen) return;
+    const point = node._screen;
+    const depth = Math.max(0.55, Math.min(1.65, point.depthFactor));
+    const radius = (19 + Math.min(8, (Number(node.degree) || 0) * 0.55)) * (0.72 + depth * 0.3);
+    const rotation = this.reducedMotion ? 0 : time * 0.014;
+    const tickCount = Math.max(4, Math.min(12, Number(node.degree) || 4));
+    ctx.save();
+    ctx.translate(point.x, point.y);
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.rotate(rotation);
+    ctx.strokeStyle = 'rgba(245,230,192,0.62)';
+    ctx.lineWidth = 1;
+    for (let segment = 0; segment < 4; segment += 1) {
+      const start = segment * Math.PI / 2 + 0.12;
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, start, start + Math.PI / 2 - 0.34);
+      ctx.stroke();
+    }
+    ctx.rotate(-rotation * 1.65);
+    ctx.strokeStyle = 'rgba(137,174,220,0.42)';
+    ctx.setLineDash([2, 5]);
+    ctx.beginPath();
+    ctx.ellipse(0, 0, radius * 1.28, radius * (0.45 + depth * 0.1), 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    for (let index = 0; index < tickCount; index += 1) {
+      const angle = index / tickCount * Math.PI * 2;
+      const inner = radius + 4;
+      const outer = inner + (index % 2 === 0 ? 5 : 2.5);
+      ctx.strokeStyle = index % 2 === 0 ? 'rgba(232,208,154,0.58)' : 'rgba(137,174,220,0.34)';
+      ctx.beginPath();
+      ctx.moveTo(Math.cos(angle) * inner, Math.sin(angle) * inner);
+      ctx.lineTo(Math.cos(angle) * outer, Math.sin(angle) * outer);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
   _render() {
     const ctx = this.ctx;
     const t = this.reducedMotion ? 0 : this.time;
@@ -645,6 +859,7 @@ export class StarMap {
 
     // 每帧只投影一次节点；边、星体和标签共享结果。
     for (const n of this.graph.nodes) n._screen = this._worldToScreen(n.x, n.y, n.z);
+    this._emitSharedView();
 
     // 关系漫游轨迹层（金色路径，渐显动画）
     if (this.trail.length > 0) {
@@ -672,7 +887,7 @@ export class StarMap {
 
     // 第四层：关系边
     const focus = this.hoveredNode || this.activeNode;
-    const focusRels = focus ? new Set([focus.id, ...this._relationTargets(focus.id)]) : null;
+    const focusRels = this._getFocusRelationSet(focus);
     for (const e of this.graph.edges) {
       const s = this.nodeById.get(e.source), tn = this.nodeById.get(e.target);
       if (!s || !tn) continue;
@@ -681,22 +896,29 @@ export class StarMap {
       const avgDepth = (sp.depthFactor + tp.depthFactor) / 2;
       // 判断这条边是否与 focus 卦相关（任一端是 focus，且另一端在关系集里）
       const involvesFocus = focus && (e.source === focus.id || e.target === focus.id);
-      const isActive = involvesFocus && focusRels && focusRels.has(e.source) && focusRels.has(e.target);
+      const activeOccurrences = involvesFocus && focus ? (e.occurrences || []).filter((occurrence) => (
+        occurrence.from === focus.id
+        && occurrence.type === this.relationFilter.type
+        && (occurrence.type !== 'changing'
+          || occurrence.changingPositions.includes(this.relationFilter.changingPosition))
+      )) : [];
+      const isActive = activeOccurrences.length > 0 && focusRels && focusRels.has(e.source) && focusRels.has(e.target);
       if (isActive) {
         // 激活连线：按关系类型用不同颜色和样式
         ctx.globalCompositeOperation = 'lighter';
         // 底层柔光
-        const relType = e.types[0];
+        const relType = this.relationFilter.type;
+        const reveal = this.relationReveal;
         const lineColor = relType === 'opposite' ? 'rgba(201,169,106,' : (relType === 'reversed' ? 'rgba(180,150,200,' : (relType === 'interlocking' ? 'rgba(150,180,200,' : 'rgba(200,180,140,'));
-        ctx.strokeStyle = lineColor + (0.14 * avgDepth) + ')';
+        ctx.strokeStyle = lineColor + (0.14 * avgDepth * reveal) + ')';
         ctx.lineWidth = 5 * (0.6 + avgDepth * 0.6);
         ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(tp.x, tp.y); ctx.stroke();
         // 上层流动线
         const grad = ctx.createLinearGradient(sp.x, sp.y, tp.x, tp.y);
         const brightColor = relType === 'opposite' ? '245,230,192' : (relType === 'reversed' ? '220,200,235' : (relType === 'interlocking' ? '200,225,240' : '232,210,170'));
-        grad.addColorStop(0, `rgba(${brightColor},${0.85 * avgDepth})`);
-        grad.addColorStop(0.5, `rgba(${brightColor},${0.5 * avgDepth})`);
-        grad.addColorStop(1, `rgba(${brightColor},${0.85 * avgDepth})`);
+        grad.addColorStop(0, `rgba(${brightColor},${0.85 * avgDepth * reveal})`);
+        grad.addColorStop(0.5, `rgba(${brightColor},${0.5 * avgDepth * reveal})`);
+        grad.addColorStop(1, `rgba(${brightColor},${0.85 * avgDepth * reveal})`);
         ctx.strokeStyle = grad;
         ctx.lineWidth = 1.3 * (0.6 + avgDepth * 0.6);
         // 不同关系用不同虚线节奏
@@ -707,30 +929,37 @@ export class StarMap {
         ctx.lineDashOffset = -t * 0.5;
         ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(tp.x, tp.y); ctx.stroke();
         ctx.setLineDash([]);
+        // 从当前卦向关系卦传播能量点，明确关系的阅读方向。
+        const pulseFrom = e.source === focus.id ? sp : tp;
+        const pulseTo = e.source === focus.id ? tp : sp;
+        const relatedId = e.source === focus.id ? e.target : e.source;
+        const pulseSeed = Number.parseInt(relatedId, 2) / 63;
+        const pulseSpeed = relType === 'opposite' ? 0.0065 : (relType === 'reversed' ? 0.0075 : (relType === 'interlocking' ? 0.009 : 0.0105));
+        this._drawRelationPulse(ctx, pulseFrom, pulseTo, brightColor, t, pulseSeed, pulseSpeed, avgDepth);
         // 连线中点标注关系类型
-        const relLabel = relType === 'opposite' ? '错' : (relType === 'reversed' ? '综' : (relType === 'interlocking' ? '互' : '变'));
+        const completeTypes = relationTypesFrom(e, focus.id, {
+          includeConditional: relType === 'changing',
+          changingPosition: this.relationFilter.changingPosition,
+        });
+        const relLabel = completeTypes.map((type) => RELATION_LABELS[type]).join('·');
         const midX = (sp.x + tp.x) / 2, midY = (sp.y + tp.y) / 2;
         ctx.globalCompositeOperation = 'source-over';
         ctx.font = `${11 * (0.7 + avgDepth * 0.4)}px "ZCOOL XiaoWei", serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         // 标签背景（小圆角暗底，提高可读性）
-        const lblW = 20, lblH = 16;
+        const lblW = Math.max(20, relLabel.length * 12), lblH = 16;
         ctx.fillStyle = 'rgba(10,14,26,0.7)';
-        ctx.beginPath();
-        ctx.arc(midX, midY, lblH * 0.7, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.fillRect(midX - lblW / 2, midY - lblH / 2, lblW, lblH);
         ctx.strokeStyle = `rgba(${brightColor},${0.6 * avgDepth})`;
         ctx.lineWidth = 0.8;
-        ctx.beginPath();
-        ctx.arc(midX, midY, lblH * 0.7, 0, Math.PI * 2);
-        ctx.stroke();
+        ctx.strokeRect(midX - lblW / 2, midY - lblH / 2, lblW, lblH);
         // 关系文字
         ctx.fillStyle = `rgba(${brightColor},${0.95 * avgDepth})`;
         ctx.fillText(relLabel, midX, midY);
       } else {
         // 非激活边：极淡，focus 模式下隐藏
-        const baseA = focus ? 0 : 0.035;
+        const baseA = 0;
         const pulse = baseA + 0.01 * Math.sin(t * 0.008 + e.source.charCodeAt(0) * 0.3);
         ctx.strokeStyle = `rgba(120,105,75,${pulse * avgDepth})`;
         ctx.lineWidth = 0.4 * (0.6 + avgDepth * 0.6);
@@ -740,8 +969,8 @@ export class StarMap {
 
     // 第五层：卦星（光晕 + 入场动画 + 伪3D深度）—— 按 z 排序，远先画
     ctx.globalCompositeOperation = 'lighter';
-    const sortedNodes = [...this.graph.nodes].sort((a, b) => a.z - b.z);
-    for (const n of sortedNodes) {
+    this.sortedNodes.sort((a, b) => a.z - b.z);
+    for (const n of this.sortedNodes) {
       const delay = (n.number - 1) / 64 * 0.5;
       const localP = Math.max(0, Math.min(1, (this.appearProgress - delay) / 0.4));
       if (localP <= 0) continue;
@@ -799,14 +1028,25 @@ export class StarMap {
         ctx.stroke();
       }
 
-      // ★ 关键词小星团（LOD：需明显放大才显示，每个关键词是发光星点 + 文字）
+      // ★ 关键词小星团：语义缩放只展开当前焦点、关系节点或高倍率下的八纯卦。
       const lod = this.view.scale * depthScale;
-      if (this.keywordLayouts && this.keywordLayouts[n.id] && lod > 1.4) {
-        const kwAlpha = Math.min(1, (lod - 1.4) / 0.7) * ease * (0.5 + depth * 0.5);
+      const keywordDetailLevel = getKeywordDetailLevel({
+        zoom: this.view.scale,
+        depthScale,
+        isFocus,
+        isRelated: Boolean(isRel),
+        isPure: n.isPure,
+      });
+      if (this.keywordLayouts && this.keywordLayouts[n.id] && keywordDetailLevel > 0) {
+        const revealThreshold = isFocus ? 0.82 : (isRel ? 1.02 : 1.25);
+        const kwAlpha = Math.min(1, 0.28 + Math.max(0, lod - revealThreshold) / 0.62) * ease * (0.5 + depth * 0.5);
         const layout = this.keywordLayouts[n.id];
         const twinkle = 0.7 + 0.3 * Math.sin(t * 0.03 + n.binaryCode.charCodeAt(1));
+        let visibleKeywords = 0;
         for (const kw of layout) {
           if (kw.level === 0) continue; // 卦名由标签层处理
+          if (kw.level > keywordDetailLevel || (!isFocus && visibleKeywords >= 2)) continue;
+          visibleKeywords += 1;
           // 关键词星点位置（带微浮动）
           const floatX = Math.sin(t * 0.01 + kw.phase) * 1.5;
           const floatY = Math.cos(t * 0.012 + kw.phase) * 1.5;
@@ -834,6 +1074,7 @@ export class StarMap {
         }
       }
     }
+    if (focus) this._drawFocusReticle(ctx, focus, t);
     ctx.globalCompositeOperation = 'source-over';
 
     // 卦名标签：交互标签与 8 纯卦强制保留，普通标签按优先级防碰撞。
@@ -845,6 +1086,7 @@ export class StarMap {
       focusVisible: this.focusVisible,
       appearProgress: this.appearProgress,
       time: t,
+      compact: this.width <= 600,
     });
     for (const label of nameLabels) {
       ctx.font = label.font;
@@ -880,19 +1122,25 @@ export class StarMap {
   }
 
   _relationTargets(code) {
-    const rels = allRelations(code);
-    return [rels.opposite, rels.reversed, rels.interlocking, ...rels.changing];
+    if (this.relationFilter.type === 'changing' && this.relationFilter.changingPosition === null) return [];
+    const occurrences = getRelationOccurrences(this.graph, code, {
+      type: this.relationFilter.type,
+      changingPosition: this.relationFilter.changingPosition,
+    });
+    return [...new Set(occurrences.map((occurrence) => occurrence.to))];
   }
 
   focusStar(code) {
     const node = this.graph.nodes.find(n => n.id === code);
     if (!node) return;
     this.activeNode = node;
-    // 计算所有关系目标（错综互变），focus 模式只显示这些
-    const rels = allRelations(code);
-    this.focusVisible = new Set([code, rels.opposite, rels.reversed, rels.interlocking, ...rels.changing]);
+    this.focusVisible = new Set([code, ...this._relationTargets(code)]);
+    this.renderFocusId = null;
     // 相机飞入该星位置，居中显示
     this.cameraTarget = { x: node.x - this.cx, y: node.y - this.cy, z: node.z };
+    const point = this._nodeViewportPoint(node);
+    this.callbacks.onFocus?.(code, point, this._nodeInteractionMeta(node, point));
+    this.callbacks.onRelationChange?.(this.getRelationState(code));
   }
 
   // 退出焦点，回到球心俯瞰
@@ -900,8 +1148,48 @@ export class StarMap {
     this.cameraTarget = null;
     this.activeNode = null;
     this.focusVisible = null;
-    this.autoRotate = !this.reducedMotion;
+    this.callbacks.onFocus?.(null);
+    this.callbacks.onRelationChange?.(this.getRelationState());
   }
+
+  setRelationFilter(type, changingPosition = null) {
+    if (!RELATION_FILTERS.has(type)) return false;
+    const position = type === 'changing' && Number.isInteger(changingPosition)
+      && changingPosition >= 1 && changingPosition <= 6 ? changingPosition : null;
+    this.relationFilter = { type, changingPosition: position };
+    this.relationReveal = this.reducedMotion ? 1 : 0;
+    this.renderFocusId = null;
+    if (this.activeNode) this.focusVisible = new Set([this.activeNode.id, ...this._relationTargets(this.activeNode.id)]);
+    this.callbacks.onRelationChange?.(this.getRelationState());
+    return true;
+  }
+
+  getRelationState(code = this.activeNode?.id || null) {
+    const waitingForChangingPosition = this.relationFilter.type === 'changing'
+      && this.relationFilter.changingPosition === null;
+    const occurrences = code && !waitingForChangingPosition ? getRelationOccurrences(this.graph, code, {
+      type: this.relationFilter.type,
+      changingPosition: this.relationFilter.changingPosition,
+    }) : [];
+    return {
+      code,
+      type: this.relationFilter.type,
+      changingPosition: this.relationFilter.changingPosition,
+      occurrences,
+      targets: [...new Set(occurrences.map((occurrence) => occurrence.to))],
+    };
+  }
+
+  setAutoRotate(enabled) {
+    const next = Boolean(enabled) && !this.reducedMotion;
+    if (this.autoRotate === next) return this.autoRotate;
+    this.autoRotate = next;
+    this.callbacks.onAutoRotateChange?.(this.autoRotate);
+    return this.autoRotate;
+  }
+
+  toggleAutoRotate() { return this.setAutoRotate(!this.autoRotate); }
+  isAutoRotating() { return this.autoRotate; }
 
   setMode(mode) { this.mode = mode; }
 
@@ -915,10 +1203,15 @@ export class StarMap {
   addTrail(fromCode, toCode) {
     if (fromCode && toCode && fromCode !== toCode) {
       this.trail.push({ from: fromCode, to: toCode, t: 0 }); // t=动画进度
-      if (this.trail.length > 48) this.trail.splice(0, this.trail.length - 48);
+      if (this.trail.length > 5) this.trail.splice(0, this.trail.length - 5);
     }
   }
   clearTrail() { this.trail = []; }
+
+  popTrail() {
+    const segment = this.trail.pop();
+    return segment?.from || null;
+  }
 
   // 缩放控制（供 UI 按钮调用）
   zoomBy(factor) {
@@ -955,6 +1248,14 @@ export class StarMap {
       node.z *= scale;
       node.zAmp *= scale;
     }
+    if (this.cameraTarget) {
+      this.cameraTarget.x *= scale;
+      this.cameraTarget.y *= scale;
+      this.cameraTarget.z *= scale;
+    }
+    this.cameraPos.x *= scale;
+    this.cameraPos.y *= scale;
+    this.cameraPos.z *= scale;
     this._initBackground();
     this.simulation.force('xA', forceX(d => d.targetX).strength(d => d.isPure ? 1 : 0.25));
     this.simulation.force('yA', forceY(d => d.targetY).strength(d => d.isPure ? 1 : 0.25));

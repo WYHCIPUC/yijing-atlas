@@ -41,14 +41,21 @@ export function castHexagram() {
   };
 }
 
+export const READING_POLICY = Object.freeze({
+  id: 'zhu-xi-qimeng-v1',
+  name: '朱熹系常见变占规则',
+  source: '《易学启蒙》所载常见变占法',
+  caveat: '此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。',
+});
+
 // 变爻取辞规则
 // 0 变爻：看本卦卦辞
 // 1 变爻：看本卦变爻爻辞
-// 2 变爻：看本卦上变爻爻辞 + 变卦下变爻爻辞
+// 2 变爻：看本卦两条变爻爻辞，以上爻为主、下爻为参
 // 3 变爻：看本卦卦辞 + 变卦卦辞
-// 4 变爻：看变卦下不变爻爻辞
+// 4 变爻：看变卦两条不变爻爻辞，以下爻为主、上爻为参
 // 5 变爻：看变卦不变爻爻辞
-// 6 变爻（全变）：看变卦卦辞（乾坤看用九/用六）
+// 6 变爻（全变）：乾取本卦用九、坤取本卦用六，其余看变卦卦辞
 export function getReading(cast, primaryHex, changedHex) {
   const n = cast.changingIdxs.length;
   const readings = [];
@@ -58,42 +65,51 @@ export function getReading(cast, primaryHex, changedHex) {
     const pos = cast.changingIdxs[0] + 1;
     readings.push(createLineReading(primaryHex, pos));
   } else if (n === 6) {
-    if (changedHex.useNine || changedHex.useSix) {
-      const kind = changedHex.useNine ? 'useNine' : 'useSix';
-      readings.push(createUseReading(changedHex, kind));
+    if (primaryHex.useNine || primaryHex.useSix) {
+      const kind = primaryHex.useNine ? 'useNine' : 'useSix';
+      readings.push(createUseReading(primaryHex, kind));
     } else {
       readings.push(createJudgementReading(changedHex));
     }
   } else if (n === 2) {
-    const upper = cast.changingIdxs[n - 1];
-    readings.push(createLineReading(primaryHex, upper + 1));
+    const [lower, upper] = [...cast.changingIdxs].sort((a, b) => a - b);
+    readings.push(createLineReading(primaryHex, upper + 1, 'primary'));
+    readings.push(createLineReading(primaryHex, lower + 1, 'secondary'));
   } else if (n === 3) {
-    readings.push(createJudgementReading(primaryHex));
-    readings.push(createJudgementReading(changedHex));
+    readings.push(createJudgementReading(primaryHex, 'primary'));
+    readings.push(createJudgementReading(changedHex, 'secondary'));
   } else if (n === 4) {
     const unchangedIdxs = cast.changingIdxs.reduce((items, index) => {
       items.delete(index);
       return items;
     }, new Set([0, 1, 2, 3, 4, 5]));
-    const lower = Math.min(...unchangedIdxs);
-    readings.push(createLineReading(changedHex, lower + 1));
+    const [lower, upper] = [...unchangedIdxs].sort((a, b) => a - b);
+    readings.push(createLineReading(changedHex, lower + 1, 'primary'));
+    readings.push(createLineReading(changedHex, upper + 1, 'secondary'));
   } else if (n === 5) {
     const unchanged = [0, 1, 2, 3, 4, 5].find((index) => !cast.changingIdxs.includes(index));
     readings.push(createLineReading(changedHex, unchanged + 1));
   }
-  return { n, readings, rule: getRuleText(n) };
+  return {
+    n,
+    readings,
+    rule: getRuleText(n),
+    policyId: READING_POLICY.id,
+    policy: READING_POLICY,
+  };
 }
 
-function createJudgementReading(hexagram) {
+function createJudgementReading(hexagram, priority = 'primary') {
   return {
     src: `${hexagram.name}·卦辞`,
     text: hexagram.judgement,
     kind: 'judgement',
     hexCode: hexagram.binaryCode,
+    priority,
   };
 }
 
-function createLineReading(hexagram, position) {
+function createLineReading(hexagram, position, priority = 'primary') {
   const line = hexagram.lines[position - 1];
   return {
     src: `${hexagram.name}·${yaoLabel(position, line.isYang)}`,
@@ -101,16 +117,18 @@ function createLineReading(hexagram, position) {
     kind: 'line',
     position,
     hexCode: hexagram.binaryCode,
+    priority,
   };
 }
 
-function createUseReading(hexagram, kind) {
+function createUseReading(hexagram, kind, priority = 'primary') {
   const label = kind === 'useNine' ? '用九' : '用六';
   return {
     src: `${hexagram.name}·${label}`,
     text: hexagram[kind],
     kind,
     hexCode: hexagram.binaryCode,
+    priority,
   };
 }
 
@@ -118,11 +136,11 @@ function getRuleText(n) {
   const rules = {
     0: '无变爻，以本卦卦辞断之。',
     1: '一爻变，以本卦变爻爻辞断之。',
-    2: '二爻变，以本卦上变爻爻辞为主断之。',
-    3: '三爻变，以本卦卦辞与变卦卦辞合断之。',
-    4: '四爻变，以变卦两个不变爻中较下者的爻辞为主断之。',
+    2: '二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。',
+    3: '三爻变，兼看本卦与变卦卦辞，以本卦为主、变卦为参。',
+    4: '四爻变，兼看变卦两条不变爻爻辞，以下爻为主、上爻为参。',
     5: '五爻变，以变卦不变爻爻辞断之。',
-    6: '六爻全变，乾坤优先参看用九、用六，其余以变卦卦辞断之。',
+    6: '六爻全变，若本卦为乾则取乾用九，本卦为坤则取坤用六；其余以变卦卦辞为主。',
   };
   return rules[n] || '';
 }
