@@ -83,6 +83,8 @@ test('关键词按焦点、关系和纯卦语义逐层展开', () => {
 test('视角读数把缩放层级和球面姿态转换为稳定的五度刻度', () => {
   assert.deepEqual(describeStarView({ scale: 1.5, yaw: 0.11, pitch: -0.09 }), {
     level: '关系层',
+    layoutMode: 'project',
+    layoutLabel: '项目关系球',
     zoomPercent: 150,
     yawDegrees: 5,
     pitchDegrees: -5,
@@ -173,6 +175,7 @@ test('星图把可见星群的中心、包围半径和镜头姿态同步给 WebG
     hoverY: null,
     hoverDepth: null,
     autoRotate: false,
+    layoutMode: 'project',
   });
 });
 
@@ -279,6 +282,26 @@ test('焦点标签不受入场标签延迟影响', () => {
   });
 
   assert.deepEqual(labels.map(label => label.node.id), ['焦点']);
+});
+
+test('经典图式总览只常驻结构地标，选卦后展开当前关系节点', () => {
+  const ctx = measuringContext(16);
+  const landmark = labelNode('本宫', { x: 80, number: 1 });
+  landmark.layoutOverviewLabel = true;
+  const ordinary = labelNode('中段', { x: 160, number: 2 });
+  const related = labelNode('关系', { x: 240, number: 3 });
+
+  assert.deepEqual(
+    layoutStarNameLabels(ctx, [landmark, ordinary, related], { classic: true, showAll: true }).map(label => label.node.id),
+    ['本宫'],
+  );
+  const focusedLabels = layoutStarNameLabels(ctx, [landmark, ordinary, related], {
+    classic: true,
+    showAll: true,
+    activeNode: ordinary,
+    focusVisible: new Set(['中段', '关系']),
+  }).map(label => label.node.id).sort();
+  assert.deepEqual(focusedLabels, ['中段', '关系', '本宫'].sort());
 });
 
 test('普通卦名碰撞框保持 7px 屏幕间距', () => {

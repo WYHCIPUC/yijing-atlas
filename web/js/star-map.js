@@ -2,6 +2,7 @@
 // 卦的空间位置编码易学含义：每卦被它的上下卦锚点吸引，错卦连线穿过中心对称。
 import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from '../lib/d3-force.js';
 import { getRelationOccurrences, relationTypesFrom } from './star-relations.js';
+import { buildStarLayout, STAR_LAYOUTS } from './star-layouts.js';
 
 // 先天八卦方位角（弧度），0=右(东)，顺时针。乾南=上。
 // 乾(南/上) 兑(东南) 离(东) 震(东北) 巽(西南) 坎(西) 艮(西北) 坤(北/下)
@@ -42,19 +43,23 @@ export function getKeywordDetailLevel({ zoom = 1, depthScale = 1, isFocus = fals
   return 0;
 }
 
-export function describeStarView({ scale = 1, yaw = 0, pitch = 0, autoRotate = false } = {}) {
+export function describeStarView({ scale = 1, yaw = 0, pitch = 0, autoRotate = false, layoutMode = 'project' } = {}) {
   const level = scale < 0.7 ? '总览层' : (scale < 1.35 ? '星图层' : (scale < 2.15 ? '关系层' : '释义层'));
   const roundAngle = value => Math.round(value * 180 / Math.PI / 5) * 5;
   const yawDegrees = ((roundAngle(yaw) % 360) + 360) % 360;
   const pitchDegrees = roundAngle(pitch);
   const signed = value => `${value > 0 ? '+' : ''}${value}°`;
+  const layout = STAR_LAYOUTS[layoutMode] || STAR_LAYOUTS.project;
+  const isProject = layout.id === 'project';
   return {
-    level,
+    level: isProject ? level : `${layout.shortLabel}图式`,
+    layoutMode: layout.id,
+    layoutLabel: layout.label,
     zoomPercent: Math.round(scale * 100),
     yawDegrees,
     pitchDegrees,
-    angleText: `经向 ${yawDegrees}° · 纬向 ${signed(pitchDegrees)}`,
-    rotationText: autoRotate ? '自动巡天中' : '手动观测',
+    angleText: isProject ? `经向 ${yawDegrees}° · 纬向 ${signed(pitchDegrees)}` : '固定方位 · 可平移缩放',
+    rotationText: isProject ? (autoRotate ? '自动巡天中' : '手动观测') : layout.sourceType,
   };
 }
 
@@ -77,6 +82,8 @@ export function layoutStarNameLabels(ctx, nodes, {
   time = 0,
   collisionGap = LABEL_COLLISION_GAP,
   compact = false,
+  showAll = false,
+  classic = false,
 } = {}) {
   const focus = hoveredNode || activeNode;
   const candidates = [];
@@ -85,10 +92,12 @@ export function layoutStarNameLabels(ctx, nodes, {
     const node = nodes[index];
     const isHovered = hoveredNode?.id === node.id;
     const isActive = activeNode?.id === node.id;
+    if (classic && !isHovered && !isActive && !node.layoutOverviewLabel
+      && (!focusVisible || !focusVisible.has(node.id))) continue;
     const delay = (node.number - 1) / 64 * 0.5;
     const localProgress = Math.max(0, Math.min(1, (appearProgress - delay) / 0.4));
     if ((!isHovered && !isActive && localProgress <= 0) || !node._screen) continue;
-    if (!focus && !node.isPure) continue;
+    if (!focus && !node.isPure && !showAll) continue;
 
     const screen = node._screen;
     const isFocus = focus?.id === node.id;
@@ -96,18 +105,23 @@ export function layoutStarNameLabels(ctx, nodes, {
     if (compact && isHidden && !isHovered && !isActive) continue;
     const nameVisibility = isHidden ? 0.1 : 1;
     const depthScale = 0.6 + screen.depthFactor * 0.5;
-    const fontSize = node.isPure
+    const fontSize = classic
+      ? (isFocus ? 20 : (node.layoutForceLabel ? 14 : 11)) * depthScale
+      : node.isPure
       ? (isFocus ? 38 : 30) * depthScale
       : Math.max(MIN_NORMAL_LABEL_FONT_SIZE, (isFocus ? 20 : 14) * depthScale);
-    const fontFamily = node.isPure
+    const fontFamily = !classic && node.isPure
       ? '"Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif'
       : '"ZCOOL XiaoWei", "STKaiti", "KaiTi", serif';
     const font = `${fontSize}px ${fontFamily}`;
     const x = screen.x;
-    const y = screen.y - (node.isPure ? 40 : 22) * depthScale;
+    const y = classic
+      ? screen.y - (node.layoutForceLabel ? 22 : 15) * depthScale
+      : screen.y - (node.isPure ? 40 : 22) * depthScale;
+    const labelText = node.layoutLabel || node.name;
 
     ctx.font = font;
-    const metrics = ctx.measureText(node.name);
+    const metrics = ctx.measureText(labelText);
     const measuredWidth = Number.isFinite(metrics.width) ? metrics.width : 0;
     const measuredHeight = Number.isFinite(metrics.actualBoundingBoxAscent)
       && Number.isFinite(metrics.actualBoundingBoxDescent)
@@ -117,7 +131,7 @@ export function layoutStarNameLabels(ctx, nodes, {
     const height = Math.max(fontSize, measuredHeight);
 
     let priorityTier = isHidden ? 0 : 1;
-    if (node.isPure) priorityTier = 2;
+    if (node.isPure || node.layoutForceLabel) priorityTier = 2;
     if (isActive) priorityTier = 3;
     if (isHovered) priorityTier = 4;
 
@@ -131,17 +145,17 @@ export function layoutStarNameLabels(ctx, nodes, {
 
     candidates.push({
       node,
-      text: node.name,
+      text: labelText,
       x,
       y,
       font,
       fontSize,
       fillStyle: isFocus
         ? 'rgba(255,240,200,1)'
-        : (node.isPure
+        : (!classic && node.isPure
           ? `rgba(212,165,116,${alpha})`
           : `rgba(180,160,110,${alpha})`),
-      forceVisible: isHovered || isActive || node.isPure,
+      forceVisible: isHovered || isActive || (!classic && node.isPure) || Boolean(node.layoutForceLabel),
       priorityTier,
       importance,
       sourceIndex: index,
@@ -195,6 +209,9 @@ export class StarMap {
     this.motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
     this.reducedMotion = this.motionPreference.matches;
     this.autoRotate = !this.reducedMotion;
+    this.layoutMode = 'project';
+    this.layoutState = buildStarLayout(this.graph.nodes, this.layoutMode);
+    this.layoutReveal = 1;
     this.relationFilter = { type: 'opposite', changingPosition: null };
     this.relationReveal = 1;
     this.isPaused = false;
@@ -234,6 +251,7 @@ export class StarMap {
       hoverY: null,
       hoverDepth: null,
       autoRotate: this.autoRotate,
+      layoutMode: this.layoutMode,
     };
 
     this._setupDpr();
@@ -407,34 +425,21 @@ export class StarMap {
 
   // 三维球状布局：64 卦分布在球面/球体内，上下卦映射到球坐标经纬度
   _initLayout() {
-    const ballR = this.anchorR; // 球半径
     for (const n of this.graph.nodes) {
       const lower = n.binaryCode.slice(0, 3);
       const upper = n.binaryCode.slice(3, 6);
       n.isPure = lower === upper;
-      // 球坐标：下卦决定经度，上卦决定纬度
-      const lowerAng = TRIGRAM_ANGLE[lower]; // -π/2 ~ π
-      const upperAng = TRIGRAM_ANGLE[upper];
-      const lon = lowerAng;                           // 经度（下卦方位）
-      const lat = (upperAng / Math.PI) * Math.PI / 2; // 纬度（上卦方位映射到 ±π/2）
-      // 半径：纯卦在球面（最外），普通卦在球内（有体积感）
-      const r = n.isPure ? ballR : (ballR * (0.55 + Math.random() * 0.4));
-      // 球坐标 → 三维笛卡尔目标
-      const cosLat = Math.cos(lat);
-      n.targetX = this.cx + r * cosLat * Math.cos(lon);
-      n.targetY = this.cy + r * cosLat * Math.sin(lon);
-      n.targetZ = r * Math.sin(lat); // z 目标（球状分布的关键）
-      // 初始位置
-      n.x = this.cx + (Math.random() - 0.5) * 100;
-      n.y = this.cy + (Math.random() - 0.5) * 100;
+      const seed = Number.parseInt(n.binaryCode, 2);
+      const angle = seed / 64 * Math.PI * 2;
+      const radius = 24 + seed % 5 * 8;
+      n.x = this.cx + Math.cos(angle) * radius;
+      n.y = this.cy + Math.sin(angle) * radius;
       n.vx = 0; n.vy = 0;
-      // z 轴：以球坐标 z 为基准，加缓慢振荡
-      n._zBase = n.targetZ;
-      n.z = n._zBase;
-      n.zAmp = 25 + Math.random() * 35;
-      n.zPhase = Math.random() * Math.PI * 2;
-      n.zSpeed = 0.003 + Math.random() * 0.004;
+      n.zPhase = seed / 64 * Math.PI * 2;
+      n.zSpeed = 0.003 + seed % 7 * 0.00055;
     }
+
+    this._applyLayoutTargets(this.layoutMode, { initial: true });
 
     // 用 d3-force：节点斥力 + 强力 X/Y 定位（拉向 targetX/Y）+ 弱连线
     this.nodeById = new Map(this.graph.nodes.map((n) => [n.id, n]));
@@ -446,10 +451,81 @@ export class StarMap {
     this.simulation = forceSimulation(this.graph.nodes)
       .force('charge', forceManyBody().strength(-50))
       .force('link', forceLink(links).id(d => d.index).distance(80).strength(0.06))
-      .force('xA', forceX(d => d.targetX).strength(d => d.isPure ? 0.9 : 0.18))
-      .force('yA', forceY(d => d.targetY).strength(d => d.isPure ? 0.9 : 0.18))
+      .force('xA', forceX(d => d.targetX).strength(d => this._layoutForceStrength(d)))
+      .force('yA', forceY(d => d.targetY).strength(d => this._layoutForceStrength(d)))
       .force('center', forceCenter(this.cx, this.cy))
       .alphaDecay(0.015);
+  }
+
+  _projectTarget(node) {
+    const lower = node.binaryCode.slice(0, 3);
+    const upper = node.binaryCode.slice(3, 6);
+    const lon = TRIGRAM_ANGLE[lower];
+    const lat = (TRIGRAM_ANGLE[upper] / Math.PI) * Math.PI / 2;
+    const seed = Number.parseInt(node.binaryCode, 2);
+    const radialRatio = node.isPure ? 1 : 0.55 + ((seed * 37) % 41) / 100;
+    const radius = this.anchorR * radialRatio;
+    const cosLat = Math.cos(lat);
+    return {
+      x: this.cx + radius * cosLat * Math.cos(lon),
+      y: this.cy + radius * cosLat * Math.sin(lon),
+      z: radius * Math.sin(lat),
+    };
+  }
+
+  _layoutForceStrength(node) {
+    if (this.layoutMode !== 'project') return node.layoutVisible ? 0.82 : 0.35;
+    return node.isPure ? 0.9 : 0.18;
+  }
+
+  _refreshLayoutForces() {
+    if (!this.simulation) return;
+    this.simulation.force('xA', forceX(d => d.targetX).strength(d => this._layoutForceStrength(d)));
+    this.simulation.force('yA', forceY(d => d.targetY).strength(d => this._layoutForceStrength(d)));
+    const linkForce = this.simulation.force('link');
+    if (typeof linkForce?.strength === 'function') linkForce.strength(this.layoutMode === 'project' ? 0.06 : 0);
+    this.simulation.force('center', forceCenter(this.cx, this.cy));
+    this.simulation.alpha(0.72).restart();
+  }
+
+  _applyLayoutTargets(mode, { initial = false, preserveReveal = false } = {}) {
+    this.layoutState = buildStarLayout(this.graph.nodes, mode);
+    this.layoutMode = this.layoutState.id;
+    for (const node of this.graph.nodes) {
+      const classicPosition = this.layoutState.positions.get(node.id);
+      const target = this.layoutMode === 'project'
+        ? this._projectTarget(node)
+        : classicPosition
+          ? {
+            x: this.cx + classicPosition.x * this.anchorR,
+            y: this.cy + classicPosition.y * this.anchorR,
+            z: classicPosition.z * this.anchorR,
+          }
+          : { x: this.cx, y: this.cy, z: 0 };
+      node.layoutVisible = this.layoutState.visibleCodes.has(node.id);
+      node.layoutLabel = this.layoutMode === 'king-wen' ? `${String(node.number).padStart(2, '0')} · ${node.name}`
+        : this.layoutMode === 'twelve-messages' && classicPosition ? `${node.name} · ${classicPosition.label}`
+          : node.name;
+      node.layoutForceLabel = this.layoutMode === 'earlier-heaven' || this.layoutMode === 'twelve-messages';
+      node.layoutOverviewLabel = this.layoutMode === 'earlier-heaven' || this.layoutMode === 'twelve-messages'
+        || (this.layoutMode === 'eight-palaces' && [0, 7].includes(classicPosition?.stageIndex))
+        || (this.layoutMode === 'king-wen' && [1, 16, 17, 30, 31, 32, 48, 64].includes(node.number));
+      node.targetX = target.x;
+      node.targetY = target.y;
+      node.targetZ = target.z;
+      node._zBase = target.z;
+      node.zAmp = this.layoutMode === 'project'
+        ? this.anchorR * (0.08 + Number.parseInt(node.binaryCode, 2) % 7 * 0.012)
+        : this.anchorR * 0.008;
+      if (initial) node.z = target.z;
+    }
+    if (!preserveReveal) this.layoutReveal = initial || this.reducedMotion ? 1 : 0;
+    this.renderFocusId = null;
+    this._refreshLayoutForces();
+  }
+
+  _isNodeVisible(node) {
+    return Boolean(node?.layoutVisible || (this.focusVisible && this.focusVisible.has(node?.id)));
   }
 
   // 真 3D 透视投影：双轴旋转(yaw/pitch) + 相机焦点偏移
@@ -484,6 +560,7 @@ export class StarMap {
     const baseR = Math.max(14, 16 * this.view.scale); // 加大基础命中半径
     let best = null, bestScore = -Infinity;
     for (const n of this.graph.nodes) {
+      if (!this._isNodeVisible(n)) continue;
       if (this.focusVisible && !this.focusVisible.has(n.id)) continue;
       const p = this._worldToScreen(n.x, n.y, n.z);
       const r = baseR * (0.5 + p.depthFactor * 0.8); // 近的星命中范围更大
@@ -525,6 +602,7 @@ export class StarMap {
     let centerY = 0;
     let visibleCount = 0;
     for (const node of this.graph.nodes) {
+      if (!this._isNodeVisible(node)) continue;
       if (this.focusVisible && !this.focusVisible.has(node.id)) continue;
       centerX += node._screen.x;
       centerY += node._screen.y;
@@ -536,6 +614,7 @@ export class StarMap {
 
     let squaredDistance = 0;
     for (const node of this.graph.nodes) {
+      if (!this._isNodeVisible(node)) continue;
       if (this.focusVisible && !this.focusVisible.has(node.id)) continue;
       squaredDistance += (node._screen.x - centerX) ** 2 + (node._screen.y - centerY) ** 2;
     }
@@ -561,6 +640,7 @@ export class StarMap {
     shared.hoverY = hoverPoint ? rect.top + hoverPoint.y : null;
     shared.hoverDepth = hoverPoint?.depthFactor ?? null;
     shared.autoRotate = Boolean(this.autoRotate);
+    shared.layoutMode = this.layoutMode || 'project';
     this.callbacks.onViewChange(shared);
   }
 
@@ -577,7 +657,10 @@ export class StarMap {
       } else {
         c.setPointerCapture?.(e.pointerId);
         this.isDragging = true;
-        this.dragStart = { x: sx, y: sy, yaw: this.yaw, pitch: this.pitch };
+        this.dragStart = {
+          x: sx, y: sy, yaw: this.yaw, pitch: this.pitch,
+          viewX: this.view.x, viewY: this.view.y,
+        };
         this.setAutoRotate(false);
       }
     });
@@ -585,11 +668,17 @@ export class StarMap {
       const rect = c.getBoundingClientRect();
       const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
       if (this.isDragging) {
-        // 双轴自由旋转：左右拖改 yaw，上下拖改 pitch
         const dx = sx - this.dragStart.x;
         const dy = sy - this.dragStart.y;
-        this.yaw = this.dragStart.yaw + dx * 0.006;
-        this.pitch = Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, this.dragStart.pitch + dy * 0.006));
+        if (this.layoutMode === 'project') {
+          // 项目关系球使用双轴自由旋转。
+          this.yaw = this.dragStart.yaw + dx * 0.006;
+          this.pitch = Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, this.dragStart.pitch + dy * 0.006));
+        } else {
+          // 经典图式保持传统方位不旋转，空白拖拽只平移画面。
+          this.view.x = this.dragStart.viewX + dx;
+          this.view.y = this.dragStart.viewY + dy;
+        }
       } else {
         const node = this._nodeAt(sx, sy);
         if (node !== this.hoveredNode) {
@@ -625,10 +714,20 @@ export class StarMap {
     });
     c.addEventListener('keydown', (event) => {
       const step = event.shiftKey ? 0.18 : 0.08;
-      if (event.key === 'ArrowLeft') this.yaw -= step;
-      else if (event.key === 'ArrowRight') this.yaw += step;
-      else if (event.key === 'ArrowUp') this.pitch = Math.max(-Math.PI / 2.2, this.pitch - step);
-      else if (event.key === 'ArrowDown') this.pitch = Math.min(Math.PI / 2.2, this.pitch + step);
+      const panStep = event.shiftKey ? 42 : 22;
+      if (event.key === 'ArrowLeft') {
+        if (this.layoutMode === 'project') this.yaw -= step;
+        else this.view.x -= panStep;
+      } else if (event.key === 'ArrowRight') {
+        if (this.layoutMode === 'project') this.yaw += step;
+        else this.view.x += panStep;
+      } else if (event.key === 'ArrowUp') {
+        if (this.layoutMode === 'project') this.pitch = Math.max(-Math.PI / 2.2, this.pitch - step);
+        else this.view.y -= panStep;
+      } else if (event.key === 'ArrowDown') {
+        if (this.layoutMode === 'project') this.pitch = Math.min(Math.PI / 2.2, this.pitch + step);
+        else this.view.y += panStep;
+      }
       else if (event.key === '+' || event.key === '=') this.zoomBy(1.15);
       else if (event.key === '-') this.zoomBy(0.87);
       else if (event.key === 'Home') this.zoomReset();
@@ -686,7 +785,8 @@ export class StarMap {
       const deltaMs = Math.min(50, elapsed);
       this.frameStep = deltaMs / (1000 / 60);
       this.time += this.frameStep;
-      if (this.autoRotate) this.yaw += 0.0006 * this.frameStep;
+      if (this.autoRotate && this.layoutMode === 'project') this.yaw += 0.0006 * this.frameStep;
+      this.layoutReveal = this.reducedMotion ? 1 : Math.min(1, this.layoutReveal + deltaMs / 620);
       this.relationReveal = this.reducedMotion ? 1 : Math.min(1, this.relationReveal + deltaMs / 420);
       if (this.reducedMotion) this.appearProgress = 1;
       else if (this.appearProgress < 1) this.appearProgress = Math.min(1, this.appearProgress + deltaMs / 900);
@@ -830,6 +930,79 @@ export class StarMap {
     ctx.restore();
   }
 
+  _drawLayoutGuide(ctx, time) {
+    if (this.layoutMode === 'project') return;
+    const center = this._worldToScreen(this.cx, this.cy, 0);
+    const radius = this.anchorR * this.view.scale;
+    const reveal = this.layoutReveal;
+    ctx.save();
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = reveal;
+    ctx.strokeStyle = 'rgba(201,169,106,0.18)';
+    ctx.fillStyle = 'rgba(232,208,154,0.62)';
+    ctx.lineWidth = 0.8;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    const circle = (ratio, dash = []) => {
+      ctx.setLineDash(dash);
+      ctx.beginPath();
+      ctx.arc(center.x, center.y, radius * ratio, 0, Math.PI * 2);
+      ctx.stroke();
+    };
+
+    if (this.layoutMode === 'earlier-heaven') {
+      circle(0.86, [3, 7]);
+      circle(0.22);
+      ctx.font = '12px "ZCOOL XiaoWei", serif';
+      const directions = [['南', 0, -1], ['东', -1, 0], ['北', 0, 1], ['西', 1, 0]];
+      directions.forEach(([label, x, y]) => ctx.fillText(label, center.x + x * radius * 1.02, center.y + y * radius * 1.02));
+      ctx.font = '14px "ZCOOL XiaoWei", serif';
+      ctx.fillText('先天方位', center.x, center.y);
+    } else if (this.layoutMode === 'king-wen') {
+      for (const ratio of [0.28, 0.48, 0.68, 0.88]) circle(ratio, [2, 8]);
+      ctx.font = '12px "ZCOOL XiaoWei", serif';
+      ctx.fillText('上经 1–30', center.x, center.y - 10);
+      ctx.fillText('下经 31–64', center.x, center.y + 10);
+    } else if (this.layoutMode === 'eight-palaces') {
+      for (let index = 0; index < 8; index += 1) {
+        const ratio = 0.24 + index * 0.105;
+        circle(ratio, index === 0 || index === 7 ? [] : [2, 7]);
+      }
+      ctx.setLineDash([]);
+      this.layoutState.groups.forEach((group, index) => {
+        const angle = -Math.PI / 2 + index / 8 * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(center.x + Math.cos(angle) * radius * 0.18, center.y + Math.sin(angle) * radius * 0.18);
+        ctx.lineTo(center.x + Math.cos(angle) * radius * 0.98, center.y + Math.sin(angle) * radius * 0.98);
+        ctx.stroke();
+        ctx.font = '11px "ZCOOL XiaoWei", serif';
+        ctx.fillText(group.name, center.x + Math.cos(angle) * radius * 1.03, center.y + Math.sin(angle) * radius * 1.03);
+      });
+      ctx.font = '11px "ZCOOL XiaoWei", serif';
+      ctx.fillText('本宫 → 归魂', center.x, center.y);
+    } else if (this.layoutMode === 'twelve-messages') {
+      circle(0.82);
+      circle(0.28, [2, 8]);
+      for (let index = 0; index < 12; index += 1) {
+        const angle = Math.PI / 2 + index / 12 * Math.PI * 2;
+        const inner = radius * 0.76;
+        const outer = radius * 0.88;
+        ctx.beginPath();
+        ctx.moveTo(center.x + Math.cos(angle) * inner, center.y + Math.sin(angle) * inner);
+        ctx.lineTo(center.x + Math.cos(angle) * outer, center.y + Math.sin(angle) * outer);
+        ctx.stroke();
+      }
+      ctx.font = '12px "ZCOOL XiaoWei", serif';
+      ctx.fillText('阳息', center.x - 26, center.y);
+      ctx.fillText('阴消', center.x + 26, center.y);
+      ctx.font = '10px "ZCOOL XiaoWei", serif';
+      ctx.fillText(time % 240 < 120 ? '复 · 一阳来复' : '姤 · 一阴初生', center.x, center.y + 20);
+    }
+    ctx.setLineDash([]);
+    ctx.restore();
+  }
+
   _render() {
     const ctx = this.ctx;
     const t = this.reducedMotion ? 0 : this.time;
@@ -860,13 +1033,14 @@ export class StarMap {
     // 每帧只投影一次节点；边、星体和标签共享结果。
     for (const n of this.graph.nodes) n._screen = this._worldToScreen(n.x, n.y, n.z);
     this._emitSharedView();
+    this._drawLayoutGuide(ctx, t);
 
     // 关系漫游轨迹层（金色路径，渐显动画）
     if (this.trail.length > 0) {
       ctx.globalCompositeOperation = 'lighter';
       for (const seg of this.trail) {
         const s = this.nodeById.get(seg.from), e = this.nodeById.get(seg.to);
-        if (!s || !e) continue;
+        if (!s || !e || !this._isNodeVisible(s) || !this._isNodeVisible(e)) continue;
         seg.t = Math.min(1, seg.t + 0.04 * this.frameStep); // 渐显进度
         const sp = s._screen;
         const tp = e._screen;
@@ -890,7 +1064,7 @@ export class StarMap {
     const focusRels = this._getFocusRelationSet(focus);
     for (const e of this.graph.edges) {
       const s = this.nodeById.get(e.source), tn = this.nodeById.get(e.target);
-      if (!s || !tn) continue;
+      if (!s || !tn || !this._isNodeVisible(s) || !this._isNodeVisible(tn)) continue;
       const sp = s._screen;
       const tp = tn._screen;
       const avgDepth = (sp.depthFactor + tp.depthFactor) / 2;
@@ -971,6 +1145,7 @@ export class StarMap {
     ctx.globalCompositeOperation = 'lighter';
     this.sortedNodes.sort((a, b) => a.z - b.z);
     for (const n of this.sortedNodes) {
+      if (!this._isNodeVisible(n)) continue;
       const delay = (n.number - 1) / 64 * 0.5;
       const localP = Math.max(0, Math.min(1, (this.appearProgress - delay) / 0.4));
       if (localP <= 0) continue;
@@ -981,7 +1156,7 @@ export class StarMap {
       const isRel = focusRels && focusRels.has(n.id) && !isFocus;
       // focus 模式：非关系卦淡入星空背景（大幅降低可见度）
       const isHidden = this.focusVisible && !this.focusVisible.has(n.id);
-      const visibility = isHidden ? 0.08 : 1; // 非关系卦只剩 8% 可见度
+      const visibility = (isHidden ? 0.08 : 1) * this.layoutReveal; // 切换图式时随结构重组渐显
       // 多频明灭：慢呼吸 + 快闪烁，每颗星独立节奏
       const seed = n.binaryCode.charCodeAt(0) + n.binaryCode.charCodeAt(3);
       const tw1 = Math.sin(t * 0.022 + seed);
@@ -1080,13 +1255,16 @@ export class StarMap {
     // 卦名标签：交互标签与 8 纯卦强制保留，普通标签按优先级防碰撞。
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    const nameLabels = layoutStarNameLabels(ctx, this.graph.nodes, {
+    const visibleNodes = this.graph.nodes.filter((node) => this._isNodeVisible(node));
+    const nameLabels = layoutStarNameLabels(ctx, visibleNodes, {
       hoveredNode: this.hoveredNode,
       activeNode: this.activeNode,
       focusVisible: this.focusVisible,
       appearProgress: this.appearProgress,
       time: t,
       compact: this.width <= 600,
+      showAll: this.layoutMode !== 'project',
+      classic: this.layoutMode !== 'project',
     });
     for (const label of nameLabels) {
       ctx.font = label.font;
@@ -1180,8 +1358,41 @@ export class StarMap {
     };
   }
 
+  setLayoutMode(mode) {
+    const next = buildStarLayout(this.graph.nodes, mode);
+    if (next.id === this.layoutMode) return this.getLayoutState();
+    this.setAutoRotate(false);
+    this.activeNode = null;
+    this.hoveredNode = null;
+    this.focusVisible = null;
+    this.cameraTarget = null;
+    this.view.x = 0;
+    this.view.y = 0;
+    this.view.scale = 1;
+    this.yaw = 0;
+    this.pitch = 0;
+    this._applyLayoutTargets(next.id);
+    this.callbacks.onFocus?.(null);
+    this.callbacks.onRelationChange?.(this.getRelationState());
+    const state = this.getLayoutState();
+    this.callbacks.onLayoutChange?.(state);
+    return state;
+  }
+
+  getLayoutState() {
+    return {
+      mode: this.layoutMode,
+      label: this.layoutState.label,
+      shortLabel: this.layoutState.shortLabel,
+      sourceType: this.layoutState.sourceType,
+      description: this.layoutState.description,
+      visibleCodes: [...this.layoutState.visibleCodes],
+      groups: this.layoutState.groups,
+    };
+  }
+
   setAutoRotate(enabled) {
-    const next = Boolean(enabled) && !this.reducedMotion;
+    const next = Boolean(enabled) && !this.reducedMotion && this.layoutMode === 'project';
     if (this.autoRotate === next) return this.autoRotate;
     this.autoRotate = next;
     this.callbacks.onAutoRotateChange?.(this.autoRotate);
@@ -1219,6 +1430,8 @@ export class StarMap {
   }
   zoomReset() {
     this.view.scale = 1;
+    this.view.x = 0;
+    this.view.y = 0;
   }
   getZoomPercent() {
     return Math.round(this.view.scale * 100);
@@ -1242,11 +1455,7 @@ export class StarMap {
     for (const node of this.graph.nodes) {
       node.x = this.cx + (node.x - previous.cx) * scale;
       node.y = this.cy + (node.y - previous.cy) * scale;
-      node.targetX = this.cx + (node.targetX - previous.cx) * scale;
-      node.targetY = this.cy + (node.targetY - previous.cy) * scale;
-      node._zBase *= scale;
       node.z *= scale;
-      node.zAmp *= scale;
     }
     if (this.cameraTarget) {
       this.cameraTarget.x *= scale;
@@ -1257,9 +1466,7 @@ export class StarMap {
     this.cameraPos.y *= scale;
     this.cameraPos.z *= scale;
     this._initBackground();
-    this.simulation.force('xA', forceX(d => d.targetX).strength(d => d.isPure ? 1 : 0.25));
-    this.simulation.force('yA', forceY(d => d.targetY).strength(d => d.isPure ? 1 : 0.25));
-    this.simulation.force('center', forceCenter(this.cx, this.cy));
+    this._applyLayoutTargets(this.layoutMode, { preserveReveal: true });
     this.simulation.alpha(0.3).restart();
   }
 }

@@ -16,7 +16,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="lib/vendor/lenis.css" />
-  <link rel="stylesheet" href="styles/main.css?v=39" />
+  <link rel="stylesheet" href="styles/main.css?v=40" />
 </head>
 <body>
   <div class="pointer-aura" aria-hidden="true"></div>
@@ -85,8 +85,8 @@
   </header>
 
   <canvas id="celestial-canvas" aria-hidden="true"></canvas>
-  <p class="sr-only" id="star-canvas-description">当前为项目关系布局，并非传统固定图式。可用方向键旋转、加减号缩放；下方文字关系列表提供与画布等价的键盘入口。</p>
-  <canvas id="star-canvas" tabindex="0" role="img" aria-describedby="star-canvas-description star-relation-status"
+  <p class="sr-only" id="star-canvas-description">星图可切换项目关系球与四种经典阅读图式。项目关系球可旋转；经典图式保持固定方位并支持平移缩放。下方文字关系列表提供与画布等价的键盘入口。</p>
+  <canvas id="star-canvas" tabindex="0" role="img" aria-describedby="star-canvas-description star-layout-description star-relation-status"
     aria-label="六十四卦项目关系星图，可拖动、缩放并选择卦象"></canvas>
   <div class="star-hover-card" id="star-hover-card" aria-hidden="true">
     <small>第 <b data-hover-number>01</b> 卦</small>
@@ -134,9 +134,20 @@
 
   <section class="relation-layers" id="relation-layers" aria-labelledby="relation-layers-title">
     <div class="relation-layers-heading">
-      <div><small>项目关系布局</small><strong id="relation-layers-title">关系分层</strong></div>
+      <div><small id="star-layout-source">项目关系布局</small><strong id="relation-layers-title">图式与关系</strong></div>
       <span id="star-relation-status" role="status" aria-live="polite">错卦层 · 请先选择一卦</span>
     </div>
+    <div class="star-layout-control">
+      <label for="star-layout-mode">观图</label>
+      <select id="star-layout-mode" aria-describedby="star-layout-description">
+        <option value="project">项目关系球</option>
+        <option value="earlier-heaven">先天八卦</option>
+        <option value="king-wen">文王卦序</option>
+        <option value="eight-palaces">八宫卦序</option>
+        <option value="twelve-messages">十二消息</option>
+      </select>
+    </div>
+    <p class="star-layout-description" id="star-layout-description" role="status" aria-live="polite">项目按上下卦映射到球体；这是项目关系布局，不是传统固定图式。</p>
     <div class="relation-layer-buttons" role="group" aria-label="选择星图关系层">
       <button type="button" class="active" data-relation-layer="opposite" aria-pressed="true">错</button>
       <button type="button" data-relation-layer="reversed" aria-pressed="false">综</button>
@@ -200,6 +211,6 @@
 
   <script src="lib/vendor/gsap.min.js"></script>
   <script src="lib/vendor/lenis.min.js"></script>
-  <script type="module" src="js/main.js?v=39"></script>
+  <script type="module" src="js/main.js?v=40"></script>
 </body>
 </html>

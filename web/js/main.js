@@ -23,11 +23,11 @@ import { hexagramSvg } from './svg-painter.js';
 const { buildHexagramIndex, searchHexagrams } = dataLoader;
 
 const modeLoaders = {
-  almanac: () => import('./almanac-page.js?v=39').then((module) => module.renderAlmanacPage),
-  divination: () => import('./modes/divination-mode.js?v=39').then((module) => module.renderDivinationMode),
-  learning: () => import('./modes/learning-mode.js?v=39').then((module) => module.renderLearningMode),
-  quiz: () => import('./modes/quiz-mode.js?v=39').then((module) => module.renderQuizMode),
-  review: () => import('./modes/review-mode.js?v=39').then((module) => module.renderReviewMode),
+  almanac: () => import('./almanac-page.js?v=40').then((module) => module.renderAlmanacPage),
+  divination: () => import('./modes/divination-mode.js?v=40').then((module) => module.renderDivinationMode),
+  learning: () => import('./modes/learning-mode.js?v=40').then((module) => module.renderLearningMode),
+  quiz: () => import('./modes/quiz-mode.js?v=40').then((module) => module.renderQuizMode),
+  review: () => import('./modes/review-mode.js?v=40').then((module) => module.renderReviewMode),
 };
 
 const state = {
@@ -66,6 +66,9 @@ const relationLayersEl = document.getElementById('relation-layers');
 const relationStatusEl = document.getElementById('star-relation-status');
 const relationListEl = document.getElementById('star-accessible-list');
 const changingPositionsEl = relationLayersEl?.querySelector('.changing-position-buttons');
+const starLayoutSelect = document.getElementById('star-layout-mode');
+const starLayoutSource = document.getElementById('star-layout-source');
+const starLayoutDescription = document.getElementById('star-layout-description');
 const autoRotateButton = document.getElementById('auto-rotate');
 const workspaceInsightBar = document.querySelector('.workspace-insight-bar');
 const compactPanelQuery = window.matchMedia('(max-width: 900px)');
@@ -147,10 +150,42 @@ const RELATION_BADGES = { opposite: '错', reversed: '综', interlocking: '互',
 
 function updateAutoRotateButton(active = false) {
   if (!autoRotateButton) return;
+  const fixedClassicLayout = autoRotateButton.disabled;
   autoRotateButton.setAttribute('aria-pressed', String(active));
-  autoRotateButton.setAttribute('aria-label', active ? '停止自动巡天' : '开启自动巡天');
-  autoRotateButton.title = active ? '停止自动巡天' : '开启自动巡天';
+  autoRotateButton.setAttribute('aria-label', fixedClassicLayout ? '经典图式保持固定方位' : (active ? '停止自动巡天' : '开启自动巡天'));
+  autoRotateButton.title = fixedClassicLayout ? '经典图式保持固定方位' : (active ? '停止自动巡天' : '开启自动巡天');
   autoRotateButton.classList.toggle('active', active);
+}
+
+function layoutEntryMeta(layoutState, code) {
+  if (layoutState?.mode === 'eight-palaces') {
+    for (const group of layoutState.groups || []) {
+      const entry = group.entries?.find((item) => item.code === code);
+      if (entry) return `${group.name} · ${entry.stage}`;
+    }
+  }
+  if (layoutState?.mode === 'twelve-messages') {
+    const entry = layoutState.groups?.find((item) => item.code === code);
+    if (entry) return `${entry.month} · ${entry.phase}`;
+  }
+  if (layoutState?.mode === 'earlier-heaven') {
+    const entry = layoutState.groups?.find((item) => item.code === code);
+    if (entry) return `${entry.direction}方`;
+  }
+  const hexagram = state.index?.byCode.get(code);
+  if (layoutState?.mode === 'king-wen' && hexagram) return `第 ${hexagram.number} 卦`;
+  return '';
+}
+
+function updateLayoutInterface(layoutState = state.starMap?.getLayoutState?.()) {
+  if (!layoutState || !starLayoutSelect || !starLayoutDescription || !starLayoutSource) return;
+  starLayoutSelect.value = layoutState.mode;
+  starLayoutSource.textContent = layoutState.sourceType;
+  starLayoutDescription.textContent = layoutState.description;
+  const fixedClassicLayout = layoutState.mode !== 'project';
+  autoRotateButton.disabled = fixedClassicLayout;
+  canvas.setAttribute('aria-label', `${layoutState.label}，可选择卦象并查看当前关系层`);
+  updateAutoRotateButton(state.starMap?.isAutoRotating());
 }
 
 function updateRelationInterface(relationState = {}) {
@@ -171,8 +206,16 @@ function updateRelationInterface(relationState = {}) {
 
   if (!relationState.code) {
     relationStatusEl.textContent = `${RELATION_NAMES[type]}层 · 总览仅显示八卦锚点`;
-    const anchors = state.hexagrams.filter((hexagram) => hexagram.binaryCode.slice(0, 3) === hexagram.binaryCode.slice(3));
-    relationListEl.innerHTML = anchors.map((hexagram) => `<li><button type="button" data-code="${hexagram.binaryCode}">${hexagram.name} · ${hexagram.fullName}</button></li>`).join('');
+    const layoutState = state.starMap?.getLayoutState?.();
+    const codes = layoutState?.mode && layoutState.mode !== 'project'
+      ? layoutState.visibleCodes
+      : state.hexagrams.filter((hexagram) => hexagram.binaryCode.slice(0, 3) === hexagram.binaryCode.slice(3)).map((hexagram) => hexagram.binaryCode);
+    const overviewHexagrams = codes.map((code) => state.index?.byCode.get(code)).filter(Boolean);
+    relationStatusEl.textContent = `${layoutState?.shortLabel || '关系球'} · ${RELATION_NAMES[type]}层 · ${overviewHexagrams.length} 个可选卦`;
+    relationListEl.innerHTML = overviewHexagrams.map((hexagram) => {
+      const meta = layoutEntryMeta(layoutState, hexagram.binaryCode);
+      return `<li><button type="button" data-code="${hexagram.binaryCode}"><span>${hexagram.name} · ${hexagram.fullName}</span>${meta ? `<em>${meta}</em>` : ''}</button></li>`;
+    }).join('');
     return;
   }
 
@@ -659,6 +702,12 @@ function bindGlobalInteractions() {
       canvas.focus({ preventScroll: true });
     }
   });
+  starLayoutSelect?.addEventListener('change', () => {
+    const layoutState = state.starMap?.setLayoutMode(starLayoutSelect.value);
+    updateLayoutInterface(layoutState);
+    updateRelationInterface(state.starMap?.getRelationState());
+    canvas.focus({ preventScroll: true });
+  });
   const modeButtons = [...document.querySelectorAll('.mode-btn')];
   modeButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -932,6 +981,7 @@ async function init() {
         updateRelationInterface(relationState);
         state.celestialStage?.setRelationState?.(relationState);
       },
+      onLayoutChange: updateLayoutInterface,
       onAutoRotateChange: updateAutoRotateButton,
       onHover: (code, point, meta) => {
         state.celestialStage?.focusHexagram(code, point);
@@ -945,6 +995,7 @@ async function init() {
     state.celestialStage.setMode('explore');
     bindGlobalInteractions();
     updateAutoRotateButton(state.starMap.isAutoRotating());
+    updateLayoutInterface(state.starMap.getLayoutState());
     updateRelationInterface(state.starMap.getRelationState());
     updateModeButtons('explore');
     updateExploreTools('star');

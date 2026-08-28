@@ -212,6 +212,40 @@ try {
   await client.evaluate('document.querySelector("[data-mode=explore]").click()');
   await waitFor(() => client.evaluate('document.querySelector("#star-canvas")?.hidden === false'), '占筮后未返回星图');
 
+  const classicLayouts = await client.evaluate(`(() => {
+    const select = document.querySelector('#star-layout-mode');
+    const source = document.querySelector('#star-layout-source');
+    const description = document.querySelector('#star-layout-description');
+    const autoRotate = document.querySelector('#auto-rotate');
+    const results = [];
+    for (const mode of ['earlier-heaven', 'king-wen', 'eight-palaces', 'twelve-messages']) {
+      select.value = mode;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      results.push({
+        mode,
+        source: source.textContent,
+        description: description.textContent,
+        disabled: autoRotate.disabled,
+        count: document.querySelectorAll('#star-accessible-list [data-code]').length,
+      });
+    }
+    select.value = 'project';
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    return {
+      results,
+      projectEnabled: !autoRotate.disabled,
+      projectDescription: description.textContent,
+    };
+  })()`);
+  if (classicLayouts.results.some((item) => !item.source || !item.description || !item.disabled)) {
+    throw new Error(`经典图式缺少来源、说明或固定方位约束：${JSON.stringify(classicLayouts.results)}`);
+  }
+  if (classicLayouts.results.find((item) => item.mode === 'earlier-heaven')?.count !== 8 ||
+      classicLayouts.results.find((item) => item.mode === 'twelve-messages')?.count !== 12 ||
+      !classicLayouts.projectEnabled || !classicLayouts.projectDescription.includes('项目')) {
+    throw new Error(`经典图式可见卦数或项目布局回退异常：${JSON.stringify(classicLayouts)}`);
+  }
+
   await client.send('Emulation.setEmulatedMedia', {
     features: [{ name: 'prefers-reduced-motion', value: 'reduce' }],
   });

@@ -2422,7 +2422,7 @@ body[data-active-mode="explore"]:not(.panel-open) .star-map-intro {
   z-index: 24;
   left: 18px;
   bottom: 76px;
-  width: min(292px, calc(100vw - 36px));
+  width: min(326px, calc(100vw - 36px));
   padding: 13px 14px;
   border: 1px solid rgba(201,169,106,0.2);
   border-radius: 14px;
@@ -2436,6 +2436,19 @@ body[data-active-mode="explore"]:not(.panel-open) .star-map-intro {
 .relation-layers-heading small { color: var(--text-dim); font-size: 0.64rem; letter-spacing: 0.12em; }
 .relation-layers-heading strong { color: var(--gold-light); font-size: 0.88rem; letter-spacing: 0.14em; }
 .relation-layers-heading > span { max-width: 158px; color: var(--text-secondary); font-size: 0.68rem; line-height: 1.5; text-align: right; }
+.star-layout-control {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 9px;
+  margin-top: 10px; padding: 7px 8px; border: 1px solid rgba(201,169,106,0.14); border-radius: 9px;
+  background: rgba(201,169,106,0.025);
+}
+.star-layout-control label { color: var(--bronze-500); font-size: 0.66rem; letter-spacing: 0.12em; }
+.star-layout-control select {
+  width: 100%; min-height: 30px; padding: 4px 28px 4px 9px; border: 1px solid rgba(201,169,106,0.2); border-radius: 7px;
+  color: var(--gold-light); background: #09101d; font: 0.72rem/1.2 "ZCOOL XiaoWei", serif; cursor: pointer;
+}
+.star-layout-description {
+  min-height: 32px; margin: 7px 2px 0; color: rgba(184,171,146,0.72); font-size: 0.64rem; line-height: 1.55;
+}
 .relation-layer-buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 10px; }
 .relation-layer-buttons button,
 .changing-position-buttons button {
@@ -2464,13 +2477,16 @@ body[data-active-mode="explore"]:not(.panel-open) .star-map-intro {
 .star-text-relations li button:hover, .star-text-relations li button:focus-visible { color: var(--gold-light); border-color: rgba(201,169,106,0.42); }
 .star-text-relations li button > span:last-child { display: flex; gap: 3px; }
 .star-text-relations li small { display: grid; width: 20px; height: 20px; place-items: center; border: 1px solid rgba(201,169,106,0.3); border-radius: 999px; }
+.star-text-relations li em { flex: 0 0 auto; color: var(--text-dim); font: normal 0.58rem/1.2 sans-serif; text-align: right; }
 .zoom-btn.active { color: #07101c; background: var(--gold-light); }
+.zoom-btn:disabled { opacity: 0.34; cursor: not-allowed; filter: saturate(0.35); }
 body.workspace-mode .relation-layers,
 body.panel-open .relation-layers { opacity: 0; pointer-events: none; transform: translateY(8px); }
 
 @media (max-width: 600px) {
   .relation-layers { top: calc(var(--header-height) + 8px); bottom: auto; left: 10px; width: calc(100vw - 20px); padding: 10px 11px; }
   .relation-layers-heading > span { max-width: 180px; font-size: 0.72rem; }
+  .star-layout-description { font-size: 0.68rem; }
   .star-text-relations ul { max-height: 132px; }
   .view-readout small { font-size: 0.68rem; }
 }

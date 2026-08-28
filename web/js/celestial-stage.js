@@ -471,6 +471,9 @@ export function initCelestialStage(canvas, options = {}) {
     targetCenterX: windowRef.innerWidth / 2,
     targetCenterY: windowRef.innerHeight / 2,
     targetRadius: Math.min(windowRef.innerWidth, windowRef.innerHeight) * 0.2,
+    layoutMode: 'project',
+    layoutBlend: 0,
+    targetLayoutBlend: 0,
     initialized: false,
   };
   const selection = {
@@ -581,6 +584,7 @@ export function initCelestialStage(canvas, options = {}) {
     sharedView.yaw += (sharedView.targetYaw - sharedView.yaw) * 0.16;
     sharedView.pitch += (sharedView.targetPitch - sharedView.pitch) * 0.16;
     sharedView.scale += (sharedView.targetScale - sharedView.scale) * 0.16;
+    sharedView.layoutBlend += (sharedView.targetLayoutBlend - sharedView.layoutBlend) * 0.12;
     // 主体球壳必须与星群同心，不做会暴露双层画布的滞后追赶。
     sharedView.centerX = sharedView.targetCenterX;
     sharedView.centerY = sharedView.targetCenterY;
@@ -602,11 +606,13 @@ export function initCelestialStage(canvas, options = {}) {
     const relationPulseScale = 1 + relationVisual.pulse * 0.055;
     networkShell.scale.x += (shellScale * relationPulseScale - networkShell.scale.x) * shellEase;
     networkShell.scale.y += (shellScale * relationPulseScale - networkShell.scale.y) * shellEase;
-    networkShell.scale.z += (shellScale * relationPulseScale - networkShell.scale.z) * shellEase;
+    const layoutDepth = 1 - sharedView.layoutBlend * 0.82;
+    networkShell.scale.z += (shellScale * relationPulseScale * layoutDepth - networkShell.scale.z) * shellEase;
     const orbitScale = Math.max(0.82, Math.min(1.32, Math.pow(sharedView.scale, 0.22)));
     root.scale.x += (orbitScale - root.scale.x) * 0.08;
     root.scale.y += (orbitScale - root.scale.y) * 0.08;
     root.scale.z += (orbitScale - root.scale.z) * 0.08;
+    armillaryPitch.scale.z += (layoutDepth - armillaryPitch.scale.z) * 0.1;
     networkPitch.rotation.x = sharedView.pitch;
     networkYaw.rotation.y = -sharedView.yaw;
     armillaryPitch.rotation.x = sharedView.pitch;
@@ -614,11 +620,12 @@ export function initCelestialStage(canvas, options = {}) {
     armillary.rotation.z = seconds * 0.006 * drift + interaction.angle * 0.018;
     orbiters.rotation.z = -seconds * 0.004 * drift - interaction.angle * 0.025;
     const detailFade = Math.max(0.5, Math.min(1, 1 - Math.max(0, sharedView.scale - 1) * 0.3));
-    ringMaterial.opacity = 0.14 * detailFade;
+    ringMaterial.opacity = 0.14 * detailFade * (1 - sharedView.layoutBlend * 0.68);
     trigramMaterial.opacity = (0.55 + interaction.focus * 0.22) * detailFade;
-    goldDust.material.opacity = (0.58 + interaction.focus * 0.12) * (0.72 + detailFade * 0.28);
-    coreMaterial.opacity = (0.11 + interaction.focus * 0.055) * (0.68 + detailFade * 0.32);
-    innerCoreMaterial.opacity = (0.06 + interaction.focus * 0.035) * detailFade;
+    goldDust.material.opacity = (0.58 + interaction.focus * 0.12) * (0.72 + detailFade * 0.28) * (1 - sharedView.layoutBlend * 0.42);
+    const classicShellFade = 1 - sharedView.layoutBlend * 0.88;
+    coreMaterial.opacity = (0.11 + interaction.focus * 0.055) * (0.68 + detailFade * 0.32) * classicShellFade;
+    innerCoreMaterial.opacity = (0.06 + interaction.focus * 0.035) * detailFade * classicShellFade;
     const focusPresence = interaction.focus * detailFade;
     focusLongitude.rotation.y = interaction.angle;
     focusLatitude.position.y = interaction.latitude;
@@ -807,6 +814,10 @@ export function initCelestialStage(canvas, options = {}) {
       if (Number.isFinite(view.centerX)) sharedView.targetCenterX = view.centerX;
       if (Number.isFinite(view.centerY)) sharedView.targetCenterY = view.centerY;
       if (Number.isFinite(view.radius)) sharedView.targetRadius = Math.max(1, view.radius);
+      if (typeof view.layoutMode === 'string') {
+        sharedView.layoutMode = view.layoutMode;
+        sharedView.targetLayoutBlend = view.layoutMode === 'project' ? 0 : 1;
+      }
       if (selection.active && view.activeCode === selection.code && Number.isFinite(view.activeX) && Number.isFinite(view.activeY)) {
         updateInteractionAnchor(selection, { x: view.activeX, y: view.activeY, depthFactor: view.activeDepth });
       }
@@ -820,6 +831,7 @@ export function initCelestialStage(canvas, options = {}) {
         sharedView.centerX = sharedView.targetCenterX;
         sharedView.centerY = sharedView.targetCenterY;
         sharedView.radius = sharedView.targetRadius;
+        sharedView.layoutBlend = sharedView.targetLayoutBlend;
         sharedView.initialized = true;
       }
       if (motionPreference.matches) renderOnce();

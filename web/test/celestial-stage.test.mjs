@@ -43,6 +43,9 @@ test('WebGL 舞台具备上下文恢复与资源释放保护', () => {
   assert.match(source, /renderer\.setPixelRatio\(Math\.min/);
   assert.match(source, /syncView\(view\)/);
   assert.match(source, /networkYaw\.rotation\.y = -sharedView\.yaw/);
+  assert.match(source, /view\.layoutMode === 'project' \? 0 : 1/);
+  assert.match(source, /const layoutDepth = 1 - sharedView\.layoutBlend \* 0\.82/);
+  assert.match(source, /const classicShellFade = 1 - sharedView\.layoutBlend \* 0\.88/);
   assert.match(source, /networkShell\.position\.copy\(layoutAnchor\)/);
   assert.match(source, /const detailFade = Math\.max\(0\.5/);
   assert.match(source, /ringMaterial\.opacity = 0\.14 \* detailFade/);
