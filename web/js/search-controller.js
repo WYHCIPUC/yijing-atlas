@@ -20,8 +20,12 @@ export function getHexCodeFromUrl(url) {
 
 export function withHexCode(url, code) {
   const next = new URL(url);
-  if (HEX_CODE_PATTERN.test(code || '')) next.searchParams.set('hex', code);
-  else next.searchParams.delete('hex');
+  if (HEX_CODE_PATTERN.test(code || '')) {
+    next.searchParams.set('hex', code);
+    if (next.hash.startsWith('#lesson-')) next.hash = '';
+  } else {
+    next.searchParams.delete('hex');
+    if (next.hash.startsWith('#detail-')) next.hash = '';
+  }
   return next.toString();
 }
-

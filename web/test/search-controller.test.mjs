@@ -20,3 +20,10 @@ test('深链接只接受六位阴阳码并保留其他参数', () => {
   assert.equal(getHexCodeFromUrl('not a url'), null);
   assert.equal(getHexCodeFromUrl(withHexCode(url, null)), null);
 });
+
+test('卦象详情与课程锚点不会残留在彼此的阅读场景', () => {
+  const detailUrl = withHexCode('https://example.com/app/#lesson-observe', '110011');
+  assert.equal(new URL(detailUrl).hash, '');
+  assert.equal(new URL(withHexCode('https://example.com/app/#detail-lines', '110011')).hash, '#detail-lines');
+  assert.equal(new URL(withHexCode('https://example.com/app/?hex=110011#detail-lines', null)).hash, '');
+});
