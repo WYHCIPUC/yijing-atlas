@@ -16,7 +16,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="lib/vendor/lenis.css" />
-  <link rel="stylesheet" href="styles/main.css?v=42" />
+  <link rel="stylesheet" href="styles/main.css?v=43" />
 </head>
 <body>
   <div class="pointer-aura" aria-hidden="true"></div>
@@ -85,9 +85,9 @@
   </header>
 
   <canvas id="celestial-canvas" aria-hidden="true"></canvas>
-  <p class="sr-only" id="star-canvas-description">星图可切换项目关系球与四种经典阅读图式。项目关系球可旋转；经典图式保持固定方位并支持平移缩放。下方文字关系列表提供与画布等价的键盘入口。</p>
+  <p class="sr-only" id="star-canvas-description">星图可切换易象银河与四种经典阅读图式。易象银河以六爻为卫星、六十四卦为恒星、八个下卦卦族为星团，可旋转与缩放；经典图式保持固定方位。下方文字关系列表提供与画布等价的键盘入口。</p>
   <canvas id="star-canvas" tabindex="0" role="img" aria-describedby="star-canvas-description star-layout-description star-relation-status"
-    aria-label="六十四卦项目关系星图，可拖动、缩放并选择卦象"></canvas>
+    aria-label="六十四卦易象银河，可拖动、缩放并选择卦象恒星"></canvas>
   <div class="star-hover-card" id="star-hover-card" aria-hidden="true">
     <small>第 <b data-hover-number>01</b> 卦</small>
     <strong data-hover-name>乾</strong>
@@ -105,9 +105,14 @@
   </div>
 
   <aside class="star-map-intro" aria-label="星图阅读提示">
-    <span class="star-map-kicker">六十四卦关系星图</span>
-    <strong>观其象 · 察其变</strong>
-    <p>一卦为星，错、综、互、变织成可探索的关系路径。</p>
+    <span class="star-map-kicker">六十四卦易象银河</span>
+    <strong>爻成星 · 卦成团</strong>
+    <p>六爻环绕一卦，六十四卦按下卦汇成八个星团；选择关系层，观察卦与卦之间的流向。</p>
+    <div class="galaxy-legend" aria-label="银河层级图例">
+      <span><i class="line-star"></i>爻星</span>
+      <span><i class="hex-star"></i>卦恒星</span>
+      <span><i class="cluster-star"></i>卦族星团</span>
+    </div>
     <ol class="star-map-sequence">
       <li><b>01</b><span>选卦</span></li>
       <li><b>02</b><span>察变</span></li>
@@ -140,14 +145,14 @@
     <div class="star-layout-control">
       <label for="star-layout-mode">观图</label>
       <select id="star-layout-mode" aria-describedby="star-layout-description">
-        <option value="project">项目关系球</option>
+        <option value="project">易象银河</option>
         <option value="earlier-heaven">先天八卦</option>
         <option value="king-wen">文王卦序</option>
         <option value="eight-palaces">八宫卦序</option>
         <option value="twelve-messages">十二消息</option>
       </select>
     </div>
-    <p class="star-layout-description" id="star-layout-description" role="status" aria-live="polite">项目按上下卦映射到球体；这是项目关系布局，不是传统固定图式。</p>
+    <p class="star-layout-description" id="star-layout-description" role="status" aria-live="polite">六爻为卫星、卦为恒星，并按下卦汇成八个星团；这是项目银河布局，不是传统固定图式。</p>
     <div class="relation-layer-buttons" role="group" aria-label="选择星图关系层">
       <button type="button" class="active" data-relation-layer="opposite" aria-pressed="true">错</button>
       <button type="button" data-relation-layer="reversed" aria-pressed="false">综</button>
@@ -211,6 +216,6 @@
 
   <script src="lib/vendor/gsap.min.js"></script>
   <script src="lib/vendor/lenis.min.js"></script>
-  <script type="module" src="js/main.js?v=42"></script>
+  <script type="module" src="js/main.js?v=43"></script>
 </body>
 </html>

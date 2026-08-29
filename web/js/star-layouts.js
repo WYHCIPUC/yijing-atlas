@@ -3,10 +3,10 @@ const VALID_CODE = /^[01]{6}$/;
 export const STAR_LAYOUTS = Object.freeze({
   project: Object.freeze({
     id: 'project',
-    label: '项目关系球',
-    shortLabel: '关系球',
-    sourceType: '项目关系布局',
-    description: '项目按上下卦映射到球体，并用关系层观察错、综、互与具体动爻之变；不是传统固定图式。',
+    label: '易象银河',
+    shortLabel: '易象银河',
+    sourceType: '项目银河布局',
+    description: '六爻为卫星、六十四卦为恒星，并按下卦聚成八个卦族星团；关系球与外轨共享同一银河核心。此为项目解释性布局，不是传统固定图式。',
   }),
   'earlier-heaven': Object.freeze({
     id: 'earlier-heaven',
@@ -102,11 +102,69 @@ function position(x, y, z = 0, meta = {}) {
   return { x, y, z, ...meta };
 }
 
+export function buildLineStarOrbit(code) {
+  if (!VALID_CODE.test(code)) return [];
+  const seed = Number.parseInt(code, 2);
+  return [...code].map((bit, index) => {
+    const positionIndex = index + 1;
+    const angle = -Math.PI / 2 + index / 6 * Math.PI * 2 + (seed % 11) * 0.012;
+    const radius = 1 + (index % 2) * 0.14;
+    return {
+      position: positionIndex,
+      isYang: bit === '1',
+      x: Math.cos(angle) * radius,
+      y: Math.sin(angle) * radius,
+      phase: seed * 0.17 + positionIndex * 0.82,
+    };
+  });
+}
+
 function projectLayout(nodes) {
+  const positions = new Map();
+  const groups = PALACE_TRIGRAMS.map(([trigram, name], clusterIndex) => {
+    const clusterAngle = -Math.PI / 2 + clusterIndex / PALACE_TRIGRAMS.length * Math.PI * 2;
+    const clusterRadius = 0.48;
+    const center = position(
+      Math.cos(clusterAngle) * clusterRadius,
+      Math.sin(clusterAngle) * clusterRadius,
+      Math.sin(clusterAngle * 2) * 0.055,
+    );
+    return { id: trigram, name: `${name}下卦星团`, clusterIndex, center, codes: [] };
+  });
+  const trigramIndex = new Map(PALACE_TRIGRAMS.map(([trigram], index) => [trigram, index]));
+
+  for (const node of nodes) {
+    const code = nodeCode(node);
+    if (!code) continue;
+    const lower = code.slice(0, 3);
+    const upper = code.slice(3, 6);
+    const clusterIndex = trigramIndex.get(lower);
+    const upperIndex = trigramIndex.get(upper);
+    if (!Number.isInteger(clusterIndex) || !Number.isInteger(upperIndex)) continue;
+    const group = groups[clusterIndex];
+    const pure = lower === upper;
+    const seed = Number.parseInt(code, 2);
+    const localAngle = -Math.PI / 2 + upperIndex / PALACE_TRIGRAMS.length * Math.PI * 2
+      + clusterIndex * 0.075;
+    const localRadius = pure ? 0 : 0.105 + (seed % 3) * 0.018;
+    positions.set(code, position(
+      group.center.x + Math.cos(localAngle) * localRadius,
+      group.center.y + Math.sin(localAngle) * localRadius,
+      group.center.z + (upperIndex - 3.5) * 0.022,
+      {
+        group: group.name,
+        clusterId: lower,
+        clusterIndex,
+        orbitalIndex: upperIndex,
+        isClusterAnchor: pure,
+      },
+    ));
+    group.codes.push(code);
+  }
   return {
-    positions: new Map(),
-    visibleCodes: new Set(nodes.map(nodeCode).filter(Boolean)),
-    groups: [],
+    positions,
+    visibleCodes: new Set(positions.keys()),
+    groups,
   };
 }
 

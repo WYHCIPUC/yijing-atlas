@@ -84,7 +84,7 @@ test('视角读数把缩放层级和球面姿态转换为稳定的五度刻度',
   assert.deepEqual(describeStarView({ scale: 1.5, yaw: 0.11, pitch: -0.09 }), {
     level: '关系层',
     layoutMode: 'project',
-    layoutLabel: '项目关系球',
+    layoutLabel: '易象银河',
     zoomPercent: 150,
     yawDegrees: 5,
     pitchDegrees: -5,
@@ -152,9 +152,12 @@ test('星图把可见星群的中心、包围半径和镜头姿态同步给 WebG
     focusVisible: new Set(['a', 'b']),
     sharedView: {},
     view: { scale: 1 },
+    cx: 200,
+    cy: 100,
     anchorR: 200,
     yaw: 0.4,
     pitch: -0.2,
+    _worldToScreen: () => ({ x: 200, y: 100, depthFactor: 1 }),
   });
 
   map._emitSharedView();
@@ -165,7 +168,7 @@ test('星图把可见星群的中心、包围半径和镜头姿态同步给 WebG
     scale: 1,
     centerX: 210,
     centerY: 120,
-    radius: 128,
+    radius: 108,
     activeCode: null,
     activeX: null,
     activeY: null,

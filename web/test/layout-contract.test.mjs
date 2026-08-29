@@ -36,7 +36,8 @@ assert.match(html, /class="mode-indicator"[^>]*aria-hidden="true"/);
 assert.match(html, /class="panel-reading-progress"[^>]*aria-hidden="true"><i><\/i><b><\/b><span>读<\/span>/);
 assert.match(html, /lib\/vendor\/gsap\.min\.js/);
 assert.match(html, /lib\/vendor\/lenis\.min\.js/);
-assert.match(html, /一卦为星，错、综、互、变织成可探索的关系路径/);
+assert.match(html, /六爻环绕一卦，六十四卦按下卦汇成八个星团/);
+assert.match(html, /class="galaxy-legend"[^>]*aria-label="银河层级图例"/);
 assert.match(html, /易有太极，是生两仪；两仪生四象，四象生八卦/);
 assert.match(html, /乾 · 天 · 健/);
 

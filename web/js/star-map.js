@@ -2,7 +2,7 @@
 // 卦的空间位置编码易学含义：每卦被它的上下卦锚点吸引，错卦连线穿过中心对称。
 import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from '../lib/d3-force.js';
 import { getRelationOccurrences, relationTypesFrom } from './star-relations.js';
-import { buildStarLayout, STAR_LAYOUTS } from './star-layouts.js';
+import { buildLineStarOrbit, buildStarLayout, STAR_LAYOUTS } from './star-layouts.js';
 
 // 先天八卦方位角（弧度），0=右(东)，顺时针。乾南=上。
 // 乾(南/上) 兑(东南) 离(东) 震(东北) 巽(西南) 坎(西) 艮(西北) 坤(北/下)
@@ -27,6 +27,10 @@ const COLORS = {
 
 const LABEL_COLLISION_GAP = 7;
 const MIN_VISIBLE_FONT_SIZE = 15;
+const GALAXY_CLUSTER_COLORS = Object.freeze([
+  [244, 203, 125], [222, 184, 132], [225, 151, 104], [206, 170, 118],
+  [128, 181, 192], [110, 158, 202], [151, 164, 204], [184, 159, 204],
+]);
 const RELATION_LABELS = { opposite: '错', reversed: '综', interlocking: '互', changing: '变' };
 const RELATION_FILTERS = new Set(Object.keys(RELATION_LABELS));
 
@@ -280,7 +284,7 @@ export class StarMap {
     const compactTopInset = this.width <= 600 ? Math.min(180, this.height * 0.24) : 0;
     this.cy = compactTopInset + (this.height - compactTopInset) / 2;
     // 锚点圆半径（8 纯卦所在的圆）
-    this.anchorR = Math.min(this.width, this.height) * 0.32;
+    this.anchorR = Math.min(this.width, this.height) * (this.width <= 600 ? 0.34 : 0.37);
   }
 
   // 预渲染光晕贴图到离屏 canvas（避免每帧 createRadialGradient，性能关键）
@@ -396,10 +400,9 @@ export class StarMap {
     }
     this.bgStarPhase = [Math.random() * Math.PI * 2, Math.random() * Math.PI * 2];
     this.nebulae = [
-      { bx: this.width * 0.28, by: this.height * 0.42, dr: 40, ds: 0.0003, dp: 0, r: this.width * 0.28, color: 'rgba(80, 65, 120, 0.05)' },
-      { bx: this.width * 0.72, by: this.height * 0.58, dr: 55, ds: 0.0002, dp: 1.5, r: this.width * 0.32, color: 'rgba(120, 95, 55, 0.045)' },
-      { bx: this.width * 0.5, by: this.height * 0.18, dr: 35, ds: 0.0004, dp: 3, r: this.width * 0.22, color: 'rgba(55, 75, 115, 0.04)' },
-      { bx: this.width * 0.6, by: this.height * 0.85, dr: 45, ds: 0.00025, dp: 4.5, r: this.width * 0.26, color: 'rgba(95, 75, 100, 0.035)' },
+      { bx: this.cx, by: this.cy, r: this.anchorR * 1.36, color: 'rgba(79, 104, 162, 0.075)' },
+      { bx: this.cx - this.anchorR * 0.28, by: this.cy + this.anchorR * 0.08, r: this.anchorR * 0.92, color: 'rgba(126, 91, 156, 0.065)' },
+      { bx: this.cx + this.anchorR * 0.3, by: this.cy - this.anchorR * 0.06, r: this.anchorR * 0.88, color: 'rgba(196, 143, 74, 0.06)' },
     ];
 
     // 深空底色与星云变化极慢，合并为静态图层，避免每帧创建 5 个大渐变。
@@ -422,6 +425,37 @@ export class StarMap {
       bg.arc(neb.bx, neb.by, neb.r, 0, Math.PI * 2);
       bg.fill();
     }
+
+    // 银河尘埃与八条旋臂共用星图中心，避免背景星云与关系球各自成景。
+    this.galaxyDustLayer = document.createElement('canvas');
+    this.galaxyDustLayer.width = this.width;
+    this.galaxyDustLayer.height = this.height;
+    const dust = this.galaxyDustLayer.getContext('2d');
+    let dustSeed = 0x6d2b79f5;
+    const seededRandom = () => {
+      dustSeed ^= dustSeed << 13;
+      dustSeed ^= dustSeed >>> 17;
+      dustSeed ^= dustSeed << 5;
+      return (dustSeed >>> 0) / 4294967296;
+    };
+    const dustCount = Math.min(1100, Math.max(420, Math.floor(area / 1800)));
+    for (let index = 0; index < dustCount; index += 1) {
+      const arm = index % 8;
+      const progress = Math.pow(seededRandom(), 0.72);
+      const angle = -Math.PI / 2 + arm / 8 * Math.PI * 2 + progress * 1.28
+        + (seededRandom() - 0.5) * (0.32 - progress * 0.14);
+      const radius = this.anchorR * (0.08 + progress * 1.02);
+      const x = this.cx + Math.cos(angle) * radius;
+      const y = this.cy + Math.sin(angle) * radius * 0.72;
+      const alpha = 0.05 + seededRandom() * 0.22;
+      const size = 0.35 + seededRandom() * 1.05;
+      dust.fillStyle = index % 5 === 0
+        ? `rgba(229,188,111,${alpha})`
+        : `rgba(137,171,215,${alpha * 0.8})`;
+      dust.beginPath();
+      dust.arc(x, y, size, 0, Math.PI * 2);
+      dust.fill();
+    }
   }
 
   // 三维球状布局：64 卦分布在球面/球体内，上下卦映射到球坐标经纬度
@@ -438,6 +472,7 @@ export class StarMap {
       n.vx = 0; n.vy = 0;
       n.zPhase = seed / 64 * Math.PI * 2;
       n.zSpeed = 0.003 + seed % 7 * 0.00055;
+      n.lineStars = buildLineStarOrbit(n.binaryCode);
     }
 
     this._applyLayoutTargets(this.layoutMode, { initial: true });
@@ -450,8 +485,8 @@ export class StarMap {
       .map(e => ({ source: nodeIndexById.get(e.source), target: nodeIndexById.get(e.target), weight: e.weight }));
 
     this.simulation = forceSimulation(this.graph.nodes)
-      .force('charge', forceManyBody().strength(-50))
-      .force('link', forceLink(links).id(d => d.index).distance(80).strength(0.06))
+      .force('charge', forceManyBody().strength(-24))
+      .force('link', forceLink(links).id(d => d.index).distance(80).strength(0.025))
       .force('xA', forceX(d => d.targetX).strength(d => this._layoutForceStrength(d)))
       .force('yA', forceY(d => d.targetY).strength(d => this._layoutForceStrength(d)))
       .force('center', forceCenter(this.cx, this.cy))
@@ -476,7 +511,7 @@ export class StarMap {
 
   _layoutForceStrength(node) {
     if (this.layoutMode !== 'project') return node.layoutVisible ? 0.82 : 0.35;
-    return node.isPure ? 0.9 : 0.18;
+    return node.isPure ? 0.96 : 0.72;
   }
 
   _refreshLayoutForces() {
@@ -484,7 +519,7 @@ export class StarMap {
     this.simulation.force('xA', forceX(d => d.targetX).strength(d => this._layoutForceStrength(d)));
     this.simulation.force('yA', forceY(d => d.targetY).strength(d => this._layoutForceStrength(d)));
     const linkForce = this.simulation.force('link');
-    if (typeof linkForce?.strength === 'function') linkForce.strength(this.layoutMode === 'project' ? 0.06 : 0);
+    if (typeof linkForce?.strength === 'function') linkForce.strength(this.layoutMode === 'project' ? 0.025 : 0);
     this.simulation.force('center', forceCenter(this.cx, this.cy));
     this.simulation.alpha(0.72).restart();
   }
@@ -494,15 +529,13 @@ export class StarMap {
     this.layoutMode = this.layoutState.id;
     for (const node of this.graph.nodes) {
       const classicPosition = this.layoutState.positions.get(node.id);
-      const target = this.layoutMode === 'project'
-        ? this._projectTarget(node)
-        : classicPosition
+      const target = classicPosition
           ? {
             x: this.cx + classicPosition.x * this.anchorR,
             y: this.cy + classicPosition.y * this.anchorR,
             z: classicPosition.z * this.anchorR,
           }
-          : { x: this.cx, y: this.cy, z: 0 };
+          : this.layoutMode === 'project' ? this._projectTarget(node) : { x: this.cx, y: this.cy, z: 0 };
       node.layoutVisible = this.layoutState.visibleCodes.has(node.id);
       node.layoutLabel = this.layoutMode === 'king-wen' ? `${String(node.number).padStart(2, '0')} · ${node.name}`
         : this.layoutMode === 'twelve-messages' && classicPosition ? `${node.name} · ${classicPosition.label}`
@@ -514,6 +547,8 @@ export class StarMap {
       node.targetX = target.x;
       node.targetY = target.y;
       node.targetZ = target.z;
+      node.galaxyClusterIndex = classicPosition?.clusterIndex ?? null;
+      node.galaxyClusterName = classicPosition?.group ?? '';
       node._zBase = target.z;
       node.zAmp = this.layoutMode === 'project'
         ? this.anchorR * (0.08 + Number.parseInt(node.binaryCode, 2) % 7 * 0.012)
@@ -599,29 +634,21 @@ export class StarMap {
 
   _emitSharedView() {
     if (!this.callbacks.onViewChange) return;
-    let centerX = 0;
-    let centerY = 0;
+    const origin = this._worldToScreen(this.cx, this.cy, 0);
+    const activePoint = this.activeNode?._screen;
+    const centerX = activePoint?.x ?? origin.x;
+    const centerY = activePoint?.y ?? origin.y;
+    let maxDistance = 0;
     let visibleCount = 0;
     for (const node of this.graph.nodes) {
       if (!this._isNodeVisible(node)) continue;
       if (this.focusVisible && !this.focusVisible.has(node.id)) continue;
-      centerX += node._screen.x;
-      centerY += node._screen.y;
+      maxDistance = Math.max(maxDistance, Math.hypot(node._screen.x - centerX, node._screen.y - centerY));
       visibleCount += 1;
     }
     if (!visibleCount) return;
-    centerX /= visibleCount;
-    centerY /= visibleCount;
-
-    let squaredDistance = 0;
-    for (const node of this.graph.nodes) {
-      if (!this._isNodeVisible(node)) continue;
-      if (this.focusVisible && !this.focusVisible.has(node.id)) continue;
-      squaredDistance += (node._screen.x - centerX) ** 2 + (node._screen.y - centerY) ** 2;
-    }
-    const rmsRadius = Math.sqrt(squaredDistance / visibleCount) * 1.28;
     const minRadius = this.anchorR * this.view.scale * 0.32;
-    const maxRadius = this.anchorR * this.view.scale * 1.25;
+    const maxRadius = this.anchorR * this.view.scale * 1.16;
     const rect = this.canvas.getBoundingClientRect();
     const shared = this.sharedView;
     shared.yaw = this.yaw;
@@ -629,8 +656,7 @@ export class StarMap {
     shared.scale = this.view.scale;
     shared.centerX = rect.left + centerX;
     shared.centerY = rect.top + centerY;
-    shared.radius = Math.max(minRadius, Math.min(maxRadius, rmsRadius));
-    const activePoint = this.activeNode?._screen;
+    shared.radius = Math.max(minRadius, Math.min(maxRadius, maxDistance * 1.08));
     shared.activeCode = this.activeNode?.id || null;
     shared.activeX = activePoint ? rect.left + activePoint.x : null;
     shared.activeY = activePoint ? rect.top + activePoint.y : null;
@@ -1004,6 +1030,92 @@ export class StarMap {
     ctx.restore();
   }
 
+  _drawGalaxyScaffold(ctx, time) {
+    if (this.layoutMode !== 'project') return;
+    const center = this._worldToScreen(this.cx, this.cy, 0);
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    const coreBreath = this.reducedMotion ? 1 : 0.92 + Math.sin(time * 0.012) * 0.08;
+    this._drawGlow(ctx, this.glowHalo, center.x, center.y, this.anchorR * 0.24 * coreBreath, 0.2);
+
+    for (const group of this.layoutState.groups || []) {
+      if (!group?.center) continue;
+      const point = this._worldToScreen(
+        this.cx + group.center.x * this.anchorR,
+        this.cy + group.center.y * this.anchorR,
+        group.center.z * this.anchorR,
+      );
+      const [red, green, blue] = GALAXY_CLUSTER_COLORS[group.clusterIndex] || GALAXY_CLUSTER_COLORS[0];
+      const haloRadius = this.anchorR * 0.135 * this.view.scale * (0.72 + point.depthFactor * 0.28);
+      const controlX = (center.x + point.x) / 2 + (point.y - center.y) * 0.08;
+      const controlY = (center.y + point.y) / 2 - (point.x - center.x) * 0.08;
+      ctx.strokeStyle = `rgba(${red},${green},${blue},0.085)`;
+      ctx.lineWidth = 1.1;
+      ctx.setLineDash([2, 10]);
+      ctx.lineDashOffset = this.reducedMotion ? 0 : -time * 0.08;
+      ctx.beginPath();
+      ctx.moveTo(center.x, center.y);
+      ctx.quadraticCurveTo(controlX, controlY, point.x, point.y);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.strokeStyle = `rgba(${red},${green},${blue},0.13)`;
+      ctx.lineWidth = 0.8;
+      ctx.beginPath();
+      ctx.ellipse(point.x, point.y, haloRadius, haloRadius * 0.62, 0, 0, Math.PI * 2);
+      ctx.stroke();
+      this._drawGlow(ctx, this.glowHalo, point.x, point.y, haloRadius * 1.18, 0.045);
+    }
+    ctx.restore();
+  }
+
+  _drawLineStars(ctx, node, point, {
+    time, radius, depthScale, alpha, isFocus, isRelated, visibility,
+  }) {
+    if (this.layoutMode !== 'project' || !node.lineStars?.length) return;
+    const degreeFactor = Math.min((Number(node.degree) || 0) / 13, 1);
+    const orbitRadius = isFocus ? Math.max(28, radius * 4.6)
+      : isRelated ? Math.max(17, radius * 3.8)
+        : node.isPure ? Math.max(14, radius * 3.2) : 8 + degreeFactor * 5;
+    const orbitAlpha = (isFocus ? 0.34 : isRelated ? 0.2 : node.isPure ? 0.12 : 0.045)
+      * alpha * visibility;
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    if (isFocus || isRelated || node.isPure) {
+      ctx.strokeStyle = `rgba(176,196,222,${orbitAlpha})`;
+      ctx.lineWidth = isFocus ? 1 : 0.6;
+      ctx.beginPath();
+      ctx.ellipse(point.x, point.y, orbitRadius, orbitRadius * 0.7, -0.18, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    for (const star of node.lineStars) {
+      const pulse = this.reducedMotion ? 1 : 0.82 + Math.sin(time * 0.032 + star.phase) * 0.18;
+      const x = point.x + star.x * orbitRadius;
+      const y = point.y + star.y * orbitRadius * 0.7;
+      const starRadius = (isFocus ? 2 : isRelated ? 1.55 : node.isPure ? 1.3 : 0.82)
+        * depthScale * pulse;
+      const starAlpha = (isFocus ? 0.95 : isRelated ? 0.78 : node.isPure ? 0.62 : 0.32)
+        * alpha * visibility;
+      if (isFocus) {
+        ctx.strokeStyle = star.isYang
+          ? `rgba(241,200,115,${starAlpha * 0.22})`
+          : `rgba(132,180,218,${starAlpha * 0.22})`;
+        ctx.lineWidth = 0.6;
+        ctx.beginPath();
+        ctx.moveTo(point.x, point.y);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        this._drawGlow(ctx, this.glowCore, x, y, 7 * depthScale, starAlpha * 0.42);
+      }
+      ctx.fillStyle = star.isYang
+        ? `rgba(244,204,123,${starAlpha})`
+        : `rgba(132,181,220,${starAlpha})`;
+      ctx.beginPath();
+      ctx.arc(x, y, Math.max(0.65, starRadius), 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
   _render() {
     const ctx = this.ctx;
     const t = this.reducedMotion ? 0 : this.time;
@@ -1027,6 +1139,11 @@ export class StarMap {
       ctx.drawImage(this.bgStarLayers[grp], 0, 0);
     }
     ctx.globalAlpha = 1;
+    if (this.layoutMode === 'project' && this.galaxyDustLayer) {
+      ctx.globalAlpha = 0.82;
+      ctx.drawImage(this.galaxyDustLayer, 0, 0);
+      ctx.globalAlpha = 1;
+    }
 
     // 流星
     this._renderMeteors(ctx);
@@ -1034,6 +1151,7 @@ export class StarMap {
     // 每帧只投影一次节点；边、星体和标签共享结果。
     for (const n of this.graph.nodes) n._screen = this._worldToScreen(n.x, n.y, n.z);
     this._emitSharedView();
+    this._drawGalaxyScaffold(ctx, t);
     this._drawLayoutGuide(ctx, t);
 
     // 关系漫游轨迹层（金色路径，渐显动画）
@@ -1174,6 +1292,17 @@ export class StarMap {
       const baseR = n.isPure ? 5 : (isFocus ? 6.5 : (isRel ? 4.5 : 1.8 + degFactor * 3));
       const r = baseR * breathe * ease * depthScale * glowBoost;
 
+      // 六爻成为围绕卦恒星运行的六颗爻星；阴爻取冷蓝，阳爻取暖金。
+      this._drawLineStars(ctx, n, p, {
+        time: t,
+        radius: r,
+        depthScale,
+        alpha: depthAlpha,
+        isFocus,
+        isRelated: Boolean(isRel),
+        visibility,
+      });
+
       // 外光晕（用预渲染贴图，性能优化）—— drawImage 替代 createRadialGradient
       const haloR = (isFocus ? 60 : (isRel ? 38 : (n.isPure ? 26 : 16 + degFactor * 24))) * ease * depthScale * glowBoost;
       const da = (a) => a * depthAlpha; // 深度调暗 × 脉冲增亮
@@ -1187,7 +1316,11 @@ export class StarMap {
 
       // 实心核（按深度调透明度）
       const coreAlpha = depthAlpha;
-      const coreColor = isFocus ? `rgba(255,252,240,${coreAlpha})` : (isRel ? `rgba(252,240,205,${coreAlpha})` : (n.isPure ? `rgba(245,220,160,${0.95 * coreAlpha})` : `rgba(232,208,154,${(0.85 + degFactor * 0.15) * coreAlpha})`));
+      const clusterColor = GALAXY_CLUSTER_COLORS[n.galaxyClusterIndex] || GALAXY_CLUSTER_COLORS[0];
+      const coreColor = isFocus ? `rgba(255,252,240,${coreAlpha})`
+        : isRel ? `rgba(252,240,205,${coreAlpha})`
+          : n.isPure ? `rgba(245,220,160,${0.95 * coreAlpha})`
+            : `rgba(${clusterColor.join(',')},${(0.78 + degFactor * 0.2) * coreAlpha})`;
       ctx.fillStyle = coreColor;
       ctx.beginPath();
       ctx.arc(p.x, p.y, r, 0, Math.PI * 2);

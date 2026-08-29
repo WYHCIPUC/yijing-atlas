@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import {
   buildEightPalaceGroups,
+  buildLineStarOrbit,
   buildStarLayout,
   EIGHT_PALACE_STAGES,
   TWELVE_MESSAGE_HEXAGRAMS,
@@ -10,6 +11,25 @@ import {
 
 const hexagrams = JSON.parse(readFileSync(new URL('../data/hexagrams.json', import.meta.url), 'utf8'));
 const nodes = hexagrams.map(({ binaryCode, name, number }) => ({ id: binaryCode, binaryCode, name, number }));
+
+test('易象银河按下卦形成八个星团，并以八纯卦作为团内锚点', () => {
+  const galaxy = buildStarLayout(nodes, 'project');
+  assert.equal(galaxy.label, '易象银河');
+  assert.equal(galaxy.positions.size, 64);
+  assert.equal(galaxy.groups.length, 8);
+  assert.ok(galaxy.groups.every((group) => group.codes.length === 8));
+  assert.equal(galaxy.positions.get('111111').group, '乾下卦星团');
+  assert.equal(galaxy.positions.get('111111').isClusterAnchor, true);
+  assert.equal(galaxy.positions.get('000111').clusterId, '000');
+});
+
+test('每卦生成六颗自下而上且阴阳可辨的爻星', () => {
+  const stars = buildLineStarOrbit('101010');
+  assert.deepEqual(stars.map((star) => star.position), [1, 2, 3, 4, 5, 6]);
+  assert.deepEqual(stars.map((star) => star.isYang), [true, false, true, false, true, false]);
+  assert.ok(stars.every((star) => Number.isFinite(star.x) && Number.isFinite(star.y)));
+  assert.deepEqual(buildLineStarOrbit('invalid'), []);
+});
 
 test('八宫每宫八卦且完整覆盖六十四卦', () => {
   const groups = buildEightPalaceGroups();
@@ -48,7 +68,7 @@ test('文王卦序与八宫布局覆盖六十四卦并保留可解释分组', ()
   assert.equal(palaces.positions.get('111101').label, '归魂');
 });
 
-test('十二消息视图只显示十二卦，未知布局安全回退项目关系球', () => {
+test('十二消息视图只显示十二卦，未知布局安全回退易象银河', () => {
   const messages = buildStarLayout(nodes, 'twelve-messages');
   const fallback = buildStarLayout(nodes, 'unknown');
   assert.equal(messages.visibleCodes.size, 12);

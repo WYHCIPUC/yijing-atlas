@@ -16,7 +16,7 @@ import {
 import { loadReviewConfig, saveReviewConfig } from '../learning-review.js';
 import { renderTrigrams } from '../render.js';
 import { getDueCount, loadReviewCards } from '../review-engine.js';
-import { renderLearningLessonPage, renderStudyPathPage, renderTheoremsPage, renderWingsPage } from '../study-page.js?v=42';
+import { renderLearningLessonPage, renderStudyPathPage, renderTheoremsPage, renderWingsPage } from '../study-page.js?v=43';
 import { downloadUserData, importUserData, parseUserData } from '../user-data.js';
 
 const sections = [

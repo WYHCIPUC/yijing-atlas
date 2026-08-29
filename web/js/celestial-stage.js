@@ -596,7 +596,8 @@ export function initCelestialStage(canvas, options = {}) {
 
     const drift = config.drift;
     screenToWorld(sharedView.centerX, sharedView.centerY, layoutAnchor);
-    root.position.lerp(layoutAnchor, 0.18);
+    // Canvas 星群、网络球壳与浑天轨道共用同一屏幕锚点；禁止不同步的追赶造成视觉偏心。
+    root.position.copy(layoutAnchor);
     networkShell.position.copy(layoutAnchor);
     const canvasRect = canvas.getBoundingClientRect();
     const visibleHeight = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov * 0.5)) * camera.position.z;
@@ -608,10 +609,12 @@ export function initCelestialStage(canvas, options = {}) {
     networkShell.scale.y += (shellScale * relationPulseScale - networkShell.scale.y) * shellEase;
     const layoutDepth = 1 - sharedView.layoutBlend * 0.82;
     networkShell.scale.z += (shellScale * relationPulseScale * layoutDepth - networkShell.scale.z) * shellEase;
-    const orbitScale = Math.max(0.82, Math.min(1.32, Math.pow(sharedView.scale, 0.22)));
-    root.scale.x += (orbitScale - root.scale.x) * 0.08;
-    root.scale.y += (orbitScale - root.scale.y) * 0.08;
-    root.scale.z += (orbitScale - root.scale.z) * 0.08;
+    // 外轨尺度从同一个星群包围半径推导，保持“星团—网络壳—轨道”是一套天体系统。
+    const orbitScale = Math.max(0.32, Math.min(1.55,
+      shellScale / 2.45 * Math.pow(sharedView.scale, 0.12)));
+    root.scale.x += (orbitScale - root.scale.x) * 0.16;
+    root.scale.y += (orbitScale - root.scale.y) * 0.16;
+    root.scale.z += (orbitScale - root.scale.z) * 0.16;
     armillaryPitch.scale.z += (layoutDepth - armillaryPitch.scale.z) * 0.1;
     networkPitch.rotation.x = sharedView.pitch;
     networkYaw.rotation.y = -sharedView.yaw;

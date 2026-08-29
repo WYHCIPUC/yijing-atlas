@@ -23,11 +23,11 @@ import { hexagramSvg } from './svg-painter.js';
 const { buildHexagramIndex, searchHexagrams } = dataLoader;
 
 const modeLoaders = {
-  almanac: () => import('./almanac-page.js?v=42').then((module) => module.renderAlmanacPage),
-  divination: () => import('./modes/divination-mode.js?v=42').then((module) => module.renderDivinationMode),
-  learning: () => import('./modes/learning-mode.js?v=42').then((module) => module.renderLearningMode),
-  quiz: () => import('./modes/quiz-mode.js?v=42').then((module) => module.renderQuizMode),
-  review: () => import('./modes/review-mode.js?v=42').then((module) => module.renderReviewMode),
+  almanac: () => import('./almanac-page.js?v=43').then((module) => module.renderAlmanacPage),
+  divination: () => import('./modes/divination-mode.js?v=43').then((module) => module.renderDivinationMode),
+  learning: () => import('./modes/learning-mode.js?v=43').then((module) => module.renderLearningMode),
+  quiz: () => import('./modes/quiz-mode.js?v=43').then((module) => module.renderQuizMode),
+  review: () => import('./modes/review-mode.js?v=43').then((module) => module.renderReviewMode),
 };
 
 const state = {
@@ -211,7 +211,7 @@ function updateRelationInterface(relationState = {}) {
       ? layoutState.visibleCodes
       : state.hexagrams.filter((hexagram) => hexagram.binaryCode.slice(0, 3) === hexagram.binaryCode.slice(3)).map((hexagram) => hexagram.binaryCode);
     const overviewHexagrams = codes.map((code) => state.index?.byCode.get(code)).filter(Boolean);
-    relationStatusEl.textContent = `${layoutState?.shortLabel || '关系球'} · ${RELATION_NAMES[type]}层 · ${overviewHexagrams.length} 个可选卦`;
+    relationStatusEl.textContent = `${layoutState?.shortLabel || '易象银河'} · ${RELATION_NAMES[type]}层 · ${overviewHexagrams.length} 个可选卦`;
     relationListEl.innerHTML = overviewHexagrams.map((hexagram) => {
       const meta = layoutEntryMeta(layoutState, hexagram.binaryCode);
       return `<li><button type="button" data-code="${hexagram.binaryCode}"><span>${hexagram.name} · ${hexagram.fullName}</span>${meta ? `<em>${meta}</em>` : ''}</button></li>`;
