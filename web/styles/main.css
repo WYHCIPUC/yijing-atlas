@@ -3609,3 +3609,77 @@ body :where(.mode-panel-sub, .detail-header .subtitle, .hint-guide,
   .relation-layers { width: calc(100vw - 20px); padding: 12px; }
   .relation-layer-buttons button { min-height: 40px; }
 }
+
+/* V45 中文换行系统：短标签保持完整，长标题按语义均衡，正文避免末行孤字。 */
+html {
+  line-break: strict;
+  text-spacing-trim: trim-start;
+}
+body {
+  overflow-wrap: break-word;
+  text-autospace: normal;
+  word-break: normal;
+}
+
+/* 标题和短说明允许换行，但不再形成“一字悬挂”的失衡行。 */
+:is(h1, h2, h3, h4, .mode-panel-title, .detail-title, .section-title,
+  .mode-panel-sub, .detail-header .subtitle, .daily-intro > p,
+  .seven-step-slip span,
+  .relation-layers-heading > span, .workspace-insight-bar strong,
+  .academy-heading p, .library-heading p, .profile-heading p,
+  .today-primary-copy p, .assessment-launch-card p) {
+  text-wrap: balance;
+}
+:is(p, li, blockquote, dd, figcaption, .note-text, .translated-text,
+  .star-layout-description, .commentary-gate-note span) {
+  text-wrap: pretty;
+}
+
+/* 功能原子不得从词中间拆开；它们的容器同时预留真实文字宽度。 */
+:is(.mode-btn, .learning-tab, .divine-tab, .daily-enter, .detail-title,
+  #hexagram-detail-title,
+  .lesson-method-rail a, .lesson-stage-rail b, .lesson-stage-rail small,
+  .study-level-node small, .study-level-node strong,
+  .learning-dashboard span, .academy-kicker, .review-mode-badge,
+  .content-provenance, .daily-roadmap span, .today-practice-foot > span,
+  .relation-layers-heading strong, .relation-layer-buttons button,
+  .changing-position-buttons > span, .changing-position-buttons button,
+  .star-layout-control label, .star-text-relations summary,
+  .galaxy-legend span, .share-hexagram, .rel-type, .yj-tag,
+  .profile-section-head > span, .level-heading > strong,
+  .assessment-sheet-head > span, .step-actions .text-button) {
+  overflow-wrap: normal;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+.relation-layers-heading > div { flex: 0 0 max-content; }
+.relation-layers-heading > span {
+  flex: 1 1 150px;
+  max-width: none;
+  min-width: 0;
+}
+.learning-tab { min-width: 5.75em; }
+.lesson-method-rail a { min-width: 2.75em; }
+.daily-roadmap { flex-wrap: nowrap; }
+.daily-roadmap i { flex: 1 1 30px; min-width: 12px; }
+
+@media (max-width: 900px) {
+  .detail-panel[data-layout="bottom"] .detail-content {
+    display: block;
+    width: min(100%, 720px);
+  }
+}
+
+@media (max-width: 600px) {
+  .learning-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .relation-layers-heading { align-items: center; }
+  .relation-layers-heading > span { flex-basis: 0; }
+  .detail-panel[data-layout="bottom"] .detail-header {
+    display: block;
+    min-height: 0;
+    margin-bottom: 24px;
+    padding: 8px 4px 28px;
+    text-align: center;
+  }
+}

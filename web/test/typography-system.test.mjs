@@ -24,6 +24,16 @@ test('全站字号建立 15px 硬底线并按层级递增', () => {
   assert.match(css, /body :where\(h1\)[\s\S]*?font-size: clamp\(38px, 4vw, 52px\) !important/);
 });
 
+test('中文短语按控件原子、均衡标题和正文三层处理换行', () => {
+  assert.match(css, /html \{[\s\S]*?line-break: strict/);
+  assert.match(css, /body \{[\s\S]*?word-break: normal/);
+  assert.match(css, /\.seven-step-slip span,[\s\S]*?text-wrap: balance/);
+  assert.match(css, /:is\(p, li, blockquote,[\s\S]*?text-wrap: pretty/);
+  assert.match(css, /#hexagram-detail-title,[\s\S]*?white-space: nowrap;[\s\S]*?word-break: keep-all/);
+  assert.match(css, /@media \(max-width: 900px\) \{[\s\S]*?\.detail-panel\[data-layout="bottom"\] \.detail-content \{[\s\S]*?display: block/);
+  assert.doesNotMatch(css, /word-break:\s*break-all/);
+});
+
 test('Canvas 经典图式标签和图式说明具有清晰的字号下限', () => {
   assert.match(starMap, /const MIN_VISIBLE_FONT_SIZE = 15/);
   assert.match(starMap, /Math\.max\(MIN_VISIBLE_FONT_SIZE, scaledFontSize\)/);

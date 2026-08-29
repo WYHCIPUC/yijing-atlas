@@ -104,6 +104,85 @@ class CdpClient {
   }
 }
 
+async function collectChineseOrphans(client, context, rootSelector = 'body') {
+  return client.evaluate(`(() => {
+    const root = document.querySelector(${JSON.stringify(rootSelector)});
+    if (!root) return [];
+    const selectors = [
+      'button', 'button > span', 'button > strong',
+      'a', 'a > span', 'a > strong', 'summary', 'label', 'figcaption',
+      'h1', 'h2', 'h3', 'h4',
+      '.content-provenance', '.review-mode-badge', '.academy-kicker',
+      '.workspace-insight-bar small', '.workspace-insight-bar strong',
+      '.daily-roadmap span', '.lesson-stage-rail b', '.lesson-stage-rail small',
+      '.study-level-node strong', '.study-level-node small',
+      '.profile-section-head > span', '.level-heading > span',
+      '.relation-layers-heading > span', '.relation-layers-heading strong',
+      '.star-layout-control label', '.changing-position-buttons > span',
+      '.hint-guide', '.view-readout small', '.galaxy-legend span'
+    ];
+    const candidates = [...root.querySelectorAll(selectors.join(','))];
+    const cjk = /[\\u3400-\\u4dbf\\u4e00-\\u9fff]/;
+    const issues = [];
+
+    for (const element of candidates) {
+      if (element.matches('button, a, summary, label, figcaption') && element.children.length) continue;
+      const style = getComputedStyle(element);
+      const bounds = element.getBoundingClientRect();
+      if (!element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }) ||
+          style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) === 0 ||
+          bounds.width < 1 || bounds.height < 1 || element.closest('[hidden]')) continue;
+
+      const chars = [];
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        let offset = 0;
+        for (const char of node.data) {
+          const start = offset;
+          offset += char.length;
+          if (!cjk.test(char)) continue;
+          const range = document.createRange();
+          range.setStart(node, start);
+          range.setEnd(node, offset);
+          const rect = range.getBoundingClientRect();
+          if (rect.width > 0 && rect.height > 0) chars.push({ char, top: Math.round(rect.top * 2) / 2 });
+        }
+      }
+      if (chars.length < 3 || chars.length > 12) continue;
+
+      const lines = [];
+      for (const char of chars) {
+        let line = lines.find((item) => Math.abs(item.top - char.top) <= 1);
+        if (!line) {
+          line = { top: char.top, text: '' };
+          lines.push(line);
+        }
+        line.text += char.char;
+      }
+      lines.sort((a, b) => a.top - b.top);
+      if (lines.length < 2 || !lines.some((line) => line.text.length === 1)) continue;
+
+      const className = typeof element.className === 'string'
+        ? element.className.trim().split(/\\s+/).slice(0, 3).join('.')
+        : '';
+      issues.push({
+        context: ${JSON.stringify(context)},
+        element: element.tagName.toLowerCase() + (element.id ? '#' + element.id : '') + (className ? '.' + className : ''),
+        text: element.textContent.replace(/\\s+/g, ' ').trim().slice(0, 60),
+        lines: lines.map((line) => line.text),
+        width: Math.round(bounds.width),
+      });
+    }
+    return issues;
+  })()`);
+}
+
+async function assertNoChineseOrphans(client, context, rootSelector = 'body') {
+  const issues = await collectChineseOrphans(client, context, rootSelector);
+  if (issues.length) throw new Error(`发现中文短语孤字换行：${JSON.stringify(issues)}`);
+}
+
 const browserPath = findBrowser();
 if (!browserPath) {
   console.error('未找到 Chromium 浏览器。可通过 BROWSER_PATH 指定 Chrome/Edge/Chromium 可执行文件。');
@@ -146,6 +225,7 @@ try {
   await client.send('Log.enable');
   await client.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false });
   await waitFor(() => client.evaluate('document.querySelector("#loading")?.hidden === true'), '应用初始化超时');
+  await assertNoChineseOrphans(client, '1280x720 欢迎页');
 
   await client.evaluate(`(() => {
     const overlay = document.querySelector('#daily-overlay');
@@ -157,6 +237,7 @@ try {
     return true;
   })()`);
   await waitFor(() => client.evaluate('document.querySelector("#daily-overlay").hidden === true'), '今日卦入口未关闭');
+  await assertNoChineseOrphans(client, '1280x720 探索');
 
   const navigation = await client.evaluate(`(() => ({
     modes: [...document.querySelectorAll('.mode-btn')].map((button) => button.dataset.mode),
@@ -169,6 +250,18 @@ try {
   }
   if (navigation.hasLegacyGuaxuMode || navigation.viewportRight - navigation.guaxuToolRight > 180) {
     throw new Error('卦序入口未正确迁移到星图右上角');
+  }
+
+  const modeAuditSelectors = {
+    almanac: '.almanac-view',
+    learning: '.learning-tabs',
+    review: '.review-panel',
+    quiz: '.quiz-panel',
+  };
+  for (const [mode, selector] of Object.entries(modeAuditSelectors)) {
+    await client.evaluate(`document.querySelector('[data-mode="${mode}"]').click()`);
+    await waitFor(() => client.evaluate(`document.querySelector(${JSON.stringify(selector)}) !== null`), `${mode} 模块未加载`);
+    await assertNoChineseOrphans(client, `1280x720 ${mode}`);
   }
 
   const audioPreference = await client.evaluate(`(() => {
@@ -188,6 +281,7 @@ try {
 
   await client.evaluate('document.querySelector("[data-mode=divination]").click()');
   await waitFor(() => client.evaluate('document.querySelector(".coin-cast") !== null'), '占筮模块未加载');
+  await assertNoChineseOrphans(client, '1280x720 占筮');
   await client.evaluate('document.querySelector(".coin-cast").click()');
   const coinInterpretation = await waitFor(() => client.evaluate(`(() => {
     const panel = document.querySelector('.coin-result .divine-interpretation');
@@ -204,6 +298,7 @@ try {
 
   await client.evaluate('document.querySelector("[data-sub=meihua]").click()');
   await waitFor(() => client.evaluate('document.querySelector(".mh-cast") !== null'), '梅花易数页未加载');
+  await assertNoChineseOrphans(client, '1280x720 梅花易数', '.divine-panel');
   await client.evaluate('document.querySelector(".mh-cast").click()');
   await waitFor(() => client.evaluate(`(() => {
     const panel = document.querySelector('.mh-result .divine-interpretation');
@@ -251,6 +346,7 @@ try {
   });
   await client.evaluate('document.querySelector("[data-explore-tool=guaxu]").click()');
   await waitFor(() => client.evaluate('document.querySelector(".guaxu-overlay.open") !== null'), '卦序转盘未居中打开');
+  await assertNoChineseOrphans(client, '1280x720 卦序', '.guaxu-overlay');
   await client.evaluate('document.querySelector(".guaxu-spin").click()');
   const guaxuResult = await waitFor(() => client.evaluate(`(() => {
     const selected = document.querySelectorAll('.guaxu-wheel-sector.selected').length;
@@ -273,6 +369,7 @@ try {
   if (resultCount < 1) throw new Error('搜索没有返回结果');
   await client.evaluate('document.querySelector(".search-option").click()');
   await waitFor(() => client.evaluate('document.querySelector("#detail-panel").classList.contains("open") && location.search.includes("hex=")'), '详情深链接未打开');
+  await assertNoChineseOrphans(client, '1280x720 卦象详情');
 
   await client.evaluate('document.querySelector(".share-hexagram").click()');
   const shareCard = await waitFor(() => client.evaluate(`(() => {
@@ -293,6 +390,7 @@ try {
 
   await client.evaluate('document.querySelector(".evolution-launch").click()');
   await waitFor(() => client.evaluate('document.querySelector(".evolution-overlay.open") !== null'), '卦象演变实验室未打开');
+  await assertNoChineseOrphans(client, '1280x720 演变实验室', '.evolution-overlay');
   await client.evaluate(`document.querySelector('[data-evolution-line="1"]').click()`);
   await waitFor(() => client.evaluate('document.querySelector(".evolution-result figcaption span")?.textContent.includes("011111")'), '实验室逐爻变化结果错误');
   await client.evaluate('document.querySelector("[data-evolution-action=undo]").click()');
@@ -443,6 +541,7 @@ try {
   })()`);
   if (Math.abs(wideLayout.panelWidth - wideLayout.viewportWidth) > 2 || Math.abs(wideLayout.canvasWidth - wideLayout.viewportWidth) > 2) throw new Error('宽屏底部布局宽度错误');
   if (Math.abs(wideLayout.canvasHeight + wideLayout.panelHeight - wideLayout.viewportHeight) > 2) throw new Error('宽屏底部布局高度错误');
+  await assertNoChineseOrphans(client, '1440x1024 卦象详情');
 
   await client.send('Emulation.setDeviceMetricsOverride', { width: 768, height: 1024, deviceScaleFactor: 1, mobile: true });
   await waitFor(() => client.evaluate('document.querySelector("#detail-panel").getAttribute("aria-modal") === "true"'), '平板详情栏未切换为模态');
@@ -455,6 +554,7 @@ try {
     return { width: panel.width, top: panel.top, viewportWidth: innerWidth };
   })()`);
   if (Math.abs(tabletPanel.width - tabletPanel.viewportWidth) > 2 || Math.abs(tabletPanel.top) > 2) throw new Error('平板详情栏不是全屏阅读布局');
+  await assertNoChineseOrphans(client, '768x1024 卦象详情');
   await client.evaluate('document.querySelector("#detail-close").click()');
   const tabletHeader = await client.evaluate(`(() => {
     const bar = document.querySelector('.topbar').getBoundingClientRect();
@@ -532,6 +632,7 @@ try {
   })()`);
   if (Math.abs(mobilePanel.width - mobilePanel.viewportWidth) > 2 || Math.abs(mobilePanel.top) > 2) throw new Error('手机详情不是全屏阅读布局');
   if (mobilePanel.ariaModal !== 'true' || mobilePanel.sections < 5) throw new Error('手机详情语义或内容分组异常');
+  await assertNoChineseOrphans(client, '390x844 卦象详情');
   await client.evaluate('document.querySelector(".evolution-launch").click()');
   await waitFor(() => client.evaluate('document.querySelector(".evolution-overlay.open") !== null'), '手机演变实验室未打开');
   const mobileLab = await client.evaluate(`(() => {
@@ -556,6 +657,7 @@ try {
   await waitFor(() => client.evaluate('document.querySelector(".learning-tabs") !== null'), '学习模式未渲染');
   await client.evaluate('document.querySelector("[data-section=path]").click()');
   await waitFor(() => client.evaluate('document.querySelectorAll(".learning-dashboard > div").length === 5'), '学习仪表板未渲染');
+  await assertNoChineseOrphans(client, '390x844 学程');
   const overflow = await client.evaluate('document.documentElement.scrollWidth > document.documentElement.clientWidth');
   if (overflow) throw new Error('390px 视口出现横向溢出');
 
