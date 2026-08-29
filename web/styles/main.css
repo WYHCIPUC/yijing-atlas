@@ -24,10 +24,12 @@
   --font-ui: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
   --font-reading: "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", serif;
   --font-display: "Kaiti SC", "STKaiti", "KaiTi", "Source Han Serif SC", serif;
-  --type-micro: 0.72rem;
-  --type-caption: 0.76rem;
-  --type-small: 0.82rem;
-  --type-body: 0.94rem;
+  --type-min: 15px;
+  --type-micro: 15px;
+  --type-caption: 16px;
+  --type-small: 17px;
+  --type-body: 18px;
+  --type-lead: 20px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1695,6 +1697,7 @@ body[data-active-mode="divination"] #celestial-canvas { opacity: 0.6; filter: sa
 }
 
 @media (max-width: 900px) {
+  .brand-subtitle { display: none; }
   .explore-tools { top: calc(var(--header-height) + 10px); right: 10px; }
   .explore-tool:not(.guaxu-tool) { display: none; }
   .guaxu-overlay { padding: calc(var(--header-height) + 12px) 12px 12px; }
@@ -1856,7 +1859,7 @@ body[data-active-mode="divination"] #celestial-canvas { opacity: 0.6; filter: sa
 .content-provenance[data-layer="易传"] { color: #b7c9a4; border-color: rgba(150,185,128,0.24); }
 .seven-step-slip {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
   margin: 2px 0 24px;
   overflow: hidden;
@@ -1883,7 +1886,6 @@ body[data-active-mode="divination"] #celestial-canvas { opacity: 0.6; filter: sa
 .commentary-gate-note span { color: var(--text-dim); font-size: 0.72rem; line-height: 1.6; }
 
 @media (max-width: 900px) {
-  .seven-step-slip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .seven-step-slip a { min-height: 76px; }
 }
 
@@ -3417,4 +3419,92 @@ body { font-kerning: normal; text-rendering: optimizeLegibility; -webkit-font-sm
   .view-readout small { font-size: 0.75rem; }
   .relation-layers-heading > span { font-size: 0.74rem; }
   .star-layout-description { font-size: 0.75rem; }
+}
+
+/* V42 全站排版契约：任何可见文字不得小于 15px，再按用途逐级增大。 */
+body { font-size: var(--type-small); }
+body :where(*) { font-size: var(--type-min) !important; }
+body :where(span, strong, b, em, i, cite, a, code, kbd, label) { font-size: inherit !important; }
+body :where(button, input, select, textarea, summary) {
+  font-family: var(--font-ui);
+  font-size: var(--type-caption) !important;
+  line-height: 1.5;
+}
+body :where(p, li, blockquote, dt, dd, td, th) {
+  font-size: var(--type-small) !important;
+  line-height: 1.75;
+}
+body :where(small, figcaption, caption) {
+  font-size: var(--type-min) !important;
+  line-height: 1.6;
+  letter-spacing: 0.025em;
+}
+body :where(h1) {
+  font-size: clamp(38px, 4vw, 52px) !important;
+  line-height: 1.2;
+  letter-spacing: 0.045em;
+}
+body :where(h2) {
+  font-size: clamp(30px, 3vw, 38px) !important;
+  line-height: 1.28;
+  letter-spacing: 0.05em;
+}
+body :where(h3) {
+  font-size: clamp(24px, 2.2vw, 30px) !important;
+  line-height: 1.35;
+  letter-spacing: 0.055em;
+}
+body :where(h4) {
+  font-size: var(--type-lead) !important;
+  line-height: 1.45;
+  letter-spacing: 0.06em;
+}
+
+/* 非标题元素承载的品牌、卦名与数据标题必须显式进入更高层级。 */
+body :where(.logo) { font-size: 28px !important; line-height: 1.2; }
+body :where(.daily-hex-name) { font-size: 48px !important; line-height: 1.18; }
+body :where(.mode-panel-title, .detail-title, .learning-panel > .mode-panel-title) {
+  font-size: 28px !important;
+  line-height: 1.35;
+}
+body :where(.atlas-scripture, .original-text, .daily-verse, .translated-text) {
+  font-size: var(--type-body) !important;
+  line-height: 1.9;
+}
+body :where(.star-map-intro > strong, .star-hover-card > strong,
+  .relation-layers-heading strong, .academy-heading strong, article > strong) {
+  font-size: var(--type-lead) !important;
+  line-height: 1.45;
+}
+body :where(.mode-panel-sub, .detail-header .subtitle, .hint-guide,
+  .star-layout-description, .relation-layers-heading > span) {
+  font-size: var(--type-caption) !important;
+  line-height: 1.7;
+}
+
+/* 64 卦转盘不再以不可读微字密铺；仅让当前扇区显名，信息由右侧结果同步补全。 */
+.guaxu-wheel-name,
+.guaxu-wheel-number { opacity: 0; transition: opacity 0.2s ease; }
+.guaxu-wheel-sector.selected .guaxu-wheel-name,
+.guaxu-wheel-sector.selected .guaxu-wheel-number {
+  opacity: 1;
+  font-size: var(--type-min) !important;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  paint-order: stroke fill;
+  stroke: rgba(7, 12, 26, 0.96);
+  stroke-width: 3px;
+}
+.guaxu-wheel-hub-title { font-size: var(--type-lead) !important; }
+.guaxu-wheel-hub-sub { font-size: var(--type-min) !important; }
+
+@media (max-width: 600px) {
+  body :where(h1) { font-size: 34px !important; }
+  body :where(h2) { font-size: 28px !important; }
+  body :where(h3) { font-size: 23px !important; }
+  body :where(.logo) { font-size: 25px !important; }
+  body :where(.daily-hex-name) { font-size: 42px !important; }
+  body :where(.mode-panel-title, .detail-title, .learning-panel > .mode-panel-title) {
+    font-size: 26px !important;
+  }
 }

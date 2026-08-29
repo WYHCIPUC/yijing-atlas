@@ -13,16 +13,24 @@ test('界面、阅读与标题使用分工明确的中文字体栈', () => {
   assert.match(css, /\.original-text[^}]+font-family: var\(--font-reading\)/);
 });
 
-test('关键注释和移动端视角读数不再退回不可读的微小字号', () => {
-  assert.match(css, /--type-micro: 0\.72rem/);
+test('全站字号建立 15px 硬底线并按层级递增', () => {
+  assert.match(css, /--type-min: 15px/);
+  assert.match(css, /--type-micro: 15px/);
+  assert.match(css, /--type-caption: 16px/);
+  assert.match(css, /--type-small: 17px/);
+  assert.match(css, /--type-body: 18px/);
+  assert.match(css, /body :where\(\*\) \{ font-size: var\(--type-min\) !important; \}/);
   assert.match(css, /\.detail-panel small,[\s\S]*?font-size: var\(--type-caption\)/);
-  assert.match(css, /\.view-readout small \{ font: 0\.72rem/);
-  const mobileTypography = css.slice(css.lastIndexOf('@media (max-width: 600px)'));
-  assert.match(mobileTypography, /\.view-readout small \{ font-size: 0\.75rem/);
-  assert.doesNotMatch(mobileTypography, /font-size:\s*0\.5rem/);
+  assert.match(css, /body :where\(h1\)[\s\S]*?font-size: clamp\(38px, 4vw, 52px\) !important/);
 });
 
 test('Canvas 经典图式标签和图式说明具有清晰的字号下限', () => {
-  assert.match(starMap, /node\.layoutForceLabel \? 15 : 12\.5/);
-  assert.match(starMap, /ctx\.font = '13px "Microsoft YaHei UI"/);
+  assert.match(starMap, /const MIN_VISIBLE_FONT_SIZE = 15/);
+  assert.match(starMap, /Math\.max\(MIN_VISIBLE_FONT_SIZE, scaledFontSize\)/);
+  assert.doesNotMatch(starMap, /ctx\.font = '(?:1[0-4](?:\.\d+)?)px/);
+});
+
+test('卦序轮盘仅显示当前扇区，避免 64 个放大标签互相覆盖', () => {
+  assert.match(css, /\.guaxu-wheel-name,[\s\S]*?\.guaxu-wheel-number \{ opacity: 0/);
+  assert.match(css, /\.guaxu-wheel-sector\.selected \.guaxu-wheel-name,[\s\S]*?font-size: var\(--type-min\) !important/);
 });

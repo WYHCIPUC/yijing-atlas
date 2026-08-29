@@ -255,7 +255,7 @@ test('普通卦名使用实测宽度防碰撞，并优先保留重要标签', ()
 
   assert.deepEqual(labels.map(label => label.node.id), ['远景', '重要']);
   assert.deepEqual(ctx.measured.map(item => item.text), ['普通', '重要', '远景']);
-  assert.equal(labels.find(label => label.node.id === '远景').fontSize, 12);
+  assert.equal(labels.find(label => label.node.id === '远景').fontSize, 15);
 });
 
 test('悬停、焦点和八纯卦标签即使碰撞也强制显示', () => {
