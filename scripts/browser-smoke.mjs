@@ -111,7 +111,7 @@ async function collectChineseOrphans(client, context, rootSelector = 'body') {
     const selectors = [
       'button', 'button > span', 'button > strong',
       'a', 'a > span', 'a > strong', 'summary', 'label', 'figcaption',
-      'h1', 'h2', 'h3', 'h4',
+      'h1', 'h2', 'h3', 'h4', 'h1 > span', 'h2 > span', 'h3 > span', 'h4 > span',
       '.content-provenance', '.review-mode-badge', '.academy-kicker',
       '.workspace-insight-bar small', '.workspace-insight-bar strong',
       '.daily-roadmap span', '.lesson-stage-rail b', '.lesson-stage-rail small',
@@ -126,7 +126,7 @@ async function collectChineseOrphans(client, context, rootSelector = 'body') {
     const issues = [];
 
     for (const element of candidates) {
-      if (element.matches('button, a, summary, label, figcaption') && element.children.length) continue;
+      if (element.matches('button, a, summary, label, figcaption, h1, h2, h3, h4') && element.children.length) continue;
       const style = getComputedStyle(element);
       const bounds = element.getBoundingClientRect();
       if (!element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }) ||
@@ -178,9 +178,79 @@ async function collectChineseOrphans(client, context, rootSelector = 'body') {
   })()`);
 }
 
+async function collectTextClipping(client, context, rootSelector = 'body') {
+  return client.evaluate(`(() => {
+    const root = document.querySelector(${JSON.stringify(rootSelector)});
+    if (!root) return [];
+    const isVisible = (element) => {
+      if (element.closest('[hidden], .sr-only')) return false;
+      let current = element;
+      while (current instanceof Element) {
+        const style = getComputedStyle(current);
+        if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) === 0) return false;
+        current = current.parentElement;
+      }
+      const rect = element.getBoundingClientRect();
+      return rect.width > 0 && rect.height > 0;
+    };
+    const describe = (element) => {
+      const className = typeof element.className === 'string'
+        ? element.className.trim().split(/\\s+/).slice(0, 3).join('.')
+        : '';
+      return element.tagName.toLowerCase() + (element.id ? '#' + element.id : '') + (className ? '.' + className : '');
+    };
+    const selectors = [
+      'h1', 'h2', 'h3', 'h4', 'h1 > span', 'h2 > span', 'h3 > span', 'h4 > span',
+      'button', 'button > span', 'button > strong', 'a', 'a > span', 'a > strong',
+      'summary', 'label', 'figcaption', 'small', 'strong', 'p',
+      '.content-provenance', '.academy-kicker', '.review-mode-badge',
+      '.workspace-insight-bar small', '.workspace-insight-bar strong',
+      '.study-level-node small', '.study-level-node strong', '.search-option-identity small'
+    ];
+    const containers = [
+      '#detail-panel', '#detail-content', '.mode-panel', '.seven-step-slip',
+      '.learning-tabs', '.daily-card', '.evolution-card', '.guaxu-dialog'
+    ];
+    const candidates = [...new Set([
+      ...root.querySelectorAll(selectors.join(',')),
+      ...root.querySelectorAll(containers.join(',')),
+    ])];
+    const issues = [];
+
+    for (const element of candidates) {
+      if (!isVisible(element)) continue;
+      const text = (element.innerText || '').replace(/\\s+/g, ' ').trim();
+      if (!text) continue;
+      const style = getComputedStyle(element);
+      const widthOverflow = element.scrollWidth - element.clientWidth > 1;
+      const heightOverflow = element.scrollHeight - element.clientHeight > 1;
+      const isContainer = element.matches(containers.join(','));
+      const clippedWidth = widthOverflow && (isContainer || style.whiteSpace === 'nowrap' ||
+        style.textOverflow === 'ellipsis' || ['hidden', 'clip'].includes(style.overflowX));
+      const clippedHeight = heightOverflow && (Number.parseInt(style.webkitLineClamp, 10) > 0 ||
+        ['hidden', 'clip'].includes(style.overflowY));
+      if (!clippedWidth && !clippedHeight) continue;
+      issues.push({
+        context: ${JSON.stringify(context)},
+        element: describe(element),
+        text: text.slice(0, 70),
+        client: [element.clientWidth, element.clientHeight],
+        scroll: [element.scrollWidth, element.scrollHeight],
+        overflow: [style.overflowX, style.overflowY],
+        whiteSpace: style.whiteSpace,
+        textOverflow: style.textOverflow,
+        lineClamp: style.webkitLineClamp,
+      });
+    }
+    return issues;
+  })()`);
+}
+
 async function assertNoChineseOrphans(client, context, rootSelector = 'body') {
   const issues = await collectChineseOrphans(client, context, rootSelector);
   if (issues.length) throw new Error(`发现中文短语孤字换行：${JSON.stringify(issues)}`);
+  const clipping = await collectTextClipping(client, context, rootSelector);
+  if (clipping.length) throw new Error(`发现文字显示不完整或横向溢出：${JSON.stringify(clipping)}`);
 }
 
 const browserPath = findBrowser();

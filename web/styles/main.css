@@ -3683,3 +3683,62 @@ body {
     text-align: center;
   }
 }
+
+/* V46 完整显示保护：按语义换行，禁止以省略或横向滚动掩盖正文。 */
+#hexagram-detail-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.28em;
+  max-width: 100%;
+  overflow-wrap: normal;
+  white-space: normal;
+  word-break: normal;
+}
+#hexagram-detail-title > span {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.rel-type { min-width: 3.5em; }
+
+.detail-panel:not([data-layout="bottom"]) .seven-step-slip {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.detail-panel:not([data-layout="bottom"]) .seven-step-slip a:last-child {
+  grid-column: 1 / -1;
+}
+
+:is(.evolution-change-list small, .ability-row small,
+  .search-option-identity small, .workspace-insight-bar strong) {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+.workspace-insight-bar strong {
+  display: block;
+  -webkit-box-orient: initial;
+  -webkit-line-clamp: initial;
+}
+.ability-row { align-items: start; }
+.search-option { min-height: 68px; }
+.search-option-identity small { line-height: 1.5; }
+
+@media (max-width: 900px) {
+  .seven-step-slip {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: hidden;
+    scroll-snap-type: none;
+  }
+  .seven-step-slip a {
+    min-width: 0;
+    min-height: 88px;
+    scroll-snap-align: none;
+  }
+  .seven-step-slip a:last-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 360px) {
+  .seven-step-slip { grid-template-columns: 1fr; }
+  .seven-step-slip a:last-child { grid-column: auto; }
+}

@@ -138,7 +138,7 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       <div class="detail-symbol">${hexagramSvg(hex.binaryCode, { size: 140 })}</div>
       <div class="detail-heading-copy">
         <div class="detail-kicker">第 ${hex.number} 卦 · ${esc(hex.binaryCode)}</div>
-        <h1 id="hexagram-detail-title" data-page-heading tabindex="-1">${esc(hex.name)} · ${esc(hex.fullName)}</h1>
+        <h1 id="hexagram-detail-title" data-page-heading tabindex="-1"><span>${esc(hex.name)}</span><span>· ${esc(hex.fullName)}</span></h1>
         <div class="subtitle">下${esc(trigramLabel(hex.trigramLower))} · 上${esc(trigramLabel(hex.trigramUpper))}</div>
         <div class="detail-actions">
           <button type="button" class="text-button share-hexagram" data-code="${esc(hex.binaryCode)}">生成分享图片</button>

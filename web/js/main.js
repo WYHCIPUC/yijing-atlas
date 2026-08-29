@@ -23,11 +23,11 @@ import { hexagramSvg } from './svg-painter.js';
 const { buildHexagramIndex, searchHexagrams } = dataLoader;
 
 const modeLoaders = {
-  almanac: () => import('./almanac-page.js?v=45').then((module) => module.renderAlmanacPage),
-  divination: () => import('./modes/divination-mode.js?v=45').then((module) => module.renderDivinationMode),
-  learning: () => import('./modes/learning-mode.js?v=45').then((module) => module.renderLearningMode),
-  quiz: () => import('./modes/quiz-mode.js?v=45').then((module) => module.renderQuizMode),
-  review: () => import('./modes/review-mode.js?v=45').then((module) => module.renderReviewMode),
+  almanac: () => import('./almanac-page.js?v=46').then((module) => module.renderAlmanacPage),
+  divination: () => import('./modes/divination-mode.js?v=46').then((module) => module.renderDivinationMode),
+  learning: () => import('./modes/learning-mode.js?v=46').then((module) => module.renderLearningMode),
+  quiz: () => import('./modes/quiz-mode.js?v=46').then((module) => module.renderQuizMode),
+  review: () => import('./modes/review-mode.js?v=46').then((module) => module.renderReviewMode),
 };
 
 const state = {

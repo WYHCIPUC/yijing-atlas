@@ -63,6 +63,7 @@ test('卦象详情提供稳定页面标题与可同步的六爻折叠按钮', ()
   renderHexagramDetail(hexagrams[0], mount, hexagrams, () => {});
 
   assert.match(mount.innerHTML, /<h1 id="hexagram-detail-title" data-page-heading tabindex="-1">/);
+  assert.match(mount.innerHTML, /<span>乾<\/span><span>· 乾为天<\/span>/);
   assert.match(mount.innerHTML, /<button[^>]+id="yao-toggle"[^>]+aria-expanded="true"[^>]+aria-controls="yao-body"/);
   assert.match(mount.innerHTML, /id="yao-body" role="region" aria-labelledby="yao-toggle"/);
   assert.match(mount.innerHTML, /class="seven-step-slip"/);

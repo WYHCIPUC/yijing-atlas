@@ -29,9 +29,16 @@ test('中文短语按控件原子、均衡标题和正文三层处理换行', ()
   assert.match(css, /body \{[\s\S]*?word-break: normal/);
   assert.match(css, /\.seven-step-slip span,[\s\S]*?text-wrap: balance/);
   assert.match(css, /:is\(p, li, blockquote,[\s\S]*?text-wrap: pretty/);
-  assert.match(css, /#hexagram-detail-title,[\s\S]*?white-space: nowrap;[\s\S]*?word-break: keep-all/);
+  assert.match(css, /#hexagram-detail-title \{[\s\S]*?flex-wrap: wrap;[\s\S]*?white-space: normal/);
+  assert.match(css, /#hexagram-detail-title > span \{[\s\S]*?white-space: nowrap/);
   assert.match(css, /@media \(max-width: 900px\) \{[\s\S]*?\.detail-panel\[data-layout="bottom"\] \.detail-content \{[\s\S]*?display: block/);
   assert.doesNotMatch(css, /word-break:\s*break-all/);
+});
+
+test('详情、研读笺和辅助说明不再以裁切或横向滑动隐藏文本', () => {
+  assert.match(css, /\.detail-panel:not\(\[data-layout="bottom"\]\) \.seven-step-slip \{[\s\S]*?repeat\(2, minmax\(0, 1fr\)\)/);
+  assert.match(css, /\.evolution-change-list small,[\s\S]*?overflow: visible;[\s\S]*?text-overflow: clip;[\s\S]*?white-space: normal/);
+  assert.match(css, /@media \(max-width: 900px\) \{[\s\S]*?\.seven-step-slip \{[\s\S]*?display: grid;[\s\S]*?overflow: hidden;[\s\S]*?scroll-snap-type: none/);
 });
 
 test('Canvas 经典图式标签和图式说明具有清晰的字号下限', () => {
