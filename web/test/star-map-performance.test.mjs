@@ -136,7 +136,7 @@ test('页面可见性恢复不会覆盖业务层暂停', () => {
   }
 });
 
-test('星图把可见星群的中心、包围半径和镜头姿态同步给 WebGL 球壳', () => {
+test('星图把可见星群的中心、包围半径和镜头姿态同步给 WebGL 外轨', () => {
   const map = Object.create(StarMap.prototype);
   let emitted = null;
   Object.assign(map, {

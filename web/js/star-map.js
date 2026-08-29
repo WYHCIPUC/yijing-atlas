@@ -1,21 +1,8 @@
-// 结构约束的力导向 64 卦星图：8 纯卦作骨架锚点 + Canvas 渲染 + 动效。
-// 卦的空间位置编码易学含义：每卦被它的上下卦锚点吸引，错卦连线穿过中心对称。
+// 结构约束的 64 卦银河：六爻为卫星、卦为恒星、八纯卦为卦族锚点。
+// 卦的空间位置编码易学含义：下卦决定所属星团，上卦决定团内轨位，关系层按需连线。
 import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from '../lib/d3-force.js';
 import { getRelationOccurrences, relationTypesFrom } from './star-relations.js';
 import { buildLineStarOrbit, buildStarLayout, STAR_LAYOUTS } from './star-layouts.js';
-
-// 先天八卦方位角（弧度），0=右(东)，顺时针。乾南=上。
-// 乾(南/上) 兑(东南) 离(东) 震(东北) 巽(西南) 坎(西) 艮(西北) 坤(北/下)
-const TRIGRAM_ANGLE = {
-  '111': -Math.PI / 2,        // 乾 上(南)
-  '110': -Math.PI / 4,        // 兑 东南
-  '101': 0,                   // 离 东(右)
-  '100': Math.PI / 4,         // 震 东北
-  '011': -3 * Math.PI / 4,    // 巽 西南
-  '010': Math.PI,             // 坎 西(左)
-  '001': 3 * Math.PI / 4,     // 艮 西北
-  '000': Math.PI / 2,         // 坤 下(北)
-};
 
 const COLORS = {
   star: '#8a7a5a',
@@ -426,7 +413,7 @@ export class StarMap {
       bg.fill();
     }
 
-    // 银河尘埃与八条旋臂共用星图中心，避免背景星云与关系球各自成景。
+    // 银河尘埃与八条旋臂共用星图中心，所有视觉都从真实卦族星团生长。
     this.galaxyDustLayer = document.createElement('canvas');
     this.galaxyDustLayer.width = this.width;
     this.galaxyDustLayer.height = this.height;
@@ -458,7 +445,7 @@ export class StarMap {
     }
   }
 
-  // 三维球状布局：64 卦分布在球面/球体内，上下卦映射到球坐标经纬度
+  // 初始化卦恒星；最终位置由易象银河或所选经典图式统一提供。
   _initLayout() {
     for (const n of this.graph.nodes) {
       const lower = n.binaryCode.slice(0, 3);
@@ -493,22 +480,6 @@ export class StarMap {
       .alphaDecay(0.015);
   }
 
-  _projectTarget(node) {
-    const lower = node.binaryCode.slice(0, 3);
-    const upper = node.binaryCode.slice(3, 6);
-    const lon = TRIGRAM_ANGLE[lower];
-    const lat = (TRIGRAM_ANGLE[upper] / Math.PI) * Math.PI / 2;
-    const seed = Number.parseInt(node.binaryCode, 2);
-    const radialRatio = node.isPure ? 1 : 0.55 + ((seed * 37) % 41) / 100;
-    const radius = this.anchorR * radialRatio;
-    const cosLat = Math.cos(lat);
-    return {
-      x: this.cx + radius * cosLat * Math.cos(lon),
-      y: this.cy + radius * cosLat * Math.sin(lon),
-      z: radius * Math.sin(lat),
-    };
-  }
-
   _layoutForceStrength(node) {
     if (this.layoutMode !== 'project') return node.layoutVisible ? 0.82 : 0.35;
     return node.isPure ? 0.96 : 0.72;
@@ -535,7 +506,7 @@ export class StarMap {
             y: this.cy + classicPosition.y * this.anchorR,
             z: classicPosition.z * this.anchorR,
           }
-          : this.layoutMode === 'project' ? this._projectTarget(node) : { x: this.cx, y: this.cy, z: 0 };
+          : { x: this.cx, y: this.cy, z: 0 };
       node.layoutVisible = this.layoutState.visibleCodes.has(node.id);
       node.layoutLabel = this.layoutMode === 'king-wen' ? `${String(node.number).padStart(2, '0')} · ${node.name}`
         : this.layoutMode === 'twelve-messages' && classicPosition ? `${node.name} · ${classicPosition.label}`
@@ -698,7 +669,7 @@ export class StarMap {
         const dx = sx - this.dragStart.x;
         const dy = sy - this.dragStart.y;
         if (this.layoutMode === 'project') {
-          // 项目关系球使用双轴自由旋转。
+          // 易象银河使用双轴自由旋转，观察星团的前后层次。
           this.yaw = this.dragStart.yaw + dx * 0.006;
           this.pitch = Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, this.dragStart.pitch + dy * 0.006));
         } else {

@@ -6,7 +6,7 @@ export const STAR_LAYOUTS = Object.freeze({
     label: '易象银河',
     shortLabel: '易象银河',
     sourceType: '项目银河布局',
-    description: '六爻为卫星、六十四卦为恒星，并按下卦聚成八个卦族星团；关系球与外轨共享同一银河核心。此为项目解释性布局，不是传统固定图式。',
+    description: '六爻为卫星、六十四卦为恒星，并按下卦聚成八个卦族星团；关系与外轨都围绕真实星群组织。此为项目解释性布局，不是传统固定图式。',
   }),
   'earlier-heaven': Object.freeze({
     id: 'earlier-heaven',

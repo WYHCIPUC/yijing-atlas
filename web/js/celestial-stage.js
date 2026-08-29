@@ -1,15 +1,16 @@
 import * as THREE from '../lib/vendor/three.module.min.js';
 
 const MODE_SCENES = Object.freeze({
-  explore: { accent: 0xd8b66f, secondary: 0x6f8cc8, cameraZ: 9.2, energy: 1, drift: 1 },
-  almanac: { accent: 0x88c9b8, secondary: 0xd2a55d, cameraZ: 10.2, energy: 0.72, drift: 0.55 },
-  learning: { accent: 0xe0ba72, secondary: 0x815b36, cameraZ: 10.8, energy: 0.78, drift: 0.42 },
-  review: { accent: 0x75bfa5, secondary: 0xd2b16c, cameraZ: 10.4, energy: 0.86, drift: 0.62 },
-  quiz: { accent: 0xc86d5e, secondary: 0xe0bc72, cameraZ: 9.8, energy: 1.15, drift: 0.82 },
-  divination: { accent: 0xa889d2, secondary: 0xd1a75f, cameraZ: 9.5, energy: 1.08, drift: 0.7 },
+  explore: { accent: 0xd8b66f, secondary: 0x6f8cc8, cameraZ: 9.2, energy: 1 },
+  almanac: { accent: 0x88c9b8, secondary: 0xd2a55d, cameraZ: 10.2, energy: 0.72 },
+  learning: { accent: 0xe0ba72, secondary: 0x815b36, cameraZ: 10.8, energy: 0.78 },
+  review: { accent: 0x75bfa5, secondary: 0xd2b16c, cameraZ: 10.4, energy: 0.86 },
+  quiz: { accent: 0xc86d5e, secondary: 0xe0bc72, cameraZ: 9.8, energy: 1.15 },
+  divination: { accent: 0xa889d2, secondary: 0xd1a75f, cameraZ: 9.5, energy: 1.08 },
 });
 
-const TRIGRAM_CODES = ['111', '110', '101', '100', '000', '001', '010', '011'];
+// 与易象银河八个下卦星团使用相同顺序，外围卦符承担方位索引而非独立装饰。
+const TRIGRAM_CODES = ['111', '110', '101', '100', '011', '010', '001', '000'];
 const RELATION_COLORS = Object.freeze({
   opposite: 0xe2bd72,
   reversed: 0xb89ace,
@@ -32,19 +33,6 @@ export function chooseCelestialFps({ reducedMotion, hidden, mode = 'explore', lo
   if (hidden || reducedMotion) return 0;
   if (lowPower) return mode === 'explore' ? 20 : 12;
   return mode === 'explore' ? 45 : 24;
-}
-
-export function getHexagramSpatialProfile(code) {
-  if (typeof code !== 'string' || !/^[01]{6}$/.test(code)) return null;
-  const yangCount = [...code].filter(bit => bit === '1').length;
-  const latitude = (yangCount / 6 - 0.5) * 1.4;
-  return {
-    angle: Number.parseInt(code, 2) / 63 * Math.PI * 2,
-    yangCount,
-    yinCount: 6 - yangCount,
-    latitude,
-    latitudeRadius: Math.sqrt(Math.max(0.1, 1.2 ** 2 - latitude ** 2)),
-  };
 }
 
 export function writeQuadraticArc(positions, start, end, arcHeight = 0.45) {
@@ -229,17 +217,11 @@ export function initCelestialStage(canvas, options = {}) {
   const orbiters = new THREE.Group();
   const armillaryPitch = new THREE.Group();
   const armillaryYaw = new THREE.Group();
-  const networkShell = new THREE.Group();
-  const networkPitch = new THREE.Group();
-  const networkYaw = new THREE.Group();
   const selectionGroup = new THREE.Group();
-  const focusLongitude = new THREE.Group();
-  scene.add(root, networkShell, selectionGroup);
+  scene.add(root, selectionGroup);
   root.add(armillaryPitch);
   armillaryPitch.add(armillaryYaw);
   armillaryYaw.add(armillary, orbiters);
-  networkShell.add(networkPitch);
-  networkPitch.add(networkYaw);
 
   const nebulaMaterial = createNebulaMaterial();
   const nebula = new THREE.Mesh(new THREE.SphereGeometry(27, 32, 20), nebulaMaterial);
@@ -258,67 +240,13 @@ export function initCelestialStage(canvas, options = {}) {
     depthWrite: false,
   });
   [
-    [3.15, 0.02, 0.22, 0.05],
-    [3.48, 0.012, Math.PI / 2.35, 0.38],
-    [3.78, 0.009, Math.PI / 3.1, -0.42],
-    [4.2, 0.007, Math.PI / 2, 0.9],
+    [0.78, 0.008, 0, 0],
+    [1.04, 0.005, Math.PI / 2.35, 0.38],
   ].forEach(([radius, tube, x, y]) => {
     const ring = new THREE.Mesh(new THREE.TorusGeometry(radius, tube, 8, lowPower ? 80 : 160), ringMaterial);
     ring.rotation.set(x, y, 0);
     armillary.add(ring);
   });
-
-  const coreMaterial = new THREE.MeshBasicMaterial({
-    color: MODE_SCENES.explore.accent,
-    transparent: true,
-    opacity: 0.11,
-    wireframe: true,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false,
-  });
-  const core = new THREE.Mesh(new THREE.IcosahedronGeometry(1.05, lowPower ? 1 : 2), coreMaterial);
-  const innerCoreMaterial = new THREE.MeshBasicMaterial({
-    color: 0xf3d99c,
-    transparent: true,
-    opacity: 0.07,
-    wireframe: true,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false,
-  });
-  const innerCore = new THREE.Mesh(
-    new THREE.OctahedronGeometry(0.58, 1),
-    innerCoreMaterial,
-  );
-  networkYaw.add(core, innerCore);
-
-  const focusOrbitMaterial = new THREE.MeshBasicMaterial({
-    color: MODE_SCENES.explore.secondary,
-    transparent: true,
-    opacity: 0,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false,
-  });
-  const focusMeridian = new THREE.Mesh(
-    new THREE.TorusGeometry(1.2, lowPower ? 0.008 : 0.012, 6, lowPower ? 56 : 96),
-    focusOrbitMaterial,
-  );
-  focusMeridian.rotation.x = Math.PI / 2;
-  const focusLatitudeMaterial = focusOrbitMaterial.clone();
-  const focusLatitude = new THREE.Mesh(
-    new THREE.TorusGeometry(1, lowPower ? 0.007 : 0.01, 6, lowPower ? 48 : 80),
-    focusLatitudeMaterial,
-  );
-  focusLatitude.rotation.x = Math.PI / 2;
-  const focusMarkerMaterial = new THREE.MeshBasicMaterial({
-    color: MODE_SCENES.explore.accent,
-    transparent: true,
-    opacity: 0,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false,
-  });
-  const focusMarker = new THREE.Mesh(new THREE.SphereGeometry(lowPower ? 0.035 : 0.045, 8, 6), focusMarkerMaterial);
-  focusLongitude.add(focusMeridian, focusMarker);
-  networkYaw.add(focusLongitude, focusLatitude);
 
   const tetherSegmentCount = lowPower ? 16 : 28;
   const tetherPositions = new Float32Array((tetherSegmentCount + 1) * 3);
@@ -426,9 +354,9 @@ export function initCelestialStage(canvas, options = {}) {
   TRIGRAM_CODES.forEach((code, index) => {
     const angle = index / TRIGRAM_CODES.length * Math.PI * 2 - Math.PI / 2;
     const trigram = createTrigram(code, trigramMaterial);
-    trigram.position.set(Math.cos(angle) * 4.7, Math.sin(angle) * 4.7, Math.sin(angle * 2) * 0.35);
+    trigram.position.set(Math.cos(angle) * 0.78, Math.sin(angle) * 0.78, 0);
     trigram.rotation.z = angle + Math.PI / 2;
-    trigram.scale.setScalar(0.72);
+    trigram.scale.setScalar(0.16);
     orbiters.add(trigram);
   });
 
@@ -444,12 +372,6 @@ export function initCelestialStage(canvas, options = {}) {
   const interaction = {
     focus: 0,
     targetFocus: 0,
-    angle: 0,
-    targetAngle: 0,
-    latitude: 0,
-    targetLatitude: 0,
-    latitudeRadius: 1.2,
-    targetLatitudeRadius: 1.2,
   };
   const relationVisual = {
     targetStrength: 0,
@@ -479,7 +401,6 @@ export function initCelestialStage(canvas, options = {}) {
   const selection = {
     active: false,
     code: null,
-    profile: null,
     pulse: 0,
     x: sharedView.centerX,
     y: sharedView.centerY,
@@ -533,16 +454,8 @@ export function initCelestialStage(canvas, options = {}) {
     target.hasAnchor = true;
   }
 
-  function applySpatialProfile(profile) {
-    if (!profile) return;
-    interaction.targetAngle = profile.angle;
-    interaction.targetLatitude = profile.latitude;
-    interaction.targetLatitudeRadius = profile.latitudeRadius;
-  }
-
-  function restoreSelectionProfile() {
-    if (!selection.active || !selection.profile) return false;
-    applySpatialProfile(selection.profile);
+  function restoreSelectionFocus() {
+    if (!selection.active) return false;
     interaction.targetFocus = modeState.name === 'explore' ? 0.72 : 0;
     return true;
   }
@@ -563,13 +476,8 @@ export function initCelestialStage(canvas, options = {}) {
     selectionRayMaterial.color.copy(modeState.secondary);
     selectionBurstMaterial.color.copy(modeState.accent);
     selectionWaveMaterial.uniforms.uColor.value.copy(modeState.accent);
-    focusOrbitMaterial.color.copy(modeState.secondary);
-    focusLatitudeMaterial.color.copy(modeState.accent);
-    focusMarkerMaterial.color.copy(modeState.accent);
     tetherMaterial.color.copy(modeState.secondary).lerp(relationVisual.color, relationVisual.strength * 0.58);
     tetherParticleMaterial.color.copy(modeState.accent).lerp(relationVisual.color, relationVisual.strength * 0.48);
-    coreMaterial.color.copy(modeState.secondary).lerp(modeState.accent, 0.36).lerp(relationVisual.color, relationVisual.strength * 0.32);
-    innerCoreMaterial.color.copy(modeState.accent).lerp(modeState.secondary, 0.2);
     nebulaMaterial.uniforms.uAccent.value.copy(modeState.accent);
     nebulaMaterial.uniforms.uSecondary.value.copy(modeState.secondary);
     nebulaMaterial.uniforms.uIntensity.value += (config.energy - nebulaMaterial.uniforms.uIntensity.value) * 0.04;
@@ -578,14 +486,11 @@ export function initCelestialStage(canvas, options = {}) {
     pointer.x += (pointer.targetX - pointer.x) * 0.035;
     pointer.y += (pointer.targetY - pointer.y) * 0.035;
     interaction.focus += (interaction.targetFocus - interaction.focus) * 0.075;
-    interaction.angle += (interaction.targetAngle - interaction.angle) * 0.06;
-    interaction.latitude += (interaction.targetLatitude - interaction.latitude) * 0.08;
-    interaction.latitudeRadius += (interaction.targetLatitudeRadius - interaction.latitudeRadius) * 0.08;
     sharedView.yaw += (sharedView.targetYaw - sharedView.yaw) * 0.16;
     sharedView.pitch += (sharedView.targetPitch - sharedView.pitch) * 0.16;
     sharedView.scale += (sharedView.targetScale - sharedView.scale) * 0.16;
     sharedView.layoutBlend += (sharedView.targetLayoutBlend - sharedView.layoutBlend) * 0.12;
-    // 主体球壳必须与星群同心，不做会暴露双层画布的滞后追赶。
+    // Three.js 只承载外围方位轨道，不再叠加与真实卦象无关的中心网络球。
     sharedView.centerX = sharedView.targetCenterX;
     sharedView.centerY = sharedView.targetCenterY;
     sharedView.radius = sharedView.targetRadius;
@@ -594,50 +499,32 @@ export function initCelestialStage(canvas, options = {}) {
     camera.position.z += (config.cameraZ - camera.position.z) * 0.025;
     camera.lookAt(0, 0, 0);
 
-    const drift = config.drift;
     screenToWorld(sharedView.centerX, sharedView.centerY, layoutAnchor);
-    // Canvas 星群、网络球壳与浑天轨道共用同一屏幕锚点；禁止不同步的追赶造成视觉偏心。
+    // 外围轨道与 Canvas 银河共用中心与包围尺度。
     root.position.copy(layoutAnchor);
-    networkShell.position.copy(layoutAnchor);
     const canvasRect = canvas.getBoundingClientRect();
     const visibleHeight = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov * 0.5)) * camera.position.z;
     const worldPerPixel = visibleHeight / Math.max(1, canvasRect.height);
-    const shellScale = Math.max(0.22, sharedView.radius * worldPerPixel / 1.05);
-    const shellEase = 0.34;
+    const galaxyScale = Math.max(0.22, sharedView.radius * worldPerPixel / 1.05);
     const relationPulseScale = 1 + relationVisual.pulse * 0.055;
-    networkShell.scale.x += (shellScale * relationPulseScale - networkShell.scale.x) * shellEase;
-    networkShell.scale.y += (shellScale * relationPulseScale - networkShell.scale.y) * shellEase;
     const layoutDepth = 1 - sharedView.layoutBlend * 0.82;
-    networkShell.scale.z += (shellScale * relationPulseScale * layoutDepth - networkShell.scale.z) * shellEase;
-    // 外轨尺度从同一个星群包围半径推导，保持“星团—网络壳—轨道”是一套天体系统。
-    const orbitScale = Math.max(0.32, Math.min(1.55,
-      shellScale / 2.45 * Math.pow(sharedView.scale, 0.12)));
+    // 外轨尺度由真实星群包围半径推导，并用关系脉冲轻微呼吸。
+    const orbitScale = Math.max(0.22, Math.min(4.2,
+      galaxyScale * Math.pow(sharedView.scale, 0.06) * relationPulseScale));
     root.scale.x += (orbitScale - root.scale.x) * 0.16;
     root.scale.y += (orbitScale - root.scale.y) * 0.16;
     root.scale.z += (orbitScale - root.scale.z) * 0.16;
     armillaryPitch.scale.z += (layoutDepth - armillaryPitch.scale.z) * 0.1;
-    networkPitch.rotation.x = sharedView.pitch;
-    networkYaw.rotation.y = -sharedView.yaw;
     armillaryPitch.rotation.x = sharedView.pitch;
     armillaryYaw.rotation.y = -sharedView.yaw;
-    armillary.rotation.z = seconds * 0.006 * drift + interaction.angle * 0.018;
-    orbiters.rotation.z = -seconds * 0.004 * drift - interaction.angle * 0.025;
+    // 方位卦符不自行漂移，始终与用户正在观察的八个星团保持同向。
+    armillary.rotation.z = 0;
+    orbiters.rotation.z = 0;
     const detailFade = Math.max(0.5, Math.min(1, 1 - Math.max(0, sharedView.scale - 1) * 0.3));
     ringMaterial.opacity = 0.14 * detailFade * (1 - sharedView.layoutBlend * 0.68);
     trigramMaterial.opacity = (0.55 + interaction.focus * 0.22) * detailFade;
     goldDust.material.opacity = (0.58 + interaction.focus * 0.12) * (0.72 + detailFade * 0.28) * (1 - sharedView.layoutBlend * 0.42);
-    const classicShellFade = 1 - sharedView.layoutBlend * 0.88;
-    coreMaterial.opacity = (0.11 + interaction.focus * 0.055) * (0.68 + detailFade * 0.32) * classicShellFade;
-    innerCoreMaterial.opacity = (0.06 + interaction.focus * 0.035) * detailFade * classicShellFade;
     const focusPresence = interaction.focus * detailFade;
-    focusLongitude.rotation.y = interaction.angle;
-    focusLatitude.position.y = interaction.latitude;
-    focusLatitude.scale.setScalar(interaction.latitudeRadius);
-    const markerPhase = motionPreference.matches ? interaction.angle : seconds * 0.34;
-    focusMarker.position.set(Math.cos(markerPhase) * 1.2, 0, Math.sin(markerPhase) * 1.2);
-    focusOrbitMaterial.opacity = focusPresence * 0.34;
-    focusLatitudeMaterial.opacity = focusPresence * 0.28;
-    focusMarkerMaterial.opacity = focusPresence * 0.78;
 
     const activeAnchor = focusAnchor.hasAnchor ? focusAnchor : (selection.active && selection.hasAnchor ? selection : null);
     if (activeAnchor && focusPresence > 0.015) {
@@ -694,11 +581,10 @@ export function initCelestialStage(canvas, options = {}) {
       selectionRays.scale.setScalar(1 + pulseProgress * 2.15);
       selectionBurst.scale.setScalar(1 + pulseProgress * 3.35);
       selectionWave.scale.setScalar(0.85 + pulseProgress * 1.55);
-      selectionHalo.rotation.z = interaction.angle;
-      selectionEcho.rotation.z = -interaction.angle * 0.68 - pulseProgress * 0.42;
-      selectionRays.rotation.z = interaction.angle + pulseProgress * 0.34;
-      selectionBurst.rotation.z = -interaction.angle * 0.35 - pulseProgress * 0.7;
-      coreMaterial.opacity += selection.pulse * 0.12;
+      selectionHalo.rotation.z = sharedView.yaw;
+      selectionEcho.rotation.z = -sharedView.yaw * 0.68 - pulseProgress * 0.42;
+      selectionRays.rotation.z = sharedView.yaw + pulseProgress * 0.34;
+      selectionBurst.rotation.z = -sharedView.yaw * 0.35 - pulseProgress * 0.7;
     } else {
       selection.pulse = 0;
       selectionHalo.visible = false;
@@ -795,7 +681,7 @@ export function initCelestialStage(canvas, options = {}) {
       modeState.targetSecondary.setHex(modeState.config.secondary);
       if (modeState.name !== 'explore') interaction.targetFocus = 0;
       else if (focusAnchor.hasAnchor) interaction.targetFocus = 1;
-      else restoreSelectionProfile();
+      else restoreSelectionFocus();
       canvas.dataset.scene = modeState.name;
       renderOnce();
       start();
@@ -841,28 +727,23 @@ export function initCelestialStage(canvas, options = {}) {
       else start();
     },
     focusHexagram(code, point) {
-      const profile = getHexagramSpatialProfile(code);
-      if (profile) {
+      if (typeof code === 'string' && /^[01]{6}$/.test(code)) {
         focusAnchor.code = code;
         updateInteractionAnchor(focusAnchor, point);
-        applySpatialProfile(profile);
         interaction.targetFocus = modeState.name === 'explore' ? 1 : 0;
       } else {
         focusAnchor.code = null;
         focusAnchor.hasAnchor = false;
-        if (!restoreSelectionProfile()) interaction.targetFocus = 0;
+        if (!restoreSelectionFocus()) interaction.targetFocus = 0;
       }
       renderOnce();
       start();
     },
     selectHexagram(code, point) {
-      const profile = getHexagramSpatialProfile(code);
-      if (!profile) return;
+      if (typeof code !== 'string' || !/^[01]{6}$/.test(code)) return;
       selection.active = true;
       selection.code = code;
-      selection.profile = profile;
       interaction.targetFocus = modeState.name === 'explore' ? 0.84 : 0;
-      applySpatialProfile(profile);
       updateInteractionAnchor(selection, point);
       selection.pulse = motionPreference.matches ? 0 : 1;
       renderOnce();
@@ -871,7 +752,6 @@ export function initCelestialStage(canvas, options = {}) {
     clearSelection() {
       selection.active = false;
       selection.code = null;
-      selection.profile = null;
       selection.pulse = 0;
       selection.hasAnchor = false;
       if (!focusAnchor.hasAnchor) interaction.targetFocus = 0;
