@@ -1,9 +1,9 @@
-const CACHE_NAME = 'yijing-atlas-v47';
+const CACHE_NAME = 'yijing-atlas-v48';
 const PRECACHE = [
   './',
   './index.html',
-  './styles/main.css?v=47',
-  './js/main.js?v=47',
+  './styles/main.css?v=48',
+  './js/main.js?v=48',
   './js/protocol-guard.js',
   './manifest.webmanifest',
   './assets/favicon.svg',

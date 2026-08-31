@@ -23,11 +23,11 @@ import { hexagramSvg } from './svg-painter.js';
 const { buildHexagramIndex, searchHexagrams } = dataLoader;
 
 const modeLoaders = {
-  almanac: () => import('./almanac-page.js?v=47').then((module) => module.renderAlmanacPage),
-  divination: () => import('./modes/divination-mode.js?v=47').then((module) => module.renderDivinationMode),
-  learning: () => import('./modes/learning-mode.js?v=47').then((module) => module.renderLearningMode),
-  quiz: () => import('./modes/quiz-mode.js?v=47').then((module) => module.renderQuizMode),
-  review: () => import('./modes/review-mode.js?v=47').then((module) => module.renderReviewMode),
+  almanac: () => import('./almanac-page.js?v=48').then((module) => module.renderAlmanacPage),
+  divination: () => import('./modes/divination-mode.js?v=48').then((module) => module.renderDivinationMode),
+  learning: () => import('./modes/learning-mode.js?v=48').then((module) => module.renderLearningMode),
+  quiz: () => import('./modes/quiz-mode.js?v=48').then((module) => module.renderQuizMode),
+  review: () => import('./modes/review-mode.js?v=48').then((module) => module.renderReviewMode),
 };
 
 const state = {
@@ -431,7 +431,7 @@ function showShareCardDialog(payload, hexagram) {
       <button type="button" class="share-card-close" aria-label="关闭分享图片预览">✕</button>
       <div class="share-card-copy">
         <small>分享图片已生成</small>
-        <h2 id="share-card-title">${hexagram.name} · ${hexagram.fullName}</h2>
+        <h2 id="share-card-title" class="compound-title compound-title--hexagram" aria-label="${hexagram.name} · ${hexagram.fullName}"><span class="compound-title-primary">${hexagram.name}</span><span class="compound-title-separator" aria-hidden="true">·</span><span class="compound-title-secondary">${hexagram.fullName}</span></h2>
         <p>可先检查卡片内容，再发送给朋友或下载 PNG。</p>
       </div>
       <div class="share-card-preview"><img src="${payload.previewUrl}" alt="${hexagram.name}卦分享卡片预览"></div>

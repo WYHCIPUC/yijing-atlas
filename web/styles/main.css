@@ -3684,21 +3684,48 @@ body {
   }
 }
 
-/* V46 完整显示保护：按语义换行，禁止以省略或横向滚动掩盖正文。 */
+/* V48 复合标题：卦名、分隔符与全名作为一个身份单元，避免孤立标点和残缺显示。 */
 #hexagram-detail-title {
+  font-size: clamp(32px, 2vw, 38px) !important;
+  line-height: 1.18;
+  letter-spacing: 0.025em;
+}
+.compound-title {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: baseline;
-  gap: 0 0.28em;
+  gap: 0.24em;
+  width: max-content;
   max-width: 100%;
   overflow-wrap: normal;
-  white-space: normal;
-  word-break: normal;
+  text-wrap: nowrap;
+  white-space: nowrap;
+  word-break: keep-all;
 }
-#hexagram-detail-title > span {
+.compound-title > span {
   flex: 0 0 auto;
   white-space: nowrap;
 }
+.compound-title-primary { color: var(--gold-bright); }
+.compound-title-separator {
+  color: rgba(212, 188, 138, 0.62);
+  font-size: 0.58em !important;
+  font-weight: 400;
+  transform: translateY(-0.08em);
+}
+.compound-title-secondary {
+  color: var(--gold-light);
+  font-size: 0.76em !important;
+  font-weight: 500;
+  letter-spacing: 0.045em;
+}
+.compound-title--inline {
+  display: inline-flex;
+  vertical-align: baseline;
+}
+#share-card-title { font-size: clamp(26px, 2vw, 32px) !important; }
+#coin-result-title { font-size: clamp(24px, 1.8vw, 30px) !important; }
+.review-answer-title.compound-title { font-size: 24px !important; }
 .rel-type { min-width: 3.5em; }
 
 .detail-panel:not([data-layout="bottom"]) .seven-step-slip {
@@ -3741,4 +3768,10 @@ body {
 @media (max-width: 360px) {
   .seven-step-slip { grid-template-columns: 1fr; }
   .seven-step-slip a:last-child { grid-column: auto; }
+}
+
+@media (max-width: 600px) {
+  #hexagram-detail-title { justify-content: center; font-size: 32px !important; }
+  #share-card-title { font-size: 27px !important; }
+  #coin-result-title { font-size: 25px !important; }
 }

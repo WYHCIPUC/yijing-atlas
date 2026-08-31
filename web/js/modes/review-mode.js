@@ -97,7 +97,7 @@ function renderReviewCard(mountEl, appState, code, onStartLearning, singleCard =
           </span>
           <span class="flip-card-back" id="review-answer" hidden aria-hidden="true">
             ${hexagramSvg(hex.binaryCode, { size: 80 })}
-            <span class="review-answer-title">${hex.name} · ${hex.fullName}</span>
+            <span class="review-answer-title compound-title compound-title--hexagram" aria-label="${hex.name} · ${hex.fullName}"><span class="compound-title-primary">${hex.name}</span><span class="compound-title-separator" aria-hidden="true">·</span><span class="compound-title-secondary">${hex.fullName}</span></span>
             <span class="review-answer-text">${hex.judgement || ''}</span>
           </span>
         </span>

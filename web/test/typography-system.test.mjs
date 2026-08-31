@@ -4,6 +4,10 @@ import test from 'node:test';
 
 const css = readFileSync(new URL('../styles/main.css', import.meta.url), 'utf8');
 const starMap = readFileSync(new URL('../js/star-map.js', import.meta.url), 'utf8');
+const renderSource = readFileSync(new URL('../js/render.js', import.meta.url), 'utf8');
+const mainSource = readFileSync(new URL('../js/main.js', import.meta.url), 'utf8');
+const divinationSource = readFileSync(new URL('../js/modes/divination-mode.js', import.meta.url), 'utf8');
+const reviewSource = readFileSync(new URL('../js/modes/review-mode.js', import.meta.url), 'utf8');
 
 test('界面、阅读与标题使用分工明确的中文字体栈', () => {
   assert.match(css, /--font-ui:[^;]+Microsoft YaHei UI[^;]+sans-serif/);
@@ -29,10 +33,19 @@ test('中文短语按控件原子、均衡标题和正文三层处理换行', ()
   assert.match(css, /body \{[\s\S]*?word-break: normal/);
   assert.match(css, /\.seven-step-slip span,[\s\S]*?text-wrap: balance/);
   assert.match(css, /:is\(p, li, blockquote,[\s\S]*?text-wrap: pretty/);
-  assert.match(css, /#hexagram-detail-title \{[\s\S]*?flex-wrap: wrap;[\s\S]*?white-space: normal/);
-  assert.match(css, /#hexagram-detail-title > span \{[\s\S]*?white-space: nowrap/);
+  assert.match(css, /\.compound-title \{[\s\S]*?flex-wrap: nowrap;[\s\S]*?white-space: nowrap;[\s\S]*?word-break: keep-all/);
+  assert.match(css, /\.compound-title > span \{[\s\S]*?white-space: nowrap/);
   assert.match(css, /@media \(max-width: 900px\) \{[\s\S]*?\.detail-panel\[data-layout="bottom"\] \.detail-content \{[\s\S]*?display: block/);
   assert.doesNotMatch(css, /word-break:\s*break-all/);
+});
+
+test('卦名复合标题在详情、分享、占筮和复习中使用同一不可拆分结构', () => {
+  assert.match(css, /#hexagram-detail-title \{[\s\S]*?font-size: clamp\(32px, 2vw, 38px\) !important/);
+  assert.match(css, /\.compound-title-secondary \{[\s\S]*?font-size: 0\.76em !important/);
+  [renderSource, mainSource, divinationSource, reviewSource].forEach((source) => {
+    assert.match(source, /compound-title compound-title--hexagram/);
+    assert.match(source, /compound-title-separator/);
+  });
 });
 
 test('详情、研读笺和辅助说明不再以裁切或横向滑动隐藏文本', () => {

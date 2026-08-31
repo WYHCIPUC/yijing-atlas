@@ -313,8 +313,8 @@ function renderCoinResult(result, cast = castHexagram(), options = {}) {
   result.innerHTML = `
     <section class="cast-result-head" aria-labelledby="coin-result-title">
       <div class="cast-result-symbol">${hexagramSvg(cast.primaryCode, { size: 132, changingPositions: cast.changingIdxs.map((index) => index + 1) })}</div>
-      <div><span class="academy-kicker">本次得卦</span><h3 id="coin-result-title" tabindex="-1">${esc(primaryHex.name)} · ${esc(primaryHex.fullName)}</h3>
-        <p>${changedHex ? `之卦 ${esc(changedHex.name)} · ${esc(changedHex.fullName)}` : '六爻皆静，以本卦卦辞为主要研读入口。'}</p></div>
+      <div><span class="academy-kicker">本次得卦</span><h3 id="coin-result-title" class="compound-title compound-title--hexagram" tabindex="-1" aria-label="${esc(primaryHex.name)} · ${esc(primaryHex.fullName)}"><span class="compound-title-primary">${esc(primaryHex.name)}</span><span class="compound-title-separator" aria-hidden="true">·</span><span class="compound-title-secondary">${esc(primaryHex.fullName)}</span></h3>
+        <p>${changedHex ? `之卦 <span class="compound-title compound-title--inline" aria-label="${esc(changedHex.name)} · ${esc(changedHex.fullName)}"><span class="compound-title-primary">${esc(changedHex.name)}</span><span class="compound-title-separator" aria-hidden="true">·</span><span class="compound-title-secondary">${esc(changedHex.fullName)}</span></span>` : '六爻皆静，以本卦卦辞为主要研读入口。'}</p></div>
       <ol class="cast-lines" aria-label="六爻，自上而下显示">${lines}</ol>
     </section>
     ${renderInterpretation(interpretation)}
