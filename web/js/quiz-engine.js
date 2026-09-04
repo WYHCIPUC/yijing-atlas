@@ -38,7 +38,22 @@ export function generateQuestion(hexagrams, type = null, targetCode = null) {
   }
   candidates = [answer, ...distractors].sort(() => Math.random() - 0.5);
 
-  return { type: qType, question, answer, candidates, targetCode: target.binaryCode };
+  const answerHex = hexagrams.find((hexagram) => hexagram.binaryCode === answer);
+  const explanations = {
+    opposite: `错卦要把「${target.name}」六爻的阴阳全部翻转，因此得到「${answerHex?.name || answer}」。`,
+    reversed: `综卦要把「${target.name}」的六爻上下倒置，因此得到「${answerHex?.name || answer}」。`,
+    interlocking: `互卦取原卦第 2—4 爻组成下卦、第 3—5 爻组成上卦，因此「${target.name}」内含「${answerHex?.name || answer}」。`,
+    name: `「${target.fullName}」的六爻编码是 ${target.binaryCode}，对应「${target.name}」卦。`,
+  };
+
+  return {
+    type: qType,
+    question,
+    answer,
+    candidates,
+    targetCode: target.binaryCode,
+    explanation: explanations[qType],
+  };
 }
 
 // 判题
@@ -121,5 +136,6 @@ export function generateAlmanacQuestion(terms) {
     answer: target.id,
     answerText: target.name,
     candidates,
+    explanation: `${target.name}属于“${target.category}”。${target.meaning || '可回到黄历知识页继续辨析这一术语。'}`,
   };
 }

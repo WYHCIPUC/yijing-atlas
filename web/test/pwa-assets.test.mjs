@@ -19,9 +19,9 @@ test('预缓存条目全部指向现有静态资源', () => {
 
 test('预缓存只包含首屏核心模块，功能数据按访问缓存', () => {
   const core = [
-    './js/main.js', './js/data-loader.js', './js/evolution-lab.js', './js/evolution-state.js',
+    './js/main.js?v=48', './js/protocol-guard.js', './js/data-loader.js', './js/evolution-lab.js', './js/evolution-state.js',
     './js/guaxu-wheel.js', './js/modes/guaxu-mode.js',
-    './js/render.js', './js/star-map.js',
+    './js/celestial-stage.js', './js/cinematic-motion.js', './js/content-provenance.js', './js/motion-system.js', './js/render.js', './js/star-map.js', './js/star-layouts.js',
     './js/relation-animation.js', './js/star-relations.js', './js/storage.js',
     './data/hexagrams.json', './data/trigrams.json',
   ];
@@ -32,5 +32,14 @@ test('预缓存只包含首屏核心模块，功能数据按访问缓存', () =>
 });
 
 test('缓存资源不再维护重复查询版本号', () => {
-  assert.equal([...precache].some((url) => url.includes('?v=')), false);
+  const revisioned = [...precache].filter((url) => url.includes('?v='));
+  assert.deepEqual(revisioned.sort(), ['./js/main.js?v=48', './styles/main.css?v=48']);
+});
+
+test('页面结构与脚本样式采用同代更新策略', () => {
+  assert.match(serviceWorker, /const CACHE_NAME = 'yijing-atlas-v48'/);
+  assert.match(serviceWorker, /\['script', 'style', 'worker'\]\.includes\(request\.destination\)/);
+  const networkFirstBlock = serviceWorker.match(/if \(\['script', 'style', 'worker'\][\s\S]*?\n  \}/)?.[0] || '';
+  assert.match(networkFirstBlock, /fetch\(request\)/);
+  assert.match(networkFirstBlock, /catch\(\(\) => caches\.match\(request\)\)/);
 });

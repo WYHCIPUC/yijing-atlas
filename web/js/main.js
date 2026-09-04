@@ -10,20 +10,24 @@ import * as dataLoader from './data-loader.js';
 import { closeEvolutionLab, showEvolutionLab } from './evolution-lab.js';
 import { deliverShareImage, generateHexagramShareImage } from './share-card.js';
 import { closeGuaxuWheel, showGuaxuWheel } from './modes/guaxu-mode.js';
+import { initCelestialStage } from './celestial-stage.js';
+import { initCinematicMotion } from './cinematic-motion.js';
+import { initMotionSystem } from './motion-system.js';
 import { renderHexagramDetail } from './render.js';
+import { addReviewCard } from './review-engine.js';
 import { getHexCodeFromUrl, moveSelection, withHexCode } from './search-controller.js';
 import { buildRelationGraph } from './star-relations.js';
-import { StarMap } from './star-map.js';
+import { describeStarView, resolveStarStage, StarMap } from './star-map.js';
 import { hexagramSvg } from './svg-painter.js';
 
 const { buildHexagramIndex, searchHexagrams } = dataLoader;
 
 const modeLoaders = {
-  almanac: () => import('./almanac-page.js').then((module) => module.renderAlmanacPage),
-  divination: () => import('./modes/divination-mode.js').then((module) => module.renderDivinationMode),
-  learning: () => import('./modes/learning-mode.js').then((module) => module.renderLearningMode),
-  quiz: () => import('./modes/quiz-mode.js').then((module) => module.renderQuizMode),
-  review: () => import('./modes/review-mode.js').then((module) => module.renderReviewMode),
+  almanac: () => import('./almanac-page.js?v=48').then((module) => module.renderAlmanacPage),
+  divination: () => import('./modes/divination-mode.js?v=48').then((module) => module.renderDivinationMode),
+  learning: () => import('./modes/learning-mode.js?v=48').then((module) => module.renderLearningMode),
+  quiz: () => import('./modes/quiz-mode.js?v=48').then((module) => module.renderQuizMode),
+  review: () => import('./modes/review-mode.js?v=48').then((module) => module.renderReviewMode),
 };
 
 const state = {
@@ -35,6 +39,7 @@ const state = {
   almanacYiji: {},
   index: null,
   starMap: null,
+  celestialStage: null,
   currentDetail: null,
   currentMode: 'explore',
   commentaryReleaseReady: false,
@@ -42,6 +47,7 @@ const state = {
 
 const loadingEl = document.getElementById('loading');
 const canvas = document.getElementById('star-canvas');
+const celestialCanvas = document.getElementById('celestial-canvas');
 const panel = document.getElementById('detail-panel');
 const panelContent = document.getElementById('detail-content');
 const panelLayoutSelect = document.getElementById('detail-layout');
@@ -52,23 +58,270 @@ const dailyOverlay = document.getElementById('daily-overlay');
 const modeSwitcher = document.getElementById('mode-switcher');
 const exploreTools = document.getElementById('explore-tools');
 const audioToggle = document.getElementById('audio-toggle');
+const hintEl = document.getElementById('hint');
+const viewLevelEl = hintEl?.querySelector('[data-view-level]');
+const viewAngleEl = hintEl?.querySelector('[data-view-angle]');
+const viewRotationEl = hintEl?.querySelector('[data-view-rotation]');
+const starStageRail = document.querySelector('.star-map-sequence');
+const starStageIndexEl = hintEl?.querySelector('[data-star-stage-index]');
+const starStageLabelEl = hintEl?.querySelector('[data-star-stage-label]');
+const relationLayersEl = document.getElementById('relation-layers');
+const relationStatusEl = document.getElementById('star-relation-status');
+const relationListEl = document.getElementById('star-accessible-list');
+const changingPositionsEl = relationLayersEl?.querySelector('.changing-position-buttons');
+const starLayoutSelect = document.getElementById('star-layout-mode');
+const starLayoutSource = document.getElementById('star-layout-source');
+const starLayoutDescription = document.getElementById('star-layout-description');
+const autoRotateButton = document.getElementById('auto-rotate');
+const workspaceInsightBar = document.querySelector('.workspace-insight-bar');
 const compactPanelQuery = window.matchMedia('(max-width: 900px)');
+const motionSystem = initMotionSystem();
+const cinematicMotion = initCinematicMotion({ panel, panelContent });
 let modeRequestId = 0;
 let panelReturnFocus = null;
 let searchResults = [];
 let searchIndex = -1;
+let lastViewHudKey = '';
+let lastStarView = null;
+
+const STAR_STAGE_META = {
+  galaxy: ['01', '银河巡航'],
+  cluster: ['02', '卦族星团'],
+  hexagram: ['03', '卦星聚焦'],
+  yao: ['04', '六爻近景'],
+};
+
+function syncStarStage(view = lastStarView) {
+  if (!view) return;
+  lastStarView = view;
+  const stage = resolveStarStage({
+    scale: view.scale,
+    activeCode: view.activeCode || state.currentDetail,
+    detailOpen: panel.classList.contains('open') && Boolean(state.currentDetail),
+  });
+  const [index, label] = STAR_STAGE_META[stage];
+  document.body.dataset.starStage = stage;
+  if (starStageIndexEl) starStageIndexEl.textContent = index;
+  if (starStageLabelEl) starStageLabelEl.textContent = label;
+  const stages = Object.keys(STAR_STAGE_META);
+  const activeIndex = stages.indexOf(stage);
+  starStageRail?.querySelectorAll('[data-star-stage]').forEach((item) => {
+    const itemIndex = stages.indexOf(item.dataset.starStage);
+    item.classList.toggle('active', itemIndex === activeIndex);
+    item.classList.toggle('complete', itemIndex < activeIndex);
+    if (itemIndex === activeIndex) item.setAttribute('aria-current', 'step');
+    else item.removeAttribute('aria-current');
+  });
+}
 
 const DAILY_SEEN_KEY = 'yijing-daily-seen';
 const PANEL_LAYOUT_KEY = 'yijing-panel-layout';
 const DRAWER_SIZE_KEY = 'yijing-drawer-size';
 const DRAWER_SIZES = ['compact', 'medium', 'large'];
+const FOCUS_MODES = new Set(['learning', 'review', 'quiz']);
+const WORKSPACE_MODES = new Set(['almanac', 'learning', 'review', 'quiz', 'divination']);
+const WORKSPACE_INSIGHTS = {
+  almanac: [
+    ['今日历法', '把节气、干支与宜忌放回时间现场'],
+    ['阅读方法', '先辨日期，再看节气与建除'],
+    ['核心能力', '辨时 · 识名 · 明边界'],
+    ['每日建议', '5 分钟'],
+  ],
+  learning: [
+    ['本课对应卦象', '乾为天 · 坤为地'],
+    ['学习目标', '理解阴阳是万物变化的根源'],
+    ['核心能力', '观象 · 察变 · 明理'],
+    ['推荐专注时长', '25 分钟'],
+  ],
+  review: [
+    ['今日温故', '先忆象，再对经，后自评'],
+    ['记忆方法', '主动提取，而非重复浏览'],
+    ['核心能力', '提取 · 核对 · 自评'],
+    ['每卦建议', '2 分钟'],
+  ],
+  quiz: [
+    ['即时小试', '用判断暴露真正的薄弱点'],
+    ['错题去向', '自动进入温故队列'],
+    ['核心能力', '辨象 · 纠错 · 回炉'],
+    ['每题建议', '60 秒'],
+  ],
+  divination: [
+    ['文化演练', '从经文理解处境与变化'],
+    ['研读次序', '定问 · 起卦 · 读经'],
+    ['使用边界', '辅助反思，不替代现实判断'],
+    ['一次建议', '8 分钟'],
+  ],
+};
+
+function updateWorkspaceInsight(mode) {
+  const insight = WORKSPACE_INSIGHTS[mode];
+  if (!workspaceInsightBar || !insight) return;
+  workspaceInsightBar.classList.remove('is-updating');
+  const labels = workspaceInsightBar.querySelectorAll('[data-insight-label]');
+  const values = workspaceInsightBar.querySelectorAll('[data-insight-value]');
+  insight.forEach(([label, value], index) => {
+    labels[index].textContent = label;
+    values[index].textContent = value;
+  });
+  void workspaceInsightBar.offsetWidth;
+  workspaceInsightBar.classList.add('is-updating');
+}
+
+function syncStarViewHud(view) {
+  if (!view) return;
+  syncStarStage(view);
+  if (!hintEl || !viewLevelEl || !viewAngleEl) return;
+  const description = describeStarView(view);
+  const key = `${description.level}:${description.zoomPercent}:${description.yawDegrees}:${description.pitchDegrees}:${description.rotationText}`;
+  if (key === lastViewHudKey) return;
+  lastViewHudKey = key;
+  viewLevelEl.textContent = description.level;
+  viewAngleEl.textContent = `${description.angleText} · ${description.zoomPercent}%`;
+  if (viewRotationEl) viewRotationEl.textContent = description.rotationText;
+  hintEl.style.setProperty('--view-bearing', `${-view.yaw}rad`);
+}
+
+const RELATION_NAMES = { opposite: '错卦', reversed: '综卦', interlocking: '互卦', changing: '变卦' };
+const RELATION_BADGES = { opposite: '错', reversed: '综', interlocking: '互', changing: '变' };
+
+function updateAutoRotateButton(active = false) {
+  if (!autoRotateButton) return;
+  const fixedClassicLayout = autoRotateButton.disabled;
+  autoRotateButton.setAttribute('aria-pressed', String(active));
+  autoRotateButton.setAttribute('aria-label', fixedClassicLayout ? '经典图式保持固定方位' : (active ? '停止自动巡天' : '开启自动巡天'));
+  autoRotateButton.title = fixedClassicLayout ? '经典图式保持固定方位' : (active ? '停止自动巡天' : '开启自动巡天');
+  autoRotateButton.classList.toggle('active', active);
+}
+
+function layoutEntryMeta(layoutState, code) {
+  if (layoutState?.mode === 'eight-palaces') {
+    for (const group of layoutState.groups || []) {
+      const entry = group.entries?.find((item) => item.code === code);
+      if (entry) return `${group.name} · ${entry.stage}`;
+    }
+  }
+  if (layoutState?.mode === 'twelve-messages') {
+    const entry = layoutState.groups?.find((item) => item.code === code);
+    if (entry) return `${entry.month} · ${entry.phase}`;
+  }
+  if (layoutState?.mode === 'earlier-heaven') {
+    const entry = layoutState.groups?.find((item) => item.code === code);
+    if (entry) return `${entry.direction}方`;
+  }
+  const hexagram = state.index?.byCode.get(code);
+  if (layoutState?.mode === 'king-wen' && hexagram) return `第 ${hexagram.number} 卦`;
+  return '';
+}
+
+function updateLayoutInterface(layoutState = state.starMap?.getLayoutState?.()) {
+  if (!layoutState || !starLayoutSelect || !starLayoutDescription || !starLayoutSource) return;
+  starLayoutSelect.value = layoutState.mode;
+  starLayoutSource.textContent = layoutState.sourceType;
+  starLayoutDescription.textContent = layoutState.description;
+  const fixedClassicLayout = layoutState.mode !== 'project';
+  autoRotateButton.disabled = fixedClassicLayout;
+  canvas.setAttribute('aria-label', `${layoutState.label}，可选择卦象并查看当前关系层`);
+  updateAutoRotateButton(state.starMap?.isAutoRotating());
+}
+
+function updateRelationInterface(relationState = {}) {
+  if (!relationLayersEl || !relationListEl || !relationStatusEl) return;
+  const type = relationState.type || 'opposite';
+  const position = relationState.changingPosition || null;
+  relationLayersEl.querySelectorAll('[data-relation-layer]').forEach((button) => {
+    const active = button.dataset.relationLayer === type;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+  changingPositionsEl.hidden = type !== 'changing';
+  changingPositionsEl.querySelectorAll('[data-changing-position]').forEach((button) => {
+    const active = Number(button.dataset.changingPosition) === position;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+
+  if (!relationState.code) {
+    relationStatusEl.textContent = `${RELATION_NAMES[type]}层 · 总览仅显示八卦锚点`;
+    const layoutState = state.starMap?.getLayoutState?.();
+    const codes = layoutState?.mode && layoutState.mode !== 'project'
+      ? layoutState.visibleCodes
+      : state.hexagrams.filter((hexagram) => hexagram.binaryCode.slice(0, 3) === hexagram.binaryCode.slice(3)).map((hexagram) => hexagram.binaryCode);
+    const overviewHexagrams = codes.map((code) => state.index?.byCode.get(code)).filter(Boolean);
+    relationStatusEl.textContent = `${layoutState?.shortLabel || '易象银河'} · ${RELATION_NAMES[type]}层 · ${overviewHexagrams.length} 个可选卦`;
+    relationListEl.innerHTML = overviewHexagrams.map((hexagram) => {
+      const meta = layoutEntryMeta(layoutState, hexagram.binaryCode);
+      return `<li><button type="button" data-code="${hexagram.binaryCode}"><span>${hexagram.name} · ${hexagram.fullName}</span>${meta ? `<em>${meta}</em>` : ''}</button></li>`;
+    }).join('');
+    return;
+  }
+
+  const current = state.index?.byCode.get(relationState.code);
+  if (type === 'changing' && !position) {
+    relationStatusEl.textContent = `${current?.name || relationState.code} · 请先选择一条具体动爻`;
+    relationListEl.innerHTML = '<li>变卦只在具体动爻条件成立后显示；请选择初、二、三、四、五或上爻。</li>';
+    return;
+  }
+  const byTarget = new Map();
+  for (const occurrence of relationState.occurrences || []) {
+    if (!byTarget.has(occurrence.to)) byTarget.set(occurrence.to, []);
+    byTarget.get(occurrence.to).push(occurrence);
+  }
+  relationStatusEl.textContent = `${current?.name || relationState.code} · ${RELATION_NAMES[type]}${position ? ` · 第 ${position} 爻动` : ''} · ${byTarget.size} 个目标`;
+  relationListEl.innerHTML = byTarget.size ? [...byTarget].map(([targetCode]) => {
+    const target = state.index?.byCode.get(targetCode);
+    const completeTypes = [...new Set((state.starMap?.graph.occurrences || [])
+      .filter((item) => item.from === relationState.code && item.to === targetCode
+        && (!item.conditional || (type === 'changing' && item.changingPositions.includes(position))))
+      .map((item) => item.type))];
+    const badges = completeTypes.map((item) => `<small>${RELATION_BADGES[item]}</small>`).join('');
+    return `<li><button type="button" data-code="${targetCode}"><span>${target?.name || targetCode} · ${target?.fullName || ''}</span><span>${badges}</span></button></li>`;
+  }).join('') : '<li>当前关系层没有可显示的目标。</li>';
+}
+
+document.addEventListener('yijing:workspace-insight', (event) => {
+  const insight = event.detail;
+  if (!Array.isArray(insight) || insight.length !== 4) return;
+  WORKSPACE_INSIGHTS.learning = insight;
+  if (state.currentMode === 'learning') updateWorkspaceInsight('learning');
+});
+
+function setFocusMode(mode) {
+  const focused = FOCUS_MODES.has(mode);
+  const workspace = WORKSPACE_MODES.has(mode);
+  panel.dataset.focus = String(focused);
+  panel.dataset.presentation = workspace ? (focused ? 'study' : 'workspace') : 'detail';
+  panel.dataset.mode = mode;
+  document.body.classList.toggle('focus-mode', focused);
+  document.body.classList.toggle('workspace-mode', workspace);
+  document.body.classList.remove('lesson-overview-open');
+  document.body.dataset.activeMode = mode;
+  canvas.tabIndex = workspace ? -1 : 0;
+  updateWorkspaceInsight(mode);
+  if (workspace) {
+    panel.removeAttribute('aria-labelledby');
+    panel.setAttribute('aria-label', `${mode === 'almanac' ? '黄历' : mode === 'learning' ? '学习' : mode === 'review' ? '复习' : mode === 'quiz' ? '测验' : '占筮'}内容面板`);
+  }
+}
+
+function resetPanelViewport({ focusHeading = false } = {}) {
+  cinematicMotion.resetScroll();
+  panelContent.scrollTop = 0;
+  if (!focusHeading) return;
+  window.requestAnimationFrame(() => {
+    const heading = panelContent.querySelector('[data-page-heading], .mode-panel-title, h2, h3');
+    if (!heading) return;
+    heading.tabIndex = -1;
+    heading.focus({ preventScroll: true });
+  });
+}
 
 function readPanelLayout() {
+  const defaultLayout = compactPanelQuery.matches ? 'bottom' : 'left';
   try {
     const layout = localStorage.getItem(PANEL_LAYOUT_KEY);
-    return ['bottom', 'left', 'right'].includes(layout) ? layout : 'bottom';
+    return ['bottom', 'left', 'right'].includes(layout) ? layout : defaultLayout;
   } catch {
-    return 'bottom';
+    return defaultLayout;
   }
 }
 
@@ -132,7 +385,7 @@ function getDailyVerse(hex) {
 function showDailyHexagram() {
   const hex = getDailyHexagram(state.hexagrams);
   if (!hex) return;
-  state.starMap?.pause?.();
+  state.starMap?.pause?.('welcome');
   const now = new Date();
   const verse = getDailyVerse(hex);
   document.getElementById('daily-date').textContent = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
@@ -142,18 +395,28 @@ function showDailyHexagram() {
   document.getElementById('daily-verse').textContent = `「${verse.text}」`;
   document.getElementById('daily-verse-src').textContent = `—— ${verse.source}`;
 
-  document.getElementById('daily-enter').addEventListener('click', () => {
+  const enter = (destination) => {
     try { sessionStorage.setItem(DAILY_SEEN_KEY, '1'); } catch {}
     dailyOverlay.classList.add('hidden');
-    setMode('explore');
+    setMode(destination === 'beginner' ? 'learning' : 'explore');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.setTimeout(() => {
       dailyOverlay.hidden = true;
-      state.starMap?.resume?.();
-      state.starMap?.focusStar(hex.binaryCode);
-      canvas.focus();
+      state.starMap?.resume?.('welcome');
+      if (destination === 'beginner') return;
+      if (destination === 'daily') openDetail(hex.binaryCode);
+      else {
+        state.starMap?.clearFocus?.();
+        canvas.focus();
+      }
     }, reducedMotion ? 0 : 180);
-  }, { once: true });
+  };
+  document.querySelector('.daily-entry-actions').addEventListener('click', (event) => {
+    const button = event.target.closest('[data-entry]');
+    if (!button || dailyOverlay.classList.contains('hidden')) return;
+    enter(button.dataset.entry);
+  });
+  motionSystem.reveal(dailyOverlay);
 }
 
 function openPanel() {
@@ -164,8 +427,8 @@ function openPanel() {
   panel.setAttribute('aria-modal', String(compactPanelQuery.matches));
   document.body.classList.add('panel-open');
   state.starMap?.resize();
-  panel.scrollTop = 0;
-  window.requestAnimationFrame(() => panel.querySelector('h1, h2, button')?.focus());
+  resetPanelViewport();
+  syncStarStage();
 }
 
 function updateDetailUrl(code, mode = 'push') {
@@ -181,9 +444,11 @@ function closeDetail({ restoreFocus = false, resetMode = true, updateUrl = true 
   document.body.classList.remove('panel-open');
   state.starMap?.resize();
   state.currentDetail = null;
+  syncStarStage();
   if (updateUrl) updateDetailUrl(null);
   if (resetMode && state.currentMode !== 'explore') {
     state.currentMode = 'explore';
+    setFocusMode('explore');
     updateModeButtons('explore');
     state.starMap?.setReviewDue(null);
     state.starMap?.setMode('explore');
@@ -204,7 +469,7 @@ function showShareCardDialog(payload, hexagram) {
       <button type="button" class="share-card-close" aria-label="关闭分享图片预览">✕</button>
       <div class="share-card-copy">
         <small>分享图片已生成</small>
-        <h2 id="share-card-title">${hexagram.name} · ${hexagram.fullName}</h2>
+        <h2 id="share-card-title" class="compound-title compound-title--hexagram" aria-label="${hexagram.name} · ${hexagram.fullName}"><span class="compound-title-primary">${hexagram.name}</span><span class="compound-title-separator" aria-hidden="true">·</span><span class="compound-title-secondary">${hexagram.fullName}</span></h2>
         <p>可先检查卡片内容，再发送给朋友或下载 PNG。</p>
       </div>
       <div class="share-card-preview"><img src="${payload.previewUrl}" alt="${hexagram.name}卦分享卡片预览"></div>
@@ -216,6 +481,8 @@ function showShareCardDialog(payload, hexagram) {
     </section>
   `;
   document.body.appendChild(overlay);
+  state.starMap?.pause?.('share');
+  motionSystem.reveal(overlay);
 
   const closeButton = overlay.querySelector('.share-card-close');
   const sendButton = overlay.querySelector('.share-card-send');
@@ -231,10 +498,28 @@ function showShareCardDialog(payload, hexagram) {
   const close = () => {
     document.removeEventListener('keydown', onKeydown);
     overlay.remove();
+    state.starMap?.resume?.('share');
     returnFocus?.focus?.();
   };
   const onKeydown = (event) => {
-    if (event.key === 'Escape') close();
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      close();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+    const focusable = [...overlay.querySelectorAll('button:not([disabled]):not([hidden]), [href], [tabindex]:not([tabindex="-1"])')]
+      .filter((element) => element.getClientRects().length > 0);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   };
   closeButton.addEventListener('click', close);
   overlay.addEventListener('click', (event) => {
@@ -289,26 +574,44 @@ function bindShareAction(hexagram) {
 function openDetail(code, fromCode = null, { historyMode = 'push' } = {}) {
   const hex = state.index.byCode.get(code);
   if (!hex) return;
+  state.currentMode = 'explore';
+  setFocusMode('explore');
+  updateModeButtons('explore');
+  state.starMap?.setReviewDue(null);
+  state.starMap?.setMode('explore');
+  state.celestialStage?.setMode('explore');
+  cinematicMotion.beginMode('explore');
+  updateExploreTools('star');
   renderHexagramDetail(hex, panelContent, state.hexagrams, (relatedCode) => openDetail(relatedCode, code));
+  panel.setAttribute('aria-labelledby', 'hexagram-detail-title');
+  panel.removeAttribute('aria-label');
   if (historyMode !== 'none') updateDetailUrl(code, historyMode);
   bindShareAction(hex);
+  addReviewCard(code);
   openPanel();
+  motionSystem.reveal(panelContent);
+  cinematicMotion.enterSurface(panelContent, 'explore');
+  resetPanelViewport({ focusHeading: true });
   try { playHexagramSound(code); } catch {}
   if (fromCode) state.starMap?.addTrail(fromCode, code);
   state.currentDetail = code;
   state.starMap?.focusStar(code);
+  syncStarStage();
 }
 
 function updateModeButtons(mode) {
+  let selectedButton = null;
   document.querySelectorAll('.mode-btn').forEach((button) => {
     const selected = button.dataset.mode === mode;
     button.classList.toggle('active', selected);
     button.setAttribute('aria-pressed', String(selected));
     button.tabIndex = selected ? 0 : -1;
+    if (selected) selectedButton = button;
     if (selected && modeSwitcher.scrollWidth > modeSwitcher.clientWidth) {
       window.requestAnimationFrame(() => button.scrollIntoView({ block: 'nearest', inline: 'center' }));
     }
   });
+  window.requestAnimationFrame(() => cinematicMotion.syncModeIndicator(selectedButton));
 }
 
 function updateExploreTools(selected = 'star') {
@@ -336,9 +639,13 @@ async function loadModeResources(mode) {
 async function setMode(mode) {
   const requestId = ++modeRequestId;
   state.currentMode = mode;
+  setFocusMode(mode);
   updateModeButtons(mode);
   state.starMap?.setReviewDue(null);
   state.starMap?.setMode(mode);
+  state.celestialStage?.setMode(mode);
+  cinematicMotion.beginMode(mode);
+  if (mode !== 'explore') cinematicMotion.previewHexagram(null);
   if (mode !== 'explore') {
     closeEvolutionLab();
     closeGuaxuWheel({ restoreFocus: false, immediate: true });
@@ -346,6 +653,8 @@ async function setMode(mode) {
   updateExploreTools('star');
 
   if (mode === 'explore') {
+    document.body.classList.remove('mode-transitioning');
+    panel.removeAttribute('aria-busy');
     closeDetail({ resetMode: false });
     return;
   }
@@ -361,15 +670,29 @@ async function setMode(mode) {
     return;
   }
   openPanel();
-  panelContent.innerHTML = '<div class="mode-loading" role="status">正在载入内容…</div>';
+  document.body.classList.add('mode-transitioning');
+  panel.setAttribute('aria-busy', 'true');
+  panelContent.innerHTML = `
+    <div class="mode-loading" role="status" aria-live="polite">
+      <span class="mode-loading-mark" aria-hidden="true"></span>
+      <strong>正在展开${mode === 'almanac' ? '黄历' : mode === 'learning' ? '学习' : mode === 'review' ? '复习' : mode === 'quiz' ? '测验' : '占筮'}工作台</strong>
+      <small>整理当前进度与内容…</small>
+    </div>`;
   try {
     const [renderer] = await Promise.all([loadRenderer(), loadModeResources(mode)]);
     if (requestId !== modeRequestId || state.currentMode !== mode) return;
     if (mode === 'learning') {
-      renderer(panelContent, state, () => setMode('explore'));
+      renderer(panelContent, state, (target = 'explore') => setMode(target));
+    } else if (mode === 'review') {
+      renderer(panelContent, state, () => setMode('learning'));
+    } else if (mode === 'divination') {
+      renderer(panelContent, state, (code) => openDetail(code));
     } else {
       renderer(panelContent, state);
     }
+    motionSystem.reveal(panelContent);
+    cinematicMotion.enterSurface(panelContent, mode);
+    resetPanelViewport({ focusHeading: true });
   } catch (error) {
     if (requestId !== modeRequestId) return;
     const errorMessage = document.createElement('div');
@@ -377,6 +700,11 @@ async function setMode(mode) {
     errorMessage.setAttribute('role', 'alert');
     errorMessage.textContent = `内容加载失败：${String(error.message || error)}`;
     panelContent.replaceChildren(errorMessage);
+  } finally {
+    if (requestId === modeRequestId) {
+      document.body.classList.remove('mode-transitioning');
+      panel.removeAttribute('aria-busy');
+    }
   }
 }
 
@@ -395,9 +723,36 @@ function bindGlobalInteractions() {
     if (enabled) playInterfaceSound('complete');
   });
   bindInterfaceSounds(document);
+  relationLayersEl?.addEventListener('click', (event) => {
+    const layerButton = event.target.closest('[data-relation-layer]');
+    if (layerButton) {
+      state.starMap?.setRelationFilter(layerButton.dataset.relationLayer, null);
+      return;
+    }
+    const positionButton = event.target.closest('[data-changing-position]');
+    if (positionButton) {
+      state.starMap?.setRelationFilter('changing', Number(positionButton.dataset.changingPosition));
+      return;
+    }
+    const relationButton = event.target.closest('#star-accessible-list [data-code]');
+    if (relationButton) {
+      state.starMap?.setAutoRotate(false);
+      state.starMap?.focusStar(relationButton.dataset.code);
+      canvas.focus({ preventScroll: true });
+    }
+  });
+  starLayoutSelect?.addEventListener('change', () => {
+    const layoutState = state.starMap?.setLayoutMode(starLayoutSelect.value);
+    updateLayoutInterface(layoutState);
+    updateRelationInterface(state.starMap?.getRelationState());
+    canvas.focus({ preventScroll: true });
+  });
   const modeButtons = [...document.querySelectorAll('.mode-btn')];
   modeButtons.forEach((button) => {
-    button.addEventListener('click', () => setMode(button.dataset.mode));
+    button.addEventListener('click', () => {
+      if (button.dataset.mode === state.currentMode && (state.currentMode === 'explore' || panel.classList.contains('open'))) return;
+      setMode(button.dataset.mode);
+    });
   });
   modeSwitcher.addEventListener('keydown', (event) => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
@@ -418,7 +773,7 @@ function bindGlobalInteractions() {
     }
     if (button.dataset.exploreTool === 'guaxu') {
       closeEvolutionLab();
-      state.starMap?.pause?.();
+      state.starMap?.pause?.('guaxu');
       updateExploreTools('guaxu');
       showGuaxuWheel(
         state.hexagrams,
@@ -428,7 +783,7 @@ function bindGlobalInteractions() {
         },
         () => {
           updateExploreTools('star');
-          state.starMap?.resume?.();
+          state.starMap?.resume?.('guaxu');
         },
       );
       return;
@@ -437,11 +792,15 @@ function bindGlobalInteractions() {
     const code = state.currentDetail || getHexCodeFromUrl(window.location.href) || '111111';
     const baseHex = state.index.byCode.get(code) || state.hexagrams[0];
     updateExploreTools('evolution');
+    state.starMap?.pause?.('evolution');
     showEvolutionLab(
       baseHex,
       state.hexagrams,
       (resultCode) => openDetail(resultCode, baseHex.binaryCode),
-      () => updateExploreTools('star'),
+      () => {
+        updateExploreTools('star');
+        state.starMap?.resume?.('evolution');
+      },
     );
   });
   document.getElementById('detail-close').addEventListener('click', () => closeDetail({ restoreFocus: true }));
@@ -453,11 +812,19 @@ function bindGlobalInteractions() {
     setDrawerSize(DRAWER_SIZES[(current + 1) % DRAWER_SIZES.length], { persist: true });
   });
   document.addEventListener('keydown', (event) => {
+    if (document.querySelector('.share-card-overlay')) return;
+    if (event.key === 'Escape' && searchInput.getAttribute('aria-expanded') === 'true') {
+      event.preventDefault();
+      closeSearch();
+      searchInput.focus();
+      return;
+    }
     if (event.key === 'Escape' && panel.classList.contains('open')) {
       closeDetail({ restoreFocus: true });
       return;
     }
-    if (event.key !== 'Tab' || !compactPanelQuery.matches || !panel.classList.contains('open')) return;
+    if (event.key !== 'Tab' || (!compactPanelQuery.matches && panel.dataset.focus !== 'true') ||
+      !panel.classList.contains('open')) return;
     const focusable = [...panel.querySelectorAll('button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')]
       .filter((element) => !element.hidden && element.getClientRects().length > 0);
     if (!focusable.length) return;
@@ -484,6 +851,15 @@ function bindGlobalInteractions() {
     searchInput.removeAttribute('aria-activedescendant');
     searchIndex = -1;
   };
+  document.addEventListener('keydown', (event) => {
+    const target = event.target;
+    const isTyping = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target?.isContentEditable;
+    const searchShortcut = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k';
+    if (!searchShortcut && (event.key !== '/' || isTyping || event.ctrlKey || event.metaKey || event.altKey)) return;
+    event.preventDefault();
+    searchInput.focus();
+    searchInput.select();
+  });
   const selectSearchResult = (index) => {
     const result = searchResults[index];
     if (!result) return;
@@ -503,6 +879,7 @@ function bindGlobalInteractions() {
     if (!searchResults.length) {
       const empty = document.createElement('p');
       empty.className = 'search-empty';
+      empty.setAttribute('role', 'status');
       empty.textContent = '没有找到相关卦象';
       searchResultsEl.append(empty);
     } else {
@@ -512,8 +889,22 @@ function bindGlobalInteractions() {
         option.id = `search-option-${index}`;
         option.className = 'search-option';
         option.setAttribute('role', 'option');
+        option.setAttribute('aria-selected', 'false');
+        option.setAttribute('aria-label', `第 ${hexagram.number} 卦，${hexagram.name}，${hexagram.fullName}`);
         option.dataset.index = String(index);
-        option.textContent = `${hexagram.number}. ${hexagram.name} · ${hexagram.fullName}`;
+        const number = document.createElement('span');
+        number.className = 'search-option-number';
+        number.textContent = String(hexagram.number).padStart(2, '0');
+        const identity = document.createElement('span');
+        identity.className = 'search-option-identity';
+        const name = document.createElement('strong');
+        name.textContent = hexagram.name;
+        const fullName = document.createElement('small');
+        fullName.textContent = hexagram.fullName;
+        identity.append(name, fullName);
+        const code = document.createElement('code');
+        code.textContent = hexagram.binaryCode;
+        option.append(number, identity, code);
         searchResultsEl.append(option);
       });
       state.starMap?.focusStar(searchResults[0].binaryCode);
@@ -562,12 +953,18 @@ function bindGlobalInteractions() {
   });
 
   let resizeFrame = null;
-  window.addEventListener('resize', () => {
+  const scheduleStarMapResize = () => {
     if (resizeFrame) return;
     resizeFrame = window.requestAnimationFrame(() => {
       resizeFrame = null;
       state.starMap?.resize();
     });
+  };
+  window.addEventListener('resize', scheduleStarMapResize);
+  canvas.addEventListener('transitionend', (event) => {
+    if (event.target === canvas && ['width', 'height'].includes(event.propertyName)) {
+      scheduleStarMapResize();
+    }
   });
 
   const zoomLevel = document.getElementById('zoom-level');
@@ -575,15 +972,29 @@ function bindGlobalInteractions() {
   document.getElementById('zoom-in').addEventListener('click', () => { state.starMap.zoomBy(1.25); updateZoom(); });
   document.getElementById('zoom-out').addEventListener('click', () => { state.starMap.zoomBy(0.8); updateZoom(); });
   document.getElementById('zoom-reset').addEventListener('click', () => { state.starMap.zoomReset(); updateZoom(); });
+  autoRotateButton?.addEventListener('click', () => updateAutoRotateButton(state.starMap.toggleAutoRotate()));
   document.getElementById('trail-clear').addEventListener('click', () => {
     state.starMap.clearTrail();
     state.starMap.clearFocus();
   });
-  canvas.addEventListener('wheel', () => window.setTimeout(updateZoom, 50), { passive: true });
+  document.getElementById('trail-back').addEventListener('click', () => {
+    const code = state.starMap.popTrail();
+    if (code) openDetail(code, null);
+    else relationStatusEl.textContent = '暂无可返回的关系漫游轨迹。';
+  });
+  let zoomFrame = null;
+  canvas.addEventListener('wheel', () => {
+    if (zoomFrame !== null) return;
+    zoomFrame = window.requestAnimationFrame(() => {
+      zoomFrame = null;
+      updateZoom();
+    });
+  }, { passive: true });
 }
 
 async function init() {
   try {
+    state.celestialStage = initCelestialStage(celestialCanvas);
     // 旧版 Service Worker 可能仍缓存只导出 loadAllData 的模块；首次升级时保持兼容。
     const loadInitialData = dataLoader.loadCoreData || dataLoader.loadAllData;
     if (!loadInitialData) throw new Error('缺少数据加载入口');
@@ -597,10 +1008,34 @@ async function init() {
     }
     state.index = buildHexagramIndex(data.hexagrams);
     state.starMap = new StarMap(canvas, buildRelationGraph(data.hexagrams), {
-      onPick: (code) => openDetail(code),
-      onHover: () => {},
+      onPick: (code) => {
+        cinematicMotion.previewHexagram(null);
+        openDetail(code);
+      },
+      onFocus: (code, point) => {
+        if (code) state.celestialStage?.selectHexagram(code, point);
+        else state.celestialStage?.clearSelection();
+      },
+      onRelationChange: (relationState) => {
+        updateRelationInterface(relationState);
+        state.celestialStage?.setRelationState?.(relationState);
+      },
+      onLayoutChange: updateLayoutInterface,
+      onAutoRotateChange: updateAutoRotateButton,
+      onHover: (code, point, meta) => {
+        state.celestialStage?.focusHexagram(code, point);
+        cinematicMotion.previewHexagram(code ? state.index.byCode.get(code) : null, meta);
+      },
+      onViewChange: (view) => {
+        state.celestialStage?.syncView(view);
+        syncStarViewHud(view);
+      },
     });
+    state.celestialStage.setMode('explore');
     bindGlobalInteractions();
+    updateAutoRotateButton(state.starMap.isAutoRotating());
+    updateLayoutInterface(state.starMap.getLayoutState());
+    updateRelationInterface(state.starMap.getRelationState());
     updateModeButtons('explore');
     updateExploreTools('star');
     loadingEl.hidden = true;
@@ -625,6 +1060,14 @@ async function init() {
 }
 
 init();
+
+window.addEventListener('pagehide', (event) => {
+  if (!event.persisted) {
+    motionSystem.destroy();
+    cinematicMotion.destroy();
+    state.celestialStage?.destroy();
+  }
+}, { once: true });
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

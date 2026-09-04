@@ -104,6 +104,155 @@ class CdpClient {
   }
 }
 
+async function collectChineseOrphans(client, context, rootSelector = 'body') {
+  return client.evaluate(`(() => {
+    const root = document.querySelector(${JSON.stringify(rootSelector)});
+    if (!root) return [];
+    const selectors = [
+      'button', 'button > span', 'button > strong',
+      'a', 'a > span', 'a > strong', 'summary', 'label', 'figcaption',
+      'h1', 'h2', 'h3', 'h4', 'h1 > span', 'h2 > span', 'h3 > span', 'h4 > span',
+      '.content-provenance', '.review-mode-badge', '.academy-kicker',
+      '.workspace-insight-bar small', '.workspace-insight-bar strong',
+      '.daily-roadmap span', '.lesson-stage-rail b', '.lesson-stage-rail small',
+      '.study-level-node strong', '.study-level-node small',
+      '.profile-section-head > span', '.level-heading > span',
+      '.relation-layers-heading > span', '.relation-layers-heading strong',
+      '.star-layout-control label', '.changing-position-buttons > span',
+      '.hint-guide', '.view-readout small', '.galaxy-legend span'
+    ];
+    const candidates = [...root.querySelectorAll(selectors.join(','))];
+    const cjk = /[\\u3400-\\u4dbf\\u4e00-\\u9fff]/;
+    const issues = [];
+
+    for (const element of candidates) {
+      if (element.matches('button, a, summary, label, figcaption, h1, h2, h3, h4') && element.children.length) continue;
+      const style = getComputedStyle(element);
+      const bounds = element.getBoundingClientRect();
+      if (!element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }) ||
+          style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) === 0 ||
+          bounds.width < 1 || bounds.height < 1 || element.closest('[hidden]')) continue;
+
+      const chars = [];
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        let offset = 0;
+        for (const char of node.data) {
+          const start = offset;
+          offset += char.length;
+          if (!cjk.test(char)) continue;
+          const range = document.createRange();
+          range.setStart(node, start);
+          range.setEnd(node, offset);
+          const rect = range.getBoundingClientRect();
+          if (rect.width > 0 && rect.height > 0) chars.push({ char, top: Math.round(rect.top * 2) / 2 });
+        }
+      }
+      if (chars.length < 3 || chars.length > 12) continue;
+
+      const lines = [];
+      for (const char of chars) {
+        let line = lines.find((item) => Math.abs(item.top - char.top) <= 1);
+        if (!line) {
+          line = { top: char.top, text: '' };
+          lines.push(line);
+        }
+        line.text += char.char;
+      }
+      lines.sort((a, b) => a.top - b.top);
+      if (lines.length < 2 || !lines.some((line) => line.text.length === 1)) continue;
+
+      const className = typeof element.className === 'string'
+        ? element.className.trim().split(/\\s+/).slice(0, 3).join('.')
+        : '';
+      issues.push({
+        context: ${JSON.stringify(context)},
+        element: element.tagName.toLowerCase() + (element.id ? '#' + element.id : '') + (className ? '.' + className : ''),
+        text: element.textContent.replace(/\\s+/g, ' ').trim().slice(0, 60),
+        lines: lines.map((line) => line.text),
+        width: Math.round(bounds.width),
+      });
+    }
+    return issues;
+  })()`);
+}
+
+async function collectTextClipping(client, context, rootSelector = 'body') {
+  return client.evaluate(`(() => {
+    const root = document.querySelector(${JSON.stringify(rootSelector)});
+    if (!root) return [];
+    const isVisible = (element) => {
+      if (element.closest('[hidden], .sr-only')) return false;
+      let current = element;
+      while (current instanceof Element) {
+        const style = getComputedStyle(current);
+        if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) === 0) return false;
+        current = current.parentElement;
+      }
+      const rect = element.getBoundingClientRect();
+      return rect.width > 0 && rect.height > 0;
+    };
+    const describe = (element) => {
+      const className = typeof element.className === 'string'
+        ? element.className.trim().split(/\\s+/).slice(0, 3).join('.')
+        : '';
+      return element.tagName.toLowerCase() + (element.id ? '#' + element.id : '') + (className ? '.' + className : '');
+    };
+    const selectors = [
+      'h1', 'h2', 'h3', 'h4', 'h1 > span', 'h2 > span', 'h3 > span', 'h4 > span',
+      'button', 'button > span', 'button > strong', 'a', 'a > span', 'a > strong',
+      'summary', 'label', 'figcaption', 'small', 'strong', 'p',
+      '.content-provenance', '.academy-kicker', '.review-mode-badge',
+      '.workspace-insight-bar small', '.workspace-insight-bar strong',
+      '.study-level-node small', '.study-level-node strong', '.search-option-identity small'
+    ];
+    const containers = [
+      '#detail-panel', '#detail-content', '.mode-panel', '.seven-step-slip',
+      '.learning-tabs', '.daily-card', '.evolution-card', '.guaxu-dialog'
+    ];
+    const candidates = [...new Set([
+      ...root.querySelectorAll(selectors.join(',')),
+      ...root.querySelectorAll(containers.join(',')),
+    ])];
+    const issues = [];
+
+    for (const element of candidates) {
+      if (!isVisible(element)) continue;
+      const text = (element.innerText || '').replace(/\\s+/g, ' ').trim();
+      if (!text) continue;
+      const style = getComputedStyle(element);
+      const widthOverflow = element.scrollWidth - element.clientWidth > 1;
+      const heightOverflow = element.scrollHeight - element.clientHeight > 1;
+      const isContainer = element.matches(containers.join(','));
+      const clippedWidth = widthOverflow && (isContainer || style.whiteSpace === 'nowrap' ||
+        style.textOverflow === 'ellipsis' || ['hidden', 'clip'].includes(style.overflowX));
+      const clippedHeight = heightOverflow && (Number.parseInt(style.webkitLineClamp, 10) > 0 ||
+        ['hidden', 'clip'].includes(style.overflowY));
+      if (!clippedWidth && !clippedHeight) continue;
+      issues.push({
+        context: ${JSON.stringify(context)},
+        element: describe(element),
+        text: text.slice(0, 70),
+        client: [element.clientWidth, element.clientHeight],
+        scroll: [element.scrollWidth, element.scrollHeight],
+        overflow: [style.overflowX, style.overflowY],
+        whiteSpace: style.whiteSpace,
+        textOverflow: style.textOverflow,
+        lineClamp: style.webkitLineClamp,
+      });
+    }
+    return issues;
+  })()`);
+}
+
+async function assertNoChineseOrphans(client, context, rootSelector = 'body') {
+  const issues = await collectChineseOrphans(client, context, rootSelector);
+  if (issues.length) throw new Error(`发现中文短语孤字换行：${JSON.stringify(issues)}`);
+  const clipping = await collectTextClipping(client, context, rootSelector);
+  if (clipping.length) throw new Error(`发现文字显示不完整或横向溢出：${JSON.stringify(clipping)}`);
+}
+
 const browserPath = findBrowser();
 if (!browserPath) {
   console.error('未找到 Chromium 浏览器。可通过 BROWSER_PATH 指定 Chrome/Edge/Chromium 可执行文件。');
@@ -146,13 +295,19 @@ try {
   await client.send('Log.enable');
   await client.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false });
   await waitFor(() => client.evaluate('document.querySelector("#loading")?.hidden === true'), '应用初始化超时');
+  await assertNoChineseOrphans(client, '1280x720 欢迎页');
 
   await client.evaluate(`(() => {
     const overlay = document.querySelector('#daily-overlay');
-    if (!overlay.hidden) document.querySelector('#daily-enter').click();
+    const exploreEntry = document.querySelector('[data-entry="explore"]');
+    if (!overlay.hidden) {
+      if (!exploreEntry) throw new Error('探索星图入口不存在');
+      exploreEntry.click();
+    }
     return true;
   })()`);
   await waitFor(() => client.evaluate('document.querySelector("#daily-overlay").hidden === true'), '今日卦入口未关闭');
+  await assertNoChineseOrphans(client, '1280x720 探索');
 
   const navigation = await client.evaluate(`(() => ({
     modes: [...document.querySelectorAll('.mode-btn')].map((button) => button.dataset.mode),
@@ -165,6 +320,18 @@ try {
   }
   if (navigation.hasLegacyGuaxuMode || navigation.viewportRight - navigation.guaxuToolRight > 180) {
     throw new Error('卦序入口未正确迁移到星图右上角');
+  }
+
+  const modeAuditSelectors = {
+    almanac: '.almanac-view',
+    learning: '.learning-tabs',
+    review: '.review-panel',
+    quiz: '.quiz-panel',
+  };
+  for (const [mode, selector] of Object.entries(modeAuditSelectors)) {
+    await client.evaluate(`document.querySelector('[data-mode="${mode}"]').click()`);
+    await waitFor(() => client.evaluate(`document.querySelector(${JSON.stringify(selector)}) !== null`), `${mode} 模块未加载`);
+    await assertNoChineseOrphans(client, `1280x720 ${mode}`);
   }
 
   const audioPreference = await client.evaluate(`(() => {
@@ -184,6 +351,7 @@ try {
 
   await client.evaluate('document.querySelector("[data-mode=divination]").click()');
   await waitFor(() => client.evaluate('document.querySelector(".coin-cast") !== null'), '占筮模块未加载');
+  await assertNoChineseOrphans(client, '1280x720 占筮');
   await client.evaluate('document.querySelector(".coin-cast").click()');
   const coinInterpretation = await waitFor(() => client.evaluate(`(() => {
     const panel = document.querySelector('.coin-result .divine-interpretation');
@@ -200,6 +368,7 @@ try {
 
   await client.evaluate('document.querySelector("[data-sub=meihua]").click()');
   await waitFor(() => client.evaluate('document.querySelector(".mh-cast") !== null'), '梅花易数页未加载');
+  await assertNoChineseOrphans(client, '1280x720 梅花易数', '.divine-panel');
   await client.evaluate('document.querySelector(".mh-cast").click()');
   await waitFor(() => client.evaluate(`(() => {
     const panel = document.querySelector('.mh-result .divine-interpretation');
@@ -208,11 +377,46 @@ try {
   await client.evaluate('document.querySelector("[data-mode=explore]").click()');
   await waitFor(() => client.evaluate('document.querySelector("#star-canvas")?.hidden === false'), '占筮后未返回星图');
 
+  const classicLayouts = await client.evaluate(`(() => {
+    const select = document.querySelector('#star-layout-mode');
+    const source = document.querySelector('#star-layout-source');
+    const description = document.querySelector('#star-layout-description');
+    const autoRotate = document.querySelector('#auto-rotate');
+    const results = [];
+    for (const mode of ['earlier-heaven', 'king-wen', 'eight-palaces', 'twelve-messages']) {
+      select.value = mode;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      results.push({
+        mode,
+        source: source.textContent,
+        description: description.textContent,
+        disabled: autoRotate.disabled,
+        count: document.querySelectorAll('#star-accessible-list [data-code]').length,
+      });
+    }
+    select.value = 'project';
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    return {
+      results,
+      projectEnabled: !autoRotate.disabled,
+      projectDescription: description.textContent,
+    };
+  })()`);
+  if (classicLayouts.results.some((item) => !item.source || !item.description || !item.disabled)) {
+    throw new Error(`经典图式缺少来源、说明或固定方位约束：${JSON.stringify(classicLayouts.results)}`);
+  }
+  if (classicLayouts.results.find((item) => item.mode === 'earlier-heaven')?.count !== 8 ||
+      classicLayouts.results.find((item) => item.mode === 'twelve-messages')?.count !== 12 ||
+      !classicLayouts.projectEnabled || !classicLayouts.projectDescription.includes('项目')) {
+    throw new Error(`经典图式可见卦数或项目布局回退异常：${JSON.stringify(classicLayouts)}`);
+  }
+
   await client.send('Emulation.setEmulatedMedia', {
     features: [{ name: 'prefers-reduced-motion', value: 'reduce' }],
   });
   await client.evaluate('document.querySelector("[data-explore-tool=guaxu]").click()');
   await waitFor(() => client.evaluate('document.querySelector(".guaxu-overlay.open") !== null'), '卦序转盘未居中打开');
+  await assertNoChineseOrphans(client, '1280x720 卦序', '.guaxu-overlay');
   await client.evaluate('document.querySelector(".guaxu-spin").click()');
   const guaxuResult = await waitFor(() => client.evaluate(`(() => {
     const selected = document.querySelectorAll('.guaxu-wheel-sector.selected').length;
@@ -235,6 +439,7 @@ try {
   if (resultCount < 1) throw new Error('搜索没有返回结果');
   await client.evaluate('document.querySelector(".search-option").click()');
   await waitFor(() => client.evaluate('document.querySelector("#detail-panel").classList.contains("open") && location.search.includes("hex=")'), '详情深链接未打开');
+  await assertNoChineseOrphans(client, '1280x720 卦象详情');
 
   await client.evaluate('document.querySelector(".share-hexagram").click()');
   const shareCard = await waitFor(() => client.evaluate(`(() => {
@@ -255,6 +460,7 @@ try {
 
   await client.evaluate('document.querySelector(".evolution-launch").click()');
   await waitFor(() => client.evaluate('document.querySelector(".evolution-overlay.open") !== null'), '卦象演变实验室未打开');
+  await assertNoChineseOrphans(client, '1280x720 演变实验室', '.evolution-overlay');
   await client.evaluate(`document.querySelector('[data-evolution-line="1"]').click()`);
   await waitFor(() => client.evaluate('document.querySelector(".evolution-result figcaption span")?.textContent.includes("011111")'), '实验室逐爻变化结果错误');
   await client.evaluate('document.querySelector("[data-evolution-action=undo]").click()');
@@ -283,6 +489,12 @@ try {
   await waitFor(() => client.evaluate(`document.querySelector('.evolution-result figcaption span')?.textContent.includes('000000')
     && document.querySelector('[data-evolution-playback=play]')?.textContent.includes('播放')`), '实验室自动播放未完成');
   await client.evaluate('document.querySelector(".evolution-close").click()');
+  await client.evaluate(`(() => {
+    const select = document.querySelector('#detail-layout');
+    select.value = 'bottom';
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    return true;
+  })()`);
   await waitFor(() => client.evaluate(`(() => {
     const panel = document.querySelector('#detail-panel').getBoundingClientRect();
     const canvas = document.querySelector('#star-canvas').getBoundingClientRect();
@@ -342,8 +554,11 @@ try {
   })()`);
   await waitFor(() => client.evaluate(`(() => {
     const panel = document.querySelector('#detail-panel').getBoundingClientRect();
+    const canvas = document.querySelector('#star-canvas').getBoundingClientRect();
     const controls = document.querySelector('.zoom-controls').getBoundingClientRect();
-    return controls.right < panel.left;
+    return Math.abs(canvas.left) < 2
+      && Math.abs(panel.left - canvas.width) < 2
+      && controls.right < panel.left;
   })()`), '切换右侧后星图控件未完成避让');
   const rightLayout = await client.evaluate(`(() => {
     const panel = document.querySelector('#detail-panel').getBoundingClientRect();
@@ -365,7 +580,12 @@ try {
     select.value = 'bottom';
     select.dispatchEvent(new Event('change', { bubbles: true }));
   })()`);
-  await waitFor(() => client.evaluate('document.querySelector("#detail-panel").dataset.layout === "bottom"'), '详情栏未切回底部');
+  await waitFor(() => client.evaluate(`(() => {
+    const panel = document.querySelector('#detail-panel').getBoundingClientRect();
+    const canvas = document.querySelector('#star-canvas').getBoundingClientRect();
+    return document.querySelector('#detail-panel').dataset.layout === 'bottom'
+      && Math.abs(panel.top - canvas.bottom) < 2;
+  })()`), '详情栏未切回底部');
 
   await client.evaluate('document.querySelector(".rel-demo-btn").click()');
   await waitFor(() => client.evaluate('document.querySelector(".rel-anim-overlay.open") !== null'), '关系动画浮层未打开');
@@ -376,11 +596,13 @@ try {
   );
   await client.evaluate('document.querySelector(".rel-anim-close").click()');
 
-  await client.send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
+  await client.send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1024, deviceScaleFactor: 1, mobile: false });
   await waitFor(() => client.evaluate(`(() => {
     const panel = document.querySelector('#detail-panel').getBoundingClientRect();
     const canvas = document.querySelector('#star-canvas').getBoundingClientRect();
-    return Math.abs(canvas.height + panel.height - innerHeight) < 2;
+    return Math.abs(panel.width - innerWidth) < 2
+      && Math.abs(canvas.width - innerWidth) < 2
+      && Math.abs(canvas.height + panel.height - innerHeight) < 2;
   })()`), '宽屏底部布局高度动画未完成');
   const wideLayout = await client.evaluate(`(() => {
     const panel = document.querySelector('#detail-panel').getBoundingClientRect();
@@ -389,6 +611,7 @@ try {
   })()`);
   if (Math.abs(wideLayout.panelWidth - wideLayout.viewportWidth) > 2 || Math.abs(wideLayout.canvasWidth - wideLayout.viewportWidth) > 2) throw new Error('宽屏底部布局宽度错误');
   if (Math.abs(wideLayout.canvasHeight + wideLayout.panelHeight - wideLayout.viewportHeight) > 2) throw new Error('宽屏底部布局高度错误');
+  await assertNoChineseOrphans(client, '1440x1024 卦象详情');
 
   await client.send('Emulation.setDeviceMetricsOverride', { width: 768, height: 1024, deviceScaleFactor: 1, mobile: true });
   await waitFor(() => client.evaluate('document.querySelector("#detail-panel").getAttribute("aria-modal") === "true"'), '平板详情栏未切换为模态');
@@ -401,6 +624,7 @@ try {
     return { width: panel.width, top: panel.top, viewportWidth: innerWidth };
   })()`);
   if (Math.abs(tabletPanel.width - tabletPanel.viewportWidth) > 2 || Math.abs(tabletPanel.top) > 2) throw new Error('平板详情栏不是全屏阅读布局');
+  await assertNoChineseOrphans(client, '768x1024 卦象详情');
   await client.evaluate('document.querySelector("#detail-close").click()');
   const tabletHeader = await client.evaluate(`(() => {
     const bar = document.querySelector('.topbar').getBoundingClientRect();
@@ -413,17 +637,45 @@ try {
   const mobileHeader = await client.evaluate(`(() => {
     const nav = document.querySelector('#mode-switcher');
     const buttons = [...nav.querySelectorAll('.mode-btn')].map((button) => button.getBoundingClientRect());
+    const navRect = nav.getBoundingClientRect();
     return {
       headerHeight: document.querySelector('.topbar').getBoundingClientRect().height,
-      navHeight: nav.getBoundingClientRect().height,
+      navHeight: navRect.height,
       rows: new Set(buttons.map((rect) => Math.round(rect.top))).size,
       scrollable: nav.scrollWidth > nav.clientWidth,
+      allVisible: buttons.every((rect) => rect.left >= navRect.left - 1 && rect.right <= navRect.right + 1
+        && rect.top >= navRect.top - 1 && rect.bottom <= navRect.bottom + 1),
       overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
     };
   })()`);
-  if (mobileHeader.headerHeight > 132 || mobileHeader.navHeight > 54 || mobileHeader.rows !== 1) throw new Error('手机顶部导航发生换行或高度异常');
-  if (!mobileHeader.scrollable) throw new Error('手机顶部导航未启用横向滚动');
+  if (mobileHeader.headerHeight > 180 || mobileHeader.navHeight > 104 || mobileHeader.rows !== 2) {
+    throw new Error(`手机顶部导航未形成紧凑的三列两行布局：${JSON.stringify(mobileHeader)}`);
+  }
+  if (mobileHeader.scrollable || !mobileHeader.allVisible) throw new Error('手机顶部导航仍依赖横向滚动或存在屏外入口');
   if (mobileHeader.overflow) throw new Error('390px 视口出现页面级横向溢出');
+
+  const mobileRelations = await client.evaluate(`(() => {
+    document.querySelector('#trail-clear').click();
+    const details = document.querySelector('.star-text-relations');
+    if (!details.open) details.querySelector('summary').click();
+    document.querySelector('#star-accessible-list [data-code="111111"]').click();
+    const header = document.querySelector('.topbar').getBoundingClientRect();
+    const panel = document.querySelector('#relation-layers').getBoundingClientRect();
+    return {
+      status: document.querySelector('#star-relation-status').textContent,
+      autoRotate: document.querySelector('#auto-rotate').getAttribute('aria-pressed'),
+      panelTop: panel.top,
+      panelRight: panel.right,
+      headerBottom: header.bottom,
+      viewportWidth: innerWidth,
+    };
+  })()`);
+  if (!mobileRelations.status.includes('乾 · 错卦') || mobileRelations.autoRotate !== 'false') {
+    throw new Error('手机文字关系列表未能聚焦卦象或停止自动巡天');
+  }
+  if (mobileRelations.panelTop < mobileRelations.headerBottom || mobileRelations.panelRight > mobileRelations.viewportWidth + 1) {
+    throw new Error('手机关系分层器与导航重叠或超出视口');
+  }
 
   const mobileResultCount = await client.evaluate(`(() => {
     const input = document.querySelector('#search');
@@ -450,6 +702,7 @@ try {
   })()`);
   if (Math.abs(mobilePanel.width - mobilePanel.viewportWidth) > 2 || Math.abs(mobilePanel.top) > 2) throw new Error('手机详情不是全屏阅读布局');
   if (mobilePanel.ariaModal !== 'true' || mobilePanel.sections < 5) throw new Error('手机详情语义或内容分组异常');
+  await assertNoChineseOrphans(client, '390x844 卦象详情');
   await client.evaluate('document.querySelector(".evolution-launch").click()');
   await waitFor(() => client.evaluate('document.querySelector(".evolution-overlay.open") !== null'), '手机演变实验室未打开');
   const mobileLab = await client.evaluate(`(() => {
@@ -471,14 +724,17 @@ try {
   await client.evaluate('document.querySelector("#detail-close").click()');
 
   await client.evaluate('document.querySelector("[data-mode=learning]").click()');
+  await waitFor(() => client.evaluate('document.querySelector(".learning-tabs") !== null'), '学习模式未渲染');
+  await client.evaluate('document.querySelector("[data-section=path]").click()');
   await waitFor(() => client.evaluate('document.querySelectorAll(".learning-dashboard > div").length === 5'), '学习仪表板未渲染');
+  await assertNoChineseOrphans(client, '390x844 学程');
   const overflow = await client.evaluate('document.documentElement.scrollWidth > document.documentElement.clientWidth');
   if (overflow) throw new Error('390px 视口出现横向溢出');
 
   const seriousErrors = client.events.filter((event) => event.method === 'Runtime.exceptionThrown' ||
     (event.method === 'Log.entryAdded' && event.params.entry.level === 'error'));
   if (seriousErrors.length) throw new Error(`浏览器捕获 ${seriousErrors.length} 个脚本错误`);
-  console.log('✓ Chromium 1440/1280/768/390px 布局与主流程烟雾测试通过');
+  console.log('✓ Chromium 1440×1024 / 1280×720 / 768×1024 / 390×844 布局与主流程烟雾测试通过');
 } finally {
   client?.close();
   await stopProcess(browser);

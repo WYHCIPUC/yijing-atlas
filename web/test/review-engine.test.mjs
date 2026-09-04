@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  addReviewCard,
   getDueCount,
   getDueCards,
   getMastery,
@@ -27,6 +28,24 @@ test('新卡片立即到期并可持久化', () => {
   assert.deepEqual(new Set(getDueCards(cards)), new Set(['111111', '000000']));
   assert.deepEqual(Object.keys(loadReviewCards()).sort(), ['000000', '111111']);
   assert.equal(getDueCount(cards), 2);
+});
+
+test('只有明确加入的卦象才进入新手复习池', () => {
+  const added = addReviewCard('111111');
+  assert.equal(added.added, true);
+  assert.equal(added.saved, true);
+  assert.equal(Number.isFinite(added.card.introducedAt), true);
+  assert.deepEqual(Object.keys(loadReviewCards()), ['111111']);
+  assert.equal(addReviewCard('111111').added, false);
+  assert.deepEqual(addReviewCard('bad'), { added: false, saved: false });
+});
+
+test('旧版本批量生成但从未复习的卡片不会继续制造 64 项待办', () => {
+  globalThis.localStorage.setItem('yijing-review-cards', JSON.stringify({
+    '111111': { code: '111111', stage: 0, due: 0, lapses: 0, reps: 0, lastReview: 0 },
+    '000000': { code: '000000', stage: 1, due: 0, lapses: 0, reps: 1, lastReview: 1 },
+  }));
+  assert.deepEqual(Object.keys(loadReviewCards()), ['000000']);
 });
 
 test('记得会提升阶段，忘记会记录失误并回到一天间隔', () => {

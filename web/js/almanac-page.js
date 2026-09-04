@@ -13,10 +13,22 @@ function esc(s) {
 let st = null;
 const MIN_YEAR = 1900;
 const MAX_YEAR = 2199;
+const CALENDAR_TIME_ZONE = 'Asia/Shanghai';
+
+export function shanghaiCalendarDate(now = new Date()) {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: CALENDAR_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(now);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return new Date(Number(values.year), Number(values.month) - 1, Number(values.day), 12);
+}
 
 export function renderAlmanacPage(mountEl, appState) {
   st = { terms: appState.almanacTerms || [], yiji: appState.almanacYiji || {} };
-  draw(mountEl, new Date());
+  draw(mountEl, shanghaiCalendarDate());
 }
 
 function draw(mountEl, date) {
@@ -32,7 +44,7 @@ function draw(mountEl, date) {
   const yiji = yiJiOfDay(date, st.yiji);
 
   const dateStr = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
-  const isToday = sameDay(date, new Date());
+  const isToday = sameDay(date, shanghaiCalendarDate());
 
   // 今日解读（传完整择日对象，供 reading.js 内部读取字段）
   const almanacInfo = {
@@ -55,7 +67,7 @@ function draw(mountEl, date) {
         <button type="button" class="alm-nav" id="alm-next" ${dateKey(date) >= MAX_YEAR * 10000 + 1231 ? 'disabled' : ''}>后一天 ▶</button>
       </div>
 
-      <div class="alm-card">
+      <section class="alm-card alm-calendar-card">
         <div class="alm-lunar">
           <span class="alm-lunar-main">${esc(yg.animal)}年 · ${esc(lunar.isLeap ? '闰' : '')}${esc(lunar.monthName)}${cnNum(lunar.day)}</span>
           <span class="alm-lunar-sub">农历 ${esc(lunar.year)}年</span>
@@ -66,30 +78,30 @@ function draw(mountEl, date) {
           <div class="gz-item"><span class="gz-label">日</span><b>${esc(dg.name)}</b><small>${esc(dg.nayin||'')}</small></div>
         </div>
         <div class="alm-jieqi">节气：<b>${esc(term.current)}</b>（第${term.daysSince + 1}天）· 距${esc(term.next)}${term.daysToNext}天</div>
-      </div>
+      </section>
 
-      <div class="alm-card">
+      <section class="alm-card alm-guidance-card">
         <div class="alm-zhiwei">
-          <span class="zw-item term-clickable" data-term="${esc(jc.name)}">建除：<b>${esc(jc.name)}日</b></span>
-          <span class="zw-item term-clickable" data-term="${esc(xiu.name)}宿">值宿：<b>${esc(xiu.name)}宿</b>${xiu.qin ? '<small>'+esc(xiu.qin)+'</small>' : ''}</span>
+          <button type="button" class="zw-item term-clickable alm-term-button" data-term="${esc(jc.name)}" aria-haspopup="dialog">建除：<b>${esc(jc.name)}日</b></button>
+          <button type="button" class="zw-item term-clickable alm-term-button" data-term="${esc(xiu.name)}宿" aria-haspopup="dialog">值宿：<b>${esc(xiu.name)}宿</b>${xiu.qin ? '<small>'+esc(xiu.qin)+'</small>' : ''}</button>
         </div>
 
         <div class="alm-yiji-block">
-          <div class="alm-yi"><span class="yj-label">✅ 宜</span>
-            <div class="yj-items">${yiji.yi.length ? yiji.yi.map(i => `<span class="yj-tag" data-term="${esc(i)}">${esc(i)}</span>`).join('') : '<span class="yj-empty">无</span>'}</div>
+          <div class="alm-yi"><span class="yj-label">宜</span>
+            <div class="yj-items">${yiji.yi.length ? yiji.yi.map(i => `<button type="button" class="yj-tag" data-term="${esc(i)}" aria-haspopup="dialog">${esc(i)}</button>`).join('') : '<span class="yj-empty">无</span>'}</div>
           </div>
-          <div class="alm-ji"><span class="yj-label">❌ 忌</span>
-            <div class="yj-items">${yiji.ji.length ? yiji.ji.map(i => `<span class="yj-tag" data-term="${esc(i)}">${esc(i)}</span>`).join('') : '<span class="yj-empty">无</span>'}</div>
+          <div class="alm-ji"><span class="yj-label">忌</span>
+            <div class="yj-items">${yiji.ji.length ? yiji.ji.map(i => `<button type="button" class="yj-tag" data-term="${esc(i)}" aria-haspopup="dialog">${esc(i)}</button>`).join('') : '<span class="yj-empty">无</span>'}</div>
           </div>
         </div>
 
-        <div class="alm-pengzu term-clickable" data-term="彭祖百忌">
+        <button type="button" class="alm-pengzu term-clickable alm-term-button" data-term="彭祖百忌" aria-haspopup="dialog">
           <b>彭祖百忌：</b>${esc(pz.all || (pz.ganJi + '；' + pz.zhiJi))}
-        </div>
-      </div>
+        </button>
+      </section>
 
-      <div class="alm-card">
-        <h4 class="alm-reading-title">📖 今日解读</h4>
+      <section class="alm-card alm-reading-card">
+        <h4 class="alm-reading-title">今日解读</h4>
         <div class="alm-reading-list">
           ${(reading.blocks && reading.blocks.length) ? reading.blocks.map(r => `
             <details class="alm-reading-item">
@@ -103,8 +115,8 @@ function draw(mountEl, date) {
             </details>
           `).join('') : '<p class="alm-empty">暂无解读</p>'}
         </div>
-      </div>
-      <p class="alm-foot"><small>计算范围为 ${MIN_YEAR}—${MAX_YEAR} 年，按设备本地时区显示；自动化结果仅供历法与民俗文化学习，不作为医疗、法律、财务或其他现实决策依据。</small></p>
+      </section>
+      <p class="alm-foot"><small><b>历法口径：</b>历日统一按 Asia/Shanghai（北京时间，UTC+8）确定；农历年以正月初一换年，干支年以立春换年，日界按午夜 00:00。计算范围为 ${MIN_YEAR}—${MAX_YEAR} 年；自动化结果属于历法计算与民俗资料，仅供文化学习，不作为医疗、法律、财务或其他现实决策依据。</small></p>
     </div>`;
 
   bindEvents(mountEl);
@@ -126,28 +138,77 @@ function bindEvents(mountEl) {
   mountEl.querySelectorAll('.term-clickable, .yj-tag').forEach(el => {
     el.onclick = (ev) => {
       ev.stopPropagation();
-      showTermPopup(el.dataset.term);
+      showTermPopup(el.dataset.term, el);
     };
   });
 }
 
-function showTermPopup(termName) {
+function showTermPopup(termName, triggerEl) {
   const t = getTermReading(st.terms, termName);
   const overlay = document.createElement('div');
   overlay.className = 'alm-popup-overlay';
   overlay.innerHTML = `
-    <div class="alm-popup">
+    <div class="alm-popup" role="dialog" aria-modal="true" aria-labelledby="alm-popup-title">
       <button type="button" class="alm-popup-close" aria-label="关闭术语解读">×</button>
+      <h3 id="alm-popup-title" tabindex="-1">${esc(t?.name || termName)}${t?.category ? ` <small>${esc(t.category)}</small>` : ''}</h3>
       ${t ? `
-        <h3>${esc(t.name)} <small>${esc(t.category)}</small></h3>
         <p>${esc(t.meaning)}</p>
         ${t.yi && t.yi.length ? `<p class="rd-yi">宜：${t.yi.map(i=>esc(i)).join('、')}</p>` : ''}
         ${t.ji && t.ji.length ? `<p class="rd-ji">忌：${t.ji.map(i=>esc(i)).join('、')}</p>` : ''}
         ${t.principle ? `<p class="rd-principle"><small>${esc(t.principle)}</small></p>` : ''}
       ` : `<p class="alm-empty">"${esc(termName)}" 暂无详细解读，可至"学习·黄历知识"查阅相关术语。</p>`}
     </div>`;
-  overlay.onclick = (e) => { if (e.target === overlay || e.target.classList.contains('alm-popup-close')) overlay.remove(); };
+
+  const dialog = overlay.querySelector('.alm-popup');
+  const closeButton = overlay.querySelector('.alm-popup-close');
+  let closed = false;
+
+  const closePopup = () => {
+    if (closed) return;
+    closed = true;
+    document.removeEventListener('keydown', handleKeydown);
+    overlay.remove();
+    triggerEl?.setAttribute('aria-expanded', 'false');
+    if (triggerEl?.isConnected !== false && typeof triggerEl?.focus === 'function') {
+      triggerEl.focus({ preventScroll: true });
+    }
+  };
+
+  const handleKeydown = (event) => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closePopup();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+
+    const focusable = [...dialog.querySelectorAll(
+      'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    )];
+    if (!focusable.length) {
+      event.preventDefault();
+      dialog.focus();
+      return;
+    }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) closePopup();
+  });
+  closeButton.addEventListener('click', closePopup);
+  document.addEventListener('keydown', handleKeydown);
+  triggerEl?.setAttribute('aria-expanded', 'true');
   document.body.appendChild(overlay);
+  closeButton.focus({ preventScroll: true });
 }
 
 function sameDay(a, b) { return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }

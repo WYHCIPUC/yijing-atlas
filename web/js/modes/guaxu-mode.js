@@ -145,6 +145,7 @@ function finishSpin(session, spin) {
     closeGuaxuWheel({ restoreFocus: false, immediate: true });
     openDetail(code);
   });
+  result.querySelector('#guaxu-result-title')?.focus({ preventScroll: true });
 }
 
 function spinWheel() {

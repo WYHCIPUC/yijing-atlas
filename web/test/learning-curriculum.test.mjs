@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import {
   buildLearningQuestionBank,
+  CURRICULUM_TRACKS,
   getLesson,
   getLessonRubric,
   LEARNING_LESSONS,
@@ -31,6 +32,9 @@ test('全部学习小节均有至少三道可判分题目', () => {
       assert.equal(question.levelId, lesson.levelId);
     });
   }
+  assert.ok(bank.some((item) => item.kind === 'evidence' && item.evidenceType === '证据不足'));
+  assert.ok(bank.some((item) => item.kind === 'evidence' && item.evidenceType === '卦体'));
+  assert.ok(bank.some((item) => item.kind === 'evidence' && item.evidenceType === '经传原文'));
 });
 
 test('课程覆盖五阶与所有资料栏目，并能生成复讲要点', () => {
@@ -43,4 +47,6 @@ test('课程覆盖五阶与所有资料栏目，并能生成复讲要点', () =>
   }
   assert.equal(getLesson('missing'), null);
   assert.deepEqual(getLessonRubric('missing', appState), []);
+  assert.deepEqual(new Set(LEARNING_LESSONS.map((lesson) => lesson.track)), new Set(Object.keys(CURRICULUM_TRACKS)));
+  for (const lessonId of ['l3-4', 'l4-5', 'l4-6', 'l4-7']) assert.ok(getLesson(lessonId), `${lessonId} 未纳入课程`);
 });

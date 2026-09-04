@@ -38,6 +38,7 @@ function buildFocus(reading, primaryHex, changedHex) {
       plain: line?.note || USE_PLAIN[item.kind] || hexagram.judgementNote,
       xiang: line?.xiang || '',
       xiangSource: line ? `《周易·${hexagram.name}卦·象传》` : '',
+      priority: item.priority === 'secondary' ? 'secondary' : 'primary',
     };
   });
 }
@@ -73,7 +74,7 @@ export function buildCoinInterpretation({ cast, primaryHex, changedHex, reading 
     terminology: `本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 ${cast.changingIdxs.length} 个变爻阴阳翻转后的结果。`,
     focus,
     ...buildShared(primaryHex, changedHex, focus),
-    caveat: '变爻取辞采用常见的后世简化规则，不是《周易》经文规定的唯一占法；不同学派可能有不同取法。',
+    caveat: `${reading.policy?.name || '变爻取辞规则'}：${reading.policy?.caveat || '这是后世常见方法之一，不是《周易》经文规定的唯一占法；不同学派可能有不同取法。'}`,
   };
 }
 

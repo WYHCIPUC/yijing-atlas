@@ -12,7 +12,8 @@ function isReviewCard(card, code) {
   return isPlainObject(card) && card.code === code && /^[01]{6}$/.test(code) &&
     Number.isInteger(card.stage) && card.stage >= 0 && card.stage < INTERVALS.length &&
     Number.isFinite(card.due) && Number.isInteger(card.lapses) && card.lapses >= 0 &&
-    Number.isInteger(card.reps) && card.reps >= 0 && Number.isFinite(card.lastReview);
+    Number.isInteger(card.reps) && card.reps >= 0 && Number.isFinite(card.lastReview) &&
+    (card.introducedAt === undefined || Number.isFinite(card.introducedAt));
 }
 
 function isReviewCards(value) {
@@ -20,7 +21,10 @@ function isReviewCards(value) {
 }
 
 export function loadReviewCards(storage) {
-  return readJson(STORAGE_KEY, {}, isReviewCards, storage);
+  const cards = readJson(STORAGE_KEY, {}, isReviewCards, storage);
+  return Object.fromEntries(Object.entries(cards).filter(([, card]) =>
+    card.reps > 0 || Number.isFinite(card.introducedAt),
+  ));
 }
 
 function saveReviewCards(cards, storage) {
@@ -29,12 +33,21 @@ function saveReviewCards(cards, storage) {
 
 export function getOrCreateCard(cards, hexCode) {
   if (!cards[hexCode]) {
+    const now = Date.now();
     cards[hexCode] = {
-      code: hexCode, stage: 0, due: Date.now(),
+      code: hexCode, stage: 0, due: now, introducedAt: now,
       lapses: 0, reps: 0, lastReview: 0,
     };
   }
   return cards[hexCode];
+}
+
+export function addReviewCard(code, storage) {
+  if (!/^[01]{6}$/.test(code || '')) return { added: false, saved: false };
+  const cards = loadReviewCards(storage);
+  const added = !cards[code];
+  const card = getOrCreateCard(cards, code);
+  return { card, added, saved: added ? saveReviewCards(cards, storage) : true };
 }
 
 export function reviewCard(card, rating) {
