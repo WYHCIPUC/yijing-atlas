@@ -6,6 +6,7 @@ import {
   getKeywordDetailLevel,
   layoutStarNameLabels,
   relationPulseProgress,
+  resolveStarStage,
   StarMap,
 } from '../js/star-map.js';
 
@@ -95,6 +96,13 @@ test('视角读数把缩放层级和球面姿态转换为稳定的五度刻度',
   assert.equal(describeStarView({ scale: 2.2 }).level, '释义层');
   assert.ok(describeStarView({ yaw: 15.2 }).yawDegrees >= 0 && describeStarView({ yaw: 15.2 }).yawDegrees < 360);
   assert.equal(describeStarView({ autoRotate: true }).rotationText, '自动巡天中');
+});
+
+test('四态观察层级由缩放、焦点和详情阅读状态共同决定', () => {
+  assert.equal(resolveStarStage({ scale: 0.7 }), 'galaxy');
+  assert.equal(resolveStarStage({ scale: 1 }), 'cluster');
+  assert.equal(resolveStarStage({ scale: 1, activeCode: '111111' }), 'hexagram');
+  assert.equal(resolveStarStage({ scale: 1, activeCode: '111111', detailOpen: true }), 'yao');
 });
 
 test('页面可见性恢复不会覆盖业务层暂停', () => {

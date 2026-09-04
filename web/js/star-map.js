@@ -54,6 +54,12 @@ export function describeStarView({ scale = 1, yaw = 0, pitch = 0, autoRotate = f
   };
 }
 
+export function resolveStarStage({ scale = 1, activeCode = null, detailOpen = false } = {}) {
+  if (activeCode && detailOpen) return 'yao';
+  if (activeCode) return 'hexagram';
+  return scale < 0.85 ? 'galaxy' : 'cluster';
+}
+
 function labelBoxesOverlap(a, b, gap) {
   return !(
     a.right + gap <= b.left

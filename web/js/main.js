@@ -17,7 +17,7 @@ import { renderHexagramDetail } from './render.js';
 import { addReviewCard } from './review-engine.js';
 import { getHexCodeFromUrl, moveSelection, withHexCode } from './search-controller.js';
 import { buildRelationGraph } from './star-relations.js';
-import { describeStarView, StarMap } from './star-map.js';
+import { describeStarView, resolveStarStage, StarMap } from './star-map.js';
 import { hexagramSvg } from './svg-painter.js';
 
 const { buildHexagramIndex, searchHexagrams } = dataLoader;
@@ -62,6 +62,9 @@ const hintEl = document.getElementById('hint');
 const viewLevelEl = hintEl?.querySelector('[data-view-level]');
 const viewAngleEl = hintEl?.querySelector('[data-view-angle]');
 const viewRotationEl = hintEl?.querySelector('[data-view-rotation]');
+const starStageRail = document.querySelector('.star-map-sequence');
+const starStageIndexEl = hintEl?.querySelector('[data-star-stage-index]');
+const starStageLabelEl = hintEl?.querySelector('[data-star-stage-label]');
 const relationLayersEl = document.getElementById('relation-layers');
 const relationStatusEl = document.getElementById('star-relation-status');
 const relationListEl = document.getElementById('star-accessible-list');
@@ -79,6 +82,37 @@ let panelReturnFocus = null;
 let searchResults = [];
 let searchIndex = -1;
 let lastViewHudKey = '';
+let lastStarView = null;
+
+const STAR_STAGE_META = {
+  galaxy: ['01', '银河巡航'],
+  cluster: ['02', '卦族星团'],
+  hexagram: ['03', '卦星聚焦'],
+  yao: ['04', '六爻近景'],
+};
+
+function syncStarStage(view = lastStarView) {
+  if (!view) return;
+  lastStarView = view;
+  const stage = resolveStarStage({
+    scale: view.scale,
+    activeCode: view.activeCode || state.currentDetail,
+    detailOpen: panel.classList.contains('open') && Boolean(state.currentDetail),
+  });
+  const [index, label] = STAR_STAGE_META[stage];
+  document.body.dataset.starStage = stage;
+  if (starStageIndexEl) starStageIndexEl.textContent = index;
+  if (starStageLabelEl) starStageLabelEl.textContent = label;
+  const stages = Object.keys(STAR_STAGE_META);
+  const activeIndex = stages.indexOf(stage);
+  starStageRail?.querySelectorAll('[data-star-stage]').forEach((item) => {
+    const itemIndex = stages.indexOf(item.dataset.starStage);
+    item.classList.toggle('active', itemIndex === activeIndex);
+    item.classList.toggle('complete', itemIndex < activeIndex);
+    if (itemIndex === activeIndex) item.setAttribute('aria-current', 'step');
+    else item.removeAttribute('aria-current');
+  });
+}
 
 const DAILY_SEEN_KEY = 'yijing-daily-seen';
 const PANEL_LAYOUT_KEY = 'yijing-panel-layout';
@@ -134,7 +168,9 @@ function updateWorkspaceInsight(mode) {
 }
 
 function syncStarViewHud(view) {
-  if (!hintEl || !viewLevelEl || !viewAngleEl || !view) return;
+  if (!view) return;
+  syncStarStage(view);
+  if (!hintEl || !viewLevelEl || !viewAngleEl) return;
   const description = describeStarView(view);
   const key = `${description.level}:${description.zoomPercent}:${description.yawDegrees}:${description.pitchDegrees}:${description.rotationText}`;
   if (key === lastViewHudKey) return;
@@ -392,6 +428,7 @@ function openPanel() {
   document.body.classList.add('panel-open');
   state.starMap?.resize();
   resetPanelViewport();
+  syncStarStage();
 }
 
 function updateDetailUrl(code, mode = 'push') {
@@ -407,6 +444,7 @@ function closeDetail({ restoreFocus = false, resetMode = true, updateUrl = true 
   document.body.classList.remove('panel-open');
   state.starMap?.resize();
   state.currentDetail = null;
+  syncStarStage();
   if (updateUrl) updateDetailUrl(null);
   if (resetMode && state.currentMode !== 'explore') {
     state.currentMode = 'explore';
@@ -558,6 +596,7 @@ function openDetail(code, fromCode = null, { historyMode = 'push' } = {}) {
   if (fromCode) state.starMap?.addTrail(fromCode, code);
   state.currentDetail = code;
   state.starMap?.focusStar(code);
+  syncStarStage();
 }
 
 function updateModeButtons(mode) {

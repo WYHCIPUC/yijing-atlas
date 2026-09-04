@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="以关系星图探索六十四卦，循序学习《易经》、十翼、象数与传统黄历知识。" />
-  <meta name="theme-color" content="#0a0e1a" />
+  <meta name="theme-color" content="#050a13" />
   <meta name="color-scheme" content="dark" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self'" />
@@ -17,7 +17,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="lib/vendor/lenis.css" />
-  <link rel="stylesheet" href="styles/main.css?v=48" />
+  <link rel="stylesheet" href="styles/main.css?v=49" />
 </head>
 <body>
   <div class="pointer-aura" aria-hidden="true"></div>
@@ -105,22 +105,6 @@
     <em>点击星辰 · 展开经文</em>
   </div>
 
-  <aside class="star-map-intro" aria-label="星图阅读提示">
-    <span class="star-map-kicker">六十四卦易象银河</span>
-    <strong>爻成星 · 卦成团</strong>
-    <p>六爻环绕一卦，六十四卦按下卦汇成八个星团；选择关系层，观察卦与卦之间的流向。</p>
-    <div class="galaxy-legend" aria-label="银河层级图例">
-      <span><i class="line-star"></i>爻星</span>
-      <span><i class="hex-star"></i>卦恒星</span>
-      <span><i class="cluster-star"></i>卦族星团</span>
-    </div>
-    <ol class="star-map-sequence">
-      <li><b>01</b><span>选卦</span></li>
-      <li><b>02</b><span>察变</span></li>
-      <li><b>03</b><span>读经</span></li>
-    </ol>
-  </aside>
-
   <div class="academy-celestial-scene" aria-hidden="true"></div>
 
   <div class="atlas-scripture" aria-hidden="true">
@@ -154,6 +138,17 @@
       </select>
     </div>
     <p class="star-layout-description" id="star-layout-description" role="status" aria-live="polite">六爻为卫星、卦为恒星，并按下卦汇成八个星团；这是项目银河布局，不是传统固定图式。</p>
+    <div class="galaxy-legend" aria-label="银河层级图例">
+      <span><i class="line-star"></i>爻星</span>
+      <span><i class="hex-star"></i>卦恒星</span>
+      <span><i class="cluster-star"></i>卦族星团</span>
+    </div>
+    <ol class="star-map-sequence" aria-label="星河观察层级">
+      <li class="active" data-star-stage="galaxy" aria-current="step"><b>01</b><span>银河</span><small>辨卦族</small></li>
+      <li data-star-stage="cluster"><b>02</b><span>星团</span><small>选卦星</small></li>
+      <li data-star-stage="hexagram"><b>03</b><span>卦恒星</span><small>定卦体</small></li>
+      <li data-star-stage="yao"><b>04</b><span>爻星</span><small>读爻辞</small></li>
+    </ol>
     <div class="relation-layer-buttons" role="group" aria-label="选择星图关系层">
       <button type="button" class="active" data-relation-layer="opposite" aria-pressed="true">错</button>
       <button type="button" data-relation-layer="reversed" aria-pressed="false">综</button>
@@ -195,6 +190,10 @@
       <small data-view-angle>经向 0° · 纬向 0° · 100%</small>
       <small data-view-rotation>自动巡天中</small>
     </span>
+    <span class="star-stage-readout" aria-live="polite">
+      <b data-star-stage-index>01</b>
+      <span data-star-stage-label>银河巡航</span>
+    </span>
     <span class="hint-guide">拖拽旋转 · 滚轮缩放 · 点击星辰读经</span>
   </div>
 
@@ -217,6 +216,6 @@
 
   <script src="lib/vendor/gsap.min.js"></script>
   <script src="lib/vendor/lenis.min.js"></script>
-  <script type="module" src="js/main.js?v=48"></script>
+  <script type="module" src="js/main.js?v=49"></script>
 </body>
 </html>

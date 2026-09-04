@@ -123,7 +123,7 @@ function projectLayout(nodes) {
   const positions = new Map();
   const groups = PALACE_TRIGRAMS.map(([trigram, name], clusterIndex) => {
     const clusterAngle = -Math.PI / 2 + clusterIndex / PALACE_TRIGRAMS.length * Math.PI * 2;
-    const clusterRadius = 0.48;
+    const clusterRadius = 0.68;
     const center = position(
       Math.cos(clusterAngle) * clusterRadius,
       Math.sin(clusterAngle) * clusterRadius,
@@ -146,7 +146,7 @@ function projectLayout(nodes) {
     const seed = Number.parseInt(code, 2);
     const localAngle = -Math.PI / 2 + upperIndex / PALACE_TRIGRAMS.length * Math.PI * 2
       + clusterIndex * 0.075;
-    const localRadius = pure ? 0 : 0.105 + (seed % 3) * 0.018;
+    const localRadius = pure ? 0 : 0.135 + (seed % 3) * 0.022;
     positions.set(code, position(
       group.center.x + Math.cos(localAngle) * localRadius,
       group.center.y + Math.sin(localAngle) * localRadius,

@@ -1,7 +1,7 @@
 import * as THREE from '../lib/vendor/three.module.min.js';
 
 const MODE_SCENES = Object.freeze({
-  explore: { accent: 0xd8b66f, secondary: 0x6f8cc8, cameraZ: 9.2, energy: 1 },
+  explore: { accent: 0xc7a85a, secondary: 0x809ec9, cameraZ: 9.2, energy: 1.04 },
   almanac: { accent: 0x88c9b8, secondary: 0xd2a55d, cameraZ: 10.2, energy: 0.72 },
   learning: { accent: 0xe0ba72, secondary: 0x815b36, cameraZ: 10.8, energy: 0.78 },
   review: { accent: 0x75bfa5, secondary: 0xd2b16c, cameraZ: 10.4, energy: 0.86 },
