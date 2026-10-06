@@ -263,3 +263,8 @@ legacy-flutter/                已归档 Flutter 原型，除非明确指定，�
 - `npm run check`、每日卦布局定向测试和 `npm run test:e2e` 均通过；浏览器烟测继续覆盖四种视口、320px、640 CSS 像素等效缩放、键盘、AX 树、减少动态效果和断网流程。
 - 使用 Edge 运行 Lighthouse 13.5.0 连续三次：Performance 89/89/90，LCP 3463/3470/3471ms。预加载没有把 LCP 降到 2500ms 内，因此性能门禁继续保持未验收；未继续做收益不明确的盲目改动。
 - 本轮没有用户需要手动执行的步骤；下一步是取得当前工作区的远程 Quality、Pages 部署和生产 URL 测量证据。
+
+## 16. 2026-10-07 远程质量门禁
+
+- 提交 `e8f60f7` 已推送到 `codex/ui-baseline`；该提交对应的两个公开 Quality 运行均成功。
+- Pages 工作流只监听 `main`，因此当前分支不会自动更新生产站点；公开 Pages 仍是旧的 `yijing-atlas-v20`。未直接覆盖 `main`，等待发布流程的合并入口。

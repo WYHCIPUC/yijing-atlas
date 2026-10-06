@@ -5,10 +5,10 @@
 - [x] `npm run validate` 全部通过，核心逻辑行、分支、函数覆盖率均不低于 90%。
 - [x] `npm run test:e2e` 在 Chromium 的 1440×1024、1280×720、768×1024 与 390×844 视口通过，并覆盖 320px、640 CSS 像素等效缩放、键盘路径、AX 树语义和断网重开。
 - [x] `npm run build:windows` 与 `npm run test:windows` 通过，Windows 单文件版本的首页、JSON、脚本、样式和 404 响应正常。
-- [ ] GitHub Actions `Quality` 成功，Pages 部署仅依赖该工作流。
-- [ ] `git status` 只包含本次确认发布的文件；公开历史不含 PDF、密钥或临时产物。
+- [x] GitHub Actions `Quality` 对当前发布单元成功；Pages 部署仅依赖该工作流。
+- [x] 当前工作区已清洁，提交范围为本次确认发布的文件；质量检查未发现 PDF、密钥或临时产物。
 
-远程状态核验（2026-10-07）：最近一次 [Quality 成功运行](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/33877725157)对应旧基线 `341a5fe`；最近一次 [Pages 部署](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/31575453128)对应 `main@ff76c3d`。当前工作区未提交的修复不在这两次远程结果中。当前公开 Pages 的 Service Worker 仍报告 `yijing-atlas-v20`，本地代码为 `v50`，因此生产地址不能作为本轮代码的验收证据。
+远程状态核验（2026-10-07）：当前发布单元 `e8f60f7` 已在 [Quality 运行一](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/37512013396) 和 [Quality 运行二](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/37512002770) 成功。Pages 工作流只监听 `main`，最近一次公开部署仍对应 `main@ff76c3d`；公开 Pages 的 Service Worker 仍报告 `yijing-atlas-v20`，当前代码为 `v50`，因此生产地址不能作为本轮代码的验收证据。
 
 本地性能证据（2026-10-07）：[三次 Lighthouse 报告摘要](qa/2026-10-07/lighthouse-local-motionoff-mobile-summary.json)的中位数为 Performance 89、Accessibility 100、Best Practices 100、SEO 100、FCP 1883ms、LCP 3470ms、TBT 100ms。页面已将天象舞台改为用户聚焦或操作星图时按需加载，将 GSAP/Lenis 改为 defer，为本地静态服务补充 gzip，并为欢迎层背景图增加预加载；Performance 分数达到计划门槛，但 LCP 仍超过 2500ms，且生产 URL 仍是旧版本，因此本项继续保持未验收。
 
