@@ -15,13 +15,14 @@ function createStorage() {
   };
 }
 
-test('评阅配置只接受相对地址、HTTPS 或本地 HTTP', () => {
+test('评阅配置只接受同源相对地址', () => {
   const storage = createStorage();
   assert.equal(saveReviewConfig('http://example.com/review', storage).ok, false);
   assert.equal(saveReviewConfig('/api/learning-review', storage).ok, true);
   assert.deepEqual(loadReviewConfig(storage), { endpoint: '/api/learning-review' });
-  assert.equal(saveReviewConfig('https://review.example.com/api', storage).ok, true);
-  assert.equal(saveReviewConfig('http://localhost:8787/review', storage).ok, true);
+  assert.equal(saveReviewConfig('//review.example.com/api', storage).ok, false);
+  assert.equal(saveReviewConfig('https://review.example.com/api', storage).ok, false);
+  assert.equal(saveReviewConfig('api/learning-review', storage).ok, false);
   assert.equal(getReviewConfigKey(), 'yijing-learning-review-config-v1');
 });
 

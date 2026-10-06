@@ -16,7 +16,7 @@ import {
 import { loadReviewConfig, saveReviewConfig } from '../learning-review.js';
 import { renderTrigrams } from '../render.js';
 import { getDueCount, loadReviewCards } from '../review-engine.js';
-import { renderLearningLessonPage, renderStudyPathPage, renderTheoremsPage, renderWingsPage } from '../study-page.js?v=48';
+import { renderLearningLessonPage, renderStudyPathPage, renderTheoremsPage, renderWingsPage } from '../study-page.js?v=50';
 import { downloadUserData, importUserData, parseUserData } from '../user-data.js';
 
 const sections = [
@@ -128,7 +128,7 @@ function syncAchievementEvidence(record) {
       score: lesson.bestScore,
       outcome: lesson.bestScore >= 0.6 ? 'passed' : 'failed',
       occurredAt: lesson.lastStudiedAt || lesson.viewedAt,
-      idempotencyKey: `learning-record:assessed:${lessonId}:${lesson.bestScore}`,
+      idempotencyKey: `learning-record:assessed:${lessonId}:${lesson.lastStudiedAt || lesson.viewedAt}`,
       metadata: topicByLesson[lessonId] ? { topic: topicByLesson[lessonId] } : {},
     }));
   });

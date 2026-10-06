@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 
 const css = readFileSync(new URL('../styles/main.css', import.meta.url), 'utf8');
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const main = readFileSync(new URL('../js/main.js', import.meta.url), 'utf8');
 const browserSmoke = readFileSync(new URL('../../scripts/browser-smoke.mjs', import.meta.url), 'utf8');
 
 assert.match(css, /\.daily-verse\s*{[^}]*white-space:\s*nowrap/s);
@@ -12,6 +13,13 @@ assert.match(css, /@media \(max-width:\s*600px\)[\s\S]*?\.daily-entry-actions\s*
 assert.match(html, /data-entry="beginner">零基础开始<\/button>/);
 assert.match(html, /data-entry="explore">探索星图<\/button>/);
 assert.match(html, /data-entry="daily">阅读今日一卦<\/button>/);
+assert.match(html, /class="daily-card"[^>]*role="dialog"[^>]*aria-modal="true"/);
+assert.match(html, /rel="preload" as="image" href="assets\/academy-astrolabe-bg\.webp" fetchpriority="high"/);
+assert.match(main, /function setDailyBackgroundInert\(inert\)/);
+assert.match(main, /function trapDailyFocus\(event\)/);
+assert.match(main, /motionSystem\.reveal\(dailyOverlay, \{ animate: false \}\)/);
+assert.match(main, /dailyOverlay\.dataset\.motionInstant = 'true'/);
+assert.match(css, /\.daily-overlay\[data-motion-instant="true"\] \.motion-item-enter/);
 assert.match(browserSmoke, /querySelector\('\[data-entry="explore"\]'\)/);
 assert.doesNotMatch(browserSmoke, /#daily-enter/);
 

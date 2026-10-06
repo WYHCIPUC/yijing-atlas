@@ -48,6 +48,20 @@ test('损坏、缺失和旧版状态均安全加载', () => {
   }
 });
 
+test('localStorage getter 被拒绝时成就状态仍安全回退', () => {
+  const descriptor = Object.getOwnPropertyDescriptor(globalThis, 'localStorage');
+  Object.defineProperty(globalThis, 'localStorage', {
+    configurable: true,
+    get() { throw new Error('blocked getter'); },
+  });
+  try {
+    assert.deepEqual(loadAchievementState(), createAchievementState());
+  } finally {
+    if (descriptor) Object.defineProperty(globalThis, 'localStorage', descriptor);
+    else delete globalThis.localStorage;
+  }
+});
+
 test('事件处理可持久化且重复提交不重复写入', () => {
   const storage = createStorage();
   const first = processAchievementEvent(lessonEvent(), { storage, now });

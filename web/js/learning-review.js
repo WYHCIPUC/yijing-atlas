@@ -5,22 +5,19 @@ const REQUEST_TIMEOUT_MS = 15000;
 
 function isAllowedEndpoint(endpoint) {
   if (typeof endpoint !== 'string' || !endpoint.trim()) return false;
-  if (endpoint.startsWith('/') && !endpoint.startsWith('//')) return true;
-  try {
-    const url = new URL(endpoint);
-    return url.protocol === 'https:' ||
-      (url.protocol === 'http:' && ['localhost', '127.0.0.1', '[::1]'].includes(url.hostname));
-  } catch {
-    return false;
-  }
+  return endpoint.startsWith('/') && !endpoint.startsWith('//');
+}
+
+export function isReviewConfig(value) {
+  return value && typeof value.endpoint === 'string' &&
+    (!value.endpoint || isAllowedEndpoint(value.endpoint));
 }
 
 export function loadReviewConfig(storage) {
   return readJson(
     REVIEW_CONFIG_KEY,
     { endpoint: '' },
-    (value) => value && typeof value.endpoint === 'string' &&
-      (!value.endpoint || isAllowedEndpoint(value.endpoint)),
+    isReviewConfig,
     storage,
   );
 }
@@ -28,7 +25,7 @@ export function loadReviewConfig(storage) {
 export function saveReviewConfig(endpoint, storage) {
   const normalized = String(endpoint || '').trim();
   if (normalized && !isAllowedEndpoint(normalized)) {
-    return { ok: false, error: new Error('评阅地址必须使用 HTTPS；本地开发可使用 localhost HTTP') };
+    return { ok: false, error: new Error('评阅地址必须使用同源路径，例如 /api/learning-review') };
   }
   return writeJson(REVIEW_CONFIG_KEY, { endpoint: normalized }, storage);
 }

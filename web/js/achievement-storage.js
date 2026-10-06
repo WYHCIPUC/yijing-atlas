@@ -12,8 +12,12 @@ const MAX_IMPORT_BYTES = 512 * 1024;
 
 function resolveStorage(storage) {
   if (storage) return storage;
-  if (typeof localStorage === 'undefined') return null;
-  return localStorage;
+  try {
+    if (typeof localStorage === 'undefined') return null;
+    return localStorage;
+  } catch {
+    return null;
+  }
 }
 
 export function getAchievementStorageKey() {

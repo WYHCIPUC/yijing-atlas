@@ -1,3 +1,5 @@
+import { createProgressEvent } from './achievement-engine.js';
+import { processAchievementEvent } from './achievement-storage.js';
 import { createAssessmentSession, gradeAssessment, recommendLesson } from './learning-assessment.js';
 import {
   buildLearningQuestionBank,
@@ -13,6 +15,8 @@ import {
 } from './learning-progress.js';
 import { recordActivity } from './learning-progress.js';
 import { evaluateRecitation, loadReviewConfig } from './learning-review.js';
+
+const TOPIC_BY_LESSON = { 'l1-1': 'yin-yang', 'l1-4': 'eight-trigrams' };
 
 function esc(value) {
   return String(value || '')
@@ -136,6 +140,29 @@ function renderRubric(container, lessonId, appState, message = '') {
       container.innerHTML = `<p class="assessment-success">本次复讲已按“${esc(button.textContent)}”记录${result.saved ? '。' : '，但浏览器未能保存记录。'}</p>`;
     });
   });
+}
+
+function recordLessonAchievementEvents(result, saved) {
+  if (!saved.saved || result.kind !== 'lesson' || !result.lessonId) return;
+  const lesson = saved.record.lessons[result.lessonId];
+  const occurredAt = lesson?.lastStudiedAt;
+  if (!occurredAt) return;
+  processAchievementEvent(createProgressEvent({
+    type: 'lesson.completed',
+    subjectId: result.lessonId,
+    outcome: 'completed',
+    occurredAt,
+    idempotencyKey: `learning-record:completed:${result.lessonId}`,
+  }));
+  processAchievementEvent(createProgressEvent({
+    type: 'lesson.assessed',
+    subjectId: result.lessonId,
+    score: result.correct / result.total,
+    outcome: result.correct / result.total >= 0.6 ? 'passed' : 'failed',
+    occurredAt,
+    idempotencyKey: `learning-record:assessed:${result.lessonId}:${occurredAt}`,
+    metadata: TOPIC_BY_LESSON[result.lessonId] ? { topic: TOPIC_BY_LESSON[result.lessonId] } : {},
+  }));
 }
 
 function bindOralReview(mountEl, appState) {
@@ -262,6 +289,7 @@ export function renderLearningAssessmentPage(mountEl, appState, { onNavigate, in
       }
       const saved = recordLearningAssessment(kind, result);
       recordActivity();
+      recordLessonAchievementEvents(result, saved);
       renderResult(mountEl, session, result, () => renderLearningAssessmentPage(mountEl, appState, { onNavigate }));
       if (!saved.saved) mountEl.querySelector('.assessment-result p').insertAdjacentHTML(
         'afterend', '<p class="assessment-warning">本次已完成，但浏览器未能保存考评记录。</p>',

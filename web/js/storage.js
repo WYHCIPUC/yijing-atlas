@@ -6,8 +6,12 @@ export function isPlainObject(value) {
 
 function resolveStorage(storage) {
   if (storage) return storage;
-  if (typeof localStorage === 'undefined') return null;
-  return localStorage;
+  try {
+    if (typeof localStorage === 'undefined') return null;
+    return localStorage;
+  } catch {
+    return null;
+  }
 }
 
 export function readJson(key, fallback, validate = () => true, storage) {

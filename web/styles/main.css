@@ -903,6 +903,8 @@ body[data-active-mode="divination"] #celestial-canvas { opacity: 0.6; filter: sa
 /* 梅花易数输入 */
 .mh-input { width: 70px; background: rgba(201,169,106,0.06); border: 1px solid rgba(201,169,106,0.25); color: var(--gold-light); padding: 6px 10px; border-radius: 6px; font-size: 0.9rem; font-family: inherit; text-align: center; }
 .mh-input:focus { outline: none; border-color: var(--gold-main); }
+.mh-input[aria-invalid="true"] { border-color: #d98b8b; }
+.mh-error { margin: 8px 0 14px; color: #d98b8b; font-size: 0.8rem; text-align: center; }
 .mh-btn { background: rgba(201,169,106,0.12); color: var(--gold-main); border: 1px solid rgba(201,169,106,0.3); padding: 6px 16px; border-radius: 6px; font-size: 0.82rem; font-family: inherit; cursor: pointer; transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
 .mh-btn:hover { background: rgba(201,169,106,0.25); }
 .divine-intro { color: var(--text-secondary); font-size: 0.85rem; margin: 20px 0; line-height: 1.7; }
@@ -962,6 +964,14 @@ body[data-active-mode="divination"] #celestial-canvas { opacity: 0.6; filter: sa
 .divine-method-caveat, .divine-safety-note { color: var(--text-dim); font-size: 0.72rem; line-height: 1.65; }
 .divine-method-caveat { margin: 12px 2px 0; }
 .divine-safety-note { margin: 14px 0 0; padding-top: 11px; border-top: 1px dashed rgba(201,169,106,0.12); }
+.divine-analysis-check { margin-top: 16px; padding: 14px; border: 1px solid rgba(108,182,176,0.22); border-radius: 10px; background: rgba(108,182,176,0.045); }
+.divine-analysis-check h4 { margin: 0 0 5px; color: var(--jade-muted); font-size: 0.86rem; }
+.divine-analysis-check > p { color: var(--text-dim); font-size: 0.76rem; line-height: 1.65; }
+.divine-analysis-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px 14px; margin: 10px 0 12px; }
+.divine-analysis-options label { display: flex; align-items: flex-start; gap: 7px; color: var(--text-secondary); font-size: 0.76rem; line-height: 1.5; cursor: pointer; }
+.divine-analysis-options input { flex: 0 0 auto; margin-top: 4px; accent-color: var(--jade-muted); }
+.divine-analysis-submit { color: var(--jade-muted); }
+.divine-analysis-status { margin-top: 8px; }
 .divination-history { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(201,169,106,0.14); }
 .divination-history h3 { color: var(--gold-main); font-size: 1rem; }
 .history-list { display: flex; flex-direction: column; gap: 6px; }
@@ -1824,7 +1834,7 @@ body[data-active-mode="divination"] #celestial-canvas { opacity: 0.6; filter: sa
   .mode-heading-row { align-items: center; }
   .meihua-number-row { flex-wrap: wrap; }
   .divine-interpretation { padding: 15px; }
-  .divine-insight-grid, .divine-method-grid { grid-template-columns: 1fr; }
+  .divine-insight-grid, .divine-method-grid, .divine-analysis-options { grid-template-columns: 1fr; }
   .divine-insight-grid article { min-height: 0; }
   .share-card-overlay { padding: 0; }
   .share-card-dialog {
@@ -3142,6 +3152,11 @@ button.term-clickable { padding: 4px 8px; border-radius: 6px; }
 .motion-item-enter {
   animation: motionItemIn 0.66s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms) both;
 }
+.daily-overlay[data-motion-instant="true"] .motion-item-enter {
+  animation: none !important;
+  opacity: 1;
+  transform: none;
+}
 
 .motion-surface {
   --motion-x: 50%; --motion-y: 50%; --motion-rotate-x: 0deg; --motion-rotate-y: 0deg;
@@ -3808,12 +3823,12 @@ body {
 }
 
 #star-canvas {
-  filter: brightness(1.12) contrast(1.08) saturate(1.04);
+  filter: brightness(1.04) contrast(1.06) saturate(0.86);
 }
 
 #celestial-canvas {
-  opacity: 0.72;
-  filter: saturate(0.96) contrast(1.1);
+  opacity: 0.64;
+  filter: saturate(0.76) contrast(1.08);
 }
 
 .topbar {

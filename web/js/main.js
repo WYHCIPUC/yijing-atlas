@@ -6,11 +6,12 @@ import {
   playInterfaceSound,
   setSoundEnabled,
 } from './audio-engine.js';
+import { createProgressEvent } from './achievement-engine.js';
+import { processAchievementEvent } from './achievement-storage.js';
 import * as dataLoader from './data-loader.js';
 import { closeEvolutionLab, showEvolutionLab } from './evolution-lab.js';
 import { deliverShareImage, generateHexagramShareImage } from './share-card.js';
 import { closeGuaxuWheel, showGuaxuWheel } from './modes/guaxu-mode.js';
-import { initCelestialStage } from './celestial-stage.js';
 import { initCinematicMotion } from './cinematic-motion.js';
 import { initMotionSystem } from './motion-system.js';
 import { renderHexagramDetail } from './render.js';
@@ -23,11 +24,11 @@ import { hexagramSvg } from './svg-painter.js';
 const { buildHexagramIndex, searchHexagrams } = dataLoader;
 
 const modeLoaders = {
-  almanac: () => import('./almanac-page.js?v=48').then((module) => module.renderAlmanacPage),
-  divination: () => import('./modes/divination-mode.js?v=48').then((module) => module.renderDivinationMode),
-  learning: () => import('./modes/learning-mode.js?v=48').then((module) => module.renderLearningMode),
-  quiz: () => import('./modes/quiz-mode.js?v=48').then((module) => module.renderQuizMode),
-  review: () => import('./modes/review-mode.js?v=48').then((module) => module.renderReviewMode),
+  almanac: () => import('./almanac-page.js?v=50').then((module) => module.renderAlmanacPage),
+  divination: () => import('./modes/divination-mode.js?v=50').then((module) => module.renderDivinationMode),
+  learning: () => import('./modes/learning-mode.js?v=50').then((module) => module.renderLearningMode),
+  quiz: () => import('./modes/quiz-mode.js?v=50').then((module) => module.renderQuizMode),
+  review: () => import('./modes/review-mode.js?v=50').then((module) => module.renderReviewMode),
 };
 
 const state = {
@@ -79,10 +80,36 @@ const motionSystem = initMotionSystem();
 const cinematicMotion = initCinematicMotion({ panel, panelContent });
 let modeRequestId = 0;
 let panelReturnFocus = null;
+let dailyBackgroundInertState = null;
 let searchResults = [];
 let searchIndex = -1;
 let lastViewHudKey = '';
 let lastStarView = null;
+let celestialStageLoader = null;
+
+function ensureCelestialStage() {
+  if (state.celestialStage) return Promise.resolve(state.celestialStage);
+  if (!celestialStageLoader) {
+    celestialStageLoader = import('./celestial-stage.js')
+      .then(({ initCelestialStage }) => {
+        state.celestialStage = initCelestialStage(celestialCanvas);
+        state.celestialStage.setMode(state.currentMode);
+        state.celestialStage.syncView(lastStarView);
+        return state.celestialStage;
+      })
+      .catch((error) => {
+        celestialStageLoader = null;
+        throw error;
+      });
+  }
+  return celestialStageLoader;
+}
+
+function loadCelestialStageOnIntent() {
+  ensureCelestialStage().catch((error) => {
+    console.warn('天象舞台按需加载失败', error);
+  });
+}
 
 const STAR_STAGE_META = {
   galaxy: ['01', '银河巡航'],
@@ -382,9 +409,50 @@ function getDailyVerse(hex) {
   };
 }
 
+function setDailyBackgroundInert(inert) {
+  if (inert) {
+    if (dailyBackgroundInertState) return;
+    dailyBackgroundInertState = new Map([...document.body.children]
+      .filter((child) => child !== dailyOverlay)
+      .map((child) => [child, child.inert]));
+    dailyBackgroundInertState.forEach((_, child) => { child.inert = true; });
+    return;
+  }
+  if (!dailyBackgroundInertState) return;
+  dailyBackgroundInertState.forEach((wasInert, child) => { child.inert = wasInert; });
+  dailyBackgroundInertState = null;
+}
+
+function getDailyFocusable() {
+  return [...dailyOverlay.querySelectorAll('button:not(:disabled), [href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])')]
+    .filter((element) => !element.hidden && !element.closest('[hidden]') && element.getAttribute('aria-hidden') !== 'true');
+}
+
+function trapDailyFocus(event) {
+  if (event.key !== 'Tab' || dailyOverlay.hidden || dailyOverlay.classList.contains('hidden')) return;
+  const focusable = getDailyFocusable();
+  if (!focusable.length) {
+    event.preventDefault();
+    dailyOverlay.querySelector('.daily-card')?.focus();
+    return;
+  }
+  const currentIndex = focusable.indexOf(document.activeElement);
+  const nextIndex = event.shiftKey
+    ? (currentIndex <= 0 ? focusable.length - 1 : currentIndex - 1)
+    : (currentIndex === -1 || currentIndex === focusable.length - 1 ? 0 : currentIndex + 1);
+  if (currentIndex === -1 || (event.shiftKey && currentIndex === 0) || (!event.shiftKey && currentIndex === focusable.length - 1)) {
+    event.preventDefault();
+    focusable[nextIndex].focus();
+  }
+}
+
 function showDailyHexagram() {
   const hex = getDailyHexagram(state.hexagrams);
   if (!hex) return;
+  dailyOverlay.hidden = false;
+  dailyOverlay.setAttribute('aria-hidden', 'false');
+  dailyOverlay.dataset.motionInstant = 'true';
+  setDailyBackgroundInert(true);
   state.starMap?.pause?.('welcome');
   const now = new Date();
   const verse = getDailyVerse(hex);
@@ -398,14 +466,15 @@ function showDailyHexagram() {
   const enter = (destination) => {
     try { sessionStorage.setItem(DAILY_SEEN_KEY, '1'); } catch {}
     dailyOverlay.classList.add('hidden');
+    dailyOverlay.setAttribute('aria-hidden', 'true');
+    setDailyBackgroundInert(false);
     setMode(destination === 'beginner' ? 'learning' : 'explore');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.setTimeout(() => {
       dailyOverlay.hidden = true;
       state.starMap?.resume?.('welcome');
-      if (destination === 'beginner') return;
       if (destination === 'daily') openDetail(hex.binaryCode);
-      else {
+      else if (destination === 'explore') {
         state.starMap?.clearFocus?.();
         canvas.focus();
       }
@@ -416,8 +485,11 @@ function showDailyHexagram() {
     if (!button || dailyOverlay.classList.contains('hidden')) return;
     enter(button.dataset.entry);
   });
-  motionSystem.reveal(dailyOverlay);
+  motionSystem.reveal(dailyOverlay, { animate: false });
+  window.requestAnimationFrame?.(() => dailyOverlay.querySelector('.daily-enter-primary')?.focus({ preventScroll: true }));
 }
+
+dailyOverlay.addEventListener('keydown', trapDailyFocus);
 
 function openPanel() {
   if (!panel.classList.contains('open')) panelReturnFocus = document.activeElement;
@@ -583,6 +655,13 @@ function openDetail(code, fromCode = null, { historyMode = 'push' } = {}) {
   cinematicMotion.beginMode('explore');
   updateExploreTools('star');
   renderHexagramDetail(hex, panelContent, state.hexagrams, (relatedCode) => openDetail(relatedCode, code));
+  processAchievementEvent(createProgressEvent({
+    type: 'hexagram.read',
+    subjectId: code,
+    outcome: 'completed',
+    idempotencyKey: `hexagram:read:${code}`,
+    metadata: { deep: true, hexagramCode: code },
+  }));
   panel.setAttribute('aria-labelledby', 'hexagram-detail-title');
   panel.removeAttribute('aria-label');
   if (historyMode !== 'none') updateDetailUrl(code, historyMode);
@@ -638,6 +717,9 @@ async function loadModeResources(mode) {
 
 async function setMode(mode) {
   const requestId = ++modeRequestId;
+  if (!state.celestialStage) ensureCelestialStage().catch((error) => {
+    console.warn('天象舞台按需加载失败', error);
+  });
   state.currentMode = mode;
   setFocusMode(mode);
   updateModeButtons(mode);
@@ -709,6 +791,8 @@ async function setMode(mode) {
 }
 
 function bindGlobalInteractions() {
+  canvas.addEventListener('pointerdown', loadCelestialStageOnIntent, { once: true, passive: true });
+  canvas.addEventListener('focus', loadCelestialStageOnIntent, { once: true });
   const updateAudioToggle = () => {
     const enabled = isSoundEnabled();
     const label = enabled ? '关闭界面音效' : '开启界面音效';
@@ -994,7 +1078,6 @@ function bindGlobalInteractions() {
 
 async function init() {
   try {
-    state.celestialStage = initCelestialStage(celestialCanvas);
     // 旧版 Service Worker 可能仍缓存只导出 loadAllData 的模块；首次升级时保持兼容。
     const loadInitialData = dataLoader.loadCoreData || dataLoader.loadAllData;
     if (!loadInitialData) throw new Error('缺少数据加载入口');
@@ -1031,7 +1114,6 @@ async function init() {
         syncStarViewHud(view);
       },
     });
-    state.celestialStage.setMode('explore');
     bindGlobalInteractions();
     updateAutoRotateButton(state.starMap.isAutoRotating());
     updateLayoutInterface(state.starMap.getLayoutState());
@@ -1044,9 +1126,13 @@ async function init() {
     try { dailySeen = sessionStorage.getItem(DAILY_SEEN_KEY) === '1'; } catch {}
     if (initialCode && state.index.byCode.has(initialCode)) {
       dailyOverlay.hidden = true;
+      dailyOverlay.setAttribute('aria-hidden', 'true');
+      setDailyBackgroundInert(false);
       openDetail(initialCode, null, { historyMode: 'replace' });
     } else if (dailySeen) {
       dailyOverlay.hidden = true;
+      dailyOverlay.setAttribute('aria-hidden', 'true');
+      setDailyBackgroundInert(false);
       state.starMap.resume?.();
     } else {
       showDailyHexagram();

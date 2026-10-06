@@ -166,7 +166,7 @@ npm run test:e2e      # Chromium 多视口主流程
 npm run validate      # 发布前完整质量门禁
 ```
 
-当前发布门禁包含 105 项测试；核心算法覆盖率为行 99.55%、分支 91.03%、函数 98.85%。GitHub Actions 在每次推送时运行质量检查，并部署 `web/` 到 GitHub Pages。
+当前 `npm test` 会运行 51 个测试脚本；最近一次 `npm run validate` 通过 188 项测试，核心模块覆盖率为行 99.61%、分支 90.20%、函数 97.78%。GitHub Actions 在每次推送时运行质量检查，并部署 `web/` 到 GitHub Pages。
 
 </details>
 

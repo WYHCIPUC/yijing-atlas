@@ -29,11 +29,11 @@ function isHistoryItem(item) {
   return item.cast && Number.isInteger(item.cast.changingPos) && item.cast.changingPos >= 1 && item.cast.changingPos <= 6;
 }
 
-function isHistory(value) {
+export function isHistory(value) {
   return Array.isArray(value) && value.every(isHistoryItem);
 }
 
-function isLegacyHistory(value) {
+export function isLegacyHistory(value) {
   return Array.isArray(value) && value.every(isLegacyItem);
 }
 

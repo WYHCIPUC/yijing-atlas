@@ -86,7 +86,7 @@ for (const c of cases) {
 {
   // 2026 春节 2/17，前一天 2/16 应属 乙巳年 腊月
   const r = solarToLunar(new Date(2026, 1, 16, 12));
-  const ok = gzLabel(r.year) === '乙巳' && r.month === 12;
+  const ok = gzLabel(r.year) === '乙巳' && r.month === 12 && r.day === 29 && r.monthDays === 29;
   asserts.push({ name: '春节前一天=上年腊月', ok });
   console.log(`${ok ? '✓' : '✗'} 2026/2/16(春节前) → ${gzLabel(r.year)}年 ${r.isLeap ? '闰' : ''}${r.month}月 ${r.day}日 (期望 乙巳年 腊月)`);
 }
@@ -99,6 +99,47 @@ for (const c of cases) {
   const ok = r1.isLeap && r1.month === 2 && r2.isLeap && r2.month === 2;
   asserts.push({ name: '闰二月区间连续', ok });
   console.log(`${ok ? '✓' : '✗'} 2023/3/28(闰二月内) → ${r2.isLeap ? '闰' : ''}${r2.month}月 ${r2.day}日`);
+}
+
+// ---- 北京时间民用日期：同一公历日不应因输入时刻不同而改变农历 ----
+{
+  const results = [0, 12, 23].map((hour) => solarToLunar(new Date(2026, 1, 17, hour)));
+  const ok = results.every((r) => (
+    r.year === 2026
+    && r.month === 1
+    && r.day === 1
+    && !r.isLeap
+  ));
+  asserts.push({ name: '同一公历日的时刻统一按民用日', ok });
+  console.log(`${ok ? '✓' : '✗'} 2026/2/17 00/12/23 → ${results.map((r) => `${r.year}-${r.month}-${r.day}${r.isLeap ? '闰' : ''}`).join(' / ')}`);
+}
+
+// ---- 朔与冬至同在民用日边界附近时，按冬至月规则识别闰十一月 ----
+{
+  const results = [0, 12, 23].map((hour) => solarToLunar(new Date(2033, 11, 22, hour)));
+  const ok = results.every((r) => (
+    r.year === 2033
+    && r.month === 11
+    && r.day === 1
+    && r.isLeap
+  ));
+  asserts.push({ name: '2033/12/22 为闰十一月初一', ok });
+  console.log(`${ok ? '✓' : '✗'} 2033/12/22 00/12/23 → ${results.map((r) => `${r.year}-${r.isLeap ? '闰' : ''}${r.month}-${r.day}`).join(' / ')}`);
+
+  const nextMonth = solarToLunar(new Date(2034, 0, 20, 12));
+  const newYear = solarToLunar(new Date(2034, 1, 19, 12));
+  const sequenceOk = (
+    nextMonth.year === 2033
+    && nextMonth.month === 12
+    && nextMonth.day === 1
+    && !nextMonth.isLeap
+    && newYear.year === 2034
+    && newYear.month === 1
+    && newYear.day === 1
+    && !newYear.isLeap
+  );
+  asserts.push({ name: '2034/1/20 至正月的月序连续', ok: sequenceOk });
+  console.log(`${sequenceOk ? '✓' : '✗'} 2034/1/20→2/19 → ${nextMonth.year}年${nextMonth.month}月${nextMonth.day}日 / ${newYear.year}年${newYear.month}月${newYear.day}日`);
 }
 
 const failed = asserts.filter((a) => !a.ok);

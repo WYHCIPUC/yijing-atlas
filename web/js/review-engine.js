@@ -16,8 +16,9 @@ function isReviewCard(card, code) {
     (card.introducedAt === undefined || Number.isFinite(card.introducedAt));
 }
 
-function isReviewCards(value) {
-  return isPlainObject(value) && Object.entries(value).every(([code, card]) => isReviewCard(card, code));
+export function isReviewCards(value) {
+  if (!isPlainObject(value)) return false;
+  return Object.entries(value).every(([code, card]) => isReviewCard(card, code));
 }
 
 export function loadReviewCards(storage) {

@@ -1,9 +1,9 @@
-const CACHE_NAME = 'yijing-atlas-v48';
+const CACHE_NAME = 'yijing-atlas-v50';
 const PRECACHE = [
   './',
   './index.html',
-  './styles/main.css?v=48',
-  './js/main.js?v=48',
+  './styles/main.css?v=50',
+  './js/main.js?v=50',
   './js/protocol-guard.js',
   './manifest.webmanifest',
   './assets/favicon.svg',
@@ -30,8 +30,11 @@ const PRECACHE = [
   './js/motion-system.js',
   './js/relation-animation.js',
   './js/render.js',
+  './js/review-engine.js',
+  './js/search-controller.js',
   './js/share-card.js',
   './js/star-map.js',
+  './js/star-atmosphere.js',
   './js/star-layouts.js',
   './js/star-relations.js',
   './js/storage.js',

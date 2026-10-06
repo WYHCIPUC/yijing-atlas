@@ -1,9 +1,17 @@
+import { isAchievementState } from './achievement-engine.js';
+import { isHistory, isLegacyHistory } from './divination-history.js';
+import { isActivity, isLearningRecord } from './learning-progress.js';
+import { isReviewConfig } from './learning-review.js';
+import { isReviewCards } from './review-engine.js';
+import { isQuizStats, isWrongBook } from './quiz-engine.js';
+
 const FORMAT = 'yijing-atlas-user-data';
 const VERSION = 1;
 const MAX_IMPORT_BYTES = 1024 * 1024;
 
 export const USER_DATA_KEYS = [
   'yijing-review-cards',
+  'yijing.achievements.v1',
   'yijing-quiz-wrong',
   'yijing-quiz-stats',
   'yijing.study.v1',
@@ -17,8 +25,12 @@ export const USER_DATA_KEYS = [
 
 function getStorage(storage) {
   if (storage) return storage;
-  if (typeof localStorage === 'undefined') throw new Error('当前环境不支持本地存储');
-  return localStorage;
+  try {
+    if (typeof localStorage === 'undefined') throw new Error('当前环境不支持本地存储');
+    return localStorage;
+  } catch {
+    throw new Error('当前环境不支持本地存储');
+  }
 }
 
 function isPlainObject(value) {
@@ -30,16 +42,17 @@ function validateSnapshot(snapshot) {
     throw new Error('备份格式或版本不受支持');
   }
   const expected = {
-    'yijing-review-cards': isPlainObject,
-    'yijing-quiz-wrong': Array.isArray,
-    'yijing-quiz-stats': isPlainObject,
-    'yijing.study.v1': isPlainObject,
+    'yijing-review-cards': isReviewCards,
+    'yijing.achievements.v1': isAchievementState,
+    'yijing-quiz-wrong': isWrongBook,
+    'yijing-quiz-stats': isQuizStats,
+    'yijing.study.v1': (value) => isPlainObject(value) && Object.values(value).every((done) => typeof done === 'boolean'),
     'yijing-notes': isPlainObject,
-    'yijing-activity-v1': isPlainObject,
-    'yijing-learning-record-v2': isPlainObject,
-    'yijing-learning-review-config-v1': isPlainObject,
-    'yijing-divination-history-v1': Array.isArray,
-    'yijing-divination-history-v2': Array.isArray,
+    'yijing-activity-v1': isActivity,
+    'yijing-learning-record-v2': isLearningRecord,
+    'yijing-learning-review-config-v1': (value) => isPlainObject(value) && isReviewConfig(value),
+    'yijing-divination-history-v1': isLegacyHistory,
+    'yijing-divination-history-v2': isHistory,
   };
   for (const [key, check] of Object.entries(expected)) {
     if (!Object.hasOwn(snapshot.data, key) || snapshot.data[key] === null) continue;

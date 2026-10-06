@@ -3,11 +3,18 @@
 ## 自动化门禁
 
 - [x] `npm run validate` 全部通过，核心逻辑行、分支、函数覆盖率均不低于 90%。
-- [x] `npm run test:e2e` 在 Chromium 的 1280×720 与 390×844 视口通过。
+- [x] `npm run test:e2e` 在 Chromium 的 1440×1024、1280×720、768×1024 与 390×844 视口通过，并覆盖 320px、640 CSS 像素等效缩放、键盘路径、AX 树语义和断网重开。
+- [x] `npm run build:windows` 与 `npm run test:windows` 通过，Windows 单文件版本的首页、JSON、脚本、样式和 404 响应正常。
 - [ ] GitHub Actions `Quality` 成功，Pages 部署仅依赖该工作流。
 - [ ] `git status` 只包含本次确认发布的文件；公开历史不含 PDF、密钥或临时产物。
 
+远程状态核验（2026-10-07）：最近一次 [Quality 成功运行](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/33877725157)对应旧基线 `341a5fe`；最近一次 [Pages 部署](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/31575453128)对应 `main@ff76c3d`。当前工作区未提交的修复不在这两次远程结果中。当前公开 Pages 的 Service Worker 仍报告 `yijing-atlas-v20`，本地代码为 `v50`，因此生产地址不能作为本轮代码的验收证据。
+
+本地性能证据（2026-10-07）：[三次 Lighthouse 报告摘要](qa/2026-10-07/lighthouse-local-motionoff-mobile-summary.json)的中位数为 Performance 89、Accessibility 100、Best Practices 100、SEO 100、FCP 1883ms、LCP 3470ms、TBT 100ms。页面已将天象舞台改为用户聚焦或操作星图时按需加载，将 GSAP/Lenis 改为 defer，为本地静态服务补充 gzip，并为欢迎层背景图增加预加载；Performance 分数达到计划门槛，但 LCP 仍超过 2500ms，且生产 URL 仍是旧版本，因此本项继续保持未验收。
+
 ## 人工验收
+
+本地 Chromium 烟测已提供自动化证据；下面的项目仍要求真实浏览器、辅助技术、设备或生产环境证据，不能用本地自动化结果代替。
 
 - [ ] Chrome/Edge 桌面、Android Chrome、iOS Safari 完成探索、学习、复习、测验、黄历、占筮流程。
 - [ ] 键盘完成搜索、打开/关闭详情、切换学习页签和提交测验；焦点不会进入关闭面板。

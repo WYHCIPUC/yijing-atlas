@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-10-07",
+  "target": "http://localhost:3030/",
+  "lighthouseVersion": "13.5.0",
+  "method": "三次运行；移动端；360x640；deviceScaleFactor=2；默认 Lighthouse 节流；本地未压缩 HTTP 服务",
+  "runs": [
+    { "performance": 69, "accessibility": 100, "bestPractices": 100, "seo": 100, "fcpMs": 3382, "lcpMs": 6310, "tbtMs": 129 },
+    { "performance": 69, "accessibility": 100, "bestPractices": 100, "seo": 100, "fcpMs": 3382, "lcpMs": 6310, "tbtMs": 127 },
+    { "performance": 69, "accessibility": 100, "bestPractices": 100, "seo": 100, "fcpMs": 3380, "lcpMs": 6308, "tbtMs": 132 }
+  ],
+  "median": { "performance": 69, "accessibility": 100, "bestPractices": 100, "seo": 100, "fcpMs": 3382, "lcpMs": 6310, "tbtMs": 129 },
+  "plannedThresholds": { "performanceMin": 80, "accessibilityMin": 90, "bestPracticesMin": 90, "seoMin": 90, "lcpMaxMs": 2500, "clsMax": 0.1 },
+  "result": "not_met",
+  "note": "本地结果不能替代生产 Pages URL 证据；当前公开 Pages 仍是旧版本。"
+}

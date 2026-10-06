@@ -3,6 +3,7 @@
 import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from '../lib/d3-force.js';
 import { getRelationOccurrences, relationTypesFrom } from './star-relations.js';
 import { buildLineStarOrbit, buildStarLayout, STAR_LAYOUTS } from './star-layouts.js';
+import { createGalaxyTexture, createSkyRandom, galaxyBandY } from './star-atmosphere.js';
 
 const COLORS = {
   star: '#8a7a5a',
@@ -289,10 +290,10 @@ export class StarMap {
     this.glowHalo.width = this.glowHalo.height = size;
     const hc = this.glowHalo.getContext('2d');
     const hg = hc.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
-    hg.addColorStop(0, 'rgba(255,248,220,1)');
-    hg.addColorStop(0.15, 'rgba(245,230,192,0.6)');
-    hg.addColorStop(0.4, 'rgba(216,184,120,0.18)');
-    hg.addColorStop(0.7, 'rgba(138,122,90,0.04)');
+    hg.addColorStop(0, 'rgba(247,248,244,1)');
+    hg.addColorStop(0.15, 'rgba(208,220,232,0.48)');
+    hg.addColorStop(0.4, 'rgba(147,170,204,0.12)');
+    hg.addColorStop(0.7, 'rgba(98,122,158,0.025)');
     hg.addColorStop(1, 'rgba(0,0,0,0)');
     hc.fillStyle = hg;
     hc.fillRect(0, 0, size, size);
@@ -302,7 +303,7 @@ export class StarMap {
     const cc = this.glowCore.getContext('2d');
     const cg = cc.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
     cg.addColorStop(0, 'rgba(255,252,240,1)');
-    cg.addColorStop(0.3, 'rgba(245,230,192,0.5)');
+    cg.addColorStop(0.3, 'rgba(220,230,240,0.42)');
     cg.addColorStop(1, 'rgba(0,0,0,0)');
     cc.fillStyle = cg;
     cc.fillRect(0, 0, size, size);
@@ -348,35 +349,35 @@ export class StarMap {
     }
   }
 
-  // 背景星 + 星云（预渲染到离屏 canvas，性能优化）
+  // 银河、暗尘与细星预渲染；背景保持自然疏密，不承担卦象布局。
   _initBackground() {
     const area = this.width * this.height;
-    // 减少数量（预渲染后视觉密度足够）
+    const random = createSkyRandom();
     const layers = [
-      { count: Math.floor(area / 900), rMin: 0.3, rMax: 0.8, aMin: 0.08, aMax: 0.25 },
-      { count: Math.floor(area / 5000), rMin: 0.6, rMax: 1.3, aMin: 0.2, aMax: 0.5 },
-      { count: Math.floor(area / 22000), rMin: 1.0, rMax: 1.8, aMin: 0.4, aMax: 0.72 },
+      { count: Math.min(2600, Math.floor(area / 660)), rMin: 0.2, rMax: 0.55, aMin: 0.12, aMax: 0.36 },
+      { count: Math.min(420, Math.floor(area / 4400)), rMin: 0.45, rMax: 0.85, aMin: 0.3, aMax: 0.64 },
+      { count: Math.min(45, Math.floor(area / 32000)), rMin: 0.8, rMax: 1.2, aMin: 0.6, aMax: 0.85 },
     ];
-    // 分两组（奇偶），各自预渲染，每组整体呼吸（保留一定闪烁差异）
+    // 只保留两层微弱视差，亮度变化幅度小于 6%。
     this.bgStarLayers = [null, null];
     for (let grp = 0; grp < 2; grp++) {
       const cv = document.createElement('canvas');
-      cv.width = this.width; cv.height = this.height;
+      cv.width = this.width + 48; cv.height = this.height + 48;
       const cc = cv.getContext('2d');
       let idx = 0;
       for (const layer of layers) {
         for (let i = 0; i < layer.count; i++) {
           if (idx % 2 !== grp) { idx++; continue; }
           idx++;
-          const roll = Math.random();
-          const hue = roll < 0.12 ? 'warm' : (roll < 0.22 ? 'cool' : 'gold');
+          const roll = random();
+          const hue = roll < 0.12 ? 'warm' : (roll < 0.35 ? 'cool' : 'silver');
           let r, g, b;
-          if (hue === 'warm') { r = 220; g = 170; b = 130; }
-          else if (hue === 'cool') { r = 170; g = 195; b = 230; }
-          else { r = 215; g = 200; b = 165; }
-          const alpha = layer.aMin + Math.random() * (layer.aMax - layer.aMin);
-          const radius = layer.rMin + Math.random() * (layer.rMax - layer.rMin);
-          const x = Math.random() * this.width, y = Math.random() * this.height;
+          if (hue === 'warm') { r = 224; g = 201; b = 169; }
+          else if (hue === 'cool') { r = 169; g = 195; b = 228; }
+          else { r = 220; g = 228; b = 237; }
+          const alpha = layer.aMin + random() * (layer.aMax - layer.aMin);
+          const radius = layer.rMin + random() * (layer.rMax - layer.rMin);
+          const x = random() * cv.width, y = random() * cv.height;
           // 较亮的星画小光晕
           if (radius > 1.0) {
             const gr = cc.createRadialGradient(x, y, 0, x, y, radius * 4);
@@ -391,60 +392,39 @@ export class StarMap {
       }
       this.bgStarLayers[grp] = cv;
     }
-    this.bgStarPhase = [Math.random() * Math.PI * 2, Math.random() * Math.PI * 2];
-    this.nebulae = [
-      { bx: this.cx, by: this.cy, r: this.anchorR * 1.36, color: 'rgba(79, 104, 162, 0.075)' },
-      { bx: this.cx - this.anchorR * 0.28, by: this.cy + this.anchorR * 0.08, r: this.anchorR * 0.92, color: 'rgba(126, 91, 156, 0.065)' },
-      { bx: this.cx + this.anchorR * 0.3, by: this.cy - this.anchorR * 0.06, r: this.anchorR * 0.88, color: 'rgba(196, 143, 74, 0.06)' },
-    ];
+    this.bgStarPhase = [0.7, 3.1];
 
-    // 深空底色与星云变化极慢，合并为静态图层，避免每帧创建 5 个大渐变。
+    // 多尺度噪声只计算一次；即使 WebGL 不可用也保留完整星空。
+    const texture = createGalaxyTexture(this.width, this.height);
     this.backgroundLayer = document.createElement('canvas');
-    this.backgroundLayer.width = this.width;
-    this.backgroundLayer.height = this.height;
+    this.backgroundLayer.width = texture?.width || 1;
+    this.backgroundLayer.height = texture?.height || 1;
     const bg = this.backgroundLayer.getContext('2d');
-    const bgGrad = bg.createRadialGradient(this.cx, this.cy, 0, this.cx, this.cy, Math.max(this.width, this.height) * 0.75);
-    bgGrad.addColorStop(0, '#111a30');
-    bgGrad.addColorStop(0.5, '#0a0f1e');
-    bgGrad.addColorStop(1, '#05070f');
-    bg.fillStyle = bgGrad;
-    bg.fillRect(0, 0, this.width, this.height);
-    for (const neb of this.nebulae) {
-      const ng = bg.createRadialGradient(neb.bx, neb.by, 0, neb.bx, neb.by, neb.r);
-      ng.addColorStop(0, neb.color);
-      ng.addColorStop(1, 'rgba(0,0,0,0)');
-      bg.fillStyle = ng;
-      bg.beginPath();
-      bg.arc(neb.bx, neb.by, neb.r, 0, Math.PI * 2);
-      bg.fill();
+    if (texture) {
+      const image = bg.createImageData(texture.width, texture.height);
+      image.data.set(texture.pixels);
+      bg.putImageData(image, 0, 0);
+    } else {
+      bg.fillStyle = '#03050a';
+      bg.fillRect(0, 0, 1, 1);
     }
 
-    // 银河尘埃与八条旋臂共用星图中心，所有视觉都从真实卦族星团生长。
+    // 银河带上的密集细星与暗部留白形成远景，不画额外的伪关系。
     this.galaxyDustLayer = document.createElement('canvas');
-    this.galaxyDustLayer.width = this.width;
-    this.galaxyDustLayer.height = this.height;
+    this.galaxyDustLayer.width = this.width + 48;
+    this.galaxyDustLayer.height = this.height + 48;
     const dust = this.galaxyDustLayer.getContext('2d');
-    let dustSeed = 0x6d2b79f5;
-    const seededRandom = () => {
-      dustSeed ^= dustSeed << 13;
-      dustSeed ^= dustSeed >>> 17;
-      dustSeed ^= dustSeed << 5;
-      return (dustSeed >>> 0) / 4294967296;
-    };
-    const dustCount = Math.min(1100, Math.max(420, Math.floor(area / 1800)));
+    const dustCount = Math.min(2400, Math.max(420, Math.floor(area / 580)));
     for (let index = 0; index < dustCount; index += 1) {
-      const arm = index % 8;
-      const progress = Math.pow(seededRandom(), 0.72);
-      const angle = -Math.PI / 2 + arm / 8 * Math.PI * 2 + progress * 1.28
-        + (seededRandom() - 0.5) * (0.32 - progress * 0.14);
-      const radius = this.anchorR * (0.08 + progress * 1.02);
-      const x = this.cx + Math.cos(angle) * radius;
-      const y = this.cy + Math.sin(angle) * radius * 0.72;
-      const alpha = 0.05 + seededRandom() * 0.22;
-      const size = 0.35 + seededRandom() * 1.05;
-      dust.fillStyle = index % 5 === 0
-        ? `rgba(229,188,111,${alpha})`
-        : `rgba(137,171,215,${alpha * 0.8})`;
+      const progress = random();
+      const spread = (random() + random() + random() - 1.5) * 0.18;
+      const x = progress * this.galaxyDustLayer.width;
+      const y = (galaxyBandY(progress) + spread) * this.galaxyDustLayer.height;
+      const alpha = 0.08 + random() * 0.25;
+      const size = 0.2 + random() * 0.5;
+      dust.fillStyle = index % 7 === 0
+        ? `rgba(221,193,151,${alpha})`
+        : `rgba(185,204,229,${alpha})`;
       dust.beginPath();
       dust.arc(x, y, size, 0, Math.PI * 2);
       dust.fill();
@@ -1013,7 +993,7 @@ export class StarMap {
     ctx.save();
     ctx.globalCompositeOperation = 'lighter';
     const coreBreath = this.reducedMotion ? 1 : 0.92 + Math.sin(time * 0.012) * 0.08;
-    this._drawGlow(ctx, this.glowHalo, center.x, center.y, this.anchorR * 0.24 * coreBreath, 0.2);
+    this._drawGlow(ctx, this.glowHalo, center.x, center.y, this.anchorR * 0.2 * coreBreath, 0.1);
 
     for (const group of this.layoutState.groups || []) {
       if (!group?.center) continue;
@@ -1106,19 +1086,21 @@ export class StarMap {
     ctx.clearRect(0, 0, this.width, this.height);
 
     // 第一、二层：预渲染的深空底色与星云。
-    ctx.drawImage(this.backgroundLayer, 0, 0);
+    const skyX = this.reducedMotion ? 0 : Math.sin(this.yaw) * 10;
+    const skyY = this.reducedMotion ? 0 : Math.sin(this.pitch) * 8;
+    ctx.drawImage(this.backgroundLayer, -16 + skyX * 0.35, -16 + skyY * 0.35, this.width + 32, this.height + 32);
 
     // 第三层：远景星点（预渲染图层 drawImage，两组各自呼吸——性能优化）
     // 从每帧绘制数千星点 → 每帧仅 2 次 drawImage，性能提升数十倍
     for (let grp = 0; grp < 2; grp++) {
-      const breath = 0.6 + 0.4 * (0.5 + 0.5 * Math.sin(t * 0.012 + this.bgStarPhase[grp]));
+      const breath = this.reducedMotion ? 1 : 0.97 + 0.03 * Math.sin(t * 0.004 + this.bgStarPhase[grp]);
       ctx.globalAlpha = breath;
-      ctx.drawImage(this.bgStarLayers[grp], 0, 0);
+      ctx.drawImage(this.bgStarLayers[grp], -24 + skyX * (grp + 1), -24 + skyY * (grp + 1));
     }
     ctx.globalAlpha = 1;
     if (this.layoutMode === 'project' && this.galaxyDustLayer) {
-      ctx.globalAlpha = 0.82;
-      ctx.drawImage(this.galaxyDustLayer, 0, 0);
+      ctx.globalAlpha = 0.76;
+      ctx.drawImage(this.galaxyDustLayer, -24 + skyX * 0.6, -24 + skyY * 0.6);
       ctx.globalAlpha = 1;
     }
 
@@ -1253,21 +1235,17 @@ export class StarMap {
       // focus 模式：非关系卦淡入星空背景（大幅降低可见度）
       const isHidden = this.focusVisible && !this.focusVisible.has(n.id);
       const visibility = (isHidden ? 0.08 : 1) * this.layoutReveal; // 切换图式时随结构重组渐显
-      // 多频明灭：慢呼吸 + 快闪烁，每颗星独立节奏
-      const seed = n.binaryCode.charCodeAt(0) + n.binaryCode.charCodeAt(3);
-      const tw1 = Math.sin(t * 0.022 + seed);
-      const tw2 = Math.sin(t * 0.055 + seed * 1.7);
-      const breathe = 0.78 + 0.14 * tw1 + 0.08 * tw2;
-      // 偶发亮脉冲：卦象偶尔明显亮一下（如恒星耀斑）
-      const hexPulse = Math.pow(Math.max(0, Math.cos(t * 0.012 + seed * 2.3)), 14);
-      const glowBoost = 1 + hexPulse * 0.6; // 脉冲时光晕放大
-      const brightBoost = 1 + hexPulse * 0.5; // 脉冲时亮度提升
+      // 每颗星轻微明灭，保持独立节奏。
+      const seed = Number.parseInt(n.binaryCode, 2) * 1.618;
+      const tw1 = Math.sin(t * 0.012 + seed);
+      const tw2 = Math.sin(t * 0.025 + seed * 1.7);
+      const breathe = this.reducedMotion ? 1 : 0.94 + 0.045 * tw1 + 0.015 * tw2;
       const degFactor = Math.min(n.degree / 13, 1);
-      // 大小、亮度、光晕均按深度缩放：近大亮，远小暗；脉冲时光晕放大
+      // 大小、亮度、光晕均按深度缩放：近大亮，远小暗。
       const depthScale = 0.45 + depth * 0.6; // 深度缩放因子
-      const depthAlpha = (0.4 + depth * 0.6) * brightBoost * visibility;  // 深度透明度 × 脉冲增亮 × focus可见度
-      const baseR = n.isPure ? 5 : (isFocus ? 6.5 : (isRel ? 4.5 : 1.8 + degFactor * 3));
-      const r = baseR * breathe * ease * depthScale * glowBoost;
+      const depthAlpha = (0.4 + depth * 0.6) * visibility;
+      const baseR = isFocus ? 5.2 : (isRel ? 3.4 : (n.isPure ? 3.2 : 1.35 + degFactor * 1.6));
+      const r = baseR * breathe * ease * depthScale;
 
       // 六爻成为围绕卦恒星运行的六颗爻星；阴爻取冷蓝，阳爻取暖金。
       this._drawLineStars(ctx, n, p, {
@@ -1281,9 +1259,9 @@ export class StarMap {
       });
 
       // 外光晕（用预渲染贴图，性能优化）—— drawImage 替代 createRadialGradient
-      const haloR = (isFocus ? 60 : (isRel ? 38 : (n.isPure ? 26 : 16 + degFactor * 24))) * ease * depthScale * glowBoost;
-      const da = (a) => a * depthAlpha; // 深度调暗 × 脉冲增亮
-      const haloA = isFocus ? da(0.5) : (isRel ? da(0.42) : (n.isPure ? da(0.34) : da(0.22 + degFactor * 0.16)));
+      const haloR = (isFocus ? 42 : (isRel ? 28 : (n.isPure ? 20 : 10 + degFactor * 13))) * ease * depthScale;
+      const da = (a) => a * depthAlpha;
+      const haloA = isFocus ? da(0.46) : (isRel ? da(0.32) : (n.isPure ? da(0.22) : da(0.12 + degFactor * 0.1)));
       this._drawGlow(ctx, this.glowHalo, p.x, p.y, haloR, haloA);
 
       // 亮核光晕（用预渲染贴图）

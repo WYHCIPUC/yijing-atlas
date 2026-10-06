@@ -1,4 +1,6 @@
 import { castHexagram, getReading } from '../divination-engine.js';
+import { createProgressEvent } from '../achievement-engine.js';
+import { processAchievementEvent } from '../achievement-storage.js';
 import { addDivinationHistory, clearDivinationHistory, loadDivinationHistory } from '../divination-history.js';
 import { buildCoinInterpretation, buildMeihuaInterpretation } from '../divination-interpretation.js';
 import { yaoLabel } from '../hexagram-utils.js';
@@ -160,6 +162,7 @@ function replayHistoryItem(item) {
     renderMeihuaResult({ ...item.cast }, {
       record: false,
       interpretation: item.interpretation,
+      analysisId: `history:${item.id}`,
     });
   }
   status.textContent = `已按 ${item.interpretationVersion || '保存时版本'} 复现本次卦象、动爻、取辞与解释。`;
@@ -174,7 +177,7 @@ function recordCast(entry) {
   renderHistory();
 }
 
-function renderInterpretation(interpretation) {
+function renderInterpretation(interpretation, analysisId) {
   const focusCards = interpretation.focus.map((item) => `
     <article class="divine-evidence-card">
       <small>${esc(item.source)}${interpretation.focus.length > 1 ? ` · ${item.priority === 'secondary' ? '参看' : '主断'}` : ''}</small>
@@ -223,9 +226,51 @@ function renderInterpretation(interpretation) {
         </section>
         <p class="divine-method-caveat">方法边界：${esc(interpretation.caveat)}</p>
       </details>
+      ${analysisId ? `
+        <section class="divine-analysis-check" aria-labelledby="divine-analysis-title">
+          <h4 id="divine-analysis-title">完成一次研读</h4>
+          <p>按自己的理解逐项核对；这是学习记录，不是对现实事件的预测。</p>
+          <div class="divine-analysis-options">
+            ${[
+              ['identification', '我能说清本卦、之卦和动爻'],
+              ['imagery', '我能说明经文意象与当前处境'],
+              ['citation', '我能指出对应的卦辞、爻辞或传文'],
+              ['reasoning', '我能解释取辞规则和变化方向'],
+              ['boundary', '我能说明事实依据与现实边界'],
+            ].map(([id, label]) => `<label><input type="checkbox" data-analysis-dimension="${id}" />${label}</label>`).join('')}
+          </div>
+          <button type="button" class="text-button divine-analysis-submit">记录这次研读</button>
+          <p class="divine-analysis-status" role="status" aria-live="polite"></p>
+        </section>` : ''}
       <p class="divine-safety-note">本解读用于传统文化学习与自我反思，不替代医疗、法律、财务、婚姻或其他现实决策。</p>
     </section>
   `;
+}
+
+function bindAnalysisCheck(result, analysisId) {
+  const submit = result.querySelector('.divine-analysis-submit');
+  const status = result.querySelector('.divine-analysis-status');
+  if (!submit || !status) return;
+  submit.addEventListener('click', () => {
+    const dimensions = Object.fromEntries([...result.querySelectorAll('[data-analysis-dimension]')]
+      .map((input) => [input.dataset.analysisDimension, input.checked ? 20 : 0]));
+    const totalScore = Object.values(dimensions).reduce((sum, score) => sum + score, 0);
+    const progress = processAchievementEvent(createProgressEvent({
+      type: 'divination.analysis.submitted',
+      subjectId: analysisId,
+      outcome: 'completed',
+      idempotencyKey: `divination-analysis:${analysisId}`,
+      metadata: {
+        totalScore,
+        changingLinesCorrect: dimensions.reasoning >= 20,
+        cited: dimensions.citation >= 20,
+        boundaryAcknowledged: dimensions.boundary >= 20,
+        dimensions,
+      },
+    }));
+    submit.disabled = true;
+    status.textContent = progress.saved ? `已记录本次研读（${totalScore} 分）。` : '研读已完成，但浏览器未能保存成就记录。';
+  });
 }
 
 function renderCoin() {
@@ -248,17 +293,59 @@ function renderMeihua() {
   body.innerHTML = `
     <p class="divine-intro">以数字或当前时间起卦，观察体用与五行关系。时间法以公历作简化换算，不等同于严格历法推演。</p>
     <div class="meihua-number-row">
-      <label>上数<input type="number" class="mh-input mh-upper" min="1" value="${Math.floor(Math.random() * 99) + 1}"></label>
-      <label>下数<input type="number" class="mh-input mh-lower" min="1" value="${Math.floor(Math.random() * 99) + 1}"></label>
+      <label>上数<input type="number" class="mh-input mh-upper" min="1" step="1" inputmode="numeric" aria-describedby="mh-error" value="${Math.floor(Math.random() * 99) + 1}"></label>
+      <label>下数<input type="number" class="mh-input mh-lower" min="1" step="1" inputmode="numeric" aria-describedby="mh-error" value="${Math.floor(Math.random() * 99) + 1}"></label>
       <button type="button" class="mh-btn mh-cast">起卦</button>
     </div>
+    <p id="mh-error" class="mh-error" role="alert" aria-live="assertive" hidden></p>
     <button type="button" class="mh-btn mh-time">以当前公历时间起卦（简化）</button>
     <div class="mh-result" aria-live="polite"></div>
   `;
+  const upperInput = body.querySelector('.mh-upper');
+  const lowerInput = body.querySelector('.mh-lower');
+  const error = body.querySelector('.mh-error');
+  const inputs = [upperInput, lowerInput];
+  const clearMeihuaError = () => {
+    error.hidden = true;
+    error.textContent = '';
+    inputs.forEach((input) => {
+      input.removeAttribute('aria-invalid');
+      input.setCustomValidity('');
+    });
+  };
+  const showMeihuaError = (message, invalidInputs = []) => {
+    error.hidden = false;
+    error.textContent = message;
+    inputs.forEach((input) => {
+      const invalid = invalidInputs.includes(input);
+      if (invalid) {
+        input.setAttribute('aria-invalid', 'true');
+        input.setCustomValidity(message);
+      } else {
+        input.removeAttribute('aria-invalid');
+        input.setCustomValidity('');
+      }
+    });
+  };
+  inputs.forEach((input) => input.addEventListener('input', clearMeihuaError));
   body.querySelector('.mh-cast').addEventListener('click', () => {
-    const upper = Number.parseInt(body.querySelector('.mh-upper').value, 10) || 1;
-    const lower = Number.parseInt(body.querySelector('.mh-lower').value, 10) || 1;
-    renderMeihuaResult(castByNumber(upper, lower));
+    const invalidInputs = inputs.filter((input) => {
+      const value = Number(input.value);
+      return !Number.isSafeInteger(value) || value < 1;
+    });
+    if (invalidInputs.length) {
+      const message = '上数和下数都必须填写 1 以上的安全整数。';
+      showMeihuaError(message, invalidInputs);
+      invalidInputs[0].focus();
+      return;
+    }
+    try {
+      const cast = castByNumber(Number(upperInput.value), Number(lowerInput.value));
+      clearMeihuaError();
+      renderMeihuaResult(cast);
+    } catch (caught) {
+      showMeihuaError(caught instanceof Error ? caught.message : '起卦失败，请检查输入。');
+    }
   });
   body.querySelector('.mh-time').addEventListener('click', () => renderMeihuaResult(castByTime(new Date())));
 }
@@ -268,6 +355,7 @@ function renderMeihuaResult(cast, options = {}) {
   const changedHex = appState.index.byCode.get(cast.changedCode);
   const analysis = analyzeTiYong(cast);
   const interpretation = options.interpretation || buildMeihuaInterpretation({ cast, primaryHex, changedHex, analysis });
+  const analysisId = options.analysisId || `meihua:${cast.primaryCode}:${cast.changedCode}:${cast.changingPos}:${Date.now()}`;
   appState.starMap?.focusStar(cast.primaryCode);
   const result = mountEl.querySelector('.mh-result');
   result.innerHTML = `
@@ -282,8 +370,9 @@ function renderMeihuaResult(cast, options = {}) {
       <p>${esc(analysis.verdict)}</p>
     </div>
     <p class="divine-line-text">动爻：${esc(primaryHex.lines[cast.changingPos - 1]?.text || '')}</p>
-    ${renderInterpretation(interpretation)}
+    ${renderInterpretation(interpretation, analysisId)}
   `;
+  bindAnalysisCheck(result, analysisId);
   result.querySelector('.divine-interpretation-heading h3')?.setAttribute('tabindex', '-1');
   if (options.record !== false) {
     recordCast({
@@ -303,6 +392,7 @@ function renderCoinResult(result, cast = castHexagram(), options = {}) {
   const changedHex = cast.hasChange ? appState.index.byCode.get(cast.changedCode) : null;
   const reading = getReading(cast, primaryHex, changedHex);
   const interpretation = options.interpretation || buildCoinInterpretation({ cast, primaryHex, changedHex, reading });
+  const analysisId = options.analysisId || `coin:${cast.primaryCode}:${cast.changedCode}:${cast.changingIdxs.join('-')}:${Date.now()}`;
   appState.starMap?.focusStar(cast.primaryCode);
 
   const lines = cast.yaos.map((yao, index) => {
@@ -317,9 +407,10 @@ function renderCoinResult(result, cast = castHexagram(), options = {}) {
         <p>${changedHex ? `之卦 <span class="compound-title compound-title--inline" aria-label="${esc(changedHex.name)} · ${esc(changedHex.fullName)}"><span class="compound-title-primary">${esc(changedHex.name)}</span><span class="compound-title-separator" aria-hidden="true">·</span><span class="compound-title-secondary">${esc(changedHex.fullName)}</span></span>` : '六爻皆静，以本卦卦辞为主要研读入口。'}</p></div>
       <ol class="cast-lines" aria-label="六爻，自上而下显示">${lines}</ol>
     </section>
-    ${renderInterpretation(interpretation)}
+    ${renderInterpretation(interpretation, analysisId)}
     <button type="button" class="divine-btn divine-again">再掷一卦</button>
   `;
+  bindAnalysisCheck(result, analysisId);
   if (options.record !== false) {
     recordCast({
       type: 'coin',

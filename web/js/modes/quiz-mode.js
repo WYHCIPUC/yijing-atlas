@@ -8,6 +8,8 @@ import {
   recordResult,
   removeWrong,
 } from '../quiz-engine.js';
+import { createProgressEvent } from '../achievement-engine.js';
+import { processAchievementEvent } from '../achievement-storage.js';
 import { recordActivity } from '../learning-progress.js';
 import { addReviewCard } from '../review-engine.js';
 
@@ -113,7 +115,16 @@ export function renderQuizMode(mountEl, appState, wrongOnly = false) {
       const reviewResult = !correct && currentQuiz.targetCode
         ? addReviewCard(currentQuiz.targetCode)
         : { saved: true };
-      if (!statsResult.saved || !activityResult.saved || !wrongSaved || !reviewResult.saved) {
+      const achievementResult = correct && wrongOnly && currentQuiz.targetCode
+        ? processAchievementEvent(createProgressEvent({
+          type: 'quiz.recovered',
+          subjectId: currentQuiz.targetCode,
+          outcome: 'recovered',
+          idempotencyKey: `quiz:recovered:${currentQuiz.targetCode}`,
+          metadata: { source: 'wrong-book', hexagramCode: currentQuiz.targetCode },
+        }))
+        : { saved: true };
+      if (!statsResult.saved || !activityResult.saved || !wrongSaved || !reviewResult.saved || !achievementResult.saved) {
         mountEl.querySelector('.quiz-storage-status').textContent = '本次作答完成，但浏览器未能保存全部学习记录。';
       }
       mountEl.querySelector('[data-quiz-correct]').textContent = String(statsResult.correct);

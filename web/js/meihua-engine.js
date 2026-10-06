@@ -33,6 +33,12 @@ function mod(num, n) {
   return r === 0 ? n : r;
 }
 
+function assertPositiveSafeInteger(value, label) {
+  if (!Number.isSafeInteger(value) || value < 1) {
+    throw new RangeError(`${label}必须是 1 以上的安全整数`);
+  }
+}
+
 /**
  * 数字起卦法
  * @param {number} upperNum - 上数
@@ -40,6 +46,12 @@ function mod(num, n) {
  * @returns 起卦结果
  */
 export function castByNumber(upperNum, lowerNum) {
+  assertPositiveSafeInteger(upperNum, '上数');
+  assertPositiveSafeInteger(lowerNum, '下数');
+  const total = upperNum + lowerNum;
+  if (!Number.isSafeInteger(total)) {
+    throw new RangeError('上数与下数之和必须是安全整数');
+  }
   const upIdx = mod(upperNum, 8);
   const lowIdx = mod(lowerNum, 8);
   const upperTrigram = XIANTIAN[upIdx];  // 上卦
@@ -47,7 +59,7 @@ export function castByNumber(upperNum, lowerNum) {
   // 本卦：下卦(爻1-3) + 上卦(爻4-6)，自下而上
   const primaryCode = lowerTrigram + upperTrigram;
   // 动爻：(上数+下数)÷6 余数
-  const yaoPos = mod(upperNum + lowerNum, 6);
+  const yaoPos = mod(total, 6);
   // 变卦：翻转动爻
   const changedArr = primaryCode.split('');
   changedArr[yaoPos - 1] = changedArr[yaoPos - 1] === '1' ? '0' : '1';
@@ -78,6 +90,9 @@ function yearZhi(year) {
  * @returns 起卦结果
  */
 export function castByTime(date = new Date()) {
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+    throw new TypeError('起卦时间无效');
+  }
   const year = date.getFullYear();
   const month = date.getMonth() + 1; // 1-12
   const day = date.getDate();

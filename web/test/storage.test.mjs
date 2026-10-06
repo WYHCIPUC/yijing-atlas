@@ -44,3 +44,19 @@ test('损坏、类型不符、无存储和异常均安全回退', () => {
     globalThis.localStorage = previous;
   }
 });
+
+test('localStorage getter 被浏览器拒绝时也安全降级', () => {
+  const descriptor = Object.getOwnPropertyDescriptor(globalThis, 'localStorage');
+  Object.defineProperty(globalThis, 'localStorage', {
+    configurable: true,
+    get() { throw new Error('blocked getter'); },
+  });
+  try {
+    assert.equal(readJson('key', 'fallback'), 'fallback');
+    assert.equal(writeJson('key', {}).ok, false);
+    assert.equal(removeStored('key').ok, false);
+  } finally {
+    if (descriptor) Object.defineProperty(globalThis, 'localStorage', descriptor);
+    else delete globalThis.localStorage;
+  }
+});

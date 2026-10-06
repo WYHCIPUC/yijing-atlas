@@ -17,8 +17,8 @@ function isDateKey(value) {
   return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value);
 }
 
-function isActivity(value) {
-  return value && Array.isArray(value.days) && value.days.every(isDateKey);
+export function isActivity(value) {
+  return isPlainObject(value) && Array.isArray(value.days) && value.days.every(isDateKey);
 }
 
 export function loadActivity(storage) {
@@ -67,7 +67,7 @@ function isAttempt(value) {
     value.correct >= 0 && value.total > 0 && value.correct <= value.total;
 }
 
-function isLearningRecord(value) {
+export function isLearningRecord(value) {
   return isPlainObject(value) && value.version === 2 && isPlainObject(value.lessons) &&
     Array.isArray(value.spotChecks) && Array.isArray(value.exams) && Array.isArray(value.oralReviews) &&
     Object.values(value.lessons).every((lesson) => isPlainObject(lesson)) &&

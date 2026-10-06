@@ -18,6 +18,21 @@ test('整除时余数取除数本身', () => {
   assert.equal(cast.changingPos, 4);
 });
 
+test('数字起卦拒绝非正安全整数', () => {
+  const invalidValues = [0, -1, 1.5, Number.NaN, Number.POSITIVE_INFINITY, Number.MAX_SAFE_INTEGER + 1];
+  for (const value of invalidValues) {
+    assert.throws(() => castByNumber(value, 1), /上数必须是 1 以上的安全整数/);
+    assert.throws(() => castByNumber(1, value), /下数必须是 1 以上的安全整数/);
+  }
+});
+
+test('数字起卦拒绝上数与下数溢出安全整数范围', () => {
+  assert.throws(
+    () => castByNumber(Number.MAX_SAFE_INTEGER, 1),
+    /上数与下数之和必须是安全整数/,
+  );
+});
+
 test('时间起卦在同一输入下确定且标记来源', () => {
   const date = new Date(2026, 7, 6, 12, 0, 0);
   const first = castByTime(date);
@@ -26,6 +41,11 @@ test('时间起卦在同一输入下确定且标记来源', () => {
   assert.equal(first.changedCode, second.changedCode);
   assert.equal(first.method, 'time');
   assert.match(first.source, /2026年8月6日/);
+});
+
+test('时间起卦拒绝无效日期', () => {
+  assert.throws(() => castByTime(new Date('invalid')), /起卦时间无效/);
+  assert.throws(() => castByTime('2026-08-06'), /起卦时间无效/);
 });
 
 test('体用分析返回完整五行关系', () => {

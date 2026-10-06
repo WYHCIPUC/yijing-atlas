@@ -2,6 +2,7 @@ import { createReadStream, existsSync, statSync } from 'node:fs';
 import http from 'node:http';
 import { dirname, extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createGzip } from 'node:zlib';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'web');
 const port = Number.parseInt(process.env.PORT || '3030', 10);
@@ -17,6 +18,7 @@ const mimeTypes = {
   '.webmanifest': 'application/manifest+json',
   '.webp': 'image/webp',
 };
+const compressibleExtensions = new Set(['.css', '.html', '.js', '.json', '.svg', '.webmanifest']);
 
 const server = http.createServer((request, response) => {
   try {
@@ -31,11 +33,16 @@ const server = http.createServer((request, response) => {
       response.writeHead(404).end('Not found');
       return;
     }
+    const acceptsGzip = String(request.headers['accept-encoding'] || '').includes('gzip');
+    const compress = acceptsGzip && compressibleExtensions.has(extname(filePath));
     response.writeHead(200, {
       'Cache-Control': 'no-cache',
       'Content-Type': mimeTypes[extname(filePath)] || 'application/octet-stream',
+      ...(compress ? { 'Content-Encoding': 'gzip', Vary: 'Accept-Encoding' } : {}),
     });
-    createReadStream(filePath).pipe(response);
+    const stream = createReadStream(filePath);
+    if (compress) stream.pipe(createGzip()).pipe(response);
+    else stream.pipe(response);
   } catch {
     response.writeHead(400).end('Bad request');
   }

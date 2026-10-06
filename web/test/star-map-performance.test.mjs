@@ -41,6 +41,53 @@ function measuringContext(width = 20) {
   };
 }
 
+test('星空背景在镜头转动和减少动态效果时始终使用有效绘制坐标', () => {
+  for (const reducedMotion of [false, true]) {
+    const draws = [];
+    const map = Object.create(StarMap.prototype);
+    Object.assign(map, {
+      ctx: {
+        setTransform() {},
+        scale() {},
+        clearRect() {},
+        drawImage(image, ...coordinates) {
+          assert.ok(coordinates.every(Number.isFinite), '背景绘制坐标必须为有限数值');
+          draws.push(coordinates);
+        },
+      },
+      reducedMotion,
+      time: 120,
+      dpr: 1,
+      width: 1280,
+      height: 720,
+      yaw: 0.4,
+      pitch: -0.2,
+      view: { x: 0, y: 0, scale: 1 },
+      backgroundLayer: {},
+      bgStarLayers: [{}, {}],
+      bgStarPhase: [0.7, 3.1],
+      galaxyDustLayer: {},
+      layoutMode: 'project',
+      graph: { nodes: [], edges: [] },
+      sortedNodes: [],
+      trail: [],
+      meteors: [],
+      _emitSharedView() {},
+      _drawGalaxyScaffold() {},
+      _drawLayoutGuide() {},
+    });
+
+    map._render();
+    assert.equal(draws.length, 4);
+    const firstFrame = draws.splice(0);
+    map.yaw += 0.3;
+    map.pitch += 0.1;
+    map._render();
+    if (reducedMotion) assert.deepEqual(draws, firstFrame);
+    else assert.notDeepEqual(draws, firstFrame);
+  }
+});
+
 test('星图空闲时降到 30 FPS，交互或相机移动时恢复 60 FPS', () => {
   assert.equal(chooseRenderFps({ reducedMotion: false, isDragging: false, cameraDistance: 0 }), 30);
   assert.equal(chooseRenderFps({ reducedMotion: false, isDragging: true, cameraDistance: 0 }), 60);

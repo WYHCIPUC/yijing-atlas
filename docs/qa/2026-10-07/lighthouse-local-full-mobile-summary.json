@@ -1,0 +1,29 @@
+[
+  {
+    "Run": 1,
+    "Performance": 70.0,
+    "Accessibility": 100.0,
+    "BestPractices": 100.0,
+    "SEO": 100.0,
+    "LCP_ms": 5106.0,
+    "CLS": 0.0143
+  },
+  {
+    "Run": 2,
+    "Performance": 80.0,
+    "Accessibility": 100.0,
+    "BestPractices": 100.0,
+    "SEO": 100.0,
+    "LCP_ms": 3908.0,
+    "CLS": 0.0143
+  },
+  {
+    "Run": 3,
+    "Performance": 73.0,
+    "Accessibility": 100.0,
+    "BestPractices": 100.0,
+    "SEO": 100.0,
+    "LCP_ms": 4659.0,
+    "CLS": 0.0143
+  }
+]

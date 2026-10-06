@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-10-07",
+  "target": "http://127.0.0.1:3030/",
+  "lighthouseVersion": "13.5.0",
+  "browser": "Microsoft Edge",
+  "method": "三次移动端 Lighthouse；360x640；DPR 2；默认移动端节流；本地静态服务启用 gzip；欢迎层首次呈现",
+  "runs": [
+    {
+      "report": "lighthouse-local-motionoff-mobile-1.json",
+      "performance": 89,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcpMs": 1883,
+      "lcpMs": 3463,
+      "tbtMs": 100
+    },
+    {
+      "report": "lighthouse-local-motionoff-mobile-2.json",
+      "performance": 89,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcpMs": 1882,
+      "lcpMs": 3470,
+      "tbtMs": 102
+    },
+    {
+      "report": "lighthouse-local-motionoff-mobile-3.json",
+      "performance": 90,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcpMs": 1887,
+      "lcpMs": 3471,
+      "tbtMs": 85
+    }
+  ],
+  "median": {
+    "performance": 89,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "fcpMs": 1883,
+    "lcpMs": 3470,
+    "tbtMs": 100
+  },
+  "plannedThresholds": {
+    "performanceAtLeast": 80,
+    "accessibilityAtLeast": 90,
+    "bestPracticesAtLeast": 90,
+    "seoAtLeast": 90,
+    "lcpBelowMs": 2500,
+    "clsBelow": 0.1
+  },
+  "result": "not_met",
+  "note": "Performance、Accessibility、Best Practices、SEO 达到计划门槛；LCP 中位数仍为 3470ms。该结果是当前工作区的本地证据，不能替代部署后生产 URL 测量。"
+}

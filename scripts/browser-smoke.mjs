@@ -293,9 +293,40 @@ try {
   await client.open();
   await client.send('Runtime.enable');
   await client.send('Log.enable');
+  await client.send('Accessibility.enable');
   await client.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false });
   await waitFor(() => client.evaluate('document.querySelector("#loading")?.hidden === true'), '应用初始化超时');
   await assertNoChineseOrphans(client, '1280x720 欢迎页');
+  await waitFor(() => client.evaluate('document.activeElement?.dataset.entry === "beginner"'), '欢迎层未聚焦首个入口');
+  const welcomeFocus = await client.evaluate(`(() => {
+    const overlay = document.querySelector('#daily-overlay');
+    const background = [...document.body.children].filter((child) => child !== overlay);
+    const buttons = [...overlay.querySelectorAll('[data-entry]')];
+    buttons.at(-1).focus();
+    overlay.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true }));
+    return {
+      role: document.querySelector('#daily-card')?.getAttribute('role'),
+      modal: document.querySelector('#daily-card')?.getAttribute('aria-modal'),
+      backgroundInert: background.every((child) => child.inert),
+      wrappedFocus: document.activeElement?.dataset.entry === 'beginner',
+    };
+  })()`);
+  if (welcomeFocus.role !== 'dialog' || welcomeFocus.modal !== 'true' ||
+      !welcomeFocus.backgroundInert || !welcomeFocus.wrappedFocus) {
+    throw new Error(`欢迎层焦点范围或背景隔离异常：${JSON.stringify(welcomeFocus)}`);
+  }
+  const welcomeAxTree = await client.send('Accessibility.getFullAXTree');
+  const welcomeAxNodes = welcomeAxTree.nodes || [];
+  const welcomeDialog = welcomeAxNodes.find((node) => node.role?.value === 'dialog');
+  const backgroundExploreButton = welcomeAxNodes.some((node) =>
+    node.role?.value === 'button' && node.name?.value === '探索',
+  );
+  if (!welcomeDialog?.name?.value?.includes('从看见卦象') || backgroundExploreButton) {
+    throw new Error(`欢迎层可访问性树未隔离背景：${JSON.stringify({
+      dialog: welcomeDialog?.name?.value,
+      backgroundExploreButton,
+    })}`);
+  }
 
   await client.evaluate(`(() => {
     const overlay = document.querySelector('#daily-overlay');
@@ -307,6 +338,7 @@ try {
     return true;
   })()`);
   await waitFor(() => client.evaluate('document.querySelector("#daily-overlay").hidden === true'), '今日卦入口未关闭');
+  await waitFor(() => client.evaluate('document.activeElement?.id === "star-canvas"'), '欢迎层关闭后未将焦点交还星图');
   await assertNoChineseOrphans(client, '1280x720 探索');
 
   const navigation = await client.evaluate(`(() => ({
@@ -365,6 +397,19 @@ try {
   if (coinInterpretation.insights !== 3 || !coinInterpretation.source?.includes('《周易·') || !coinInterpretation.hasBoundary) {
     throw new Error('金钱卦解释缺少处境、典籍出处或方法边界');
   }
+  const analysisRecord = await client.evaluate(`(() => {
+    const result = document.querySelector('.coin-result');
+    result.querySelectorAll('[data-analysis-dimension]').forEach((input) => { input.checked = true; });
+    result.querySelector('.divine-analysis-submit').click();
+    const state = JSON.parse(localStorage.getItem('yijing.achievements.v1') || '{}');
+    return {
+      status: result.querySelector('.divine-analysis-status')?.textContent || '',
+      analyses: Object.keys(state.metrics?.analyses || {}).length,
+    };
+  })()`);
+  if (!analysisRecord.status.includes('100') || analysisRecord.analyses !== 1) {
+    throw new Error(`占筮研读未写入成就证据：${JSON.stringify(analysisRecord)}`);
+  }
 
   await client.evaluate('document.querySelector("[data-sub=meihua]").click()');
   await waitFor(() => client.evaluate('document.querySelector(".mh-cast") !== null'), '梅花易数页未加载');
@@ -374,6 +419,24 @@ try {
     const panel = document.querySelector('.mh-result .divine-interpretation');
     return panel?.textContent.includes('按八取卦') && panel.textContent.includes('体卦');
   })()`), '梅花易数未说明起卦公式与体用术语');
+  const invalidMeihua = await client.evaluate(`(() => {
+    const input = document.querySelector('.mh-upper');
+    input.value = '-1';
+    document.querySelector('.mh-cast').click();
+    return {
+      message: document.querySelector('.mh-error')?.textContent || '',
+      invalid: input.getAttribute('aria-invalid'),
+    };
+  })()`);
+  if (!invalidMeihua.message.includes('安全整数') || invalidMeihua.invalid !== 'true') {
+    throw new Error(`非法梅花输入未显示可恢复错误：${JSON.stringify(invalidMeihua)}`);
+  }
+  await client.evaluate(`(() => {
+    document.querySelector('.mh-upper').value = '1';
+    document.querySelector('.mh-lower').value = '2';
+    document.querySelector('.mh-cast').click();
+  })()`);
+  await waitFor(() => client.evaluate('document.querySelector(".mh-result .divine-interpretation") !== null'), '修正梅花输入后未恢复起卦');
   await client.evaluate('document.querySelector("[data-mode=explore]").click()');
   await waitFor(() => client.evaluate('document.querySelector("#star-canvas")?.hidden === false'), '占筮后未返回星图');
 
@@ -440,6 +503,13 @@ try {
   await client.evaluate('document.querySelector(".search-option").click()');
   await waitFor(() => client.evaluate('document.querySelector("#detail-panel").classList.contains("open") && location.search.includes("hex=")'), '详情深链接未打开');
   await assertNoChineseOrphans(client, '1280x720 卦象详情');
+  await client.evaluate('document.querySelector(".rel-demo-btn").click()');
+  const relationCount = await client.evaluate(`(() => {
+    const state = JSON.parse(localStorage.getItem('yijing.achievements.v1') || '{}');
+    return state.metrics?.relationsExamined?.length || 0;
+  })()`);
+  if (relationCount < 1) throw new Error('关系演示未写入成就证据');
+  await client.evaluate('document.querySelector(".rel-anim-close")?.click()');
 
   await client.evaluate('document.querySelector(".share-hexagram").click()');
   const shareCard = await waitFor(() => client.evaluate(`(() => {
@@ -728,8 +798,158 @@ try {
   await client.evaluate('document.querySelector("[data-section=path]").click()');
   await waitFor(() => client.evaluate('document.querySelectorAll(".learning-dashboard > div").length === 5'), '学习仪表板未渲染');
   await assertNoChineseOrphans(client, '390x844 学程');
+
+  const learningKeyboard = await client.evaluate(`(() => {
+    const tabs = [...document.querySelectorAll('.learning-tab')];
+    tabs[0].focus();
+    tabs[0].dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+    return {
+      active: document.activeElement?.id,
+      selected: document.activeElement?.getAttribute('aria-selected'),
+    };
+  })()`);
+  if (learningKeyboard.active !== 'learning-tab-path' || learningKeyboard.selected !== 'true') {
+    throw new Error(`学习页签键盘切换异常：${JSON.stringify(learningKeyboard)}`);
+  }
+
+  await client.evaluate(`(() => {
+    const input = document.querySelector('#search');
+    input.focus();
+    input.value = '乾';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+    input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+  })()`);
+  await waitFor(
+    () => client.evaluate('document.querySelector("#detail-panel").classList.contains("open") && location.search.includes("hex=")'),
+    '搜索键盘选择未打开详情',
+  );
+  const detailAxTree = await client.send('Accessibility.getFullAXTree');
+  const detailDialog = (detailAxTree.nodes || []).find((node) =>
+    node.role?.value === 'dialog' && !node.ignored && Boolean(node.name?.value),
+  );
+  if (!detailDialog) {
+    const dialogs = (detailAxTree.nodes || [])
+      .filter((node) => node.role?.value === 'dialog')
+      .map((node) => ({ name: node.name?.value || '', ignored: node.ignored }));
+    throw new Error(`详情打开后未出现在可访问性树中：${JSON.stringify(dialogs)}`);
+  }
+  await client.send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+  await client.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+  await waitFor(() => client.evaluate('!document.querySelector("#detail-panel").classList.contains("open")'), 'Escape 未关闭详情');
+
+  await client.evaluate('document.querySelector("[data-mode=quiz]").click()');
+  await waitFor(() => client.evaluate('document.querySelectorAll(".quiz-option").length > 0'), '测验选项未渲染');
+  await client.evaluate('document.querySelector(".quiz-option").focus()');
+  const quizFocus = await client.evaluate(`(() => ({
+    tag: document.activeElement?.tagName,
+    className: document.activeElement?.className,
+    disabled: document.activeElement?.disabled,
+  }))()`);
+  if (!String(quizFocus.className).split(/\s+/).includes('quiz-option') || quizFocus.disabled) {
+    throw new Error(`测验选项未获得键盘焦点：${JSON.stringify(quizFocus)}`);
+  }
+  await client.send('Input.dispatchKeyEvent', {
+    type: 'keyDown',
+    key: 'Enter',
+    code: 'Enter',
+    text: '\r',
+    unmodifiedText: '\r',
+    windowsVirtualKeyCode: 13,
+    nativeVirtualKeyCode: 13,
+  });
+  await client.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 });
+  await waitFor(
+    () => client.evaluate('document.querySelector(".quiz-feedback .quiz-next") !== null'),
+    `测验无法用键盘提交：${JSON.stringify(quizFocus)}`,
+  );
+  await client.evaluate('document.querySelector("[data-mode=learning]").click()');
+  await waitFor(() => client.evaluate('document.querySelector(".learning-tabs") !== null'), '键盘验收后学习模式未恢复');
+  await client.evaluate('document.querySelector("[data-section=path]").click()');
+  await waitFor(() => client.evaluate('document.querySelectorAll(".learning-dashboard > div").length === 5'), '键盘验收后学习页未恢复');
+
   const overflow = await client.evaluate('document.documentElement.scrollWidth > document.documentElement.clientWidth');
   if (overflow) throw new Error('390px 视口出现横向溢出');
+
+  await client.send('Emulation.setDeviceMetricsOverride', { width: 320, height: 844, deviceScaleFactor: 1, mobile: true });
+  const compactMobile = await client.evaluate(`(() => {
+    const nav = document.querySelector('#mode-switcher');
+    const buttons = [...nav.querySelectorAll('.mode-btn')].map((button) => button.getBoundingClientRect());
+    const navRect = nav.getBoundingClientRect();
+    return {
+      rows: new Set(buttons.map((rect) => Math.round(rect.top))).size,
+      allVisible: buttons.every((rect) => rect.left >= navRect.left - 1 && rect.right <= navRect.right + 1
+        && rect.top >= navRect.top - 1 && rect.bottom <= navRect.bottom + 1),
+      overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+    };
+  })()`);
+  if (compactMobile.rows !== 2 || !compactMobile.allVisible || compactMobile.overflow) {
+    throw new Error(`320px 视口布局异常：${JSON.stringify(compactMobile)}`);
+  }
+
+  await client.send('Emulation.setDeviceMetricsOverride', { width: 640, height: 844, deviceScaleFactor: 1, mobile: false });
+  const zoomEquivalent = await client.evaluate(`(() => ({
+    overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+    navOverflow: document.querySelector('#mode-switcher').scrollWidth > document.querySelector('#mode-switcher').clientWidth,
+    searchWidth: document.querySelector('#search').getBoundingClientRect().width,
+  }))()`);
+  if (zoomEquivalent.overflow || zoomEquivalent.navOverflow || zoomEquivalent.searchWidth < 180) {
+    throw new Error(`640 CSS 像素等效缩放布局异常：${JSON.stringify(zoomEquivalent)}`);
+  }
+
+  await client.send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
+
+  await client.send('Network.enable');
+  await waitFor(
+    () => client.evaluate('navigator.serviceWorker?.ready.then((registration) => Boolean(registration.active))'),
+    'Service Worker 未完成安装',
+    30000,
+  );
+  if (!await client.evaluate('Boolean(navigator.serviceWorker?.controller)')) {
+    await client.send('Page.reload', { ignoreCache: true });
+    await waitFor(
+      () => client.evaluate('document.querySelector("#loading")?.hidden === true && Boolean(navigator.serviceWorker?.controller)'),
+      'Service Worker 未接管页面',
+      30000,
+    );
+  }
+
+  await client.send('Network.emulateNetworkConditions', {
+    offline: true,
+    latency: 0,
+    downloadThroughput: -1,
+    uploadThroughput: -1,
+    connectionType: 'none',
+  });
+  await client.send('Page.reload', { ignoreCache: true });
+  await waitFor(
+    () => client.evaluate('document.querySelector("#loading")?.hidden === true && Boolean(navigator.serviceWorker?.controller)'),
+    '断网重开后页面没有恢复',
+    30000,
+  );
+  const offlineReload = await client.evaluate(`(() => {
+    const input = document.querySelector('#search');
+    input.value = '乾';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    return {
+      loadingHidden: document.querySelector('#loading')?.hidden === true,
+      controller: Boolean(navigator.serviceWorker?.controller),
+      canvas: Boolean(document.querySelector('#star-canvas')),
+      overviewEntries: document.querySelectorAll('#star-accessible-list [data-code]').length,
+      searchResults: document.querySelectorAll('.search-option').length,
+    };
+  })()`);
+  await client.send('Network.emulateNetworkConditions', {
+    offline: false,
+    latency: 0,
+    downloadThroughput: -1,
+    uploadThroughput: -1,
+    connectionType: 'wifi',
+  });
+  if (!offlineReload.loadingHidden || !offlineReload.controller || !offlineReload.canvas ||
+      offlineReload.overviewEntries < 1 || offlineReload.searchResults < 1) {
+    throw new Error(`断网重开后核心页面不完整：${JSON.stringify(offlineReload)}`);
+  }
 
   const seriousErrors = client.events.filter((event) => event.method === 'Runtime.exceptionThrown' ||
     (event.method === 'Log.entryAdded' && event.params.entry.level === 'error'));

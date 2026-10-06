@@ -1,4 +1,6 @@
 import { hexagramSvg } from '../svg-painter.js';
+import { createProgressEvent } from '../achievement-engine.js';
+import { processAchievementEvent } from '../achievement-storage.js';
 import { getDueCards, loadReviewCards, saveReview } from '../review-engine.js';
 import { recordActivity } from '../learning-progress.js';
 
@@ -136,10 +138,17 @@ function renderReviewCard(mountEl, appState, code, onStartLearning, singleCard =
     button.addEventListener('click', () => {
       const reviewResult = saveReview(reviewCards, code, Number.parseInt(button.dataset.rate, 10));
       const activityResult = recordActivity();
+      const achievementResult = reviewResult.saved ? processAchievementEvent(createProgressEvent({
+        type: 'review.completed',
+        subjectId: code,
+        outcome: 'completed',
+        idempotencyKey: `review:${code}:${reviewResult.card.lastReview}`,
+        metadata: { hexagramCode: code, reviewKind: 'spaced' },
+      })) : { saved: false };
       renderDueList(mountEl, appState, onStartLearning);
       const days = Math.max(1, Math.round((reviewResult.card.due - Date.now()) / 86400000));
       const status = mountEl.querySelector('.review-storage-status');
-      status.textContent = !reviewResult.saved || !activityResult.saved
+      status.textContent = !reviewResult.saved || !activityResult.saved || !achievementResult.saved
         ? '复习已完成，但浏览器未能保存记录。'
         : `已记录为“${button.textContent.trim()}”，预计 ${days} 日后再次出现。`;
     });

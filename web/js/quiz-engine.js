@@ -65,11 +65,20 @@ export function checkAnswer(question, pickedCode) {
 const WRONG_KEY = 'yijing-quiz-wrong';
 const CODE_PATTERN = /^[01]{6}$/;
 
+export function isWrongBook(value) {
+  return Array.isArray(value) && value.every((code) => CODE_PATTERN.test(code));
+}
+
+export function isQuizStats(value) {
+  return Number.isInteger(value?.total) && value.total >= 0 &&
+    Number.isInteger(value?.correct) && value.correct >= 0 && value.correct <= value.total;
+}
+
 export function loadWrongBook(storage) {
   const values = readJson(
     WRONG_KEY,
     [],
-    (value) => Array.isArray(value) && value.every((code) => CODE_PATTERN.test(code)),
+    isWrongBook,
     storage,
   );
   return [...new Set(values)];
@@ -98,8 +107,7 @@ export function loadStats(storage) {
   return readJson(
     STATS_KEY,
     { total: 0, correct: 0 },
-    (value) => Number.isInteger(value?.total) && value.total >= 0 &&
-      Number.isInteger(value?.correct) && value.correct >= 0 && value.correct <= value.total,
+    isQuizStats,
     storage,
   );
 }

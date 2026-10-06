@@ -1,7 +1,7 @@
 import * as THREE from '../lib/vendor/three.module.min.js';
 
 const MODE_SCENES = Object.freeze({
-  explore: { accent: 0xc7a85a, secondary: 0x809ec9, cameraZ: 9.2, energy: 1.04 },
+  explore: { accent: 0xc4cdd9, secondary: 0x7c8caa, cameraZ: 9.2, energy: 1.04 },
   almanac: { accent: 0x88c9b8, secondary: 0xd2a55d, cameraZ: 10.2, energy: 0.72 },
   learning: { accent: 0xe0ba72, secondary: 0x815b36, cameraZ: 10.8, energy: 0.78 },
   review: { accent: 0x75bfa5, secondary: 0xd2b16c, cameraZ: 10.4, energy: 0.86 },
@@ -143,10 +143,10 @@ function createNebulaMaterial() {
         float haze = smoothstep(0.24, 0.82, field(vWorld));
         float horizon = pow(1.0 - abs(vWorld.y), 2.4);
         float polar = pow(max(0.0, vWorld.z), 4.0);
-        vec3 color = mix(vec3(0.005, 0.009, 0.022), uSecondary * 0.24, haze);
-        color += uAccent * horizon * 0.075 * uIntensity;
-        color += uSecondary * polar * 0.045;
-        gl_FragColor = vec4(color, 0.56);
+        vec3 color = mix(vec3(0.002, 0.004, 0.009), uSecondary * 0.07, haze);
+        color += uAccent * horizon * 0.018 * uIntensity;
+        color += uSecondary * polar * 0.015;
+        gl_FragColor = vec4(color, 0.28);
       }
     `,
   });
@@ -227,8 +227,8 @@ export function initCelestialStage(canvas, options = {}) {
   const nebula = new THREE.Mesh(new THREE.SphereGeometry(27, 32, 20), nebulaMaterial);
   scene.add(nebula);
 
-  const farStars = createStarField(lowPower ? 560 : 1100, 22, random, 0xb8c8ee, lowPower ? 0.025 : 0.032);
-  const goldDust = createStarField(lowPower ? 180 : 430, 9, random, 0xe2bc72, 0.022);
+  const farStars = createStarField(lowPower ? 680 : 1500, 22, random, 0xc7d3e8, 0.018);
+  const goldDust = createStarField(lowPower ? 120 : 260, 9, random, 0xd4cbb8, 0.012);
   scene.add(farStars);
   armillaryYaw.add(goldDust);
 
@@ -240,8 +240,8 @@ export function initCelestialStage(canvas, options = {}) {
     depthWrite: false,
   });
   [
-    [0.78, 0.008, 0, 0],
-    [1.04, 0.005, Math.PI / 2.35, 0.38],
+    [0.78, 0.0035, 0, 0],
+    [1.04, 0.0025, Math.PI / 2.35, 0.38],
   ].forEach(([radius, tube, x, y]) => {
     const ring = new THREE.Mesh(new THREE.TorusGeometry(radius, tube, 8, lowPower ? 80 : 160), ringMaterial);
     ring.rotation.set(x, y, 0);
@@ -598,8 +598,8 @@ export function initCelestialStage(canvas, options = {}) {
       selectionBurstMaterial.opacity = 0;
       selectionWaveMaterial.uniforms.uOpacity.value = 0;
     }
-    farStars.rotation.y = seconds * 0.0025;
-    goldDust.rotation.z = -seconds * 0.006;
+    farStars.rotation.y = seconds * 0.0006;
+    goldDust.rotation.z = -seconds * 0.002;
     renderer.render(scene, camera);
   }
 

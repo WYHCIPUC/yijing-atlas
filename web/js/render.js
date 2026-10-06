@@ -1,6 +1,8 @@
 // 渲染层：把领域数据渲染为 HTML。纯函数，输入数据 + 挂载点。
 import { hexagramSvg, trigramSvg } from './svg-painter.js';
 import { yaoLabel, allRelations } from './hexagram-utils.js';
+import { createProgressEvent } from './achievement-engine.js';
+import { processAchievementEvent } from './achievement-storage.js';
 import { showEvolutionLab } from './evolution-lab.js';
 import { showRelationAnimation } from './relation-animation.js';
 import { isPlainObject, readJson, writeJson } from './storage.js';
@@ -195,6 +197,13 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       const toName = codeToName(toCode, hexagrams);
       const toHex = hexagrams.find(h => h.binaryCode === toCode);
       showRelationAnimation(hex.binaryCode, toCode, relType, hex.name, toName, hex, toHex);
+      processAchievementEvent(createProgressEvent({
+        type: 'relation.examined',
+        subjectId: `${relType}:${hex.binaryCode}:${toCode}`,
+        outcome: 'completed',
+        idempotencyKey: `relation:${relType}:${hex.binaryCode}:${toCode}`,
+        metadata: { relationType: relType, hexagramCode: hex.binaryCode },
+      }));
     });
   });
 

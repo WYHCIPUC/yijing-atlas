@@ -12,7 +12,7 @@
 //
 // 约定：所有 Date 输入按本地（实际为北京时 UTC+8）解释；朔/节气时刻也换算到北京时。
 
-import { toJD, fromJD, newMoonJD, solarTermJD, sunLongitude } from './astronomy.js';
+import { toJD, fromJD, newMoonJD, solarTermJD } from './astronomy.js';
 
 // 北京时相对 UT 的时差（小时）。
 const BEIJING_TZ = 8;
@@ -40,30 +40,33 @@ const ZHONGQI_MONTH = [
 // 月序数字 → 中文月名前缀（不含"闰"）。
 const MONTH_CN = ['正', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
 
-// ---- 工具：北京时间的 Date(本地构造) ↔ JD(UT) ----
-// date → JD(UT)：取本地毫秒值，按北京时数值还原成 UT（-8h），再走公历→JD。
-function dateToJD(date) {
-  // 把本地 Date 当作"北京时数值"取出
-  const y = date.getFullYear();
-  const m = date.getMonth() + 1;
-  const d = date.getDate();
-  const h = date.getHours();
-  const mi = date.getMinutes();
-  const s = date.getSeconds();
-  // 北京时 → UT：减 8h
-  return toJD(y, m, d, h, mi, s) - BEIJING_TZ / 24;
+// Date 的字段按项目约定代表北京时间。农历日界按北京时间民用日处理，
+// 因而不能直接拿 Date 的时分秒与朔的精确时刻比较。
+function civilDateParts(date) {
+  return {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate(),
+  };
 }
 
-// JD(UT) → 北京时数值的 Date（本地构造，但数值代表北京时）。
-// 与 solar-terms.js 的 solarTermDate 同口径。
-function jdToBJDate(jd) {
+function civilDayNumber(year, month, day) {
+  return Math.floor(Date.UTC(year, month - 1, day) / 86400000);
+}
+
+function civilDayNumberFromDate(date) {
+  const parts = civilDateParts(date);
+  return civilDayNumber(parts.year, parts.month, parts.day);
+}
+
+function civilDateFromJD(jd) {
   const g = fromJD(jd + BEIJING_TZ / 24);
-  return new Date(g.y, g.m - 1, g.d, g.h, g.mi, g.s);
-}
-
-// 北京时间某年月日 0 时刻（用于朔日比较的整数日序）。
-function bjMidnightJD(year, month, day) {
-  return toJD(year, month, day, 0, 0, 0) - BEIJING_TZ / 24;
+  return {
+    year: g.y,
+    month: g.m,
+    day: g.d,
+    dayNumber: civilDayNumber(g.y, g.m, g.d),
+  };
 }
 
 // 给定一个近似 JD，向前找最近的朔（newMoonJD 收敛到日月黄经相等点）。
@@ -89,8 +92,8 @@ function buildLunarMonths(date) {
   // 1. 找出 date 所在公历年的冬至（含上一年的冬至作为农历年起算）。
   //    date 可能落在年初（春节前，属上农历年）或年末。统一做法：
   //    找 date 之前最近的一个冬至，作为该农历年的锚。
-  const year = date.getFullYear();
-  const yJD = dateToJD(date);
+  const { year } = civilDateParts(date);
+  const dateDay = civilDayNumberFromDate(date);
 
   // 冬至近似日：12/22 左右。先取 date 当年冬至、上一年的冬至，挑出 <= date 且最近的。
   // 但春节前的日期归属上一年农历年，故用"date 前最近冬至"作锚（这是建子年的起点）。
@@ -98,7 +101,7 @@ function buildLunarMonths(date) {
   // 近似冬至 JD
   const dzApproxCur = toJD(year, 12, 22, 0) - BEIJING_TZ / 24;
   let dzJD = zhongqiJD(dzApproxCur, 270);
-  if (dzJD > yJD) {
+  if (civilDateFromJD(dzJD).dayNumber > dateDay) {
     // date 在本年冬至之前 → 锚用上一年冬至
     dongzhiYear = year - 1;
     dzJD = zhongqiJD(toJD(year - 1, 12, 22, 0) - BEIJING_TZ / 24, 270);
@@ -120,82 +123,93 @@ function buildLunarMonths(date) {
     cur = next;
   }
 
-  // 4. 为每个朔月判定：是否含中气、含哪个中气。
-  //    每个朔月区间 [nmStart, nmEnd)。中气时刻落在 [nmStart, nmEnd) 即属此月。
-  //    注意中气按时间顺序逐一出现（黄经递增），可在时间轴上一次性扫过。
-  //    做法：从十一月朔前略早处，按中气序列往后逐个求交节时刻并归类。
-  //    为稳健，对每个朔月，检查全部 12 个中气中是否有任一落在区间内——
-  //    但中气交节时刻需用近似起点反推，我们用"上一朔附近的近似"。
-  //
-  //    更稳健且高效：在时间轴上枚举连续中气（按黄经递增循环），算出每个中气
-  //    精确 JD，再把它归入包含它的朔月区间。这样每朔月恰好 0 或 1 个中气。
-
-  // 生成覆盖整个序列的中气序列：从十一月朔前约一个节气(15d)开始，
-  // 按 ZHONGQI_MONTH 顺序（黄经递增）连续求值，直到超过最后一个朔。
-  const zhongqiList = []; // {jd, longitude, month}
-  // 中气黄经序列起点：取比 nm11 略早的"上一中气"。先算 nm11 附近的中气。
-  // 简单办法：从 nm11 - 15d 起，按黄经递增每步 +30°（下一个中气黄经差 30°），
-  // 连续求 16 个中气时刻。
-  let startApprox = nm11 - 16; // 略早于十一月朔，确保该月所含中气被包含
-  // 确定起点的中气黄经：取 startApprox 处太阳黄经向下取整到最近的"中气黄经"。
-  // 中气黄经集合（mod 360）：
-  const zqLons = ZHONGQI_MONTH.map((z) => z.longitude);
-  // 求 startApprox 时的太阳黄经
-  const startLon = sunLongitude(startApprox);
-  // 找到 <= startLon 的最大中气黄经作为起点（时间上 startApprox 之后会出现该中气的下一次，
-  // 但若 startApprox 已过该中气，则下一个中气才是序列首项）。
-  // 为简化且稳健：直接从 startApprox 处按 +30° 递增求值，起点黄经取 startLon 向下对齐到
-  // 偶数倍15°（中气），再逐次 +30°。这样首个求得的中气时刻一定 >= startApprox 附近，
-  // 并覆盖十一月朔所在月。
-  let lon0 = Math.floor(startLon / 30) * 30; // 向下对齐到 30° 的倍数（中气黄经均为 30° 倍数）
-  let lonCur = ((lon0 % 360) + 360) % 360;
-  let approxCur = startApprox;
-  const lastNM = newMoons[newMoons.length - 1];
-  for (let i = 0; i < 18; i++) {
-    const zqjd = solarTermJD(approxCur, lonCur);
-    if (zqjd > lastNM + 1) break;
-    const m = ZHONGQI_MONTH.find((z) => z.longitude === lonCur).month;
-    zhongqiList.push({ jd: zqjd, longitude: lonCur, month: m });
-    // 推进到下一个中气（黄经 +30°）
-    lonCur = (lonCur + 30) % 360;
-    approxCur = zqjd + 15; // 下一个中气约 30 天后，近似 +15 让迭代从中间向两侧收敛
-  }
-
-  // 5. 把每个中气归入其所在朔月区间，赋予月序；无中气的朔月=闰月。
+  // 4. 把中气归入其所在朔月区间，赋予月序；无中气的朔月=闰月。
+  //    每个朔月的中点距离边界不到 15 天，分别以中点求 12 个中气，
+  //    再用精确 JD 严格判断 [朔, 下朔)。这样不会把边界前一天的中气
+  //    通过容差误归到下一个月，2033 年冬至/朔的特殊边界也能正确编排。
   const months = [];
   for (let i = 0; i < newMoons.length - 1; i++) {
     const nmStart = newMoons[i];
     const nmEnd = newMoons[i + 1];
-    const days = Math.round(nmEnd - nmStart); // 该农历月天数（29 或 30）
-    // 找落在此区间的中气（[nmStart, nmEnd)，即 nmStart <= jd < nmEnd）
-    const zq = zhongqiList.find((z) => z.jd >= nmStart - 0.5 && z.jd < nmEnd - 0.5);
+    const civilStart = civilDateFromJD(nmStart);
+    const civilEnd = civilDateFromJD(nmEnd);
+    const midpoint = (nmStart + nmEnd) / 2;
+    const zq = ZHONGQI_MONTH.map((item) => ({
+      ...item,
+      jd: solarTermJD(midpoint, item.longitude),
+    })).map((item) => ({
+      ...item,
+      civilDate: civilDateFromJD(item.jd),
+    })).find((item) => (
+      item.civilDate.dayNumber >= civilStart.dayNumber
+      && item.civilDate.dayNumber < civilEnd.dayNumber
+    ));
     months.push({
       nmJD: nmStart,
       nmEnd,
-      days,
+      civilStart,
+      civilEnd,
+      days: civilEnd.dayNumber - civilStart.dayNumber,
       hasZhongQi: !!zq,
       zhongQiMonth: zq ? zq.month : null,
       month: zq ? zq.month : null,
-      isLeap: !zq,
+      isLeap: false,
     });
+  }
+
+  // 按相邻冬至之间的朔月数量编排月序。通常每个朔月恰好包含一个中气，
+  // 但 2033 这样的特殊年会出现一个无中气月和一个含两个中气的月；
+  // 不能把所有无中气月都标成闰月，否则会把闰月错移到二月。
+  let cycleStart = 0;
+  let cycleYear = dongzhiYear;
+  while (cycleStart < months.length) {
+    const nextDongzhi = zhongqiJD(
+      toJD(cycleYear + 1, 12, 22, 0) - BEIJING_TZ / 24,
+      270,
+    );
+    const nextDongzhiDay = civilDateFromJD(nextDongzhi).dayNumber;
+    let cycleEnd = months.findIndex((month, index) => (
+      index >= cycleStart
+      && nextDongzhiDay >= month.civilStart.dayNumber
+      && nextDongzhiDay < month.civilEnd.dayNumber
+    ));
+    if (cycleEnd < 0) cycleEnd = months.length;
+
+    const cycleLength = cycleEnd - cycleStart;
+    let leapOffset = -1;
+    if (cycleLength === 13) {
+      leapOffset = months
+        .slice(cycleStart, cycleEnd)
+        .findIndex((month, index) => index > 0 && !month.hasZhongQi);
+      if (leapOffset < 0) leapOffset = 1;
+    }
+
+    let monthNumber = 11;
+    for (let index = cycleStart; index < cycleEnd; index++) {
+      const isLeap = index - cycleStart === leapOffset;
+      months[index].isLeap = isLeap;
+      months[index].month = isLeap ? null : monthNumber;
+      if (!isLeap) monthNumber = (monthNumber % 12) + 1;
+    }
+
+    cycleStart = cycleEnd;
+    cycleYear += 1;
   }
 
   return { months, dongzhiYear, dzJD };
 }
 
-// sunLongitude 直接复用 astronomy.js（顶部已 import）。
-
 // ---- 对外：solarToLunar(date) ----
 // 返回 { year, month(1-12), day, isLeap, monthDays, monthName }
 export function solarToLunar(date) {
-  const yJD = dateToJD(date);
+  const dateDay = civilDayNumberFromDate(date);
   const { months } = buildLunarMonths(date);
 
-  // 找 date 所在的朔月：nmStart <= yJD < nmEnd
-  let idx = months.findIndex((mo) => yJD >= mo.nmJD - 0.5 && yJD < mo.nmEnd - 0.5);
+  // 找 date 所在的朔月：按北京时间民用日序比较朔日，而非比较输入时刻。
+  let idx = months.findIndex((mo) => dateDay >= mo.civilStart.dayNumber && dateDay < mo.civilEnd.dayNumber);
   if (idx < 0) {
-    // 兜底：取第一个朔日不晚于 date 的月
-    idx = months.reduce((best, mo, i) => (mo.nmJD <= yJD + 0.5 ? i : best), 0);
+    // 兜底：取第一个民用朔日不晚于 date 的月
+    idx = months.reduce((best, mo, i) => (mo.civilStart.dayNumber <= dateDay ? i : best), 0);
   }
   const mo = months[idx];
 
@@ -221,9 +235,7 @@ export function solarToLunar(date) {
   const zhengIdx = months.findIndex((mm) => mm.month === 1 && !mm.isLeap);
   let lunarYear;
   if (zhengIdx >= 0) {
-    const springJD = months[zhengIdx].nmJD;
-    const springG = fromJD(springJD + BEIJING_TZ / 24);
-    const springYear = springG.y;
+    const springYear = months[zhengIdx].civilStart.year;
     if (idx < zhengIdx) {
       lunarYear = springYear - 1;
     } else {
@@ -235,20 +247,20 @@ export function solarToLunar(date) {
   }
 
   // ---- 月序与闰名 ----
-  // 非闰月：month = zhongQiMonth；闰月：month 取前一非闰月的月序。
+  // 月序已按冬至周期编排；闰月沿用前一个非闰月的月序。
   let monthNum;
   if (mo.isLeap) {
-    // 闰月月序 = 其前一个非闰月的月序
+    // 闰月沿用前一个非闰月的月序。
     let p = idx - 1;
     while (p >= 0 && months[p].isLeap) p--;
-    monthNum = p >= 0 ? months[p].zhongQiMonth : mo.zhongQiMonth;
+    monthNum = p >= 0 ? months[p].month : 11;
   } else {
-    monthNum = mo.zhongQiMonth;
+    monthNum = mo.month;
   }
 
   // ---- 日 ----
-  // 日 = floor(yJD - nmStart) + 1（初一为第1天）
-  const day = Math.floor(yJD - mo.nmJD + 0.5) + 1;
+  // 初一从朔所在的北京时间民用日开始，月长也按相邻朔日的日序差计算。
+  const day = dateDay - mo.civilStart.dayNumber + 1;
 
   // ---- 月名 ----
   const baseName = MONTH_CN[monthNum - 1] + '月';
