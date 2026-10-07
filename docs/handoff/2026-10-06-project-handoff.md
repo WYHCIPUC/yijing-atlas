@@ -1,12 +1,14 @@
 # 易象图谱项目交接文档
 
-> 交接日期：2026-10-06（Asia/Shanghai）  
+> 交接日期：2026-10-07（Asia/Shanghai，持续更新）  
 > 项目目录：`Y:\易经学习项目`  
 > 当前分支：`codex/ui-baseline`  
-> 当前基线提交：`341a5fe feat(ui): unify galaxy four-state interaction style`  
-> 交接状态：**可继续开发，但不能宣称已达到发布完成状态**
+> 当前提交：`493a726 docs: record v1.1.1-rc.2 release`  
+> 交接状态：**代码与自动化发布门禁已通过；真实设备、屏幕阅读器和内容校勘门禁仍未关闭**
 
-这份文档给下一位 AI 使用。它描述当前工作区的真实状态、已完成的星空优化、未提交文件、已验证命令、审计中仍然存在的问题，以及建议的执行顺序。接手时不要重置工作区，也不要只根据测试全绿就宣称项目已经可交付。
+这份文档给下一位 AI 使用。它描述首轮星空优化、后续审计修复、当前发布证据、仍未关闭的人工门禁，以及建议的执行顺序。接手时不要重置工作区，也不要只根据测试全绿就宣称内容已经完成。
+
+**当前状态覆盖说明（2026-10-07）**：下方第 3、4、7、8 节保留了首轮审计时的历史证据和建议，阅读时以本文第 13—17 节、`docs/RELEASE-CHECKLIST.md` 和 `docs/releases/v1.1.1-rc.1.md` 的后续记录为准。当前工作区已清洁；A01—A10 的代码修复、生产部署、Windows 构建和自动化浏览器证据均已完成，剩余工作集中在真实 Android/iOS、屏幕阅读器、真实 200% 缩放及六十四卦内容双人校勘。
 
 ## 1. 先看什么
 
@@ -19,7 +21,7 @@
 5. `docs/plans/2026-09-30-starfield-reference-design.md`：最近一轮星空参考、实现边界和截图。
 6. `CONTRIBUTING.md`、`docs/RELEASE-CHECKLIST.md`：提交与发布门禁。
 
-如果复制项目时只复制了文件、没有复制 Git 元数据，也要保留本文和上述文档；它们是继续工作的事实依据。当前改动尚未提交，复制时尤其不能漏掉下面列出的未跟踪文件。
+如果复制项目时只复制了文件、没有复制 Git 元数据，也要保留本文和上述文档；它们是继续工作的事实依据。当前提交已包含首轮星空和审计修复，复制时仍需保留文档、报告和截图目录。
 
 ## 2. 项目是什么
 
@@ -38,7 +40,9 @@
 
 ## 3. 当前 Git 和文件状态
 
-远程仓库：`https://github.com/WYHCIPUC/yijing-atlas.git`。当前分支为 `codex/ui-baseline`，基线提交是 `341a5fe`；当前工作区存在未提交改动，不能执行 `git reset --hard`、`git clean -fd` 或覆盖式拷贝。
+远程仓库：`https://github.com/WYHCIPUC/yijing-atlas.git`。当前分支为 `codex/ui-baseline`，当前提交是 `493a726`；工作区已清洁。接手时仍不能执行 `git reset --hard`、`git clean -fd` 或覆盖式拷贝。
+
+本节的文件表是首轮星空优化尚未提交时的变更清单，用于解释实现来源；这些变更已经随 `e8f60f7` 及后续发布提交进入历史，不应再按未提交文件处理。
 
 ### 已修改的跟踪文件
 
@@ -53,7 +57,7 @@
 | `web/test/pwa-assets.test.mjs` | 从 `index.html` 读取入口版本，防止测试继续硬编码旧版本 |
 | `web/test/star-map-performance.test.mjs` | 增加背景绘制坐标有效性和减少动态效果回归测试 |
 
-### 当前未跟踪、复制时不能漏掉的文件
+### 首轮新增、复制时不能漏掉的文件
 
 | 文件 | 用途 |
 | --- | --- |
@@ -94,7 +98,7 @@ npm run validate               # 发布前完整门禁，优先运行这个
 git diff --check               # 最终 diff 检查
 ```
 
-2026-10-06 本次交接的最近一次完整验证记录：`npm run validate` 退出码 0，67 个 JavaScript 文件检查通过，11 个 JSON 解析通过，181 项测试通过、0 失败；所选核心模块覆盖率为行 99.53%、分支 90.04%、函数 97.77%。随后 `npm run test:e2e` 退出码 0，Chromium 四视口主流程通过（清理临时目录时有已知 EBUSY 警告）。这不等于所有 DOM、历法、Service Worker、屏幕阅读器和真实设备路径都已经验收。
+2026-10-06 首轮交接的验证记录：`npm run validate` 退出码 0，181 项测试通过、0 失败；随后 `npm run test:e2e` 的 Chromium 四视口主流程通过。当前候选版本的最新验证见本文第 13—17 节：`npm run validate` 通过 188 项测试，行覆盖率 99.61%、分支 90.20%、函数 97.78%；Windows 构建与测试、生产 Lighthouse 和生产浏览器烟测也已通过。这不等于真实 Android/iOS、屏幕阅读器、真实 200% 缩放和内容校勘已经验收。
 
 ## 5. 代码结构和数据流
 
@@ -271,7 +275,7 @@ legacy-flutter/                已归档 Flutter 原型，除非明确指定，�
 
 ## 17. 2026-10-07 生产部署与性能验收
 
-- PR #4 已合并，`main` 当前为 `87565b8`；最新 Quality 与 Pages 部署均成功。
+- PR #4 已合并，`main` 当前为 `493a726`；最新 Quality 与 Pages 部署均成功，候选版本 `v1.1.1-rc.2` 已正确标记为预发布并发布 Windows 产物。
 - 生产入口无缓存核验返回 `main.js?v=50`、`main.css?v=50`，Service Worker 为 `yijing-atlas-v50`。
 - 生产 URL 连续三次 Lighthouse 中位数为 Performance 95、Accessibility 100、Best Practices 100、SEO 100、FCP 1685ms、LCP 2285ms、TBT 22ms、CLS 0.014，性能发布门槛已通过。报告摘要见 [lighthouse-production-mobile-summary.json](../qa/2026-10-07/lighthouse-production-mobile-summary.json)。
 - 生产 Edge 浏览器烟测覆盖六个模式、键盘、AX 树、焦点恢复、390/768/1440 视口、黄历时区、占筮和断网重开，结果为 `met`；报告见 [production-browser-smoke.json](../qa/2026-10-07/production-browser-smoke.json)。
