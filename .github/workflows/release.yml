@@ -41,4 +41,5 @@ jobs:
           dist/yijing-atlas-${{ github.ref_name }}-windows-x64.exe
           dist/SHA256SUMS.txt
           --title "易象图谱 ${{ github.ref_name }}"
+          --prerelease
           --generate-notes
