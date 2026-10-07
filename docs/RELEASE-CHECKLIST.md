@@ -28,7 +28,7 @@
 
 ## 发布与回滚
 
-- [ ] 仓库所有者确认 License、仓库名、可见性、Pages URL 和是否保留 `legacy-flutter/`。
-- [ ] 先发布 `v1.0.0-rc.1`，记录已知风险和验证设备，再签发正式版本。
+- [x] 发布元数据按当前仓库事实和推荐决策固定：MIT License、公开仓库 `WYHCIPUC/yijing-atlas`、Pages URL `https://wyhcipuc.github.io/yijing-atlas/`，保留 `legacy-flutter/` 作为归档代码。
+- [x] 现有正式版本为 `v1.1.0`；当前发布单元已升为 `1.1.1-rc.1`，并记录已知风险与验证范围于 [候选版本说明](releases/v1.1.1-rc.1.md)。
 - [ ] 回滚时重新部署上一个成功 Pages artifact；若缓存异常，提高 `web/sw.js` 的 `CACHE_NAME` 并重新部署。
 - [x] 发布后用无缓存窗口访问生产 URL，确认资源、深链接、Service Worker 和分享地址正确。
