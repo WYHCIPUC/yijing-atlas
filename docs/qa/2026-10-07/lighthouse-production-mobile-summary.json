@@ -1,0 +1,62 @@
+{
+  "generatedAt": "2026-10-07",
+  "target": "https://wyhcipuc.github.io/yijing-atlas/",
+  "lighthouseVersion": "13.5.0",
+  "browser": "Microsoft Edge",
+  "method": "三次生产 URL 移动端 Lighthouse；360x640；DPR 2；默认移动端节流；部署后无缓存查询",
+  "runs": [
+    {
+      "report": "lighthouse-production-mobile-1.json",
+      "performance": 93,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcpMs": 1834,
+      "lcpMs": 2359,
+      "tbtMs": 24,
+      "cls": 0.014
+    },
+    {
+      "report": "lighthouse-production-mobile-2.json",
+      "performance": 97,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcpMs": 1518,
+      "lcpMs": 1818,
+      "tbtMs": 22,
+      "cls": 0.014
+    },
+    {
+      "report": "lighthouse-production-mobile-3.json",
+      "performance": 95,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcpMs": 1685,
+      "lcpMs": 2285,
+      "tbtMs": 22,
+      "cls": 0.014
+    }
+  ],
+  "median": {
+    "performance": 95,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "fcpMs": 1685,
+    "lcpMs": 2285,
+    "tbtMs": 22,
+    "cls": 0.014
+  },
+  "plannedThresholds": {
+    "performanceAtLeast": 80,
+    "accessibilityAtLeast": 90,
+    "bestPracticesAtLeast": 90,
+    "seoAtLeast": 90,
+    "lcpBelowMs": 2500,
+    "clsBelow": 0.1
+  },
+  "result": "met",
+  "note": "当前生产 URL 已返回入口 v50 与 Service Worker yijing-atlas-v50；三次中位数满足发布性能门槛。"
+}

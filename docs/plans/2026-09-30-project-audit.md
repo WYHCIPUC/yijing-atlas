@@ -92,3 +92,9 @@ HIGH 表示结果错误、数据损失风险或主要操作/无障碍路径受�
 - 本地静态服务已增加 gzip；入口预加载欢迎层背景图；欢迎层首次呈现取消内容入场动画，其他交互场景动效保留。
 - `npm run check`、每日卦布局定向测试、`npm run test:e2e` 均通过；烟测已覆盖 320px、640 CSS 像素等效缩放、减少动态效果、键盘、AX 树和断网流程。
 - Edge + Lighthouse 13.5.0 移动端三次中位数为 Performance 89、Accessibility 100、Best Practices 100、SEO 100、FCP 1883ms、LCP 3470ms、TBT 100ms。Performance 分数通过，但 LCP 未达 2500ms；生产 URL 仍为旧版本，外部发布验收继续 Block。
+
+**状态更新 · 2026-10-07 生产发布验收**
+
+- PR #4 已合并到 `main`，Quality 与 Pages 部署成功；生产入口与 Service Worker 已更新至 v50。
+- 生产 URL Lighthouse 三次中位数为 Performance 95、Accessibility 100、Best Practices 100、SEO 100、FCP 1685ms、LCP 2285ms、TBT 22ms、CLS 0.014，生产性能门禁通过。
+- 项目仍保留真实 Android/iOS、屏幕阅读器和六十四卦内容双人校勘等人工门禁；这些项目未被自动化结果替代。

@@ -8,9 +8,11 @@
 - [x] GitHub Actions `Quality` 对当前发布单元成功；Pages 部署仅依赖该工作流。
 - [x] 当前工作区已清洁，提交范围为本次确认发布的文件；质量检查未发现 PDF、密钥或临时产物。
 
-远程状态核验（2026-10-07）：当前发布单元 `e8f60f7` 已在 [Quality 运行一](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/37512013396) 和 [Quality 运行二](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/37512002770) 成功。Pages 工作流只监听 `main`，最近一次公开部署仍对应 `main@ff76c3d`；公开 Pages 的 Service Worker 仍报告 `yijing-atlas-v20`，当前代码为 `v50`，因此生产地址不能作为本轮代码的验收证据。
+远程状态核验（2026-10-07）：发布单元 `47ff971` 已合并到 `main`。对应的 [Quality 运行](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/37563292637) 和 [Pages 部署](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/37563292847) 均成功；公开入口已返回版本 `v50`，Service Worker 为 `yijing-atlas-v50`。
 
-本地性能证据（2026-10-07）：[三次 Lighthouse 报告摘要](qa/2026-10-07/lighthouse-local-motionoff-mobile-summary.json)的中位数为 Performance 89、Accessibility 100、Best Practices 100、SEO 100、FCP 1883ms、LCP 3470ms、TBT 100ms。页面已将天象舞台改为用户聚焦或操作星图时按需加载，将 GSAP/Lenis 改为 defer，为本地静态服务补充 gzip，并为欢迎层背景图增加预加载；Performance 分数达到计划门槛，但 LCP 仍超过 2500ms，且生产 URL 仍是旧版本，因此本项继续保持未验收。
+本地性能证据（2026-10-07）：[三次 Lighthouse 报告摘要](qa/2026-10-07/lighthouse-local-motionoff-mobile-summary.json)的中位数为 Performance 89、Accessibility 100、Best Practices 100、SEO 100、FCP 1883ms、LCP 3470ms、TBT 100ms。页面已将天象舞台改为用户聚焦或操作星图时按需加载，将 GSAP/Lenis 改为 defer，为本地静态服务补充 gzip，并为欢迎层背景图增加预加载；本地 LCP 仅作为诊断结果，生产 URL 的正式门槛以如下生产报告为准。
+
+生产性能证据（2026-10-07）：[三次生产 Lighthouse 报告摘要](qa/2026-10-07/lighthouse-production-mobile-summary.json)的中位数为 Performance 95、Accessibility 100、Best Practices 100、SEO 100、FCP 1685ms、LCP 2285ms、TBT 22ms、CLS 0.014，满足计划门槛。
 
 ## 人工验收
 
@@ -20,7 +22,7 @@
 - [ ] 键盘完成搜索、打开/关闭详情、切换学习页签和提交测验；焦点不会进入关闭面板。
 - [ ] 断网后可再次进入核心星图；访问过的功能资源可从运行时缓存恢复。
 - [ ] 黄历页面明确显示支持年份和时区；抽查结果已记录来源与差异。
-- [ ] Lighthouse 连续三次中位数达到计划门槛，并保存报告或截图。
+- [x] 生产 URL Lighthouse 连续三次中位数达到计划门槛，并保存报告摘要与原始报告。
 
 ## 发布与回滚
 

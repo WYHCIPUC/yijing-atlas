@@ -268,3 +268,10 @@ legacy-flutter/                已归档 Flutter 原型，除非明确指定，�
 
 - 提交 `e8f60f7` 已推送到 `codex/ui-baseline`；该提交对应的两个公开 Quality 运行均成功。
 - Pages 工作流只监听 `main`，因此当前分支不会自动更新生产站点；公开 Pages 仍是旧的 `yijing-atlas-v20`。未直接覆盖 `main`，等待发布流程的合并入口。
+
+## 17. 2026-10-07 生产部署与性能验收
+
+- PR #4 已合并，`main` 更新为 `47ff971`；Quality 与 Pages 部署均成功。
+- 生产入口无缓存核验返回 `main.js?v=50`、`main.css?v=50`，Service Worker 为 `yijing-atlas-v50`。
+- 生产 URL 连续三次 Lighthouse 中位数为 Performance 95、Accessibility 100、Best Practices 100、SEO 100、FCP 1685ms、LCP 2285ms、TBT 22ms、CLS 0.014，性能发布门槛已通过。报告摘要见 [lighthouse-production-mobile-summary.json](../qa/2026-10-07/lighthouse-production-mobile-summary.json)。
+- 真实移动设备、屏幕阅读器和内容双人校勘仍属于人工/内容门禁，不能由本次自动化部署验收替代。
