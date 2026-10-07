@@ -1,0 +1,57 @@
+{
+  "generatedAt": "2026-10-07T03:15:10.851800+00:00",
+  "target": "https://wyhcipuc.github.io/yijing-atlas/",
+  "browser": "Microsoft Edge via Playwright Chromium driver",
+  "scope": "生产 URL；桌面、窄屏、平板视口；模式切换、键盘、详情对话框、AX 树、黄历、占筮、断网重开",
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 1024
+    },
+    "modes": {
+      "almanac": true,
+      "explore": true,
+      "learning": true,
+      "review": true,
+      "quiz": true,
+      "divination": true
+    },
+    "almanacShowsTimezone": true,
+    "learningKeyboard": true,
+    "quizKeyboard": true,
+    "divinationFlow": true,
+    "searchDetailOpen": true,
+    "detailDialogInAXTree": true,
+    "focusRestoredOutsideClosedDetail": true,
+    "noHorizontalOverflow": true,
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  "mobile390": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "detailFlow": true,
+    "almanac": true,
+    "almanacShowsTimezone": true,
+    "noHorizontalOverflow": true
+  },
+  "tablet768": {
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "detailFlow": true,
+    "almanac": true,
+    "almanacShowsTimezone": true,
+    "noHorizontalOverflow": true
+  },
+  "offlineReload": {
+    "controller": true,
+    "canvas": true,
+    "modeButtons": true,
+    "search": true
+  },
+  "result": "met"
+}

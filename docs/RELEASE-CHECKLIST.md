@@ -8,11 +8,13 @@
 - [x] GitHub Actions `Quality` 对当前发布单元成功；Pages 部署仅依赖该工作流。
 - [x] 当前工作区已清洁，提交范围为本次确认发布的文件；质量检查未发现 PDF、密钥或临时产物。
 
-远程状态核验（2026-10-07）：当前 `main` 为 `8c90dcf`，PR #4 已合并。对应的 [Quality 运行](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/37563862099) 和 [Pages 部署](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/37563862336) 均成功；公开入口已返回版本 `v50`，Service Worker 为 `yijing-atlas-v50`。
+远程状态核验（2026-10-07）：当前 `main` 为 `87565b8`，PR #4 已合并。对应的 [Quality 运行](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/37564543868) 和 [Pages 部署](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/37564544168) 均成功；公开入口已返回版本 `v50`，Service Worker 为 `yijing-atlas-v50`。
 
 本地性能证据（2026-10-07）：[三次 Lighthouse 报告摘要](qa/2026-10-07/lighthouse-local-motionoff-mobile-summary.json)的中位数为 Performance 89、Accessibility 100、Best Practices 100、SEO 100、FCP 1883ms、LCP 3470ms、TBT 100ms。页面已将天象舞台改为用户聚焦或操作星图时按需加载，将 GSAP/Lenis 改为 defer，为本地静态服务补充 gzip，并为欢迎层背景图增加预加载；本地 LCP 仅作为诊断结果，生产 URL 的正式门槛以如下生产报告为准。
 
 生产性能证据（2026-10-07）：[三次生产 Lighthouse 报告摘要](qa/2026-10-07/lighthouse-production-mobile-summary.json)的中位数为 Performance 95、Accessibility 100、Best Practices 100、SEO 100、FCP 1685ms、LCP 2285ms、TBT 22ms、CLS 0.014，满足计划门槛。
+
+生产浏览器烟测证据（2026-10-07）：[production-browser-smoke.json](qa/2026-10-07/production-browser-smoke.json)由 Edge 无头浏览器直接访问生产 URL 生成，覆盖六个功能模式、键盘搜索与详情、AX 树对话框、焦点恢复、390/768/1440 视口、黄历时区、梅花/金钱占筮和断网重开，结果为 `met`。这份证据不能替代真实 Android、iOS 或屏幕阅读器验收。
 
 ## 人工验收
 

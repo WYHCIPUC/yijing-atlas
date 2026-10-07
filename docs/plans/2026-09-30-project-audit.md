@@ -98,3 +98,8 @@ HIGH 表示结果错误、数据损失风险或主要操作/无障碍路径受�
 - PR #4 已合并到 `main`，Quality 与 Pages 部署成功；生产入口与 Service Worker 已更新至 v50。
 - 生产 URL Lighthouse 三次中位数为 Performance 95、Accessibility 100、Best Practices 100、SEO 100、FCP 1685ms、LCP 2285ms、TBT 22ms、CLS 0.014，生产性能门禁通过。
 - 项目仍保留真实 Android/iOS、屏幕阅读器和六十四卦内容双人校勘等人工门禁；这些项目未被自动化结果替代。
+
+**状态更新 · 2026-10-07 生产浏览器烟测**
+
+- Edge 直接访问生产 URL 已完成六个功能模式、键盘搜索与详情、AX 树对话框、关闭后焦点恢复、390/768/1440 视口、黄历时区、梅花/金钱占筮和断网重开验证，结果为 `met`；完整结果见 [production-browser-smoke.json](../qa/2026-10-07/production-browser-smoke.json)。
+- 这补足了生产环境的自动化浏览器证据，但不替代 Android Chrome、iOS Safari、屏幕阅读器、真实 200% 缩放和六十四卦内容双人校勘；项目整体仍保持 Block，直到这些门禁取得对应证据。
