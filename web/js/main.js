@@ -41,6 +41,7 @@ const state = {
   index: null,
   starMap: null,
   celestialStage: null,
+  celestialPauseReasons: new Set(),
   currentDetail: null,
   currentMode: 'explore',
   commentaryReleaseReady: false,
@@ -87,6 +88,16 @@ let lastViewHudKey = '';
 let lastStarView = null;
 let celestialStageLoader = null;
 
+function pauseCelestialStage(reason = 'manual') {
+  state.celestialPauseReasons.add(reason);
+  state.celestialStage?.pause?.(reason);
+}
+
+function resumeCelestialStage(reason = 'manual') {
+  state.celestialPauseReasons.delete(reason);
+  state.celestialStage?.resume?.(reason);
+}
+
 function ensureCelestialStage() {
   if (state.celestialStage) return Promise.resolve(state.celestialStage);
   if (!celestialStageLoader) {
@@ -95,6 +106,7 @@ function ensureCelestialStage() {
         state.celestialStage = initCelestialStage(celestialCanvas);
         state.celestialStage.setMode(state.currentMode);
         state.celestialStage.syncView(lastStarView);
+        state.celestialPauseReasons.forEach((reason) => state.celestialStage.pause?.(reason));
         return state.celestialStage;
       })
       .catch((error) => {
@@ -454,6 +466,7 @@ function showDailyHexagram() {
   dailyOverlay.dataset.motionInstant = 'true';
   setDailyBackgroundInert(true);
   state.starMap?.pause?.('welcome');
+  pauseCelestialStage('welcome');
   const now = new Date();
   const verse = getDailyVerse(hex);
   document.getElementById('daily-date').textContent = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
@@ -473,6 +486,7 @@ function showDailyHexagram() {
     window.setTimeout(() => {
       dailyOverlay.hidden = true;
       state.starMap?.resume?.('welcome');
+      resumeCelestialStage('welcome');
       if (destination === 'daily') openDetail(hex.binaryCode);
       else if (destination === 'explore') {
         state.starMap?.clearFocus?.();
@@ -554,6 +568,7 @@ function showShareCardDialog(payload, hexagram) {
   `;
   document.body.appendChild(overlay);
   state.starMap?.pause?.('share');
+  pauseCelestialStage('share');
   motionSystem.reveal(overlay);
 
   const closeButton = overlay.querySelector('.share-card-close');
@@ -571,6 +586,7 @@ function showShareCardDialog(payload, hexagram) {
     document.removeEventListener('keydown', onKeydown);
     overlay.remove();
     state.starMap?.resume?.('share');
+    resumeCelestialStage('share');
     returnFocus?.focus?.();
   };
   const onKeydown = (event) => {
@@ -726,6 +742,8 @@ async function setMode(mode) {
   state.starMap?.setReviewDue(null);
   state.starMap?.setMode(mode);
   state.celestialStage?.setMode(mode);
+  if (mode === 'explore') resumeCelestialStage('mode');
+  else pauseCelestialStage('mode');
   cinematicMotion.beginMode(mode);
   if (mode !== 'explore') cinematicMotion.previewHexagram(null);
   if (mode !== 'explore') {
@@ -858,6 +876,7 @@ function bindGlobalInteractions() {
     if (button.dataset.exploreTool === 'guaxu') {
       closeEvolutionLab();
       state.starMap?.pause?.('guaxu');
+      pauseCelestialStage('guaxu');
       updateExploreTools('guaxu');
       showGuaxuWheel(
         state.hexagrams,
@@ -868,6 +887,7 @@ function bindGlobalInteractions() {
         () => {
           updateExploreTools('star');
           state.starMap?.resume?.('guaxu');
+          resumeCelestialStage('guaxu');
         },
       );
       return;
@@ -877,6 +897,7 @@ function bindGlobalInteractions() {
     const baseHex = state.index.byCode.get(code) || state.hexagrams[0];
     updateExploreTools('evolution');
     state.starMap?.pause?.('evolution');
+    pauseCelestialStage('evolution');
     showEvolutionLab(
       baseHex,
       state.hexagrams,
@@ -884,6 +905,7 @@ function bindGlobalInteractions() {
       () => {
         updateExploreTools('star');
         state.starMap?.resume?.('evolution');
+        resumeCelestialStage('evolution');
       },
     );
   });
