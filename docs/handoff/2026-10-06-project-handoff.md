@@ -1,14 +1,14 @@
 # 易象图谱项目交接文档
 
-> 交接日期：2026-10-07（Asia/Shanghai，持续更新）
+> 交接日期：2026-10-08（Asia/Shanghai，持续更新）
 > 项目目录：`Y:\易经学习项目`
 > 当前分支：`codex/ui-baseline`
-> 当前提交：`46339fa docs: finalize release handoff pointers`
+> 当前提交：`bf9e39c docs: clean final handoff metadata`
 > 交接状态：**代码与自动化发布门禁已通过；真实设备、屏幕阅读器和内容校勘门禁仍未关闭**
 
 这份文档给下一位 AI 使用。它描述首轮星空优化、后续审计修复、当前发布证据、仍未关闭的人工门禁，以及建议的执行顺序。接手时不要重置工作区，也不要只根据测试全绿就宣称内容已经完成。
 
-**当前状态覆盖说明（2026-10-07）**：下方第 3、4、7、8 节保留了首轮审计时的历史证据和建议，阅读时以本文第 13—17 节、`docs/RELEASE-CHECKLIST.md` 和 `docs/releases/v1.1.1-rc.1.md` 的后续记录为准。当前工作区已清洁；A01—A10 的代码修复、生产部署、Windows 构建和自动化浏览器证据均已完成，剩余工作集中在真实 Android/iOS、屏幕阅读器、真实 200% 缩放及六十四卦内容双人校勘。
+**当前状态覆盖说明（2026-10-08）**：下方第 3、4、7、8 节保留了首轮审计时的历史证据和建议，阅读时以本文第 13—18 节、`docs/RELEASE-CHECKLIST.md` 和 `docs/releases/v1.1.1-rc.2.md` 的后续记录为准。当前工作区已清洁；A01—A10 的代码修复、生产部署、Windows 构建和自动化浏览器证据均已完成，剩余工作集中在真实 Android/iOS、屏幕阅读器、真实 200% 缩放及六十四卦内容双人校勘。
 
 ## 1. 先看什么
 
@@ -40,7 +40,7 @@
 
 ## 3. 当前 Git 和文件状态
 
-远程仓库：`https://github.com/WYHCIPUC/yijing-atlas.git`。当前分支为 `codex/ui-baseline`，当前提交是 `46339fa`；工作区已清洁。接手时仍不能执行 `git reset --hard`、`git clean -fd` 或覆盖式拷贝。
+远程仓库：`https://github.com/WYHCIPUC/yijing-atlas.git`。当前分支为 `codex/ui-baseline`，当前提交是 `bf9e39c`；工作区已清洁。接手时仍不能执行 `git reset --hard`、`git clean -fd` 或覆盖式拷贝。
 
 本节的文件表是首轮星空优化尚未提交时的变更清单，用于解释实现来源；这些变更已经随 `e8f60f7` 及后续发布提交进入历史，不应再按未提交文件处理。
 
@@ -275,8 +275,14 @@ legacy-flutter/                已归档 Flutter 原型，除非明确指定，�
 
 ## 17. 2026-10-07 生产部署与性能验收
 
-- PR #4 已合并，`main` 当前为 `46339fa`；发布代码单元 `639c4ad` 的 Quality 与 Pages 部署均成功，候选版本 `v1.1.1-rc.2` 已正确标记为预发布并发布 Windows 产物。
+- PR #4 已合并，`main` 当前为 `bf9e39c`；发布代码单元 `639c4ad` 的 Quality 与 Pages 部署均成功，候选版本 `v1.1.1-rc.2` 已正确标记为预发布并发布 Windows 产物。
 - 生产入口无缓存核验返回 `main.js?v=50`、`main.css?v=50`，Service Worker 为 `yijing-atlas-v50`。
 - 生产 URL 连续三次 Lighthouse 中位数为 Performance 95、Accessibility 100、Best Practices 100、SEO 100、FCP 1685ms、LCP 2285ms、TBT 22ms、CLS 0.014，性能发布门槛已通过。报告摘要见 [lighthouse-production-mobile-summary.json](../qa/2026-10-07/lighthouse-production-mobile-summary.json)。
 - 生产 Edge 浏览器烟测覆盖六个模式、键盘、AX 树、焦点恢复、390/768/1440 视口、黄历时区、占筮和断网重开，结果为 `met`；报告见 [production-browser-smoke.json](../qa/2026-10-07/production-browser-smoke.json)。
 - 真实移动设备、屏幕阅读器和内容双人校勘仍属于人工/内容门禁，不能由本次自动化部署验收替代。
+
+## 18. 2026-10-08 当前复核
+
+- 工作区与 `origin/main` 均为 `bf9e39c`，没有未提交改动；`npm run validate` 重新通过，188 项测试全绿，行覆盖率 99.61%、分支覆盖率 90.20%、函数覆盖率 97.78%。
+- `node scripts/validate-commentaries.mjs` 通过目录结构校验，但发布门禁仍关闭：六家注疏 0/3840 条记录完成双人校勘，`manifest.releaseReady` 继续为 `false`。
+- 本阶段验收结论不变：代码和自动化发布门禁达标，项目整体仍不能宣称正式交付；待补证据仍是 Android Chrome、iOS Safari、屏幕阅读器、真实系统 200% 缩放，以及六家注疏来源定位和双人校勘。
