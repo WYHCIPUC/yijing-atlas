@@ -70,6 +70,8 @@ T-QUIZ-01新增`quiz-session`进入正式coverage include，当前为21模块，
 
 专项脚本为`scripts/test-quiz-weak-questions.mjs`，通过`YIJING_QUIZ_WEAK_SCOPE`选择独立场景；使用隔离合成资料、受控配额故障及可信CDP鼠标/触控/键盘输入。320px选项定位不足与返回按钮实际遮挡分开取得红→绿，见[诊断记录](evidence/2026-10-25-quiz-toolbar-diagnosis.md)。专项、全站E2E、整卡交付分别登记在[测验交接](evidence/2026-10-25-quiz-integration.md)，不以一个专项替代全部验收。reading-state与star-label-layout仍未纳入计量，T-QA-02继续开放。
 
+最终[18项专项](evidence/2026-10-25-quiz-weak-accepted-scope-summary.json)均有完整exit0及相同23份源哈希，147次可信输入、49图、页面异常0；62轮历史中14次宿主中止保留，不改记通过。完整`npm run test:e2e`另取得session52778、exit0，五视口25图；173份应用/测试/工具与修后validate快照一致。脚本尝试的原生200%偏好未生效，仍缺真实缩放证据。统一结果、日志与环境边界见[最终验收摘要](evidence/2026-10-25-quiz-final-acceptance.json)。
+
 ## 4. 功能到测试映射
 
 下表名称均指 web/test 下同名 .test.mjs；历法组另注明。实施任务前应阅读原测试，不能只凭名称推断完整覆盖。

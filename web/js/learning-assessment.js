@@ -1,5 +1,5 @@
 import { LEARNING_LESSONS } from './learning-curriculum.js';
-import { getCourseWeakQuestions, getLearningResumeError } from './learning-progress.js';
+import { getCourseWeakQuestions, getLearningResumeError, getQuizWeakQuestions } from './learning-progress.js';
 import { isReviewCards } from './review-engine.js';
 
 let sessionSequence = 0;
@@ -154,12 +154,18 @@ export function recommendLearningTask(record, {
       reason: `有${due.length}项卦卡已到复习时间，先温故再学新课。` });
   }
 
-  const weak = getCourseWeakQuestions(record).filter((entry) => order.has(entry.lessonId))
+  const courseWeak = getCourseWeakQuestions(record).filter((entry) => order.has(entry.lessonId))
     .sort((a, b) => Date.parse(b.lastWrongAt) - Date.parse(a.lastWrongAt) ||
       order.get(a.lessonId) - order.get(b.lessonId) || a.questionId.localeCompare(b.questionId));
+  // Stable sorting retains the existing course order for equal timestamps,
+  // followed by the quiz query's deterministic question-ID order.
+  const quizWeak = getQuizWeakQuestions(record);
+  const weak = [...courseWeak, ...quizWeak]
+    .sort((a, b) => Date.parse(b.lastWrongAt) - Date.parse(a.lastWrongAt));
   if (weak.length) {
-    return task({ type: 'course-weak', subject: weak[0].questionId, question: { ...weak[0] }, count: weak.length,
-      reason: `有${weak.length}项课程薄弱题待回练，先检验最近答错的知识点。` });
+    return task({ type: weak[0].sourceKind === 'course' ? 'course-weak' : 'quiz-question',
+      subject: weak[0].questionId, question: { ...weak[0] }, count: weak.length,
+      reason: `有${weak.length}项${quizWeak.length ? '' : '课程'}薄弱题待回练，先检验最近答错的知识点。` });
   }
   // The legacy wrong book contains codes, not original question IDs or dates.
   const codes = [...new Set((Array.isArray(wrongCodes) ? wrongCodes : [])

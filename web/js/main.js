@@ -370,11 +370,11 @@ function resetPanelViewport({ focusHeading = false } = {}) {
   cinematicMotion.resetScroll();
   panelContent.scrollTop = 0;
   if (!focusHeading) return;
-  const heading = panelContent.querySelector('[data-learning-focus="oral"]') ||
+  const heading = panelContent.querySelector('[data-learning-focus]') ||
     panelContent.querySelector('[data-page-heading], .mode-panel-title, h2, h3');
   window.requestAnimationFrame(() => {
     if (!heading?.isConnected || !panelContent.contains(heading) || heading.closest?.('[inert], [hidden]')) return;
-    if (heading.dataset?.learningFocus !== 'oral') heading.tabIndex = -1;
+    if (!(heading.tabIndex >= 0)) heading.tabIndex = -1;
     heading.focus({ preventScroll: true });
   });
 }
@@ -1037,6 +1037,14 @@ async function loadModeResources(mode) {
   if ((mode === 'almanac' || mode === 'quiz') && dataLoader.loadAlmanacData) {
     Object.assign(state, await dataLoader.loadAlmanacData());
   }
+  if (mode === 'review' && dataLoader.loadAlmanacData) {
+    try {
+      Object.assign(state, await dataLoader.loadAlmanacData());
+    } catch (error) {
+      // Queue references remain usable; the destination loads and checks the original question.
+      console.warn('复习术语资料暂不可用', error);
+    }
+  }
 }
 
 function disposeMode() {
@@ -1104,15 +1112,11 @@ async function setMode(mode, entry = {}) {
   try {
     const [renderer] = await Promise.all([loadRenderer(), loadModeResources(mode)]);
     if (requestId !== modeRequestId || state.currentMode !== mode) return;
-    if (mode === 'learning') {
+    if (['learning', 'review', 'quiz'].includes(mode)) {
       const cleanup = renderer(panelContent, state, (target = 'explore', nextEntry) => setMode(target, nextEntry), entry);
       modeCleanup = typeof cleanup === 'function' ? cleanup : null;
-    } else if (mode === 'review') {
-      renderer(panelContent, state, (learningEntry) => setMode('learning', learningEntry));
     } else if (mode === 'divination') {
       renderer(panelContent, state, (code) => openDetail(code));
-    } else if (mode === 'quiz') {
-      renderer(panelContent, state, entry?.wrongOnly === true);
     } else {
       renderer(panelContent, state);
     }

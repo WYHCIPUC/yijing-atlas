@@ -8,6 +8,7 @@ import { LEARNING_LESSONS } from '../learning-curriculum.js';
 import {
   calculateStreak,
   getCourseWeakQuestions,
+  getQuizWeakQuestions,
   getLearningResumeError,
   getWeakQuestionsError,
   loadActivity,
@@ -59,7 +60,8 @@ function renderTodaySection(content, onNavigate, notice = '') {
     resume: ['继续阅读', lesson?.title, '继续研习', '阅读当前课程，并完成本轮小试。'],
     review: ['到期复习', `${task.count || 0} 项卦象间隔卡`, '开始到期复习', '先回忆、再核对，并按真实记忆完成自评。'],
     'course-weak': ['课程温习', lesson?.title, '回练原题', '完成包含原题的小试，以有效答对纠正该项。'],
-    'quiz-weak': ['测验错题', `${task.count || 0} 项错题待回练`, '开始错题回练', '完成错题判断，核对答案与依据。'],
+    'quiz-question': ['测验与术语温习', `课程、测验与术语共 ${task.count || 0} 项待温习`, '回练原规则', '核对原规则与目标，以有效答对纠正该项。'],
+    'quiz-weak': ['旧卦码摘要', `${task.count || 0} 卦待温习`, '开始卦象练习', '原题型未保留；完成本次练习，不冒称原具体错误已纠正。'],
     lesson: ['下一课', lesson?.title, '开始研习', '阅读课程并完成一次课后小试。'],
     oral: ['复讲温习', lesson?.title, '开始复讲', '用自己的话复述，再对照要点自评。'],
     empty: ['自由温习', '从五阶学程选择内容', '浏览全部课程', '按自己的需要选择温习内容。'],
@@ -68,6 +70,8 @@ function renderTodaySection(content, onNavigate, notice = '') {
   const dueCount = getDueCount(reviewCards);
   const weakError = getWeakQuestionsError(record.weakQuestions);
   const courseCount = getCourseWeakQuestions(record).length;
+  const quizCount = getQuizWeakQuestions(record).length;
+  const legacyCount = loadWrongBook().length;
   const streak = calculateStreak(loadActivity().days);
   content.innerHTML = `
     <section class="today-practice" aria-labelledby="today-practice-title">
@@ -88,8 +92,8 @@ function renderTodaySection(content, onNavigate, notice = '') {
       ${notice || task.notice ? `<p class="assessment-warning" role="status">${escapeLearningText(notice || task.notice)}</p>` : ''}
       <div class="today-support-grid">
         <button type="button" class="today-support-card" data-mode-target="review">
-          <span>温故队列</span><strong>${weakError ? '待核对' : dueCount + courseCount}</strong>
-          <small>卦象间隔卡 ${dueCount} 项 · ${weakError ? '课程温习记录异常，请先备份核对' : `课程温习 ${courseCount} 项`}</small>
+          <span>温故队列</span><strong>${weakError ? '待核对' : dueCount + courseCount + quizCount + legacyCount}</strong>
+          <small>卦象间隔卡 ${dueCount} 项 · ${weakError ? '温习记录异常，请先备份核对' : `课程温习 ${courseCount} 项 · 测验与术语 ${quizCount} 项`} · 旧卦码摘要 ${legacyCount} 项</small>
         </button>
         <button type="button" class="today-support-card" data-section-target="assessment">
           <span>即时小试</span><strong>${summary.checked}/${summary.total}</strong><small>用判断发现真正的薄弱点</small>
@@ -106,7 +110,8 @@ function renderTodaySection(content, onNavigate, notice = '') {
     if (task.type === 'resume' || task.type === 'lesson') onNavigate('path', { lessonId: task.subject,
       ...(task.type === 'resume' ? { resume: task.resume } : {}) });
     else if (task.type === 'review') onNavigate('review-mode');
-    else if (task.type === 'quiz-weak') onNavigate('quiz-mode');
+    else if (task.type === 'quiz-question') onNavigate('quiz-mode', { wrongOnly: true, reference: task.question, returnTo: { mode: 'review' } });
+    else if (task.type === 'quiz-weak') onNavigate('quiz-mode', { wrongOnly: true, legacyCode: task.subject, returnTo: { mode: 'review' } });
     else if (task.type === 'course-weak') onNavigate('assessment', { lessonId: task.question.lessonId,
       requiredQuestionId: task.question.questionId, requiredQuestionVersion: task.question.questionVersion, returnTo: 'review' });
     else if (task.type === 'oral') onNavigate('assessment', { initialOralLessonId: task.subject });
@@ -343,7 +348,7 @@ export function renderLearningMode(mountEl, appState, onNavigateMode, entry = {}
       return;
     }
     if (sectionId === 'quiz-mode') {
-      onNavigateMode?.('quiz', { wrongOnly: true });
+      onNavigateMode?.('quiz', { ...options, wrongOnly: true });
       return;
     }
     document.body.classList.remove('lesson-overview-open');
@@ -421,7 +426,22 @@ export function renderLearningMode(mountEl, appState, onNavigateMode, entry = {}
     } else if (sectionId === 'trigrams') renderTrigrams(appState.trigrams, content);
     else if (sectionId === 'wings') renderWingsPage(content, appState);
     else if (sectionId === 'theorems') renderTheoremsPage(content, appState);
-    else if (sectionId === 'almanac') renderAlmanacKnowledgePage(content, appState, { showBackLink: false });
+    else if (sectionId === 'almanac') {
+      lessonCleanup = renderAlmanacKnowledgePage(content, appState, {
+        showBackLink: false, termId: options.termId,
+        ...(options.returnTo ? {
+          backLabel: options.returnTo.mode === 'quiz' ? '返回错题回练' : '返回温故队列',
+          onBack() {
+            if (!isActiveSection()) return;
+            if (options.returnTo.mode === 'quiz') onNavigateMode?.('quiz', {
+              ...options.returnTo.entry, wrongOnly: true, reference: options.quizReference,
+            });
+            else if (options.returnTo.mode === 'review') onNavigateMode?.('review');
+            else showSection('library');
+          },
+        } : {}),
+      });
+    }
     else if (sectionId === 'data') renderDataSection(content);
     else {
       renderStudyPathPage(content, appState, {
@@ -444,7 +464,7 @@ export function renderLearningMode(mountEl, appState, onNavigateMode, entry = {}
         ['学习节律', '一次只推进一课'],
       ]);
     }
-    if (!options.lessonId && ['trigrams', 'wings', 'theorems', 'almanac'].includes(sectionId)) {
+    if (!options.lessonId && !options.quizReference && ['trigrams', 'wings', 'theorems', 'almanac'].includes(sectionId)) {
       bindSectionLearning(content, sectionId, (lessonId) => showSection('assessment', { lessonId }));
       const labels = {
         trigrams: ['当前书库', '八卦 · 象 · 性 · 德'],
@@ -467,7 +487,7 @@ export function renderLearningMode(mountEl, appState, onNavigateMode, entry = {}
     const heading = content.querySelector('[data-page-heading], h3');
     schedule(() => {
       if (disposed || focusRequest !== sectionFocusRequest) return;
-      if (content.querySelector('[data-learning-focus="oral"]')) return;
+      if (content.querySelector('[data-learning-focus="oral"]') || content.querySelector('[data-learning-focus="term"]')) return;
       if (!heading || heading.isConnected === false || content.querySelector('[data-page-heading], h3') !== heading) return;
       heading.tabIndex = -1;
       heading.focus?.({ preventScroll: true });
@@ -488,7 +508,9 @@ export function renderLearningMode(mountEl, appState, onNavigateMode, entry = {}
     tabs[next].focus();
     showSection(tabs[next].dataset.section, { focusContent: false });
   });
-  showSection(['path', 'assessment', 'data'].includes(entry?.section) ? entry.section : 'today', entry || {});
+  const initialSection = ['path', 'assessment', 'data'].includes(entry?.section) ||
+    (entry?.section === 'almanac' && typeof entry.termId === 'string' && entry.termId.trim()) ? entry.section : 'today';
+  showSection(initialSection, entry || {});
   return () => {
     if (disposed) return;
     cleanupLesson();

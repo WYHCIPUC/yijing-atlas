@@ -1,0 +1,11 @@
+{
+  "scope": "390-stale-offline",
+  "stage": "final-toolbar-fixed-last-five",
+  "exitCode": 0,
+  "sessions": [
+    53230
+  ],
+  "nodePath": "W:\\Node.js\\node.exe",
+  "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '390-stale-offline'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs",
+  "output": "START 2026-10-24T22-26-27-521Z v22.23.1 profile=C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-P15xZZ\nRUN 390-stale-offline\nPASS 390-stale-offline\n{\"status\":\"passed\",\"passed\":1,\"total\":1,\"trace\":\"Y:\\\\易经学习项目\\\\docs\\\\development\\\\evidence\\\\2026-10-25-quiz-weak-input\\\\2026-10-24T22-26-27-521Z\\\\trace.json\",\"profile\":\"C:\\\\Users\\\\1\\\\AppData\\\\Local\\\\Temp\\\\yijing-quiz-weak-P15xZZ\"}\n"
+}

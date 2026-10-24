@@ -2,44 +2,48 @@ import { hexagramSvg } from '../svg-painter.js';
 import { createProgressEvent } from '../achievement-engine.js';
 import { processAchievementEvent } from '../achievement-storage.js';
 import { getDueCards, loadReviewCards, saveReview } from '../review-engine.js';
-import { getCourseWeakQuestions, getWeakQuestionsError, loadLearningRecord, recordActivity } from '../learning-progress.js';
+import { getCourseWeakQuestions, getQuizWeakQuestions, getWeakQuestionsError, loadLearningRecord, recordActivity } from '../learning-progress.js';
 import { buildLearningQuestionBank, getLesson } from '../learning-curriculum.js';
-
-let reviewCards = null;
+import { loadWrongBook } from '../quiz-engine.js';
 
 function esc(value) {
   return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function resetReviewViewport(mountEl, focusSelector = '[data-page-heading]') {
+function resetReviewViewport(mountEl, focusSelector = '[data-page-heading]', current = () => true) {
   const panel = mountEl.closest?.('.detail-panel');
   if (panel) panel.scrollTop = 0;
   mountEl.scrollTop = 0;
   const schedule = window.requestAnimationFrame || ((callback) => callback());
+  const target = mountEl.querySelector(focusSelector);
   schedule(() => {
-    const target = mountEl.querySelector(focusSelector);
-    if (!target?.focus) return;
+    if (!current() || !target?.focus || target.isConnected === false || mountEl.querySelector(focusSelector) !== target) return;
     target.tabIndex = -1;
     target.focus({ preventScroll: true });
   });
 }
 
-export function renderReviewMode(mountEl, appState, onStartLearning) {
-  reviewCards = loadReviewCards();
-  renderDueList(mountEl, appState, onStartLearning);
+export function renderReviewMode(mountEl, appState, onNavigateMode, entry = {}) {
+  const context = { cards: loadReviewCards(), disposed: false, root: null,
+    navigate: onNavigateMode, current(root) { return !this.disposed && root?.isConnected !== false && mountEl.querySelector('.mode-panel') === root; } };
+  renderDueList(mountEl, appState, context);
+  return () => { context.disposed = true; };
 }
 
-function renderDueList(mountEl, appState, onStartLearning) {
-  const dueCodes = getDueCards(reviewCards);
+function renderDueList(mountEl, appState, context) {
+  if (context.disposed) return;
+  const dueCodes = getDueCards(context.cards);
   const dueHexagrams = dueCodes.map((code) => appState.index.byCode.get(code)).filter(Boolean);
   const record = loadLearningRecord();
   const weakError = getWeakQuestionsError(record.weakQuestions);
   const courseQuestions = getCourseWeakQuestions(record);
+  const quizQuestions = getQuizWeakQuestions(record);
+  const legacyCodes = loadWrongBook().filter(code => appState.index.byCode.has(code));
   const availableQuestions = new Map(courseQuestions.length
     ? buildLearningQuestionBank(appState).map(question => [question.id, question]) : []);
   appState.starMap?.setReviewDue(dueCodes);
-  if (dueHexagrams.length === 1 && !courseQuestions.length && !weakError) {
-    renderReviewCard(mountEl, appState, dueHexagrams[0].binaryCode, onStartLearning, true);
+  if (dueHexagrams.length === 1 && !courseQuestions.length && !quizQuestions.length && !legacyCodes.length && !weakError) {
+    renderReviewCard(mountEl, appState, dueHexagrams[0].binaryCode, context, true);
     return;
   }
 
@@ -51,7 +55,7 @@ function renderDueList(mountEl, appState, onStartLearning) {
             ? '不重读答案，先从记忆中提取。'
             : '复习内容会从已学、答错或主动加入的卦象中产生。'}</p>
           <p class="review-storage-status" role="status" aria-live="polite"></p></div>
-        <div class="mode-hero-stat"><strong>${weakError ? '待核对' : dueHexagrams.length + courseQuestions.length}</strong><span>今日待温习</span></div>
+        <div class="mode-hero-stat"><strong>${weakError ? '待核对' : dueHexagrams.length + courseQuestions.length + quizQuestions.length + legacyCodes.length}</strong><span>今日待温习</span></div>
       </header>
       <section class="course-weak-queue" aria-labelledby="course-weak-title">
         <h3 id="course-weak-title">课程温习</h3>
@@ -73,6 +77,24 @@ function renderDueList(mountEl, appState, onStartLearning) {
             </article>`;
           }).join('')}</div>` : '<p class="mode-empty">暂无待回练的课程题。</p>'}
       </section>
+      <section class="course-weak-queue quiz-weak-queue" aria-labelledby="quiz-weak-title">
+        <h3 id="quiz-weak-title">测验与术语温习</h3>
+        <p>按原规则与原目标回练；查看资料不等于已经纠正。</p>
+        ${weakError ? '<p class="assessment-warning" role="status">具体测验温习记录异常，保留原记录；请先备份核对。</p>' : quizQuestions.length
+          ? `<div class="course-weak-list">${quizQuestions.map((item, index) => {
+            const labels = { opposite: '错卦辨识', reversed: '综卦辨识', interlocking: '互卦辨识', name: '卦名辨识',
+              'name-to-meaning': '由名称辨释义', 'meaning-to-name': '由释义辨名称' };
+            const target = item.sourceKind === 'almanac' ? appState.almanacTerms?.find(term => term.id === item.termId)?.name
+              : appState.index.byCode.get(item.targetCode)?.name;
+            return `<article class="course-weak-item" data-quiz-question-id="${esc(item.questionId)}"><h4>${esc(target || (item.sourceKind === 'almanac' ? '原术语（进入后核对）' : '原卦资料（进入后核对）'))}</h4>
+              <p>${esc(labels[item.questionType] || '原提问方向')} · 答错 ${item.wrongCount} 次 · 待回练</p>
+              <div class="course-weak-actions"><button type="button" class="text-button" data-action="quiz-source-${index}">${item.sourceKind === 'almanac' ? '温习原术语' : '温习对应卦象'}</button>
+                <button type="button" class="quick-btn" data-action="quiz-practice-${index}">回练原规则</button></div></article>`;
+          }).join('')}</div>` : '<p class="mode-empty">暂无待回练的测验或术语题。</p>'}
+      </section>
+      ${legacyCodes.length ? `<section class="course-weak-queue legacy-weak-queue" aria-labelledby="legacy-weak-title"><h3 id="legacy-weak-title">旧卦码摘要</h3>
+        <p>原题型未保留；这些记录不代表具体原题，不与新错题互相清除。</p><div class="course-weak-list">${legacyCodes.map((code, index) =>
+          `<article class="course-weak-item"><h4>${esc(appState.index.byCode.get(code).name)}</h4><p>历史卦码摘要 · 原题型未保留</p><div class="course-weak-actions"><button type="button" class="text-button" data-action="legacy-practice-${index}">练习这一卦</button></div></article>`).join('')}</div></section>` : ''}
       <h3>卦象间隔卡</h3>
       ${dueHexagrams.length ? `<div class="review-queue-layout">
         <div class="review-due-list" aria-label="今日待复习卦">
@@ -91,31 +113,49 @@ function renderDueList(mountEl, appState, onStartLearning) {
       </div>` : ''}
       ${dueHexagrams.length === 0
         ? `<section class="mode-empty review-empty">
-            <strong>${Object.keys(reviewCards).length ? '今日卦象间隔卡已完成' : '还没有需要复习的卦象'}</strong>
-            <p>${Object.keys(reviewCards).length ? '下一批内容会在合适的间隔再次出现。' : '阅读任一卦象或在测验中发现薄弱点后，这里会安排第一次温故。'}</p>
+            <strong>${Object.keys(context.cards).length ? '今日卦象间隔卡已完成' : '还没有需要复习的卦象'}</strong>
+            <p>${Object.keys(context.cards).length ? '下一批内容会在合适的间隔再次出现。' : '阅读任一卦象或在测验中发现薄弱点后，这里会安排第一次温故。'}</p>
             <button type="button" class="quick-btn" data-action="start-learning">继续学习</button>
           </section>`
         : ''}
     </div>
   `;
-
+  const root = mountEl.querySelector('.mode-panel');
+  const current = () => context.current(root);
+  const navigate = (mode, nextEntry) => { if (current()) context.navigate?.(mode, nextEntry); };
   mountEl.querySelectorAll('[data-code]').forEach((button) => {
-    button.addEventListener('click', () => renderReviewCard(mountEl, appState, button.dataset.code, onStartLearning));
+    button.addEventListener('click', () => { if (current()) renderReviewCard(mountEl, appState, button.dataset.code, context); });
   });
-  mountEl.querySelector('[data-action="start-learning"]')?.addEventListener('click', () => onStartLearning?.());
-  mountEl.querySelector('[data-action="weak-data"]')?.addEventListener('click', () => onStartLearning?.({ section: 'data' }));
+  mountEl.querySelector('[data-action="start-learning"]')?.addEventListener('click', () => navigate('learning'));
+  mountEl.querySelector('[data-action="weak-data"]')?.addEventListener('click', () => navigate('learning', { section: 'data' }));
   courseQuestions.forEach((item, index) => {
     const entry = { lessonId: item.lessonId, requiredQuestionId: item.questionId,
       requiredQuestionVersion: item.questionVersion, returnTo: 'review' };
     mountEl.querySelector(`[data-action="weak-source-${index}"]`)?.addEventListener('click', () => {
-      onStartLearning?.(getLesson(item.lessonId) ? { ...entry, section: 'path' } : { section: 'path' });
+      navigate('learning', getLesson(item.lessonId) ? { ...entry, section: 'path' } : { section: 'path' });
     });
-    mountEl.querySelector(`[data-action="weak-practice-${index}"]`)?.addEventListener('click', () => onStartLearning?.({ ...entry, section: 'assessment' }));
+    mountEl.querySelector(`[data-action="weak-practice-${index}"]`)?.addEventListener('click', () => navigate('learning', { ...entry, section: 'assessment' }));
   });
-  resetReviewViewport(mountEl);
+  quizQuestions.forEach((item, index) => {
+    mountEl.querySelector(`[data-action="quiz-practice-${index}"]`)?.addEventListener('click', () => navigate('quiz', {
+      wrongOnly: true, reference: item, returnTo: { mode: 'review' },
+    }));
+    mountEl.querySelector(`[data-action="quiz-source-${index}"]`)?.addEventListener('click', () => {
+      if (!current()) return;
+      if (item.sourceKind === 'almanac') navigate('learning', { section: 'almanac', termId: item.termId,
+        quizReference: item, returnTo: { mode: 'review' } });
+      else if (appState.index.byCode.has(item.targetCode)) renderReviewCard(mountEl, appState, item.targetCode, context);
+      else navigate('learning');
+    });
+  });
+  legacyCodes.forEach((legacyCode, index) => mountEl.querySelector(`[data-action="legacy-practice-${index}"]`)?.addEventListener('click', () => navigate('quiz', {
+    wrongOnly: true, legacyCode, returnTo: { mode: 'review' },
+  })));
+  resetReviewViewport(mountEl, '[data-page-heading]', current);
 }
 
-function renderReviewCard(mountEl, appState, code, onStartLearning, singleCard = false) {
+function renderReviewCard(mountEl, appState, code, context, singleCard = false) {
+  if (context.disposed) return;
   const hex = appState.index.byCode.get(code);
   if (!hex) return;
   const lower = appState.trigrams?.find((trigram) => trigram.binaryCode === hex.trigramLower);
@@ -155,28 +195,31 @@ function renderReviewCard(mountEl, appState, code, onStartLearning, singleCard =
     </div>
   `;
 
+  const root = mountEl.querySelector('.mode-panel');
+  const current = () => context.current(root);
   const card = mountEl.querySelector('.flip-card');
   const inner = mountEl.querySelector('.flip-card-inner');
   const front = mountEl.querySelector('.flip-card-front');
   const answer = mountEl.querySelector('#review-answer');
   const rating = mountEl.querySelector('.review-rating');
-  mountEl.querySelector('.review-back')?.addEventListener('click', () => renderDueList(mountEl, appState, onStartLearning));
+  mountEl.querySelector('.review-back')?.addEventListener('click', () => { if (current()) renderDueList(mountEl, appState, context); });
   card.addEventListener('click', () => {
-    if (card.getAttribute('aria-expanded') === 'true') return;
+    if (!current() || card.getAttribute('aria-expanded') === 'true') return;
     card.setAttribute('aria-expanded', 'true');
     card.setAttribute('aria-label', `答案已展开：${hex.name}，${hex.fullName}`);
     front.setAttribute('aria-hidden', 'true');
     answer.hidden = false;
     answer.setAttribute('aria-hidden', 'false');
     const schedule = window.requestAnimationFrame || ((callback) => callback());
-    schedule(() => inner.classList.add('flipped'));
-    window.setTimeout?.(() => { front.hidden = true; }, 260);
+    schedule(() => { if (current()) inner.classList.add('flipped'); });
+    window.setTimeout?.(() => { if (current()) front.hidden = true; }, 260);
     rating.hidden = false;
-    window.setTimeout(() => rating.querySelector('.rate-btn')?.focus({ preventScroll: true }), 280);
+    window.setTimeout(() => { if (current()) rating.querySelector('.rate-btn')?.focus({ preventScroll: true }); }, 280);
   });
   rating.querySelectorAll('.rate-btn').forEach((button) => {
     button.addEventListener('click', () => {
-      const reviewResult = saveReview(reviewCards, code, Number.parseInt(button.dataset.rate, 10));
+      if (!current()) return;
+      const reviewResult = saveReview(context.cards, code, Number.parseInt(button.dataset.rate, 10));
       const activityResult = recordActivity();
       const achievementResult = reviewResult.saved ? processAchievementEvent(createProgressEvent({
         type: 'review.completed',
@@ -185,7 +228,7 @@ function renderReviewCard(mountEl, appState, code, onStartLearning, singleCard =
         idempotencyKey: `review:${code}:${reviewResult.card.lastReview}`,
         metadata: { hexagramCode: code, reviewKind: 'spaced' },
       })) : { saved: false };
-      renderDueList(mountEl, appState, onStartLearning);
+      renderDueList(mountEl, appState, context);
       const days = Math.max(1, Math.round((reviewResult.card.due - Date.now()) / 86400000));
       const status = mountEl.querySelector('.review-storage-status');
       status.textContent = !reviewResult.saved || !activityResult.saved || !achievementResult.saved
@@ -193,5 +236,5 @@ function renderReviewCard(mountEl, appState, code, onStartLearning, singleCard =
         : `已记录为“${button.textContent.trim()}”，预计 ${days} 日后再次出现。`;
     });
   });
-  resetReviewViewport(mountEl);
+  resetReviewViewport(mountEl, '[data-page-heading]', current);
 }

@@ -18,6 +18,7 @@ function createHarness() {
   const noop = () => {};
   const renders = [];
   const cleanups = [];
+  const viewportResets = [];
   const resources = [];
   const pending = [];
   const bodyClasses = new Set();
@@ -28,7 +29,7 @@ function createHarness() {
   const renderer = name => (...args) => {
     renders.push({ name, args });
     panelContent.innerHTML = `rendered:${name}`;
-    if (name === 'learning') return () => cleanups.push(panelContent.innerHTML);
+    if (['learning', 'review', 'quiz'].includes(name)) return () => cleanups.push(panelContent.innerHTML);
   };
   const context = vm.createContext({
     state, panelContent, modeRequestId: 0, modeCleanup: null,
@@ -54,14 +55,14 @@ function createHarness() {
     setFocusMode: noop, updateModeButtons: noop, updateExploreTools: noop,
     resumeCelestialStage: noop, pauseCelestialStage: noop, syncReadingPresentation: noop,
     closeEvolutionLab: noop, closeGuaxuWheel: noop, openPanel: noop,
-    updateDetailUrl: noop, installUIIcons: noop, resetPanelViewport: noop,
+    updateDetailUrl: noop, installUIIcons: noop, resetPanelViewport: () => viewportResets.push(state.currentMode),
     cinematicMotion: { beginMode: noop, previewHexagram: noop, enterSurface: noop },
     motionSystem: { reveal: noop },
   });
   const disposeSource = source.match(/^function disposeMode\([\s\S]*?^}/m)?.[0];
   if (disposeSource) vm.runInContext(disposeSource, context);
   vm.runInContext(setModeSource, context);
-  return { context, state, renders, resources, pending, renderer, panelContent, cleanups, bodyClasses, panelAttributes };
+  return { context, state, renders, resources, pending, renderer, panelContent, cleanups, viewportResets, bodyClasses, panelAttributes };
 }
 
 function useRealCloseDetail(harness) {
@@ -82,7 +83,7 @@ const entry = {
 test('温故入口把课程与原题上下文传给加载完成后的学习页', async () => {
   const h = createHarness();
   await h.context.setMode('review');
-  await h.renders[0].args[2](entry);
+  await h.renders[0].args[2]('learning', entry);
   assert.equal(h.state.currentMode, 'learning');
   assert.equal(h.renders.at(-1).name, 'learning');
   assert.deepEqual(h.renders.at(-1).args[3], entry);
@@ -177,7 +178,8 @@ test('离开学习时在替换正文之前收尾，回星图重复清理仍只�
   await h.context.setMode('review');
   assert.deepEqual(h.cleanups, ['rendered:learning']);
   await h.context.setMode('explore');
-  assert.equal(h.cleanups.length, 1);
+  await h.context.setMode('explore');
+  assert.deepEqual(h.cleanups, ['rendered:learning', 'rendered:review']);
 });
 
 test('较旧加载不会安装清理函数或销毁当前学习实例', async () => {
@@ -197,9 +199,101 @@ test('推荐的旧错题入口明确传wrongOnly，普通测验不沿用', async
   const h = createHarness();
   await h.context.setMode('learning');
   await h.renders[0].args[2]('quiz', { wrongOnly: true });
-  assert.equal(h.renders.at(-1).args[2], true);
+  assert.equal(typeof h.renders.at(-1).args[2], 'function');
+  assert.equal(h.renders.at(-1).args[3].wrongOnly, true);
   await h.context.setMode('quiz');
-  assert.equal(h.renders.at(-1).args[2], false);
+  assert.equal(h.renders.at(-1).args[3].wrongOnly, undefined);
+});
+
+test('温故与测验转发完整原题和术语返回上下文，离开前执行各自cleanup', async () => {
+  const h = createHarness();
+  const reference = {
+    sourceKind: 'almanac', questionId: 'almanac:lichun:meaning-to-name', questionVersion: 'almanac-v1',
+    questionType: 'meaning-to-name', targetCode: null, termId: 'lichun', lessonId: null,
+    status: 'due', wrongCount: 1, lastWrongAt: '2026-10-25T07:00:00Z',
+  };
+  const quizEntry = { wrongOnly: true, reference, returnTo: { mode: 'review' } };
+  await h.context.setMode('review');
+  await h.renders.at(-1).args[2]('quiz', quizEntry);
+  assert.equal(h.renders.at(-1).args[3], quizEntry);
+  const sourceEntry = { section: 'almanac', termId: reference.termId, quizReference: reference,
+    returnTo: { mode: 'quiz', entry: quizEntry } };
+  await h.renders.at(-1).args[2]('learning', sourceEntry);
+  assert.equal(h.renders.at(-1).args[3], sourceEntry);
+  await h.renders.at(-1).args[2]('quiz', sourceEntry.returnTo.entry);
+  assert.equal(h.renders.at(-1).args[3], quizEntry);
+  await h.renders.at(-1).args[2]('review');
+  assert.equal(h.renders.at(-1).args[3]?.reference, undefined);
+  assert.deepEqual(h.cleanups, ['rendered:review', 'rendered:quiz', 'rendered:learning', 'rendered:quiz']);
+});
+
+test('旧卦码入口不补造原题引用，下一次普通测验不继承legacyCode', async () => {
+  const h = createHarness();
+  const legacy = { wrongOnly: true, legacyCode: '111111', returnTo: { mode: 'review' } };
+  await h.context.setMode('quiz', legacy);
+  assert.equal(h.renders.at(-1).args[3], legacy);
+  assert.equal(h.renders.at(-1).args[3].reference, undefined);
+  await h.context.setMode('quiz');
+  assert.equal(h.renders.at(-1).args[3].legacyCode, undefined);
+});
+
+for (const mode of ['review', 'quiz']) {
+  test(`迟到${mode}加载不覆盖新入口、焦点或清理函数`, async () => {
+    const h = createHarness();
+    const request = deferred();
+    h.context.modeLoaders[mode] = () => request.promise;
+    const earlier = h.context.setMode(mode, { wrongOnly: true });
+    await h.context.setMode('learning', entry);
+    request.resolve(h.renderer(mode));
+    await earlier;
+    assert.deepEqual(h.renders.map(item => item.name), ['learning']);
+    assert.deepEqual(h.viewportResets, ['learning']);
+    await h.context.setMode('explore');
+    assert.deepEqual(h.cleanups, ['rendered:learning']);
+  });
+}
+
+test('原题必需资料加载失败不渲染随机题，重试仍携同一reference', async () => {
+  const h = createHarness();
+  const reference = { questionId: 'almanac:lichun:name-to-meaning', sourceKind: 'almanac' };
+  const quizEntry = { wrongOnly: true, reference, returnTo: { mode: 'review' } };
+  h.context.loadModeResources = async () => { throw new Error('terms offline'); };
+  await h.context.setMode('quiz', quizEntry);
+  assert.equal(h.renders.length, 0);
+  assert.match(h.panelContent.error.textContent, /terms offline/);
+  assert.deepEqual(h.viewportResets, []);
+  h.context.loadModeResources = async () => {};
+  await h.context.setMode('quiz', quizEntry);
+  assert.equal(h.renders[0].args[3], quizEntry);
+});
+
+test('温故可选加载术语资料，失败不阻断队列；正式术语入口保留加载失败', async () => {
+  const loadSource = source.match(/^async function loadModeResources\([\s\S]*?^}/m)?.[0];
+  assert.ok(loadSource);
+  const state = {};
+  const calls = [];
+  const terms = { terms: [{ id: 'lichun' }] };
+  let failure = false;
+  const context = vm.createContext({
+    state, console: { warn() {} },
+    dataLoader: {
+      loadLearningData: async () => { calls.push('learning'); return { wings: [] }; },
+      loadAlmanacData: async () => {
+        calls.push('almanac');
+        if (failure) throw new Error('terms offline');
+        return { almanacTerms: terms };
+      },
+    },
+  });
+  vm.runInContext(loadSource, context);
+  await context.loadModeResources('review');
+  assert.deepEqual(calls, ['almanac']);
+  assert.equal(state.almanacTerms, terms);
+  failure = true;
+  await context.loadModeResources('review');
+  assert.equal(state.almanacTerms, terms, '可选刷新失败不删除已有资料');
+  await assert.rejects(context.loadModeResources('quiz'), /terms offline/);
+  await assert.rejects(context.loadModeResources('learning'), /terms offline/);
 });
 
 test('欢迎的零基础路径直接进入首课，其他两条路径保持原含义', () => {
@@ -247,4 +341,26 @@ test('模式通用聚焦尊重复讲入口，旧帧不聚焦新页或已移除�
   currentHeading = { isConnected: true, focus: () => focused.push('new-page') };
   frames.shift()();
   assert.deepEqual(focused, ['oral'], '旧帧不查找并聚焦新页面标题');
+});
+
+test('术语summary目标优先于标题并保留原生Tab顺序', () => {
+  const resetSource = source.match(/^function resetPanelViewport\([\s\S]*?^}/m)?.[0];
+  const frames = [];
+  const focused = [];
+  const heading = { isConnected: true, tabIndex: -1, focus: () => focused.push('heading') };
+  const term = { isConnected: true, tabIndex: 0, dataset: { learningFocus: 'term' }, focus: () => focused.push('term') };
+  const context = vm.createContext({
+    cinematicMotion: { resetScroll() {} },
+    panelContent: { scrollTop: 30,
+      querySelector: selector => selector === '[data-learning-focus]' ? term :
+        selector.includes('data-learning-focus') ? null : heading,
+      contains: element => element === term || element === heading,
+    },
+    window: { requestAnimationFrame: callback => frames.push(callback) },
+  });
+  vm.runInContext(resetSource, context);
+  context.resetPanelViewport({ focusHeading: true });
+  frames.shift()();
+  assert.deepEqual(focused, ['term']);
+  assert.equal(term.tabIndex, 0);
 });

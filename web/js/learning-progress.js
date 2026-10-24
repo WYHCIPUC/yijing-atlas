@@ -9,6 +9,8 @@ const MAX_ASSESSMENT_HISTORY = 80;
 const COURSE_QUESTION_VERSION = 'curriculum-v1';
 const QUESTION_METADATA_FIELDS = ['questionVersion', 'questionType', 'targetCode', 'termId'];
 const LEARNING_SECTIONS = ['intro', 'observe', 'read', 'explain', 'apply', 'practice'];
+const QUIZ_REFERENCE_FIELDS = ['sourceKind', 'questionId', 'questionVersion', 'questionType', 'targetCode', 'termId', 'lessonId'];
+const QUIZ_WEAK_OUTCOMES = ['added', 'updated', 'resolved', 'unchanged', 'reference-mismatch'];
 
 function localDateKey(date) {
   const year = date.getFullYear();
@@ -159,6 +161,64 @@ export function getCourseWeakQuestions(record, { includeResolved = false } = {})
       (a.questionId < b.questionId ? -1 : a.questionId > b.questionId ? 1 : 0));
 }
 
+function getQuizReferenceError(reference) {
+  const error = getQuestionReferenceError(reference);
+  if (error) return error;
+  if (!['quiz', 'almanac'].includes(reference.sourceKind)) return 'sourceKind';
+  if (reference.lessonId !== null) return 'lessonId';
+  if (reference.sourceKind === 'quiz') {
+    if (reference.termId !== null) return 'termId';
+    if (reference.questionId !== `quiz:${reference.questionType}:${reference.targetCode}`) return 'questionId';
+  } else {
+    if (reference.targetCode !== null) return 'targetCode';
+    if (!['name-to-meaning', 'meaning-to-name'].includes(reference.questionType)) return 'questionType';
+    if (reference.questionId !== `almanac:${reference.termId}:${reference.questionType}`) return 'questionId';
+  }
+  return null;
+}
+
+export function getQuizAttemptsError(value) {
+  if (value === undefined) return null;
+  if (!isPlainObject(value)) return 'quizAttempts';
+  for (const [attemptId, entry] of Object.entries(value)) {
+    const path = `quizAttempts[${attemptId}]`;
+    if (!isPlainObject(entry)) return path;
+    if (!isAssessmentId(attemptId) || entry.attemptId !== attemptId) return `${path}.attemptId`;
+    if (!isPlainObject(entry.reference)) return `${path}.reference`;
+    const referenceError = getQuizReferenceError(entry.reference);
+    if (referenceError) return `${path}.reference.${referenceError}`;
+    if (typeof entry.correct !== 'boolean') return `${path}.correct`;
+    if (!['random', 'review'].includes(entry.mode)) return `${path}.mode`;
+    if (!isIsoTime(entry.at)) return `${path}.at`;
+    if (!QUIZ_WEAK_OUTCOMES.includes(entry.weakOutcome)) return `${path}.weakOutcome`;
+    if (entry.weakOutcome === 'resolved') {
+      if (!entry.correct || entry.mode !== 'review') return `${path}.weakOutcome`;
+      if (!isPlainObject(entry.recoveredFrom)) return `${path}.recoveredFrom`;
+      if (!isAssessmentId(entry.recoveredFrom.attemptId) || entry.recoveredFrom.attemptId === attemptId) {
+        return `${path}.recoveredFrom.attemptId`;
+      }
+      if (!isIsoTime(entry.recoveredFrom.at)) return `${path}.recoveredFrom.at`;
+    } else {
+      if (entry.recoveredFrom !== null) return `${path}.recoveredFrom`;
+      if ((['added', 'updated'].includes(entry.weakOutcome) && entry.correct) ||
+          (entry.weakOutcome === 'unchanged' && !entry.correct)) return `${path}.weakOutcome`;
+    }
+  }
+  return null;
+}
+
+export function getQuizWeakQuestions(record, { sourceKind = null, includeResolved = false } = {}) {
+  const weakQuestions = record?.weakQuestions;
+  if (!weakQuestions || getWeakQuestionsError(weakQuestions) ||
+      (sourceKind !== null && !['quiz', 'almanac'].includes(sourceKind))) return [];
+  return Object.values(weakQuestions)
+    .filter((entry) => ['quiz', 'almanac'].includes(entry.sourceKind) &&
+      (sourceKind === null || entry.sourceKind === sourceKind) && (includeResolved || entry.status !== 'resolved'))
+    .map((entry) => ({ ...entry }))
+    .sort((a, b) => Date.parse(b.lastWrongAt) - Date.parse(a.lastWrongAt) ||
+      (a.questionId < b.questionId ? -1 : a.questionId > b.questionId ? 1 : 0));
+}
+
 function isLearningRecordBase(value) {
   return isPlainObject(value) && value.version === 2 && isPlainObject(value.lessons) &&
     Array.isArray(value.spotChecks) && Array.isArray(value.exams) && Array.isArray(value.oralReviews) &&
@@ -172,7 +232,8 @@ function isLearningRecordBase(value) {
 
 export function isLearningRecord(value) {
   return isLearningRecordBase(value) && getAssessmentIdsError(value.processedAssessmentIds) === null &&
-    getWeakQuestionsError(value.weakQuestions) === null && getLearningResumeError(value.resume) === null;
+    getWeakQuestionsError(value.weakQuestions) === null && getLearningResumeError(value.resume) === null &&
+    getQuizAttemptsError(value.quizAttempts) === null;
 }
 
 function migrateLegacyRecord(storage) {
@@ -194,7 +255,7 @@ export function loadLearningRecord(storage) {
   const record = readJson(LEARNING_RECORD_KEY, fallback, isLearningRecordBase, storage);
   // 损坏的新增字段仍保留原成绩供阅读，写入口会拒绝，不能空回退后覆盖它。
   if (getAssessmentIdsError(record.processedAssessmentIds) || getWeakQuestionsError(record.weakQuestions) ||
-      getLearningResumeError(record.resume)) return record;
+      getLearningResumeError(record.resume) || getQuizAttemptsError(record.quizAttempts)) return record;
   const receiptIds = (record.assessmentSessions || []).map((item) => item.sessionId).filter(isAssessmentId);
   if (!receiptIds.length) return record;
   return { ...record, processedAssessmentIds: [...new Set([...(record.processedAssessmentIds || []), ...receiptIds])] };
@@ -202,6 +263,105 @@ export function loadLearningRecord(storage) {
 
 export function saveLearningRecord(record, storage) {
   return isLearningRecord(record) && writeJson(LEARNING_RECORD_KEY, record, storage).ok;
+}
+
+function copyQuizReference(reference) {
+  return Object.fromEntries(QUIZ_REFERENCE_FIELDS.map((field) => [field, reference[field]]));
+}
+
+function quizAttemptResult(record, entry, duplicate) {
+  const receipt = {
+    attemptId: entry.attemptId, reference: copyQuizReference(entry.reference),
+    correct: entry.correct, mode: entry.mode, at: entry.at, weakOutcome: entry.weakOutcome,
+    recoveredFrom: entry.recoveredFrom ? { ...entry.recoveredFrom } : null,
+  };
+  return {
+    record, saved: true, duplicate, entry: receipt,
+    recovery: receipt.weakOutcome === 'resolved' ? {
+      reference: copyQuizReference(receipt.reference),
+      wrongAttemptId: receipt.recoveredFrom.attemptId, wrongAt: receipt.recoveredFrom.at,
+      reviewAttemptId: receipt.attemptId, reviewedAt: receipt.at,
+    } : null,
+  };
+}
+
+function readQuizLearningRecord(storage) {
+  try {
+    const target = storage || (typeof localStorage === 'undefined' ? null : localStorage);
+    if (!target) return { record: null, target: null };
+    const raw = target.getItem(LEARNING_RECORD_KEY);
+    let legacyRaw = null;
+    if (raw !== null) {
+      if (typeof raw !== 'string' || !isLearningRecordBase(JSON.parse(raw))) return { record: null, target };
+    } else {
+      legacyRaw = target.getItem(LEGACY_STUDY_KEY);
+      if (legacyRaw !== null) {
+        if (typeof legacyRaw !== 'string') return { record: null, target };
+        const legacy = JSON.parse(legacyRaw);
+        if (!isPlainObject(legacy) || !Object.values(legacy).every((done) => typeof done === 'boolean')) {
+          return { record: null, target };
+        }
+      }
+    }
+    // 只使用已成功读取并校验的快照；复用原迁移，不把读取异常的空回退写回。
+    const record = loadLearningRecord({
+      getItem: (key) => key === LEARNING_RECORD_KEY ? raw : legacyRaw,
+    });
+    return { record, target };
+  } catch {
+    return { record: null, target: null };
+  }
+}
+
+export function recordQuizAttempt(attempt, now = new Date(), storage) {
+  const { record, target } = readQuizLearningRecord(storage);
+  const failure = { record, saved: false, duplicate: false, entry: null, recovery: null };
+  if (!isPlainObject(attempt) || !isAssessmentId(attempt.attemptId) ||
+      !isPlainObject(attempt.reference) || getQuizReferenceError(attempt.reference) ||
+      typeof attempt.correct !== 'boolean' || !['random', 'review'].includes(attempt.mode) ||
+      !(now instanceof Date) || !Number.isFinite(now.getTime()) || !isLearningRecord(record)) return failure;
+  const reference = copyQuizReference(attempt.reference);
+  const currentVersion = reference.sourceKind === 'quiz' ? 'quiz-v1' : 'almanac-v1';
+  if (reference.questionVersion !== currentVersion) return failure;
+  const receipt = record.quizAttempts && Object.hasOwn(record.quizAttempts, attempt.attemptId)
+    ? record.quizAttempts[attempt.attemptId] : null;
+  if (receipt) {
+    const matches = receipt.correct === attempt.correct && receipt.mode === attempt.mode &&
+      QUIZ_REFERENCE_FIELDS.every((field) => receipt.reference[field] === reference[field]);
+    return matches ? quizAttemptResult(record, receipt, true) : failure;
+  }
+  const previous = record.weakQuestions && Object.hasOwn(record.weakQuestions, reference.questionId)
+    ? record.weakQuestions[reference.questionId] : null;
+  if (previous?.lastSessionId === attempt.attemptId) return failure;
+  const at = now.toISOString();
+  const entry = {
+    attemptId: attempt.attemptId, reference, correct: attempt.correct, mode: attempt.mode, at,
+    weakOutcome: 'unchanged', recoveredFrom: null,
+  };
+  let weak = null;
+  if (previous && QUIZ_REFERENCE_FIELDS.some((field) => previous[field] !== reference[field])) {
+    entry.weakOutcome = 'reference-mismatch';
+  } else if (!attempt.correct) {
+    const wrongCount = (previous?.wrongCount || 0) + 1;
+    if (!Number.isSafeInteger(wrongCount)) return failure;
+    entry.weakOutcome = previous ? 'updated' : 'added';
+    weak = {
+      ...reference, firstWrongAt: previous?.firstWrongAt || at, lastWrongAt: at,
+      lastSessionId: attempt.attemptId, wrongCount, status: 'due',
+      lastReviewedAt: previous?.lastReviewedAt || null, resolvedAt: null,
+    };
+  } else if (attempt.mode === 'review' && previous && previous.status !== 'resolved') {
+    // 恢复证据与本次回执一起落盘；重试不能从后来已变化的弱项重新推导。
+    entry.weakOutcome = 'resolved';
+    entry.recoveredFrom = { attemptId: previous.lastSessionId, at: previous.lastWrongAt };
+    weak = { ...previous, status: 'resolved', lastSessionId: attempt.attemptId, lastReviewedAt: at, resolvedAt: at };
+  }
+  const next = {
+    ...record,
+    ...(weak ? { weakQuestions: { ...record.weakQuestions, [reference.questionId]: weak } } : {}),
+    quizAttempts: { ...record.quizAttempts, [attempt.attemptId]: entry },
+  };
+  return saveLearningRecord(next, target) ? quizAttemptResult(next, entry, false) : failure;
 }
 
 export function saveLearningResume(position, now = new Date(), storage) {

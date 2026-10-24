@@ -42,6 +42,8 @@ function shared(record) {
     document: { body: { classList: { remove() {} } } },
     loadLearningRecord: () => record,
     getCourseWeakQuestions: (...args) => progress.getCourseWeakQuestions(...args),
+    getQuizWeakQuestions: (...args) => progress.getQuizWeakQuestions(...args),
+    loadWrongBook: () => [],
     getWeakQuestionsError: (...args) => progress.getWeakQuestionsError(...args),
     getLearningResumeError: (...args) => progress.getLearningResumeError(...args),
     buildLearningQuestionBank, getLesson, LEARNING_LESSONS,
@@ -110,8 +112,29 @@ test('今日主行动展示真实推荐原因与完成标准，按任务类型�
   }
 });
 
+test('今日具体测验推荐透传原引用，总数说明覆盖课程与术语且支持区分别计数', () => {
+  const quiz = weak({ questionId: 'almanac:jian:name-to-meaning', questionVersion: 'almanac-v1',
+    sourceKind: 'almanac', lessonId: null, questionType: 'name-to-meaning', termId: 'jian' });
+  const record = recordWith(quiz), content = mount(), primary = element(), calls = [];
+  content.nodes = { '.today-primary-action': primary };
+  const context = vm.createContext({ ...shared(record),
+    loadReviewCards: () => ({}), loadWrongBook: () => ['111111'], getDueCount: () => 0,
+    loadActivity: () => ({ days: [] }), calculateStreak: () => 0,
+    summarizeLearning: () => ({ rank: { label: '初闻' }, checked: 0, total: 25 }),
+    recommendLearningTask: () => ({ type: 'quiz-question', question: quiz, count: 2, reason: '原术语待回练' }),
+  });
+  vm.runInContext(source('learning-mode'), context);
+  context.renderTodaySection(content, (...args) => calls.push(args));
+  assert.match(content.innerHTML, /测验与术语 1 项/); assert.match(content.innerHTML, /旧卦码摘要 1 项/);
+  assert.match(content.innerHTML, /课程、测验与术语共 2 项待温习/);
+  primary.events.click();
+  assert.equal(calls[0][0], 'quiz-mode'); assert.equal(calls[0][1].reference, quiz);
+  assert.equal(calls[0][1].wrongOnly, true); assert.equal(calls[0][1].returnTo.mode, 'review');
+});
+
 function reviewHarness(record, due = ['111111'], appState = {}) {
   const content = mount();
+  content.nodes = { '.mode-panel': element() };
   const calls = [];
   const hex = { binaryCode: '111111', name: '乾', fullName: '乾为天', number: 1 };
   const context = vm.createContext({ ...shared(record), loadReviewCards: () => ({ '111111': {} }),
@@ -120,7 +143,9 @@ function reviewHarness(record, due = ['111111'], appState = {}) {
   vm.runInContext(source('review-mode'), context);
   // Record whether the real queue decides to bypass itself; card behavior is covered separately.
   vm.runInContext('let openedCard = false; renderReviewCard = () => { openedCard = true; };', context);
-  context.renderReviewMode(content, { index: { byCode: new Map([['111111', hex]]) }, ...appState }, entry => calls.push(entry));
+  context.renderReviewMode(content, { index: { byCode: new Map([['111111', hex]]) }, ...appState }, (mode, entry) => {
+    assert.equal(mode, 'learning'); calls.push(entry);
+  });
   return { content, calls, openedCard: vm.runInContext('openedCard', context) };
 }
 
@@ -222,10 +247,11 @@ function learningModeHarness(entry) {
   const tabs = ['today', 'path', 'library', 'profile'].map(section => ({ ...element({ section }), id: `learning-tab-${section}` }));
   outer.nodes = { '.learning-content': content, '.learning-panel': element(), '.learning-tabs': tabList };
   outer.lists = { '.learning-tab': tabs };
-  const frames = [], lessons = [], assessments = [], exits = [], focused = [];
+  const frames = [], lessons = [], assessments = [], almanacs = [], exits = [], focused = [];
   const setContent = (label, oral = false) => {
     const heading = { ...element(), focus: () => focused.push(label) };
-    content.nodes = { '[data-page-heading], h3': heading, '[data-learning-focus="oral"]': oral ? element() : null };
+    content.nodes = { '[data-page-heading], h3': heading, '[data-learning-focus="oral"]': oral ? element() : null,
+      '[data-learning-focus="term"]': null };
   };
   const context = vm.createContext({ ...shared({ lessons: {} }),
     window: { requestAnimationFrame: callback => frames.push(callback) },
@@ -236,6 +262,11 @@ function learningModeHarness(entry) {
     },
     renderLearningAssessmentPage(node, state, options) { assessments.push(options); setContent('assessment', Boolean(options.initialOralLessonId)); },
     renderStudyPathPage() { setContent('path'); },
+    renderAlmanacKnowledgePage(node, state, options) {
+      const item = { options, cleanupCount: 0 }; almanacs.push(item); setContent('term');
+      content.nodes['[data-learning-focus="term"]'] = element();
+      return () => { item.cleanupCount++; };
+    },
     loadReviewCards: () => ({}), loadWrongBook: () => [], getDueCount: () => 0,
     loadActivity: () => ({ days: [] }), calculateStreak: () => 0,
     summarizeLearning: () => ({ rank: { label: '初闻' }, checked: 0, total: 25 }),
@@ -243,9 +274,25 @@ function learningModeHarness(entry) {
   });
   vm.runInContext(source('learning-mode'), context);
   const cleanup = context.renderLearningMode(outer, {}, (...args) => exits.push(args), entry);
-  return { cleanup, content, lessons, assessments, exits, tabs, tabList, focused,
+  return { cleanup, content, lessons, assessments, almanacs, exits, tabs, tabList, focused,
     flush: () => frames.splice(0).forEach(callback => callback()) };
 }
+
+test('术语来源初始入口、明确返回和cleanup保留测验引用，不误进今日或课程小试', () => {
+  const reference = { sourceKind: 'almanac', questionId: 'almanac:jian:name-to-meaning', questionVersion: 'almanac-v1',
+    questionType: 'name-to-meaning', targetCode: null, termId: 'jian', lessonId: null };
+  for (const returnTo of [{ mode: 'review' }, { mode: 'quiz', entry: { wrongOnly: true, reference } }]) {
+    const h = learningModeHarness({ section: 'almanac', termId: 'jian', quizReference: reference, returnTo });
+    assert.equal(h.almanacs.length, 1); assert.equal(h.lessons.length, 0); assert.equal(h.assessments.length, 0);
+    assert.equal(h.almanacs[0].options.termId, 'jian');
+    h.flush(); assert.deepEqual(h.focused, []);
+    h.almanacs[0].options.onBack();
+    assert.equal(h.exits[0][0], returnTo.mode);
+    if (returnTo.mode === 'quiz') assert.equal(h.exits[0][1].reference, reference);
+    h.cleanup(); h.almanacs[0].options.onBack();
+    assert.equal(h.almanacs[0].cleanupCount, 1); assert.equal(h.exits.length, 1);
+  }
+});
 
 test('学习模块切换先清理课程，外层cleanup幂等且旧回调不能重新导航', () => {
   const h = learningModeHarness({ section: 'path', lessonId: 'l1-1', returnTo: 'review' });

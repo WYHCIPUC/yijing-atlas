@@ -1,0 +1,6 @@
+
+> yijing-atlas@1.1.1-rc.2 test:e2e
+> node scripts/browser-smoke.mjs
+
+✓ Chromium 1440×1024 / 1280×720 / 768×1024 / 390×844 / 320×844 布局、鼠标/键盘/触控研读、减少动态与 WebGL 降级通过
+· 浏览器原生 200% 偏好未生效，真实缩放仍未验证：{"outerWidth":1280,"innerWidth":1254,"dpr":1,"visualScale":1}

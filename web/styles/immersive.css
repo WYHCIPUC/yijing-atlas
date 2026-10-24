@@ -460,9 +460,12 @@ body.workspace-mode.panel-open .workspace-insight-bar { display: none; }
 .wing-item > summary, .theorem-item > summary { min-height: 64px; padding-block: 18px; color: var(--silver); }
 .wing-sections, .theorem-points { margin: 10px auto 24px; }
 .theorem-points { padding-left: 54px; }
-.quiz-question, .quiz-explanation { border: 0; border-radius: 3px; color: var(--paper-ink); background: var(--paper-warm); box-shadow: none; }
+.mode-card.quiz-question, .quiz-explanation { border: 0; border-radius: 3px; color: var(--paper-ink); background: var(--paper-warm); box-shadow: none; }
 .quiz-question p, .quiz-explanation p { color: var(--paper-ink); font: 18px/1.9 var(--font-reading) !important; }
 .quiz-question > span, .quiz-explanation :is(strong, small) { color: #72502d; }
+.quiz-explanation .text-button { color: #72502d; }
+.quiz-explanation .text-button:hover { color: var(--paper-ink); }
+.quiz-explanation .text-button:focus-visible { outline-color: #72502d; }
 .quiz-option { min-height: 64px; border-color: var(--silver-line); border-radius: 3px; color: var(--silver); background: transparent; }
 .quiz-option strong { color: var(--silver); }
 .quiz-option-index { border-color: var(--silver-line); color: var(--silver-muted); }
@@ -629,6 +632,9 @@ body.workspace-mode.panel-open .workspace-insight-bar { display: none; }
   body.workspace-mode .detail-panel[data-presentation] .detail-content, body.workspace-mode:not(.lesson-overview-open) .detail-panel[data-presentation] .detail-content { padding: 68px 16px 48px; }
   .mode-hero { align-items: flex-start; gap: 16px; }
   .mode-hero-stat { min-width: 80px; padding-left: 12px; }
+  .quiz-panel .quiz-toolbar { flex-wrap: wrap; justify-content: flex-start; gap: 8px 12px; padding-inline-end: 56px; }
+  .quiz-toolbar .quiz-stats { flex-basis: 100%; }
+  .quiz-toolbar > button { flex: 0 0 auto; min-height: 44px; margin: 0; white-space: nowrap; }
   .learning-tabs, body[data-active-mode="learning"] .learning-tabs { margin-right: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .learning-tab { padding-inline: 6px; min-width: 0; }
   .lesson-manuscript, .wing-sections, .theorem-points, .alm-reading-body { padding: 24px 20px; }

@@ -1,18 +1,18 @@
 # 易象图谱开发建设总册
 
-版本：文档基线 1.16。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
+版本：文档基线 1.17。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
 
 **用途：其他 AI 或开发者只阅读本总册与关联专题，即可接手当前项目，按任务卡逐项开发、验证和交接。**
 
-**当前结论：产品尚未完成全面优化。** 总册与12份专题已建立；原48张卡现已完成T-DIV-01、T-SAVE-01、T-LEARN-05、T-SEARCH-01、T-LEARN-02、T-LEARN-01共6项，42项尚未闭环。最新推荐/续读源码和证据见[推荐交接](development/evidence/2026-10-25-learning-recommendation-integration.md)，课程错题见[课程交接](development/evidence/2026-10-25-course-weak-integration.md)。内容与设备验收门禁继续保留。用户已要求GitHub开发分支、PR与任务同步；生产发布仍需另行安排。
+**当前结论：产品尚未完成全面优化。** 总册与12份专题已建立；原48张卡现已完成T-DIV-01、T-SAVE-01、T-LEARN-05、T-SEARCH-01、T-LEARN-02、T-LEARN-01、T-QUIZ-01共7项，41项尚未闭环。最新具体错题与术语温习见[测验交接](development/evidence/2026-10-25-quiz-integration.md)，推荐/续读见[推荐交接](development/evidence/2026-10-25-learning-recommendation-integration.md)。内容与设备验收门禁继续保留。用户已要求GitHub开发分支、PR与任务同步；生产发布仍需另行安排。
 
-需要查看剩余范围或复制目标时，阅读[未完成事项清单与目标文字](development/REMAINING-WORK-AND-GOAL.md)：逐项列出42项（31已确认、10建议、1独立发布）。三条既有专题要求的执行归属已明确，功能仍待实施；没有新增需求或采纳建议。
+需要查看剩余范围或复制目标时，阅读[未完成事项清单与目标文字](development/REMAINING-WORK-AND-GOAL.md)：逐项列出41项（30已确认、10建议、1独立发布）。三条既有专题要求的执行归属已明确，功能仍待实施；没有新增需求或采纳建议。
 
-**本次盘点更新**：盘点时HEAD为`e22d1e32d54f3203a8f1e46a716fcbf069217b7f`，最近已交付业务提交为`4e8adc8`。T-QUIZ-01本地实现已接通，320px定位与工具栏遮挡分别取得红→绿；修后validate记录为退出0，72脚本、515/515，配置21模块行99.76%、分支94.04%、函数98.96%。当前最终组合13/18个独立专项通过，另5项、完整E2E及业务交付未完成；旧组合17/18仅保留历史，不混算也不重复开发已修复项。e22d1e3的[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40137317904)已核对success，仅覆盖已提交文件。当前只更新清单和目标文字，保护全部实现；详见[最新状态与证据](development/evidence/2026-10-25-remaining-work-toolbar-review.md)。
+**本次业务交付**：T-QUIZ-01完成本地验收：具体规则/术语方向的错题—温习—纠正、六项独立保存重试、旧摘要隔离及跨页清理已接通。320px定位与工具栏遮挡分别红→绿；修后validate退出0，72脚本、515/515，配置21模块行99.76%、分支94.04%、函数98.96%。最终18项独立专项、147次可信输入/49图通过；完整五视口E2E退出0、25图，173份源码哈希一致。原生200%偏好未生效，仍未验证。源码、测试与证据随本次提交交付，远程CI按新提交另记；不能沿用起点9715d5b的绿灯。见[最终验收摘要](development/evidence/2026-10-25-quiz-final-acceptance.json)。[此前42项盘点](development/evidence/2026-10-25-remaining-work-toolbar-review.md)保留当时范围。
 
 **此前搜索交付**：T-SEARCH-01已完成结构搜索、真实资料接线、IME/ARIA与异步保护，以及手机六位码呈现。validate 62脚本、317/317及完整五视口E2E通过，含实际关键词正例的专项矩阵与手机字段红→绿均已记录。来源/完整限制见[搜索整合交接](development/evidence/2026-10-25-search-integration.md)；外部设备、读屏与真实200%不由模拟验收替代。
 
-**最新交付边界**：T-LEARN-01推荐与续读完成本地验收，包含推荐排序/原因、最小恢复位置、欢迎首课、主行动接线、退出清理与可见保存反馈。最终validate为66脚本、427/427，增强1440/390专项6/6及320补充1/1，完整五视口E2E重试退出0并留25张截图。独立审阅无阻断，应用/测试与验收快照一致。首轮Node/libuv原生中止保留，真机、读屏与真实200%未被模拟输入替代。见[完整交接](development/evidence/2026-10-25-learning-recommendation-integration.md)。T-QUIZ-01的课程前置已满足，下一步处理自由测验/黄历术语错题。
+**此前推荐交付边界**：T-LEARN-01推荐与续读完成本地验收，包含推荐排序/原因、最小恢复位置、欢迎首课、主行动接线、退出清理与可见保存反馈。最终validate为66脚本、427/427，增强1440/390专项6/6及320补充1/1，完整五视口E2E重试退出0并留25张截图。独立审阅无阻断，应用/测试与验收快照一致。首轮Node/libuv原生中止保留，真机、读屏与真实200%未被模拟输入替代。见[完整交接](development/evidence/2026-10-25-learning-recommendation-integration.md)。后继T-QUIZ-01亦已完成本地验收，学习闭环下一项为T-LEARN-03。
 
 **GitHub**：课程业务与证据已推送开发分支，Draft PR继续同步。此前文档提交`710dba7`的[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40130249757)已核对success；该绿灯不覆盖后续`995dd2c`，[995dd2c的PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40130504986)已核对success（validate与Browser smoke均成功），仅覆盖已提交版本，本地验收不能代替远程CI。没有合并main或生产发布。
 

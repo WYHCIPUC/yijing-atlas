@@ -256,3 +256,105 @@ test('含续读的备份写入失败尝试回滚原位置、成绩、弱项和�
   assert.equal(target.getItem(key), previous);
   assert.equal(target.getItem('yijing.study.v1'), '{"old":true}');
 });
+
+function quizAttemptRecord() {
+  const reference = {
+    sourceKind: 'quiz', questionId: 'quiz:opposite:111111', questionVersion: 'quiz-v1',
+    questionType: 'opposite', targetCode: '111111', termId: null, lessonId: null,
+  };
+  return {
+    ...weakRecord(), resume: backupResume(),
+    quizAttempts: {
+      'quiz-review-1': {
+        attemptId: 'quiz-review-1', reference, correct: true, mode: 'review',
+        at: '2026-10-25T09:00:00.000Z', weakOutcome: 'resolved',
+        recoveredFrom: { attemptId: 'quiz-wrong-1', at: '2026-10-25T08:00:00.000Z' },
+      },
+    },
+  };
+}
+
+test('自由测验回执与统计按原十一键往返，旧缺字段保持兼容', () => {
+  const record = quizAttemptRecord();
+  const stats = { total: 2, correct: 1, attempts: {
+    'quiz-wrong-1': { questionId: 'quiz:opposite:111111', correct: false },
+    'quiz-review-1': { questionId: 'quiz:opposite:111111', correct: true },
+  } };
+  const source = storage({
+    'yijing-learning-record-v2': JSON.stringify(record),
+    'yijing-quiz-stats': JSON.stringify(stats), 'yijing-quiz-wrong': '["000000"]',
+  });
+  const target = storage();
+  importUserData(parseUserData(JSON.stringify(exportUserData(source))), target);
+  assert.equal(USER_DATA_KEYS.length, 11);
+  assert.deepEqual(JSON.parse(target.getItem('yijing-learning-record-v2')), record);
+  assert.deepEqual(JSON.parse(target.getItem('yijing-quiz-stats')), stats);
+  assert.equal(target.getItem('yijing-quiz-wrong'), '["000000"]');
+  const old = weakRecord();
+  importUserData(weakSnapshot(old), target);
+  assert.equal(JSON.parse(target.getItem('yijing-learning-record-v2')).quizAttempts, undefined);
+  assert.deepEqual(JSON.parse(target.getItem('yijing-quiz-stats')), stats);
+});
+
+test('坏自由回执导入报告字段位置，验证前不写其他键', () => {
+  const key = 'yijing-learning-record-v2';
+  const valid = quizAttemptRecord();
+  const original = JSON.stringify(valid);
+  const receipt = valid.quizAttempts['quiz-review-1'];
+  const cases = [
+    [null, 'quizAttempts'], [[], 'quizAttempts'],
+    [{ other: receipt }, 'quizAttempts[other].attemptId'],
+    [{ 'quiz-review-1': { ...receipt, mode: 'course' } }, 'quizAttempts[quiz-review-1].mode'],
+    [{ 'quiz-review-1': { ...receipt, recoveredFrom: null } }, 'quizAttempts[quiz-review-1].recoveredFrom'],
+    [{ 'quiz-review-1': { ...receipt, recoveredFrom: { attemptId: '', at: receipt.at } } }, 'quizAttempts[quiz-review-1].recoveredFrom.attemptId'],
+  ];
+  for (const [quizAttempts, path] of cases) {
+    const target = storage({ [key]: original, 'yijing.study.v1': '{"old":true}' });
+    const snapshot = weakSnapshot({ ...valid, quizAttempts });
+    snapshot.data['yijing.study.v1'] = { incoming: true };
+    const match = (error) => error.message.includes(`${key}.${path}`);
+    assert.throws(() => parseUserData(JSON.stringify(snapshot)), match, path);
+    assert.throws(() => importUserData(snapshot, target), match, path);
+    assert.equal(target.getItem(key), original);
+    assert.equal(target.getItem('yijing.study.v1'), '{"old":true}');
+  }
+});
+
+test('坏测验统计attempts导入使用引擎字段路径且保持旧值', () => {
+  const key = 'yijing-quiz-stats';
+  const cases = [
+    [null, 'attempts'], [[], 'attempts'],
+    [{ a: { questionId: '', correct: false } }, 'attempts[a].questionId'],
+    [{ a: { questionId: 'quiz:name:111111', correct: 'false' } }, 'attempts[a].correct'],
+  ];
+  for (const [attempts, path] of cases) {
+    const target = storage({ [key]: '{"total":3,"correct":1}' });
+    const snapshot = { format: 'yijing-atlas-user-data', version: 1,
+      data: { [key]: { total: 3, correct: 1, attempts } } };
+    const match = (error) => error.message.includes(`${key}.${path}`);
+    assert.throws(() => parseUserData(JSON.stringify(snapshot)), match, path);
+    assert.throws(() => importUserData(snapshot, target), match, path);
+    assert.equal(target.getItem(key), '{"total":3,"correct":1}');
+  }
+});
+
+test('导入回执后续键写失败仍尝试回滚学习与统计两套原证据', () => {
+  const key = 'yijing-learning-record-v2';
+  const original = JSON.stringify(quizAttemptRecord());
+  const originalStats = '{"total":3,"correct":1}';
+  const target = storage({ [key]: original, 'yijing-quiz-stats': originalStats });
+  const setItem = target.setItem;
+  let blocked = true;
+  target.setItem = (name, value) => {
+    if (name === 'yijing-learning-review-config-v1' && blocked) { blocked = false; throw new Error('quota'); }
+    setItem(name, value);
+  };
+  const incoming = quizAttemptRecord();
+  incoming.quizAttempts = {};
+  const snapshot = weakSnapshot(incoming);
+  snapshot.data['yijing-quiz-stats'] = { total: 0, correct: 0, attempts: {} };
+  snapshot.data['yijing-learning-review-config-v1'] = { endpoint: '/api/review' };
+  assert.throws(() => importUserData(snapshot, target), /导入失败/);
+  assert.equal(target.getItem(key), original);
+  assert.equal(target.getItem('yijing-quiz-stats'), originalStats);
+});

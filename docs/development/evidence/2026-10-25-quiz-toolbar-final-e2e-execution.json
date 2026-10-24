@@ -1,0 +1,17 @@
+{
+  "log": "2026-10-25-quiz-toolbar-final-e2e.log",
+  "runtime": "Node v24.19.0; child PATH only",
+  "endedAt": "2026-10-24T22:28:11.8497919Z",
+  "startedAt": "2026-10-24T22:27:25.1429632Z",
+  "nativeZoomRequested": true,
+  "exitCode": 0,
+  "newScreenshotDirectories": [
+    {
+      "directory": "docs/screenshots/smoke-2026-10-24T22-27-25-564Z",
+      "screenshots": 25
+    }
+  ],
+  "screenshotsEnabled": true,
+  "sourceHead": "9715d5bdc9c978e51c99e6bad56dd8e8087870ac",
+  "command": "npm run test:e2e"
+}

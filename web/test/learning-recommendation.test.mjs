@@ -13,6 +13,13 @@ const weak = (questionId, lessonId = 'l1-1', lastWrongAt = '2026-10-25T06:00:00Z
   firstWrongAt: lastWrongAt, lastWrongAt, lastSessionId: 'original', wrongCount: 1,
   status: 'due', lastReviewedAt: null, resolvedAt: null,
 });
+const quizWeak = (lastWrongAt = '2026-10-25T07:00:00Z', sourceKind = 'quiz') => ({
+  ...weak(sourceKind === 'quiz' ? 'quiz:opposite:111111' : 'almanac:lichun:name-to-meaning', null, lastWrongAt),
+  sourceKind, questionVersion: sourceKind === 'quiz' ? 'quiz-v1' : 'almanac-v1',
+  questionType: sourceKind === 'quiz' ? 'opposite' : 'name-to-meaning',
+  targetCode: sourceKind === 'quiz' ? '111111' : null, termId: sourceKind === 'almanac' ? 'lichun' : null,
+});
+const withWeak = (...entries) => ({ weakQuestions: Object.fromEntries(entries.map(item => [item.questionId, item])) });
 const allViewed = () => ({ lessons: Object.fromEntries(lessons.map(lesson => [lesson.id, {
   viewedAt: '2026-10-01T01:00:00Z', lastStudiedAt: '2026-10-01T01:00:00Z', bestScore: 0.1,
 }])) });
@@ -80,6 +87,58 @@ test('课程薄弱项已纠正后不再推荐；旧测验卦码只进入错题�
   assert.equal(task.subject, '000000');
   assert.equal(task.question, undefined);
   assert.equal(task.questionVersion, undefined);
+});
+
+test('具体测验与黄历原题按最近错误参与课程弱项层级，旧卦码不能抢先', () => {
+  for (const sourceKind of ['quiz', 'almanac']) {
+    const current = quizWeak('2026-10-25T07:00:00Z', sourceKind);
+    const record = withWeak(weak('course'), current);
+    const before = JSON.stringify(record);
+    const task = recommend(record, { wrongCodes: ['000000'] });
+    assert.equal(task.type, 'quiz-question');
+    assert.equal(task.subject, current.questionId);
+    assert.deepEqual(task.question, current);
+    assert.equal(task.count, 2);
+    assert.ok(task.reason);
+    task.question.status = 'resolved';
+    assert.equal(JSON.stringify(record), before, '推荐完整副本，不纠正原记录');
+    const newerCourse = weak('course', 'l1-2', '2026-10-25T07:30:00Z');
+    const newer = recommend(withWeak(current, newerCourse));
+    assert.equal(newer.type, 'course-weak');
+    assert.equal(newer.subject, 'course');
+    assert.equal(newer.count, 2);
+  }
+});
+
+test('同时间跨来源弱项排序稳定，保留原课程课序且不依赖存储插入顺序', () => {
+  const time = '2026-10-25T07:00:00Z';
+  const entries = [quizWeak(time), weak('a', 'l1-2', time), quizWeak(time, 'almanac'), weak('z', 'l1-1', time)];
+  assert.deepEqual(recommend(withWeak(...entries)), recommend(withWeak(...entries.toReversed())));
+  assert.equal(recommend(withWeak(...entries)).subject, 'z');
+  const onlyQuiz = entries.filter(item => item.sourceKind !== 'course');
+  assert.deepEqual(recommend(withWeak(...onlyQuiz)), recommend(withWeak(...onlyQuiz.toReversed())));
+  assert.equal(recommend(withWeak(...onlyQuiz)).subject, 'almanac:lichun:name-to-meaning');
+});
+
+test('具体弱项不抢占续读和到期卡；已纠正项退回旧卦码且不重造引用', () => {
+  const current = quizWeak();
+  const record = withWeak(current);
+  assert.equal(recommend({ ...record, resume }).type, 'resume');
+  assert.equal(recommend(record, { reviewCards: { '000000': card('000000') } }).type, 'review');
+  current.status = 'resolved';
+  current.resolvedAt = '2026-10-25T07:30:00Z';
+  const task = recommend(record, { wrongCodes: ['000000'] });
+  assert.equal(task.type, 'quiz-weak');
+  assert.equal(task.question, undefined);
+  assert.equal(task.count, 1);
+});
+
+test('合法旧版具体弱项保留原引用供界面说明，坏集合不构造待练题', () => {
+  const previous = { ...quizWeak(), questionVersion: 'quiz-old' };
+  const task = recommend(withWeak(previous));
+  assert.equal(task.type, 'quiz-question');
+  assert.equal(task.question.questionVersion, 'quiz-old');
+  assert.equal(recommend(withWeak({ ...previous, questionType: '' })).type, 'lesson');
 });
 
 test('旧弱项课程已移除时不构造无效课程入口', () => {

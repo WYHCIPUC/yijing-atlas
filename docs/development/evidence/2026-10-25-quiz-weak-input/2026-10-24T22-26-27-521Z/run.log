@@ -1,0 +1,4 @@
+START 2026-10-24T22-26-27-521Z v22.23.1 profile=C:\Users\1\AppData\Local\Temp\yijing-quiz-weak-P15xZZ
+RUN 390-stale-offline
+PASS 390-stale-offline
+{"status":"passed","passed":1,"total":1,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-quiz-weak-input\\2026-10-24T22-26-27-521Z\\trace.json","profile":"C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-P15xZZ"}

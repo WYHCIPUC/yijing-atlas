@@ -1,11 +1,11 @@
 # 08 · 数据、持久化、内容来源与发布门禁
 
-初始事实快照：2026-10-24；学习记录与 §7.1 契约增量更新：2026-10-25。旧日期的验证结论保留原适用范围，不把目录有效等同于内容已校勘。
+初始事实快照：2026-10-24；学习记录与 §7.1 契约增量更新：2026-10-25。自由测验新增回执与分项保存见 §7.1.6，T-QUIZ-01已完成本地验收，交付随本次提交。旧日期的验证结论保留原适用范围，不把目录有效等同于内容已校勘。
 
 | 状态轴 | 当前结论 |
 | --- | --- |
 | 实现状态 | 核心 JSON、结构校验、本地记录、旧数据兼容、导出导入和内容来源标记已经存在；六家注疏尚未达到开放门禁 |
-| 验证状态 | 2026-10-24 编制时 `check` 与 `validate` 通过，230 项测试通过；2026-10-25 学习弱项数据专项见 §7.1。不代表古典正文逐条校勘、所有备份容量或浏览器操作均已验收 |
+| 验证状态 | 2026-10-24 编制时 `check` 与 `validate` 通过，230 项测试通过；2026-10-25 学习弱项及自由测验专项见 §7.1。自由测验最终源码validate515/515、18/18独立专项及完整五视口E2E退出0，不沿用前卡绿灯；不代表古典正文逐条校勘、所有备份容量、真机或读屏操作均已验收 |
 | 交付状态 | 本地工作区文档和实现；内容门禁保持关闭，未进行远程发布 |
 
 [返回开发建设总册](../DEVELOPMENT-MASTER.md) · [测试与证据](10-testing-evidence.md) · [执行任务表](12-ai-execution-tasks.md)
@@ -199,8 +199,8 @@ UI 显示数量和避让策略由星图负责，不能为放下长词直接改�
 | 键 | 结构与规则 | 当前验证/边界 |
 | --- | --- | --- |
 | `yijing-review-cards` | 六位卦码→卡对象 | 卡 code 等于键；stage 0—7；due/lastReview 有限数；lapses/reps 非负整数；introducedAt 可选有限数 |
-| `yijing-quiz-wrong` | 六位卦码字符串数组 | 每项合法；load 去重；添加已有项不重复写 |
-| `yijing-quiz-stats` | `{total,correct}` | 非负整数，correct ≤ total |
+| `yijing-quiz-wrong` | 六位卦码字符串数组 | 历史未知题型摘要；每项合法、load去重；本轮新具体错题不写此键，legacy正确练习仅删除对应旧摘要 |
+| `yijing-quiz-stats` | `{total,correct,attempts?}` | total/correct为非负安全整数，correct≤total；旧无attempts合法，新增逐作答回执契约见§7.1.6 |
 | `yijing-notes` | 六位卦码→字符串 | 当前只对顶层对象做宽校验；读取当前卦时仅接受字符串，导入没有全面逐值深校验 |
 
 复习卡字段：`code,stage,due,introducedAt,lapses,reps,lastReview`。
@@ -219,7 +219,7 @@ UI 显示数量和避让策略由星图负责，不能为放下长词直接改�
 | 键 | 当前结构 | 限额与兼容 |
 | --- | --- | --- |
 | `yijing.study.v1` | 课程 ID→布尔 | 旧格式，仍保留迁移/兼容 |
-| `yijing-learning-record-v2` | `{version:2,lessons,spotChecks,exams,oralReviews}`，另有可选 `assessmentSessions,processedAssessmentIds,weakQuestions` | 抽查、阶段考评和复讲历史各最多80项；正式 ID、辅助凭据与弱项不随这项历史截断 |
+| `yijing-learning-record-v2` | `{version:2,lessons,spotChecks,exams,oralReviews}`，另有可选 `assessmentSessions,processedAssessmentIds,weakQuestions,resume,quizAttempts` | 抽查、阶段考评和复讲历史各最多80项；正式ID、辅助凭据、弱项和测验回执不随这项历史截断；resume为可选最小位置 |
 | `yijing-activity-v1` | `{days:['YYYY-MM-DD']}` | 去重排序、最多400天，使用设备本地日 |
 | `yijing-learning-review-config-v1` | `{endpoint:''}` | 空或当前允许的同源路径字符串，无模型密钥 |
 
@@ -236,6 +236,8 @@ bestScore 为课后小试最好正确率；浏览并不等于小试通过。
 
 **2026-10-25课程弱项交付，代码995dd2c**：课程弱项的字段校验、只读查询、交卷入队/纠正、坏字段读取保护、导入路径错误和备份往返已经实现。`lesson/spot/exam`新会话把成绩、正式ID、辅助凭据和弱项变化保存到同一个键，一次写入成功才算保存。后续页面、真实交互、完整E2E与独立审阅也已完成，T-LEARN-02本地交付关闭，业务与完整证据已推送；数据回归仍只证明其限定范围，详见§7.1及[课程错题交接](evidence/2026-10-25-course-weak-integration.md)。
 
+**2026-10-25自由测验增量，本地验收完成**：新具体错题沿用weakQuestions，另在同一学习键增加可选quizAttempts；统计键增加可选attempts。新字段与旧总分/课程记录兼容，11个备份键、外层格式版本及1 MiB导入上限不变。精确回练、原回执重试、分项保存及页面已接线；最终validate515/515、18/18独立专项和完整E2E均通过。源码与证据随本次提交交付，远程CI另按实际结果登记；字段、写入边界与证据位置见§7.1.6。
+
 掌握度当前权重为浏览10、小试35、抽查20、复讲15、阶段20。
 自评与智能评阅都形成复讲证据，不存在靠成绩锁课的机制。
 不要在数据修复时抬高分数或把旧浏览记录转成已考评。
@@ -249,6 +251,8 @@ achievements 按成就 ID 保存 `unlockedAt,evidence`，evidence 的当前/目�
 metadata 有严格允许键，不接受个人私问、长笔记或任意附加对象。
 `processAchievementEvent()` 先迁移状态、应用幂等，再在接受时保存；accepted 与 saved 不是同一事实。
 processedKeys 目前无持久化增长上限，不能随意裁剪而让旧事件重新发奖。
+
+T-QUIZ-01新路径只从成功保存的具体回练recovery发`quiz.recovered`；事件subjectId长度仍受既有128字符上限约束。完整questionId不超过128字符时照旧使用；当前页面路径的更长黄历题号使用`alm:n:<termId>`或`alm:m:<termId>`分别表示两个方向。生成器与页面协调器接受的termId最大120字符，所以该路径的缩写最长126；数据API和导入的结构校验边界另见§7.1.6。完整七字段reference留在学习键quizAttempts回执内，缩写不截断termId、不截断完整ID来制造碰撞，也不改变旧事件ID。详细映射与幂等键见§7.1.6。
 
 **验收**：重复 idempotencyKey 不重复累计；无效事件不保存；存储失败不假称已记入修习谱。
 **任务关联**：[T-CAPACITY-01](12-ai-execution-tasks.md#t-capacity-01)、[T-SAVE-01](12-ai-execution-tasks.md#t-save-01)。
@@ -289,6 +293,7 @@ V1 的 `legacySummaryOnly:true` 表明不能复现六爻老少、全部动爻与
 | `yijing:star-entrance` | sessionStorage | 当前会话已播放星图入场 | 不包含 |
 | readingDrafts | JavaScript Map | 未保存笔记草稿 | 不包含 |
 | readingSnapshot | JavaScript 对象 | 镜头、关系、轨迹等返回上下文 | 不包含 |
+| 自由测验attempt/答案 | quiz-session的WeakMap及当前页面闭包 | 本轮候选、正确答案、所选值、原回执与分项重试状态；离开/刷新不承诺恢复 | 不包含；仅必要公开引用与判分事实另按§7.1.6持久化 |
 | history.state | 浏览历史 | 阅读层级、章节等导航状态 | 不包含 |
 
 布局/抽屉偏好不能被新快读/深读层级写回覆盖。
@@ -296,7 +301,7 @@ V1 的 `legacySummaryOnly:true` 表明不能复现六爻老少、全部动爻与
 
 ## 7. 迁移规则
 
-学习 V2 缺失、JSON 损坏或基础记录结构验证失败时，以旧 study 布尔映射生成 fallback。基础成绩有效而可选 `processedAssessmentIds` 或 `weakQuestions` 损坏时，读取保留原记录供查看，不走空成绩 fallback；新写入严格拒绝，导入在修改任何键之前报出路径。
+学习 V2 通用读取在缺失、JSON损坏或基础记录结构验证失败时，以旧study布尔映射生成fallback。基础成绩有效而可选`processedAssessmentIds`、`weakQuestions`、`resume`或`quizAttempts`损坏时，读取保留原记录供查看，不走空成绩fallback；新写入严格拒绝，导入在修改任何键之前报出路径。T-QUIZ-01写入口额外严格读取原始存储：不可读/JSON坏值不沿显示fallback写回空值，具体边界见§7.1.6。
 true 课程得到 `viewedAt:new Date(0).toISOString()`，不生成虚构的最近学习时间、成绩或复讲。
 读取 fallback 本身不意味着立即覆盖旧键；后续保存走新格式。
 成就 v0 events 可由 `migrateAchievementState()` 转成当前结构，必须保持事件幂等。
@@ -316,7 +321,8 @@ true 课程得到 `viewedAt:new Date(0).toISOString()`，不生成虚构的最�
 | --- | --- | --- |
 | resume | null 或位置对象，缺失视 null | 已实现；T-LEARN-01完成本地验收交付，校验/保存/备份及推荐入口已接通；数据47/47、最终validate427/427、1440/390专项6/6、320px补充1/1及完整E2E通过，范围见§7.1.1 |
 | processedAssessmentIds | 唯一非空字符串数组，每项最长120字符；缺失合法 | 已实现；T-LEARN-05 的既有验证见 §6.2，不随80条历史截断；长期容量仍待 T-CAPACITY-01 |
-| weakQuestions | 以 questionId 为键的对象，缺失合法、查询视空 | 已确认；课程数据契约、页面和原题回练已完成，T-LEARN-02本地交付及源码/证据推送完成；自由测验等其他来源的业务入口仍属于后续任务 |
+| weakQuestions | 以questionId为键的对象，缺失合法、查询视空 | 课程数据/页面和原题回练已完成T-LEARN-02交付；自由测验quiz/almanac新业务入口已接线，T-QUIZ-01已完成本地验收，见§7.1.6 |
+| quizAttempts | 以attemptId为键的具体测验回执对象，缺失合法 | 本轮已实现字段校验/同键弱项保存/重试及备份；不能用这些限定结果代替整卡验收，见§7.1.6 |
 
 #### 7.1.1 resume：已实现契约与验收边界
 
@@ -331,23 +337,23 @@ T-LEARN-01已完成本地验收交付：最新validate427/427，1440桌面/390�
 | 字段 | 当前约束与来源 |
 | --- | --- |
 | questionId | 去除首尾空白后非空的字符串，长度≤160，与对象键一致；课程沿用稳定题 ID，不从题干或显示名称推造 |
-| questionVersion | 新课程结果必须为 `curriculum-v1`；历史读取/导入允许长度≤120的非空版本标识，未知版本原样保留，不自动升级 |
-| sourceKind | `course / quiz / almanac`；本轮写入固定为 course，包含 L5 课程；未知来源值属于结构错误 |
-| lessonId | course 必须是非空字符串；其他来源为非空字符串或 null。新课程写入须通过当前 `getLesson()`，且 lesson 小试逐题 lessonId 必须与卷头 lessonId 一致。历史已失效课程 ID 保留，不因当前课程表缺项拒绝整份备份 |
-| questionType | 当前 `curriculum-v1` 的 course 必须为题库实际 kind：`recall / evidence`；不是课程类型。quiz 只允许 `opposite / reversed / interlocking / name`；almanac 保留非空提问方向。未知历史课程版本保留非空类型，由回练入口判断兼容性 |
+| questionVersion | 新课程结果为`curriculum-v1`；新自由卦题为`quiz-v1`、独立术语题为`almanac-v1`；历史读取/导入允许长度≤120的非空版本标识，未知版本原样保留，不自动升级 |
+| sourceKind | `course / quiz / almanac`；课程含L5沿用course，新自由测验写quiz或almanac；未知来源值属于结构错误 |
+| lessonId | course必须是非空字符串；通用旧弱项结构允许其他来源非空字符串或null，但新quiz/almanac引用强制null。新课程须通过当前getLesson()，且lesson小试逐题lessonId与卷头一致；历史已失效课程ID保留，不因当前课程表缺项拒绝整份备份 |
+| questionType | 当前curriculum-v1的course为实际kind：recall/evidence；quiz限opposite/reversed/interlocking/name。通用弱项读取为almanac保留非空历史方向，新术语写入/精确回练仅name-to-meaning或meaning-to-name；未知历史引用由回练入口判断兼容性 |
 | targetCode | 六位 0/1 字符串或 null；quiz 必须有六位码。新课程从真实六爻卦资料取得，理论、经传、三爻题可为 null，禁止把三爻码拼成六爻码 |
 | termId | 非空字符串或 null；almanac 必须有术语引用。新 L5 课程从原术语实体取得；历史已失效术语 ID 保留，数据层不把来源失效当成结构错误 |
 | firstWrongAt / lastWrongAt | 含日期、时间及 Z/时区偏移且可解析的 ISO 字符串；首次错误时间保留，最近错误随有效新错误更新 |
-| lastSessionId | 去除首尾空白后非空的字符串，长度≤120；最近一次有效错误或纠正的原考评 session ID |
-| wrongCount | 正安全整数；同 session 同 question 只增加一次，递增溢出安全整数时整次保存失败 |
+| lastSessionId | 去除首尾空白后非空的字符串，长度≤120；课程为最近有效错误/纠正的sessionId，自由测验为attemptId，不据旧摘要补造 |
+| wrongCount | 正安全整数；同session/attempt同question只增加一次，递增溢出安全整数时整次弱项保存失败 |
 | status | `due / reviewed / resolved`；due 和 reviewed 都在待回练集合，resolved 保留历史但不计入待回练数量 |
 | lastReviewedAt / resolvedAt | ISO 时间或 null；resolved 必须有 resolvedAt。有效答对更新两者；新错误回 due、清 resolvedAt，并保留此前 lastReviewedAt |
 
 字段的“非空”检查不修剪、改名或重写存量标识。当前新写入只复制公开引用和错误状态，不保存题干、选项全集、所选答案或私人文本。结构校验不等于对任意外部 JSON 的未知字段剥离，也不等于题目内容或来源已经校勘。
 
-自由测验的 `quiz:<题型>:<卦码>`、独立术语题的 `almanac:<术语ID>:<提问方向>` 继续作为原建设约定；本轮没有生成这些来源的新业务入口。旧 `yijing-quiz-wrong` 六位码数组继续兼容读取/备份，不能据此补造具体题型、版本和答题过程，也不把非卦课程题塞入卦象复习卡。
+课程交付时，`quiz:<题型>:<卦码>`和`almanac:<术语ID>:<提问方向>`仅为后续约定；2026-10-25本轮已经实现这些来源的新写入和精确回练，并独立完成T-QUIZ-01本地验收。旧`yijing-quiz-wrong`六位码数组继续兼容读取/备份，单列为未知题型摘要，不能据此补造具体题型、版本和答题过程，也不把非卦课程题塞入卦象复习卡。
 
-#### 7.1.3 新交卷、去重与纠正
+#### 7.1.3 课程新交卷、去重与纠正
 
 现有 `gradeAssessment().results` 每项仍含 questionId、lessonId、correct；新版题库额外给出 questionVersion、questionType、targetCode、termId。四个新字段完全缺失的旧结果保持原成绩兼容，不生成弱项；只要出现任一个新字段，就要求完整合法的新版引用和有效 session ID，不能把残缺新结果降格为旧结果后保存。
 
@@ -368,11 +374,11 @@ T-LEARN-01已完成本地验收交付：最新validate427/427，1440桌面/390�
 | `getAssessmentIdsError(value)` | 字段缺失返回 null；非法数组、重复/空/超长 ID 返回 `processedAssessmentIds` 或具体 `[index]` 路径 |
 | `getWeakQuestionsError(value)` | 字段缺失或结构合法返回 null；否则返回首个字段路径，如 `weakQuestions[题号].wrongCount`；不查当前题库来删除历史引用 |
 | `getCourseWeakQuestions(record, { includeResolved = false } = {})` | 默认返回 course 的 due/reviewed 完整条目副本数组；true 包含 resolved。按 lastWrongAt 降序、questionId 字典序排序；缺字段或坏集合返回空数组，不修改原记录、不写存储。调用方须另查错误 API，区分异常和真正空队列 |
-| `loadLearningRecord(storage)` | 基础成绩有效而新增 ID/弱项字段损坏时返回原记录，不降成空成绩；合法旧 receipt 的 ID 仅在内存兼容合并，读取不落盘 |
+| `loadLearningRecord(storage)` | 基础成绩有效而新增ID/弱项/resume/quizAttempts字段损坏时返回原记录，不降成空成绩；合法旧课程receipt的ID仅在内存兼容合并，读取不落盘 |
 | `saveLearningRecord(record, storage)` | 通过完整学习记录校验才写入；新增字段异常返回 false，避免后续浏览/交卷/复讲覆盖原有效记录 |
 | `recordLearningAssessment(kind, assessment, now, storage)` | 保持原 `{record,saved,duplicate?,entry?,evidenceMissing?}` 返回契约，正常新会话执行上述同键写入和弱项变化；保存成功才允许页面宣称入队/纠正 |
 
-`user-data` 在写入任何键之前复用这两个路径校验器，错误消息包含完整位置，例如 `yijing-learning-record-v2.weakQuestions[题号].questionVersion`。旧备份缺新增字段仍合法；历史版本、题号、课程或术语当前找不到不等于结构错误，交给页面提供来源回退。
+`user-data`在写入任何键之前复用学习ID、弱项、resume、quizAttempts及测验统计的路径校验器，错误消息包含完整位置，例如`yijing-learning-record-v2.weakQuestions[题号].questionVersion`。旧备份缺新增字段仍合法；历史版本、题号、课程或术语当前找不到不等于结构错误，交给页面提供来源回退；自由测验回执自身仍须符合§7.1.6的结构与ID关系。
 
 统一备份保持原 11 键、外层 format/version 和 1 MiB 导入限制。缺学习键保留当前值，null 删除，包含学习键则整键替换；旧备份含学习键但没有 weakQuestions 时，恢复后也没有该备份未保存的弱项，不进行嵌套合并。写失败仍沿原流程尝试回滚，不能宣称回滚必定成功。
 
@@ -383,6 +389,110 @@ T-LEARN-01已完成本地验收交付：最新validate427/427，1440桌面/390�
 这些证据覆盖数据层的入队/纠正/再错、旧 ID/receipt 不补造、版本与引用保留、失败重试、80条截断后判重、坏字段读取保护、导入路径拒绝、备份往返和写失败回滚。数据层结果本身不是页面真实输入、浏览器、全量发布门禁或长期容量的通过证据。后续课程版本已完成validate370/370、真实专项6/6、完整五视口E2E25图，以及独立数据/UI审阅；源码和完整证据已提交并推送`995dd2c`，T-LEARN-02本地交付完成，见[课程错题交接](evidence/2026-10-25-course-weak-integration.md)。[995dd2c的PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40130504986)已核对success（validate与Browser smoke均成功），仅覆盖已提交版本；真机、读屏和真实200%仍按外部验收保留。resume后续独立完成T-LEARN-01本地验收，见§7.1.1；自由测验证据、长期容量及更广的备份深校验仍按原任务分别推进，不能随课程卡关闭。实施设计和原始未覆盖事项见[课程弱项设计记录](evidence/2026-10-25-course-weak-questions-design.md)，当时未实施状态保留为历史。
 
 **任务关联**：[T-LEARN-02](12-ai-execution-tasks.md#t-learn-02)、[T-LEARN-01](12-ai-execution-tasks.md#t-learn-01)、[T-QUIZ-01](12-ai-execution-tasks.md#t-quiz-01)。
+
+<a id="quiz-attempt-contract"></a>
+#### 7.1.6 自由测验作答回执、精确弱项与六项保存：T-QUIZ-01
+
+**状态**：需求已确认；本轮接口、数据和页面接线已实现，T-QUIZ-01本地验收完成，源码、证据与文档随本次提交交付。320px定位条件不足与返回工具栏真实遮挡已经分别复现、修复，见[专项诊断](evidence/2026-10-25-quiz-toolbar-diagnosis.md)。修后[最终validate](evidence/2026-10-25-quiz-toolbar-final-validation.json)为session6010、exit0，72脚本、515/515，配置21模块行99.76%、分支94.04%、函数98.96%；173份源文件与快照一致。[最终验收记录](evidence/2026-10-25-quiz-final-acceptance.json)核对18/18独立专项（147次可信输入、49图、采用轮次页面异常0）及完整五视口E2E的session52778终态exit0、25图。提交/推送与对应远程CI按实际结果另记，不预填SHA、不沿用旧CI。源码为[quiz-engine.js](../../web/js/quiz-engine.js)、[quiz-session.js](../../web/js/quiz-session.js)、[learning-progress.js](../../web/js/learning-progress.js)、[user-data.js](../../web/js/user-data.js)；页面流程见[学习专题§10](04-learning-library-assessment.md#free-quiz)，完整范围见[测验交接](evidence/2026-10-25-quiz-integration.md)。早期单桌面与失败记录保留原适用范围。
+
+本次继续使用统计键和学习V2键，不增加备份白名单键或外层格式版本。课程processedAssessmentIds/assessmentSessions仍用于原三种考评，不把自由单题塞入课程session，也不裁剪已有幂等身份。
+
+**A. 公开reference七字段**
+
+正常生成、作答协调与学习回执只复制以下七字段；来源资料和题干通过这些引用重新读取。
+
+| 字段 | 类型、当前合法值与来源 |
+| --- | --- |
+| sourceKind | 新自由测验为`quiz`或`almanac`；课程继续用其独立course路径 |
+| questionId | 非空字符串≤160；quiz严格等于`quiz:<questionType>:<targetCode>`，almanac严格等于`almanac:<termId>:<questionType>` |
+| questionVersion | 非空字符串≤120；新写入/当前精确回练仅quiz-v1或almanac-v1；结构合法的历史版本可保留，不能自动视为当前可答 |
+| questionType | quiz为opposite/reversed/interlocking/name；almanac为name-to-meaning/meaning-to-name。术语页面题目的`type='almanac'`不代替方向字段 |
+| targetCode | quiz为真实六位0/1码；almanac必须null。实际题库/来源存在性由出题及精确解析核对 |
+| termId | quiz必须null；almanac必须非空。术语题生成器及当前页面协调器只接受≤120字符的真实资料ID；数据API/回执导入没有独立的120字符上限，按各自结构规则及完整questionId≤160校验。合法历史引用保留，当前资料不存在时由入口解释，不换随机术语 |
+| lessonId | 两类自由测验固定null；不能凭名称把独立术语题归成某一课已完成 |
+
+`generateQuestion(hexagrams,type=null,targetCode=null)`保留原参数并附reference。`generateAlmanacQuestion(terms,{termId?,direction?}={})`可明确两种方向；至少四个合法且不同的目标供选项组成。`resolveQuizQuestion(appState,reference)`返回`{ok:true,question}`或`{ok:false,reason}`，精确核对七字段、当前版本与实际资料；失败不偷偷换成其他规则、方向或目标。随机入口选择候选与选项顺序仍可随机，不作为稳定题目身份。
+
+结构校验不查询当前资料：数据API及导入通过，只说明符合各自字段和ID关系约束，不保证来源存在或当前版本可出题。结构合法的历史字段和版本可以保留；进入回练时仍须经过`resolveQuizQuestion`，不得因导入成功直接标为当前可用。
+
+**B. yijing-quiz-stats的attempts**
+
+| 字段 | 类型与校验 | 读写与兼容 |
+| --- | --- | --- |
+| total | 非负安全整数 | 每个有效新作答增加1；旧累计值保持 |
+| correct | 非负安全整数且≤total | 正确的新作答增加1；不通过弱项推算历史分数 |
+| attempts | 可选对象，以attemptId为键；缺失合法，null/数组非法 | 新提交把总数和该回执一起写入统计键；无字段旧统计不生成虚构历史回执 |
+| attempts[attemptId].questionId | 非空字符串≤160 | 具体题为完整questionId；旧摘要练习为`legacy:<六位码>`，不冒充某一原题型 |
+| attempts[attemptId].correct | boolean | 仅保存正误，不保存用户所选值、选项、题干或自由文本 |
+
+attemptId须为非空字符串≤120；条目只允许questionId、correct两字段。`getQuizStatsError`返回首个字段路径，`isQuizStats`复用该校验。`recordResult(correct,storage,{attemptId,questionId})`首次严格读取原始统计，JSON/结构错误或读失败返回saved=false，不用显示用fallback覆盖原数据；匹配的已有回执返回duplicate=true且不增加总数，ID对应题号/正误冲突拒写。旧没有身份参数的调用兼容保留，不据其历史总数补造attempts。
+
+**C. 学习V2的quizAttempts**
+
+| 字段 | 类型、校验与含义 |
+| --- | --- |
+| quizAttempts | 可选对象，以attemptId为键；缺失合法；不与80条抽查/考评/复讲历史一起截断 |
+| attemptId | 非空字符串≤120，与对象键完全一致；本轮首次建立后固定 |
+| reference | 上述完整七字段对象；新保存复制白名单字段，保留原规则/版本/目标 |
+| correct | boolean；保存判分事实，不保存pickedCode |
+| mode | `random`或`review`；`legacy`不写此集合，不伪造具体原题证据 |
+| at | 可解析ISO字符串，含时间及Z/时区偏移；使用本轮建立时的有效Date，重试不改原时间 |
+| weakOutcome | `added / updated / resolved / unchanged / reference-mismatch`，具体含义如下 |
+| recoveredFrom | null，或仅在resolved时使用`{attemptId,at}`；指向此前已保存错误的lastSessionId/lastWrongAt。该旧ID须非空≤120且不同于本轮，at须合法ISO |
+
+| weakOutcome | 真实条件与弱项变化 |
+| --- | --- |
+| added | 当前有效答错且无旧同题弱项：新建due、wrongCount=1；correct必须false |
+| updated | 当前有效答错且七字段匹配旧弱项：wrongCount加1、更新最近错误、本轮ID；再次变due、清resolvedAt，保留首次错误及lastReviewedAt |
+| resolved | 明确review、correct=true，已有七字段匹配且未resolved的弱项；弱项写入本轮ID、lastReviewedAt/resolvedAt，同时回执记录recoveredFrom |
+| unchanged | 正确但没有可纠正项、随机答对，或已解决项再次正确；不创建新弱项，不发新的recovery |
+| reference-mismatch | 同questionId的旧弱项七字段有差异；新作答回执保留本轮事实，旧弱项不覆盖、不纠正；可saved=true但必须显示旧引用保留 |
+
+resolved以外的recoveredFrom必须null；added/updated不能correct=true，unchanged不能correct=false。历史结构校验不要求旧题库仍可出题，也不允许把损坏回执降成“缺字段旧记录”绕过校验。结构合法的未知版本仍保留；新recordQuizAttempt只接受当前版本。正常写入不保存题干、选项全集、答案选择或私人文本；这不等于任意导入JSON的未知字段都会被自动剥离。
+
+**D. 学习记录原子保存、重试与旧数据**
+
+1. `recordQuizAttempt({attemptId,reference,correct,mode},now,storage)`严格读取原V2字符串及结构；只有V2真正缺失时才尝试合法旧study布尔映射迁移。getItem抛错、JSON损坏、V2基础或任一新增字段异常均拒绝本次学习键写入，保留原值；不能用通用读取的显示fallback把它擦成空成绩。
+2. 已存在同attemptId的quizAttempts时，七字段、mode和correct必须相同；相同返回原entry/recovery及duplicate=true，不根据后来变化的弱项重算recoveredFrom，不再次增加wrongCount。冲突返回失败。
+3. 只有旧弱项lastSessionId等于本轮ID而缺少quizAttempts原回执时，拒绝补造本轮回执或纠正证据。协调器在可验证的统计/学习身份冲突时，在新副作用开始前拒绝提交；课程旧processedAssessmentIds缺receipt的原规则继续独立保留。
+4. 新弱项与新quizAttempts先在内存合并，然后对`yijing-learning-record-v2`一次写入。失败时持久化旧值不变，返回的候选对象不能被当作入队成功。成功回执的recovery明确含完整reference、wrongAttemptId/wrongAt、reviewAttemptId/reviewedAt。
+5. 打开来源不新增reviewed写入；实际原规则review作答与已保存错误回执构成温习/纠正关联。没有新增跨天或24小时条件，没有改卡片间隔算法。随机答对、另一方向/规则答对不清原弱项。
+6. 老弱项版本不同保持原证据；旧`yijing-quiz-wrong`仍单列未知题型摘要，不迁移成具体weakQuestions，不补造旧题干、正答或过程。legacy正确只尝试清除对应旧摘要；具体错题与旧摘要互不清除。
+
+**E. 页面提交协调器与六项反馈**
+
+| API/返回值 | 契约 |
+| --- | --- |
+| `createQuizAttempt(question,{mode='random',now=new Date(),id?}={})` | mode可为random/review/legacy；核对实际题目/reference/答案/至少四个不同候选/时间/ID。合法返回不透明内存token，无效返回null；不在建立时保存成绩 |
+| `submitQuizAttempt(attempt,pickedCode,{storage?}={})` | 同步返回结果；仅接受原候选中的值，首次有效选择锁定本轮答案，不能用重试改答案；存储实例变化拒绝继续保存 |
+| 结果 | `{correct,saved,stats,changes,recovery,error}`；correct为boolean或无有效判分时null；stats为实际累计摘要；error可说明失败，也可在saved=true时说明reference-mismatch，调用方须看结果语义 |
+| changes | stats/weak/review/activity/achievement/legacy六项，每项含applicable、saved，可含outcome、added、duplicate；不适用项不展示为已完成业务 |
+| 重试 | 同一内存attempt只调用尚未保存的适用项；已保存统计、卡、活动或成就不重复提交。首次有效判分保留，页面仍能展示依据；不能通过重新出题模拟保存重试 |
+
+| 分项 | 保存键与适用时机 |
+| --- | --- |
+| stats | yijing-quiz-stats；每个有效作答，包括legacy；累计与本轮统计回执同键写入 |
+| weak | yijing-learning-record-v2；非legacy作答；weakQuestions变化与quizAttempts同键原子保存 |
+| review | yijing-review-cards；答错且实际来源为quiz时加入对应卦卡，保留已有卡；almanac不造卡 |
+| activity | yijing-activity-v1；有效作答记录原有设备本地活动日；已经存在的日期不重复写 |
+| achievement | yijing.achievements.v1；只有weak成功返回具体recovery才适用。弱项保存失败不发纠正事件；成就失败可沿原recovery重试 |
+| legacy | yijing-quiz-wrong；仅legacy正确作答删除对应旧码，不写具体weak或新纠正事件 |
+
+六项跨键没有事务或自动全部回滚；统计保存成功而弱项失败等部分成功是明确支持的状态。读取某一键失败由其分项报告，其他可安全保存部分独立反馈。review/activity/achievement/legacy步骤先检查原始JSON和适用校验器，并固定这次已校验原串供既有写入函数读取，避免二次读取失败后误写空值。不能将某一分项的fallback或`accepted`替代saved；也不能把普通导入的回滚约定套在每次作答上。
+
+**F. quiz.recovered身份与隐私**
+
+- 事件保持原规则，type为quiz.recovered、outcome为recovered，occurredAt取原回执reviewedAt；幂等键`quiz:recovered:<reviewAttemptId>`。metadata仅source=`quiz-weak-questions`、reviewKind=`targeted`及有真实卦码时的hexagramCode，不带私人正文。
+- subjectId：完整questionId长度≤128照旧；当前页面协调器处理的长黄历ID用`alm:n:<termId>`或`alm:m:<termId>`，分别对应名称→释义、释义→名称。生成器与当前页面协调器接受的termId上限为120，因此该路径的缩写最长126；这不是数据API或导入的termId单字段限制。两方向前缀不同且保留完整termId，不采用截断或有碰撞的压缩。完整reference仍留学习V2回执可追溯，不改已有成就数据的长度上限或旧subjectId。
+- 本轮题目、候选、正确答案、pickedCode和重试token仅内存。刷新、关闭、切模块后的新作答创建新身份，不声称恢复旧选项；持久化正误/公开引用/事件并不授权保存复讲文本、笔记草稿或私问。
+
+**G. 校验API、备份与验收范围**
+
+- `getQuizAttemptsError(value)`缺字段或合法时返回null，否则返回`quizAttempts[ID].字段`路径；`getQuizWeakQuestions(record,{sourceKind?,includeResolved?}={})`默认返回quiz/almanac未解决副本，按lastWrongAt降序、题号字典序排序。结构异常返回空数组，页面须另查错误API，不把异常当真实空队列。
+- `user-data`复用getQuizStatsError/getQuizAttemptsError，在写任何键前拒绝无效备份并给完整路径。旧统计无attempts、旧V2无quizAttempts均合法；没有新增字段的旧备份仍能恢复，不补造历史作答。
+- 备份仍为11键、format=`yijing-atlas-user-data`、version=1、UTF-8导入1 MiB。缺键保留，null删除，包含键整键替换，不深层合并旧attempts；写入异常沿原导入流程尝试回滚。新增回执随所属键备份，不另存原题或答案。长期回执容量与导出/导入容量对称仍是原未完成任务。
+- 限定测试位置：quiz-question-reference.test.mjs、quiz-session.test.mjs、quiz-weak-data.test.mjs、user-data.test.mjs及quiz-mode-page/quiz-review-pages/almanac-knowledge-page/main-mode-navigation/learning-recommendation相关回归。页面阶段50/50和实际协调器DOM联测见[页面日志（gzip）](evidence/2026-10-25-quiz-pages-green.log.gz)；该压缩文件已跟踪，解压后与本地原日志逐字节一致。初始红灯与边界日志保留，不将其当最终全量结果。
+- 同一最终源码的[18/18独立专项](evidence/2026-10-25-quiz-weak-accepted-scope-summary.json)覆盖错误→温故→原规则回练、术语来源双向返回、相同attempt失败重试、末项回随机、legacy隔离及增强320px；完整E2E另行退出0，未将独立场景冒称一次连续全矩阵运行。原生200%偏好没有生效，真实缩放仍未验证；真机、读屏、长期容量、完整性能、Windows新包和内容/资产门禁继续按原卡保留，不随本卡关闭。
 
 ### 7.2 挑战证据升级的建设默认
 
