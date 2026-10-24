@@ -1,0 +1,1104 @@
+{
+  "capturedAt": "2026-10-24T20:20:47.802Z",
+  "scope": "documentation inventory only; no new business test execution",
+  "head": "07069af686602b192c742d24052cc9b6e14d5d6b",
+  "branch": "codex/immersive-astrolabe-progress",
+  "taskAudit": {
+    "all": 48,
+    "closed": [
+      "T-DIV-01",
+      "T-SAVE-01",
+      "T-LEARN-05",
+      "T-SEARCH-01"
+    ],
+    "remaining": 44,
+    "counts": {
+      "已确认": 33,
+      "建议改进": 10,
+      "未来独立方案": 1
+    },
+    "missing": [],
+    "extra": [],
+    "duplicate": [],
+    "items": [
+      {
+        "requirement": "REQ-QA-01",
+        "name": "定位并修复真实输入 E2E 失败",
+        "kind": "已确认",
+        "task": "T-QA-01"
+      },
+      {
+        "requirement": "REQ-GROW-01",
+        "name": "从真实考评入口接通成就证据",
+        "kind": "已确认",
+        "task": "T-GROW-01"
+      },
+      {
+        "requirement": "REQ-STAR-01",
+        "name": "统一星图焦点退出和漫游路径",
+        "kind": "已确认",
+        "task": "T-STAR-01"
+      },
+      {
+        "requirement": "REQ-STAR-02",
+        "name": "关系颜色线型与标记统一",
+        "kind": "已确认",
+        "task": "T-STAR-02"
+      },
+      {
+        "requirement": "REQ-STAR-03",
+        "name": "接通任务和搜索目标标签优先级",
+        "kind": "已确认",
+        "task": "T-STAR-03"
+      },
+      {
+        "requirement": "REQ-READ-01",
+        "name": "六爻正文与卦象逐爻联动",
+        "kind": "已确认",
+        "task": "T-READ-01"
+      },
+      {
+        "requirement": "REQ-READ-02",
+        "name": "关系正视对读和双动作",
+        "kind": "已确认",
+        "task": "T-READ-02"
+      },
+      {
+        "requirement": "REQ-READ-03",
+        "name": "跨模块经文上下文与返回",
+        "kind": "已确认",
+        "task": "T-READ-03"
+      },
+      {
+        "requirement": "REQ-READ-04",
+        "name": "快读信息布局与长正文协调",
+        "kind": "已确认",
+        "task": "T-READ-04"
+      },
+      {
+        "requirement": "REQ-LEARN-01",
+        "name": "推荐优先队列与继续阅读",
+        "kind": "已确认",
+        "task": "T-LEARN-01"
+      },
+      {
+        "requirement": "REQ-LEARN-02",
+        "name": "课程错题形成独立温习闭环",
+        "kind": "已确认",
+        "task": "T-LEARN-02"
+      },
+      {
+        "requirement": "REQ-LEARN-03",
+        "name": "统一四段修习反馈",
+        "kind": "已确认",
+        "task": "T-LEARN-03"
+      },
+      {
+        "requirement": "REQ-QUIZ-01",
+        "name": "具体错题证据与黄历薄弱项",
+        "kind": "已确认",
+        "task": "T-QUIZ-01"
+      },
+      {
+        "requirement": "REQ-LEARN-04",
+        "name": "区分三种学习层级称谓",
+        "kind": "已确认",
+        "task": "T-LEARN-04"
+      },
+      {
+        "requirement": "REQ-DIV-02",
+        "name": "三路径与五步结构化解卦挑战",
+        "kind": "已确认",
+        "task": "T-DIV-02"
+      },
+      {
+        "requirement": "REQ-DIV-03",
+        "name": "占筮本卦与之卦正式研读入口",
+        "kind": "已确认",
+        "task": "T-DIV-03"
+      },
+      {
+        "requirement": "REQ-GROW-02",
+        "name": "修习谱十二项进度与证据视图",
+        "kind": "已确认",
+        "task": "T-GROW-02"
+      },
+      {
+        "requirement": "REQ-PRIV-01",
+        "name": "主动保存的观象录",
+        "kind": "已确认",
+        "task": "T-PRIV-01"
+      },
+      {
+        "requirement": "REQ-CAL-01",
+        "name": "黄历七日轴与日期语义",
+        "kind": "已确认",
+        "task": "T-CAL-01"
+      },
+      {
+        "requirement": "REQ-CAL-02",
+        "name": "三段日课与内联术语笺注",
+        "kind": "已确认",
+        "task": "T-CAL-02"
+      },
+      {
+        "requirement": "REQ-CAL-03",
+        "name": "公开历笺分享",
+        "kind": "已确认",
+        "task": "T-CAL-03"
+      },
+      {
+        "requirement": "REQ-SOUND-01",
+        "name": "音效由业务成功显式触发",
+        "kind": "已确认",
+        "task": "T-SOUND-01"
+      },
+      {
+        "requirement": "REQ-SOUND-02",
+        "name": "正式音源台账与音量并发控制",
+        "kind": "已确认",
+        "task": "T-SOUND-02"
+      },
+      {
+        "requirement": "REQ-MODAL-01",
+        "name": "统一模态、隐藏控件与焦点栈",
+        "kind": "已确认",
+        "task": "T-MODAL-01"
+      },
+      {
+        "requirement": "REQ-ICON-01",
+        "name": "残留字符图标与可访问名称",
+        "kind": "已确认",
+        "task": "T-ICON-01"
+      },
+      {
+        "requirement": "REQ-ASSET-02",
+        "name": "检查并替换伪文字材质",
+        "kind": "已确认",
+        "task": "T-ASSET-02"
+      },
+      {
+        "requirement": "REQ-BACKUP-01",
+        "name": "备份容量可往返",
+        "kind": "建议改进",
+        "task": "T-BACKUP-01"
+      },
+      {
+        "requirement": "REQ-BACKUP-02",
+        "name": "深层校验与回滚失败反馈",
+        "kind": "建议改进",
+        "task": "T-BACKUP-02"
+      },
+      {
+        "requirement": "REQ-API-01",
+        "name": "可选评阅端点解析与异常防护",
+        "kind": "建议改进",
+        "task": "T-API-01"
+      },
+      {
+        "requirement": "REQ-CACHE-01",
+        "name": "SW只删除自身缓存",
+        "kind": "建议改进",
+        "task": "T-CACHE-01"
+      },
+      {
+        "requirement": "REQ-CACHE-02",
+        "name": "离线范围与版本更新可见",
+        "kind": "建议改进",
+        "task": "T-CACHE-02"
+      },
+      {
+        "requirement": "REQ-CAPACITY-01",
+        "name": "长期本地容量与幂等保全",
+        "kind": "建议改进",
+        "task": "T-CAPACITY-01"
+      },
+      {
+        "requirement": "REQ-SHARE-01",
+        "name": "分享链接显式公开白名单",
+        "kind": "建议改进",
+        "task": "T-SHARE-01"
+      },
+      {
+        "requirement": "REQ-ASSET-01",
+        "name": "资产和第三方许可总账",
+        "kind": "已确认",
+        "task": "T-ASSET-01"
+      },
+      {
+        "requirement": "REQ-DEP-01",
+        "name": "依赖与本地vendor版本维护",
+        "kind": "建议改进",
+        "task": "T-DEP-01"
+      },
+      {
+        "requirement": "REQ-CONTENT-01",
+        "name": "原典与项目资料逐条校勘",
+        "kind": "已确认",
+        "task": "T-CONTENT-01"
+      },
+      {
+        "requirement": "REQ-CONTENT-02",
+        "name": "六家3840锚点内容工程",
+        "kind": "已确认",
+        "task": "T-CONTENT-02"
+      },
+      {
+        "requirement": "REQ-QA-02",
+        "name": "新增纯逻辑覆盖率纳入计量",
+        "kind": "已确认",
+        "task": "T-QA-02"
+      },
+      {
+        "requirement": "REQ-QA-03",
+        "name": "证据目录参数与可携带日志",
+        "kind": "建议改进",
+        "task": "T-QA-03"
+      },
+      {
+        "requirement": "REQ-A11Y-01",
+        "name": "真机读屏真实缩放与兼容验收",
+        "kind": "已确认",
+        "task": "T-A11Y-01"
+      },
+      {
+        "requirement": "REQ-PERF-01",
+        "name": "当前UI性能与长时降级证据",
+        "kind": "已确认",
+        "task": "T-PERF-01"
+      },
+      {
+        "requirement": "REQ-WIN-01",
+        "name": "当前源码本地Windows重建验收",
+        "kind": "已确认",
+        "task": "T-WIN-01"
+      },
+      {
+        "requirement": "REQ-RELEASE-01",
+        "name": "未来独立远程发布与生产复验",
+        "kind": "未来独立方案",
+        "task": "T-RELEASE-01"
+      },
+      {
+        "requirement": "REQ-COPY-01",
+        "name": "无Git副本的检查兼容方案",
+        "kind": "建议改进",
+        "task": "T-COPY-01"
+      }
+    ]
+  },
+  "priorEvidence": {
+    "files": [
+      {
+        "path": "docs/development/evidence/2026-10-25-course-weak-input/2026-10-24T20-17-41-635Z/trace.json",
+        "sha256": "4a01919e9800cf8b5301f540b7719ddaa696235ad166513b380e9927275880b8"
+      },
+      {
+        "path": "docs/development/evidence/2026-10-25-course-weak-validate.log",
+        "sha256": "b1ae0e87dbe1dab8d300fb901c290a6579f592587e3adf149ea40365c531105f"
+      },
+      {
+        "path": "docs/development/evidence/2026-10-25-course-weak-pipeline.json",
+        "sha256": "e7473890cb66d662d6a4b8da8abdc264d18a634cb508c2c6e5de2383d9c32b48"
+      }
+    ],
+    "validate": {
+      "testScripts": 64,
+      "coverageTests": 359,
+      "pass": 359,
+      "fail": 0,
+      "configuredModules": 20,
+      "line": 99.79,
+      "branch": 93.48,
+      "function": 99.01
+    },
+    "browser": {
+      "startedAt": "2026-10-24T20:17:41.637Z",
+      "finishedAt": "2026-10-24T20:18:09.309Z",
+      "product": "Edg/155.0.4283.62",
+      "status": "passed",
+      "scenarios": [
+        {
+          "name": "1440-l1-1-course-cycle",
+          "status": "passed"
+        },
+        {
+          "name": "390-l5-1-course-cycle",
+          "status": "passed"
+        },
+        {
+          "name": "1440-storage-retry",
+          "status": "passed"
+        },
+        {
+          "name": "390-storage-retry",
+          "status": "passed"
+        },
+        {
+          "name": "1440-obsolete-question",
+          "status": "passed"
+        },
+        {
+          "name": "1440-obsolete-version",
+          "status": "passed"
+        }
+      ],
+      "pageErrors": 0,
+      "profileRemoved": false,
+      "sourceMatches": [
+        {
+          "path": "web/js/learning-curriculum.js",
+          "sha256": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+          "currentSha256": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+          "matches": true
+        },
+        {
+          "path": "web/js/modes/review-mode.js",
+          "sha256": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+          "currentSha256": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+          "matches": true
+        },
+        {
+          "path": "web/js/main.js",
+          "sha256": "9196a207e7cee8e62f9c8accc6f16066cf1bb5af494848d189718e4a05d0f466",
+          "currentSha256": "9196a207e7cee8e62f9c8accc6f16066cf1bb5af494848d189718e4a05d0f466",
+          "matches": true
+        },
+        {
+          "path": "web/styles/immersive.css",
+          "sha256": "b3568ce4e89ff48b8c908d81bba79b343a806df947910479c0bc1c88f5ffd701",
+          "currentSha256": "b3568ce4e89ff48b8c908d81bba79b343a806df947910479c0bc1c88f5ffd701",
+          "matches": true
+        },
+        {
+          "path": "web/data/hexagrams.json",
+          "sha256": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+          "currentSha256": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+          "matches": true
+        },
+        {
+          "path": "web/data/wings.json",
+          "sha256": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+          "currentSha256": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+          "matches": true
+        },
+        {
+          "path": "web/data/almanac-terms.json",
+          "sha256": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+          "currentSha256": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+          "matches": true
+        },
+        {
+          "path": "web/js/learning-progress.js",
+          "sha256": "055b59a6becd6b75df912bd09e8274c47b2a05df532c5f599b4f153aeda28dd9",
+          "currentSha256": "055b59a6becd6b75df912bd09e8274c47b2a05df532c5f599b4f153aeda28dd9",
+          "matches": true
+        },
+        {
+          "path": "web/js/learning-assessment.js",
+          "sha256": "a7f7281eefb507bfd51c5185609420c489f09fda0fb9d96418e37c5b9b3a8033",
+          "currentSha256": "a7f7281eefb507bfd51c5185609420c489f09fda0fb9d96418e37c5b9b3a8033",
+          "matches": true
+        },
+        {
+          "path": "web/js/learning-assessment-page.js",
+          "sha256": "c712901efbfb65d5b5c4f43f7ff477008edfc23b340bc1b6acfe4e93e62a5461",
+          "currentSha256": "c712901efbfb65d5b5c4f43f7ff477008edfc23b340bc1b6acfe4e93e62a5461",
+          "matches": true
+        },
+        {
+          "path": "web/js/modes/learning-mode.js",
+          "sha256": "fb17c1426dc0fcba4dc7fd4d4b7797b8d042538d5b9b266d957786f05576028c",
+          "currentSha256": "fb17c1426dc0fcba4dc7fd4d4b7797b8d042538d5b9b266d957786f05576028c",
+          "matches": true
+        },
+        {
+          "path": "web/js/user-data.js",
+          "sha256": "7252aa0e31be7fa6970be2de6d06acbfb73d9b52f1d26cf6b7b5b44799a479c6",
+          "currentSha256": "7252aa0e31be7fa6970be2de6d06acbfb73d9b52f1d26cf6b7b5b44799a479c6",
+          "matches": true
+        },
+        {
+          "path": "web/js/study-page.js",
+          "sha256": "7f99d3e5db2429daa6710735f9ff3ac8a05106bc33268c16ca00faaa418997c6",
+          "currentSha256": "7f99d3e5db2429daa6710735f9ff3ac8a05106bc33268c16ca00faaa418997c6",
+          "matches": true
+        },
+        {
+          "path": "web/js/achievement-engine.js",
+          "sha256": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+          "currentSha256": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+          "matches": true
+        },
+        {
+          "path": "web/js/achievement-storage.js",
+          "sha256": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+          "currentSha256": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+          "matches": true
+        },
+        {
+          "path": "web/data/theorems.json",
+          "sha256": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+          "currentSha256": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+          "matches": true
+        },
+        {
+          "path": "web/data/trigrams.json",
+          "sha256": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+          "currentSha256": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+          "matches": true
+        },
+        {
+          "path": "scripts/test-course-weak-questions.mjs",
+          "sha256": "ec3db7f01adc12f737948266259f285a509e48fc2309f5dbdef6176409136a5a",
+          "currentSha256": "ec3db7f01adc12f737948266259f285a509e48fc2309f5dbdef6176409136a5a",
+          "matches": true
+        }
+      ]
+    },
+    "fullCurrentE2E": "not run"
+  },
+  "protectedFiles": [
+    {
+      "path": "scripts/test-course-weak-questions.mjs",
+      "sha256": "ec3db7f01adc12f737948266259f285a509e48fc2309f5dbdef6176409136a5a"
+    },
+    {
+      "path": "web/test/learning-weak-questions-page.test.mjs",
+      "sha256": "fc0093453a38746cc2a5f138121193ee4481795f926d0e7e38fdf11b9c0b272f"
+    },
+    {
+      "path": "web/test/main-mode-navigation.test.mjs",
+      "sha256": "40aadd4de8777130d5c13e483d45cace6f861cb605fbaed2634fa0fea154a47a"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "db82e424b60db04792b88573c626485b412a4c53f3ef62e286e5e122df6aeb61"
+    },
+    {
+      "path": "package.json",
+      "sha256": "8e75ccd8379ba2a4646466f50776c38cf56d633f7a6daa4b04da578765d961a9"
+    },
+    {
+      "path": "scripts/browser-smoke.mjs",
+      "sha256": "994aa24f107a73452eb7c8a915749d99a26cc53103f205d5abfcea9f0f13f66e"
+    },
+    {
+      "path": "scripts/build-windows.mjs",
+      "sha256": "25b2dc6ef57c393b3e48a4a3628536fad83e5fdd8cad25091f4571f9351d9891"
+    },
+    {
+      "path": "scripts/quality-check.mjs",
+      "sha256": "21c24309bf4e3183d6c17c20d40d8a2324aea5ee51c6c7b4a0ef82205db06814"
+    },
+    {
+      "path": "scripts/serve.mjs",
+      "sha256": "21ffdb9e9c86d3e75038a4256a7c4874696739fa4e194d34a4a320c02918c3c4"
+    },
+    {
+      "path": "scripts/test-assessment-session.mjs",
+      "sha256": "f00f3d8e697392e230d29514d7f1d9dda5a67c5be4e6ae80b54de2a9fad5091e"
+    },
+    {
+      "path": "scripts/test-entry-input.mjs",
+      "sha256": "288d2f108fbedb9a26aa9ace4474f9c39786258586793e42b369ba2a5394cc9e"
+    },
+    {
+      "path": "scripts/test-reading-resize.mjs",
+      "sha256": "81966146ce5dbbb42689f2ac93e8a501a2547f53bb2735dfba7b3b915947d328"
+    },
+    {
+      "path": "scripts/test-reading-save.mjs",
+      "sha256": "8a290b870a03055eb4117a79269e7912e7dcae863d2fca7e3982e26cf38f77aa"
+    },
+    {
+      "path": "scripts/test-search-input.mjs",
+      "sha256": "d7474c480bc459a577bb170a110715eb2cb00bc648fe7b306510ce2cf5b27a21"
+    },
+    {
+      "path": "scripts/test-windows-build.mjs",
+      "sha256": "19f1bc934b7b0fce0ddb9a65b4a906485a0d05e3678a8ddb1fe2dbb06215140b"
+    },
+    {
+      "path": "scripts/validate-commentaries.mjs",
+      "sha256": "6cc24ac5d924b20966235d5ccabcc36b88a9369679b47596b40e24874a0127cb"
+    },
+    {
+      "path": "web/data/almanac-terms.json",
+      "sha256": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad"
+    },
+    {
+      "path": "web/data/almanac-yiji.json",
+      "sha256": "791c99f67bac66f7d1259d08aaeec3c53a540b3bdc8ae5403aaa107666ad6649"
+    },
+    {
+      "path": "web/data/commentaries/manifest.json",
+      "sha256": "a36a388c3de129a67b1487cf1efd7e1ac950c12d7c814a5dfcced0e4765d5d3c"
+    },
+    {
+      "path": "web/data/commentaries/sources.json",
+      "sha256": "8017312aebef8046f7afb9db8da67912efe5e4361470014c1ffea6501e6b5ffd"
+    },
+    {
+      "path": "web/data/hexagram-keywords.json",
+      "sha256": "7c146c9d708f5975c2e9b64aff84cf0eaaf95b40a48af6da01579db37ed3c68b"
+    },
+    {
+      "path": "web/data/hexagrams.json",
+      "sha256": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080"
+    },
+    {
+      "path": "web/data/theorems.json",
+      "sha256": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3"
+    },
+    {
+      "path": "web/data/trigrams.json",
+      "sha256": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8"
+    },
+    {
+      "path": "web/data/wings.json",
+      "sha256": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721"
+    },
+    {
+      "path": "web/index.html",
+      "sha256": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6"
+    },
+    {
+      "path": "web/js/achievement-catalog.js",
+      "sha256": "81bccb10cc29e418c6e8da913520b6a63f49014d3111f06a43d617b4697bc210"
+    },
+    {
+      "path": "web/js/achievement-engine.js",
+      "sha256": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0"
+    },
+    {
+      "path": "web/js/achievement-storage.js",
+      "sha256": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098"
+    },
+    {
+      "path": "web/js/almanac-knowledge.js",
+      "sha256": "31d8c913c5d919aafdc1aaa10fc7362ef94c1d52ac43451860f7ecb0bda52912"
+    },
+    {
+      "path": "web/js/almanac-page.js",
+      "sha256": "7fcd83f4a849609ba96e2f7b57dade843248f8f502988cc8e399b845fd5c9cb8"
+    },
+    {
+      "path": "web/js/almanac/astronomy.js",
+      "sha256": "140fc8ba4bfb34c65f1d21ece9507b86342184bd9d8aef0a8799031b13d0eec0"
+    },
+    {
+      "path": "web/js/almanac/ganzhi.js",
+      "sha256": "4a51302d321b81add9e7201b32c8dca8f29f39a1cefed1aaaa7a3528f68f3d46"
+    },
+    {
+      "path": "web/js/almanac/lunar.js",
+      "sha256": "81d9e09cc54cdb6d63c69dfbbff30cbb37717321c01459fe70fef87e375f26c8"
+    },
+    {
+      "path": "web/js/almanac/reading.js",
+      "sha256": "fb5b994555d2c7ca004c4fb1aec8015a6d9a19163d4cb90fc91196861490bcd6"
+    },
+    {
+      "path": "web/js/almanac/selection.js",
+      "sha256": "dfecae8bbada33b73584e71b8f18a4f09643b70f972dd7e9ace6b2184b26f937"
+    },
+    {
+      "path": "web/js/almanac/solar-terms.js",
+      "sha256": "4796db274d7b6d946b6eab72b55732a704dad52722af13bf93c612b1bfc176c5"
+    },
+    {
+      "path": "web/js/audio-engine.js",
+      "sha256": "d05ba615f16a4de7733638c1d16b389c306960a513e6436ff544620830ebcf86"
+    },
+    {
+      "path": "web/js/celestial-stage.js",
+      "sha256": "e6a2f52a59ba406f7d4f2b6cdf1de6c77748705f3a60858b5334761f936a5b88"
+    },
+    {
+      "path": "web/js/cinematic-motion.js",
+      "sha256": "5b1b1c88580b46a026527771853ef0970abebd1fa6176306729228e278e06b8b"
+    },
+    {
+      "path": "web/js/commentary-catalog.js",
+      "sha256": "cad1775d6e83132657223fdf500ccd21bc7021562a8cfd9c8c7d7501fd7da358"
+    },
+    {
+      "path": "web/js/content-provenance.js",
+      "sha256": "5836cd83dfd295b515f9d4f1ac77e9f220eae49cd044db5083a908c42aed9681"
+    },
+    {
+      "path": "web/js/data-loader.js",
+      "sha256": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5"
+    },
+    {
+      "path": "web/js/divination-engine.js",
+      "sha256": "f3b2a41090adeb25021d06ff60d710a9c1e5a8132384ce2feff629436a6c1e2d"
+    },
+    {
+      "path": "web/js/divination-history.js",
+      "sha256": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660"
+    },
+    {
+      "path": "web/js/divination-interpretation.js",
+      "sha256": "1fa8bf21fea4c8856e98fa139c1b4fdf551eeedcead8e63e6b048804a28238cf"
+    },
+    {
+      "path": "web/js/evolution-lab.js",
+      "sha256": "e5d2783b5665d56154d1f492608f31f6c0b5ae8a1f0f07d8e3e3e16b965b6003"
+    },
+    {
+      "path": "web/js/evolution-semantics.js",
+      "sha256": "b43bb7e6da618ff7638db9584538690a52bc32ce72432e4a8c1c1028d34b44fd"
+    },
+    {
+      "path": "web/js/evolution-state.js",
+      "sha256": "ac09b9175d5ec2bf78cbd3e6b9e284acb1835169127628832f500514bb859a74"
+    },
+    {
+      "path": "web/js/guaxu-wheel.js",
+      "sha256": "6f0a8d0d67ff56a4aa9a0a3d4240386833c3fcb14b2b5e95f36a311c11936e3f"
+    },
+    {
+      "path": "web/js/hexagram-utils.js",
+      "sha256": "d52499fd34fd201df09beb2b485e11936b4cabc0aa93776795570aaa35067ee1"
+    },
+    {
+      "path": "web/js/learning-assessment-page.js",
+      "sha256": "c712901efbfb65d5b5c4f43f7ff477008edfc23b340bc1b6acfe4e93e62a5461"
+    },
+    {
+      "path": "web/js/learning-assessment.js",
+      "sha256": "a7f7281eefb507bfd51c5185609420c489f09fda0fb9d96418e37c5b9b3a8033"
+    },
+    {
+      "path": "web/js/learning-curriculum.js",
+      "sha256": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e"
+    },
+    {
+      "path": "web/js/learning-progress.js",
+      "sha256": "055b59a6becd6b75df912bd09e8274c47b2a05df532c5f599b4f153aeda28dd9"
+    },
+    {
+      "path": "web/js/learning-review.js",
+      "sha256": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad"
+    },
+    {
+      "path": "web/js/main.js",
+      "sha256": "9196a207e7cee8e62f9c8accc6f16066cf1bb5af494848d189718e4a05d0f466"
+    },
+    {
+      "path": "web/js/meihua-engine.js",
+      "sha256": "3310a0ede88f2f05ad1663aed48efed99c64828bcb4fced4a51e4733fdd45074"
+    },
+    {
+      "path": "web/js/modes/divination-mode.js",
+      "sha256": "0f383341726f6d97a29f762c5b7aa503e02cb38aa02d088f8717e8456b368b51"
+    },
+    {
+      "path": "web/js/modes/guaxu-mode.js",
+      "sha256": "28479453ab62f68c1dfb80bf4458c4e08f68df41b4fe149527f1e293e988d58e"
+    },
+    {
+      "path": "web/js/modes/learning-mode.js",
+      "sha256": "fb17c1426dc0fcba4dc7fd4d4b7797b8d042538d5b9b266d957786f05576028c"
+    },
+    {
+      "path": "web/js/modes/quiz-mode.js",
+      "sha256": "7a60bcd0b713a6b43bac4a0ca6761f77877419f16f01901bfbc67e0c3f9734a1"
+    },
+    {
+      "path": "web/js/modes/review-mode.js",
+      "sha256": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9"
+    },
+    {
+      "path": "web/js/motion-system.js",
+      "sha256": "f651f048d502500d58af0eeb5a8e4ed97c8d7ecf463c1ce66e7c4ea036abcd1f"
+    },
+    {
+      "path": "web/js/protocol-guard.js",
+      "sha256": "67f6ecb47fcb795bfb78af70b440a7ea4a272242291510d8a8e90e8546cabd67"
+    },
+    {
+      "path": "web/js/quiz-engine.js",
+      "sha256": "4b9e087b6c080b9e6a05cd69d15887634e8cb6cfe0b921e559bc48b7cbda1fba"
+    },
+    {
+      "path": "web/js/reading-state.js",
+      "sha256": "86fac1c3178fed62c9932cce72944f932f4c6ecd3753252765f99fcf2f76387d"
+    },
+    {
+      "path": "web/js/relation-animation.js",
+      "sha256": "99eab835d975d38a510cda77152583a03c080eca5f5660606a2366c13ffd62cf"
+    },
+    {
+      "path": "web/js/render.js",
+      "sha256": "b8801a6363fcb6714173f22384c1f866b83dfb02902a5d1d3a84461568d51757"
+    },
+    {
+      "path": "web/js/review-engine.js",
+      "sha256": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7"
+    },
+    {
+      "path": "web/js/search-controller.js",
+      "sha256": "cb256d0f22e4c7f14b0a37ac79644c297300299d4de7b44fa6a192c2496f0ee6"
+    },
+    {
+      "path": "web/js/share-card.js",
+      "sha256": "f395053adad507eb6f77d9430671af76f064307aafc58c807c3993dd238a4dc3"
+    },
+    {
+      "path": "web/js/star-atmosphere.js",
+      "sha256": "9a7db611a64c9feae205378b7b95689a29aef1288b63a501b066acf457379964"
+    },
+    {
+      "path": "web/js/star-label-layout.js",
+      "sha256": "aff233a2f34d93a3ded0d7fdcb1052241842567bf21b1bf54520fc99d843f991"
+    },
+    {
+      "path": "web/js/star-layouts.js",
+      "sha256": "fc8190c9fdc1ab0454e061b877345939f6bae4e36d55bee4289c2f1d6259b3fe"
+    },
+    {
+      "path": "web/js/star-map.js",
+      "sha256": "23787057a90bee36ad2afa2f54163530856938e60e58d6e8197889ef94eab851"
+    },
+    {
+      "path": "web/js/star-relations.js",
+      "sha256": "04ffc7a7de8b29673317097307ce0d74b64829b48bc3e5f6299341c45b565fd0"
+    },
+    {
+      "path": "web/js/storage.js",
+      "sha256": "13d7b5b1288991582a4102dbb48b64d0b98593d1fab1502169dce7e52be78f28"
+    },
+    {
+      "path": "web/js/study-page.js",
+      "sha256": "7f99d3e5db2429daa6710735f9ff3ac8a05106bc33268c16ca00faaa418997c6"
+    },
+    {
+      "path": "web/js/svg-painter.js",
+      "sha256": "c9a31cf9699a138caadbab285756c17a1d4fa1e0de658a4c93df7f6a7fda860f"
+    },
+    {
+      "path": "web/js/ui-icons.js",
+      "sha256": "d7a824bf568c4746c2259dbd7e3deb9eca9ebbccb69509a148c80f0651a7a1f6"
+    },
+    {
+      "path": "web/js/user-data.js",
+      "sha256": "7252aa0e31be7fa6970be2de6d06acbfb73d9b52f1d26cf6b7b5b44799a479c6"
+    },
+    {
+      "path": "web/lib/d3-force.js",
+      "sha256": "11af883da9dbacd4674448007693acc57971af2c58497abcedb17a198f0feef0"
+    },
+    {
+      "path": "web/lib/vendor/gsap.min.js",
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "path": "web/lib/vendor/lenis.css",
+      "sha256": "2f668ae84a668327f246faf8a770383a2bf69196d214290fbc4d5548910606c5"
+    },
+    {
+      "path": "web/lib/vendor/lenis.min.js",
+      "sha256": "53195c9797e7ce7bf9d7fa9242b08209e57f46de4c9dac126a6494fa780e3346"
+    },
+    {
+      "path": "web/lib/vendor/three.core.min.js",
+      "sha256": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90"
+    },
+    {
+      "path": "web/lib/vendor/three.module.min.js",
+      "sha256": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+    },
+    {
+      "path": "web/serve.bat",
+      "sha256": "b197c351c7cfc580f2014b59bc47bf71047b594c5761668cb8354f0b0dd3ae12"
+    },
+    {
+      "path": "web/styles/immersive.css",
+      "sha256": "b3568ce4e89ff48b8c908d81bba79b343a806df947910479c0bc1c88f5ffd701"
+    },
+    {
+      "path": "web/styles/main.css",
+      "sha256": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268"
+    },
+    {
+      "path": "web/sw.js",
+      "sha256": "8d7a49f868751942dd42e1ece73f179acfb027f69d942352ef496ef430f1edf1"
+    },
+    {
+      "path": "web/test/achievement-catalog.test.mjs",
+      "sha256": "4ef51aff630d90d3578f297e6d6b2c8ff2614223dddb3b3c825eb87d9c6c7f43"
+    },
+    {
+      "path": "web/test/achievement-engine.test.mjs",
+      "sha256": "4b6c6b6608803ff5089c5ef1124f4253a6b7d410dac90a551a61284c39351625"
+    },
+    {
+      "path": "web/test/achievement-storage.test.mjs",
+      "sha256": "8410d20a500c9968d915fb893c91336231b4c5e5581bdedea8728df3a5a6b0cc"
+    },
+    {
+      "path": "web/test/almanac-page-accessibility.test.mjs",
+      "sha256": "c371be169d2af7eab079838f96ec8fbc3eb11f9350fb384e8d225d0de5c31362"
+    },
+    {
+      "path": "web/test/almanac-timezone.test.mjs",
+      "sha256": "c47b9bb1f8ecc15f266cd9a1854271c96ddcdaecfdd146002d8ee5648c61d492"
+    },
+    {
+      "path": "web/test/audio-engine.test.mjs",
+      "sha256": "c780d46685e1c5ce1edf72aadaa699482bb65c16587b645652d3fa7809c21faf"
+    },
+    {
+      "path": "web/test/browser-smoke-reading-state.test.mjs",
+      "sha256": "a3d5491f139d11f7575a03c623339adce09f10ca80d275dbd04f08d39d244c39"
+    },
+    {
+      "path": "web/test/celestial-stage.test.mjs",
+      "sha256": "06461e8689f20a88359f46bcc89f77cd3ac6f84381cc204ba4c2bd88965a0877"
+    },
+    {
+      "path": "web/test/commentary-catalog.test.mjs",
+      "sha256": "814893f40f7ebc30a3472b0e745ec45d58bcf933559f83dfb8a34a52523e16cf"
+    },
+    {
+      "path": "web/test/content-provenance.test.mjs",
+      "sha256": "c9ea6c9e66d072c04a7edbd461eb1a708af7461f0e2041cda05b1e5fa7f9005c"
+    },
+    {
+      "path": "web/test/daily-overlay-layout.test.mjs",
+      "sha256": "3d43642684693d30488503fec2a45cb4187c892bf15c203ee4df84e6ddc88df6"
+    },
+    {
+      "path": "web/test/data-loader.test.mjs",
+      "sha256": "9bdf3ae5a7ecc7c7034b1f053e0a76051c44fcd0fbf547fc5a70b09ecaa0562e"
+    },
+    {
+      "path": "web/test/divination-engine.test.mjs",
+      "sha256": "6b7444e525a26df6ef2db5e6d5e8216ab1bbbca77832feb75f9100928487aa9c"
+    },
+    {
+      "path": "web/test/divination-history.test.mjs",
+      "sha256": "b4a611ca6eb4fff2eefecc36503eec7b66e142f049f2aeb0f1716062ca8fca52"
+    },
+    {
+      "path": "web/test/divination-interpretation.test.mjs",
+      "sha256": "13702d0a1aa4521f54fbcca20d2c2a72a1d605ae16adc9bd3b7f012559762d6d"
+    },
+    {
+      "path": "web/test/divination-replay.test.mjs",
+      "sha256": "cb38a9560d495b45d3a773ea8930413cf56fd6132ea5e7a00fe0e4d2445aec1c"
+    },
+    {
+      "path": "web/test/evolution-lab.test.mjs",
+      "sha256": "895c996205bb1fe401fe19dde2c4c35c37e40279642bbd2b1b10661c2fca2fc0"
+    },
+    {
+      "path": "web/test/evolution-semantics.test.mjs",
+      "sha256": "0a2b531bfa7798d86ce9ff1ffe05a62cc30050db49ea958c2364f80606480a1e"
+    },
+    {
+      "path": "web/test/guaxu-wheel.test.mjs",
+      "sha256": "0c90012330058d5cab858ca81bee931b0b1d97c3888aba313135ae4a83e0a297"
+    },
+    {
+      "path": "web/test/hexagram-order-remarks.test.mjs",
+      "sha256": "d2de65e66ec5c283d274a1deb9aae9315b1f4ca6b17de6c3589aae041c681a69"
+    },
+    {
+      "path": "web/test/hexagram-utils.test.mjs",
+      "sha256": "f80d970dd0e2ed73e02abad666ad2f6a5d98751b966c0870413346219345e9c6"
+    },
+    {
+      "path": "web/test/immersive-shell.test.mjs",
+      "sha256": "ffba29ab3bf0e8269f2b303bc7e2cf2bd20dc5b3dd4a1caefa81b09cda46b039"
+    },
+    {
+      "path": "web/test/layout-contract.test.mjs",
+      "sha256": "3aac7fe9894772e33fc02c8bb3b3d5214824d9dc075e4dc4b298aaed5c1487e5"
+    },
+    {
+      "path": "web/test/learning-assessment-page.test.mjs",
+      "sha256": "0ec653c04c95c3d4ef3b75e1d4fc062070772bfd94e2e67408ccd071a05715ef"
+    },
+    {
+      "path": "web/test/learning-assessment.test.mjs",
+      "sha256": "54605a0389f4f24e4e0a16a6094d874a9a6fd9913c60018c352874d0c73380c2"
+    },
+    {
+      "path": "web/test/learning-curriculum.test.mjs",
+      "sha256": "44496b63c0c0e4a6bab6f675b5d77ca821c14fe4d618cd5a9fa2ff7dbe34a2b0"
+    },
+    {
+      "path": "web/test/learning-progress.test.mjs",
+      "sha256": "5b5b08de194fc457bf95170ec969830c5cce6a5325162f5becfba1d1780e3924"
+    },
+    {
+      "path": "web/test/learning-review.test.mjs",
+      "sha256": "8f27e082273e14b4b9f9eb225457567e8a2724a63b8412b71912fedb5217c9ce"
+    },
+    {
+      "path": "web/test/learning-ui-contract.test.mjs",
+      "sha256": "eb1e1111384878fe259fbb006c62fd6297c32f18713af8852550bfb1d299668b"
+    },
+    {
+      "path": "web/test/main-search.test.mjs",
+      "sha256": "b1c519eae3827cfdf20f403ab751a4bea4ea9a5f2535892f607fef7a55c92454"
+    },
+    {
+      "path": "web/test/main-stage-lifecycle.test.mjs",
+      "sha256": "e1e1ca396d4275972912e121c4901db0a9f1dfa5c70f5c00e5c2fd653b185d46"
+    },
+    {
+      "path": "web/test/meihua-engine.test.mjs",
+      "sha256": "5d5e3786526f4285467c82a282bdb028438c86080aa211835679405fcf239ea0"
+    },
+    {
+      "path": "web/test/mode-result-visibility.test.mjs",
+      "sha256": "741799e355e9e9213a0062f5161c214aac17cd58ea0efd03cf387316fa78c7b9"
+    },
+    {
+      "path": "web/test/motion-system.test.mjs",
+      "sha256": "6f7511ef48d4a756320b94ac0124c4fe1eb20a7166725ca8884f7fe41631b346"
+    },
+    {
+      "path": "web/test/protocol-guard.test.mjs",
+      "sha256": "be172b8381a82f33af1b0c4520467c5c844491ff856f2eec0dcf7d1527c526e1"
+    },
+    {
+      "path": "web/test/pwa-assets.test.mjs",
+      "sha256": "9c8a53f9363fc41f65ccbe0f8980241ed1c8e880f53cfe556a40373558405680"
+    },
+    {
+      "path": "web/test/quiz-engine.test.mjs",
+      "sha256": "a1bcb882bb169abe1220250bba90d2cf146f6af217e70343ec58d28205e76bf1"
+    },
+    {
+      "path": "web/test/reading-document.test.mjs",
+      "sha256": "17cee473f6ec57884c74d8e9978c6a9bd50979986302406f069ae1d935214fe1"
+    },
+    {
+      "path": "web/test/reading-state.test.mjs",
+      "sha256": "8d5d818fe1ab08f5af44f4f5451c820369be3ad821402fce2d1ae6d4ad13396f"
+    },
+    {
+      "path": "web/test/relation-animation.test.mjs",
+      "sha256": "ce1745bf66f4d44958f4a817130f78b7c7f4ac5acd89a1432d5452195aaf4cc5"
+    },
+    {
+      "path": "web/test/render-accessibility.test.mjs",
+      "sha256": "f1df2f57044c2ee78762903cd509d3fb53ecc273ca217afdcd45d77472f831cc"
+    },
+    {
+      "path": "web/test/review-engine.test.mjs",
+      "sha256": "8c9f4571ea1821d645644427f0e031f29d1b5b9de335aabd7bade60465d82ca3"
+    },
+    {
+      "path": "web/test/search-controller.test.mjs",
+      "sha256": "1997032a865a353515cae7853d2f4854818bb740936130285fe2a4f558682ccd"
+    },
+    {
+      "path": "web/test/share-card.test.mjs",
+      "sha256": "c4dc74430fa8a1c5377afe7074dd2e0a22bfcf3c5b619e803cdc73347c23e2b5"
+    },
+    {
+      "path": "web/test/star-atmosphere.test.mjs",
+      "sha256": "93d3817d23d21f58a382cf0078b7362746f40bb006c6ef8a1eea909d4efb9c93"
+    },
+    {
+      "path": "web/test/star-label-layout.test.mjs",
+      "sha256": "6f025efbaebfc24e13c9920db568ff9fb03ab73d2445b4937dab7eabd218948d"
+    },
+    {
+      "path": "web/test/star-layouts.test.mjs",
+      "sha256": "00892d46009b7bd46554f59613a905eb4bc88ceb3805ce142e2a8f61ad3c6d01"
+    },
+    {
+      "path": "web/test/star-map-accessibility.test.mjs",
+      "sha256": "a3993209845af238cc3560e9c9f927e0e77e02beab3279e3a9052dce7a60b8ac"
+    },
+    {
+      "path": "web/test/star-map-performance.test.mjs",
+      "sha256": "845dbd72e3abaec1dcbed1021a9727316de4d1bd227ebda36adaf6b0d46b7588"
+    },
+    {
+      "path": "web/test/star-pointer-lifecycle.test.mjs",
+      "sha256": "bca816ce3888545dffd56f49096ad6cff13872290deb1d5a6f4c3d10bbda516f"
+    },
+    {
+      "path": "web/test/star-relations.test.mjs",
+      "sha256": "3980e6a8b04eed6985ae28f6f88c516a1957f2b31254ad7d89c783124e72b1f6"
+    },
+    {
+      "path": "web/test/storage.test.mjs",
+      "sha256": "87cfe4b1a479bbeb31b6434cb73ccc9c1c7bf3e2ece8861b52f9764a8a78aeeb"
+    },
+    {
+      "path": "web/test/typography-system.test.mjs",
+      "sha256": "6e9cd79d7fecf3ee2701f3a7d8f7ed8c2022a46eab06fe1eb969089dff099ead"
+    },
+    {
+      "path": "web/test/ui-icons.test.mjs",
+      "sha256": "3d396642a48c42aff138fd2ed8349e9de9c3f1469c22718f0c2c1d6042ddf5ad"
+    },
+    {
+      "path": "web/test/user-data.test.mjs",
+      "sha256": "42b10775366314150bc1dfdef29dd6c9cedccd5ec0dc4d3f07ca93c7abba76dc"
+    },
+    {
+      "path": "web/tool/fill-all.mjs",
+      "sha256": "0a5b56b43ff2706c2ab0783868155e1fa2735b45b18a90a54dfde38672fb8be9"
+    },
+    {
+      "path": "web/tool/gen-almanac-data.mjs",
+      "sha256": "151a088d4f8ca1c1b6c8671292e7804a069ee9b4f8a03529b71b100ab30cebf9"
+    },
+    {
+      "path": "web/tool/gen-keywords.mjs",
+      "sha256": "b4af82f07a5382f97aa9dbb5e7a56b155727dddcf3cb8886b45604e630f19c71"
+    },
+    {
+      "path": "web/tool/gen-notes.mjs",
+      "sha256": "a3a3df0071ffac722032515bdc3c9872871443a73736d64c05c2740ada54458f"
+    },
+    {
+      "path": "web/tool/gen-theorems.mjs",
+      "sha256": "229c7320654a265e08cdd14d8f0ec9f887c9f17ec994c0edd2e0147ebbb5865a"
+    },
+    {
+      "path": "web/tool/gen-tuan-notes.mjs",
+      "sha256": "833832fe5863cb77afe2a44d320eebaddcfcbf8afd16c51525364bdb6ea0fbf9"
+    },
+    {
+      "path": "web/tool/gen-wings.mjs",
+      "sha256": "0c8cce231b9fe812636d59e5a9f64db51a81cce5d596d7123647258bb79aff44"
+    }
+  ],
+  "documentCheck": {
+    "documents": 15,
+    "lines": 6708,
+    "localLinks": 720,
+    "tasks": 48,
+    "requirements": 86,
+    "sourceGuard": null,
+    "issues": []
+  },
+  "sourceProtection": {
+    "files": 154,
+    "changed": []
+  },
+  "githubBeforeSync": {
+    "head": "07069af686602b192c742d24052cc9b6e14d5d6b",
+    "pullRequest": 10,
+    "draft": true,
+    "merged": false,
+    "prQuality": {
+      "runId": 40128460761,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "note": "Read through GitHub connector during this inventory; no result for a subsequent commit is implied."
+  }
+}

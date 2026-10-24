@@ -1,6 +1,6 @@
 # 易象图谱未完成事项清单与项目目标文字
 
-盘点更新：2026-10-25（Asia/Shanghai）。最新已提交源码为`83ba8d44b01a2fb87d9777bee1a95f3c970d7cf4`，分支`codex/immersive-astrolabe-progress`。本次另行核对并保留6份未提交的课程错题源码/测试；它们尚未完成，不能用已提交版本的通过结果证明。见[本次盘点证据](evidence/2026-10-25-remaining-work-final-audit.md)、[搜索交接](evidence/2026-10-25-search-integration.md)及[上一轮盘点](evidence/2026-10-25-remaining-work-search-refresh.md)。旧快照保留其适用版本，不覆盖历史。
+盘点更新：2026-10-25（Asia/Shanghai）。本次核对起点HEAD为`07069af686602b192c742d24052cc9b6e14d5d6b`，最近业务提交仍为`83ba8d44b01a2fb87d9777bee1a95f3c970d7cf4`，分支`codex/immersive-astrolabe-progress`。课程错题的后续实现仍未提交，已有专项证据但整卡未验收。见[最新盘点证据](evidence/2026-10-25-remaining-work-course-refresh.md)；[上一版盘点](evidence/2026-10-25-remaining-work-final-audit.md)中的6份文件和8项失败是历史状态，不代表当前源码。旧快照保留其适用版本，不覆盖历史。
 
 返回 [开发建设总册](../DEVELOPMENT-MASTER.md) · [48 张原执行卡](12-ai-execution-tasks.md) · [实施交接与证据](evidence/2026-10-24-implementation-progress.md) · [GitHub 跟踪 #9](https://github.com/WYHCIPUC/yijing-atlas/issues/9)。
 
@@ -45,7 +45,7 @@
 - 本次复核的 `1bee1c2` [push Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40123033254) 与 [PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40123036199) 均成功；这是已提交版本的结果，不覆盖当前未提交修复。`5627bc8` 的快读 resize 失败已取得“尺寸变更响应早于 media change/模态更新”的本地时序证据，条件等待修复及对应回归已进入工作区；不能据此倒推缺少完整 trace 的每一次历史失败。
 - 跨区域第二指的旧红灯5/6保留，修复后相关回归43/43、真实同场景1/1通过。最新`validate`通过61脚本、覆盖率阶段287/287，20个配置模块集合行99.77%、分支91.77%、函数98.93%。默认Node22的E2E进程因libuv原生断言中止，确认退出后用现有Node24临时环境运行同一`npm run test:e2e`通过；不把中止轮次改记通过。日志与适用源码见整合交接。
 - [PR #10](https://github.com/WYHCIPUC/yijing-atlas/pull/10) 为 Draft，未合并 main、未生产发布。自动回归成功不关闭业务、设备、许可和内容门禁。
-- 本次重新读取GitHub：`25fa12a`的[push Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40125128358)和[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40125131822)均为completed/success。它们覆盖已提交代码，不覆盖现有未提交的搜索增量。
+- 搜索实施前核对的`25fa12a`[push Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40125128358)和[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40125131822)均为completed/success。这是历史提交结果；随后搜索已在`83ba8d4`交付，当前未提交增量是课程错题，不再称为未提交搜索。
 
 下列各表的任务 ID 均链接至原执行卡；“仍未完成”只写原卡内尚未闭环的部分。已确认但只有静态风险依据的项目，仍需先复现，不能直接当作已发生的数据事故。
 
@@ -65,9 +65,9 @@
 
 ### 最新未提交进展：T-LEARN-02仍未完成
 
-题库已增加公开版本及真实卦码/术语引用，普通小试可指定原题必入卷，并拒绝缺题、跨课和版本不符。以上仍是本地局部实现；课程弱项校验、同键原子保存/纠正、只读查询、导入错误定位、今日/温故/考评结果入口及真实用户闭环尚未完成。
+题库版本及真实引用、原题必入卷、弱项字段校验、成绩/回执/弱项同键原子保存、纠正与去重、只读查询、备份导入定位，以及今日/温故/考评结果入口均已在本地实现。25课真实题库的错答→回练→纠正及备份往返已取得纯逻辑证据；浏览器专项6/6覆盖1440桌面和390模拟手机、失败重试、失效题/版本回原课，没有为非卦题生成卦卡。以上不能代替全项目验收。
 
-本次针对这6份未提交文件所涉及的4组测试实跑49项：41通过、8失败，exit 1；其中题库/组卷15项通过，学习记录/备份34项中26通过、8失败。失败对应已写测试但尚未实现的弱项契约。未运行当前工作区的完整validate或E2E，不能将上文搜索版本的绿灯写成当前工作区全绿；详见[盘点证据](evidence/2026-10-25-remaining-work-final-audit.md)。
+最新既有validate记录为64个测试脚本、覆盖率阶段359/359，配置20模块行99.79%、分支93.48%、函数99.01%；本次盘点核对日志和源文件哈希，没有重跑业务测试。**剩余明确缺口**：温故进入原课后，“切换课程”/“返回学程”按钮实际返回温故，文案与去向不符；修正后需补定向回归、完整E2E、最终差异审阅及源码/证据交接。当前没有课程错题版本的完整`npm run test:e2e`记录，代码仍未提交；T-LEARN-02继续开放，总数仍为44项。真机、读屏和真实200%继续归原外部验收卡。证据范围和早期探针失败见[最新盘点证据](evidence/2026-10-25-remaining-work-course-refresh.md)。
 
 ## 2. P0：质量收尾与学习证据
 
@@ -99,7 +99,7 @@
 | 任务 | 优先级 / 当前边界 | 仍未完成的内容 | 原有前置 |
 | --- | --- | --- | --- |
 | [T-LEARN-01 推荐优先队列与继续阅读](12-ai-execution-tasks.md#t-learn-01) | P1；部分实现 | 落实未完课程→到期复习→薄弱项→下一未学→复讲/解卦的稳定推荐、原因和入口；保存恢复最小课程位置；欢迎「零基础开始」直达 l1-1，不能把当前今日修习入口当作已经完成 | 无 |
-| [T-LEARN-02 课程错题形成独立温习闭环](12-ai-execution-tasks.md#t-learn-02) | P1；题库引用/原题必入卷已有未提交实现，数据回归8项失败 | 补weakQuestions字段校验、同键原子入队/纠正、同轮去重、损坏数据保护、只读查询及备份导入定位；接通今日/温故/考评结果入口、回原课和原题回练、换版回退及保存重试；完成真实用户流程和整合验收 | T-LEARN-05 |
+| [T-LEARN-02 课程错题形成独立温习闭环](12-ai-execution-tasks.md#t-learn-02) | P1；本地实现及专项6/6，整卡待验收 | 修正温故来路的原课返回按钮文案与实际去向；补修复后的定向回归及完整E2E，完成最终差异审阅、源码提交、证据和交接。已有数据保护、三个入口、原题回练与失败重试不重复开发 | T-LEARN-05（已完成） |
 | [T-LEARN-03 统一四段修习反馈](12-ai-execution-tasks.md#t-learn-03) | P1；部分实现 | 考评、复习、自由测验和解卦统一结果/依据/实际记录变化/下一步；说明基于自评、真实保存状态及来源返回；补读屏顺序、一个主行动和至多两个次行动。本卡同时承接既有复习同轮幂等/失败重试、复讲旧响应隔离/仅保存重试，见第 11 节 | T-LEARN-02、T-QUIZ-01 |
 | [T-QUIZ-01 具体错题证据与黄历薄弱项](12-ai-execution-tasks.md#t-quiz-01) | P1；自由测验判分已有 | 由卦码摘要补充规则、题型、目标证据；答对原规则才能清错；无卦码的黄历术语也能进入温习；纠正与复习证据关联；不把旧卦码伪造成具体旧题 | T-LEARN-02 |
 | [T-LEARN-04 区分三种学习层级称谓](12-ai-execution-tasks.md#t-learn-04) | P2；部分实现 | 在标签、帮助、推荐和来源中区分课程五阶、掌握状态、修习成长 15 态；不重算原掌握度或修习值 | 无 |
@@ -219,4 +219,4 @@
 
 原48卡减去T-DIV-01、T-SAVE-01、T-LEARN-05和T-SEARCH-01，剩余44项逐一列明，不按已完成引擎替代整条业务。三条既有专题要求的执行归属保持不变，功能仍待原卡实施。10项建议未自动采纳，不新增需求。
 
-上一轮45项盘点见[GitHub历史记录](https://github.com/WYHCIPUC/yijing-atlas/issues/9#issuecomment-6388791373)及其[本地证据](evidence/2026-10-25-remaining-work-search-refresh.md)。本轮搜索源码提交、CI、清单与PR同步结果在[搜索交接](evidence/2026-10-25-search-integration.md)登记，未合并main或发布。
+上一轮45项盘点见[GitHub历史记录](https://github.com/WYHCIPUC/yijing-atlas/issues/9#issuecomment-6388791373)及其[本地证据](evidence/2026-10-25-remaining-work-search-refresh.md)。搜索源码提交与CI见[搜索交接](evidence/2026-10-25-search-integration.md)；课程错题本地增量、44项核对和本次文档检查见[最新盘点](evidence/2026-10-25-remaining-work-course-refresh.md)。GitHub开发分支、Draft PR与Issue按此口径同步，不把尚未提交的业务代码写成远程已经具备，也不合并main或发布。
