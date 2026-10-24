@@ -2,7 +2,7 @@
 
 日期：2026-10-24（Asia/Shanghai）。本 Issue 作为 GitHub 上的统一进度入口；具体需求、依赖、修改范围和验收以[开发建设总册](https://github.com/WYHCIPUC/yijing-atlas/blob/codex/immersive-astrolabe-progress/docs/DEVELOPMENT-MASTER.md)及[48 张 AI 执行卡](https://github.com/WYHCIPUC/yijing-atlas/blob/codex/immersive-astrolabe-progress/docs/development/12-ai-execution-tasks.md)为准。
 
-**尚未完成全面优化开发。** 沉浸星仪 UI 和总册已有实现与提交，本轮继续修复章节边界、星图命中一致性和占筮案例身份，并将代码、文档及后续工作同步推进到开发分支 `codex/immersive-astrolabe-progress`。本正文准备时同步结果仍待集成者确认；不将“计划推送”写成“已同步”。本轮新版未发布到生产环境。
+**尚未完成全面优化开发。** 沉浸星仪 UI、总册及本轮修复已同步开发分支 `codex/immersive-astrolabe-progress`，开发验收见 [Draft PR #10](https://github.com/WYHCIPUC/yijing-atlas/pull/10)。本轮新版未发布到生产环境。
 
 ## 当前进度与证据
 
@@ -82,10 +82,10 @@
 | 项目 | 最终结果 |
 | --- | --- |
 | 本轮最终修复提交 | `c625a7c`；4 个应用模块、浏览器脚本与回归测试 |
-| GitHub 分支推送 | 待补远程分支、提交与结果 |
+| GitHub 分支推送 | `codex/immersive-astrolabe-progress` 的应用/测试修正 `0e9b670` 已同步，文档收尾见 PR 最新 HEAD；HTTPS 临时失败后用 Git Data API 非强制快进，逐项核验对象 SHA 完全一致 |
 | 最终 `npm run validate` | exit 0，58 个脚本、244/244；配置 20 模块行 99.77%、分支 91.12%、函数 98.89%，不等于全项目覆盖率 |
 | 默认及截图 E2E | 本地完整通过；最终默认运行覆盖 `c625a7c`，25 张截图为此前相同 UI 代码；日志和适用范围见实施交接第 7 节 |
-| GitHub CI | 待补工作流 URL、结束时间、结论及失败项 |
+| GitHub CI | 原两轮各有一次 SW 接管失败，已持久保留；修正 `0e9b670` 的 [push Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40098648711) / [PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40098651842) 均 success（validate + E2E）；后续文档提交的检查另按实际 HEAD 记录 |
 | 生产环境 | 本轮未发布；后续按 T-RELEASE-01 独立执行 |
 
 本 Issue 只在 48 项卡片分别达到其完成条件后才能作为“全面建设已完成”关闭；外部证据和内容门禁仍开放时不得整体关闭。

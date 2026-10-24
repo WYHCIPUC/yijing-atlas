@@ -56,6 +56,8 @@ git diff --check
 | npm run build:windows / npm run test:windows | 本地 SEA 构建及启动验证 | 本次文档任务未重建或实跑 |
 
 上表脚本数与 230 项覆盖率是首次建档快照。后续新增 `divination-replay.test.mjs` 等回归后，最终 validate 为 58 个脚本、244 项 TAP 子测试全部通过；配置的 20 模块集合覆盖率行 99.77%、分支 91.12%、函数 98.89%。这不是全项目全部代码覆盖率。
+
+GitHub 续验曾出现 Service Worker 接管失败；严格探针与 CI 分项状态已确认硬重载绕过控制器的条件差异。最新测试用普通重载、独立禁用 HTTP 缓存与新文档守卫，不延长超时。失败、复现源码及后续运行链接见 [实施交接 7.3—7.4](evidence/2026-10-24-implementation-progress.md)。原失败记录不得因后续成功被删除。
 | npm --prefix promo-video run typecheck | 宣传工程 TS 检查 | 本次文档任务未运行；不属于网页 validate |
 
 20 个 coverage 模块：achievement-catalog、achievement-engine、achievement-storage、data-loader、guaxu-wheel、divination-engine、divination-interpretation、divination-history、evolution-state、hexagram-utils、learning-assessment、learning-curriculum、learning-progress、learning-review、meihua-engine、quiz-engine、review-engine、search-controller、star-relations、storage。

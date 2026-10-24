@@ -180,8 +180,26 @@ GitHub 分支推送、后续修复提交与 CI 结果由集成者在第 7 节追
 
 ### 7.3 GitHub 同步
 
-修复代码已形成 `c625a7c`，文档与证据随后单独提交。开发分支、PR、跟踪 Issue、远程推送与 Quality 的实际结果在 GitHub 同步后追加；此段在追加前只表示本地提交完成，不表示远程已通过。生产发布不在本批范围。
+应用修复为 `c625a7c`，文档/截图为 `cda3696`，失败诊断为 `ab0d58f`，Service Worker 测试生命周期修正为 `0e9b670`。开发分支已同步 GitHub；[PR #10](https://github.com/WYHCIPUC/yijing-atlas/pull/10) 保持 OPEN / Draft，未合并 main，没有生产发布。
 
 统一建设跟踪 Issue 已创建：[建设跟踪 #9](https://github.com/WYHCIPUC/yijing-atlas/issues/9)，包含 48 张卡的原序清单，只有 T-DIV-01 勾选；没有批量关闭未实现任务。
 
+首次 `cda3696` 的 [push Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40097867484) 成功，而 [PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40097893803) 失败。增加诊断后，`ab0d58f` 的 [push Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40098174306) 再次失败，[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40098177557) 成功。这些记录证明原测试存在条件差异，不能只选一次成功记录。
+
+最新修正 `0e9b670` 的 [push Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40098648711) 和 [PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40098651842) 均已完成且 conclusion=success，包含 `Validate repository` 与 `Browser smoke test`；结构化结果见 [本轮代码 CI 证据](2026-10-24-github-quality-code.json)。该结论只覆盖指定代码提交；本记录及探针随后作为文档收尾提交，后续 HEAD 的检查仍以 GitHub 实际运行结果为准。
+
+网络期间三次常规 Git HTTPS 推送出现连接重置/443 连接失败。GitHub API 正常，故通过 Git Data API 上传本次对象并进行非强制快进；逐项核验 blob、tree、commit SHA，与本地 `0e9b6701b5a1ff59ab4bc8dd63bf8aeb3c5b286a` 完全一致，更新前再次核对远程 parent 为 `ab0d58f`。没有重写作者信息或历史，也没有强推。
+
 总册、专题 06/08/10 与任务台账已同步本轮增量。47 张卡仍未闭环；T-QA-01 的历史归因限制与 T-QA-03 的未实现部分继续保留。
+
+### 7.4 GitHub 离线检查失败的根因与修正
+
+[首次失败日志](2026-10-24-github-pr-failure.log) 只记录“Service Worker 未接管”；[补诊断后的失败日志](2026-10-24-github-sw-diagnostic-failure.log) 明确显示应用 `ready=complete`、`loading.hidden=true`、注册 `active=activated`，但 `controller=null`。这不是数据加载失败。
+
+[独立严格探针](2026-10-24-service-worker-probe.md) 每次要求 `performance.timeOrigin` 改变且新应用初始化完成，再读取控制器：在线硬重载两次均无控制器，普通重载两次均受控；禁用 HTTP 缓存再断网，普通重载仍从 Service Worker 恢复。探针源码随项目保存，未新增依赖。
+
+`Page.reload({ignoreCache:true})` 可绕过已有 Worker。原测试在控制器缺失时再次硬重载，注册已经激活，不会重新触发安装期 claim；增加超时无法修复。修正只涉及测试：接管与断网使用普通重载，单独 `Network.setCacheDisabled(true)` 排除 HTTP 缓存；三次重载均用 `timeOrigin` 守卫，避免旧文档的就绪状态误通过。保留失败分项诊断，不改变产品 SW 算法、缓存版本或原业务断言。
+
+修正后的本地完整 `npm run test:e2e` exit 0，见 [日志](2026-10-24-e2e-service-worker-fix.log)；最终 `npm run check` exit 0（70 JS/MJS、11 JSON、内容门禁关闭）。GitHub 最新结论见 7.3。
+
+补诊断的 CI 还捕获欢迎层按钮、梅花输入框仍有焦点时设置祖先 `aria-hidden` 的浏览器警告。已登记到 T-MODAL-01，尚未修复；不能用本次 E2E 成功替代无障碍全程验收。

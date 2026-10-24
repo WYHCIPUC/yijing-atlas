@@ -20,3 +20,7 @@
 关联建设跟踪 #9，48 卡仅 T-DIV-01 关闭，47 卡仍未闭环。历史 B-01 单次失败没有完整 trace，不能断言唯一原因；真机、读屏、真实浏览器 200% 缩放、当前 Windows 包与内容校勘均未完成。六家注疏门禁保持关闭。
 
 此 PR 为开发验收 Draft，不自动关闭 #9，不合并 main，不触发生产发布。GitHub Quality 的实际结果另行记录。
+
+GitHub 续验已定位离线测试的硬重载绕过 Service Worker：保留两次失败日志，新增独立严格新文档探针，普通重载配合禁用 HTTP 缓存验证离线恢复。此修正只涉及测试，没有修改产品缓存算法。最新运行见 [push Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40098648711) 与 [PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40098651842)。CI 的 `aria-hidden` 焦点警告继续列入开放任务 T-MODAL-01。
+
+代码提交 `0e9b670` 的上述两条 Quality 均已 success（validate 与 E2E）。后续文档收尾不改变应用代码，仍检查新 HEAD 的实际 CI，不推定其自动成功。
