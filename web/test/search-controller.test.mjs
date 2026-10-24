@@ -1,6 +1,39 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { getHexCodeFromUrl, moveSelection, withHexCode } from '../js/search-controller.js';
+import * as searchController from '../js/search-controller.js';
+
+const { getHexCodeFromUrl, moveSelection, withHexCode } = searchController;
+
+test('搜索解析先识别六位码，再识别卦序与第N卦', () => {
+  assert.equal(typeof searchController.parseHexagramQuery, 'function');
+  const parse = searchController.parseHexagramQuery;
+  assert.deepEqual(parse(' 111111 '), { kind: 'code', code: '111111' });
+  assert.deepEqual(parse('000001'), { kind: 'code', code: '000001' });
+  assert.deepEqual(parse('1'), { kind: 'number', number: 1 });
+  assert.deepEqual(parse('11'), { kind: 'number', number: 11 });
+  assert.deepEqual(parse('64'), { kind: 'number', number: 64 });
+  assert.deepEqual(parse(' 第64卦 '), { kind: 'number', number: 64 });
+});
+
+test('上下卦解析保留方向，不猜测无方向卦名', () => {
+  assert.equal(typeof searchController.parseHexagramQuery, 'function');
+  const parse = searchController.parseHexagramQuery;
+  assert.deepEqual(parse('上坤下乾'), { kind: 'trigrams', lowerName: '乾', upperName: '坤' });
+  assert.deepEqual(parse('下乾上坤'), { kind: 'trigrams', lowerName: '乾', upperName: '坤' });
+  assert.deepEqual(parse('乾坤'), { kind: 'text', text: '乾坤' });
+  assert.deepEqual(parse(' 上下无常 '), { kind: 'text', text: '上下无常' });
+});
+
+test('空串及非法数字查询不伪装为文本搜索', () => {
+  assert.equal(typeof searchController.parseHexagramQuery, 'function');
+  const parse = searchController.parseHexagramQuery;
+  assert.deepEqual(parse(' \n '), { kind: 'empty' });
+  for (const query of ['0', '65', '01', '001', '1111111', '0000001', '101102', '000064', '第0卦', '第65卦', '第01卦', '第000001卦', '第111111卦']) {
+    assert.deepEqual(parse(query), { kind: 'invalid' }, query);
+  }
+  assert.deepEqual(parse({}), { kind: 'invalid' });
+  assert.deepEqual(parse(' AbC '), { kind: 'text', text: 'abc' });
+});
 
 test('搜索选择支持循环方向键与首尾跳转', () => {
   assert.equal(moveSelection(-1, 'ArrowDown', 3), 0);

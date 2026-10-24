@@ -1,0 +1,3850 @@
+{
+  "startedAt": "2026-10-24T19:42:44.445Z",
+  "command": "node scripts/test-search-input.mjs",
+  "node": "v24.19.0",
+  "execPath": "C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "uv": "1.52.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "head": "ec0f63c5c6f6aa052909014ec909090175451d10",
+  "sourceHashes": {
+    "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+    "web/js/search-controller.js": "cb256d0f22e4c7f14b0a37ac79644c297300299d4de7b44fa6a192c2496f0ee6",
+    "web/js/main.js": "dd9c86db49308fc379944841cd77aaf6a7e848119450055b28f0bb1412f8d2e2",
+    "web/js/star-map.js": "23787057a90bee36ad2afa2f54163530856938e60e58d6e8197889ef94eab851",
+    "web/js/user-data.js": "8a47ceb0e8dea555a17d10ac253b32f0dfc84cead620ddcf13193def6e1435b1",
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/styles/immersive.css": "25dd343d0c0b889fda83c993c6196d68cdfc33b64a27d10f2eba57a4f0a7c3e5",
+    "scripts/test-search-input.mjs": "e746a8f20269b1ae30db0a4bf5e65b65c00b344c485a1420184f3229b8cae478"
+  },
+  "scenarios": [
+    {
+      "name": "1440-search-real-input",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "inputs": [
+        {
+          "action": "mouse",
+          "selector": "[data-entry=\"explore\"]",
+          "x": 642.9296875,
+          "y": 668.671875
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "1",
+          "modifiers": 0,
+          "text": "1"
+        },
+        {
+          "action": "key",
+          "key": "1",
+          "modifiers": 0,
+          "text": "1"
+        },
+        {
+          "action": "key",
+          "key": "1",
+          "modifiers": 0,
+          "text": "1"
+        },
+        {
+          "action": "key",
+          "key": "1",
+          "modifiers": 0,
+          "text": "1"
+        },
+        {
+          "action": "key",
+          "key": "1",
+          "modifiers": 0,
+          "text": "1"
+        },
+        {
+          "action": "key",
+          "key": "1",
+          "modifiers": 0,
+          "text": "1"
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "1",
+          "modifiers": 0,
+          "text": "1"
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "6",
+          "modifiers": 0,
+          "text": "6"
+        },
+        {
+          "action": "key",
+          "key": "4",
+          "modifiers": 0,
+          "text": "4"
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "第64卦"
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "下乾上坤"
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "上坤下乾"
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": " 111111 "
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "乾"
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "乾为天"
+        },
+        {
+          "action": "mouse",
+          "selector": ".search-option[data-index=\"0\"]",
+          "x": 1216,
+          "y": 260.6777877807617
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "潜龙勿用"
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "渐"
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "action": "mouse",
+          "selector": "[data-relation-layer=\"interlocking\"]",
+          "x": 207.5,
+          "y": 282.390625
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "0",
+          "modifiers": 0,
+          "text": "0"
+        }
+      ],
+      "checks": [
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "111111",
+          "pointer": false,
+          "results": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": null,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "target": null,
+              "transition": {
+                "elapsed": 83.33333333333334
+              },
+              "yaw": 0.003,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": true,
+            "detailHidden": "true",
+            "value": "111111",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": null,
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": 38.432204035254244,
+                "y": -112.61869042832978,
+                "z": -31.6919147661255
+              },
+              "target": {
+                "x": 38.432204035254244,
+                "y": -112.61869042832978,
+                "z": -31.6919147661255
+              },
+              "transition": null,
+              "yaw": 0.020999999999999994,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "乾",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "1",
+          "pointer": false,
+          "results": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": 38.432204035254244,
+                "y": -112.61869042832978,
+                "z": -31.6919147661255
+              },
+              "target": {
+                "x": 38.432204035254244,
+                "y": -112.61869042832978,
+                "z": -31.6919147661255
+              },
+              "transition": null,
+              "yaw": 0.0221988,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "1",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -0.8773500181362124,
+                "y": -258.34026682767467,
+                "z": -28.785214665864814
+              },
+              "target": {
+                "x": -0.8773500181362124,
+                "y": -258.34026682767467,
+                "z": -28.785214665864814
+              },
+              "transition": null,
+              "yaw": 0.04079640000000001,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "乾",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "64",
+          "pointer": false,
+          "results": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -0.8773500181362124,
+                "y": -258.34026682767467,
+                "z": -28.785214665864814
+              },
+              "target": {
+                "x": -0.8773500181362124,
+                "y": -258.34026682767467,
+                "z": -28.785214665864814
+              },
+              "transition": null,
+              "yaw": 0.053392800000000025,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "64",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "未济",
+                "fullName": "火水未济",
+                "code": "010101",
+                "number": 64,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "010101",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -131.13011527181186,
+                "y": 201.17821131445612,
+                "z": -11.578365708281687
+              },
+              "target": {
+                "x": -131.13011527181186,
+                "y": 201.17821131445612,
+                "z": -11.578365708281687
+              },
+              "transition": null,
+              "yaw": 0.07379040000000002,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "未济",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "未济",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "未济",
+                "fullName": "火水未济",
+                "code": "010101",
+                "number": 64,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "010101",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "第64卦",
+          "pointer": false,
+          "results": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "010101",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -131.13011527181186,
+                "y": 201.17821131445612,
+                "z": -11.578365708281687
+              },
+              "target": {
+                "x": -131.13011527181186,
+                "y": 201.17821131445612,
+                "z": -11.578365708281687
+              },
+              "transition": null,
+              "yaw": 0.07858920000000001,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "未济",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "第64卦",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "未济",
+                "fullName": "火水未济",
+                "code": "010101",
+                "number": 64,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "010101",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "010101",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -131.13483656024914,
+                "y": 201.15570438986754,
+                "z": -14.33020245009569
+              },
+              "target": {
+                "x": -131.13483656024914,
+                "y": 201.15570438986754,
+                "z": -14.33020245009569
+              },
+              "transition": null,
+              "yaw": 0.09718679999999998,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "未济",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "未济",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "未济",
+                "fullName": "火水未济",
+                "code": "010101",
+                "number": 64,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "010101",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "下乾上坤",
+          "pointer": false,
+          "results": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "010101",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -131.13483656024914,
+                "y": 201.15570438986754,
+                "z": -14.33020245009569
+              },
+              "target": {
+                "x": -131.13483656024914,
+                "y": 201.15570438986754,
+                "z": -14.33020245009569
+              },
+              "transition": null,
+              "yaw": 0.09718679999999998,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "未济",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "下乾上坤",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "泰",
+                "fullName": "地天泰",
+                "code": "111000",
+                "number": 11,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "010101",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111000",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -50.03339800890444,
+                "y": -311.8042344603447,
+                "z": 20.23194163602927
+              },
+              "target": {
+                "x": -50.03339800890444,
+                "y": -311.8042344603447,
+                "z": 20.23194163602927
+              },
+              "transition": null,
+              "yaw": 0.11578799999999997,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "泰",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "泰",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "泰",
+                "fullName": "地天泰",
+                "code": "111000",
+                "number": 11,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111000",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "上坤下乾",
+          "pointer": false,
+          "results": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111000",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -50.03339800890444,
+                "y": -311.8042344603447,
+                "z": 20.23194163602927
+              },
+              "target": {
+                "x": -50.03339800890444,
+                "y": -311.8042344603447,
+                "z": 20.23194163602927
+              },
+              "transition": null,
+              "yaw": 0.13138319999999998,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "泰",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "上坤下乾",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "泰",
+                "fullName": "地天泰",
+                "code": "111000",
+                "number": 11,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111000",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111000",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -50.03601568200929,
+                "y": -311.8252550347635,
+                "z": 25.831809941210018
+              },
+              "target": {
+                "x": -50.03601568200929,
+                "y": -311.8252550347635,
+                "z": 25.831809941210018
+              },
+              "transition": null,
+              "yaw": 0.15357719999999986,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "泰",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "泰",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "泰",
+                "fullName": "地天泰",
+                "code": "111000",
+                "number": 11,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111000",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": " 111111 ",
+          "pointer": false,
+          "results": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111000",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -50.03601568200929,
+                "y": -311.8252550347635,
+                "z": 25.831809941210018
+              },
+              "target": {
+                "x": -50.03601568200929,
+                "y": -311.8252550347635,
+                "z": 25.831809941210018
+              },
+              "transition": null,
+              "yaw": 0.16677839999999985,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "泰",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": " 111111 ",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111000",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -1.4764816414035522,
+                "y": -261.04896925303456,
+                "z": -8.43071955259935
+              },
+              "target": {
+                "x": -1.4764816414035522,
+                "y": -261.04896925303456,
+                "z": -8.43071955259935
+              },
+              "transition": null,
+              "yaw": 0.1883747999999998,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "乾",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "乾",
+          "pointer": false,
+          "results": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -1.4764816414035522,
+                "y": -261.04896925303456,
+                "z": -8.43071955259935
+              },
+              "target": {
+                "x": -1.4764816414035522,
+                "y": -261.04896925303456,
+                "z": -8.43071955259935
+              },
+              "transition": null,
+              "yaw": 0.20217359999999973,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "乾",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到4卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到4卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-1",
+                "index": "1",
+                "name": "坤",
+                "fullName": "坤为地",
+                "code": "000000",
+                "number": 2,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-2",
+                "index": "2",
+                "name": "履",
+                "fullName": "天泽履",
+                "code": "110111",
+                "number": 10,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-3",
+                "index": "3",
+                "name": "同人",
+                "fullName": "天火同人",
+                "code": "101111",
+                "number": 13,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -1.4771963924744114,
+                "y": -261.05592263293966,
+                "z": -5.193570873250145
+              },
+              "target": {
+                "x": -1.4771963924744114,
+                "y": -261.05592263293966,
+                "z": -5.193570873250145
+              },
+              "transition": null,
+              "yaw": 0.22076759999999968,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "乾",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "true"
+              },
+              {
+                "id": "search-option-1",
+                "index": "1",
+                "name": "坤",
+                "fullName": "坤为地",
+                "code": "000000",
+                "number": 2,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-2",
+                "index": "2",
+                "name": "履",
+                "fullName": "天泽履",
+                "code": "110111",
+                "number": 10,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-3",
+                "index": "3",
+                "name": "同人",
+                "fullName": "天火同人",
+                "code": "101111",
+                "number": 13,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "乾为天",
+          "pointer": true,
+          "results": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -1.4771963924744114,
+                "y": -261.05592263293966,
+                "z": -5.193570873250145
+              },
+              "target": {
+                "x": -1.4771963924744114,
+                "y": -261.05592263293966,
+                "z": -5.193570873250145
+              },
+              "transition": null,
+              "yaw": 0.23456639999999965,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "乾为天",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -1.4778779407497495,
+                "y": -261.0624767334247,
+                "z": -1.6240990368496355
+              },
+              "target": {
+                "x": -1.4778779407497495,
+                "y": -261.0624767334247,
+                "z": -1.6240990368496355
+              },
+              "transition": null,
+              "yaw": 0.2663723999999998,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "乾",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "潜龙勿用",
+          "pointer": false,
+          "results": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -1.4778779407497495,
+                "y": -261.0624767334247,
+                "z": -1.6240990368496355
+              },
+              "target": {
+                "x": -1.4778779407497495,
+                "y": -261.0624767334247,
+                "z": -1.6240990368496355
+              },
+              "transition": null,
+              "yaw": 0.2717723999999998,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "潜龙勿用",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -1.4781374169275523,
+                "y": -261.0649534662703,
+                "z": -0.309157497025236
+              },
+              "target": {
+                "x": -1.4781374169275523,
+                "y": -261.0649534662703,
+                "z": -0.309157497025236
+              },
+              "transition": null,
+              "yaw": 0.28856999999999994,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "乾",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "渐",
+          "pointer": false,
+          "results": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "111111",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -1.4781374169275523,
+                "y": -261.0649534662703,
+                "z": -0.309157497025236
+              },
+              "target": {
+                "x": -1.4781374169275523,
+                "y": -261.0649534662703,
+                "z": -0.309157497025236
+              },
+              "transition": null,
+              "yaw": 0.28856999999999994,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "渐",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "渐",
+                "fullName": "风山渐",
+                "code": "001011",
+                "number": 53,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111111",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:64299/?search-probe=1440",
+            "stage": "none",
+            "activeCode": "001011",
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -285.11685722880264,
+                "y": 59.37686285766756,
+                "z": -16.45690903135294
+              },
+              "target": {
+                "x": -285.11685722880264,
+                "y": 59.37686285766756,
+                "z": -16.45690903135294
+              },
+              "transition": null,
+              "yaw": 0.3059688000000001,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "渐",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "渐",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "渐",
+                "fullName": "风山渐",
+                "code": "001011",
+                "number": 53,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "001011",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        }
+      ],
+      "screenshots": [
+        "1440-search-real-input-failure.png"
+      ],
+      "status": "failed",
+      "baseline": {
+        "url": "http://127.0.0.1:64299/?search-probe=1440",
+        "stage": "none",
+        "activeCode": null,
+        "relation": {
+          "type": "opposite",
+          "changingPosition": null
+        },
+        "camera": {
+          "pos": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "target": null,
+          "transition": {
+            "elapsed": 33.333333333333336
+          },
+          "yaw": 0.0012,
+          "pitch": 0,
+          "view": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        "focusName": "乾",
+        "summaryHidden": true,
+        "detailHidden": "true",
+        "value": "",
+        "expanded": "false",
+        "describedBy": "search-help",
+        "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+        "searchStatus": "",
+        "statusRole": "status",
+        "activeDescendant": null,
+        "focus": "star-canvas",
+        "resultsHidden": true,
+        "empty": null,
+        "options": [],
+        "data": {
+          "yijing-review-cards": null,
+          "yijing.achievements.v1": null,
+          "yijing-quiz-wrong": null,
+          "yijing-quiz-stats": null,
+          "yijing.study.v1": null,
+          "yijing-notes": null,
+          "yijing-activity-v1": null,
+          "yijing-learning-record-v2": null,
+          "yijing-learning-review-config-v1": null,
+          "yijing-divination-history-v1": null,
+          "yijing-divination-history-v2": null
+        },
+        "writes": [],
+        "history": {
+          "hex": null,
+          "reading": {
+            "focusedCode": null,
+            "readingCode": null,
+            "stage": "none",
+            "section": "overview"
+          }
+        }
+      },
+      "final": {
+        "url": "http://127.0.0.1:64299/?search-probe=1440",
+        "stage": "none",
+        "activeCode": "001011",
+        "relation": {
+          "type": "interlocking",
+          "changingPosition": null
+        },
+        "camera": {
+          "pos": {
+            "x": -285.11685722880264,
+            "y": 59.37686285766756,
+            "z": -16.45690903135294
+          },
+          "target": {
+            "x": -285.11685722880264,
+            "y": 59.37686285766756,
+            "z": -16.45690903135294
+          },
+          "transition": null,
+          "yaw": 0.31676880000000013,
+          "pitch": 0,
+          "view": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        "focusName": "渐",
+        "summaryHidden": false,
+        "detailHidden": "true",
+        "value": "0",
+        "expanded": "true",
+        "describedBy": "search-help",
+        "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+        "searchStatus": "没有找到相关卦象。卦序为1—64，卦码须为六位0或1。",
+        "statusRole": "status",
+        "activeDescendant": null,
+        "focus": "search",
+        "resultsHidden": false,
+        "empty": "没有找到相关卦象。卦序为1—64，卦码须为六位0或1。",
+        "options": [],
+        "data": {
+          "yijing-review-cards": null,
+          "yijing.achievements.v1": null,
+          "yijing-quiz-wrong": null,
+          "yijing-quiz-stats": null,
+          "yijing.study.v1": null,
+          "yijing-notes": null,
+          "yijing-activity-v1": null,
+          "yijing-learning-record-v2": null,
+          "yijing-learning-review-config-v1": null,
+          "yijing-divination-history-v1": null,
+          "yijing-divination-history-v2": null
+        },
+        "writes": [],
+        "history": {
+          "hex": null,
+          "reading": {
+            "focusedCode": "001011",
+            "readingCode": null,
+            "stage": "none",
+            "section": "overview"
+          }
+        }
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "explore",
+          "at": 454.2000000178814
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "explore",
+          "at": 457.40000000596046
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "explore",
+          "at": 457.40000000596046
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 876.4000000059605
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 877.8000000119209
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 878.5
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 879.3000000119209
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 880.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 880.5999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "1",
+          "at": 881.5999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "1",
+          "at": 919
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "1",
+          "at": 920.2000000178814
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "11",
+          "at": 920.7000000178814
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "11",
+          "at": 921.7000000178814
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "11",
+          "at": 922.0999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "111",
+          "at": 922.4000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "111",
+          "at": 923.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "111",
+          "at": 923.5999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "1111",
+          "at": 923.8000000119209
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "1111",
+          "at": 924.3000000119209
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "1111",
+          "at": 924.5999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "11111",
+          "at": 924.8000000119209
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "11111",
+          "at": 925.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "11111",
+          "at": 925.5
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "111111",
+          "at": 925.5999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "111111",
+          "at": 926.2000000178814
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "111111",
+          "at": 929
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "111111",
+          "at": 930.3000000119209
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "111111",
+          "at": 932.5999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 985.4000000059605
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 1489.5999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 1490.5
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 1491.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 1492
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 1492.300000011921
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 1492.9000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 1493.5
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 1494
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "1",
+          "at": 1494.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "1",
+          "composing": false,
+          "target": "search",
+          "value": "1",
+          "at": 1495.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "1",
+          "at": 1496.9000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "1",
+          "at": 1497.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "1",
+          "at": 1499.4000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 1510.2000000178814
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 2084
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 2129.300000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 2260.4000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 2261.4000000059605
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 2261.7000000178814
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 2262.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 2262.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "6",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 2263.0999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "6",
+          "at": 2263.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "6",
+          "composing": false,
+          "target": "search",
+          "value": "6",
+          "at": 2264.7000000178814
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "4",
+          "composing": false,
+          "target": "search",
+          "value": "6",
+          "at": 2265
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "64",
+          "at": 2265.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "4",
+          "composing": false,
+          "target": "search",
+          "value": "64",
+          "at": 2300.5
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "64",
+          "at": 2402.9000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "64",
+          "at": 2437.2000000178814
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "64",
+          "at": 2440.5999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 2470.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 3066.5999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 3067.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 3069.7000000178814
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 3070.5999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 3071.2000000178814
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 3071.800000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 3072.5999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "第64卦",
+          "at": 3073.7000000178814
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "第64卦",
+          "at": 3114.800000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "第64卦",
+          "at": 3155.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "第64卦",
+          "at": 3161.0999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 3175.7000000178814
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 3626.7000000178814
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 3627.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 3628.0999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 3628.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "未济",
+          "at": 3629.0999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 3629.7000000178814
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 3630.2000000178814
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "下乾上坤",
+          "at": 3631
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "下乾上坤",
+          "at": 3633.4000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "下乾上坤",
+          "at": 3634.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "下乾上坤",
+          "at": 3635
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 3689.300000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 4264.800000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 4312
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 4388.200000017881
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 4425.700000017881
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 4462.5999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 4463.200000017881
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 4505.5
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "上坤下乾",
+          "at": 4545.5
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "上坤下乾",
+          "at": 4647.700000017881
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "上坤下乾",
+          "at": 4690.200000017881
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "上坤下乾",
+          "at": 4728.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 4789.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 5333.0999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 5365
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 5430.800000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 5466.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 5500.200000017881
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 5501.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 5533.0999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": " 111111 ",
+          "at": 5566.4000000059605
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": " 111111 ",
+          "at": 5665.800000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": " 111111 ",
+          "at": 5703.5
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": " 111111 ",
+          "at": 5741.700000017881
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 5797.5
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 6311.9000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 6345.9000000059605
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 6411.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 6448.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 6489.200000017881
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 6490.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 6522.700000017881
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 6555.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 6629.800000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 6631.4000000059605
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 6632.5999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 6644.700000017881
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 7228.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 7266.300000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 7337.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 7367.5999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 7398.300000011921
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 7399.200000017881
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 7434.300000011921
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "乾为天",
+          "at": 7467.300000011921
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "search-option-0",
+          "at": 7951.5999999940395
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "search-option-0",
+          "at": 7954.200000017881
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "search-option-0",
+          "at": 7954.200000017881
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 8576.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 8609.5
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 8642.09999999404
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 8643.200000017881
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 8643.59999999404
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 8644.40000000596
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 8645
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "潜龙勿用",
+          "at": 8645.90000000596
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "潜龙勿用",
+          "at": 8648.40000000596
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "潜龙勿用",
+          "at": 8649.59999999404
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "潜龙勿用",
+          "at": 8651.200000017881
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 8661.700000017881
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 9109.09999999404
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 9109.700000017881
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 9110.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 9111
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "乾",
+          "at": 9111.300000011921
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 9111.800000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 9112.300000011921
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "渐",
+          "at": 9112.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "渐",
+          "at": 9115.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "渐",
+          "at": 9115.90000000596
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "渐",
+          "at": 9117.09999999404
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "渐",
+          "at": 9166.40000000596
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "interlocking",
+          "at": 9739
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "interlocking",
+          "at": 9772.200000017881
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "interlocking",
+          "at": 9772.300000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "interlocking",
+          "at": 9857.200000017881
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "渐",
+          "at": 9860.09999999404
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "渐",
+          "at": 9861.09999999404
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "渐",
+          "at": 9861.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "渐",
+          "at": 9862
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 9862.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 9896.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "0",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 9898.5
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "0",
+          "at": 9899.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "0",
+          "composing": false,
+          "target": "search",
+          "value": "0",
+          "at": 9900.5
+        }
+      ]
+    }
+  ],
+  "status": "failed",
+  "limitations": [
+    "Headless desktop and CDP mobile emulation are not physical-device, screen-reader or real 200% zoom evidence.",
+    "ASCII search uses trusted key events; Chinese text is committed through CDP Input.insertText, not a real operating-system IME.",
+    "One constructor debugger stop exposes a read-only StarMap reference; no business method is called."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "failure": {
+    "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    pitch: 0,\n    pos: {\n      x: -285.11685722880264,\n      y: 59.37686285766756,\n...\n    },\n+   yaw: 0.31676880000000013\n-   yaw: 0.3149688000000001\n  }\n",
+    "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    pitch: 0,\n    pos: {\n      x: -285.11685722880264,\n      y: 59.37686285766756,\n...\n    },\n+   yaw: 0.31676880000000013\n-   yaw: 0.3149688000000001\n  }\n\n    at assertRetained (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-search-input.mjs:213:10)\n    at file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-search-input.mjs:333:7"
+  },
+  "finishedAt": "2026-10-24T19:42:55.552Z",
+  "finalSourceHashes": {
+    "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+    "web/js/search-controller.js": "cb256d0f22e4c7f14b0a37ac79644c297300299d4de7b44fa6a192c2496f0ee6",
+    "web/js/main.js": "dd9c86db49308fc379944841cd77aaf6a7e848119450055b28f0bb1412f8d2e2",
+    "web/js/star-map.js": "23787057a90bee36ad2afa2f54163530856938e60e58d6e8197889ef94eab851",
+    "web/js/user-data.js": "8a47ceb0e8dea555a17d10ac253b32f0dfc84cead620ddcf13193def6e1435b1",
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/styles/immersive.css": "25dd343d0c0b889fda83c993c6196d68cdfc33b64a27d10f2eba57a4f0a7c3e5",
+    "scripts/test-search-input.mjs": "e746a8f20269b1ae30db0a4bf5e65b65c00b344c485a1420184f3229b8cae478"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [
+    {
+      "source": "javascript",
+      "level": "warning",
+      "text": "The resource http://127.0.0.1:64299/assets/academy-astrolabe-bg.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+      "timestamp": 1792870969246.425,
+      "url": "http://127.0.0.1:64299/?search-probe=1440"
+    }
+  ],
+  "profileRemoved": true
+}

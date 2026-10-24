@@ -1,0 +1,273 @@
+TAP version 13
+# Subtest: 搜索查询更换清除旧 aria-activedescendant 与选项选择状态
+not ok 1 - 搜索查询更换清除旧 aria-activedescendant 与选项选择状态
+  ---
+  duration_ms: 3.5793
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-search.test.mjs:188:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'search-option-0'
+    - null
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'search-option-0'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-search.test.mjs:194:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: 搜索关闭后 Enter 不确认旧结果，方向键不操作隐藏选项
+not ok 2 - 搜索关闭后 Enter 不确认旧结果，方向键不操作隐藏选项
+  ---
+  duration_ms: 1.6221
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-search.test.mjs:199:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+    + [
+    +   '111111'
+    + ]
+    - []
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: '111111'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-search.test.mjs:206:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: 输入法组合期间 Enter 保留原生输入，不触发搜索动作
+not ok 3 - 输入法组合期间 Enter 保留原生输入，不触发搜索动作
+  ---
+  duration_ms: 0.6633
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-search.test.mjs:214:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-search.test.mjs:221:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: 输入法组合期间 Escape 保留原生输入，不触发搜索动作
+not ok 4 - 输入法组合期间 Escape 保留原生输入，不触发搜索动作
+  ---
+  duration_ms: 0.6045
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-search.test.mjs:214:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-search.test.mjs:221:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: 展开搜索的 Escape 只关建议，第二次 Escape 可冒泡给阅读返回
+not ok 5 - 展开搜索的 Escape 只关建议，第二次 Escape 可冒泡给阅读返回
+  ---
+  duration_ms: 0.9762
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-search.test.mjs:228:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-search.test.mjs:240:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: 核心索引未就绪只显示局部不可用，不确认看似可用的卦
+not ok 6 - 核心索引未就绪只显示局部不可用，不确认看似可用的卦
+  ---
+  duration_ms: 0.7555
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-search.test.mjs:245:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    4 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 4
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-search.test.mjs:248:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: 可选关键词迟到不会重新打开已取消的搜索建议
+not ok 7 - 可选关键词迟到不会重新打开已取消的搜索建议
+  ---
+  duration_ms: 0.6263
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-search.test.mjs:254:1'
+  failureType: 'testCodeFailure'
+  error: '真实绑定发起可选关键词加载'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-search.test.mjs:257:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: 可选关键词迟到只能更新当前查询，不能覆盖已经输入的新查询
+not ok 8 - 可选关键词迟到只能更新当前查询，不能覆盖已经输入的新查询
+  ---
+  duration_ms: 0.6789
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-search.test.mjs:266:1'
+  failureType: 'testCodeFailure'
+  error: '真实绑定发起可选关键词加载'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-search.test.mjs:269:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: 点击外侧非聚焦区域也关闭建议，不改变当前聚焦卦
+not ok 9 - 点击外侧非聚焦区域也关闭建议，不改变当前聚焦卦
+  ---
+  duration_ms: 0.9767
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-search.test.mjs:280:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'true' !== 'false'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'false'
+  actual: 'true'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-search.test.mjs:285:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: 搜索快捷键不穿透 inert 背景或输入法组合
+not ok 10 - 搜索快捷键不穿透 inert 背景或输入法组合
+  ---
+  duration_ms: 0.7373
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-search.test.mjs:289:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    inert
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-search.test.mjs:295:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: 正常键盘和结果按钮确认只提交一次聚焦，不调用阅读入口
+ok 11 - 正常键盘和结果按钮确认只提交一次聚焦，不调用阅读入口
+  ---
+  duration_ms: 1.5704
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 1
+# fail 10
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 112.4557

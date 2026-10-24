@@ -17,7 +17,7 @@ import { initMotionSystem } from './motion-system.js';
 import { renderHexagramDetail } from './render.js';
 import { addReviewCard, loadReviewCards } from './review-engine.js';
 import { createReadingState, shouldRecordDeepRead, transitionReading } from './reading-state.js';
-import { getHexCodeFromUrl, moveSelection, withHexCode } from './search-controller.js';
+import { getHexCodeFromUrl, moveSelection, parseHexagramQuery, withHexCode } from './search-controller.js';
 import { buildRelationGraph } from './star-relations.js';
 import { describeStarView, resolveStarStage, StarMap } from './star-map.js';
 import { hexagramSvg } from './svg-painter.js';
@@ -63,6 +63,8 @@ const panelLayoutSelect = document.getElementById('detail-layout');
 const panelSizeButton = document.getElementById('detail-size');
 const searchInput = document.getElementById('search');
 const searchResultsEl = document.getElementById('search-results');
+const searchPopupEl = document.getElementById('search-popup');
+const searchStatusEl = document.getElementById('search-status');
 const dailyOverlay = document.getElementById('daily-overlay');
 const modeSwitcher = document.getElementById('mode-switcher');
 const exploreTools = document.getElementById('explore-tools');
@@ -1281,11 +1283,12 @@ function bindGlobalInteractions() {
     setDrawerSize(DRAWER_SIZES[(current + 1) % DRAWER_SIZES.length], { persist: true });
   });
   document.addEventListener('keydown', (event) => {
+    if (event.isComposing || event.keyCode === 229 || searchComposing) return;
     if (document.querySelector('.share-card-overlay')) return;
     if (event.key === 'Escape' && searchInput.getAttribute('aria-expanded') === 'true') {
       event.preventDefault();
-      closeSearch();
       searchInput.focus();
+      closeSearch();
       return;
     }
     if (event.key === 'Escape' && relationToggle?.getAttribute('aria-expanded') === 'true') {
@@ -1334,12 +1337,22 @@ function bindGlobalInteractions() {
   else narrowReadingQuery.addListener?.(syncReadingDisclosures);
 
   const closeSearch = () => {
+    searchPopupEl.hidden = true;
     searchResultsEl.hidden = true;
+    searchResults = [];
     searchInput.setAttribute('aria-expanded', 'false');
     searchInput.removeAttribute('aria-activedescendant');
+    searchStatusEl.textContent = '';
     searchIndex = -1;
   };
+  let searchComposing = false;
+  let searchKeywords = null;
+  let searchKeywordsAttempted = false;
+  let searchKeywordsFailed = false;
+  const searchBox = document.querySelector('.search-box');
   document.addEventListener('keydown', (event) => {
+    if (event.isComposing || event.keyCode === 229 || searchComposing || searchInput.disabled ||
+        searchInput.closest('[inert]') || document.querySelector('.share-card-overlay')) return;
     const target = event.target;
     const isTyping = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target?.isContentEditable;
     const searchShortcut = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k';
@@ -1349,33 +1362,59 @@ function bindGlobalInteractions() {
     searchInput.select();
   });
   const selectSearchResult = (index) => {
+    if (searchComposing || searchInput.getAttribute('aria-expanded') !== 'true') return;
     const result = searchResults[index];
     if (!result) return;
     searchInput.value = result.name;
     closeSearch();
     focusHexagram(result.binaryCode);
   };
-  const renderSearch = () => {
+  const ensureSearchKeywords = () => {
+    if (searchKeywords || searchKeywordsAttempted) return;
+    searchKeywordsAttempted = true;
+    dataLoader.loadHexagramKeywords().then((keywords) => {
+      searchKeywords = keywords;
+      searchKeywordsFailed = false;
+    }).catch(() => {
+      searchKeywordsFailed = true;
+    }).finally(() => {
+      // Re-read the current query; a late optional response must not reopen a dismissed popup.
+      if (searchInput.getAttribute('aria-expanded') === 'true' && !searchComposing) {
+        renderSearch({ preserveSelection: true });
+      }
+    });
+  };
+  const renderSearch = ({ preserveSelection = false } = {}) => {
+    if (searchComposing) return;
     const keyword = searchInput.value.trim();
-    searchResults = keyword ? searchHexagrams(state.hexagrams, keyword).slice(0, 8) : [];
+    const previousCode = preserveSelection ? searchResults[searchIndex]?.binaryCode : null;
+    const coreReady = Boolean(state.index?.byCode?.size && state.hexagrams.length && state.trigrams.length);
+    const matches = keyword && coreReady ? searchHexagrams(state.hexagrams, keyword, {
+      trigrams: state.trigrams,
+      keywords: searchKeywords || state.starMap?.keywords || {},
+    }) : [];
+    searchResults = matches.slice(0, 8);
     searchIndex = -1;
+    searchInput.removeAttribute('aria-activedescendant');
     searchResultsEl.replaceChildren();
     if (!keyword) {
       closeSearch();
       return;
     }
-    if (!searchResults.length) {
-      const empty = document.createElement('p');
-      empty.className = 'search-empty';
-      empty.setAttribute('role', 'status');
-      empty.textContent = '没有找到相关卦象';
-      searchResultsEl.append(empty);
+    if (!coreReady) {
+      searchStatusEl.textContent = '搜索资料尚未就绪，请稍后重试。';
+    } else if (!searchResults.length) {
+      searchStatusEl.textContent = parseHexagramQuery(keyword).kind === 'invalid'
+        ? '没有找到相关卦象。卦序为1—64，卦码须为六位0或1。'
+        : '没有找到相关卦象';
     } else {
+      searchStatusEl.textContent = matches.length > 8 ? `找到${matches.length}卦，显示前8项。` : `找到${matches.length}卦。`;
       searchResults.forEach((hexagram, index) => {
         const option = document.createElement('button');
         option.type = 'button';
         option.id = `search-option-${index}`;
         option.className = 'search-option';
+        option.tabIndex = -1;
         option.setAttribute('role', 'option');
         option.setAttribute('aria-selected', 'false');
         option.setAttribute('aria-label', `第 ${hexagram.number} 卦，${hexagram.name}，${hexagram.fullName}`);
@@ -1396,8 +1435,17 @@ function bindGlobalInteractions() {
         searchResultsEl.append(option);
       });
     }
+    if (coreReady && searchKeywordsFailed) {
+      searchStatusEl.textContent += ' 关键词暂不可用，卦名、卦序、编码、上下卦和经文仍可检索。';
+    }
+    searchPopupEl.hidden = false;
     searchResultsEl.hidden = false;
     searchInput.setAttribute('aria-expanded', 'true');
+    if (previousCode) {
+      searchIndex = searchResults.findIndex((hexagram) => hexagram.binaryCode === previousCode);
+      updateSearchSelection();
+    }
+    if (coreReady) ensureSearchKeywords();
   };
   const updateSearchSelection = () => {
     searchResultsEl.querySelectorAll('.search-option').forEach((option, index) => {
@@ -1410,9 +1458,27 @@ function bindGlobalInteractions() {
       }
     });
   };
-  searchInput.addEventListener('input', renderSearch);
-  searchInput.addEventListener('focus', renderSearch);
+  searchInput.addEventListener('compositionstart', () => {
+    searchComposing = true;
+    closeSearch();
+  });
+  searchInput.addEventListener('compositionend', () => {
+    searchComposing = false;
+    if (document.activeElement === searchInput) renderSearch();
+  });
+  searchInput.addEventListener('input', (event) => {
+    if (!event.isComposing) renderSearch();
+  });
+  searchInput.addEventListener('focus', () => {
+    if (searchKeywordsFailed) {
+      searchKeywordsAttempted = false;
+      searchKeywordsFailed = false;
+    }
+    renderSearch();
+  });
   searchInput.addEventListener('keydown', (event) => {
+    if (event.isComposing || event.keyCode === 229 || searchComposing ||
+        searchInput.getAttribute('aria-expanded') !== 'true') return;
     if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
       event.preventDefault();
       searchIndex = moveSelection(searchIndex, event.key, searchResults.length);
@@ -1431,7 +1497,10 @@ function bindGlobalInteractions() {
     const option = event.target.closest('.search-option');
     if (option) selectSearchResult(Number.parseInt(option.dataset.index, 10));
   });
-  document.querySelector('.search-box').addEventListener('focusout', (event) => {
+  document.addEventListener('pointerdown', (event) => {
+    if (!searchBox.contains(event.target)) closeSearch();
+  });
+  searchBox.addEventListener('focusout', (event) => {
     if (!event.currentTarget.contains(event.relatedTarget)) closeSearch();
   });
   window.addEventListener('popstate', (event) => {

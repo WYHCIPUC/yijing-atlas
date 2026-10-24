@@ -78,12 +78,16 @@
     </nav>
     <div class="search-box">
       <span class="search-icon" data-icon="search" aria-hidden="true"></span>
-      <input id="search" type="search" placeholder="搜索卦名…" aria-label="搜索六十四卦" autocomplete="off"
-        role="combobox" aria-autocomplete="list" aria-controls="search-results" aria-expanded="false" />
+      <input id="search" type="search" placeholder="卦名、序号或编码…" aria-label="搜索六十四卦" autocomplete="off"
+        role="combobox" aria-autocomplete="list" aria-controls="search-results" aria-describedby="search-help" aria-expanded="false" />
       <kbd class="search-shortcut" aria-hidden="true">Ctrl K</kbd>
       <button type="button" class="audio-toggle" id="audio-toggle" aria-label="关闭界面音效"
         aria-pressed="true" title="关闭界面音效"><span data-icon="volume-2" aria-hidden="true"></span></button>
-      <div class="search-results" id="search-results" role="listbox" aria-label="搜索结果" hidden></div>
+      <div class="search-results" id="search-popup" hidden>
+        <p id="search-help" class="search-help">可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。</p>
+        <p id="search-status" class="search-empty" role="status" aria-live="polite" aria-atomic="true"></p>
+        <div id="search-results" role="listbox" aria-label="搜索结果" hidden></div>
+      </div>
     </div>
   </header>
 

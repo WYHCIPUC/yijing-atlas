@@ -5,6 +5,7 @@ import { getRelationOccurrences, relationTypesFrom } from './star-relations.js';
 import { buildLineStarOrbit, buildStarLayout, STAR_LAYOUTS } from './star-layouts.js';
 import { createGalaxyTexture, createSkyRandom, galaxyBandY, sampleSkyDensity } from './star-atmosphere.js';
 import { measureStarText, placeStarLabels } from './star-label-layout.js';
+import { loadHexagramKeywords } from './data-loader.js';
 
 const COLORS = {
   star: '#8a7a5a',
@@ -343,9 +344,7 @@ export class StarMap {
   // 异步加载关键词数据，为每个卦预计算星云内关键词的散布布局
   async _loadKeywords() {
     try {
-      const res = await fetch('data/hexagram-keywords.json');
-      if (!res.ok) return;
-      this.keywords = await res.json();
+      this.keywords = await loadHexagramKeywords();
       // 为每卦的每个关键词分配星云内的相对偏移（围绕卦星中心散布）
       // level 越低（越重要）越靠近中心，字号越大
       this.keywordLayouts = {};
