@@ -335,6 +335,27 @@ async function stablePanelScroll(client) {
   }, '真实阅读滚动未进入稳定的非零位置');
 }
 
+async function waitForControlledApp(client, message) {
+  try {
+    await waitFor(
+      () => client.evaluate('document.querySelector("#loading")?.hidden === true && Boolean(navigator.serviceWorker?.controller)'),
+      message,
+      30000,
+    );
+  } catch (error) {
+    const status = await client.evaluate(`(async () => ({
+      url: location.href,
+      ready: document.readyState,
+      loading: document.querySelector('#loading') ? { hidden: document.querySelector('#loading').hidden, text: document.querySelector('#loading').textContent } : null,
+      controller: navigator.serviceWorker?.controller ? { state: navigator.serviceWorker.controller.state, url: navigator.serviceWorker.controller.scriptURL } : null,
+      registrations: await navigator.serviceWorker.getRegistrations().then(items => items.map(item => ({ scope: item.scope, active: item.active?.state, waiting: item.waiting?.state, installing: item.installing?.state }))),
+    }))()`);
+    const errors = client.events.filter(event => event.method === 'Runtime.exceptionThrown' ||
+      (event.method === 'Log.entryAdded' && ['error', 'warning'].includes(event.params.entry.level)));
+    throw new Error(`${error.message}：${JSON.stringify({ status, errors: errors.slice(-10) })}`);
+  }
+}
+
 async function verifyNativeBrowserZoom(browserPath, siteUrl) {
   const directory = mkdtempSync(join(tmpdir(), 'yijing-browser-zoom-'));
   const port = await freePort();
@@ -1296,11 +1317,7 @@ try {
   );
   if (!await client.evaluate('Boolean(navigator.serviceWorker?.controller)')) {
     await client.send('Page.reload', { ignoreCache: true });
-    await waitFor(
-      () => client.evaluate('document.querySelector("#loading")?.hidden === true && Boolean(navigator.serviceWorker?.controller)'),
-      'Service Worker 未接管页面',
-      30000,
-    );
+    await waitForControlledApp(client, '重载后应用或 Service Worker 未就绪');
   }
 
   await client.send('Network.emulateNetworkConditions', {
@@ -1311,11 +1328,7 @@ try {
     connectionType: 'none',
   });
   await client.send('Page.reload', { ignoreCache: true });
-  await waitFor(
-    () => client.evaluate('document.querySelector("#loading")?.hidden === true && Boolean(navigator.serviceWorker?.controller)'),
-    '断网重开后页面没有恢复',
-    30000,
-  );
+  await waitForControlledApp(client, '断网重开后页面没有恢复');
   const offlineReload = await client.evaluate(`(() => {
     const input = document.querySelector('#search');
     input.value = '乾';

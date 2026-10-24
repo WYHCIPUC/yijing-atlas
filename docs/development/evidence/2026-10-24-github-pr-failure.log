@@ -1,0 +1,18 @@
+validate	Browser smoke test	﻿2026-10-24T13:23:15.5670669Z ##[group]Run npm run test:e2e
+validate	Browser smoke test	2026-10-24T13:23:15.5670883Z ^[[36;1mnpm run test:e2e^[[0m
+validate	Browser smoke test	2026-10-24T13:23:15.5725566Z shell: /usr/bin/bash -e {0}
+validate	Browser smoke test	2026-10-24T13:23:15.5725752Z ##[endgroup]
+validate	Browser smoke test	2026-10-24T13:23:15.6460635Z 
+validate	Browser smoke test	2026-10-24T13:23:15.6461400Z > yijing-atlas@1.1.1-rc.2 test:e2e
+validate	Browser smoke test	2026-10-24T13:23:15.6461724Z > node scripts/browser-smoke.mjs
+validate	Browser smoke test	2026-10-24T13:23:15.6461840Z 
+validate	Browser smoke test	2026-10-24T13:24:29.8056099Z file:///home/runner/work/yijing-atlas/yijing-atlas/scripts/browser-smoke.mjs:46
+validate	Browser smoke test	2026-10-24T13:24:29.8056641Z   throw new Error(message);
+validate	Browser smoke test	2026-10-24T13:24:29.8056851Z         ^
+validate	Browser smoke test	2026-10-24T13:24:29.8056944Z 
+validate	Browser smoke test	2026-10-24T13:24:29.8057429Z Error: Service Worker 未接管页面
+validate	Browser smoke test	2026-10-24T13:24:29.8057898Z     at waitFor (file:///home/runner/work/yijing-atlas/yijing-atlas/scripts/browser-smoke.mjs:46:9)
+validate	Browser smoke test	2026-10-24T13:24:29.8058497Z     at async file:///home/runner/work/yijing-atlas/yijing-atlas/scripts/browser-smoke.mjs:1299:5
+validate	Browser smoke test	2026-10-24T13:24:29.8058775Z 
+validate	Browser smoke test	2026-10-24T13:24:29.8058852Z Node.js v22.23.3
+validate	Browser smoke test	2026-10-24T13:24:29.8175402Z ##[error]Process completed with exit code 1.
