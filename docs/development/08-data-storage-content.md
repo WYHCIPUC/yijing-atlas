@@ -376,7 +376,7 @@ lessonId 为现有课程 ID；section 为 intro/observe/read/explain/apply/pract
 
 2026-10-25 使用现有 Node 24.19.0 执行 `node --test web/test/learning-progress.test.mjs web/test/user-data.test.mjs`：初始 34 项为 26 通过/8 失败，最小实现转绿；补齐同题、整数边界及新课程归属回归后最终 38/38 通过。对应两份源码与两份测试的语法检查、限定 `git diff --check` 均通过（Git 仅提示 LF/CRLF 转换）。测试位于 [learning-progress.test.mjs](../../web/test/learning-progress.test.mjs)、[user-data.test.mjs](../../web/test/user-data.test.mjs)。
 
-这些证据覆盖数据层的入队/纠正/再错、旧 ID/receipt 不补造、版本与引用保留、失败重试、80条截断后判重、坏字段读取保护、导入路径拒绝、备份往返和写失败回滚。它们不是页面真实输入、浏览器、全量发布门禁或长期容量的通过证据。T-LEARN-02 保持完整验收待完成；resume、自由测验证据、长期容量及更广的备份深校验仍按原任务分别推进。实施设计和未覆盖事项见 [课程弱项设计记录](evidence/2026-10-25-course-weak-questions-design.md)。
+这些证据覆盖数据层的入队/纠正/再错、旧 ID/receipt 不补造、版本与引用保留、失败重试、80条截断后判重、坏字段读取保护、导入路径拒绝、备份往返和写失败回滚。数据层结果本身不是页面真实输入、浏览器、全量发布门禁或长期容量的通过证据。后续课程版本validate370/370、真实专项6/6与完整E2E已有通过记录，见[最新盘点](evidence/2026-10-25-remaining-work-acceptance-refresh.md)；T-LEARN-02仍待最终审阅、源码提交和交接。resume、自由测验证据、长期容量及更广的备份深校验仍按原任务分别推进。实施设计和未覆盖事项见 [课程弱项设计记录](evidence/2026-10-25-course-weak-questions-design.md)。
 
 **任务关联**：[T-LEARN-02](12-ai-execution-tasks.md#t-learn-02)、[T-LEARN-01](12-ai-execution-tasks.md#t-learn-01)、[T-QUIZ-01](12-ai-execution-tasks.md#t-quiz-01)。
 
