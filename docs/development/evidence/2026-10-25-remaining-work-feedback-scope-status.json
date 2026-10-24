@@ -1,0 +1,1860 @@
+{
+  "format": "yijing-remaining-work-feedback-scope-status",
+  "version": 1,
+  "recordedAt": "2026-10-24T23:08:36.588Z",
+  "timezone": "Asia/Shanghai",
+  "purpose": "只读核对已保存证据，服务当前未完成清单与项目目标；本次没有运行浏览器、服务或测试，没有修改应用或执行 Git 写操作。",
+  "task": "T-LEARN-03",
+  "taskStatus": "开放：已落盘、未提交，整卡验收未闭环；不是完成或发布记录。",
+  "pathPolicy": "所有证据路径相对于项目根目录；本文件不复制原 trace 中的临时 profile 或其他私人绝对路径。",
+  "scopePlan": {
+    "script": {
+      "path": "scripts/test-learning-feedback.mjs",
+      "sha256": "ff75b137d058d614d4503ede3ddaf10509184f6da3564c28927683e5c7427cd9"
+    },
+    "plannedScopes": 33,
+    "names": [
+      "1440-review-card-retry",
+      "1440-review-activity-retry",
+      "1440-review-achievement-retry",
+      "1440-review-leave",
+      "1440-oral-self-record-retry",
+      "1440-oral-self-activity-retry",
+      "1440-oral-ai-save-retry",
+      "1440-oral-ai-stale-course",
+      "1440-oral-ai-stale-edit",
+      "1440-oral-ai-stale-leave",
+      "1440-assessment-result",
+      "1440-assessment-save-retry",
+      "1440-quiz-result",
+      "1440-quiz-save-retry",
+      "1440-divination-result",
+      "1440-divination-save-retry",
+      "390-review-card-retry",
+      "390-review-activity-retry",
+      "390-review-achievement-retry",
+      "390-review-leave",
+      "390-oral-self-record-retry",
+      "390-oral-self-activity-retry",
+      "390-oral-ai-save-retry",
+      "390-oral-ai-stale-course",
+      "390-oral-ai-stale-edit",
+      "390-oral-ai-stale-leave",
+      "390-assessment-result",
+      "390-assessment-save-retry",
+      "390-quiz-result",
+      "390-quiz-save-retry",
+      "390-divination-result",
+      "390-divination-save-retry",
+      "320-quiz-save-retry"
+    ]
+  },
+  "counts": {
+    "plannedScopes": 33,
+    "attemptedUniqueScopes": 30,
+    "passedUniqueScopes": 29,
+    "failedUniqueScopes": 1,
+    "notRunScopes": 3,
+    "processAttempts": 38,
+    "nativeAbortAttempts": 8
+  },
+  "countingRule": "按唯一 scope 的最后一个真实进程终态登记；原生中止只算宿主运行失败，后续正常完成的独立尝试另记，不把原中止改为通过。29 项不是 33/33，也不是整卡通过。",
+  "batches": [
+    {
+      "summary": {
+        "path": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+        "sha256": "56fca92bd981077a5456a068d4cc38f124be1839ebfdd7c7a6cc0752c2362b09"
+      },
+      "processAttempts": 31,
+      "passAttempts": 24,
+      "nativeAbortAttempts": 7,
+      "assertionFailureAttempts": 0
+    },
+    {
+      "summary": {
+        "path": "docs/development/evidence/feedback-batch-20261024-230405/summary.json",
+        "sha256": "ab3b45319b1e0b76fc4e98d144bfe7927e7070859ad44a7e9ca8deca3202822c"
+      },
+      "processAttempts": 7,
+      "passAttempts": 5,
+      "nativeAbortAttempts": 1,
+      "assertionFailureAttempts": 1
+    }
+  ],
+  "observedSourceSnapshot": {
+    "id": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+    "trackedFiles": 27,
+    "snapshotsAcrossAll38Attempts": 1,
+    "all29PassedRunsEndedWithStableSourcesAndNoPageExceptions": true,
+    "all27TrackedFilesMatchCurrentWorkspaceAtAudit": true,
+    "limitation": "仅涵盖探针显式列出的这 27 个文件，不等于全仓库文件快照或已提交状态。",
+    "files": [
+      {
+        "path": "web/index.html",
+        "observedSha256": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+        "currentSha256": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/main.js",
+        "observedSha256": "a403744525846aad387912a8f48b174251d5ea563189ef546851a09faba22bcd",
+        "currentSha256": "a403744525846aad387912a8f48b174251d5ea563189ef546851a09faba22bcd",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/learning-feedback.js",
+        "observedSha256": "297b8116a05c6c2543e31dc2fdf0915f82f49d9d61f8d7af016ec6ad0ce93c28",
+        "currentSha256": "297b8116a05c6c2543e31dc2fdf0915f82f49d9d61f8d7af016ec6ad0ce93c28",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/review-session.js",
+        "observedSha256": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54",
+        "currentSha256": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/review-engine.js",
+        "observedSha256": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43",
+        "currentSha256": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/learning-progress.js",
+        "observedSha256": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+        "currentSha256": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/learning-review.js",
+        "observedSha256": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad",
+        "currentSha256": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/learning-assessment.js",
+        "observedSha256": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+        "currentSha256": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/learning-assessment-page.js",
+        "observedSha256": "909fc2ff41712cae790414d70b94486bab65cda686a95163c9c4a8200028a0c4",
+        "currentSha256": "909fc2ff41712cae790414d70b94486bab65cda686a95163c9c4a8200028a0c4",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/modes/learning-mode.js",
+        "observedSha256": "5a6009b61e2a846b5ab0a9b92e9a7fc6711d0c81bcdfd6431b2e764f42962bef",
+        "currentSha256": "5a6009b61e2a846b5ab0a9b92e9a7fc6711d0c81bcdfd6431b2e764f42962bef",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/modes/review-mode.js",
+        "observedSha256": "082b67ab4b38a63979024b7d5a6ca61c111d0c7c168f76227a7d756e4b39bc55",
+        "currentSha256": "082b67ab4b38a63979024b7d5a6ca61c111d0c7c168f76227a7d756e4b39bc55",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/modes/quiz-mode.js",
+        "observedSha256": "14c6b50e2319bb02b66222fb1e9d08ede33f70cddec363b49f5e4c7666dc68d4",
+        "currentSha256": "14c6b50e2319bb02b66222fb1e9d08ede33f70cddec363b49f5e4c7666dc68d4",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/modes/divination-mode.js",
+        "observedSha256": "959f7503eecd06c00577d9848b606aa7de9a8dbb14a2e04e58360f5efa7f6db4",
+        "currentSha256": "959f7503eecd06c00577d9848b606aa7de9a8dbb14a2e04e58360f5efa7f6db4",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/quiz-session.js",
+        "observedSha256": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+        "currentSha256": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/quiz-engine.js",
+        "observedSha256": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+        "currentSha256": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/achievement-engine.js",
+        "observedSha256": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+        "currentSha256": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/achievement-storage.js",
+        "observedSha256": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+        "currentSha256": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/divination-history.js",
+        "observedSha256": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660",
+        "currentSha256": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660",
+        "currentMatches": true
+      },
+      {
+        "path": "web/js/learning-curriculum.js",
+        "observedSha256": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+        "currentSha256": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+        "currentMatches": true
+      },
+      {
+        "path": "web/styles/main.css",
+        "observedSha256": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+        "currentSha256": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+        "currentMatches": true
+      },
+      {
+        "path": "web/styles/immersive.css",
+        "observedSha256": "03d697b4e5f7b129c96615176915b43df9d93920c06a4b28a0f9713b89ddcc7a",
+        "currentSha256": "03d697b4e5f7b129c96615176915b43df9d93920c06a4b28a0f9713b89ddcc7a",
+        "currentMatches": true
+      },
+      {
+        "path": "web/data/hexagrams.json",
+        "observedSha256": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+        "currentSha256": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+        "currentMatches": true
+      },
+      {
+        "path": "web/data/trigrams.json",
+        "observedSha256": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+        "currentSha256": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+        "currentMatches": true
+      },
+      {
+        "path": "web/data/wings.json",
+        "observedSha256": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+        "currentSha256": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+        "currentMatches": true
+      },
+      {
+        "path": "web/data/theorems.json",
+        "observedSha256": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+        "currentSha256": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+        "currentMatches": true
+      },
+      {
+        "path": "web/data/almanac-terms.json",
+        "observedSha256": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+        "currentSha256": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+        "currentMatches": true
+      },
+      {
+        "path": "scripts/test-learning-feedback.mjs",
+        "observedSha256": "ff75b137d058d614d4503ede3ddaf10509184f6da3564c28927683e5c7427cd9",
+        "currentSha256": "ff75b137d058d614d4503ede3ddaf10509184f6da3564c28927683e5c7427cd9",
+        "currentMatches": true
+      }
+    ]
+  },
+  "scopes": [
+    {
+      "scope": "1440-review-card-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-00-08-952Z/trace.json",
+        "sha256": "560495894fa6264d3d72edc5b17c52feaf7f02f2a9f8f67924b4a85ac8ffffb6"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-review-card-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-review-card-retry-1.log",
+            "sha256": "3177cf8dc5d40f1c0bc00770e2000a846f7e02bc02537bd0c80fd3f4c4731070"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-00-08-952Z/trace.json",
+            "sha256": "560495894fa6264d3d72edc5b17c52feaf7f02f2a9f8f67924b4a85ac8ffffb6"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:00:08.999Z",
+          "finishedAt": "2026-10-24T23:00:16.146Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-review-activity-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-00-19-363Z/trace.json",
+        "sha256": "91cb1f10001096ede382602af59ee7c37fde03579cb053ffbaedc210629eaed4"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-review-activity-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-review-activity-retry-1.log",
+            "sha256": "9653e01d38efc52cfc119a55bdb12564365b1846e8f9f44f4258c779f3854b99"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-00-19-363Z/trace.json",
+            "sha256": "91cb1f10001096ede382602af59ee7c37fde03579cb053ffbaedc210629eaed4"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:00:19.418Z",
+          "finishedAt": "2026-10-24T23:00:26.434Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-review-achievement-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-00-29-618Z/trace.json",
+        "sha256": "636b49b0bf2630e26705e7062d90ad5c11ee10376ecf65c47e332186d4e442d9"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-review-achievement-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-review-achievement-retry-1.log",
+            "sha256": "7b7b4266acf6c39a504b84e2d3fdab8e54de6c98bfede2d94ce0f03543393aa3"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-00-29-618Z/trace.json",
+            "sha256": "636b49b0bf2630e26705e7062d90ad5c11ee10376ecf65c47e332186d4e442d9"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:00:29.665Z",
+          "finishedAt": "2026-10-24T23:00:37.036Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-review-leave",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-00-44-359Z/trace.json",
+        "sha256": "4474c8707f146ba6e3991577ab108adb7ff3a4773668aea5396a81f1c9261c1e"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-review-leave",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": -1073740791,
+          "classification": "host-native-abort",
+          "nativeFailure": "Assertion failed: new_time >= loop->time, file src\\win\\core.c, line 327",
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-review-leave-1.log",
+            "sha256": "253bcc5f7c3eec44590b0a01f74124022dc6edacc7ce788cec9896f77350ee2a"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-00-40-194Z/trace.json",
+            "sha256": "399a84cb65d95f6aad2ee50ccf855f74d8242702e45fff62512365add367d53b"
+          },
+          "traceStatus": "running",
+          "traceExitCode": null,
+          "traceHasFinalResult": false,
+          "sourceStableDuringRun": null,
+          "pageExceptionCount": null,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:00:40.242Z",
+          "finishedAt": null,
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        },
+        {
+          "scope": "1440-review-leave",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 2,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-review-leave-2.log",
+            "sha256": "e2804058d7c9be000a71a6b53d486bd197236624ba37b1a0dfc797a23ad32a20"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-00-44-359Z/trace.json",
+            "sha256": "4474c8707f146ba6e3991577ab108adb7ff3a4773668aea5396a81f1c9261c1e"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:00:44.416Z",
+          "finishedAt": "2026-10-24T23:00:51.065Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-oral-self-record-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-00-54-230Z/trace.json",
+        "sha256": "e54f7919e27b7f32faee01a71d4851326b69aee5cf14108a1e92c80975531867"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-oral-self-record-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-oral-self-record-retry-1.log",
+            "sha256": "cce32a0cbef10637e7134c25135c0045c02962e8c6f59e0fb042513f0d451912"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-00-54-230Z/trace.json",
+            "sha256": "e54f7919e27b7f32faee01a71d4851326b69aee5cf14108a1e92c80975531867"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:00:54.286Z",
+          "finishedAt": "2026-10-24T23:00:59.529Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-oral-self-activity-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-02-707Z/trace.json",
+        "sha256": "e546e62f4cd8f963f37d05a7fd2936a803cef234f31c8022d434c08e47093088"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-oral-self-activity-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-oral-self-activity-retry-1.log",
+            "sha256": "95959059278e13b384f5807a3866eb1fa85ed9b7a087974b3e54b4d61998f012"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-02-707Z/trace.json",
+            "sha256": "e546e62f4cd8f963f37d05a7fd2936a803cef234f31c8022d434c08e47093088"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:01:02.761Z",
+          "finishedAt": "2026-10-24T23:01:08.190Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-oral-ai-save-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-11-374Z/trace.json",
+        "sha256": "52b8aa2442825ed35c59bcab8a83093b1f915c056469ca588eacd5cf907d6e9a"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-oral-ai-save-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-oral-ai-save-retry-1.log",
+            "sha256": "9b50005bd21679fe521d34e9ffea45fa743bf9677f3dac711784779a03c06c6c"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-11-374Z/trace.json",
+            "sha256": "52b8aa2442825ed35c59bcab8a83093b1f915c056469ca588eacd5cf907d6e9a"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:01:11.619Z",
+          "finishedAt": "2026-10-24T23:01:17.272Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-oral-ai-stale-course",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-20-440Z/trace.json",
+        "sha256": "b2116dc26a4f2fb3de7e513867a434dea2a8565c6bc9c708fe2e295c30d49707"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-oral-ai-stale-course",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-oral-ai-stale-course-1.log",
+            "sha256": "2e30c5289551da59f1cbfd5f5620803b06d76d1afa33a81bda82e4fcf102d660"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-20-440Z/trace.json",
+            "sha256": "b2116dc26a4f2fb3de7e513867a434dea2a8565c6bc9c708fe2e295c30d49707"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:01:20.493Z",
+          "finishedAt": "2026-10-24T23:01:25.262Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-oral-ai-stale-edit",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-30-000Z/trace.json",
+        "sha256": "f674ce76d3146ab65ace1c87b0bce8349ff7d23cc2d2eabe639bc093d96347ab"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-oral-ai-stale-edit",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": -1073740791,
+          "classification": "host-native-abort",
+          "nativeFailure": "Assertion failed: new_time >= loop->time, file src\\win\\core.c, line 327",
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-oral-ai-stale-edit-1.log",
+            "sha256": "8a19a4b5950ca3c7c80d93a485cedb76bca4341d571ee17928efb752e406ae66"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-28-437Z/trace.json",
+            "sha256": "f754664deb1df50ac0c795a2004a68036818c62e54cb58cb6029a5ab5753a81d"
+          },
+          "traceStatus": "running",
+          "traceExitCode": null,
+          "traceHasFinalResult": false,
+          "sourceStableDuringRun": null,
+          "pageExceptionCount": null,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:01:28.486Z",
+          "finishedAt": null,
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        },
+        {
+          "scope": "1440-oral-ai-stale-edit",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 2,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-oral-ai-stale-edit-2.log",
+            "sha256": "ca5a129eec796bba5150cdc2cc1fe0f600acb4875c7d90192dafbaa613a63f01"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-30-000Z/trace.json",
+            "sha256": "f674ce76d3146ab65ace1c87b0bce8349ff7d23cc2d2eabe639bc093d96347ab"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:01:30.048Z",
+          "finishedAt": "2026-10-24T23:01:34.397Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-oral-ai-stale-leave",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-37-585Z/trace.json",
+        "sha256": "1b076203ac11ce58c46b6bc37ef09f177daef40a444c902211b2235458428b41"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-oral-ai-stale-leave",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-oral-ai-stale-leave-1.log",
+            "sha256": "556e99a0090ef7cfbeda06a307e7c536a1848184ac754a0b9ae326fd934b5236"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-37-585Z/trace.json",
+            "sha256": "1b076203ac11ce58c46b6bc37ef09f177daef40a444c902211b2235458428b41"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:01:37.640Z",
+          "finishedAt": "2026-10-24T23:01:42.207Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-assessment-result",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-45-373Z/trace.json",
+        "sha256": "41d798912a9d5a028185d9f4c4e5e8f6dd31c3567488b9abdc6469646575f102"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-assessment-result",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-assessment-result-1.log",
+            "sha256": "01a83f7f88f490ba92e50f190428804d8fdfb303d020ae1be15cfe494b08ab18"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-45-373Z/trace.json",
+            "sha256": "41d798912a9d5a028185d9f4c4e5e8f6dd31c3567488b9abdc6469646575f102"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:01:45.422Z",
+          "finishedAt": "2026-10-24T23:01:49.778Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-assessment-save-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-52-952Z/trace.json",
+        "sha256": "2dc08b74e37dcacbabc3fa64c13b46c6ba4651ea0f2d1ba5d56eba645dad9846"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-assessment-save-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-assessment-save-retry-1.log",
+            "sha256": "4e958b905ab375884a730a473e75537fc5cd1bdc7ddbc90dd842ceab28886357"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-52-952Z/trace.json",
+            "sha256": "2dc08b74e37dcacbabc3fa64c13b46c6ba4651ea0f2d1ba5d56eba645dad9846"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:01:53.002Z",
+          "finishedAt": "2026-10-24T23:02:00.030Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-quiz-result",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-03-191Z/trace.json",
+        "sha256": "e40c4bacce243f0c0bca67efe474be2ece763b5da809f91eb1c06eb56b07ab64"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-quiz-result",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-quiz-result-1.log",
+            "sha256": "8048fedb9086d0309bbeb1f305a94f298aeae6374bf5c0e04889e52b99ed57c6"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-03-191Z/trace.json",
+            "sha256": "e40c4bacce243f0c0bca67efe474be2ece763b5da809f91eb1c06eb56b07ab64"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:02:03.236Z",
+          "finishedAt": "2026-10-24T23:02:07.671Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-quiz-save-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-12-451Z/trace.json",
+        "sha256": "ae33297620e08261f302ef041f4d24474c2f98977939de21b9f27e5d640922ec"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-quiz-save-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": -1073740791,
+          "classification": "host-native-abort",
+          "nativeFailure": "Assertion failed: new_time >= loop->time, file src\\win\\core.c, line 327",
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-quiz-save-retry-1.log",
+            "sha256": "126b03237ee1135516c92e62e5ccdac65ad32be1fb22d95bbc8f7baabb36dc23"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-10-845Z/trace.json",
+            "sha256": "6c72c15634d869a4d9e6d7f3e171d46684382aef0a7d11406cd9fcdcec701161"
+          },
+          "traceStatus": "running",
+          "traceExitCode": null,
+          "traceHasFinalResult": false,
+          "sourceStableDuringRun": null,
+          "pageExceptionCount": null,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:02:10.896Z",
+          "finishedAt": null,
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        },
+        {
+          "scope": "1440-quiz-save-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 2,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-quiz-save-retry-2.log",
+            "sha256": "ea3cae9c4de34fe7a70748ff96b5d009a7b97d35802be551cefac9fb754b573d"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-12-451Z/trace.json",
+            "sha256": "ae33297620e08261f302ef041f4d24474c2f98977939de21b9f27e5d640922ec"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:02:12.508Z",
+          "finishedAt": "2026-10-24T23:02:18.112Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-divination-result",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-21-564Z/trace.json",
+        "sha256": "9c22926961bcea1483a7a39a472f0c4e6f15476e2cbe63b81fc3312a7f4b4d0e"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-divination-result",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-divination-result-1.log",
+            "sha256": "9c2e1a5b80d0872bf7a5afd2cdf249b78308da796cbdc284098383d3cc0db38e"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-21-564Z/trace.json",
+            "sha256": "9c22926961bcea1483a7a39a472f0c4e6f15476e2cbe63b81fc3312a7f4b4d0e"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:02:21.627Z",
+          "finishedAt": "2026-10-24T23:02:26.244Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "1440-divination-save-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-29-419Z/trace.json",
+        "sha256": "8f21cc2188b344f789ea4b7ddd29b2518c821e0c7b289f1ba14d39436130a6b5"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "1440-divination-save-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/1440-divination-save-retry-1.log",
+            "sha256": "5659f5e9461c221945014af269f5427121ff593cdb79411f3a8b9f5b22ea7fb5"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-29-419Z/trace.json",
+            "sha256": "8f21cc2188b344f789ea4b7ddd29b2518c821e0c7b289f1ba14d39436130a6b5"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:02:29.471Z",
+          "finishedAt": "2026-10-24T23:02:36.572Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-review-card-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-39-750Z/trace.json",
+        "sha256": "a54bf2929f1296202c1abc8d4d35cfd2d13f3c79a76a9b0a7f58180cb9955f31"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-review-card-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-review-card-retry-1.log",
+            "sha256": "e99c8507ad36ba1cbd7604b8cb23f2affb929e2ae030dcfbab23e549b79b5767"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-39-750Z/trace.json",
+            "sha256": "a54bf2929f1296202c1abc8d4d35cfd2d13f3c79a76a9b0a7f58180cb9955f31"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:02:39.802Z",
+          "finishedAt": "2026-10-24T23:02:43.719Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-review-activity-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-48-441Z/trace.json",
+        "sha256": "a98b2d1ee4393261925582583974638a7bb305933698b1480ccbf8cfd78a2379"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-review-activity-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": -1073740791,
+          "classification": "host-native-abort",
+          "nativeFailure": "Assertion failed: new_time >= loop->time, file src\\win\\core.c, line 327",
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-review-activity-retry-1.log",
+            "sha256": "04be7035feacea20d51a0d68eda20e5d29be6e753cdc746e5ee1525340103651"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-46-891Z/trace.json",
+            "sha256": "6d9aa74a3791bd1a7d5ad709234f4802f1aceb112f41bd19b5743687396d6ba1"
+          },
+          "traceStatus": "running",
+          "traceExitCode": null,
+          "traceHasFinalResult": false,
+          "sourceStableDuringRun": null,
+          "pageExceptionCount": null,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:02:46.940Z",
+          "finishedAt": null,
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        },
+        {
+          "scope": "390-review-activity-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 2,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-review-activity-retry-2.log",
+            "sha256": "419517cca5e2fb03209eda074f1e177a196c992102cffec430177d90a6800e68"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-48-441Z/trace.json",
+            "sha256": "a98b2d1ee4393261925582583974638a7bb305933698b1480ccbf8cfd78a2379"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:02:48.497Z",
+          "finishedAt": "2026-10-24T23:02:52.734Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-review-achievement-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-55-903Z/trace.json",
+        "sha256": "938e87116a9af626aded703df8fefcd7226b8e3fd0bb2dbc17b2dfe443fb22ab"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-review-achievement-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-review-achievement-retry-1.log",
+            "sha256": "19c4702a035ffb90df29d75f3153cd40d1fd916dd04b7eb794b1aca764de3819"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-02-55-903Z/trace.json",
+            "sha256": "938e87116a9af626aded703df8fefcd7226b8e3fd0bb2dbc17b2dfe443fb22ab"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:02:55.952Z",
+          "finishedAt": "2026-10-24T23:02:59.804Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-review-leave",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-02-955Z/trace.json",
+        "sha256": "b24576fd7116c6b16f49c670d607924e5a2c49275c1c0ad52302df62eccd33b9"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-review-leave",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-review-leave-1.log",
+            "sha256": "af0f5aec763d4f005c659081fed0d46e1f9b058f0c6cd26c4dd092298445f67d"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-02-955Z/trace.json",
+            "sha256": "b24576fd7116c6b16f49c670d607924e5a2c49275c1c0ad52302df62eccd33b9"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:03:03.003Z",
+          "finishedAt": "2026-10-24T23:03:07.945Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-oral-self-record-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-11-104Z/trace.json",
+        "sha256": "2284aecd732d010a0af79e8b2b41b2118b7e1f922f2ca5dbf0fb45fd228a471a"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-oral-self-record-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-oral-self-record-retry-1.log",
+            "sha256": "f4c11a42acbfc1d8f8ef8ce673c5600e0151c626c58922712130829cde778150"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-11-104Z/trace.json",
+            "sha256": "2284aecd732d010a0af79e8b2b41b2118b7e1f922f2ca5dbf0fb45fd228a471a"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:03:11.153Z",
+          "finishedAt": "2026-10-24T23:03:14.444Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-oral-self-activity-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-17-603Z/trace.json",
+        "sha256": "a65a4e7e5c9767da5e81b071ac2dac3fe09a4c5ba4e95ddd83913c1158a1506b"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-oral-self-activity-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-oral-self-activity-retry-1.log",
+            "sha256": "82ebd1e2cfc37b9f451efaa433267ec830a21472453bf4c87555ae5e3d23b0d6"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-17-603Z/trace.json",
+            "sha256": "a65a4e7e5c9767da5e81b071ac2dac3fe09a4c5ba4e95ddd83913c1158a1506b"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:03:17.653Z",
+          "finishedAt": "2026-10-24T23:03:20.907Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-oral-ai-save-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-24-067Z/trace.json",
+        "sha256": "1a26a12b9ff51df6ffbe2151a202952d5b8cc334dd6fd7f2e7a1a3326567e66e"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-oral-ai-save-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-oral-ai-save-retry-1.log",
+            "sha256": "e8d22826f368ba00636bb31bd5fbe1650a5b0a9e0b6491f40025192e8a8d1cd9"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-24-067Z/trace.json",
+            "sha256": "1a26a12b9ff51df6ffbe2151a202952d5b8cc334dd6fd7f2e7a1a3326567e66e"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:03:24.114Z",
+          "finishedAt": "2026-10-24T23:03:27.780Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-oral-ai-stale-course",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-32-017Z/trace.json",
+        "sha256": "cd294f19c58d75487f61967af7dec6ccf5165281d5daf6ef9a9f3ce9d350f1dc"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-oral-ai-stale-course",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": -1073740791,
+          "classification": "host-native-abort",
+          "nativeFailure": "Assertion failed: new_time >= loop->time, file src\\win\\core.c, line 327",
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-oral-ai-stale-course-1.log",
+            "sha256": "3fe1c86c00d75e12f2628dd606c0fc74cf87dccb87f4cc259118fff4aa3f8fee"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-30-938Z/trace.json",
+            "sha256": "ac4e5aee1bcc56b22078543c8a1f11166dc453e8d9f787a622aec0b4e2080656"
+          },
+          "traceStatus": "running",
+          "traceExitCode": null,
+          "traceHasFinalResult": false,
+          "sourceStableDuringRun": null,
+          "pageExceptionCount": null,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:03:30.985Z",
+          "finishedAt": null,
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        },
+        {
+          "scope": "390-oral-ai-stale-course",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 2,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-oral-ai-stale-course-2.log",
+            "sha256": "243c322e10a7543e89f76f5c42a722e04e4c47e360b120141fea6b2caa1648fb"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-32-017Z/trace.json",
+            "sha256": "cd294f19c58d75487f61967af7dec6ccf5165281d5daf6ef9a9f3ce9d350f1dc"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:03:32.063Z",
+          "finishedAt": "2026-10-24T23:03:35.268Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-oral-ai-stale-edit",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-05-588Z/trace.json",
+        "sha256": "4e0dc8920e926150634ba7ac521dfafdb33592e0de598c6c77a69c72ce973596"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-oral-ai-stale-edit",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": -1073740791,
+          "classification": "host-native-abort",
+          "nativeFailure": "Assertion failed: new_time >= loop->time, file src\\win\\core.c, line 327",
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-oral-ai-stale-edit-1.log",
+            "sha256": "e6b9dd58fb053081d1ee00f02b13042967df2876b7e27111c1f970b6b48c125d"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-38-419Z/trace.json",
+            "sha256": "0332e44634104789beb47b2c8af588f67f590b0c21b4e641d543c902fc47bf93"
+          },
+          "traceStatus": "running",
+          "traceExitCode": null,
+          "traceHasFinalResult": false,
+          "sourceStableDuringRun": null,
+          "pageExceptionCount": null,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:03:38.631Z",
+          "finishedAt": null,
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        },
+        {
+          "scope": "390-oral-ai-stale-edit",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230008/summary.json",
+          "attemptWithinBatch": 2,
+          "processExitCode": -1073740791,
+          "classification": "host-native-abort",
+          "nativeFailure": "Assertion failed: new_time >= loop->time, file src\\win\\core.c, line 327",
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230008/390-oral-ai-stale-edit-2.log",
+            "sha256": "f6ec26a910397de3a74c7132093184cd04e86eb04649093ae34bcd2bf766f9d9"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-03-39-660Z/trace.json",
+            "sha256": "5f4f48546020e137b8e7b4d7a5c5473505914d6e407851098989661e3ec0b10e"
+          },
+          "traceStatus": "running",
+          "traceExitCode": null,
+          "traceHasFinalResult": false,
+          "sourceStableDuringRun": null,
+          "pageExceptionCount": null,
+          "runtime": {
+            "node": "v24.19.0",
+            "uv": "1.52.1"
+          },
+          "startedAt": "2026-10-24T23:03:39.709Z",
+          "finishedAt": null,
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        },
+        {
+          "scope": "390-oral-ai-stale-edit",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230405/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230405/390-oral-ai-stale-edit-1.log",
+            "sha256": "f23f5f29548ce4ff7ec55a181fa87a024eb668ba57b66d7478ed8998db5cfd7a"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-05-588Z/trace.json",
+            "sha256": "4e0dc8920e926150634ba7ac521dfafdb33592e0de598c6c77a69c72ce973596"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v22.23.1",
+            "uv": "1.51.0"
+          },
+          "startedAt": "2026-10-24T23:04:05.645Z",
+          "finishedAt": "2026-10-24T23:04:08.816Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-oral-ai-stale-leave",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-12-092Z/trace.json",
+        "sha256": "5e6b7b517bb86433c1db5bb6fe572ab5b5fc3ad872efb406358764d5b21bdae1"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-oral-ai-stale-leave",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230405/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230405/390-oral-ai-stale-leave-1.log",
+            "sha256": "ef6099342058037f93561cb144fe07dd98ecde7b16f2b2ff01ac36c23bc5643b"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-12-092Z/trace.json",
+            "sha256": "5e6b7b517bb86433c1db5bb6fe572ab5b5fc3ad872efb406358764d5b21bdae1"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v22.23.1",
+            "uv": "1.51.0"
+          },
+          "startedAt": "2026-10-24T23:04:12.144Z",
+          "finishedAt": "2026-10-24T23:04:15.599Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-assessment-result",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-18-950Z/trace.json",
+        "sha256": "61b2b62b909909bd26c954bdee0ae64ed53e37829a838f772e7589b01f67ed54"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-assessment-result",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230405/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230405/390-assessment-result-1.log",
+            "sha256": "e50143bbda4dc2ccf20f54bff2e4aa405ab851bf720c26df47a0eec422943d45"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-18-950Z/trace.json",
+            "sha256": "61b2b62b909909bd26c954bdee0ae64ed53e37829a838f772e7589b01f67ed54"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v22.23.1",
+            "uv": "1.51.0"
+          },
+          "startedAt": "2026-10-24T23:04:19.003Z",
+          "finishedAt": "2026-10-24T23:04:21.732Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-assessment-save-retry",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-25-312Z/trace.json",
+        "sha256": "387a122b72b6f2ba3b48a1d08805a9aa3b6b68b414b3c0927b231b1ad5e0de5c"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-assessment-save-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230405/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230405/390-assessment-save-retry-1.log",
+            "sha256": "c5e426319c30456d502c313bb0db5ab2cde52a5c7443b740ffc54de448fc1e26"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-25-312Z/trace.json",
+            "sha256": "387a122b72b6f2ba3b48a1d08805a9aa3b6b68b414b3c0927b231b1ad5e0de5c"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v22.23.1",
+            "uv": "1.51.0"
+          },
+          "startedAt": "2026-10-24T23:04:25.471Z",
+          "finishedAt": "2026-10-24T23:04:29.984Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-quiz-result",
+      "status": "passed",
+      "finalProcessExitCode": 0,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-33-169Z/trace.json",
+        "sha256": "337efa25d9c6b0fe2563d48d3ac4705988d871f45c929b97e86f24fb893dbcea"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-quiz-result",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230405/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": 0,
+          "classification": "passed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230405/390-quiz-result-1.log",
+            "sha256": "8a2bf96d89fda1e9cbccce7266b64a995ad702b70176993a9dd5c85594f9b0fd"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-33-169Z/trace.json",
+            "sha256": "337efa25d9c6b0fe2563d48d3ac4705988d871f45c929b97e86f24fb893dbcea"
+          },
+          "traceStatus": "passed",
+          "traceExitCode": 0,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v22.23.1",
+            "uv": "1.51.0"
+          },
+          "startedAt": "2026-10-24T23:04:33.216Z",
+          "finishedAt": "2026-10-24T23:04:37.884Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-quiz-save-retry",
+      "status": "browser-assertion-failed",
+      "finalProcessExitCode": 1,
+      "finalTrace": {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-42-127Z/trace.json",
+        "sha256": "cc5c9a8377a0d7a59f8c4f7a0c110b07a3dc64e27f99955964e6d5445d7c17e4"
+      },
+      "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f",
+      "attempts": [
+        {
+          "scope": "390-quiz-save-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230405/summary.json",
+          "attemptWithinBatch": 1,
+          "processExitCode": -1073740791,
+          "classification": "host-native-abort",
+          "nativeFailure": "Assertion failed: new_time >= loop->time, file c:\\ws\\deps\\uv\\src\\win\\core.c, line 327",
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230405/390-quiz-save-retry-1.log",
+            "sha256": "a49da146981400008870eee9823bb1088bb301677221e49ba83f6ccd75885da5"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-41-051Z/trace.json",
+            "sha256": "4a4fe8e5ec72cbfe5b59932672c5934508dab1949d5ef3277991635db33651e4"
+          },
+          "traceStatus": "running",
+          "traceExitCode": null,
+          "traceHasFinalResult": false,
+          "sourceStableDuringRun": null,
+          "pageExceptionCount": null,
+          "runtime": {
+            "node": "v22.23.1",
+            "uv": "1.51.0"
+          },
+          "startedAt": "2026-10-24T23:04:41.111Z",
+          "finishedAt": null,
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        },
+        {
+          "scope": "390-quiz-save-retry",
+          "batch": "docs/development/evidence/feedback-batch-20261024-230405/summary.json",
+          "attemptWithinBatch": 2,
+          "processExitCode": 1,
+          "classification": "browser-assertion-failed",
+          "nativeFailure": null,
+          "log": {
+            "path": "docs/development/evidence/feedback-batch-20261024-230405/390-quiz-save-retry-2.log",
+            "sha256": "34ea4476057ed45d312cd736db3e615267b64bfa5247fded9e0696cfefe029c2"
+          },
+          "trace": {
+            "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-42-127Z/trace.json",
+            "sha256": "cc5c9a8377a0d7a59f8c4f7a0c110b07a3dc64e27f99955964e6d5445d7c17e4"
+          },
+          "traceStatus": "failed",
+          "traceExitCode": 1,
+          "traceHasFinalResult": true,
+          "sourceStableDuringRun": true,
+          "pageExceptionCount": 0,
+          "runtime": {
+            "node": "v22.23.1",
+            "uv": "1.51.0"
+          },
+          "startedAt": "2026-10-24T23:04:42.174Z",
+          "finishedAt": "2026-10-24T23:04:45.299Z",
+          "sourceSnapshotId": "287e52455b69a4b3378b653399084d5fe6378b94a42fe671e1bc3a236a4dd49f"
+        }
+      ]
+    },
+    {
+      "scope": "390-divination-result",
+      "status": "not-run",
+      "finalProcessExitCode": null,
+      "finalTrace": null,
+      "sourceSnapshotId": null,
+      "attempts": []
+    },
+    {
+      "scope": "390-divination-save-retry",
+      "status": "not-run",
+      "finalProcessExitCode": null,
+      "finalTrace": null,
+      "sourceSnapshotId": null,
+      "attempts": []
+    },
+    {
+      "scope": "320-quiz-save-retry",
+      "status": "not-run",
+      "finalProcessExitCode": null,
+      "finalTrace": null,
+      "sourceSnapshotId": null,
+      "attempts": []
+    }
+  ],
+  "currentBrowserFailure": {
+    "scope": "390-quiz-save-retry",
+    "trace": {
+      "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-42-127Z/trace.json",
+      "sha256": "cc5c9a8377a0d7a59f8c4f7a0c110b07a3dc64e27f99955964e6d5445d7c17e4"
+    },
+    "log": {
+      "path": "docs/development/evidence/feedback-batch-20261024-230405/390-quiz-save-retry-2.log",
+      "sha256": "34ea4476057ed45d312cd736db3e615267b64bfa5247fded9e0696cfefe029c2"
+    },
+    "failure": "Save retry action is not visible without probe scrolling",
+    "processExitCode": 1,
+    "pageExceptions": 0,
+    "sourceStableDuringRun": true,
+    "interpretation": "390px 首次测验保存失败提示可见，但重试按钮底部超出视口约 13.95 CSS px；探针尚未替产品滚动。它是实际布局/焦点定位失败，不是随机选项夹具或宿主中止。",
+    "geometry": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "focus": {
+        "tag": "BUTTON",
+        "action": "quiz-retry",
+        "inside": true,
+        "visible": true,
+        "hit": true,
+        "rect": {
+          "x": 16,
+          "y": 810.359375,
+          "width": 358,
+          "height": 47.59375,
+          "top": 810.359375,
+          "right": 374,
+          "bottom": 857.953125,
+          "left": 16
+        }
+      },
+      "status": {
+        "rect": {
+          "x": 16,
+          "y": 634.671875,
+          "width": 358,
+          "height": 30.59375,
+          "top": 634.671875,
+          "right": 374,
+          "bottom": 665.265625,
+          "left": 16
+        },
+        "clip": {
+          "left": 0,
+          "top": 116,
+          "right": 390,
+          "bottom": 844
+        },
+        "text": "部分学习记录未能保存，可重试未完成部分。",
+        "visible": true,
+        "full": true,
+        "hit": true
+      },
+      "retry": {
+        "rect": {
+          "x": 16,
+          "y": 810.359375,
+          "width": 358,
+          "height": 47.59375,
+          "top": 810.359375,
+          "right": 374,
+          "bottom": 857.953125,
+          "left": 16
+        },
+        "clip": {
+          "left": 0,
+          "top": 116,
+          "right": 390,
+          "bottom": 844
+        },
+        "text": "重试保存未完成的记录",
+        "visible": true,
+        "full": false,
+        "hit": true,
+        "disabled": false
+      }
+    },
+    "screenshots": [
+      {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-42-127Z/390-quiz-save-retry-automatic-0.png",
+        "sha256": "c827e48daf58fb011f592a5f23ba3a9a5d64de0a47c1e1df2cb1889b1e96ff38"
+      },
+      {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-42-127Z/390-quiz-save-retry-failure.png",
+        "sha256": "c827e48daf58fb011f592a5f23ba3a9a5d64de0a47c1e1df2cb1889b1e96ff38"
+      }
+    ],
+    "downstreamNotReached": "此 scope 在初次失败可见性断言停止；该轮后续重试成功、返回温故与缩至320检查没有执行。"
+  },
+  "relatedRedRegression": {
+    "log": {
+      "path": "docs/development/evidence/2026-10-25-quiz-feedback-retry-focus-red.log",
+      "sha256": "3a0a1e9ed835b974f21b29c24248ec8a18a49937e9d2c8bba235d59fbacd9e56"
+    },
+    "tests": 17,
+    "passed": 16,
+    "failed": 1,
+    "failingTest": "四段反馈呈现真实部分保存变化，重试不重建结果或重复提交成功部分",
+    "assertion": "Long failure feedback must reveal the focused retry control itself: expected center, actual undefined",
+    "boundary": "这是限定 DOM 回归红灯。核对输入仅含此红日志，没有据此登记修复、绿灯或浏览器复验通过。"
+  },
+  "historicalAssessmentFailure": {
+    "trace": {
+      "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T22-56-13-278Z/trace.json",
+      "sha256": "3c355d0edd8ee8f916ce1a202cbac0c87c370846773494b0638cb0ec24c201cc"
+    },
+    "failure": "Save failure status is not readable without probe scrolling",
+    "historicalStatus": "真实十题长卷初次失败提示/重试屏外的红灯，保留原记录。",
+    "laterPassingScopes": [
+      "1440-assessment-save-retry",
+      "390-assessment-save-retry"
+    ],
+    "laterPassingTraces": [
+      {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-01-52-952Z/trace.json",
+        "sha256": "2dc08b74e37dcacbabc3fa64c13b46c6ba4651ea0f2d1ba5d56eba645dad9846"
+      },
+      {
+        "path": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-04-25-312Z/trace.json",
+        "sha256": "387a122b72b6f2ba3b48a1d08805a9aa3b6b68b414b3c0927b231b1ad5e0de5c"
+      }
+    ],
+    "boundary": "后续这两个 scope 已有正常终态，不能把旧长卷红灯继续当未修，也不能据此关闭整卡。"
+  },
+  "notRun": [
+    "390-divination-result",
+    "390-divination-save-retry",
+    "320-quiz-save-retry"
+  ],
+  "nativeAbort": {
+    "attemptsInTheseTwoBatches": 8,
+    "processExitCode": -1073740791,
+    "signature": "Assertion failed: new_time >= loop->time, libuv src/win/core.c line 327",
+    "runtimesObserved": [
+      "v24.19.0",
+      "v22.23.1"
+    ],
+    "boundary": "原生中止可能留下 running trace；原中止本身没有浏览器通过终态。此 8 次仅统计两批 summary，先前独立尝试的中止不混入计数；不能由此直接归因应用。"
+  },
+  "coverageBoundaries": {
+    "divinationBrowser": "当前 divinationResult 和 divinationSaveRetry 均使用 .coin-cast，只有金钱卦真实输入路径。1440 两项已通过；390 两项未跑。",
+    "meihuaBrowser": "本脚本没有梅花入口场景，不能把关联逻辑/DOM 测试或金钱卦通过登记为梅花真实浏览器验收。",
+    "narrow320": "390-quiz-result 已有事后 resize 到 320 CSS px 的操作可达性证据；320-quiz-save-retry 首次进入即 320 的场景尚未跑，两者不能互换。",
+    "ai": "请求在发送前经 CDP Fetch 截获，使用公开合成文本与合成响应；不证明真实后端、外部模型质量或部署接口可用。",
+    "input": "使用隔离来源/profile 的 CDP Input 鼠标、键盘与触控模拟；数据/读写故障是明确夹具，不是用户真实数据。",
+    "external": "没有移动真机、屏幕阅读器或原生浏览器真实 200% 缩放证据。",
+    "finalIntegration": "尚非本卡最终 validate、完整 test:e2e、全源码一致性、交接提交或 GitHub CI/生产发布验收。先前通过记录不覆盖后续修复。"
+  }
+}
