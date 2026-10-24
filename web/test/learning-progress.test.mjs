@@ -91,3 +91,52 @@ test('学习记录拒绝无效评定，学阶覆盖全部阈值', () => {
   assert.deepEqual([0, 20, 40, 60, 80].map((score) => getLearningRank(score).label),
     ['初闻', '蒙学', '习读', '明辨', '通达']);
 });
+
+test('同一session重复保存只计一次，下一轮相同成绩仍独立计入', () => {
+  for (const kind of ['lesson', 'spot', 'exam']) {
+    const storage = createStorage();
+    const assessment = {
+      sessionId: `${kind}-first`, kind, lessonId: 'l1-1', levelId: 'L1', correct: 1, total: 1,
+      results: [{ questionId: 'q1', lessonId: 'l1-1', correct: true }],
+    };
+    const first = recordLearningAssessment(kind, assessment, new Date('2026-08-07T08:00:00Z'), storage);
+    const duplicate = recordLearningAssessment(kind, assessment, new Date('2026-08-07T08:01:00Z'), storage);
+    assert.equal(first.saved, true);
+    assert.equal(duplicate.saved, true);
+    assert.equal(duplicate.duplicate, true);
+    assert.deepEqual(duplicate.record, first.record);
+    recordLearningAssessment(kind, { ...assessment, sessionId: `${kind}-second` }, new Date('2026-08-07T08:02:00Z'), storage);
+    const record = loadLearningRecord(storage);
+    if (kind === 'lesson') assert.equal(record.lessons['l1-1'].attempts, 2);
+    else {
+      const history = kind === 'spot' ? record.spotChecks : record.exams;
+      assert.equal(history.length, 2);
+      assert.equal(history[0].sessionId, assessment.sessionId);
+      assert.equal(history[0].results[0].questionId, 'q1');
+    }
+  }
+});
+
+test('保存失败后原session重试只增加一次，旧记录读取不补造session', () => {
+  const storage = createStorage();
+  const setItem = storage.setItem;
+  let blocked = true;
+  storage.setItem = (key, value) => {
+    if (blocked) throw new Error('quota');
+    return setItem(key, value);
+  };
+  const assessment = {
+    sessionId: 'retry-round', lessonId: 'l1-1', correct: 1, total: 1,
+    results: [{ questionId: 'q1', lessonId: 'l1-1', correct: true }],
+  };
+  assert.equal(recordLearningAssessment('lesson', assessment, new Date('2026-08-07T08:00:00Z'), storage).saved, false);
+  assert.equal(loadLearningRecord(storage).lessons['l1-1'], undefined);
+  blocked = false;
+  assert.equal(recordLearningAssessment('lesson', assessment, new Date('2026-08-07T08:01:00Z'), storage).saved, true);
+  assert.equal(recordLearningAssessment('lesson', assessment, new Date('2026-08-07T08:02:00Z'), storage).duplicate, true);
+  assert.equal(loadLearningRecord(storage).lessons['l1-1'].attempts, 1);
+
+  const oldRecord = { version: 2, lessons: { 'l1-1': { attempts: 2, bestScore: 0.5 } }, spotChecks: [], exams: [], oralReviews: [] };
+  const oldStorage = createStorage({ [getLearningRecordKey()]: JSON.stringify(oldRecord) });
+  assert.deepEqual(loadLearningRecord(oldStorage), oldRecord);
+});

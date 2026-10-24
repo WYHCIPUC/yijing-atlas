@@ -17,6 +17,7 @@ import { recordActivity } from './learning-progress.js';
 import { evaluateRecitation, loadReviewConfig } from './learning-review.js';
 
 const TOPIC_BY_LESSON = { 'l1-1': 'yin-yang', 'l1-4': 'eight-trigrams' };
+const assessmentViews = new WeakMap();
 
 function esc(value) {
   return String(value || '')
@@ -47,9 +48,10 @@ function resetAssessmentViewport(container) {
   });
 }
 
-function renderQuestionForm(container, session, onComplete) {
+function renderQuestionForm(container, session, onComplete, draft = {}) {
+  let submitted = false;
   container.innerHTML = `
-    <section class="assessment-sheet" aria-labelledby="assessment-sheet-title">
+    <section class="assessment-sheet" aria-labelledby="assessment-sheet-title" data-assessment-session="${esc(session.id)}">
       <div class="assessment-sheet-head">
         <div><span class="academy-kicker">明辨</span><h3 id="assessment-sheet-title" data-page-heading>${esc(sessionTitle(session))}</h3></div>
         <span>${session.questions.length} 题</span>
@@ -60,7 +62,7 @@ function renderQuestionForm(container, session, onComplete) {
             <legend><span>${questionIndex + 1}</span>${esc(item.prompt)}</legend>
             <div class="assessment-options">
               ${item.options.map((option, optionIndex) => `
-                <label><input type="radio" name="question-${questionIndex}" value="${optionIndex}" />
+                <label><input type="radio" name="question-${questionIndex}" value="${optionIndex}" ${draft[item.id] === option.value ? 'checked' : ''} />
                   <span>${esc(option.label)}</span></label>
               `).join('')}
             </div>
@@ -74,33 +76,62 @@ function renderQuestionForm(container, session, onComplete) {
       </form>
     </section>`;
 
-  container.querySelector('[data-action="cancel"]').addEventListener('click', () => onComplete(null));
-  container.querySelector('.assessment-form').addEventListener('submit', (event) => {
+  const readOption = (selected, question) => {
+    const index = Number(selected?.value);
+    return selected && Number.isInteger(index) && String(index) === selected.value ? question.options[index] : null;
+  };
+  container.querySelector('[data-action="cancel"]').addEventListener('click', () => {
+    if (submitted) return;
+    submitted = true;
+    onComplete(null);
+  });
+  const form = container.querySelector('.assessment-form');
+  form.addEventListener('change', () => {
+    session.questions.forEach((question, index) => {
+      const option = readOption(container.querySelector(`input[name="question-${index}"]:checked`), question);
+      if (option) draft[question.id] = option.value;
+      else delete draft[question.id];
+    });
+  });
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
+    if (submitted) return;
     const answers = {};
     for (let index = 0; index < session.questions.length; index += 1) {
+      const question = session.questions[index];
       const selected = container.querySelector(`input[name="question-${index}"]:checked`);
-      if (!selected) {
+      const option = readOption(selected, question);
+      if (!option) {
         container.querySelector('.assessment-status').textContent = `请先完成第 ${index + 1} 题。`;
-        selected || container.querySelector(`input[name="question-${index}"]`)?.focus();
+        container.querySelector(`input[name="question-${index}"]`)?.focus();
         return;
       }
-      const question = session.questions[index];
-      answers[question.id] = question.options[Number(selected.value)].value;
+      answers[question.id] = option.value;
     }
-    onComplete(gradeAssessment(session, answers));
+    const result = gradeAssessment(session, answers);
+    if (!result) return;
+    submitted = true;
+    onComplete(result);
   });
   resetAssessmentViewport(container);
 }
 
-function renderResult(container, session, result, onBack) {
+function renderResult(container, session, result, onBack, saveState, onRetry) {
   const percent = Math.round(result.correct / result.total * 100);
+  const pending = [];
+  if (!saveState.assessment?.saved) pending.push('本轮成绩');
+  else {
+    if (!saveState.activitySaved) pending.push('学习日记录');
+    if (!saveState.achievementsSaved) pending.push('成就证据');
+  }
   container.innerHTML = `
-    <section class="assessment-result" aria-labelledby="assessment-result-title">
+    <section class="assessment-result" aria-labelledby="assessment-result-title" data-assessment-session="${esc(session.id)}">
       <span class="academy-kicker">考校</span>
       <h3 id="assessment-result-title" data-page-heading>${esc(sessionTitle(session))}</h3>
       <div class="assessment-score"><strong>${percent}</strong><span>分</span></div>
       <p>${result.correct}/${result.total} 题正确。${percent >= 80 ? '本轮掌握稳定，可继续温习或进入下一课。' : '建议查看辨析后回到原课温习，再进行一次小试。'}</p>
+      <p class="assessment-save-status ${pending.length ? 'assessment-warning' : 'assessment-success'}" role="status" aria-live="polite">${pending.length ? `${pending.join('、')}未能保存；答案和分数仍可查看。` : '本轮成绩与学习记录已保存。'}</p>
+      ${pending.length ? '<button type="button" class="text-button" data-action="retry-save">重试保存本轮记录</button>' : ''}
       <div class="assessment-review-list">
         ${session.questions.map((item, index) => {
           const answer = result.results[index];
@@ -115,6 +146,7 @@ function renderResult(container, session, result, onBack) {
       <button type="button" class="quick-btn" data-action="back">返回考评中心</button>
     </section>`;
   container.querySelector('[data-action="back"]').addEventListener('click', onBack);
+  container.querySelector('[data-action="retry-save"]')?.addEventListener('click', onRetry);
   resetAssessmentViewport(container);
 }
 
@@ -143,26 +175,28 @@ function renderRubric(container, lessonId, appState, message = '') {
 }
 
 function recordLessonAchievementEvents(result, saved) {
-  if (!saved.saved || result.kind !== 'lesson' || !result.lessonId) return;
+  if (result.kind !== 'lesson' || !result.lessonId) return true;
+  if (!saved.saved) return false;
   const lesson = saved.record.lessons[result.lessonId];
-  const occurredAt = lesson?.lastStudiedAt;
-  if (!occurredAt) return;
-  processAchievementEvent(createProgressEvent({
+  const occurredAt = saved.entry?.at || lesson?.lastStudiedAt;
+  if (!occurredAt) return false;
+  const completed = processAchievementEvent(createProgressEvent({
     type: 'lesson.completed',
     subjectId: result.lessonId,
     outcome: 'completed',
     occurredAt,
     idempotencyKey: `learning-record:completed:${result.lessonId}`,
   }));
-  processAchievementEvent(createProgressEvent({
+  const assessed = processAchievementEvent(createProgressEvent({
     type: 'lesson.assessed',
     subjectId: result.lessonId,
     score: result.correct / result.total,
     outcome: result.correct / result.total >= 0.6 ? 'passed' : 'failed',
     occurredAt,
-    idempotencyKey: `learning-record:assessed:${result.lessonId}:${occurredAt}`,
+    idempotencyKey: `learning-record:assessed:${result.lessonId}:${result.sessionId}`,
     metadata: TOPIC_BY_LESSON[result.lessonId] ? { topic: TOPIC_BY_LESSON[result.lessonId] } : {},
   }));
+  return completed.saved && assessed.saved;
 }
 
 function bindOralReview(mountEl, appState) {
@@ -209,10 +243,11 @@ function bindOralReview(mountEl, appState) {
 
 export function renderLearningAssessmentPage(mountEl, appState, { onNavigate, initialLessonId } = {}) {
   const questionBank = buildLearningQuestionBank(appState);
-  const record = loadLearningRecord();
-  const recommended = recommendLesson(record);
 
   const renderHub = () => {
+    assessmentViews.delete(mountEl);
+    const record = loadLearningRecord();
+    const recommended = recommendLesson(record);
     mountEl.innerHTML = `
       <div class="academy-heading">
         <div><span class="academy-kicker">书院考校</span><h3 data-page-heading>日课与考评</h3></div>
@@ -276,27 +311,49 @@ export function renderLearningAssessmentPage(mountEl, appState, { onNavigate, in
     resetAssessmentViewport(mountEl);
   };
 
-  const startSession = (kind, options) => {
-    const session = createAssessmentSession(kind, questionBank, options);
-    if (!session) {
-      mountEl.innerHTML = '<p class="mode-empty">当前课程还没有足够的题目，请先返回学习内容。</p>';
+  const showSession = (view) => {
+    if (view.result) {
+      renderResult(mountEl, view.session, view.result, renderHub, view, () => {
+        saveSubmission(view);
+        showSession(view);
+      });
       return;
     }
-    renderQuestionForm(mountEl, session, (result) => {
+    renderQuestionForm(mountEl, view.session, (result) => {
+      if (view.result || assessmentViews.get(mountEl) !== view) return;
       if (!result) {
         renderHub();
         return;
       }
-      const saved = recordLearningAssessment(kind, result);
-      recordActivity();
-      recordLessonAchievementEvents(result, saved);
-      renderResult(mountEl, session, result, () => renderLearningAssessmentPage(mountEl, appState, { onNavigate }));
-      if (!saved.saved) mountEl.querySelector('.assessment-result p').insertAdjacentHTML(
-        'afterend', '<p class="assessment-warning">本次已完成，但浏览器未能保存考评记录。</p>',
-      );
-    });
+      view.result = result;
+      saveSubmission(view);
+      showSession(view);
+    }, view.answers);
   };
 
-  if (initialLessonId && getLesson(initialLessonId)) startSession('lesson', { lessonId: initialLessonId });
+  const saveSubmission = (view) => {
+    if (!view.assessment?.saved) view.assessment = recordLearningAssessment(view.session.kind, view.result);
+    if (!view.assessment.saved) return;
+    if (!view.activitySaved) view.activitySaved = recordActivity().saved;
+    if (!view.achievementsSaved) view.achievementsSaved = recordLessonAchievementEvents(view.result, view.assessment);
+  };
+
+  const startSession = (kind, options) => {
+    const session = createAssessmentSession(kind, questionBank, options);
+    if (!session) {
+      const unviewed = kind === 'spot' && !Object.values(options.record?.lessons || {}).some((lesson) => lesson?.viewedAt);
+      mountEl.innerHTML = `<p class="mode-empty">${unviewed ? '请先浏览一课，再进行随机抽查。' : '当前范围暂无可用题目，请先返回学习内容。'}</p><button type="button" class="quick-btn" data-action="back">返回考评中心</button>`;
+      mountEl.querySelector('[data-action="back"]').addEventListener('click', renderHub);
+      return;
+    }
+    const view = { session, answers: {} };
+    assessmentViews.set(mountEl, view);
+    showSession(view);
+  };
+
+  const active = assessmentViews.get(mountEl);
+  const displayedSessionId = mountEl.querySelector('[data-assessment-session]')?.dataset.assessmentSession;
+  if (active && active.session.id === displayedSessionId && (!initialLessonId || initialLessonId === active.session.lessonId)) showSession(active);
+  else if (initialLessonId && getLesson(initialLessonId)) startSession('lesson', { lessonId: initialLessonId });
   else renderHub();
 }

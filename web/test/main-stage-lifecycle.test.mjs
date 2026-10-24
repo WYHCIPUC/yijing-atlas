@@ -3,10 +3,13 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import vm from 'node:vm';
 import { createReadingState, shouldRecordDeepRead, transitionReading } from '../js/reading-state.js';
+import { createProgressEvent as realProgressEvent } from '../js/achievement-engine.js';
+import { processAchievementEvent as realAchievementEvent, loadAchievementState } from '../js/achievement-storage.js';
+import { addReviewCard as realAddReviewCard, loadReviewCards } from '../js/review-engine.js';
 
 const source = readFileSync(new URL('../js/main.js', import.meta.url), 'utf8');
 // Execute the real entry-point functions without starting the application or WebGL.
-const functions = ['pauseCelestialStage', 'resumeCelestialStage', 'closeDetail', 'enterExplore', 'focusHexagram', 'changeStarLayout', 'openReading', 'openDetail']
+const functions = ['pauseCelestialStage', 'resumeCelestialStage', 'closeDetail', 'enterExplore', 'focusHexagram', 'changeStarLayout', 'syncReadingSaveFeedback', 'persistReadingSave', 'retryReadingSave', 'openReading', 'openDetail']
   .map((name) => {
     const match = source.match(new RegExp(`^function ${name}\\([\\s\\S]*?^}`, 'm'));
     assert.ok(match, `${name} must be present`);
@@ -79,7 +82,7 @@ test('用户滚回上一节正文时仍按可见内容更新当前章节', () =>
   assert.equal(tabSyncs, 1);
 });
 
-function createHarness({ loaded = true, extraReason = null } = {}) {
+function createHarness({ loaded = true, extraReason = null, storage = null, storageGetter = false } = {}) {
   const noop = () => {};
   const reasons = new Set(['mode', ...(extraReason ? [extraReason] : [])]);
   const stage = {
@@ -97,6 +100,7 @@ function createHarness({ loaded = true, extraReason = null } = {}) {
     renderedCode: null,
     readingSnapshot: null,
     readingDrafts: new Map(),
+    readingSaves: new Map(),
     celestialPauseReasons: reasons,
     celestialStage: loaded ? stage : null,
     starMap: null,
@@ -108,9 +112,15 @@ function createHarness({ loaded = true, extraReason = null } = {}) {
   let reviewCount = 0;
   let hasContent = false;
   const focusCalls = [];
+  const feedback = { hidden: true };
+  const saveStatus = { textContent: '', focus: () => focusCalls.push('save-status') };
+  const saveRetry = { hidden: true, disabled: false };
   const body = { classList: { remove: noop }, isConnected: true, getClientRects: () => [{}], focus: () => focusCalls.push('body') };
   const context = vm.createContext({
     state,
+    readingSaveFeedback: feedback,
+    readingSaveStatus: saveStatus,
+    readingSaveRetry: saveRetry,
     modeRequestId: 0,
     readingScroll: { panel: 0, content: 0 },
     panel: { scrollTop: 0, classList: { remove: noop, contains: () => false }, setAttribute: noop, removeAttribute: noop },
@@ -130,10 +140,18 @@ function createHarness({ loaded = true, extraReason = null } = {}) {
     updateLayoutInterface: noop,
     updateRelationInterface: noop,
     renderHexagramDetail: () => { renderCount += 1; hasContent = true; },
-    processAchievementEvent: () => { readCount += 1; },
-    createProgressEvent: (event) => event,
+    processAchievementEvent: (event) => {
+      readCount += 1;
+      return storage || storageGetter ? realAchievementEvent(event, storage ? { storage } : {}) : { saved: true };
+    },
+    createProgressEvent: realProgressEvent,
+    loadAchievementState: () => loadAchievementState(storage || undefined),
+    loadReviewCards: () => loadReviewCards(storage || undefined),
     bindShareAction: noop,
-    addReviewCard: () => { reviewCount += 1; },
+    addReviewCard: (code) => {
+      reviewCount += 1;
+      return storage || storageGetter ? realAddReviewCard(code, storage || undefined) : { saved: true };
+    },
     openPanel: noop,
     resetPanelViewport: noop,
     playHexagramSound: noop,
@@ -149,8 +167,117 @@ function createHarness({ loaded = true, extraReason = null } = {}) {
     shouldRecordDeepRead,
   });
   vm.runInContext(functions, context);
-  return { context, state, stage, focusCalls, counts: () => ({ renderCount, readCount, reviewCount }) };
+  return { context, state, stage, focusCalls, feedback, saveStatus, saveRetry, counts: () => ({ renderCount, readCount, reviewCount }) };
 }
+
+function saveStorage(failedKeys = []) {
+  const values = new Map();
+  const blocked = new Set(failedKeys);
+  const writes = [];
+  return {
+    blocked, values, writes,
+    getItem: key => values.get(key) ?? null,
+    setItem(key, value) {
+      writes.push(key);
+      if (blocked.has(key)) throw new Error('quota');
+      values.set(key, value);
+    },
+  };
+}
+
+test('深读的两项保存失败可见，恢复后只补失败项且不重复奖励或卡片', () => {
+  for (const failed of [['yijing.achievements.v1'], ['yijing-review-cards'], ['yijing.achievements.v1', 'yijing-review-cards']]) {
+    const storage = saveStorage(failed);
+    const { context, state, feedback, saveStatus, counts } = createHarness({ storage });
+    context.openDetail('111111');
+    assert.equal(state.reading.stage, 'deep');
+    assert.equal(counts().renderCount, 1, '失败不阻断正文');
+    assert.equal(feedback.hidden, false, '保存失败应有可见反馈');
+    assert.match(saveStatus.textContent, /未保存/);
+    if (!failed.includes('yijing.achievements.v1')) assert.doesNotMatch(saveStatus.textContent, /阅读记录未保存/);
+    if (!failed.includes('yijing-review-cards')) assert.doesNotMatch(saveStatus.textContent, /复习卡未保存/);
+    const before = counts();
+    storage.blocked.clear();
+    context.retryReadingSave();
+    assert.equal(counts().readCount, before.readCount + Number(failed.includes('yijing.achievements.v1')));
+    assert.equal(counts().reviewCount, before.reviewCount + Number(failed.includes('yijing-review-cards')));
+    assert.match(saveStatus.textContent, /已保存/);
+    const after = counts();
+    context.retryReadingSave();
+    assert.deepEqual(counts(), after, '重复重试没有新写入');
+    assert.deepEqual(loadAchievementState(storage).metrics.hexagramsRead, ['111111']);
+    assert.equal(loadAchievementState(storage).processedKeys.length, 1);
+    assert.equal(Object.keys(loadReviewCards(storage)).length, 1);
+  }
+});
+
+test('拒绝localStorage getter仍可深读和关闭，恢复后重新进入只补未保存记录', () => {
+  const previous = Object.getOwnPropertyDescriptor(globalThis, 'localStorage');
+  Object.defineProperty(globalThis, 'localStorage', { configurable: true, get() { throw new Error('blocked'); } });
+  try {
+    const harness = createHarness({ storageGetter: true });
+    harness.context.openDetail('111111');
+    assert.equal(harness.feedback.hidden, false);
+    assert.match(harness.saveStatus.textContent, /未保存/);
+    harness.context.closeDetail();
+    assert.equal(harness.state.reading.stage, 'none');
+    const storage = saveStorage();
+    Object.defineProperty(globalThis, 'localStorage', { configurable: true, value: storage });
+    harness.context.openDetail('111111');
+    assert.match(harness.saveStatus.textContent, /已保存/);
+    assert.equal(loadAchievementState(storage).processedKeys.length, 1);
+    assert.equal(Object.keys(loadReviewCards(storage)).length, 1);
+  } finally {
+    if (previous) Object.defineProperty(globalThis, 'localStorage', previous);
+    else delete globalThis.localStorage;
+  }
+});
+
+test('失败等待期间的其他学习记录与已复习卡不被补保存覆盖，快读也不能重试', () => {
+  const storage = saveStorage();
+  realAddReviewCard('000000', storage);
+  const cards = loadReviewCards(storage);
+  cards['000000'].stage = 3;
+  cards['000000'].due = 2_000_000_000_000;
+  storage.setItem('yijing-review-cards', JSON.stringify(cards));
+  const oldCard = structuredClone(cards['000000']);
+  storage.blocked.add('yijing.achievements.v1');
+  storage.blocked.add('yijing-review-cards');
+  const harness = createHarness({ storage });
+  harness.context.openDetail('111111');
+  const originalEvent = harness.state.readingSaves.get('111111').event;
+  harness.context.openReading('111111', 'quick');
+  const before = harness.counts();
+  harness.context.retryReadingSave();
+  assert.deepEqual(harness.counts(), before, '快读不触发正式保存');
+  storage.blocked.clear();
+  realAchievementEvent(realProgressEvent({
+    type: 'hexagram.read', subjectId: '000000', outcome: 'completed',
+    idempotencyKey: 'hexagram:read:000000', metadata: { deep: true, hexagramCode: '000000' },
+  }), { storage });
+  harness.context.openDetail('111111');
+  assert.equal(harness.state.readingSaves.get('111111').event, originalEvent, '补保存复用原事件');
+  assert.deepEqual(loadAchievementState(storage).metrics.hexagramsRead, ['000000', '111111']);
+  assert.deepEqual(loadReviewCards(storage)['000000'], oldCard, '保留原调度和到期时间');
+});
+
+test('部分保存后导入旧备份移除成功项，再次深读重新核对持久化证据', () => {
+  for (const failedKey of ['yijing.achievements.v1', 'yijing-review-cards']) {
+    const storage = saveStorage([failedKey]);
+    const harness = createHarness({ storage });
+    harness.context.openDetail('111111');
+    const event = harness.state.readingSaves.get('111111').event;
+    harness.context.closeDetail();
+    const succeededKey = failedKey === 'yijing.achievements.v1' ? 'yijing-review-cards' : 'yijing.achievements.v1';
+    storage.values.delete(succeededKey);
+    storage.blocked.clear();
+    harness.context.openDetail('111111');
+    assert.equal(harness.state.readingSaves.get('111111').event, event, '仍沿用原事件身份');
+    assert.deepEqual(loadAchievementState(storage).metrics.hexagramsRead, ['111111']);
+    assert.ok(loadReviewCards(storage)['111111'], '成功提示必须对应实际保存的卡片');
+    assert.match(harness.saveStatus.textContent, /已保存/);
+  }
+});
 
 test('关闭工作台回到探索时恢复天象舞台及其场景', () => {
   const { context, state, stage } = createHarness();

@@ -121,16 +121,26 @@ function syncAchievementEvidence(record) {
       occurredAt: lesson.lastStudiedAt || lesson.viewedAt,
       idempotencyKey: `learning-record:completed:${lessonId}`,
     }));
-    if (!Number.isFinite(lesson.bestScore)) return;
-    processAchievementEvent(createProgressEvent({
-      type: 'lesson.assessed',
-      subjectId: lessonId,
-      score: lesson.bestScore,
-      outcome: lesson.bestScore >= 0.6 ? 'passed' : 'failed',
-      occurredAt: lesson.lastStudiedAt || lesson.viewedAt,
-      idempotencyKey: `learning-record:assessed:${lessonId}:${lesson.lastStudiedAt || lesson.viewedAt}`,
-      metadata: topicByLesson[lessonId] ? { topic: topicByLesson[lessonId] } : {},
-    }));
+    const sessions = (record.assessmentSessions || []).filter((item) => item.kind === 'lesson' && item.lessonId === lessonId);
+    const legacy = lesson.legacyAssessment || (!sessions.length ? {
+      score: lesson.bestScore, at: lesson.lastStudiedAt || lesson.viewedAt,
+    } : null);
+    const evidence = [
+      ...(legacy ? [legacy] : []),
+      ...sessions.map((item) => ({ sessionId: item.sessionId, score: item.correct / item.total, at: item.at })),
+    ];
+    evidence.forEach((item) => {
+      if (!Number.isFinite(item.score)) return;
+      processAchievementEvent(createProgressEvent({
+        type: 'lesson.assessed',
+        subjectId: lessonId,
+        score: item.score,
+        outcome: item.score >= 0.6 ? 'passed' : 'failed',
+        occurredAt: item.at,
+        idempotencyKey: `learning-record:assessed:${lessonId}:${item.sessionId || item.at}`,
+        metadata: topicByLesson[lessonId] ? { topic: topicByLesson[lessonId] } : {},
+      }));
+    });
   });
 }
 

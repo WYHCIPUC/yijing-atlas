@@ -320,6 +320,9 @@ body .focus-identity h2 { margin: 0; color: var(--gold-bright); font: 32px/1.25 
 .reading-tabs button { flex: 0 0 auto; min-height: 44px; padding: 6px 4px 9px; border: 0; border-bottom: 1px solid transparent; border-radius: 0; color: var(--silver-muted); background: transparent; cursor: pointer; }
 .reading-tabs button:is([aria-current="true"], [aria-selected="true"], .active) { color: var(--silver); border-bottom-color: var(--silver); }
 .reading-paper [data-reading-section] { scroll-margin-top: 140px; }
+.reading-save-feedback { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 20px; padding: 12px clamp(12px, 3vw, 28px); border-bottom: 1px solid var(--silver-line); color: var(--silver); font-size: 15px; line-height: 1.7; }
+.reading-save-feedback p { flex: 1 1 240px; margin: 0; }
+.reading-save-feedback button { min-height: 44px; }
 .detail-panel[data-reading-stage] .detail-content { display: block; width: 100%; max-width: none; padding: 28px 28px 80px; }
 .reading-document { display: grid; grid-template-columns: minmax(140px, 0.7fr) minmax(0, 720px) minmax(180px, 0.9fr); align-items: start; gap: clamp(20px, 3vw, 42px); width: min(1320px, 100%); margin-inline: auto; }
 .reading-paper {

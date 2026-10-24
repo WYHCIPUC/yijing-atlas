@@ -1,5 +1,11 @@
 import { LEARNING_LESSONS } from './learning-curriculum.js';
 
+let sessionSequence = 0;
+
+function createSessionId() {
+  return globalThis.crypto?.randomUUID?.() || `assessment-${Date.now()}-${++sessionSequence}`;
+}
+
 function shuffle(values, random = Math.random) {
   const result = [...values];
   for (let index = result.length - 1; index > 0; index -= 1) {
@@ -45,7 +51,7 @@ export function createAssessmentSession(kind, questionBank, options = {}) {
     const viewedIds = Object.entries(options.record?.lessons || {})
       .filter(([, value]) => value?.viewedAt)
       .map(([lessonId]) => lessonId);
-    if (viewedIds.length) available = available.filter((item) => viewedIds.includes(item.lessonId));
+    available = available.filter((item) => viewedIds.includes(item.lessonId));
   } else {
     return null;
   }
@@ -56,6 +62,7 @@ export function createAssessmentSession(kind, questionBank, options = {}) {
     : diversify(available, count, random);
   const levelId = options.levelId || LEARNING_LESSONS.find((lesson) => lesson.id === options.lessonId)?.levelId;
   return {
+    id: createSessionId(),
     kind,
     lessonId: options.lessonId || null,
     levelId: levelId || null,
@@ -65,7 +72,12 @@ export function createAssessmentSession(kind, questionBank, options = {}) {
 
 export function gradeAssessment(session, answers) {
   const questions = session?.questions || [];
-  const picked = answers || {};
+  if (!session?.id || !questions.length || !answers || typeof answers !== 'object' || Array.isArray(answers)) return null;
+  const questionIds = new Set(questions.map((item) => item.id));
+  if (Object.keys(answers).some((id) => !questionIds.has(id)) || questions.some((item) =>
+    !Object.hasOwn(answers, item.id) || !item.options.some((option) => option.value === answers[item.id]),
+  )) return null;
+  const picked = answers;
   const results = questions.map((item) => ({
     questionId: item.id,
     lessonId: item.lessonId,
@@ -74,6 +86,7 @@ export function gradeAssessment(session, answers) {
     correct: picked[item.id] === item.answer,
   }));
   return {
+    sessionId: session.id,
     kind: session?.kind,
     lessonId: session?.lessonId || null,
     levelId: session?.levelId || null,

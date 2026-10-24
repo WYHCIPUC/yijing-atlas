@@ -67,10 +67,18 @@ function isAttempt(value) {
     value.correct >= 0 && value.total > 0 && value.correct <= value.total;
 }
 
+function isSessionReceipt(value) {
+  return isPlainObject(value) && typeof value.sessionId === 'string' && Boolean(value.sessionId) &&
+    ['lesson', 'spot', 'exam'].includes(value.kind) && isAttempt(value) &&
+    (value.kind !== 'lesson' || typeof value.lessonId === 'string');
+}
+
 export function isLearningRecord(value) {
   return isPlainObject(value) && value.version === 2 && isPlainObject(value.lessons) &&
     Array.isArray(value.spotChecks) && Array.isArray(value.exams) && Array.isArray(value.oralReviews) &&
     Object.values(value.lessons).every((lesson) => isPlainObject(lesson)) &&
+    (value.assessmentSessions === undefined ||
+      (Array.isArray(value.assessmentSessions) && value.assessmentSessions.every(isSessionReceipt))) &&
     value.spotChecks.every(isAttempt) && value.exams.every(isAttempt) &&
     value.oralReviews.every((review) => isPlainObject(review) && typeof review.at === 'string' &&
       typeof review.lessonId === 'string' && Number.isFinite(review.score));
@@ -113,31 +121,46 @@ export function markLessonViewed(lessonId, now = new Date(), storage) {
 function normalizeResults(results) {
   return Array.isArray(results) ? results.filter((result) =>
     typeof result?.lessonId === 'string' && typeof result?.correct === 'boolean',
-  ).map((result) => ({ lessonId: result.lessonId, correct: result.correct })) : [];
+  ).map((result) => ({
+    lessonId: result.lessonId,
+    correct: result.correct,
+    ...(typeof result.questionId === 'string' ? { questionId: result.questionId } : {}),
+  })) : [];
 }
 
 export function recordLearningAssessment(kind, assessment, now = new Date(), storage) {
   if (!['lesson', 'spot', 'exam'].includes(kind) || !assessment ||
       !Number.isInteger(assessment.correct) || !Number.isInteger(assessment.total) ||
-      assessment.total <= 0 || assessment.correct < 0 || assessment.correct > assessment.total) {
+      assessment.total <= 0 || assessment.correct < 0 || assessment.correct > assessment.total ||
+      (assessment.sessionId !== undefined && (typeof assessment.sessionId !== 'string' || !assessment.sessionId)) ||
+      (assessment.kind !== undefined && assessment.kind !== kind)) {
     return { record: loadLearningRecord(storage), saved: false };
   }
   const record = loadLearningRecord(storage);
+  const receipt = assessment.sessionId && record.assessmentSessions?.find((item) => item.sessionId === assessment.sessionId);
+  if (receipt) return { record, saved: true, duplicate: true, entry: receipt };
   const entry = {
     at: now.toISOString(),
     correct: assessment.correct,
     total: assessment.total,
     results: normalizeResults(assessment.results),
+    ...(assessment.sessionId ? { sessionId: assessment.sessionId } : {}),
   };
   if (kind === 'lesson' && typeof assessment.lessonId === 'string') {
     const previous = record.lessons[assessment.lessonId] || {};
     const bestScore = Math.max(previous.bestScore || 0, assessment.correct / assessment.total);
+    const hasSessions = record.assessmentSessions?.some((item) => item.kind === 'lesson' && item.lessonId === assessment.lessonId);
+    const legacyAssessment = assessment.sessionId && !hasSessions && previous.attempts > 0 &&
+      Number.isFinite(previous.bestScore) && (previous.lastStudiedAt || previous.viewedAt)
+      ? { score: previous.bestScore, at: previous.lastStudiedAt || previous.viewedAt }
+      : previous.legacyAssessment;
     record.lessons[assessment.lessonId] = {
       ...previous,
       viewedAt: previous.viewedAt || entry.at,
       lastStudiedAt: entry.at,
       attempts: (previous.attempts || 0) + 1,
       bestScore,
+      ...(legacyAssessment ? { legacyAssessment } : {}),
     };
   } else if (kind === 'spot') {
     record.spotChecks = [...record.spotChecks, entry].slice(-MAX_ASSESSMENT_HISTORY);
@@ -147,7 +170,14 @@ export function recordLearningAssessment(kind, assessment, now = new Date(), sto
   } else {
     return { record, saved: false };
   }
-  return { record, saved: saveLearningRecord(record, storage) };
+  if (assessment.sessionId) {
+    record.assessmentSessions = [...(record.assessmentSessions || []), {
+      sessionId: assessment.sessionId, kind, at: entry.at,
+      correct: entry.correct, total: entry.total,
+      ...(kind === 'lesson' ? { lessonId: assessment.lessonId } : {}),
+    }];
+  }
+  return { record, saved: saveLearningRecord(record, storage), duplicate: false, entry };
 }
 
 export function recordOralReview(lessonId, score, mode, now = new Date(), storage) {

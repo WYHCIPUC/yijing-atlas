@@ -7,7 +7,7 @@ import {
   setSoundEnabled,
 } from './audio-engine.js';
 import { createProgressEvent } from './achievement-engine.js';
-import { processAchievementEvent } from './achievement-storage.js';
+import { loadAchievementState, processAchievementEvent } from './achievement-storage.js';
 import * as dataLoader from './data-loader.js';
 import { closeEvolutionLab, showEvolutionLab } from './evolution-lab.js';
 import { deliverShareImage, generateHexagramShareImage } from './share-card.js';
@@ -15,7 +15,7 @@ import { closeGuaxuWheel, showGuaxuWheel } from './modes/guaxu-mode.js';
 import { initCinematicMotion } from './cinematic-motion.js';
 import { initMotionSystem } from './motion-system.js';
 import { renderHexagramDetail } from './render.js';
-import { addReviewCard } from './review-engine.js';
+import { addReviewCard, loadReviewCards } from './review-engine.js';
 import { createReadingState, shouldRecordDeepRead, transitionReading } from './reading-state.js';
 import { getHexCodeFromUrl, moveSelection, withHexCode } from './search-controller.js';
 import { buildRelationGraph } from './star-relations.js';
@@ -49,6 +49,7 @@ const state = {
   readingSnapshot: null,
   renderedCode: null,
   readingDrafts: new Map(),
+  readingSaves: new Map(),
   currentMode: 'explore',
   commentaryReleaseReady: false,
 };
@@ -84,6 +85,9 @@ const autoRotateButton = document.getElementById('auto-rotate');
 const workspaceInsightBar = document.querySelector('.workspace-insight-bar');
 const focusSummary = document.getElementById('star-focus-summary');
 const readingToolbar = document.getElementById('reading-toolbar');
+const readingSaveFeedback = document.getElementById('reading-save-feedback');
+const readingSaveStatus = document.getElementById('reading-save-status');
+const readingSaveRetry = document.getElementById('reading-save-retry');
 const relationToggle = document.getElementById('relation-toggle');
 const relationOptions = document.getElementById('relation-options');
 const compactPanelQuery = window.matchMedia('(max-width: 900px)');
@@ -576,6 +580,7 @@ function syncReadingPresentation() {
   if (deepen) deepen.hidden = stage !== 'quick';
   if (quicken) quicken.hidden = stage !== 'deep';
   syncReadingTabs();
+  syncReadingSaveFeedback();
   if (stage === 'deep' || (stage === 'quick' && compactPanelQuery.matches)) {
     state.starMap?.pause?.('reading');
     pauseCelestialStage('reading');
@@ -850,6 +855,47 @@ function bindShareAction(hexagram) {
   });
 }
 
+function syncReadingSaveFeedback() {
+  if (!readingSaveFeedback || !readingSaveStatus || !readingSaveRetry) return;
+  const entry = state.readingSaves.get(state.reading.readingCode);
+  const visible = state.reading.stage === 'deep' && entry?.hadFailure;
+  readingSaveFeedback.hidden = !visible;
+  if (!visible) return;
+  const missing = [];
+  if (!entry.achievementSaved) missing.push('阅读记录');
+  if (!entry.reviewSaved) missing.push('复习卡');
+  readingSaveStatus.textContent = missing.length
+    ? `${missing.join('与')}未保存，正文仍可阅读。可恢复浏览器存储后重试。`
+    : '阅读记录与复习卡已保存。';
+  readingSaveRetry.hidden = missing.length === 0;
+}
+
+function persistReadingSave(code) {
+  const entry = state.readingSaves.get(code);
+  if (!entry) return;
+  if (entry.hadFailure) {
+    // Import, deletion or another tab can replace a previously saved half.
+    if (entry.achievementSaved) entry.achievementSaved = loadAchievementState().processedKeys.includes(entry.event.idempotencyKey);
+    if (entry.reviewSaved) entry.reviewSaved = Boolean(loadReviewCards()[code]);
+  }
+  if (!entry.achievementSaved) entry.achievementSaved = processAchievementEvent(entry.event).saved === true;
+  if (!entry.reviewSaved) entry.reviewSaved = addReviewCard(code).saved === true;
+  entry.hadFailure ||= !entry.achievementSaved || !entry.reviewSaved;
+  syncReadingSaveFeedback();
+}
+
+function retryReadingSave() {
+  if (state.reading.stage !== 'deep' || readingSaveRetry?.disabled) return;
+  const restoreFocus = document.activeElement === readingSaveRetry;
+  if (readingSaveRetry) readingSaveRetry.disabled = true;
+  try {
+    persistReadingSave(state.reading.readingCode);
+  } finally {
+    if (readingSaveRetry) readingSaveRetry.disabled = false;
+  }
+  if (restoreFocus && readingSaveRetry?.hidden) readingSaveStatus?.focus({ preventScroll: true });
+}
+
 function openReading(code, stage, fromCode = null, { historyMode = 'push' } = {}) {
   const hex = state.index?.byCode.get(code);
   if (!hex) return;
@@ -879,12 +925,18 @@ function openReading(code, stage, fromCode = null, { historyMode = 'push' } = {}
     readingScroll = { panel: 0, content: 0 };
   }
   if (shouldRecordDeepRead(previous, state.reading)) {
-    processAchievementEvent(createProgressEvent({
-      type: 'hexagram.read', subjectId: code, outcome: 'completed',
-      idempotencyKey: `hexagram:read:${code}`,
-      metadata: { deep: true, hexagramCode: code },
-    }));
-    addReviewCard(code);
+    const pending = state.readingSaves.get(code);
+    if (!pending || (pending.achievementSaved && pending.reviewSaved)) {
+      state.readingSaves.set(code, {
+        event: createProgressEvent({
+          type: 'hexagram.read', subjectId: code, outcome: 'completed',
+          idempotencyKey: `hexagram:read:${code}`,
+          metadata: { deep: true, hexagramCode: code },
+        }),
+        achievementSaved: false, reviewSaved: false, hadFailure: false,
+      });
+    }
+    persistReadingSave(code);
   }
   panel.setAttribute('aria-labelledby', 'hexagram-detail-title');
   panel.removeAttribute('aria-label');
@@ -1077,6 +1129,7 @@ function bindGlobalInteractions() {
   document.getElementById('reading-back')?.addEventListener('click', () => closeDetail({ restoreFocus: true }));
   document.getElementById('reading-deepen')?.addEventListener('click', () => openDetail(state.reading.readingCode));
   document.getElementById('reading-quicken')?.addEventListener('click', stepBackReading);
+  readingSaveRetry?.addEventListener('click', retryReadingSave);
   readingToolbar?.addEventListener('click', (event) => {
     const button = event.target.closest('[data-reading-tab]');
     if (button) selectReadingSection(button.dataset.readingTab);
