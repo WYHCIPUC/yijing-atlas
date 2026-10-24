@@ -166,7 +166,7 @@ npm run test:e2e      # Chromium 多视口主流程
 npm run validate      # 发布前完整质量门禁
 ```
 
-当前 `npm test` 会运行 51 个测试脚本；最近一次 `npm run validate` 通过 188 项测试，核心模块覆盖率为行 99.61%、分支 90.20%、函数 97.78%。GitHub Actions 在每次推送时运行质量检查，并部署 `web/` 到 GitHub Pages。
+2026-10-24 本地文档基线：`npm test` 覆盖 57 个脚本；`npm run validate` 通过，coverage 阶段 230 项通过、0 失败，配置的 20 个核心模块集合覆盖率为行 99.61%、分支 90.20%、函数 97.78%。本轮真实浏览器 E2E 仍有失败，不能将自动回归通过等同完整交付。具体环境、失败和未验证项见 [验证记录](docs/development/evidence/2026-10-24-validation.md)。Pages 只在 main 推送或手动流程中，经 Quality 门禁后部署；本地未提交 UI 尚未发布。
 
 </details>
 
@@ -184,6 +184,10 @@ legacy-flutter/  已归档的早期 Flutter 原型
 ```
 
 </details>
+
+## 开发建设文档
+
+接手开发先读 [开发建设总册](docs/DEVELOPMENT-MASTER.md)。总册关联 12 份专题、需求追踪、48 张 AI 执行卡和当前验证证据，分别标明现状、已确认目标、待办和外部门禁；本文的功能介绍不替代逐项实现状态。
 
 ## 参与完善
 
