@@ -63,3 +63,9 @@ T-GROW-01 仍须满足前两项原前置条件后实施；本轮修复重复回�
 新失败发生在 `scripts/browser-smoke.mjs:1015`：桌面 1440px 快读、展开工具后 resize 到 768px，下一次断言发现 `stage=quick,open=true,modal=false,deepLink=false`。日志尚无该瞬间 viewport、matchMedia、resize 回调和状态写入顺序，**根因未确定**，不能直接归因于异步回调、产品逻辑或测试。下一步按 T-QA-01 采集这些数据、复现并最小修复，不加任意固定等待掩盖；push 同提交通过也不抵消失败。本轮盘点不因该失败新增卡片或扩大需求。
 
 清单和证据的随后提交及检查结果在实际同步后补入 GitHub 跟踪；不引用起点绿灯证明新增代码或文档已通过远程检查。
+
+### 5.1 后续清单复核
+
+本次重新核对 HEAD `30796f755424949af9575bfbb674f4278994102f`：其 [push Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40122525878) 与 [PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40122531469) 均为 completed / success，包含 Validate repository 和 Browser smoke test。与上一段失败对应的业务代码未因这次文档提交发生变化，故两次新绿灯不构成间歇问题修复证据。T-QA-01 继续开放，保留旧失败日志并取证。
+
+当前并行工作分别为考评正式 ID 契约修复、深读保存真实输入专项、快读 resize 时序取证；最终审阅及验证前均记“进行中”，不从 47 项清单中删去。此次盘点复核只调整文档中的基线与证据说明，不新增任务，不将建议改进变更为已确认要求。清单逐卡计数及需求性质的机械检查结果保存为 [本次盘点检查](2026-10-25-inventory-recheck.json)。
