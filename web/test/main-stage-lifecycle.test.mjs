@@ -122,6 +122,8 @@ function createHarness({ loaded = true, extraReason = null, storage = null, stor
     readingSaveStatus: saveStatus,
     readingSaveRetry: saveRetry,
     modeRequestId: 0,
+    modeCleanup: null,
+    disposeMode: noop,
     readingScroll: { panel: 0, content: 0 },
     panel: { scrollTop: 0, classList: { remove: noop, contains: () => false }, setAttribute: noop, removeAttribute: noop },
     panelContent: { scrollTop: 0, querySelector: () => hasContent ? {} : null },
@@ -166,9 +168,23 @@ function createHarness({ loaded = true, extraReason = null, storage = null, stor
     createReadingState,
     shouldRecordDeepRead,
   });
+  const disposeModeSource = source.match(/^function disposeMode\([\s\S]*?^}/m)?.[0];
+  if (disposeModeSource) vm.runInContext(disposeModeSource, context);
   vm.runInContext(functions, context);
   return { context, state, stage, focusCalls, feedback, saveStatus, saveRetry, counts: () => ({ renderCount, readCount, reviewCount }) };
 }
+
+test('关闭学习面板或直接进入读卦前收尾课程，重复退出不再次写位置', () => {
+  for (const action of ['closeDetail', 'enterExplore']) {
+    const h = createHarness();
+    let calls = 0;
+    h.context.modeCleanup = () => { calls += 1; };
+    h.context[action]();
+    h.context[action]();
+    assert.equal(calls, 1, action);
+    assert.ok(h.context.modeRequestId > 0, '退出使尚未结束的模块加载失效');
+  }
+});
 
 function saveStorage(failedKeys = []) {
   const values = new Map();

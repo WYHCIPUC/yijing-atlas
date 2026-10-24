@@ -57,7 +57,7 @@ function createMount() {
   return mount;
 }
 
-function createHarness({ blockedKeys = [], questionBank = bank } = {}) {
+function createHarness({ blockedKeys = [], questionBank = bank, deferFrames = false } = {}) {
   const values = new Map();
   const blocked = new Set(blockedKeys);
   const writes = [];
@@ -70,8 +70,10 @@ function createHarness({ blockedKeys = [], questionBank = bank } = {}) {
     },
   };
   const sessions = [];
+  const frames = [];
+  const schedule = callback => deferFrames ? frames.push(callback) : callback();
   const context = vm.createContext({
-    window: { requestAnimationFrame: (callback) => callback() },
+    window: { requestAnimationFrame: schedule },
     createProgressEvent,
     processAchievementEvent: (event) => processAchievementEvent(event, { storage }),
     createAssessmentSession: (kind, questions, options) => {
@@ -102,8 +104,58 @@ function createHarness({ blockedKeys = [], questionBank = bank } = {}) {
   };
   const submit = () => mount.querySelector('.assessment-form').events.submit({ preventDefault() {} });
   const syncProfile = () => context.syncAchievementEvidence(loadLearningRecord(storage));
-  return { mount, sessions, storage, writes, blocked, render, choose, submit, syncProfile };
+  const flushFrames = () => {
+    for (let round = 0; frames.length && round < 20; round++) frames.splice(0).forEach(callback => callback());
+  };
+  return { mount, sessions, storage, writes, blocked, render, choose, submit, syncProfile, schedule, flushFrames };
 }
+
+test('复讲入口选定具体课程并聚焦复讲，不误开小试或写学习成绩', () => {
+  const harness = createHarness();
+  harness.render({ initialOralLessonId: 'l5-1' });
+  assert.equal(harness.sessions.length, 0);
+  assert.equal(harness.mount.querySelector('[data-field="oral-lesson"]').value, 'l5-1');
+  assert.equal(harness.mount.querySelector('[data-field="oral-response"]').focused, true);
+  assert.equal(harness.writes.length, 0);
+});
+
+test('明确复讲入口在外层标题RAF之后获得焦点，并声明本次焦点目标', () => {
+  const h = createHarness({ deferFrames: true });
+  h.render({ initialOralLessonId: 'l5-1' });
+  const response = h.mount.querySelector('[data-field="oral-response"]');
+  let active;
+  response.focus = () => { active = response; };
+  const heading = h.mount.querySelector('[data-page-heading]');
+  heading.focus = () => { active = heading; };
+  h.schedule(() => heading.focus());
+  h.schedule(() => heading.focus());
+  h.flushFrames();
+  assert.equal(active, response);
+  assert.match(h.mount.innerHTML, /data-learning-focus="oral"/);
+});
+
+test('复讲入口退出后旧RAF不聚焦已脱离的输入或新页面标题', () => {
+  const h = createHarness({ deferFrames: true });
+  h.render({ initialOralLessonId: 'l5-1' });
+  const response = h.mount.querySelector('[data-field="oral-response"]');
+  h.mount.innerHTML = '<h3 data-page-heading>new page</h3>';
+  const newHeading = h.mount.querySelector('[data-page-heading]');
+  h.flushFrames();
+  assert.equal(response.focused, undefined);
+  assert.equal(newHeading.focused, undefined);
+});
+
+test('容器整体移除后复讲RAF不再聚焦旧内容', () => {
+  const h = createHarness({ deferFrames: true });
+  h.render({ initialOralLessonId: 'l5-1' });
+  const response = h.mount.querySelector('[data-field="oral-response"]');
+  response.isConnected = false;
+  const heading = h.mount.querySelector('[data-page-heading]');
+  heading.isConnected = false;
+  h.flushFrames();
+  assert.equal(response.focused, undefined);
+  assert.equal(heading.focused, undefined);
+});
 
 test('原题回练保留默认三题，重绘沿用会话而不同原题开启新卷', () => {
   const questionBank = [...bank, { ...bank[0], id: 'q3' }];

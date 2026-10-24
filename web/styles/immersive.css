@@ -446,6 +446,14 @@ body.workspace-mode.panel-open .workspace-insight-bar { display: none; }
 .lesson-manuscript :is(p, li, blockquote), .wing-sections p, .theorem-points li, .alm-reading-body p { color: var(--paper-ink); font-family: var(--font-reading); font-size: 18px !important; line-height: 1.9; }
 .lesson-manuscript :is(h3, h4, strong, blockquote) { color: #684521; }
 .lesson-method-section { margin-block: 28px; padding-block: 24px; border-color: rgba(91, 69, 41, 0.2); background: transparent; }
+/* Keep the reading position feedback with the six-step rail, below panel controls.
+   Reserve two lines even while empty so save/recovery messages never move the text. */
+.lesson-reading-controls { position: sticky; top: 64px; z-index: 4; margin-block: 18px; border: 1px solid rgba(91, 69, 41, 0.25); border-radius: 3px; background: var(--paper-warm); }
+.lesson-reading-controls .lesson-method-rail { position: static; margin: 0; border: 0; border-radius: 2px 2px 0 0; }
+.lesson-reading-controls .lesson-method-rail a { min-width: 0; min-height: 44px; color: var(--silver); background: #111b28; }
+.lesson-manuscript .lesson-resume-status { display: flex; align-items: center; min-height: 64px; margin: 0; padding: 8px 12px; color: #62584b; font-family: var(--font-reading); font-size: 15px !important; line-height: 1.6; overflow-wrap: anywhere; }
+.lesson-manuscript .lesson-resume-status[data-state="error"] { color: #8b3027; }
+.lesson-reader-workspace .lesson-method-section { scroll-margin-top: 184px; }
 .lesson-margin-notes { color: var(--silver-muted); }
 .lesson-margin-notes article { border-color: var(--silver-line); border-radius: 0; background: transparent; }
 .wing-item, .theorem-item { border: 0; border-bottom: 1px solid var(--silver-line); border-radius: 0; background: transparent; }

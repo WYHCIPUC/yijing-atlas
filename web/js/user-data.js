@@ -1,6 +1,6 @@
 import { isAchievementState } from './achievement-engine.js';
 import { isHistory, isLegacyHistory } from './divination-history.js';
-import { getAssessmentIdsError, getWeakQuestionsError, isActivity, isLearningRecord } from './learning-progress.js';
+import { getAssessmentIdsError, getLearningResumeError, getWeakQuestionsError, isActivity, isLearningRecord } from './learning-progress.js';
 import { isReviewConfig } from './learning-review.js';
 import { isReviewCards } from './review-engine.js';
 import { isQuizStats, isWrongBook } from './quiz-engine.js';
@@ -61,6 +61,8 @@ function validateSnapshot(snapshot) {
       if (path) throw new Error(`备份中的 ${key}.${path} 数据类型无效：应为唯一非空且不超过 120 字符的考评 ID`);
       const weakPath = getWeakQuestionsError(snapshot.data[key]?.weakQuestions);
       if (weakPath) throw new Error(`备份中的 ${key}.${weakPath} 数据类型无效`);
+      const resumePath = getLearningResumeError(snapshot.data[key]?.resume);
+      if (resumePath) throw new Error(`备份中的 ${key}.${resumePath} 数据类型无效`);
     }
     if (!check(snapshot.data[key])) throw new Error(`备份中的 ${key} 数据类型无效`);
   }

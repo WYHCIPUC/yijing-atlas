@@ -43,7 +43,7 @@ assert.match(learningMode, /\{ id: 'library', label: '典籍书库' \}/);
 assert.match(learningMode, /\{ id: 'profile', label: '修习谱' \}/);
 assert.equal((learningMode.match(/\{ id: '[^']+', label: '[^']+' \}/g) || []).length, 4);
 assert.match(learningMode, /class="today-practice"/);
-assert.match(learningMode, /recommendLesson\(record\)/);
+assert.match(learningMode, /recommendLearningTask\(record,/);
 assert.match(learningMode, /class="library-grid"/);
 assert.match(learningMode, /summarizeAchievements\(loadAchievementState\(\)\)/);
 assert.match(learningMode, /yijing:workspace-insight/);

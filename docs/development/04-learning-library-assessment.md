@@ -11,7 +11,7 @@
 | --- | --- |
 | 需求 | 四学习入口、五阶课程、六步阅读、推荐顺序、统一反馈和证据成长均属已确认方向。 |
 | 实现 | 课程目录、资料页、题库、小试/抽查/考评、复讲、复习与自由测验已有运行代码；多个跨模块副作用尚未闭环。 |
-| 验证 | 首次建档validate的coverage阶段230项通过、当时E2E有失败，保留历史范围；课程错题后续版本已取得validate370/370、专项6/6及完整E2E通过，见§7.1。不得把未执行的其他验收用例写成“已通过”。 |
+| 验证 | 首次建档validate的coverage阶段230项通过、当时E2E有失败，保留历史范围；课程错题版本的validate370/370、专项6/6及完整E2E见§7.1。推荐与续读本地验收已通过最新validate427/427、1440/390专项6/6、320px补充1/1及完整五视口E2E，见§3.1。各结果只覆盖其记录源码，不替代其他任务和外部验收。 |
 
 真实手机、屏幕阅读器、真实浏览器200%缩放未验证；当前原典来源仍须逐条校验。
 本专题中“当前事实”描述代码，“目标规格”描述待建设结果，“执行默认”用于锁定尚未编码的细节。
@@ -33,10 +33,10 @@
 | 责任 | 代码证据 |
 | --- | --- |
 | 四入口与学习内导航 | web/js/modes/learning-mode.js：sections、sectionOwners、renderLearningMode、showSection。 |
-| 推荐与考评session | web/js/learning-assessment.js：recommendLesson、createAssessmentSession、gradeAssessment。 |
+| 推荐与考评session | web/js/learning-assessment.js：recommendLearningTask、recommendLesson、createAssessmentSession、gradeAssessment。 |
 | 25课与资料题库 | web/js/learning-curriculum.js：LEARNING_LEVELS、LEARNING_LESSONS、buildLearningQuestionBank、getLessonRubric。 |
 | 课程与资料正文 | web/js/study-page.js：renderLearningLessonPage、renderStudyPathPage、renderWingsPage、renderTheoremsPage。 |
-| 成绩、活动和掌握 | web/js/learning-progress.js：markLessonViewed、recordLearningAssessment、recordOralReview、calculateLessonMastery。 |
+| 成绩、活动、掌握和续读 | web/js/learning-progress.js：markLessonViewed、recordLearningAssessment、recordOralReview、calculateLessonMastery、getLearningResumeError、saveLearningResume。 |
 | 考评和复讲界面 | web/js/learning-assessment-page.js：renderQuestionForm、renderResult、bindOralReview。 |
 | 间隔复习 | web/js/review-engine.js、web/js/modes/review-mode.js。 |
 | 自由测验 | web/js/quiz-engine.js、web/js/modes/quiz-mode.js。 |
@@ -60,7 +60,7 @@
 
 已交付的`995dd2c`版本有“继续研习”主卡、到期复习数、小试数、连续学习天数和修习谱入口；旧推荐先找第一门未浏览课，再按最低bestScore和较早学习时间排序，未形成完整优先队列或课程位置恢复。
 
-当前工作区另有T-LEARN-01未提交实现：推荐纯函数、最小位置保存/备份、今日主卡、页面恢复、主模式清理、欢迎直达首课和旧错题参数已接通。本次相关7份回归108/108，桌面续读及推荐跳转有部分历史证据；增强检查发现保存失败提示离开阅读视口，后续粘附状态区修复尚未浏览器复验。原缺失导出及0/13属于前一快照；最新完整专项、validate/E2E与交付仍待完成。见[当前盘点证据](evidence/2026-10-25-remaining-work-integrated-snapshot.md)。
+T-LEARN-01已于2026-10-25完成本地验收交付：推荐纯函数、最小位置保存/备份、今日主卡、页面恢复、主模式清理、欢迎直达首课和旧错题参数均已接通。保存提示离开视口的问题已修复并取得红→绿；关闭加载中页面残留忙碌标记也已修复，独立审阅无阻断。最新validate通过66个测试脚本、覆盖率阶段427/427，配置20模块行99.80%、分支93.38%、函数99.05%；1440桌面/390模拟触控专项6/6、320px补充1/1及完整五视口E2E均通过。范围、源码身份、原生中止与历史失败见[推荐与续读交接](evidence/2026-10-25-learning-recommendation-integration.md)。本地验收不代表本次源码已提交、已推送或远程CI已成功；提交及同步状态以交接记录为准，不沿用旧提交绿灯。
 
 ### 3.2 目标规格与执行默认
 
@@ -72,12 +72,12 @@
 
 - 主卡只保留一个主要行动，注明推荐原因、任务类型和完成标准；卡片按钮应真实进入所推荐的任务。
 - 执行默认“未完成课程”为已进入课程且未完成本轮小试；正在进行的阅读有最近位置时优先续读。
-- 欢迎“零基础开始”直接打开l1-1，不经过推荐；当前未提交实现已接通该入口，完整验收边界见本节现状说明。常规“继续研习”仍走推荐队列。
+- 欢迎“零基础开始”直接打开l1-1，不经过推荐；该入口已纳入本卡真实输入验收。常规“继续研习”仍走推荐队列。
 - 完成一轮小试后不继续把该轮视为“未完成”；低分转薄弱项，不用“未完成”反复强推。
 - 到期卦象卡和课程薄弱项是不同任务类型；返回动作须知道来源。
 - 同级排序依次用最近明确学习行为、到期时间、稳定课程序；不得每次渲染随机变主卡。
-- 恢复记录只存lessonId、sectionId、scroll位置与时间等最小呈现信息，不存课程正文副本。
-- 与数据专题约定新增可选恢复字段和迁移；旧记录缺字段时正常推荐，不覆写历史成绩。
+- 恢复记录只存lessonId、section、scrollTop、updatedAt四个最小呈现字段，不存课程正文副本，准确契约见数据专题§7.1.1。
+- 可选恢复字段、校验与备份兼容已实现；旧记录缺字段时正常推荐，不覆写历史成绩。
 - 本地存储失败：任务仍可打开，提示本次无法记住位置；不能阻断学习。
 - 刷新后只能恢复已保存的课程位置；未提交答案或复讲草稿不默认偷偷持久化。
 
@@ -191,7 +191,7 @@ L2课程读取指定卦序范围，但主要正文仍是范围介绍和通用六
 
 温故来路的返回标签及旧弱项引用误报已修复；最新validate记录370/370，增强1440桌面/390模拟手机专项6/6（含320 CSS px队列），完整五视口E2E退出0并保留25图。最终差异核对和独立数据/UI审阅无阻断，业务与完整证据已在`995dd2c2befccdc0cab38300101a9efa857c021c`提交并推送，T-LEARN-02本地交付完成。范围、源码哈希与证据见[课程错题交接](evidence/2026-10-25-course-weak-integration.md)；[995dd2c的PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40130504986)已核对success（validate与Browser smoke均成功），仅覆盖已提交版本，不用此前文档CI代替。此前“只存结果、未接通队列”“标签待修”“无当前E2E记录”及[交付前盘点](evidence/2026-10-25-remaining-work-acceptance-refresh.md)均保留其历史适用范围。
 
-自由测验按卦码存错题、未接通其黄历术语温习的差距仍由T-QUIZ-01负责；课程L5的原题回练已有实现，不能混为同一缺口，也不能因课程弱项实现而自动关闭自由测验任务。T-QUIZ-01的前置现已满足，可继续实施；T-LEARN-01推荐与恢复已有未提交实现，但保存反馈修复后的完整验收与交付未完成。
+自由测验按卦码存错题、未接通其黄历术语温习的差距仍由T-QUIZ-01负责；课程L5的原题回练已有实现，不能混为同一缺口，也不能因课程弱项实现而自动关闭自由测验任务。T-QUIZ-01的前置现已满足，可继续实施；T-LEARN-01推荐与恢复的本地验收交付也已完成，范围见§3.1，不重复开发已交付接口。
 
 ### 7.2 目标与执行默认
 

@@ -1,0 +1,23 @@
+START 2026-10-24T21-02-22-164Z v24.19.0 profile=C:\Users\1\AppData\Local\Temp\yijing-learning-recommendation-7Ul2pJ
+RUN 1440-welcome-resume
+PASS 1440-welcome-resume
+RUN 1440-priority-routing
+PASS 1440-priority-routing
+RUN 1440-save-failure-completion
+PASS 1440-save-failure-completion
+RUN 390-welcome-resume
+FAIL 390-welcome-resume: Error: Cannot hit .mode-btn[data-mode="explore"]
+    at waitFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:66:9)
+    at async pointFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:204:3)
+    at async click (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:225:17)
+    at async welcomeResume (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:365:3)
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:327:5)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:581:5
+Error: Cannot hit .mode-btn[data-mode="explore"]
+    at waitFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:66:9)
+    at async pointFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:204:3)
+    at async click (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:225:17)
+    at async welcomeResume (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:365:3)
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:327:5)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:581:5
+{"status":"failed","passed":3,"total":4,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-recommendation-input\\2026-10-24T21-02-22-164Z\\trace.json","profile":"C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-recommendation-7Ul2pJ"}

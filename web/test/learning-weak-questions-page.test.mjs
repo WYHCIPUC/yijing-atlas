@@ -31,7 +31,7 @@ function mount() {
     querySelector(selector) {
       const action = selector.match(/^\[data-action="([^"]+)"\]$/);
       if (action) return this.actions.get(action[1]) || null;
-      return this.nodes?.[selector] || element();
+      return Object.hasOwn(this.nodes || {}, selector) ? this.nodes[selector] : element();
     },
     querySelectorAll(selector) { return this.lists?.[selector] || []; },
   };
@@ -43,21 +43,22 @@ function shared(record) {
     loadLearningRecord: () => record,
     getCourseWeakQuestions: (...args) => progress.getCourseWeakQuestions(...args),
     getWeakQuestionsError: (...args) => progress.getWeakQuestionsError(...args),
+    getLearningResumeError: (...args) => progress.getLearningResumeError(...args),
     buildLearningQuestionBank, getLesson, LEARNING_LESSONS,
   };
 }
 
-test('今日温故入口区分课程与卦卡，不改变课程推荐', () => {
+test('今日温故次入口仍区分课程与卦卡，不改变主行动目标', () => {
   const record = recordWith(weak());
   const content = mount();
   const reviewButton = element();
   content.nodes = { '[data-mode-target="review"]': reviewButton };
   const navigated = [];
   const context = vm.createContext({ ...shared(record),
-    loadReviewCards: () => ({}), getDueCount: () => 2,
+    loadReviewCards: () => ({}), loadWrongBook: () => [], getDueCount: () => 2,
     loadActivity: () => ({ days: [] }), calculateStreak: () => 0,
     summarizeLearning: () => ({ masteryByLesson: {}, rank: { label: '初闻' }, checked: 0, total: 25 }),
-    recommendLesson: () => LEARNING_LESSONS[0],
+    recommendLearningTask: () => ({ type: 'course-weak', subject: weak().questionId, question: weak(), reason: '回练课程薄弱题' }),
   });
   vm.runInContext(source('learning-mode'), context);
   context.renderTodaySection(content, (...args) => navigated.push(args));
@@ -65,6 +66,48 @@ test('今日温故入口区分课程与卦卡，不改变课程推荐', () => {
   assert.match(content.innerHTML, /课程温习 1 项/);
   reviewButton.events.click();
   assert.equal(navigated[0][0], 'review-mode');
+});
+
+test('今日主行动展示真实推荐原因与完成标准，按任务类型进入目标而非泛首页', () => {
+  const question = weak();
+  const resume = { lessonId: 'l1-1', section: 'explain', scrollTop: 900, updatedAt: '2026-10-25T08:00:00Z' };
+  for (const task of [
+    { type: 'resume', subject: 'l1-1', resume }, { type: 'lesson', subject: 'l5-1' },
+    { type: 'review', subject: '111111', count: 2 }, { type: 'course-weak', subject: question.questionId, question, count: 1 },
+    { type: 'quiz-weak', subject: '111111', count: 1 }, { type: 'oral', subject: 'l1-1' },
+    { type: 'empty', subject: null },
+  ]) {
+    const content = mount();
+    const primary = element({ lessonId: 'l1-1' });
+    content.nodes = { '.today-primary-action': primary, '[data-lesson-id]': primary };
+    const calls = [];
+    const context = vm.createContext({ ...shared({ lessons: {} }),
+      loadReviewCards: () => ({}), loadWrongBook: () => [], getDueCount: () => 2,
+      loadActivity: () => ({ days: [] }), calculateStreak: () => 0,
+      summarizeLearning: () => ({ masteryByLesson: {}, rank: { label: '初闻' }, checked: 0, total: 25 }),
+      recommendLesson: () => LEARNING_LESSONS[0],
+      recommendLearningTask: () => ({ ...task, reason: '当前任务的明确原因' }),
+    });
+    vm.runInContext(source('learning-mode'), context);
+    context.renderTodaySection(content, (...args) => calls.push(args));
+    assert.match(content.innerHTML, /当前任务的明确原因/);
+    assert.match(content.innerHTML, /完成标准/);
+    assert.doesNotMatch(content.innerHTML, />00</);
+    primary.events.click({ currentTarget: primary });
+    const [target, options] = calls[0];
+    if (task.type === 'resume' || task.type === 'lesson') {
+      assert.equal(target, 'path'); assert.equal(options.lessonId, task.subject);
+      if (task.type === 'resume') assert.equal(options.resume, resume);
+    } else if (task.type === 'review') assert.equal(target, 'review-mode');
+    else if (task.type === 'quiz-weak') assert.equal(target, 'quiz-mode');
+    else if (task.type === 'course-weak') {
+      assert.equal(target, 'assessment'); assert.equal(options.requiredQuestionId, question.questionId);
+      assert.equal(options.requiredQuestionVersion, question.questionVersion);
+    } else if (task.type === 'oral') {
+      assert.equal(target, 'assessment'); assert.equal(options.initialOralLessonId, 'l1-1');
+      assert.equal(options.lessonId, undefined);
+    } else assert.equal(target, 'path');
+  }
 });
 
 function reviewHarness(record, due = ['111111'], appState = {}) {
@@ -151,7 +194,7 @@ test('学习入口回原课后试章节保留原题，返回回到温故', () =>
   const record = recordWith(weak());
   const entries = [], assessments = [], exits = [];
   const context = vm.createContext({ ...shared(record),
-    renderLearningLessonPage: (node, state, id, options) => entries.push({ id, options }),
+    renderLearningLessonPage: (node, state, id, options) => { entries.push({ id, options }); return () => {}; },
     renderLearningAssessmentPage: (node, state, options) => assessments.push(options),
     loadReviewCards: () => ({}), getDueCount: () => 0,
     loadActivity: () => ({ days: [] }), calculateStreak: () => 0,
@@ -169,19 +212,96 @@ test('学习入口回原课后试章节保留原题，返回回到温故', () =>
   assert.equal(assessments[0].requiredQuestionId, 'theory-yinyang-name');
   assert.equal(assessments[0].requiredQuestionVersion, 'curriculum-v1');
   assert.equal(assessments[0].returnTo, 'review');
-  entries[0].options.onBack();
+  assessments[0].onNavigate('review-mode');
   assert.equal(exits[0][0], 'review');
+});
+
+function learningModeHarness(entry) {
+  const outer = mount(), content = mount();
+  const tabList = element();
+  const tabs = ['today', 'path', 'library', 'profile'].map(section => ({ ...element({ section }), id: `learning-tab-${section}` }));
+  outer.nodes = { '.learning-content': content, '.learning-panel': element(), '.learning-tabs': tabList };
+  outer.lists = { '.learning-tab': tabs };
+  const frames = [], lessons = [], assessments = [], exits = [], focused = [];
+  const setContent = (label, oral = false) => {
+    const heading = { ...element(), focus: () => focused.push(label) };
+    content.nodes = { '[data-page-heading], h3': heading, '[data-learning-focus="oral"]': oral ? element() : null };
+  };
+  const context = vm.createContext({ ...shared({ lessons: {} }),
+    window: { requestAnimationFrame: callback => frames.push(callback) },
+    renderLearningLessonPage(node, state, id, options) {
+      const item = { id, options, cleanupCount: 0 };
+      lessons.push(item); setContent(`lesson:${id}`);
+      return () => { item.cleanupCount++; };
+    },
+    renderLearningAssessmentPage(node, state, options) { assessments.push(options); setContent('assessment', Boolean(options.initialOralLessonId)); },
+    renderStudyPathPage() { setContent('path'); },
+    loadReviewCards: () => ({}), loadWrongBook: () => [], getDueCount: () => 0,
+    loadActivity: () => ({ days: [] }), calculateStreak: () => 0,
+    summarizeLearning: () => ({ rank: { label: '初闻' }, checked: 0, total: 25 }),
+    recommendLearningTask: () => ({ type: 'lesson', subject: 'l1-1', reason: '从第一课开始' }),
+  });
+  vm.runInContext(source('learning-mode'), context);
+  const cleanup = context.renderLearningMode(outer, {}, (...args) => exits.push(args), entry);
+  return { cleanup, content, lessons, assessments, exits, tabs, tabList, focused,
+    flush: () => frames.splice(0).forEach(callback => callback()) };
+}
+
+test('学习模块切换先清理课程，外层cleanup幂等且旧回调不能重新导航', () => {
+  const h = learningModeHarness({ section: 'path', lessonId: 'l1-1', returnTo: 'review' });
+  const lesson = h.lessons[0];
+  lesson.options.onAssess('l1-1');
+  assert.equal(lesson.cleanupCount, 1);
+  assert.equal(h.assessments.length, 1);
+  h.cleanup(); h.cleanup();
+  lesson.options.onBack(); lesson.options.onAssess('l1-1');
+  h.tabs[1].events.click();
+  h.flush();
+  assert.equal(lesson.cleanupCount, 1);
+  assert.equal(h.assessments.length, 1);
+  assert.deepEqual(h.exits, []);
+  assert.deepEqual(h.focused, []);
+});
+
+test('学习模块切页后旧课程聚焦失效，复讲目标不被通用标题抢焦点', () => {
+  const h = learningModeHarness({ section: 'path', lessonId: 'l1-1' });
+  h.lessons[0].options.onAssess('l1-1');
+  h.flush();
+  assert.deepEqual(h.focused, ['assessment']);
+  const oral = learningModeHarness({ section: 'assessment', initialOralLessonId: 'l5-1' });
+  assert.equal(oral.assessments[0].initialOralLessonId, 'l5-1');
+  oral.flush();
+  assert.deepEqual(oral.focused, []);
+});
+
+test('已销毁学习模块的旧页签键盘处理不抢焦点', () => {
+  const h = learningModeHarness({ section: 'path', lessonId: 'l1-1' });
+  let focused = 0;
+  h.tabs.forEach(tab => { tab.focus = () => { focused++; }; });
+  h.cleanup();
+  h.tabList.events.keydown({ key: 'ArrowRight', preventDefault() {} });
+  assert.equal(focused, 0);
+});
+
+test('损坏的课程位置回今日并说明，保留原记录且不开替代课', () => {
+  const h = learningModeHarness({ section: 'path', lessonId: 'l1-1',
+    resume: { lessonId: 'l1-1', section: 'removed', scrollTop: 12, updatedAt: '2026-10-25T08:00:00Z' } });
+  assert.equal(h.lessons.length, 0);
+  assert.match(h.content.innerHTML, /上次阅读位置已失效/);
+  assert.match(h.content.innerHTML, /原有学习成绩仍保留/);
 });
 
 function lessonHarness(lessonId, returnTo) {
   const content = mount();
-  content.nodes = Object.fromEntries(['.lesson-back', '.lesson-back-secondary', '.lesson-continue'].map(selector => [selector, element()]));
+  content.nodes = Object.fromEntries(['.lesson-workspace', '.lesson-back', '.lesson-back-secondary', '.lesson-continue'].map(selector => [selector, element()]));
   const exits = [];
   const bodyClasses = new Set();
   const context = vm.createContext({
     LEARNING_LESSONS, LEARNING_LEVELS,
+    window: { requestAnimationFrame() {}, addEventListener() {}, removeEventListener() {} },
     document: { body: { classList: { add: name => bodyClasses.add(name), remove: name => bodyClasses.delete(name) } } },
     markLessonViewed() {}, recordActivity() {}, loadLearningRecord: () => ({}),
+    saveLearningResume: () => ({ saved: true, record: {} }),
     summarizeLearning: () => ({ mastery: 0, viewed: 0, total: 25 }),
     calculateStreak: () => 0, loadActivity: () => ({ days: [] }), hexagramSvg: () => '<svg></svg>',
   });

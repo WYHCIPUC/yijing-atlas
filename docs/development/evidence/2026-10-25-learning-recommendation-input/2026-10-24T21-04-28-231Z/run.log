@@ -1,0 +1,14 @@
+START 2026-10-24T21-04-28-231Z v24.19.0 profile=C:\Users\1\AppData\Local\Temp\yijing-learning-recommendation-qZ8MMB
+RUN 1440-welcome-resume
+PASS 1440-welcome-resume
+RUN 1440-priority-routing
+PASS 1440-priority-routing
+RUN 1440-save-failure-completion
+PASS 1440-save-failure-completion
+RUN 390-welcome-resume
+PASS 390-welcome-resume
+RUN 390-priority-routing
+PASS 390-priority-routing
+RUN 390-save-failure-completion
+PASS 390-save-failure-completion
+{"status":"passed","passed":6,"total":6,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-recommendation-input\\2026-10-24T21-04-28-231Z\\trace.json","profile":"C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-recommendation-qZ8MMB"}

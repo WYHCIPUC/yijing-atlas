@@ -8,6 +8,7 @@ const LEGACY_STUDY_KEY = 'yijing.study.v1';
 const MAX_ASSESSMENT_HISTORY = 80;
 const COURSE_QUESTION_VERSION = 'curriculum-v1';
 const QUESTION_METADATA_FIELDS = ['questionVersion', 'questionType', 'targetCode', 'termId'];
+const LEARNING_SECTIONS = ['intro', 'observe', 'read', 'explain', 'apply', 'practice'];
 
 function localDateKey(date) {
   const year = date.getFullYear();
@@ -100,6 +101,16 @@ function isIsoTime(value) {
     Number.isFinite(Date.parse(value));
 }
 
+export function getLearningResumeError(value) {
+  if (value === undefined || value === null) return null;
+  if (!isPlainObject(value)) return 'resume';
+  if (typeof value.lessonId !== 'string' || !getLesson(value.lessonId)) return 'resume.lessonId';
+  if (!LEARNING_SECTIONS.includes(value.section)) return 'resume.section';
+  if (!Number.isFinite(value.scrollTop) || value.scrollTop < 0 || value.scrollTop > 10_000_000) return 'resume.scrollTop';
+  if (!isIsoTime(value.updatedAt)) return 'resume.updatedAt';
+  return null;
+}
+
 function getQuestionReferenceError(value) {
   if (!isReferenceId(value.questionId, 160)) return 'questionId';
   if (!isReferenceId(value.questionVersion, 120)) return 'questionVersion';
@@ -161,7 +172,7 @@ function isLearningRecordBase(value) {
 
 export function isLearningRecord(value) {
   return isLearningRecordBase(value) && getAssessmentIdsError(value.processedAssessmentIds) === null &&
-    getWeakQuestionsError(value.weakQuestions) === null;
+    getWeakQuestionsError(value.weakQuestions) === null && getLearningResumeError(value.resume) === null;
 }
 
 function migrateLegacyRecord(storage) {
@@ -182,7 +193,8 @@ export function loadLearningRecord(storage) {
   const fallback = migrateLegacyRecord(storage);
   const record = readJson(LEARNING_RECORD_KEY, fallback, isLearningRecordBase, storage);
   // 损坏的新增字段仍保留原成绩供阅读，写入口会拒绝，不能空回退后覆盖它。
-  if (getAssessmentIdsError(record.processedAssessmentIds) || getWeakQuestionsError(record.weakQuestions)) return record;
+  if (getAssessmentIdsError(record.processedAssessmentIds) || getWeakQuestionsError(record.weakQuestions) ||
+      getLearningResumeError(record.resume)) return record;
   const receiptIds = (record.assessmentSessions || []).map((item) => item.sessionId).filter(isAssessmentId);
   if (!receiptIds.length) return record;
   return { ...record, processedAssessmentIds: [...new Set([...(record.processedAssessmentIds || []), ...receiptIds])] };
@@ -190,6 +202,20 @@ export function loadLearningRecord(storage) {
 
 export function saveLearningRecord(record, storage) {
   return isLearningRecord(record) && writeJson(LEARNING_RECORD_KEY, record, storage).ok;
+}
+
+export function saveLearningResume(position, now = new Date(), storage) {
+  const record = loadLearningRecord(storage);
+  if (!isPlainObject(position) || !(now instanceof Date) || !Number.isFinite(now.getTime())) {
+    return { record, saved: false };
+  }
+  const resume = {
+    lessonId: position.lessonId, section: position.section,
+    scrollTop: position.scrollTop, updatedAt: now.toISOString(),
+  };
+  if (getLearningResumeError(resume)) return { record, saved: false };
+  const next = { ...record, resume };
+  return { record: next, saved: saveLearningRecord(next, storage) };
 }
 
 export function markLessonViewed(lessonId, now = new Date(), storage) {
@@ -302,6 +328,7 @@ export function recordLearningAssessment(kind, assessment, now = new Date(), sto
       bestScore,
       ...(legacyAssessment ? { legacyAssessment } : {}),
     };
+    if (record.resume?.lessonId === assessment.lessonId) record.resume = null;
   } else if (kind === 'spot') {
     record.spotChecks = [...record.spotChecks, entry].slice(-MAX_ASSESSMENT_HISTORY);
   } else if (kind === 'exam' && typeof assessment.levelId === 'string') {

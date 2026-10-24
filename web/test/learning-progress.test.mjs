@@ -514,3 +514,144 @@ test('同题的新引用或正确值冲突时拒绝整次写入，不依赖逐�
     }
   }
 });
+
+const resumeAt = '2026-10-25T08:00:00.000Z';
+const resumePosition = (overrides = {}) => ({
+  lessonId: 'l1-1', section: 'read', scrollTop: 125.5, updatedAt: resumeAt, ...overrides,
+});
+
+test('课程续读位置兼容旧缺字段和 null，逐字段校验课程、章节、位置和 ISO 时间', () => {
+  assert.equal(typeof learningProgress.getLearningResumeError, 'function');
+  for (const resume of [undefined, null]) {
+    assert.equal(learningProgress.getLearningResumeError(resume), null);
+    assert.equal(isLearningRecord({ ...recordWithWeak({}), resume }), true);
+  }
+  for (const section of ['intro', 'observe', 'read', 'explain', 'apply', 'practice']) {
+    for (const scrollTop of [0, 0.25, 10_000_000]) {
+      assert.equal(learningProgress.getLearningResumeError(resumePosition({ section, scrollTop })), null);
+    }
+  }
+  for (const [value, path] of [
+    [[], 'resume'], ['bad', 'resume'], [1, 'resume'],
+    ...[['lessonId', ''], ['lessonId', 'removed-course'], ['lessonId', 1],
+      ['section', 'quiz'], ['section', null], ['scrollTop', -0.1], ['scrollTop', 10_000_000.1],
+      ['scrollTop', NaN], ['scrollTop', Infinity], ['scrollTop', -Infinity], ['scrollTop', '125'],
+      ['updatedAt', '2026-10-25'], ['updatedAt', 'bad'], ['updatedAt', null],
+    ].map(([field, value]) => [resumePosition({ [field]: value }), `resume.${field}`]),
+  ]) {
+    assert.equal(learningProgress.getLearningResumeError(value), path);
+    assert.equal(isLearningRecord({ ...recordWithWeak({}), resume: value }), false, path);
+  }
+});
+
+test('保存课程续读仅在既有学习键写最小位置，保留成绩、弱项和去重凭据', () => {
+  const key = getLearningRecordKey();
+  const previous = recordWithWeak({ 'theory-yinyang-name': weakEntry() });
+  previous.processedAssessmentIds = ['previous'];
+  const storage = createStorage({ [key]: JSON.stringify(previous) });
+  const originalSet = storage.setItem;
+  const writes = [];
+  storage.setItem = (name, value) => { writes.push(name); originalSet(name, value); };
+  assert.equal(typeof learningProgress.saveLearningResume, 'function');
+  const result = learningProgress.saveLearningResume({
+    lessonId: 'l1-1', section: 'practice', scrollTop: 246.75,
+    updatedAt: 'ignored', body: '不保存正文', answers: ['不保存答案'], privateText: '不保存私人文本',
+  }, new Date(resumeAt), storage);
+  assert.equal(result.saved, true);
+  const saved = loadLearningRecord(storage);
+  assert.deepEqual(saved.resume, resumePosition({ section: 'practice', scrollTop: 246.75 }));
+  assert.deepEqual({ ...saved, resume: undefined }, { ...previous, resume: undefined });
+  assert.deepEqual(writes, [key]);
+  assert.deepEqual(result.record, saved);
+});
+
+test('损坏续读不清旧成绩且阻止普通写入，显式保存合法位置只修复续读', () => {
+  const key = getLearningRecordKey();
+  for (const resume of ['bad', resumePosition({ lessonId: 'retired-course' }), resumePosition({ scrollTop: -1 })]) {
+    const previous = { ...recordWithWeak({ 'theory-yinyang-name': weakEntry() }), resume };
+    const raw = JSON.stringify(previous);
+    const storage = createStorage({ [key]: raw });
+    assert.deepEqual(loadLearningRecord(storage), previous);
+    assert.equal(markLessonViewed('l1-2', new Date(resumeAt), storage).saved, false);
+    assert.equal(recordLearningAssessment('lesson', courseAssessment('rejected'), new Date(resumeAt), storage).saved, false);
+    assert.equal(recordOralReview('l1-1', 80, 'self', new Date(resumeAt), storage).saved, false);
+    assert.equal(storage.getItem(key), raw);
+    const repaired = learningProgress.saveLearningResume(resumePosition(), new Date(resumeAt), storage);
+    assert.equal(repaired.saved, true);
+    assert.deepEqual(loadLearningRecord(storage), { ...previous, resume: resumePosition() });
+  }
+  const badWeak = { ...recordWithWeak(null), resume: 'bad' };
+  const storage = createStorage({ [key]: JSON.stringify(badWeak) });
+  assert.equal(learningProgress.saveLearningResume(resumePosition(), new Date(resumeAt), storage).saved, false);
+  assert.equal(storage.getItem(key), JSON.stringify(badWeak), '修复位置不能绕过其他坏字段');
+});
+
+test('非法续读输入、无效时间及配额失败不覆盖上次位置，恢复存储后可重试', () => {
+  const key = getLearningRecordKey();
+  const previous = { ...recordWithWeak({}), resume: resumePosition() };
+  const raw = JSON.stringify(previous);
+  const storage = createStorage({ [key]: raw });
+  for (const position of [null, undefined, [], 'bad',
+    resumePosition({ lessonId: 'removed-course' }), resumePosition({ section: 'bad' }),
+    resumePosition({ scrollTop: NaN }), resumePosition({ scrollTop: Infinity }),
+    resumePosition({ scrollTop: -1 }), resumePosition({ scrollTop: 10_000_001 }),
+  ]) {
+    assert.equal(learningProgress.saveLearningResume(position, new Date(resumeAt), storage).saved, false);
+    assert.equal(storage.getItem(key), raw);
+  }
+  for (const now of [new Date(NaN), null, '2026-10-25']) {
+    assert.equal(learningProgress.saveLearningResume(resumePosition(), now, storage).saved, false);
+    assert.equal(storage.getItem(key), raw);
+  }
+  const originalSet = storage.setItem;
+  storage.setItem = () => { throw new Error('quota'); };
+  assert.equal(learningProgress.saveLearningResume(resumePosition({ section: 'apply' }), new Date(resumeAt), storage).saved, false);
+  assert.equal(storage.getItem(key), raw);
+  storage.setItem = originalSet;
+  assert.equal(learningProgress.saveLearningResume(resumePosition({ section: 'apply' }), new Date(resumeAt), storage).saved, true);
+  assert.equal(loadLearningRecord(storage).resume.section, 'apply');
+});
+
+test('同课新小试不论分数都原子清除续读，配额失败保留盘上原位置且同轮可重试', () => {
+  const key = getLearningRecordKey();
+  for (const correct of [false, true]) {
+    const previous = { ...recordWithWeak({}), resume: resumePosition({ section: 'practice' }) };
+    const raw = JSON.stringify(previous);
+    const storage = createStorage({ [key]: raw });
+    const originalSet = storage.setItem;
+    let writes = 0;
+    let fail = true;
+    storage.setItem = (name, value) => { writes += 1; if (fail) throw new Error('quota'); originalSet(name, value); };
+    const assessment = courseAssessment(`resume-${correct}`, [courseResult({ correct })]);
+    assert.equal(recordLearningAssessment('lesson', assessment, new Date(resumeAt), storage).saved, false);
+    assert.equal(storage.getItem(key), raw);
+    fail = false;
+    assert.equal(recordLearningAssessment('lesson', assessment, new Date(resumeAt), storage).saved, true);
+    const saved = loadLearningRecord(storage);
+    assert.equal(saved.resume, null);
+    assert.equal(saved.lessons['l1-1'].attempts, 3);
+    assert.deepEqual(saved.processedAssessmentIds, [`resume-${correct}`]);
+    assert.equal(writes, 2, '成绩、凭据、弱项和位置同次单键写入');
+    if (!correct) assert.equal(saved.weakQuestions['theory-yinyang-name'].status, 'due');
+  }
+});
+
+test('重复旧会话、跨课小试、抽查和考评不清除当前续读', () => {
+  const key = getLearningRecordKey();
+  for (const [kind, assessment] of [
+    ['lesson', courseAssessment('old')],
+    ['lesson', courseAssessment('another-lesson', [courseResult({ lessonId: 'l1-2' })], { lessonId: 'l1-2' })],
+    ['spot', courseAssessment('spot')],
+    ['exam', courseAssessment('exam')],
+  ]) {
+    const previous = { ...recordWithWeak({}), resume: resumePosition(), processedAssessmentIds: ['old'] };
+    const storage = createStorage({ [key]: JSON.stringify(previous) });
+    const result = recordLearningAssessment(kind, assessment, new Date(resumeAt), storage);
+    assert.equal(result.saved, true);
+    assert.deepEqual(loadLearningRecord(storage).resume, previous.resume, `${kind}/${assessment.sessionId}`);
+    if (assessment.sessionId === 'old') {
+      assert.equal(result.duplicate, true);
+      assert.equal(storage.getItem(key), JSON.stringify(previous));
+    }
+  }
+});

@@ -1,0 +1,1664 @@
+{
+  "startedAt": "2026-10-24T20:50:34.923Z",
+  "command": "node docs/development/tools/check-learning-recommendation-input.mjs",
+  "node": "v24.19.0",
+  "uv": "1.52.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-recommendation-dpXKVQ",
+  "scope": "1440-save-failure-completion",
+  "head": "ccd9961a76f3c2a27bdb1acaf805f8969551df63",
+  "sourceHashes": {
+    "web/js/main.js": "1556c793ef4492f32ec7cd7e14b8cd291921048743838c6b258db254a2edf82f",
+    "web/js/learning-assessment.js": "cd8ab9272d3ca1e9f0585486f8e79dca00dc2fded4d9301709270a2e630de165",
+    "web/js/learning-progress.js": "41389087183f1054035e62b4d0f03a5edca0f72124d16aa24b7be1f242b08f81",
+    "web/js/learning-assessment-page.js": "d896c82e026da67bd57a1edc94cc34a6151aae41f992563eacf973a83c884095",
+    "web/js/modes/learning-mode.js": "74838284cc1b0a5a241d676dfa0bd2850796a81ab5d8bd9755e7623cec7bdc5c",
+    "web/js/modes/review-mode.js": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+    "web/js/modes/quiz-mode.js": "7a60bcd0b713a6b43bac4a0ca6761f77877419f16f01901bfbc67e0c3f9734a1",
+    "web/js/study-page.js": "0967444da28f07dcb8306740299b4c529129fd79bbb4386cfccb40c113c7d5a7",
+    "web/js/user-data.js": "52ae1c42d07747413a5da56d7e683e8f67534a80fffa6395048ab76c1250c530",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/quiz-engine.js": "4b9e087b6c080b9e6a05cd69d15887634e8cb6cfe0b921e559bc48b7cbda1fba",
+    "web/styles/immersive.css": "b3568ce4e89ff48b8c908d81bba79b343a806df947910479c0bc1c88f5ffd701",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "docs/development/tools/check-learning-recommendation-input.mjs": "73b415fd0b3159ec55e733b74523081179c9c52fb07d252c834ec17e13615496"
+  },
+  "status": "passed",
+  "scenarios": [
+    {
+      "name": "1440-save-failure-completion",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "status": "passed",
+      "inputs": [
+        {
+          "kind": "mouse",
+          "selector": "[data-entry=\"explore\"]",
+          "x": 642.9296875,
+          "y": 668.671875
+        },
+        {
+          "kind": "keyboard",
+          "key": "Enter"
+        },
+        {
+          "kind": "mouse",
+          "selector": ".lesson-continue",
+          "x": 1157,
+          "y": 892.875
+        },
+        {
+          "kind": "mouse",
+          "selector": ".lesson-method-rail a[href=\"#lesson-explain\"]",
+          "x": 623.6640625,
+          "y": 550.875
+        },
+        {
+          "kind": "wheel",
+          "x": 288,
+          "y": 516,
+          "distance": 60
+        },
+        {
+          "kind": "mouse",
+          "selector": ".lesson-method-rail a[href=\"#lesson-apply\"]",
+          "x": 726.9921875,
+          "y": 117
+        },
+        {
+          "kind": "mouse",
+          "selector": ".lesson-method-rail a[href=\"#lesson-read\"]",
+          "x": 520.328125,
+          "y": 117
+        },
+        {
+          "kind": "wheel",
+          "x": 288,
+          "y": 516,
+          "distance": 60
+        },
+        {
+          "kind": "mouse",
+          "selector": ".lesson-assess-top",
+          "x": 1213.3359375,
+          "y": 180.75
+        },
+        {
+          "kind": "keyboard",
+          "key": "Tab"
+        },
+        {
+          "kind": "keyboard",
+          "key": "ArrowDown"
+        },
+        {
+          "kind": "keyboard",
+          "key": "ArrowDown"
+        },
+        {
+          "kind": "keyboard",
+          "key": " "
+        },
+        {
+          "kind": "mouse",
+          "selector": "input[name=\"question-1\"][value=\"3\"]",
+          "x": 735,
+          "y": 683.09375
+        },
+        {
+          "kind": "mouse",
+          "selector": "input[name=\"question-2\"][value=\"2\"]",
+          "x": 192.5,
+          "y": 845.09375
+        },
+        {
+          "kind": "mouse",
+          "selector": ".assessment-form button[type=\"submit\"]",
+          "x": 1218,
+          "y": 917.09375
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"explore\"]",
+          "x": 531.515625,
+          "y": 35.5
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"learning\"]",
+          "x": 619.359375,
+          "y": 35.5
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"learning\"]",
+          "x": 619.359375,
+          "y": 34.57452964782715
+        }
+      ],
+      "checks": [
+        {
+          "label": "welcome-opens-first-course",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:50:36.556Z",
+                  "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "intro",
+                "scrollTop": 0,
+                "updatedAt": "2026-10-24T20:50:36.575Z"
+              }
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 178.80000001192093
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 179
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 308.69999998807907,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 308.90000000596046,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 327,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 0,
+                    "updatedAt": "2026-10-24T20:50:36.575Z"
+                  }
+                }
+              }
+            ],
+            "heading": "蒙学 · 阴阳之道",
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "status": "已记住阅读位置。",
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "H3"
+            }
+          }
+        },
+        {
+          "label": "saved-explain-nonzero-position",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:50:36.556Z",
+                  "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "explain",
+                "scrollTop": 1193,
+                "updatedAt": "2026-10-24T20:50:38.352Z"
+              }
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 178.80000001192093
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 179
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn lesson-continue motion-item magnetic-control is-magnetic motion-pressed",
+                "at": 917.3000000119209
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "A",
+                "at": 1060.699999988079
+              },
+              {
+                "type": "wheel",
+                "trusted": true,
+                "target": "lesson-explain",
+                "at": 1231
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 308.69999998807907,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 308.90000000596046,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 327,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 0,
+                    "updatedAt": "2026-10-24T20:50:36.575Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2103.4000000059605,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1193,
+                    "updatedAt": "2026-10-24T20:50:38.352Z"
+                  }
+                }
+              }
+            ],
+            "heading": "阴阳之道",
+            "scrollTop": 1194,
+            "scrollHeight": 2346,
+            "clientHeight": 902,
+            "status": "已记住阅读位置。",
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "A"
+            }
+          }
+        },
+        {
+          "label": "storage-failure-readable-and-honest",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:50:36.556Z",
+                  "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "explain",
+                "scrollTop": 1193,
+                "updatedAt": "2026-10-24T20:50:38.352Z"
+              }
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 178.80000001192093
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 179
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn lesson-continue motion-item magnetic-control is-magnetic motion-pressed",
+                "at": 917.3000000119209
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "A",
+                "at": 1060.699999988079
+              },
+              {
+                "type": "wheel",
+                "trusted": true,
+                "target": "lesson-explain",
+                "at": 1231
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "A",
+                "at": 2328.699999988079
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 308.69999998807907,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 308.90000000596046,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 327,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 0,
+                    "updatedAt": "2026-10-24T20:50:36.575Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2103.4000000059605,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1193,
+                    "updatedAt": "2026-10-24T20:50:38.352Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": false,
+                "at": 2564.5999999940395,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1444,
+                    "updatedAt": "2026-10-24T20:50:38.813Z"
+                  }
+                }
+              }
+            ],
+            "heading": "阴阳之道",
+            "scrollTop": 1444,
+            "scrollHeight": 2346,
+            "clientHeight": 902,
+            "status": "浏览器未能保存阅读位置；你仍可继续学习。",
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "A"
+            }
+          }
+        },
+        {
+          "label": "same-lesson-completion-clears-resume",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:50:36.556Z",
+                  "lastStudiedAt": "2026-10-24T20:50:41.444Z",
+                  "attempts": 1,
+                  "bestScore": 1
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": null,
+              "processedAssessmentIds": [
+                "eaff3ab4-2b52-497a-9299-fd8b7efe7acf"
+              ],
+              "assessmentSessions": [
+                {
+                  "sessionId": "eaff3ab4-2b52-497a-9299-fd8b7efe7acf",
+                  "kind": "lesson",
+                  "at": "2026-10-24T20:50:41.444Z",
+                  "correct": 3,
+                  "total": 3,
+                  "lessonId": "l1-1"
+                }
+              ]
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 178.80000001192093
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 179
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn lesson-continue motion-item magnetic-control is-magnetic motion-pressed",
+                "at": 917.3000000119209
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "A",
+                "at": 1060.699999988079
+              },
+              {
+                "type": "wheel",
+                "trusted": true,
+                "target": "lesson-explain",
+                "at": 1231
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "A",
+                "at": 2328.699999988079
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "A",
+                "at": 3125.199999988079
+              },
+              {
+                "type": "wheel",
+                "trusted": true,
+                "target": "lesson-explain",
+                "at": 3320.9000000059605
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn lesson-assess lesson-assess-top magnetic-control is-magnetic motion-pressed",
+                "at": 4661.5999999940395
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Tab",
+                "target": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+                "at": 4682.0999999940395
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "ArrowDown",
+                "target": "question-0",
+                "at": 4684.699999988079
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "target": "question-0",
+                "at": 4684.9000000059605
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "ArrowDown",
+                "target": "question-0",
+                "at": 4688.0999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "target": "question-0",
+                "at": 4688.4000000059605
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": " ",
+                "target": "question-0",
+                "at": 4689.800000011921
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "question-1",
+                "at": 4831.4000000059605
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "question-2",
+                "at": 4972.5
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn magnetic-control is-magnetic motion-pressed",
+                "at": 5194.9000000059605
+              },
+              {
+                "type": "submit",
+                "trusted": true,
+                "target": "assessment-form",
+                "at": 5195.9000000059605
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 308.69999998807907,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 308.90000000596046,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 327,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 0,
+                    "updatedAt": "2026-10-24T20:50:36.575Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2103.4000000059605,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1193,
+                    "updatedAt": "2026-10-24T20:50:38.352Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": false,
+                "at": 2564.5999999940395,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1444,
+                    "updatedAt": "2026-10-24T20:50:38.813Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 4152.5,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "read",
+                    "scrollTop": 983,
+                    "updatedAt": "2026-10-24T20:50:40.401Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 4662.0999999940395,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "practice",
+                    "scrollTop": 1444,
+                    "updatedAt": "2026-10-24T20:50:40.910Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 5196.5999999940395,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:36.556Z",
+                      "lastStudiedAt": "2026-10-24T20:50:41.444Z",
+                      "attempts": 1,
+                      "bestScore": 1
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": null,
+                  "processedAssessmentIds": [
+                    "eaff3ab4-2b52-497a-9299-fd8b7efe7acf"
+                  ],
+                  "assessmentSessions": [
+                    {
+                      "sessionId": "eaff3ab4-2b52-497a-9299-fd8b7efe7acf",
+                      "kind": "lesson",
+                      "at": "2026-10-24T20:50:41.444Z",
+                      "correct": 3,
+                      "total": 3,
+                      "lessonId": "l1-1"
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 5196.5999999940395,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 5197.0999999940395,
+                "value": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-1"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-1"
+                    ],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 5197.300000011921,
+                "value": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-1",
+                    "learning-record:assessed:l1-1:eaff3ab4-2b52-497a-9299-fd8b7efe7acf"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-1"
+                    ],
+                    "lessonScores": {
+                      "l1-1": 1
+                    },
+                    "topicScores": {
+                      "yin-yang": 1
+                    },
+                    "trigramRounds": [],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {
+                    "first-lesson": {
+                      "unlockedAt": "2026-10-24T20:50:41.445Z",
+                      "evidence": {
+                        "current": 1,
+                        "target": 1
+                      }
+                    },
+                    "yin-yang": {
+                      "unlockedAt": "2026-10-24T20:50:41.445Z",
+                      "evidence": {
+                        "current": 100,
+                        "target": 80
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "sessionId": "eaff3ab4-2b52-497a-9299-fd8b7efe7acf",
+            "assessmentStatus": "本轮成绩与学习记录已保存。",
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            }
+          }
+        },
+        {
+          "label": "cleanup-and-refresh-do-not-resurrect-completed-resume",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:50:36.556Z",
+                  "lastStudiedAt": "2026-10-24T20:50:41.444Z",
+                  "attempts": 1,
+                  "bestScore": 1
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": null,
+              "processedAssessmentIds": [
+                "eaff3ab4-2b52-497a-9299-fd8b7efe7acf"
+              ],
+              "assessmentSessions": [
+                {
+                  "sessionId": "eaff3ab4-2b52-497a-9299-fd8b7efe7acf",
+                  "kind": "lesson",
+                  "at": "2026-10-24T20:50:41.444Z",
+                  "correct": 3,
+                  "total": 3,
+                  "lessonId": "l1-1"
+                }
+              ]
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 512.1999999880791
+              }
+            ],
+            "writes": [],
+            "primary": "02\n下一课\n八卦生成\n\n目前没有待续课程或待练任务，按课程序学习下一课。\n\n完成标准：阅读课程并完成一次课后小试。\n开始研习",
+            "primaryType": "下一课",
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "BUTTON"
+            }
+          }
+        }
+      ],
+      "sessions": [
+        {
+          "id": "eaff3ab4-2b52-497a-9299-fd8b7efe7acf",
+          "kind": "lesson",
+          "lessonId": "l1-1",
+          "levelId": "L1",
+          "questions": [
+            {
+              "id": "theory-yinyang-desc",
+              "lessonId": "l1-1",
+              "levelId": "L1",
+              "prompt": "以下哪项是“阴阳之道”的核心说明？",
+              "answer": "《易》以阴阳为本。一阴一阳之谓道。",
+              "options": [
+                {
+                  "value": "乾坤定上下之位，相对相错，表对待之理。",
+                  "label": "乾坤定上下之位，相对相错，表对待之理。"
+                },
+                {
+                  "value": "帝出乎震，齐乎巽……表流行之用、时序之序。",
+                  "label": "帝出乎震，齐乎巽……表流行之用、时序之序。"
+                },
+                {
+                  "value": "《易》以阴阳为本。一阴一阳之谓道。",
+                  "label": "《易》以阴阳为本。一阴一阳之谓道。"
+                },
+                {
+                  "value": "太极生两仪，两仪生四象，四象生八卦。",
+                  "label": "太极生两仪，两仪生四象，四象生八卦。"
+                }
+              ],
+              "explanation": "阴阳之道：《易》以阴阳为本。一阴一阳之谓道。",
+              "source": "阴阳之道",
+              "kind": "recall",
+              "evidenceType": null,
+              "questionVersion": "curriculum-v1",
+              "targetCode": null,
+              "termId": null
+            },
+            {
+              "id": "theory-yinyang-name",
+              "lessonId": "l1-1",
+              "levelId": "L1",
+              "prompt": "“《易》以阴阳为本。一阴一阳之谓道。”对应哪一项？",
+              "answer": "阴阳之道",
+              "options": [
+                {
+                  "value": "先天八卦（伏羲八卦）",
+                  "label": "先天八卦（伏羲八卦）"
+                },
+                {
+                  "value": "八卦生成",
+                  "label": "八卦生成"
+                },
+                {
+                  "value": "后天八卦（文王八卦）",
+                  "label": "后天八卦（文王八卦）"
+                },
+                {
+                  "value": "阴阳之道",
+                  "label": "阴阳之道"
+                }
+              ],
+              "explanation": "阴阳之道：《易》以阴阳为本。一阴一阳之谓道。",
+              "source": "阴阳之道",
+              "kind": "recall",
+              "evidenceType": null,
+              "questionVersion": "curriculum-v1",
+              "targetCode": null,
+              "termId": null
+            },
+            {
+              "id": "theory-yinyang-evidence",
+              "lessonId": "l1-1",
+              "levelId": "L1",
+              "prompt": "只凭项目中的一句白话，能否把“阴阳之道”判作现实中的确定结论？",
+              "answer": "证据不足",
+              "options": [
+                {
+                  "value": "经传原文",
+                  "label": "经传原文"
+                },
+                {
+                  "value": "卦体",
+                  "label": "卦体"
+                },
+                {
+                  "value": "证据不足",
+                  "label": "证据不足"
+                },
+                {
+                  "value": "爻位",
+                  "label": "爻位"
+                }
+              ],
+              "explanation": "项目白话用于辅助理解；若要形成判断，仍须说明原文、结构、流派与现实事实。",
+              "source": "阴阳之道",
+              "kind": "evidence",
+              "evidenceType": "证据不足",
+              "questionVersion": "curriculum-v1",
+              "targetCode": null,
+              "termId": null
+            }
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "label": "completed-before-reload",
+          "inputs": [
+            {
+              "type": "keydown",
+              "trusted": true,
+              "key": "Enter",
+              "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+              "at": 178.80000001192093
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "",
+              "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+              "at": 179
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "quick-btn lesson-continue motion-item magnetic-control is-magnetic motion-pressed",
+              "at": 917.3000000119209
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "A",
+              "at": 1060.699999988079
+            },
+            {
+              "type": "wheel",
+              "trusted": true,
+              "target": "lesson-explain",
+              "at": 1231
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "A",
+              "at": 2328.699999988079
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "A",
+              "at": 3125.199999988079
+            },
+            {
+              "type": "wheel",
+              "trusted": true,
+              "target": "lesson-explain",
+              "at": 3320.9000000059605
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "quick-btn lesson-assess lesson-assess-top magnetic-control is-magnetic motion-pressed",
+              "at": 4661.5999999940395
+            },
+            {
+              "type": "keydown",
+              "trusted": true,
+              "key": "Tab",
+              "target": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+              "at": 4682.0999999940395
+            },
+            {
+              "type": "keydown",
+              "trusted": true,
+              "key": "ArrowDown",
+              "target": "question-0",
+              "at": 4684.699999988079
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "",
+              "target": "question-0",
+              "at": 4684.9000000059605
+            },
+            {
+              "type": "keydown",
+              "trusted": true,
+              "key": "ArrowDown",
+              "target": "question-0",
+              "at": 4688.0999999940395
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "",
+              "target": "question-0",
+              "at": 4688.4000000059605
+            },
+            {
+              "type": "keydown",
+              "trusted": true,
+              "key": " ",
+              "target": "question-0",
+              "at": 4689.800000011921
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "question-1",
+              "at": 4831.4000000059605
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "question-2",
+              "at": 4972.5
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "quick-btn magnetic-control is-magnetic motion-pressed",
+              "at": 5194.9000000059605
+            },
+            {
+              "type": "submit",
+              "trusted": true,
+              "target": "assessment-form",
+              "at": 5195.9000000059605
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+              "at": 6177.4000000059605
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+              "at": 6462.5999999940395
+            }
+          ],
+          "writes": [
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 308.69999998807907,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T20:50:36.556Z",
+                    "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": []
+              }
+            },
+            {
+              "key": "yijing-activity-v1",
+              "saved": true,
+              "at": 308.90000000596046,
+              "value": {
+                "days": [
+                  "2026-10-25"
+                ]
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 327,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T20:50:36.556Z",
+                    "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "intro",
+                  "scrollTop": 0,
+                  "updatedAt": "2026-10-24T20:50:36.575Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 2103.4000000059605,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T20:50:36.556Z",
+                    "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "explain",
+                  "scrollTop": 1193,
+                  "updatedAt": "2026-10-24T20:50:38.352Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": false,
+              "at": 2564.5999999940395,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T20:50:36.556Z",
+                    "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "explain",
+                  "scrollTop": 1444,
+                  "updatedAt": "2026-10-24T20:50:38.813Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 4152.5,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T20:50:36.556Z",
+                    "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "read",
+                  "scrollTop": 983,
+                  "updatedAt": "2026-10-24T20:50:40.401Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 4662.0999999940395,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T20:50:36.556Z",
+                    "lastStudiedAt": "2026-10-24T20:50:36.556Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "practice",
+                  "scrollTop": 1444,
+                  "updatedAt": "2026-10-24T20:50:40.910Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 5196.5999999940395,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T20:50:36.556Z",
+                    "lastStudiedAt": "2026-10-24T20:50:41.444Z",
+                    "attempts": 1,
+                    "bestScore": 1
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": null,
+                "processedAssessmentIds": [
+                  "eaff3ab4-2b52-497a-9299-fd8b7efe7acf"
+                ],
+                "assessmentSessions": [
+                  {
+                    "sessionId": "eaff3ab4-2b52-497a-9299-fd8b7efe7acf",
+                    "kind": "lesson",
+                    "at": "2026-10-24T20:50:41.444Z",
+                    "correct": 3,
+                    "total": 3,
+                    "lessonId": "l1-1"
+                  }
+                ]
+              }
+            },
+            {
+              "key": "yijing-activity-v1",
+              "saved": true,
+              "at": 5196.5999999940395,
+              "value": {
+                "days": [
+                  "2026-10-25"
+                ]
+              }
+            },
+            {
+              "key": "yijing.achievements.v1",
+              "saved": true,
+              "at": 5197.0999999940395,
+              "value": {
+                "version": 1,
+                "processedKeys": [
+                  "learning-record:completed:l1-1"
+                ],
+                "metrics": {
+                  "completedLessons": [
+                    "l1-1"
+                  ],
+                  "lessonScores": {},
+                  "topicScores": {},
+                  "trigramRounds": [],
+                  "hexagramsRead": [],
+                  "relationsExamined": [],
+                  "reviewDays": [],
+                  "reviewedHexagrams": [],
+                  "quizRecoveries": [],
+                  "sequenceExams": [],
+                  "analyses": {},
+                  "boundedSubjects": [],
+                  "comprehensivePassed": false
+                },
+                "achievements": {}
+              }
+            },
+            {
+              "key": "yijing.achievements.v1",
+              "saved": true,
+              "at": 5197.300000011921,
+              "value": {
+                "version": 1,
+                "processedKeys": [
+                  "learning-record:completed:l1-1",
+                  "learning-record:assessed:l1-1:eaff3ab4-2b52-497a-9299-fd8b7efe7acf"
+                ],
+                "metrics": {
+                  "completedLessons": [
+                    "l1-1"
+                  ],
+                  "lessonScores": {
+                    "l1-1": 1
+                  },
+                  "topicScores": {
+                    "yin-yang": 1
+                  },
+                  "trigramRounds": [],
+                  "hexagramsRead": [],
+                  "relationsExamined": [],
+                  "reviewDays": [],
+                  "reviewedHexagrams": [],
+                  "quizRecoveries": [],
+                  "sequenceExams": [],
+                  "analyses": {},
+                  "boundedSubjects": [],
+                  "comprehensivePassed": false
+                },
+                "achievements": {
+                  "first-lesson": {
+                    "unlockedAt": "2026-10-24T20:50:41.445Z",
+                    "evidence": {
+                      "current": 1,
+                      "target": 1
+                    }
+                  },
+                  "yin-yang": {
+                    "unlockedAt": "2026-10-24T20:50:41.445Z",
+                    "evidence": {
+                      "current": 100,
+                      "target": 80
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "label": "final",
+          "inputs": [
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+              "at": 512.1999999880791
+            }
+          ],
+          "writes": []
+        }
+      ],
+      "fixtures": [
+        {
+          "at": "2026-10-24T20:50:36.236Z",
+          "values": {},
+          "welcome": true
+        },
+        {
+          "kind": "QuotaExceededError",
+          "key": "yijing-learning-record-v2",
+          "purpose": "reading-position save failure only"
+        }
+      ],
+      "screenshots": [
+        "1440-save-failure-completion-save-failed-readable.png",
+        "1440-save-failure-completion-completed-lesson.png",
+        "1440-save-failure-completion-next-action-after-completion.png"
+      ]
+    }
+  ],
+  "limitations": [
+    "Headless Chromium at 1440x1024 and 390x844 emulated touch; not physical mobile, a screen reader or true browser 200% zoom.",
+    "Priority records are explicit localStorage fixtures using public question references, not earned user evidence. No private user profile or records are accessed.",
+    "Only the synthetic learning storage key is fault-injected. Debugger reads generated sessions without changing them; all course, navigation and submission actions use trusted CDP Input.",
+    "DOM reads and scrollIntoView locate reachable controls; reading-position evidence is generated by a real anchor activation and trusted wheel/touch scrolling."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "finishedAt": "2026-10-24T20:50:45.128Z",
+  "finalSourceHashes": {
+    "web/js/main.js": "1556c793ef4492f32ec7cd7e14b8cd291921048743838c6b258db254a2edf82f",
+    "web/js/learning-assessment.js": "cd8ab9272d3ca1e9f0585486f8e79dca00dc2fded4d9301709270a2e630de165",
+    "web/js/learning-progress.js": "41389087183f1054035e62b4d0f03a5edca0f72124d16aa24b7be1f242b08f81",
+    "web/js/learning-assessment-page.js": "d896c82e026da67bd57a1edc94cc34a6151aae41f992563eacf973a83c884095",
+    "web/js/modes/learning-mode.js": "74838284cc1b0a5a241d676dfa0bd2850796a81ab5d8bd9755e7623cec7bdc5c",
+    "web/js/modes/review-mode.js": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+    "web/js/modes/quiz-mode.js": "7a60bcd0b713a6b43bac4a0ca6761f77877419f16f01901bfbc67e0c3f9734a1",
+    "web/js/study-page.js": "0967444da28f07dcb8306740299b4c529129fd79bbb4386cfccb40c113c7d5a7",
+    "web/js/user-data.js": "52ae1c42d07747413a5da56d7e683e8f67534a80fffa6395048ab76c1250c530",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/quiz-engine.js": "4b9e087b6c080b9e6a05cd69d15887634e8cb6cfe0b921e559bc48b7cbda1fba",
+    "web/styles/immersive.css": "b3568ce4e89ff48b8c908d81bba79b343a806df947910479c0bc1c88f5ffd701",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "docs/development/tools/check-learning-recommendation-input.mjs": "73b415fd0b3159ec55e733b74523081179c9c52fb07d252c834ec17e13615496"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "profileRemoved": false,
+  "profileRetainedReason": "Isolated synthetic profile retained for diagnosis; no deletion attempted and no user profile touched."
+}

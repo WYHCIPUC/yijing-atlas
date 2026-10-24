@@ -41,9 +41,9 @@ function resetAssessmentViewport(container) {
   if (detailContent) detailContent.scrollTop = 0;
   container.scrollTop = 0;
   const schedule = window.requestAnimationFrame || ((callback) => callback());
+  const heading = container.querySelector('[data-page-heading]');
   schedule(() => {
-    const heading = container.querySelector('[data-page-heading]');
-    if (!heading) return;
+    if (!heading || heading.isConnected === false || container.querySelector('[data-page-heading]') !== heading) return;
     heading.tabIndex = -1;
     heading.focus?.({ preventScroll: true });
   });
@@ -282,7 +282,7 @@ function bindOralReview(mountEl, appState) {
 }
 
 export function renderLearningAssessmentPage(mountEl, appState, {
-  onNavigate, initialLessonId, requiredQuestionId, requiredQuestionVersion, returnTo,
+  onNavigate, initialLessonId, requiredQuestionId, requiredQuestionVersion, returnTo, initialOralLessonId,
 } = {}) {
   const questionBank = buildLearningQuestionBank(appState);
 
@@ -329,7 +329,7 @@ export function renderLearningAssessmentPage(mountEl, appState, {
         <div class="oral-review-head"><div><span class="academy-kicker">复讲</span><h4>以讲促学</h4></div><span class="review-mode-badge">智能可选</span></div>
         <p>不用背标准答案。用自己的话说明一课，再由智能服务或典籍要点清单帮助校准。</p>
         <label>复讲课程<select data-field="oral-lesson">${LEARNING_LESSONS.map((lesson) => `<option value="${lesson.id}">${esc(`${lesson.levelId} · ${lesson.title}`)}</option>`).join('')}</select></label>
-        <label>我的复讲<textarea data-field="oral-response" rows="6" maxlength="3000" placeholder="例如：这一课主要说明……它与……的关系是……"></textarea></label>
+        <label>我的复讲<textarea data-field="oral-response" ${initialOralLessonId && getLesson(initialOralLessonId) ? 'data-learning-focus="oral"' : ''} rows="6" maxlength="3000" placeholder="例如：这一课主要说明……它与……的关系是……"></textarea></label>
         <div class="assessment-actions">
           <button type="button" class="text-button" data-action="self-review">查看要点并自评</button>
           <button type="button" class="quick-btn" data-action="ai-review">提交智能评阅</button>
@@ -351,6 +351,18 @@ export function renderLearningAssessmentPage(mountEl, appState, {
     });
     bindOralReview(mountEl, appState);
     resetAssessmentViewport(mountEl);
+    if (initialOralLessonId && getLesson(initialOralLessonId)) {
+      const select = mountEl.querySelector('[data-field="oral-lesson"]');
+      const response = mountEl.querySelector('[data-field="oral-response"]');
+      select.value = initialOralLessonId;
+      const schedule = window.requestAnimationFrame || ((callback) => callback());
+      // Let the parent mode finish its scroll reset and initial heading focus first.
+      schedule(() => schedule(() => {
+        if (response.isConnected === false || mountEl.querySelector('[data-field="oral-response"]') !== response) return;
+        response.scrollIntoView?.({ block: 'center', behavior: 'auto' });
+        response.focus?.({ preventScroll: true });
+      }));
+    }
   };
 
   const showSession = (view) => {
@@ -419,7 +431,8 @@ export function renderLearningAssessmentPage(mountEl, appState, {
 
   const active = assessmentViews.get(mountEl);
   const displayedSessionId = mountEl.querySelector('[data-assessment-session]')?.dataset.assessmentSession;
-  if (active && active.session.id === displayedSessionId && active.request.initialLessonId === initialLessonId &&
+  if (initialOralLessonId) renderHub();
+  else if (active && active.session.id === displayedSessionId && active.request.initialLessonId === initialLessonId &&
       active.request.requiredQuestionId === requiredQuestionId && active.request.requiredQuestionVersion === requiredQuestionVersion) showSession(active);
   else if (initialLessonId && (getLesson(initialLessonId) || requiredQuestionId !== undefined)) startSession('lesson', {
     lessonId: initialLessonId, requiredQuestionId, requiredQuestionVersion, returnTo,

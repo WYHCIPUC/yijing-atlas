@@ -97,6 +97,7 @@ const narrowReadingQuery = window.matchMedia('(max-width: 1100px)');
 const motionSystem = initMotionSystem();
 const cinematicMotion = initCinematicMotion({ panel, panelContent });
 let modeRequestId = 0;
+let modeCleanup = null;
 let panelReturnFocus = null;
 let dailyBackgroundInertState = null;
 let searchResults = [];
@@ -369,10 +370,11 @@ function resetPanelViewport({ focusHeading = false } = {}) {
   cinematicMotion.resetScroll();
   panelContent.scrollTop = 0;
   if (!focusHeading) return;
+  const heading = panelContent.querySelector('[data-learning-focus="oral"]') ||
+    panelContent.querySelector('[data-page-heading], .mode-panel-title, h2, h3');
   window.requestAnimationFrame(() => {
-    const heading = panelContent.querySelector('[data-page-heading], .mode-panel-title, h2, h3');
-    if (!heading) return;
-    heading.tabIndex = -1;
+    if (!heading?.isConnected || !panelContent.contains(heading) || heading.closest?.('[inert], [hidden]')) return;
+    if (heading.dataset?.learningFocus !== 'oral') heading.tabIndex = -1;
     heading.focus({ preventScroll: true });
   });
 }
@@ -504,7 +506,8 @@ function showDailyHexagram() {
     dailyOverlay.classList.add('hidden');
     dailyOverlay.setAttribute('aria-hidden', 'true');
     setDailyBackgroundInert(false);
-    setMode(destination === 'beginner' ? 'learning' : 'explore');
+    setMode(destination === 'beginner' ? 'learning' : 'explore',
+      destination === 'beginner' ? { section: 'path', lessonId: 'l1-1' } : {});
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.setTimeout(() => {
       dailyOverlay.hidden = true;
@@ -669,6 +672,7 @@ function setRelationOptions(open, { restoreFocus = false } = {}) {
 }
 
 function enterExplore() {
+  disposeMode();
   setRelationOptions(false);
   ++modeRequestId;
   state.currentMode = 'explore';
@@ -705,6 +709,10 @@ function changeStarLayout(mode) {
 }
 
 function closeDetail({ restoreFocus = false, resetMode = true, updateUrl = true } = {}) {
+  disposeMode();
+  ++modeRequestId;
+  document.body.classList.remove('mode-transitioning');
+  panel.removeAttribute('aria-busy');
   if (state.reading.stage === 'quick' && state.starMap?.captureView) {
     state.readingSnapshot = state.starMap.captureView();
   }
@@ -1031,7 +1039,14 @@ async function loadModeResources(mode) {
   }
 }
 
+function disposeMode() {
+  const cleanup = modeCleanup;
+  modeCleanup = null;
+  cleanup?.();
+}
+
 async function setMode(mode, entry = {}) {
+  disposeMode();
   rememberReadingDraft();
   if (state.reading.stage !== 'none') closeDetail({ resetMode: false });
   setRelationOptions(false);
@@ -1090,11 +1105,14 @@ async function setMode(mode, entry = {}) {
     const [renderer] = await Promise.all([loadRenderer(), loadModeResources(mode)]);
     if (requestId !== modeRequestId || state.currentMode !== mode) return;
     if (mode === 'learning') {
-      renderer(panelContent, state, (target = 'explore', nextEntry) => setMode(target, nextEntry), entry);
+      const cleanup = renderer(panelContent, state, (target = 'explore', nextEntry) => setMode(target, nextEntry), entry);
+      modeCleanup = typeof cleanup === 'function' ? cleanup : null;
     } else if (mode === 'review') {
       renderer(panelContent, state, (learningEntry) => setMode('learning', learningEntry));
     } else if (mode === 'divination') {
       renderer(panelContent, state, (code) => openDetail(code));
+    } else if (mode === 'quiz') {
+      renderer(panelContent, state, entry?.wrongOnly === true);
     } else {
       renderer(panelContent, state);
     }

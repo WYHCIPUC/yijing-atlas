@@ -201,3 +201,58 @@ test('导入写失败回滚旧成绩和弱项，其他键也恢复', () => {
   assert.equal(target.getItem(key), previous);
   assert.equal(target.getItem('yijing.study.v1'), '{"old":true}');
 });
+
+const backupResume = (overrides = {}) => ({
+  lessonId: 'l1-1', section: 'read', scrollTop: 125.5, updatedAt: '2026-10-25T08:00:00.000Z', ...overrides,
+});
+
+test('续读位置沿原十一键备份往返，旧缺字段和 null 位置兼容', () => {
+  const key = 'yijing-learning-record-v2';
+  assert.equal(USER_DATA_KEYS.length, 11);
+  for (const resume of [undefined, null, backupResume()]) {
+    const record = { ...weakRecord(), ...(resume === undefined ? {} : { resume }) };
+    const source = storage({ [key]: JSON.stringify(record) });
+    const target = storage();
+    importUserData(parseUserData(JSON.stringify(exportUserData(source))), target);
+    assert.deepEqual(JSON.parse(target.getItem(key)), record);
+  }
+});
+
+test('非法续读在导入前报告具体路径，不覆盖成绩、旧位置或其他键', () => {
+  const key = 'yijing-learning-record-v2';
+  const previous = JSON.stringify({ ...weakRecord(), resume: backupResume() });
+  const cases = [
+    [[], 'resume'], ['bad', 'resume'],
+    ...[['lessonId', 'retired-course'], ['lessonId', null], ['section', 'quiz'], ['section', null],
+      ['scrollTop', -1], ['scrollTop', 10_000_001], ['scrollTop', '125'], ['scrollTop', NaN], ['scrollTop', Infinity],
+      ['updatedAt', '2026-10-25'], ['updatedAt', 'bad'], ['updatedAt', null],
+    ].map(([field, value]) => [backupResume({ [field]: value }), `resume.${field}`]),
+  ];
+  for (const [resume, path] of cases) {
+    const target = storage({ [key]: previous, 'yijing.study.v1': '{"old":true}' });
+    const snapshot = weakSnapshot({ ...weakRecord(), resume });
+    snapshot.data['yijing.study.v1'] = { incoming: true };
+    const matches = (error) => error.message.includes(`${key}.${path}`);
+    assert.throws(() => parseUserData(JSON.stringify(snapshot)), matches, path);
+    assert.throws(() => importUserData(snapshot, target), matches, path);
+    assert.equal(target.getItem(key), previous);
+    assert.equal(target.getItem('yijing.study.v1'), '{"old":true}');
+  }
+});
+
+test('含续读的备份写入失败尝试回滚原位置、成绩、弱项和其他键', () => {
+  const key = 'yijing-learning-record-v2';
+  const previous = JSON.stringify({ ...weakRecord(), resume: backupResume() });
+  const target = storage({ [key]: previous, 'yijing.study.v1': '{"old":true}' });
+  const originalSet = target.setItem;
+  let blocked = true;
+  target.setItem = (name, value) => {
+    if (name === key && blocked) { blocked = false; throw new Error('quota'); }
+    originalSet(name, value);
+  };
+  const snapshot = weakSnapshot({ ...weakRecord({ wrongCount: 2 }), resume: backupResume({ section: 'apply', scrollTop: 0 }) });
+  snapshot.data['yijing.study.v1'] = { incoming: true };
+  assert.throws(() => importUserData(snapshot, target), /导入失败/);
+  assert.equal(target.getItem(key), previous);
+  assert.equal(target.getItem('yijing.study.v1'), '{"old":true}');
+});

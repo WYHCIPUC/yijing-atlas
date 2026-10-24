@@ -1,0 +1,23 @@
+START 2026-10-24T20-49-07-479Z v24.19.0 profile=C:\Users\1\AppData\Local\Temp\yijing-learning-recommendation-36vHIs
+RUN 1440-welcome-resume
+FAIL 1440-welcome-resume: AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '蒙学 · 阴阳之道'
+- '阴阳之道'
+
+    at openReaderFromWelcome (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:317:10)
+    at async welcomeResume (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:334:3)
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:299:5)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:497:5
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '蒙学 · 阴阳之道'
+- '阴阳之道'
+
+    at openReaderFromWelcome (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:317:10)
+    at async welcomeResume (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:334:3)
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:299:5)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:497:5
+{"status":"failed","passed":0,"total":1,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-recommendation-input\\2026-10-24T20-49-07-479Z\\trace.json","profile":"C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-recommendation-36vHIs"}

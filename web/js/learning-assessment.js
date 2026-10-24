@@ -1,4 +1,6 @@
 import { LEARNING_LESSONS } from './learning-curriculum.js';
+import { getCourseWeakQuestions, getLearningResumeError } from './learning-progress.js';
+import { isReviewCards } from './review-engine.js';
 
 let sessionSequence = 0;
 
@@ -124,4 +126,61 @@ export function recommendLesson(record, lessons = LEARNING_LESSONS) {
     return String(record.lessons[left.id]?.lastStudiedAt || '')
       .localeCompare(String(record.lessons[right.id]?.lastStudiedAt || ''));
   })[0] || null;
+}
+
+// Presentation task only: selecting a recommendation never changes learning data.
+export function recommendLearningTask(record, {
+  reviewCards = {}, wrongCodes = [], now = Date.now(), lessons = LEARNING_LESSONS,
+} = {}) {
+  const available = Array.isArray(lessons) ? lessons.filter((lesson) => lesson?.id) : [];
+  const order = new Map(available.map((lesson, index) => [lesson.id, index]));
+  const resume = record?.resume;
+  const invalidResume = resume != null && (getLearningResumeError(resume) || !order.has(resume.lessonId));
+  const task = (value) => invalidResume ? {
+    ...value, notice: '上次阅读位置已失效，已按当前进度推荐；原有学习成绩仍保留。',
+  } : value;
+  if (resume && !invalidResume) {
+    return task({ type: 'resume', subject: resume.lessonId, resume: { ...resume },
+      reason: '这门课程已开始，尚未完成本轮小试；继续上次阅读位置。' });
+  }
+
+  const timestamp = now instanceof Date ? now.getTime() : now;
+  const due = Object.entries(reviewCards || {}).filter(([code, card]) =>
+    isReviewCards({ [code]: card }) && (card.reps > 0 || Number.isFinite(card.introducedAt)) &&
+    Number.isFinite(timestamp) && card.due <= timestamp,
+  ).map(([, card]) => card).sort((a, b) => a.due - b.due || a.code.localeCompare(b.code));
+  if (due.length) {
+    return task({ type: 'review', subject: due[0].code, count: due.length,
+      reason: `有${due.length}项卦卡已到复习时间，先温故再学新课。` });
+  }
+
+  const weak = getCourseWeakQuestions(record).filter((entry) => order.has(entry.lessonId))
+    .sort((a, b) => Date.parse(b.lastWrongAt) - Date.parse(a.lastWrongAt) ||
+      order.get(a.lessonId) - order.get(b.lessonId) || a.questionId.localeCompare(b.questionId));
+  if (weak.length) {
+    return task({ type: 'course-weak', subject: weak[0].questionId, question: { ...weak[0] }, count: weak.length,
+      reason: `有${weak.length}项课程薄弱题待回练，先检验最近答错的知识点。` });
+  }
+  // The legacy wrong book contains codes, not original question IDs or dates.
+  const codes = [...new Set((Array.isArray(wrongCodes) ? wrongCodes : [])
+    .filter((code) => typeof code === 'string' && /^[01]{6}$/.test(code)))].sort();
+  if (codes.length) {
+    return task({ type: 'quiz-weak', subject: codes[0], count: codes.length,
+      reason: `有${codes.length}卦的测验错题待温习；进入错题模式重新练习。` });
+  }
+
+  const unviewed = available.find((lesson) => !record?.lessons?.[lesson.id]?.viewedAt);
+  if (unviewed) {
+    return task({ type: 'lesson', subject: unviewed.id, reason: '目前没有待续课程或待练任务，按课程序学习下一课。' });
+  }
+  const studiedAt = (lesson) => {
+    const progress = record?.lessons?.[lesson.id];
+    const date = Date.parse(progress?.lastStudiedAt || progress?.viewedAt || '');
+    return Number.isFinite(date) ? date : 0;
+  };
+  const recent = [...available].sort((a, b) => studiedAt(b) - studiedAt(a) || order.get(a.id) - order.get(b.id))[0];
+  if (recent) {
+    return task({ type: 'oral', subject: recent.id, reason: '已浏览全部课程，试着复讲最近学习的一课，检验能否说清依据。' });
+  }
+  return task({ type: 'empty', subject: null, reason: '当前没有可用课程或待练任务。' });
 }
