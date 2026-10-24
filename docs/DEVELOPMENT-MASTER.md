@@ -1,6 +1,6 @@
 # 易象图谱开发建设总册
 
-版本：文档基线 1.12。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
+版本：文档基线 1.13。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
 
 **用途：其他 AI 或开发者只阅读本总册与关联专题，即可接手当前项目，按任务卡逐项开发、验证和交接。**
 
@@ -8,7 +8,7 @@
 
 需要查看剩余范围或复制目标时，阅读[未完成事项清单与目标文字](development/REMAINING-WORK-AND-GOAL.md)：逐项列出42项（31已确认、10建议、1独立发布）。三条既有专题要求的执行归属已明确，功能仍待实施；没有新增需求或采纳建议。
 
-**本次盘点更新**：已提交源码为`4e8adc800b39ade15ece002b4f085143426bba44`，该提交[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40133463549)已核对success，validate与Browser smoke均通过。工作区另有T-QUIZ-01数据/页面/测试草稿，当前缺`quiz-session.js`及引用接口，模块导入实际失败；推荐、温故、导航接线和实现后验收尚未完成。不能以已提交版本绿灯证明当前草稿可用；本次仅更新文档，保留已有修改。详见[在制工作与盘点证据](development/evidence/2026-10-25-remaining-work-quiz-refresh.md)。
+**本次盘点更新**：盘点时HEAD为`80f8f2070a95101ea6fc04ce5b4b92523dad34ec`，最近已交付业务提交为`4e8adc8`。T-QUIZ-01的稳定引用、单轮提交、弱项/备份校验与main、推荐、温故、术语页面已经在本地接通；validate重试通过72脚本、覆盖率阶段515/515（配置20模块99.81%/94.25%/99.12%），1440桌面原规则专项1/1通过。仍欠其余真实输入、当前完整E2E、题干可读性处理和最终交付，整卡不关闭。80f8f20的[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40134222757)已核对success，仅覆盖已提交文件。当前只做盘点与目标文字，保留所有未提交实现；详见[最新状态与证据](development/evidence/2026-10-25-remaining-work-acceptance-status.md)。
 
 **此前搜索交付**：T-SEARCH-01已完成结构搜索、真实资料接线、IME/ARIA与异步保护，以及手机六位码呈现。validate 62脚本、317/317及完整五视口E2E通过，含实际关键词正例的专项矩阵与手机字段红→绿均已记录。来源/完整限制见[搜索整合交接](development/evidence/2026-10-25-search-integration.md)；外部设备、读屏与真实200%不由模拟验收替代。
 
@@ -205,6 +205,8 @@ npm start
 
 | 日期 | 变更 | 验证范围 |
 | --- | --- | --- |
+| 2026-10-25 测验接线后的剩余盘点 | 基线1.13；仍6完成、42开放，修正已接线与未验收边界，更新目标文字 | 复核既有validate515/515、单桌面1/1和宿主中止；本次仅文档/证据检查，当前完整E2E未取得；见[盘点](development/evidence/2026-10-25-remaining-work-acceptance-status.md) |
+| 2026-10-25 测验初稿盘点 | 基线1.12；保留缺接口的当时事实及原48卡范围 | 旧模块导入失败与三组初始红灯见[历史盘点](development/evidence/2026-10-25-remaining-work-quiz-refresh.md)，不代表后续实现现状 |
 | 2026-10-25 推荐续读交付及剩余盘点 | 基线1.11；T-LEARN-01本地验收完成，6完成、42开放（31确认/10建议/1发布） | validate427/427、专项6/6加320补充1/1、完整E2E重试退出0和25图；首轮原生中止保留，独立审阅无阻断；见[交接](development/evidence/2026-10-25-learning-recommendation-integration.md) |
 | 2026-10-25 推荐集成后的盘点 | 基线1.10；仍完成5、剩余43；更正T-LEARN-01、QA和模态的过时现状，不新增需求 | 当前相关回归108/108；最新保存反馈修复仍待真实浏览器与全量验收；本轮只改文档、保留184份源码文件 |
 | 2026-10-25 课程错题本地交付 | 基线1.9；T-LEARN-02关闭，原48卡完成5、剩余43（32确认/10建议/1独立发布）；业务与完整证据995dd2c已推送 | 独立数据/UI审阅无阻断；源码对应validate370/370、专项6/6及完整E2E25图；[995dd2c的PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40130504986)已核对success（validate与Browser smoke均成功），仅覆盖已提交版本 |
