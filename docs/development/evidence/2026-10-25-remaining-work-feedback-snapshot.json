@@ -1,0 +1,749 @@
+{
+  "checkedAt": "2026-10-24T22:37:31.763Z",
+  "head": "3a5b7971d5a1ac0b44259fea7a3e4a603febb598",
+  "scope": "Remaining-work inventory; preserve existing uncommitted T-LEARN-03. This is not full product acceptance.",
+  "protectedFiles": [
+    {
+      "path": "package-lock.json",
+      "sha256": "db82e424b60db04792b88573c626485b412a4c53f3ef62e286e5e122df6aeb61"
+    },
+    {
+      "path": "package.json",
+      "sha256": "467dd7cbdd57c9a3ceef75b2547c18e606d7b35282ee57a88e7f511f36033f70"
+    },
+    {
+      "path": "scripts/browser-smoke.mjs",
+      "sha256": "994aa24f107a73452eb7c8a915749d99a26cc53103f205d5abfcea9f0f13f66e"
+    },
+    {
+      "path": "scripts/build-windows.mjs",
+      "sha256": "25b2dc6ef57c393b3e48a4a3628536fad83e5fdd8cad25091f4571f9351d9891"
+    },
+    {
+      "path": "scripts/desktop-launcher.cjs",
+      "sha256": "a6c7eb93d672d554a2fdde9022af69970e057e7858f34b12e0049814a5079d82"
+    },
+    {
+      "path": "scripts/quality-check.mjs",
+      "sha256": "21c24309bf4e3183d6c17c20d40d8a2324aea5ee51c6c7b4a0ef82205db06814"
+    },
+    {
+      "path": "scripts/serve.mjs",
+      "sha256": "21ffdb9e9c86d3e75038a4256a7c4874696739fa4e194d34a4a320c02918c3c4"
+    },
+    {
+      "path": "scripts/test-assessment-session.mjs",
+      "sha256": "f00f3d8e697392e230d29514d7f1d9dda5a67c5be4e6ae80b54de2a9fad5091e"
+    },
+    {
+      "path": "scripts/test-course-weak-questions.mjs",
+      "sha256": "0895688b193c7446d336a825a5ecc8c621998ac654d3d3d8cb747a75eb832fdb"
+    },
+    {
+      "path": "scripts/test-entry-input.mjs",
+      "sha256": "288d2f108fbedb9a26aa9ace4474f9c39786258586793e42b369ba2a5394cc9e"
+    },
+    {
+      "path": "scripts/test-quiz-weak-questions.mjs",
+      "sha256": "8e0610b4aedd2afb6e83d1c0983bf1ed7c21f47555af9927c98888b11ba4e4e2"
+    },
+    {
+      "path": "scripts/test-reading-resize.mjs",
+      "sha256": "81966146ce5dbbb42689f2ac93e8a501a2547f53bb2735dfba7b3b915947d328"
+    },
+    {
+      "path": "scripts/test-reading-save.mjs",
+      "sha256": "8a290b870a03055eb4117a79269e7912e7dcae863d2fca7e3982e26cf38f77aa"
+    },
+    {
+      "path": "scripts/test-search-input.mjs",
+      "sha256": "d7474c480bc459a577bb170a110715eb2cb00bc648fe7b306510ce2cf5b27a21"
+    },
+    {
+      "path": "scripts/test-windows-build.mjs",
+      "sha256": "19f1bc934b7b0fce0ddb9a65b4a906485a0d05e3678a8ddb1fe2dbb06215140b"
+    },
+    {
+      "path": "scripts/validate-commentaries.mjs",
+      "sha256": "6cc24ac5d924b20966235d5ccabcc36b88a9369679b47596b40e24874a0127cb"
+    },
+    {
+      "path": "test/almanac/astronomy.test.mjs",
+      "sha256": "a150fcf16adb16f6ca499853f4dd0d40063195a403040e8f984861eeec605052"
+    },
+    {
+      "path": "test/almanac/ganzhi.test.mjs",
+      "sha256": "e2c2fa62a5a0ff923e98990346ffb135ba01dbe209742cd1ffdd43c72ec920ae"
+    },
+    {
+      "path": "test/almanac/load-all-data.test.mjs",
+      "sha256": "d2204ded0a6ca7a63925263d933ab8c8b591ef128013bf71116a5519eae2d43c"
+    },
+    {
+      "path": "test/almanac/lunar.test.mjs",
+      "sha256": "714538d0fd3af1f240183e84fb803d985e804925474dafdd368b0ceb49c30c99"
+    },
+    {
+      "path": "test/almanac/render-smoke.test.mjs",
+      "sha256": "164d948ae167687c67488296136729f3da7a794c0e7b6ec5d42cc21e6999786e"
+    },
+    {
+      "path": "test/almanac/selection.test.mjs",
+      "sha256": "f3e23bb5f9f27b7e0a0861ec906403cb2141fb8cfdda35ae23963231f3e939d4"
+    },
+    {
+      "path": "test/almanac/solar-terms.test.mjs",
+      "sha256": "ce35f05177cac00f71264c6a7c8ccc01110e5cbe6e1a6dc18450e574ba6d62c6"
+    },
+    {
+      "path": "web/data/almanac-terms.json",
+      "sha256": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad"
+    },
+    {
+      "path": "web/data/almanac-yiji.json",
+      "sha256": "791c99f67bac66f7d1259d08aaeec3c53a540b3bdc8ae5403aaa107666ad6649"
+    },
+    {
+      "path": "web/data/commentaries/manifest.json",
+      "sha256": "a36a388c3de129a67b1487cf1efd7e1ac950c12d7c814a5dfcced0e4765d5d3c"
+    },
+    {
+      "path": "web/data/commentaries/sources.json",
+      "sha256": "8017312aebef8046f7afb9db8da67912efe5e4361470014c1ffea6501e6b5ffd"
+    },
+    {
+      "path": "web/data/hexagram-keywords.json",
+      "sha256": "7c146c9d708f5975c2e9b64aff84cf0eaaf95b40a48af6da01579db37ed3c68b"
+    },
+    {
+      "path": "web/data/hexagrams.json",
+      "sha256": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080"
+    },
+    {
+      "path": "web/data/theorems.json",
+      "sha256": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3"
+    },
+    {
+      "path": "web/data/trigrams.json",
+      "sha256": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8"
+    },
+    {
+      "path": "web/data/wings.json",
+      "sha256": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721"
+    },
+    {
+      "path": "web/index.html",
+      "sha256": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6"
+    },
+    {
+      "path": "web/js/achievement-catalog.js",
+      "sha256": "81bccb10cc29e418c6e8da913520b6a63f49014d3111f06a43d617b4697bc210"
+    },
+    {
+      "path": "web/js/achievement-engine.js",
+      "sha256": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0"
+    },
+    {
+      "path": "web/js/achievement-storage.js",
+      "sha256": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098"
+    },
+    {
+      "path": "web/js/almanac-knowledge.js",
+      "sha256": "ba1b1ce69a46de1832dc62e9959d1ae439f10c7435bd19b5e94c57bf40eeeccd"
+    },
+    {
+      "path": "web/js/almanac-page.js",
+      "sha256": "7fcd83f4a849609ba96e2f7b57dade843248f8f502988cc8e399b845fd5c9cb8"
+    },
+    {
+      "path": "web/js/almanac/astronomy.js",
+      "sha256": "140fc8ba4bfb34c65f1d21ece9507b86342184bd9d8aef0a8799031b13d0eec0"
+    },
+    {
+      "path": "web/js/almanac/ganzhi.js",
+      "sha256": "4a51302d321b81add9e7201b32c8dca8f29f39a1cefed1aaaa7a3528f68f3d46"
+    },
+    {
+      "path": "web/js/almanac/lunar.js",
+      "sha256": "81d9e09cc54cdb6d63c69dfbbff30cbb37717321c01459fe70fef87e375f26c8"
+    },
+    {
+      "path": "web/js/almanac/reading.js",
+      "sha256": "fb5b994555d2c7ca004c4fb1aec8015a6d9a19163d4cb90fc91196861490bcd6"
+    },
+    {
+      "path": "web/js/almanac/selection.js",
+      "sha256": "dfecae8bbada33b73584e71b8f18a4f09643b70f972dd7e9ace6b2184b26f937"
+    },
+    {
+      "path": "web/js/almanac/solar-terms.js",
+      "sha256": "4796db274d7b6d946b6eab72b55732a704dad52722af13bf93c612b1bfc176c5"
+    },
+    {
+      "path": "web/js/audio-engine.js",
+      "sha256": "d05ba615f16a4de7733638c1d16b389c306960a513e6436ff544620830ebcf86"
+    },
+    {
+      "path": "web/js/celestial-stage.js",
+      "sha256": "e6a2f52a59ba406f7d4f2b6cdf1de6c77748705f3a60858b5334761f936a5b88"
+    },
+    {
+      "path": "web/js/cinematic-motion.js",
+      "sha256": "5b1b1c88580b46a026527771853ef0970abebd1fa6176306729228e278e06b8b"
+    },
+    {
+      "path": "web/js/commentary-catalog.js",
+      "sha256": "cad1775d6e83132657223fdf500ccd21bc7021562a8cfd9c8c7d7501fd7da358"
+    },
+    {
+      "path": "web/js/content-provenance.js",
+      "sha256": "5836cd83dfd295b515f9d4f1ac77e9f220eae49cd044db5083a908c42aed9681"
+    },
+    {
+      "path": "web/js/data-loader.js",
+      "sha256": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5"
+    },
+    {
+      "path": "web/js/divination-engine.js",
+      "sha256": "f3b2a41090adeb25021d06ff60d710a9c1e5a8132384ce2feff629436a6c1e2d"
+    },
+    {
+      "path": "web/js/divination-history.js",
+      "sha256": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660"
+    },
+    {
+      "path": "web/js/divination-interpretation.js",
+      "sha256": "1fa8bf21fea4c8856e98fa139c1b4fdf551eeedcead8e63e6b048804a28238cf"
+    },
+    {
+      "path": "web/js/evolution-lab.js",
+      "sha256": "e5d2783b5665d56154d1f492608f31f6c0b5ae8a1f0f07d8e3e3e16b965b6003"
+    },
+    {
+      "path": "web/js/evolution-semantics.js",
+      "sha256": "b43bb7e6da618ff7638db9584538690a52bc32ce72432e4a8c1c1028d34b44fd"
+    },
+    {
+      "path": "web/js/evolution-state.js",
+      "sha256": "ac09b9175d5ec2bf78cbd3e6b9e284acb1835169127628832f500514bb859a74"
+    },
+    {
+      "path": "web/js/guaxu-wheel.js",
+      "sha256": "6f0a8d0d67ff56a4aa9a0a3d4240386833c3fcb14b2b5e95f36a311c11936e3f"
+    },
+    {
+      "path": "web/js/hexagram-utils.js",
+      "sha256": "d52499fd34fd201df09beb2b485e11936b4cabc0aa93776795570aaa35067ee1"
+    },
+    {
+      "path": "web/js/learning-assessment-page.js",
+      "sha256": "d4ee2d4a3cdb1ea6c13a8f2800d21c8403d2bdd5dea62ee8520b9cb4f7b89014"
+    },
+    {
+      "path": "web/js/learning-assessment.js",
+      "sha256": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b"
+    },
+    {
+      "path": "web/js/learning-curriculum.js",
+      "sha256": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e"
+    },
+    {
+      "path": "web/js/learning-feedback.js",
+      "sha256": "297b8116a05c6c2543e31dc2fdf0915f82f49d9d61f8d7af016ec6ad0ce93c28"
+    },
+    {
+      "path": "web/js/learning-progress.js",
+      "sha256": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06"
+    },
+    {
+      "path": "web/js/learning-review.js",
+      "sha256": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad"
+    },
+    {
+      "path": "web/js/main.js",
+      "sha256": "7b3ad942f4d51293035daa81b7c7cc3fe13ee456b1fd1f342f1ffa4f51edcb8d"
+    },
+    {
+      "path": "web/js/meihua-engine.js",
+      "sha256": "3310a0ede88f2f05ad1663aed48efed99c64828bcb4fced4a51e4733fdd45074"
+    },
+    {
+      "path": "web/js/modes/divination-mode.js",
+      "sha256": "0f383341726f6d97a29f762c5b7aa503e02cb38aa02d088f8717e8456b368b51"
+    },
+    {
+      "path": "web/js/modes/guaxu-mode.js",
+      "sha256": "28479453ab62f68c1dfb80bf4458c4e08f68df41b4fe149527f1e293e988d58e"
+    },
+    {
+      "path": "web/js/modes/learning-mode.js",
+      "sha256": "5a6009b61e2a846b5ab0a9b92e9a7fc6711d0c81bcdfd6431b2e764f42962bef"
+    },
+    {
+      "path": "web/js/modes/quiz-mode.js",
+      "sha256": "d63a0fe1ce0f231fa67c71d9b4903484c387c1b9ffb4dfdec08803e3e046600e"
+    },
+    {
+      "path": "web/js/modes/review-mode.js",
+      "sha256": "8adbee1de930ede4f35bc471587081f606d293370313a924ad22cd1483ae4adc"
+    },
+    {
+      "path": "web/js/motion-system.js",
+      "sha256": "f651f048d502500d58af0eeb5a8e4ed97c8d7ecf463c1ce66e7c4ea036abcd1f"
+    },
+    {
+      "path": "web/js/protocol-guard.js",
+      "sha256": "67f6ecb47fcb795bfb78af70b440a7ea4a272242291510d8a8e90e8546cabd67"
+    },
+    {
+      "path": "web/js/quiz-engine.js",
+      "sha256": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969"
+    },
+    {
+      "path": "web/js/quiz-session.js",
+      "sha256": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a"
+    },
+    {
+      "path": "web/js/reading-state.js",
+      "sha256": "86fac1c3178fed62c9932cce72944f932f4c6ecd3753252765f99fcf2f76387d"
+    },
+    {
+      "path": "web/js/relation-animation.js",
+      "sha256": "99eab835d975d38a510cda77152583a03c080eca5f5660606a2366c13ffd62cf"
+    },
+    {
+      "path": "web/js/render.js",
+      "sha256": "b8801a6363fcb6714173f22384c1f866b83dfb02902a5d1d3a84461568d51757"
+    },
+    {
+      "path": "web/js/review-engine.js",
+      "sha256": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43"
+    },
+    {
+      "path": "web/js/review-session.js",
+      "sha256": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54"
+    },
+    {
+      "path": "web/js/search-controller.js",
+      "sha256": "cb256d0f22e4c7f14b0a37ac79644c297300299d4de7b44fa6a192c2496f0ee6"
+    },
+    {
+      "path": "web/js/share-card.js",
+      "sha256": "f395053adad507eb6f77d9430671af76f064307aafc58c807c3993dd238a4dc3"
+    },
+    {
+      "path": "web/js/star-atmosphere.js",
+      "sha256": "9a7db611a64c9feae205378b7b95689a29aef1288b63a501b066acf457379964"
+    },
+    {
+      "path": "web/js/star-label-layout.js",
+      "sha256": "aff233a2f34d93a3ded0d7fdcb1052241842567bf21b1bf54520fc99d843f991"
+    },
+    {
+      "path": "web/js/star-layouts.js",
+      "sha256": "fc8190c9fdc1ab0454e061b877345939f6bae4e36d55bee4289c2f1d6259b3fe"
+    },
+    {
+      "path": "web/js/star-map.js",
+      "sha256": "23787057a90bee36ad2afa2f54163530856938e60e58d6e8197889ef94eab851"
+    },
+    {
+      "path": "web/js/star-relations.js",
+      "sha256": "04ffc7a7de8b29673317097307ce0d74b64829b48bc3e5f6299341c45b565fd0"
+    },
+    {
+      "path": "web/js/storage.js",
+      "sha256": "13d7b5b1288991582a4102dbb48b64d0b98593d1fab1502169dce7e52be78f28"
+    },
+    {
+      "path": "web/js/study-page.js",
+      "sha256": "d8a62656eb50f95649aa74bd5231153739d9db0c7002c0f7d5ba95df4bfed11f"
+    },
+    {
+      "path": "web/js/svg-painter.js",
+      "sha256": "c9a31cf9699a138caadbab285756c17a1d4fa1e0de658a4c93df7f6a7fda860f"
+    },
+    {
+      "path": "web/js/ui-icons.js",
+      "sha256": "d7a824bf568c4746c2259dbd7e3deb9eca9ebbccb69509a148c80f0651a7a1f6"
+    },
+    {
+      "path": "web/js/user-data.js",
+      "sha256": "3afccc2472dbab027089a7686ec1e43249a3f889b55be8610eebacef7bca1f6d"
+    },
+    {
+      "path": "web/lib/d3-force.js",
+      "sha256": "11af883da9dbacd4674448007693acc57971af2c58497abcedb17a198f0feef0"
+    },
+    {
+      "path": "web/lib/vendor/gsap.min.js",
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "path": "web/lib/vendor/lenis.css",
+      "sha256": "2f668ae84a668327f246faf8a770383a2bf69196d214290fbc4d5548910606c5"
+    },
+    {
+      "path": "web/lib/vendor/lenis.min.js",
+      "sha256": "53195c9797e7ce7bf9d7fa9242b08209e57f46de4c9dac126a6494fa780e3346"
+    },
+    {
+      "path": "web/lib/vendor/three.core.min.js",
+      "sha256": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90"
+    },
+    {
+      "path": "web/lib/vendor/three.module.min.js",
+      "sha256": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+    },
+    {
+      "path": "web/serve.bat",
+      "sha256": "b197c351c7cfc580f2014b59bc47bf71047b594c5761668cb8354f0b0dd3ae12"
+    },
+    {
+      "path": "web/styles/immersive.css",
+      "sha256": "8f8060c3b041bbdb7bc8f7b90336861a9aba99552c1722f6dd5a46eddefd9155"
+    },
+    {
+      "path": "web/styles/main.css",
+      "sha256": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268"
+    },
+    {
+      "path": "web/sw.js",
+      "sha256": "8d7a49f868751942dd42e1ece73f179acfb027f69d942352ef496ef430f1edf1"
+    },
+    {
+      "path": "web/test/achievement-catalog.test.mjs",
+      "sha256": "4ef51aff630d90d3578f297e6d6b2c8ff2614223dddb3b3c825eb87d9c6c7f43"
+    },
+    {
+      "path": "web/test/achievement-engine.test.mjs",
+      "sha256": "4b6c6b6608803ff5089c5ef1124f4253a6b7d410dac90a551a61284c39351625"
+    },
+    {
+      "path": "web/test/achievement-storage.test.mjs",
+      "sha256": "8410d20a500c9968d915fb893c91336231b4c5e5581bdedea8728df3a5a6b0cc"
+    },
+    {
+      "path": "web/test/almanac-knowledge-page.test.mjs",
+      "sha256": "41517012887bbfb54f4bd92444972b4f0f4bfac6877ae689c5c69ecb97614ae3"
+    },
+    {
+      "path": "web/test/almanac-page-accessibility.test.mjs",
+      "sha256": "c371be169d2af7eab079838f96ec8fbc3eb11f9350fb384e8d225d0de5c31362"
+    },
+    {
+      "path": "web/test/almanac-timezone.test.mjs",
+      "sha256": "c47b9bb1f8ecc15f266cd9a1854271c96ddcdaecfdd146002d8ee5648c61d492"
+    },
+    {
+      "path": "web/test/audio-engine.test.mjs",
+      "sha256": "c780d46685e1c5ce1edf72aadaa699482bb65c16587b645652d3fa7809c21faf"
+    },
+    {
+      "path": "web/test/browser-smoke-reading-state.test.mjs",
+      "sha256": "a3d5491f139d11f7575a03c623339adce09f10ca80d275dbd04f08d39d244c39"
+    },
+    {
+      "path": "web/test/celestial-stage.test.mjs",
+      "sha256": "06461e8689f20a88359f46bcc89f77cd3ac6f84381cc204ba4c2bd88965a0877"
+    },
+    {
+      "path": "web/test/commentary-catalog.test.mjs",
+      "sha256": "814893f40f7ebc30a3472b0e745ec45d58bcf933559f83dfb8a34a52523e16cf"
+    },
+    {
+      "path": "web/test/content-provenance.test.mjs",
+      "sha256": "c9ea6c9e66d072c04a7edbd461eb1a708af7461f0e2041cda05b1e5fa7f9005c"
+    },
+    {
+      "path": "web/test/daily-overlay-layout.test.mjs",
+      "sha256": "3d43642684693d30488503fec2a45cb4187c892bf15c203ee4df84e6ddc88df6"
+    },
+    {
+      "path": "web/test/data-loader.test.mjs",
+      "sha256": "9bdf3ae5a7ecc7c7034b1f053e0a76051c44fcd0fbf547fc5a70b09ecaa0562e"
+    },
+    {
+      "path": "web/test/divination-engine.test.mjs",
+      "sha256": "6b7444e525a26df6ef2db5e6d5e8216ab1bbbca77832feb75f9100928487aa9c"
+    },
+    {
+      "path": "web/test/divination-history.test.mjs",
+      "sha256": "b4a611ca6eb4fff2eefecc36503eec7b66e142f049f2aeb0f1716062ca8fca52"
+    },
+    {
+      "path": "web/test/divination-interpretation.test.mjs",
+      "sha256": "13702d0a1aa4521f54fbcca20d2c2a72a1d605ae16adc9bd3b7f012559762d6d"
+    },
+    {
+      "path": "web/test/divination-replay.test.mjs",
+      "sha256": "cb38a9560d495b45d3a773ea8930413cf56fd6132ea5e7a00fe0e4d2445aec1c"
+    },
+    {
+      "path": "web/test/evolution-lab.test.mjs",
+      "sha256": "895c996205bb1fe401fe19dde2c4c35c37e40279642bbd2b1b10661c2fca2fc0"
+    },
+    {
+      "path": "web/test/evolution-semantics.test.mjs",
+      "sha256": "0a2b531bfa7798d86ce9ff1ffe05a62cc30050db49ea958c2364f80606480a1e"
+    },
+    {
+      "path": "web/test/guaxu-wheel.test.mjs",
+      "sha256": "0c90012330058d5cab858ca81bee931b0b1d97c3888aba313135ae4a83e0a297"
+    },
+    {
+      "path": "web/test/helpers/quiz-page-dom.mjs",
+      "sha256": "1d1eaed6d8a61f66a1b99e2efd7833c4903117238200a27121f5065339efafac"
+    },
+    {
+      "path": "web/test/hexagram-order-remarks.test.mjs",
+      "sha256": "d2de65e66ec5c283d274a1deb9aae9315b1f4ca6b17de6c3589aae041c681a69"
+    },
+    {
+      "path": "web/test/hexagram-utils.test.mjs",
+      "sha256": "f80d970dd0e2ed73e02abad666ad2f6a5d98751b966c0870413346219345e9c6"
+    },
+    {
+      "path": "web/test/immersive-shell.test.mjs",
+      "sha256": "ffba29ab3bf0e8269f2b303bc7e2cf2bd20dc5b3dd4a1caefa81b09cda46b039"
+    },
+    {
+      "path": "web/test/layout-contract.test.mjs",
+      "sha256": "8a941ccbb7712bb4a521eb2538a652493629fa10333037a22d480015b8684bbe"
+    },
+    {
+      "path": "web/test/learning-assessment-page.test.mjs",
+      "sha256": "f482b49f38fb60976ce6e1a9061492b0585e523a356dc9dda576865f52197a85"
+    },
+    {
+      "path": "web/test/learning-assessment.test.mjs",
+      "sha256": "54605a0389f4f24e4e0a16a6094d874a9a6fd9913c60018c352874d0c73380c2"
+    },
+    {
+      "path": "web/test/learning-curriculum.test.mjs",
+      "sha256": "44496b63c0c0e4a6bab6f675b5d77ca821c14fe4d618cd5a9fa2ff7dbe34a2b0"
+    },
+    {
+      "path": "web/test/learning-feedback.test.mjs",
+      "sha256": "d1132ddaaf0a678247c94650293cbe0895723b2ad5dd53e7fc192d4673f21490"
+    },
+    {
+      "path": "web/test/learning-progress.test.mjs",
+      "sha256": "668dcc8b93345a43ce5249a27c60d131aa802afd77e712c6b2fe09f6d11b5a23"
+    },
+    {
+      "path": "web/test/learning-recommendation.test.mjs",
+      "sha256": "a0589dfa556c7f93694e406ae8acb271579245619b5421eb8455167907e34529"
+    },
+    {
+      "path": "web/test/learning-review.test.mjs",
+      "sha256": "8f27e082273e14b4b9f9eb225457567e8a2724a63b8412b71912fedb5217c9ce"
+    },
+    {
+      "path": "web/test/learning-ui-contract.test.mjs",
+      "sha256": "8313432488df94f941b647e029fc391af885f6197f578bc681529659fb02af77"
+    },
+    {
+      "path": "web/test/learning-weak-questions-page.test.mjs",
+      "sha256": "7d43866ce0c6ccf7a76a21f9d7bc73ebb38a92f0807f46f78a6888ab23eaa465"
+    },
+    {
+      "path": "web/test/lesson-resume-page.test.mjs",
+      "sha256": "9d1e689627bb7560729f2fa62440aff650ab89d1c17d4c27b490ac05b33b5de3"
+    },
+    {
+      "path": "web/test/main-mode-navigation.test.mjs",
+      "sha256": "8c38549fd45c5a4a64ac839d1b825475830dc0f5914aca5e4c42166b20592ac1"
+    },
+    {
+      "path": "web/test/main-search.test.mjs",
+      "sha256": "b1c519eae3827cfdf20f403ab751a4bea4ea9a5f2535892f607fef7a55c92454"
+    },
+    {
+      "path": "web/test/main-stage-lifecycle.test.mjs",
+      "sha256": "343119415599e3fdbc853805710f5bb0b8975cb57c42dcffd5c7324e24b6dfad"
+    },
+    {
+      "path": "web/test/meihua-engine.test.mjs",
+      "sha256": "5d5e3786526f4285467c82a282bdb028438c86080aa211835679405fcf239ea0"
+    },
+    {
+      "path": "web/test/mode-result-visibility.test.mjs",
+      "sha256": "741799e355e9e9213a0062f5161c214aac17cd58ea0efd03cf387316fa78c7b9"
+    },
+    {
+      "path": "web/test/motion-system.test.mjs",
+      "sha256": "6f7511ef48d4a756320b94ac0124c4fe1eb20a7166725ca8884f7fe41631b346"
+    },
+    {
+      "path": "web/test/protocol-guard.test.mjs",
+      "sha256": "be172b8381a82f33af1b0c4520467c5c844491ff856f2eec0dcf7d1527c526e1"
+    },
+    {
+      "path": "web/test/pwa-assets.test.mjs",
+      "sha256": "9c8a53f9363fc41f65ccbe0f8980241ed1c8e880f53cfe556a40373558405680"
+    },
+    {
+      "path": "web/test/quiz-engine.test.mjs",
+      "sha256": "a1bcb882bb169abe1220250bba90d2cf146f6af217e70343ec58d28205e76bf1"
+    },
+    {
+      "path": "web/test/quiz-mode-page.test.mjs",
+      "sha256": "a41bb25da0552a59ef5df18c8815b4e0fd2fb7493e1383bb4f35eb48d6aa5082"
+    },
+    {
+      "path": "web/test/quiz-question-reference.test.mjs",
+      "sha256": "434af8e63568cb4568ae54acb3f4ffde627000328a28db3bb62103abab1ccc44"
+    },
+    {
+      "path": "web/test/quiz-review-pages.test.mjs",
+      "sha256": "b7446b9dc23a12a18a3c2b6cdb88d6f3d9caaa4b667801d2f9e340b7652161fd"
+    },
+    {
+      "path": "web/test/quiz-session.test.mjs",
+      "sha256": "8e5bbc3a221ce797edb4319e284f57df047493a96a06847e8958461d2e733932"
+    },
+    {
+      "path": "web/test/quiz-weak-data.test.mjs",
+      "sha256": "44512a73766677122daaec164903824206cee9530e05d335c5b12e2942967ed2"
+    },
+    {
+      "path": "web/test/reading-document.test.mjs",
+      "sha256": "17cee473f6ec57884c74d8e9978c6a9bd50979986302406f069ae1d935214fe1"
+    },
+    {
+      "path": "web/test/reading-state.test.mjs",
+      "sha256": "8d5d818fe1ab08f5af44f4f5451c820369be3ad821402fce2d1ae6d4ad13396f"
+    },
+    {
+      "path": "web/test/relation-animation.test.mjs",
+      "sha256": "ce1745bf66f4d44958f4a817130f78b7c7f4ac5acd89a1432d5452195aaf4cc5"
+    },
+    {
+      "path": "web/test/render-accessibility.test.mjs",
+      "sha256": "f1df2f57044c2ee78762903cd509d3fb53ecc273ca217afdcd45d77472f831cc"
+    },
+    {
+      "path": "web/test/review-engine.test.mjs",
+      "sha256": "fb16ea12cc959562d231ce1e0fb7b6e4623772f476f231a67db5f808a3c3ee98"
+    },
+    {
+      "path": "web/test/review-session.test.mjs",
+      "sha256": "a0299123567297f114a2a65eec65db07ffeaf51e98434ec483ca20ff4ef418f7"
+    },
+    {
+      "path": "web/test/search-controller.test.mjs",
+      "sha256": "1997032a865a353515cae7853d2f4854818bb740936130285fe2a4f558682ccd"
+    },
+    {
+      "path": "web/test/share-card.test.mjs",
+      "sha256": "c4dc74430fa8a1c5377afe7074dd2e0a22bfcf3c5b619e803cdc73347c23e2b5"
+    },
+    {
+      "path": "web/test/star-atmosphere.test.mjs",
+      "sha256": "93d3817d23d21f58a382cf0078b7362746f40bb006c6ef8a1eea909d4efb9c93"
+    },
+    {
+      "path": "web/test/star-label-layout.test.mjs",
+      "sha256": "6f025efbaebfc24e13c9920db568ff9fb03ab73d2445b4937dab7eabd218948d"
+    },
+    {
+      "path": "web/test/star-layouts.test.mjs",
+      "sha256": "00892d46009b7bd46554f59613a905eb4bc88ceb3805ce142e2a8f61ad3c6d01"
+    },
+    {
+      "path": "web/test/star-map-accessibility.test.mjs",
+      "sha256": "a3993209845af238cc3560e9c9f927e0e77e02beab3279e3a9052dce7a60b8ac"
+    },
+    {
+      "path": "web/test/star-map-performance.test.mjs",
+      "sha256": "845dbd72e3abaec1dcbed1021a9727316de4d1bd227ebda36adaf6b0d46b7588"
+    },
+    {
+      "path": "web/test/star-pointer-lifecycle.test.mjs",
+      "sha256": "bca816ce3888545dffd56f49096ad6cff13872290deb1d5a6f4c3d10bbda516f"
+    },
+    {
+      "path": "web/test/star-relations.test.mjs",
+      "sha256": "3980e6a8b04eed6985ae28f6f88c516a1957f2b31254ad7d89c783124e72b1f6"
+    },
+    {
+      "path": "web/test/storage.test.mjs",
+      "sha256": "87cfe4b1a479bbeb31b6434cb73ccc9c1c7bf3e2ece8861b52f9764a8a78aeeb"
+    },
+    {
+      "path": "web/test/typography-system.test.mjs",
+      "sha256": "6e9cd79d7fecf3ee2701f3a7d8f7ed8c2022a46eab06fe1eb969089dff099ead"
+    },
+    {
+      "path": "web/test/ui-icons.test.mjs",
+      "sha256": "3d396642a48c42aff138fd2ed8349e9de9c3f1469c22718f0c2c1d6042ddf5ad"
+    },
+    {
+      "path": "web/test/user-data.test.mjs",
+      "sha256": "292b6c7a0cb7272cd9a576a21efc2962d5bec3aa21d842920801001f881b3ec7"
+    },
+    {
+      "path": "web/tool/fill-all.mjs",
+      "sha256": "0a5b56b43ff2706c2ab0783868155e1fa2735b45b18a90a54dfde38672fb8be9"
+    },
+    {
+      "path": "web/tool/gen-almanac-data.mjs",
+      "sha256": "151a088d4f8ca1c1b6c8671292e7804a069ee9b4f8a03529b71b100ab30cebf9"
+    },
+    {
+      "path": "web/tool/gen-keywords.mjs",
+      "sha256": "b4af82f07a5382f97aa9dbb5e7a56b155727dddcf3cb8886b45604e630f19c71"
+    },
+    {
+      "path": "web/tool/gen-notes.mjs",
+      "sha256": "a3a3df0071ffac722032515bdc3c9872871443a73736d64c05c2740ada54458f"
+    },
+    {
+      "path": "web/tool/gen-theorems.mjs",
+      "sha256": "229c7320654a265e08cdd14d8f0ec9f887c9f17ec994c0edd2e0147ebbb5865a"
+    },
+    {
+      "path": "web/tool/gen-tuan-notes.mjs",
+      "sha256": "833832fe5863cb77afe2a44d320eebaddcfcbf8afd16c51525364bdb6ea0fbf9"
+    },
+    {
+      "path": "web/tool/gen-wings.mjs",
+      "sha256": "0c8cce231b9fe812636d59e5a9f64db51a81cce5d596d7123647258bb79aff44"
+    }
+  ],
+  "changedSinceQuiz": [
+    "web/js/learning-assessment-page.js",
+    "web/js/modes/learning-mode.js",
+    "web/js/review-engine.js",
+    "web/test/learning-assessment-page.test.mjs",
+    "web/test/learning-weak-questions-page.test.mjs",
+    "web/test/review-engine.test.mjs"
+  ],
+  "addedSourceFiles": [
+    "web/js/learning-feedback.js",
+    "web/js/review-session.js",
+    "web/test/learning-feedback.test.mjs",
+    "web/test/review-session.test.mjs"
+  ],
+  "localChecks": {
+    "command": "node --test web/test/review-engine.test.mjs web/test/review-session.test.mjs web/test/learning-assessment-page.test.mjs web/test/learning-weak-questions-page.test.mjs web/test/learning-feedback.test.mjs",
+    "node": "v24.19.0",
+    "passed": 111,
+    "failed": 0,
+    "exitCode": 0,
+    "fullValidateRerun": false,
+    "browserE2ERerun": false
+  },
+  "remote": {
+    "branch": "codex/immersive-astrolabe-progress",
+    "businessCommit": "3a5b7971d5a1ac0b44259fea7a3e4a603febb598",
+    "pr": 10,
+    "draft": true,
+    "merged": false,
+    "qualityRun": 40139183436,
+    "qualityStatus": "completed",
+    "qualityConclusion": "success",
+    "includesUncommittedLearn03": false
+  }
+}

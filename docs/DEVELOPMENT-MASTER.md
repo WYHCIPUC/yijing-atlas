@@ -1,14 +1,16 @@
 # 易象图谱开发建设总册
 
-版本：文档基线 1.17。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
+版本：文档基线 1.18。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
 
 **用途：其他 AI 或开发者只阅读本总册与关联专题，即可接手当前项目，按任务卡逐项开发、验证和交接。**
 
 **当前结论：产品尚未完成全面优化。** 总册与12份专题已建立；原48张卡现已完成T-DIV-01、T-SAVE-01、T-LEARN-05、T-SEARCH-01、T-LEARN-02、T-LEARN-01、T-QUIZ-01共7项，41项尚未闭环。最新具体错题与术语温习见[测验交接](development/evidence/2026-10-25-quiz-integration.md)，推荐/续读见[推荐交接](development/evidence/2026-10-25-learning-recommendation-integration.md)。内容与设备验收门禁继续保留。用户已要求GitHub开发分支、PR与任务同步；生产发布仍需另行安排。
 
-需要查看剩余范围或复制目标时，阅读[未完成事项清单与目标文字](development/REMAINING-WORK-AND-GOAL.md)：逐项列出41项（30已确认、10建议、1独立发布）。三条既有专题要求的执行归属已明确，功能仍待实施；没有新增需求或采纳建议。
+需要查看剩余范围或复制目标时，阅读[未完成事项清单与目标文字](development/REMAINING-WORK-AND-GOAL.md)：逐项列出41项（30已确认、10建议、1独立发布）。三条既有专题要求的执行归属已明确；复习与复讲已有在制实现，梅花时间来源提示未完成，没有新增需求或采纳建议。
 
-**本次业务交付**：T-QUIZ-01完成本地验收：具体规则/术语方向的错题—温习—纠正、六项独立保存重试、旧摘要隔离及跨页清理已接通。320px定位与工具栏遮挡分别红→绿；修后validate退出0，72脚本、515/515，配置21模块行99.76%、分支94.04%、函数98.96%。最终18项独立专项、147次可信输入/49图通过；完整五视口E2E退出0、25图，173份源码哈希一致。原生200%偏好未生效，仍未验证。源码、测试与证据随本次提交交付，远程CI按新提交另记；不能沿用起点9715d5b的绿灯。见[最终验收摘要](development/evidence/2026-10-25-quiz-final-acceptance.json)。[此前42项盘点](development/evidence/2026-10-25-remaining-work-toolbar-review.md)保留当时范围。
+**最新盘点边界**：T-QUIZ-01业务提交`3a5b7971d5a1ac0b44259fea7a3e4a603febb598`已同步GitHub开发分支，[对应PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40139183436)为completed/success，validate与Browser smoke均成功。T-LEARN-03另有未提交修改：共享反馈、复习提交协调器及复讲/考评页面部分接线；本次限定回归111/111，尚缺其余页面整合、真实交互及全量验收，整卡不关闭。详见[盘点记录](development/evidence/2026-10-25-remaining-work-feedback-review.md)。以下测验、推荐与课程全量结果分别适用于其交付版本，不覆盖当前未提交代码。
+
+**测验业务交付版本3a5b797**：T-QUIZ-01完成本地验收：具体规则/术语方向的错题—温习—纠正、六项独立保存重试、旧摘要隔离及跨页清理已接通。320px定位与工具栏遮挡分别红→绿；修后validate退出0，72脚本、515/515，配置21模块行99.76%、分支94.04%、函数98.96%。最终18项独立专项、147次可信输入/49图通过；完整五视口E2E退出0、25图，173份源码哈希一致。原生200%偏好未生效，仍未验证。源码、测试与证据已交付；见[最终验收摘要](development/evidence/2026-10-25-quiz-final-acceptance.json)。[此前42项盘点](development/evidence/2026-10-25-remaining-work-toolbar-review.md)保留当时范围。
 
 **此前搜索交付**：T-SEARCH-01已完成结构搜索、真实资料接线、IME/ARIA与异步保护，以及手机六位码呈现。validate 62脚本、317/317及完整五视口E2E通过，含实际关键词正例的专项矩阵与手机字段红→绿均已记录。来源/完整限制见[搜索整合交接](development/evidence/2026-10-25-search-integration.md)；外部设备、读屏与真实200%不由模拟验收替代。
 
