@@ -1,12 +1,14 @@
 # 易象图谱开发建设总册
 
-版本：文档基线 1.11。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
+版本：文档基线 1.12。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
 
 **用途：其他 AI 或开发者只阅读本总册与关联专题，即可接手当前项目，按任务卡逐项开发、验证和交接。**
 
 **当前结论：产品尚未完成全面优化。** 总册与12份专题已建立；原48张卡现已完成T-DIV-01、T-SAVE-01、T-LEARN-05、T-SEARCH-01、T-LEARN-02、T-LEARN-01共6项，42项尚未闭环。最新推荐/续读源码和证据见[推荐交接](development/evidence/2026-10-25-learning-recommendation-integration.md)，课程错题见[课程交接](development/evidence/2026-10-25-course-weak-integration.md)。内容与设备验收门禁继续保留。用户已要求GitHub开发分支、PR与任务同步；生产发布仍需另行安排。
 
 需要查看剩余范围或复制目标时，阅读[未完成事项清单与目标文字](development/REMAINING-WORK-AND-GOAL.md)：逐项列出42项（31已确认、10建议、1独立发布）。三条既有专题要求的执行归属已明确，功能仍待实施；没有新增需求或采纳建议。
+
+**本次盘点更新**：已提交源码为`4e8adc800b39ade15ece002b4f085143426bba44`，该提交[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40133463549)已核对success，validate与Browser smoke均通过。工作区另有T-QUIZ-01数据/页面/测试草稿，当前缺`quiz-session.js`及引用接口，模块导入实际失败；推荐、温故、导航接线和实现后验收尚未完成。不能以已提交版本绿灯证明当前草稿可用；本次仅更新文档，保留已有修改。详见[在制工作与盘点证据](development/evidence/2026-10-25-remaining-work-quiz-refresh.md)。
 
 **此前搜索交付**：T-SEARCH-01已完成结构搜索、真实资料接线、IME/ARIA与异步保护，以及手机六位码呈现。validate 62脚本、317/317及完整五视口E2E通过，含实际关键词正例的专项矩阵与手机字段红→绿均已记录。来源/完整限制见[搜索整合交接](development/evidence/2026-10-25-search-integration.md)；外部设备、读屏与真实200%不由模拟验收替代。
 
