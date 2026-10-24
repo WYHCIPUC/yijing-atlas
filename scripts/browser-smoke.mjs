@@ -356,6 +356,16 @@ async function waitForControlledApp(client, message) {
   }
 }
 
+async function reloadDocument(client, { ignoreCache = false } = {}) {
+  const previousOrigin = await client.evaluate('performance.timeOrigin');
+  await client.send('Page.reload', { ignoreCache });
+  await waitFor(
+    () => client.evaluate(`performance.timeOrigin !== ${previousOrigin}`),
+    '重载未创建新文档，不能使用旧页面的就绪状态',
+    30000,
+  );
+}
+
 async function verifyNativeBrowserZoom(browserPath, siteUrl) {
   const directory = mkdtempSync(join(tmpdir(), 'yijing-browser-zoom-'));
   const port = await freePort();
@@ -610,7 +620,7 @@ try {
     localStorage.setItem('yijing-drawer-size', 'large');
   })()`);
   await client.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false });
-  await client.send('Page.reload', { ignoreCache: true });
+  await reloadDocument(client, { ignoreCache: true });
   await waitFor(() => client.evaluate('document.querySelector("#loading")?.hidden === true'), '应用初始化超时');
   await assertNoChineseOrphans(client, '1280x720 欢迎页');
   await waitFor(() => client.evaluate('document.activeElement?.dataset.entry === "beginner"'), '欢迎层未聚焦首个入口');
@@ -1316,10 +1326,11 @@ try {
     30000,
   );
   if (!await client.evaluate('Boolean(navigator.serviceWorker?.controller)')) {
-    await client.send('Page.reload', { ignoreCache: true });
+    await reloadDocument(client);
     await waitForControlledApp(client, '重载后应用或 Service Worker 未就绪');
   }
 
+  await client.send('Network.setCacheDisabled', { cacheDisabled: true });
   await client.send('Network.emulateNetworkConditions', {
     offline: true,
     latency: 0,
@@ -1327,7 +1338,7 @@ try {
     uploadThroughput: -1,
     connectionType: 'none',
   });
-  await client.send('Page.reload', { ignoreCache: true });
+  await reloadDocument(client);
   await waitForControlledApp(client, '断网重开后页面没有恢复');
   const offlineReload = await client.evaluate(`(() => {
     const input = document.querySelector('#search');
@@ -1348,6 +1359,7 @@ try {
     uploadThroughput: -1,
     connectionType: 'wifi',
   });
+  await client.send('Network.setCacheDisabled', { cacheDisabled: false });
   if (!offlineReload.loadingHidden || !offlineReload.controller || !offlineReload.canvas ||
       offlineReload.overviewEntries < 1 || offlineReload.searchResults < 1) {
     throw new Error(`断网重开后核心页面不完整：${JSON.stringify(offlineReload)}`);
