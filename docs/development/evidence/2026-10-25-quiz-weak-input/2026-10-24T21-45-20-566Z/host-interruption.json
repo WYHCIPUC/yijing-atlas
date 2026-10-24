@@ -1,0 +1,13 @@
+{
+  "classification": "host-native-abort",
+  "executionExitCode": 1,
+  "runtime": "Node v22.23.1 / libuv 1.51.0",
+  "observedStderr": "Assertion failed: new_time >= loop->time, file c:\\ws\\deps\\uv\\src\\win\\core.c, line 327",
+  "completedScenarios": ["1440-question-readability", "1440-original-cycle", "390-original-cycle", "1440-same-hex-other-rule", "390-same-term-other-direction", "1440-retry-stats"],
+  "interruptedScenario": "1440-retry-weak",
+  "fullMatrixResult": "not obtained",
+  "traceStatus": "running; original bytes retained because the runtime did not reach finally",
+  "endHashesAndPageErrors": "not obtained",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-HvyhA5",
+  "profileRemoved": false
+}

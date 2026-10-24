@@ -1,112 +1,93 @@
 {
-  "date": "2026-10-25",
-  "head": "995dd2c2befccdc0cab38300101a9efa857c021c",
-  "runtime": "Node.js v24.19.0 (existing bundled runtime; no global configuration change)",
-  "scope": "Read-only checks of preserved unfinished T-LEARN-01 work; summaries, not raw logs.",
-  "checks": [
-    {
-      "command": "node --test web/test/learning-progress.test.mjs web/test/user-data.test.mjs",
-      "exitCode": 0,
-      "tests": 47,
-      "passed": 47,
-      "failed": 0
-    },
-    {
-      "command": "node --test web/test/learning-recommendation.test.mjs",
-      "exitCode": 1,
-      "tests": 13,
-      "passed": 0,
-      "failed": 13,
-      "reason": "recommendLearningTask is undefined; all tests stop at API existence assertion"
-    },
-    {
-      "command": "node --input-type=module -e \"import('./web/js/modes/learning-mode.js')\"",
-      "exitCode": 1,
-      "reason": "SyntaxError: ../learning-assessment.js does not provide an export named recommendLearningTask"
-    }
+  "checkedAt": "2026-10-24T21:56:10.569Z",
+  "sourceHead": "08a3c9f23819820deead93d4c2e1222e7b2112b1",
+  "cards": 48,
+  "completed": [
+    "T-DIV-01",
+    "T-SAVE-01",
+    "T-LEARN-05",
+    "T-SEARCH-01",
+    "T-LEARN-02",
+    "T-LEARN-01"
   ],
-  "github": {
-    "run": {
-      "workflow_runs": [
-        {
-          "id": 40130504986,
-          "name": "Quality",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 106,
-          "jobs_url": "https://api.github.com/repos/WYHCIPUC/yijing-atlas/actions/runs/40130504986/jobs",
-          "logs_url": "https://api.github.com/repos/WYHCIPUC/yijing-atlas/actions/runs/40130504986/logs",
-          "workflow_id": 328994550
-        }
-      ]
-    },
-    "jobs": {
-      "jobs": [
-        {
-          "id": 120981011970,
-          "name": "validate",
-          "status": "completed",
-          "conclusion": "success",
-          "run_id": 40130504986,
-          "logs_url": null,
-          "steps": [
-            {
-              "name": "Set up job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 1
-            },
-            {
-              "name": "Checkout repository",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 2
-            },
-            {
-              "name": "Set up Node.js",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 3
-            },
-            {
-              "name": "Validate repository",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 4
-            },
-            {
-              "name": "Browser smoke test",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 5
-            },
-            {
-              "name": "Post Set up Node.js",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 9
-            },
-            {
-              "name": "Post Checkout repository",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 10
-            },
-            {
-              "name": "Complete job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 11
-            }
-          ]
-        }
-      ]
-    },
-    "pr": {
-      "number": 10,
-      "head": "995dd2c2befccdc0cab38300101a9efa857c021c",
-      "draft": true,
-      "merged": false
-    }
-  }
+  "open": 42,
+  "openKinds": {
+    "confirmed": 31,
+    "suggestions": 10,
+    "independent": 1
+  },
+  "openTaskIds": [
+    "T-QA-01",
+    "T-GROW-01",
+    "T-STAR-01",
+    "T-STAR-02",
+    "T-STAR-03",
+    "T-READ-01",
+    "T-READ-02",
+    "T-READ-03",
+    "T-READ-04",
+    "T-LEARN-03",
+    "T-QUIZ-01",
+    "T-LEARN-04",
+    "T-DIV-02",
+    "T-DIV-03",
+    "T-GROW-02",
+    "T-PRIV-01",
+    "T-CAL-01",
+    "T-CAL-02",
+    "T-CAL-03",
+    "T-SOUND-01",
+    "T-SOUND-02",
+    "T-MODAL-01",
+    "T-ICON-01",
+    "T-ASSET-02",
+    "T-BACKUP-01",
+    "T-BACKUP-02",
+    "T-API-01",
+    "T-CACHE-01",
+    "T-CACHE-02",
+    "T-CAPACITY-01",
+    "T-SHARE-01",
+    "T-ASSET-01",
+    "T-DEP-01",
+    "T-CONTENT-01",
+    "T-CONTENT-02",
+    "T-QA-02",
+    "T-QA-03",
+    "T-A11Y-01",
+    "T-PERF-01",
+    "T-WIN-01",
+    "T-RELEASE-01",
+    "T-COPY-01"
+  ],
+  "titlesAndDependenciesUnchanged": true,
+  "protectedFiles": 175,
+  "changedProtectedFiles": [],
+  "acceptedBrowserScopes": 9,
+  "plannedBrowserScopes": 18,
+  "acceptedEvidenceCurrentSource": true,
+  "issues": [],
+  "documentationCommand": "node docs/development/tools/check-docs.mjs",
+  "documentationExitCode": 0,
+  "documentation": {
+    "documents": 15,
+    "lines": 6909,
+    "localLinks": 773,
+    "tasks": 48,
+    "requirements": 86,
+    "sourceGuard": null,
+    "issues": []
+  },
+  "diffExitCode": 0,
+  "initialDiagnostic": {
+    "exitCode": 1,
+    "reason": "Ad hoc inventory regex omitted digit-containing T-A11Y-01. Repository checker already found 48 cards. Corrected regex to include digits; no document task was added or removed."
+  },
+  "openKindsObserved": {
+    "已确认": 31,
+    "建议改进": 10,
+    "未来独立方案": 1
+  },
+  "independentReview": "No scope/count/evidence blocker; corrected 06/07 initial snapshot labels as requested. No product tests rerun.",
+  "additionalEvidenceLinksChecked": 12
 }

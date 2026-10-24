@@ -1,0 +1,8 @@
+{
+  "scope": "1440-retry-stats",
+  "exitCode": 1,
+  "sessions": [],
+  "nodePath": "C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-retry-stats'\n& 'C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe' scripts/test-quiz-weak-questions.mjs",
+  "output": "START 2026-10-24T21-50-25-466Z v24.19.0 profile=C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-dK09pj\nRUN 1440-retry-stats\nAssertion failed: new_time >= loop->time, file src\\win\\core.c, line 327\r\n"
+}

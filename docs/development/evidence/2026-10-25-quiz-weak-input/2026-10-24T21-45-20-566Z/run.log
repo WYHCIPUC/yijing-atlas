@@ -1,0 +1,14 @@
+START 2026-10-24T21-45-20-566Z v22.23.1 profile=C:\Users\1\AppData\Local\Temp\yijing-quiz-weak-HvyhA5
+RUN 1440-question-readability
+PASS 1440-question-readability
+RUN 1440-original-cycle
+PASS 1440-original-cycle
+RUN 390-original-cycle
+PASS 390-original-cycle
+RUN 1440-same-hex-other-rule
+PASS 1440-same-hex-other-rule
+RUN 390-same-term-other-direction
+PASS 390-same-term-other-direction
+RUN 1440-retry-stats
+PASS 1440-retry-stats
+RUN 1440-retry-weak

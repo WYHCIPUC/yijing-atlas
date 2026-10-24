@@ -1,0 +1,3770 @@
+{
+  "startedAt": "2026-10-24T21:43:22.057Z",
+  "command": "node scripts/test-quiz-weak-questions.mjs",
+  "node": "v22.23.1",
+  "uv": "1.51.0",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-ZPERBw",
+  "scope": "1440-question-readability",
+  "head": "08a3c9f23819820deead93d4c2e1222e7b2112b1",
+  "sourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "7b3ad942f4d51293035daa81b7c7cc3fe13ee456b1fd1f342f1ffa4f51edcb8d",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/user-data.js": "3afccc2472dbab027089a7686ec1e43249a3f889b55be8610eebacef7bca1f6d",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/modes/quiz-mode.js": "d63a0fe1ce0f231fa67c71d9b4903484c387c1b9ffb4dfdec08803e3e046600e",
+    "web/js/modes/review-mode.js": "8adbee1de930ede4f35bc471587081f606d293370313a924ad22cd1483ae4adc",
+    "web/js/modes/learning-mode.js": "f2d1a600294cf3bd2f73d5e884aecb18945d31fbde83776fd93a4d0026e68675",
+    "web/js/almanac-knowledge.js": "ba1b1ce69a46de1832dc62e9959d1ae439f10c7435bd19b5e94c57bf40eeeccd",
+    "web/js/storage.js": "13d7b5b1288991582a4102dbb48b64d0b98593d1fab1502169dce7e52be78f28",
+    "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "2e2841a10a2bc2e7fe9526b747717851e2c7f2194a0798a5b1ff593c35dd8931",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/data/almanac-yiji.json": "791c99f67bac66f7d1259d08aaeec3c53a540b3bdc8ae5403aaa107666ad6649",
+    "scripts/test-quiz-weak-questions.mjs": "136ddfc20287f066a05c33631fb16c48289eef42b1407feb69bc7d3386a40e5a"
+  },
+  "status": "failed",
+  "scenarios": [
+    {
+      "name": "1440-question-readability",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "status": "failed",
+      "rounds": [
+        {
+          "question": {
+            "type": "interlocking",
+            "question": "「中孚」的互卦（内含之卦）是？",
+            "answer": "100001",
+            "candidates": [
+              "110100",
+              "001111",
+              "101000",
+              "100001"
+            ],
+            "targetCode": "110011",
+            "explanation": "互卦取原卦第 2—4 爻组成下卦、第 3—5 爻组成上卦，因此「中孚」内含「颐」。",
+            "reference": {
+              "sourceKind": "quiz",
+              "questionId": "quiz:interlocking:110011",
+              "questionVersion": "quiz-v1",
+              "questionType": "interlocking",
+              "targetCode": "110011",
+              "termId": null,
+              "lessonId": null
+            }
+          },
+          "mode": "random",
+          "attemptId": "quiz:mvmxe41k:1:fc54594c-b784-4f58-91d2-13b2f664d316"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "mouse",
+          "label": "[data-entry=\"explore\"]",
+          "x": 642.9296875,
+          "y": 668.671875
+        },
+        {
+          "kind": "mouse",
+          "label": ".mode-btn[data-mode=\"quiz\"]",
+          "x": 795.046875,
+          "y": 34.574907302856445
+        }
+      ],
+      "checks": [
+        {
+          "label": "question-computed-readability-and-matched-css",
+          "styles": {
+            "expectedPaper": "#f0e7d5",
+            "expectedPaperRgba": [
+              240,
+              231,
+              213,
+              1
+            ],
+            "targets": [
+              {
+                "selector": ".query-question",
+                "found": false
+              },
+              {
+                "selector": ".quiz-question",
+                "found": true,
+                "text": "卦象辨识「中孚」的互卦（内含之卦）是？",
+                "color": "rgb(52, 45, 36)",
+                "backgroundColor": "rgba(183, 199, 220, 0.024)",
+                "backgroundRgba": [
+                  183,
+                  199,
+                  220,
+                  0.024
+                ],
+                "backgroundImage": "none",
+                "opacity": "1",
+                "ancestorOpacity": 1,
+                "fontSize": "15px",
+                "fontWeight": "400",
+                "rect": {
+                  "x": 143,
+                  "y": 367.59375,
+                  "width": 1144,
+                  "height": 145,
+                  "top": 367.59375,
+                  "right": 1287,
+                  "bottom": 512.59375,
+                  "left": 143
+                },
+                "layers": [
+                  {
+                    "tag": "HTML",
+                    "id": "",
+                    "className": "",
+                    "color": "rgb(255, 255, 255)",
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "backgroundImage": "none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ]
+                  },
+                  {
+                    "tag": "BODY",
+                    "id": "",
+                    "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+                    "color": "rgb(228, 231, 235)",
+                    "backgroundColor": "rgb(4, 9, 18)",
+                    "backgroundImage": "radial-gradient(at 55% 40%, rgb(16, 26, 44) 0%, rgba(0, 0, 0, 0) 52%), none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      4,
+                      9,
+                      18,
+                      1
+                    ]
+                  },
+                  {
+                    "tag": "ASIDE",
+                    "id": "detail-panel",
+                    "className": "detail-panel lenis open",
+                    "color": "rgb(228, 231, 235)",
+                    "backgroundColor": "rgba(7, 14, 25, 0.97)",
+                    "backgroundImage": "none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "blur(22px)",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      7,
+                      14,
+                      25,
+                      0.97
+                    ]
+                  },
+                  {
+                    "tag": "DIV",
+                    "id": "detail-content",
+                    "className": "detail-content",
+                    "color": "rgb(228, 231, 235)",
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "backgroundImage": "none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ]
+                  },
+                  {
+                    "tag": "DIV",
+                    "id": "",
+                    "className": "mode-panel quiz-panel",
+                    "color": "rgb(228, 231, 235)",
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "backgroundImage": "none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ]
+                  },
+                  {
+                    "tag": "DIV",
+                    "id": "",
+                    "className": "mode-card quiz-question motion-item motion-surface",
+                    "color": "rgb(52, 45, 36)",
+                    "backgroundColor": "rgba(183, 199, 220, 0.024)",
+                    "backgroundImage": "none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      183,
+                      199,
+                      220,
+                      0.024
+                    ]
+                  }
+                ],
+                "solidComposite": [
+                  11.13616,
+                  18.293599999999998,
+                  29.47504,
+                  1
+                ],
+                "solidContrastRatio": 1.379791077447857,
+                "compositeLimit": "Alpha composite of CSS solid background colors. Images, canvas siblings, filters and pseudo-elements are separately listed, not simulated.",
+                "imageLayers": [
+                  {
+                    "tag": "BODY",
+                    "id": "",
+                    "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+                    "color": "rgb(228, 231, 235)",
+                    "backgroundColor": "rgb(4, 9, 18)",
+                    "backgroundImage": "radial-gradient(at 55% 40%, rgb(16, 26, 44) 0%, rgba(0, 0, 0, 0) 52%), none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      4,
+                      9,
+                      18,
+                      1
+                    ]
+                  }
+                ]
+              },
+              {
+                "selector": ".quiz-question p",
+                "found": true,
+                "text": "「中孚」的互卦（内含之卦）是？",
+                "color": "rgb(52, 45, 36)",
+                "backgroundColor": "rgba(0, 0, 0, 0)",
+                "backgroundRgba": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "backgroundImage": "none",
+                "opacity": "1",
+                "ancestorOpacity": 1,
+                "fontSize": "18px",
+                "fontWeight": "400",
+                "rect": {
+                  "x": 174,
+                  "y": 440.5,
+                  "width": 1082,
+                  "height": 34.1875,
+                  "top": 440.5,
+                  "right": 1256,
+                  "bottom": 474.6875,
+                  "left": 174
+                },
+                "layers": [
+                  {
+                    "tag": "HTML",
+                    "id": "",
+                    "className": "",
+                    "color": "rgb(255, 255, 255)",
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "backgroundImage": "none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ]
+                  },
+                  {
+                    "tag": "BODY",
+                    "id": "",
+                    "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+                    "color": "rgb(228, 231, 235)",
+                    "backgroundColor": "rgb(4, 9, 18)",
+                    "backgroundImage": "radial-gradient(at 55% 40%, rgb(16, 26, 44) 0%, rgba(0, 0, 0, 0) 52%), none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      4,
+                      9,
+                      18,
+                      1
+                    ]
+                  },
+                  {
+                    "tag": "ASIDE",
+                    "id": "detail-panel",
+                    "className": "detail-panel lenis open",
+                    "color": "rgb(228, 231, 235)",
+                    "backgroundColor": "rgba(7, 14, 25, 0.97)",
+                    "backgroundImage": "none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "blur(22px)",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      7,
+                      14,
+                      25,
+                      0.97
+                    ]
+                  },
+                  {
+                    "tag": "DIV",
+                    "id": "detail-content",
+                    "className": "detail-content",
+                    "color": "rgb(228, 231, 235)",
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "backgroundImage": "none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ]
+                  },
+                  {
+                    "tag": "DIV",
+                    "id": "",
+                    "className": "mode-panel quiz-panel",
+                    "color": "rgb(228, 231, 235)",
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "backgroundImage": "none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ]
+                  },
+                  {
+                    "tag": "DIV",
+                    "id": "",
+                    "className": "mode-card quiz-question motion-item motion-surface",
+                    "color": "rgb(52, 45, 36)",
+                    "backgroundColor": "rgba(183, 199, 220, 0.024)",
+                    "backgroundImage": "none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      183,
+                      199,
+                      220,
+                      0.024
+                    ]
+                  },
+                  {
+                    "tag": "P",
+                    "id": "",
+                    "className": "",
+                    "color": "rgb(52, 45, 36)",
+                    "backgroundColor": "rgba(0, 0, 0, 0)",
+                    "backgroundImage": "none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "solidComposite": [
+                  11.13616,
+                  18.293599999999998,
+                  29.47504,
+                  1
+                ],
+                "solidContrastRatio": 1.379791077447857,
+                "compositeLimit": "Alpha composite of CSS solid background colors. Images, canvas siblings, filters and pseudo-elements are separately listed, not simulated.",
+                "imageLayers": [
+                  {
+                    "tag": "BODY",
+                    "id": "",
+                    "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+                    "color": "rgb(228, 231, 235)",
+                    "backgroundColor": "rgb(4, 9, 18)",
+                    "backgroundImage": "radial-gradient(at 55% 40%, rgb(16, 26, 44) 0%, rgba(0, 0, 0, 0) 52%), none",
+                    "opacity": "1",
+                    "filter": "none",
+                    "backdropFilter": "none",
+                    "mixBlendMode": "normal",
+                    "rgba": [
+                      4,
+                      9,
+                      18,
+                      1
+                    ]
+                  }
+                ]
+              }
+            ],
+            "matchedCss": [
+              {
+                "selector": ".query-question",
+                "found": false
+              },
+              {
+                "selector": ".quiz-question",
+                "found": true,
+                "inline": [],
+                "rules": [
+                  {
+                    "selector": ".mode-card",
+                    "matchingSelectors": [
+                      0
+                    ],
+                    "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                    "range": {
+                      "startLine": 518,
+                      "startColumn": 12,
+                      "endLine": 522,
+                      "endColumn": 0
+                    },
+                    "origin": "regular",
+                    "declarations": [
+                      {
+                        "name": "background",
+                        "value": "rgba(201, 169, 106, 0.05)",
+                        "implicit": false,
+                        "text": "background: rgba(201, 169, 106, 0.05);",
+                        "disabled": false,
+                        "range": {
+                          "startLine": 519,
+                          "startColumn": 2,
+                          "endLine": 519,
+                          "endColumn": 40
+                        },
+                        "longhandProperties": [
+                          {
+                            "name": "background-image",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-position-x",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-position-y",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-size",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-repeat",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-attachment",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-origin",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-clip",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "rgba(201, 169, 106, 0.05)"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "background-image",
+                        "value": "initial"
+                      },
+                      {
+                        "name": "background-color",
+                        "value": "rgba(201, 169, 106, 0.05)"
+                      }
+                    ]
+                  },
+                  {
+                    "selector": ".alm-card, .review-due-item, .quiz-question, .quiz-explanation, .divine-cast-stage",
+                    "matchingSelectors": [
+                      2
+                    ],
+                    "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                    "range": {
+                      "startLine": 2885,
+                      "startColumn": 84,
+                      "endLine": 2891,
+                      "endColumn": 0
+                    },
+                    "origin": "regular",
+                    "declarations": [
+                      {
+                        "name": "background",
+                        "value": "radial-gradient(circle at 90% 0%, rgba(189, 135, 72, 0.07), transparent 27%),\n    linear-gradient(145deg, rgba(10, 19, 34, 0.8), rgba(5, 11, 22, 0.72))",
+                        "implicit": false,
+                        "text": "background:\n    radial-gradient(circle at 90% 0%, rgba(189, 135, 72, 0.07), transparent 27%),\n    linear-gradient(145deg, rgba(10, 19, 34, 0.8), rgba(5, 11, 22, 0.72));",
+                        "disabled": false,
+                        "range": {
+                          "startLine": 2887,
+                          "startColumn": 2,
+                          "endLine": 2889,
+                          "endColumn": 74
+                        },
+                        "longhandProperties": [
+                          {
+                            "name": "background-image",
+                            "value": "radial-gradient(circle at 90% 0%, rgba(189, 135, 72, 0.07), transparent 27%), linear-gradient(145deg, rgba(10, 19, 34, 0.8), rgba(5, 11, 22, 0.72))"
+                          },
+                          {
+                            "name": "background-position-x",
+                            "value": "initial, initial"
+                          },
+                          {
+                            "name": "background-position-y",
+                            "value": "initial, initial"
+                          },
+                          {
+                            "name": "background-size",
+                            "value": "initial, initial"
+                          },
+                          {
+                            "name": "background-repeat",
+                            "value": "initial, initial"
+                          },
+                          {
+                            "name": "background-attachment",
+                            "value": "initial, initial"
+                          },
+                          {
+                            "name": "background-origin",
+                            "value": "initial, initial"
+                          },
+                          {
+                            "name": "background-clip",
+                            "value": "initial, initial"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "initial"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "background-image",
+                        "value": "radial-gradient(circle at 90% 0%, rgba(189, 135, 72, 0.07), transparent 27%), linear-gradient(145deg, rgba(10, 19, 34, 0.8), rgba(5, 11, 22, 0.72))"
+                      },
+                      {
+                        "name": "background-color",
+                        "value": "initial"
+                      }
+                    ]
+                  },
+                  {
+                    "selector": ".quiz-question, .quiz-explanation",
+                    "matchingSelectors": [
+                      0
+                    ],
+                    "sourceUrl": "http://127.0.0.1:58932/styles/immersive.css?v=51",
+                    "range": {
+                      "startLine": 462,
+                      "startColumn": 35,
+                      "endLine": 462,
+                      "endColumn": 141
+                    },
+                    "origin": "regular",
+                    "declarations": [
+                      {
+                        "name": "color",
+                        "value": "var(--paper-ink)",
+                        "implicit": false,
+                        "text": "color: var(--paper-ink);",
+                        "disabled": false,
+                        "range": {
+                          "startLine": 462,
+                          "startColumn": 67,
+                          "endLine": 462,
+                          "endColumn": 91
+                        }
+                      },
+                      {
+                        "name": "background",
+                        "value": "var(--paper-warm)",
+                        "implicit": false,
+                        "text": "background: var(--paper-warm);",
+                        "disabled": false,
+                        "range": {
+                          "startLine": 462,
+                          "startColumn": 92,
+                          "endLine": 462,
+                          "endColumn": 122
+                        }
+                      },
+                      {
+                        "name": "color",
+                        "value": "var(--paper-ink)"
+                      },
+                      {
+                        "name": "background-image",
+                        "value": ""
+                      },
+                      {
+                        "name": "background-color",
+                        "value": ""
+                      }
+                    ]
+                  },
+                  {
+                    "selector": ":is(.mode-card, .today-primary-card, .today-support-card, .library-card, .academy-rank-card, .assessment-launch-card, .ability-panel, .seal-panel, .oral-review-card, .daily-study-card, .profile-empty, .data-tools, .divine-cast-stage, .cast-result-head, .divine-evidence-card, .divine-insight-grid > article)",
+                    "matchingSelectors": [
+                      0
+                    ],
+                    "sourceUrl": "http://127.0.0.1:58932/styles/immersive.css?v=51",
+                    "range": {
+                      "startLine": 424,
+                      "startColumn": 309,
+                      "endLine": 424,
+                      "endColumn": 426
+                    },
+                    "origin": "regular",
+                    "declarations": [
+                      {
+                        "name": "background",
+                        "value": "rgba(183, 199, 220, 0.025)",
+                        "implicit": false,
+                        "text": "background: rgba(183, 199, 220, 0.025);",
+                        "disabled": false,
+                        "range": {
+                          "startLine": 424,
+                          "startColumn": 368,
+                          "endLine": 424,
+                          "endColumn": 407
+                        },
+                        "longhandProperties": [
+                          {
+                            "name": "background-image",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-position-x",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-position-y",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-size",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-repeat",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-attachment",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-origin",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-clip",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "rgba(183, 199, 220, 0.024)"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "background-image",
+                        "value": "initial"
+                      },
+                      {
+                        "name": "background-color",
+                        "value": "rgba(183, 199, 220, 0.024)"
+                      }
+                    ]
+                  }
+                ],
+                "inherited": [
+                  {
+                    "rules": [
+                      {
+                        "selector": ".detail-panel",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                        "range": {
+                          "startLine": 362,
+                          "startColumn": 15,
+                          "endLine": 373,
+                          "endColumn": 0
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "radial-gradient(circle at 80% 0%, rgba(201, 169, 106, 0.07), transparent 32%),\n    linear-gradient(180deg, rgba(12, 18, 34, 0.97) 0%, rgba(8, 12, 24, 0.99) 100%)",
+                            "implicit": false,
+                            "text": "background:\n    radial-gradient(circle at 80% 0%, rgba(201, 169, 106, 0.07), transparent 32%),\n    linear-gradient(180deg, rgba(12, 18, 34, 0.97) 0%, rgba(8, 12, 24, 0.99) 100%);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 364,
+                              "startColumn": 2,
+                              "endLine": 366,
+                              "endColumn": 83
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "radial-gradient(circle at 80% 0%, rgba(201, 169, 106, 0.07), transparent 32%), linear-gradient(rgba(12, 18, 34, 0.97) 0%, rgba(8, 12, 24, 0.99) 100%)"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "initial"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "backdrop-filter",
+                            "value": "blur(22px)",
+                            "implicit": false,
+                            "text": "backdrop-filter: blur(22px);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 367,
+                              "startColumn": 2,
+                              "endLine": 367,
+                              "endColumn": 30
+                            }
+                          },
+                          {
+                            "name": "color",
+                            "value": "var(--text-primary)",
+                            "implicit": false,
+                            "text": "color: var(--text-primary);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 369,
+                              "startColumn": 2,
+                              "endLine": 369,
+                              "endColumn": 29
+                            }
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "radial-gradient(circle at 80% 0%, rgba(201, 169, 106, 0.07), transparent 32%), linear-gradient(rgba(12, 18, 34, 0.97) 0%, rgba(8, 12, 24, 0.99) 100%)"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "backdrop-filter",
+                            "value": "blur(22px)"
+                          },
+                          {
+                            "name": "color",
+                            "value": "var(--text-primary)"
+                          }
+                        ]
+                      },
+                      {
+                        "selector": "body.workspace-mode .detail-panel[data-presentation]",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                        "range": {
+                          "startLine": 1571,
+                          "startColumn": 56,
+                          "endLine": 1578,
+                          "endColumn": 2
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "linear-gradient(155deg, rgba(13,20,36,0.985), rgba(7,12,24,0.995))",
+                            "implicit": false,
+                            "text": "background: linear-gradient(155deg, rgba(13,20,36,0.985), rgba(7,12,24,0.995));",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 1575,
+                              "startColumn": 4,
+                              "endLine": 1575,
+                              "endColumn": 83
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "linear-gradient(155deg, rgba(13, 20, 36, 0.984), rgba(7, 12, 24, 0.996))"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "initial"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "linear-gradient(155deg, rgba(13, 20, 36, 0.984), rgba(7, 12, 24, 0.996))"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "initial"
+                          }
+                        ]
+                      },
+                      {
+                        "selector": "body.workspace-mode:not(.lesson-overview-open) .detail-panel[data-presentation]",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                        "range": {
+                          "startLine": 2337,
+                          "startColumn": 83,
+                          "endLine": 2344,
+                          "endColumn": 2
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "radial-gradient(circle at 78% 4%, rgba(180, 126, 58, 0.065), transparent 30%),\n      linear-gradient(150deg, rgba(11, 19, 34, 0.975), rgba(6, 12, 24, 0.992))",
+                            "implicit": false,
+                            "text": "background:\n      radial-gradient(circle at 78% 4%, rgba(180, 126, 58, 0.065), transparent 30%),\n      linear-gradient(150deg, rgba(11, 19, 34, 0.975), rgba(6, 12, 24, 0.992));",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 2340,
+                              "startColumn": 4,
+                              "endLine": 2342,
+                              "endColumn": 79
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "radial-gradient(circle at 78% 4%, rgba(180, 126, 58, 0.067), transparent 30%), linear-gradient(150deg, rgba(11, 19, 34, 0.976), rgba(6, 12, 24, 0.992))"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "initial"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "radial-gradient(circle at 78% 4%, rgba(180, 126, 58, 0.067), transparent 30%), linear-gradient(150deg, rgba(11, 19, 34, 0.976), rgba(6, 12, 24, 0.992))"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "initial"
+                          }
+                        ]
+                      },
+                      {
+                        "selector": "body.workspace-mode .detail-panel[data-presentation], body.workspace-mode:not(.lesson-overview-open) .detail-panel[data-presentation]",
+                        "matchingSelectors": [
+                          0,
+                          1
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/immersive.css?v=51",
+                        "range": {
+                          "startLine": 400,
+                          "startColumn": 81,
+                          "endLine": 408,
+                          "endColumn": 0
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "rgba(7, 14, 25, 0.97)",
+                            "implicit": false,
+                            "text": "background: rgba(7, 14, 25, 0.97);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 406,
+                              "startColumn": 2,
+                              "endLine": 406,
+                              "endColumn": 36
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "rgba(7, 14, 25, 0.97)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "rgba(7, 14, 25, 0.97)"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "rules": [
+                      {
+                        "selector": "body",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                        "range": {
+                          "startLine": 39,
+                          "startColumn": 6,
+                          "endLine": 46,
+                          "endColumn": 0
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "var(--ink-bg)",
+                            "implicit": false,
+                            "text": "background: var(--ink-bg);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 42,
+                              "startColumn": 2,
+                              "endLine": 42,
+                              "endColumn": 28
+                            }
+                          },
+                          {
+                            "name": "color",
+                            "value": "var(--text-primary)",
+                            "implicit": false,
+                            "text": "color: var(--text-primary);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 43,
+                              "startColumn": 2,
+                              "endLine": 43,
+                              "endColumn": 29
+                            }
+                          },
+                          {
+                            "name": "background-image",
+                            "value": ""
+                          },
+                          {
+                            "name": "background-color",
+                            "value": ""
+                          },
+                          {
+                            "name": "color",
+                            "value": "var(--text-primary)"
+                          }
+                        ]
+                      },
+                      {
+                        "selector": "body",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/immersive.css?v=51",
+                        "range": {
+                          "startLine": 32,
+                          "startColumn": 6,
+                          "endLine": 34,
+                          "endColumn": 0
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "radial-gradient(ellipse at 55% 40%, #101a2c 0%, transparent 52%), #040912",
+                            "implicit": false,
+                            "text": "background: radial-gradient(ellipse at 55% 40%, #101a2c 0%, transparent 52%), #040912;",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 33,
+                              "startColumn": 2,
+                              "endLine": 33,
+                              "endColumn": 88
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "radial-gradient(at 55% 40%, rgb(16, 26, 44) 0%, transparent 52%), initial"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "rgb(4, 9, 18)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "radial-gradient(at 55% 40%, rgb(16, 26, 44) 0%, transparent 52%), initial"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "rgb(4, 9, 18)"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "selector": ".quiz-question p",
+                "found": true,
+                "inline": [],
+                "rules": [
+                  {
+                    "selector": ".quiz-question p",
+                    "matchingSelectors": [
+                      0
+                    ],
+                    "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                    "range": {
+                      "startLine": 856,
+                      "startColumn": 18,
+                      "endLine": 856,
+                      "endColumn": 84
+                    },
+                    "origin": "regular",
+                    "declarations": [
+                      {
+                        "name": "color",
+                        "value": "var(--gold-bright)",
+                        "implicit": false,
+                        "text": "color: var(--gold-bright);",
+                        "disabled": false,
+                        "range": {
+                          "startLine": 856,
+                          "startColumn": 19,
+                          "endLine": 856,
+                          "endColumn": 45
+                        }
+                      },
+                      {
+                        "name": "color",
+                        "value": "var(--gold-bright)"
+                      }
+                    ]
+                  },
+                  {
+                    "selector": ".quiz-question p, .quiz-explanation p",
+                    "matchingSelectors": [
+                      0
+                    ],
+                    "sourceUrl": "http://127.0.0.1:58932/styles/immersive.css?v=51",
+                    "range": {
+                      "startLine": 463,
+                      "startColumn": 39,
+                      "endLine": 463,
+                      "endColumn": 112
+                    },
+                    "origin": "regular",
+                    "declarations": [
+                      {
+                        "name": "color",
+                        "value": "var(--paper-ink)",
+                        "implicit": false,
+                        "text": "color: var(--paper-ink);",
+                        "disabled": false,
+                        "range": {
+                          "startLine": 463,
+                          "startColumn": 40,
+                          "endLine": 463,
+                          "endColumn": 64
+                        }
+                      },
+                      {
+                        "name": "color",
+                        "value": "var(--paper-ink)"
+                      }
+                    ]
+                  }
+                ],
+                "inherited": [
+                  {
+                    "rules": [
+                      {
+                        "selector": ".mode-card",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                        "range": {
+                          "startLine": 518,
+                          "startColumn": 12,
+                          "endLine": 522,
+                          "endColumn": 0
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "rgba(201, 169, 106, 0.05)",
+                            "implicit": false,
+                            "text": "background: rgba(201, 169, 106, 0.05);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 519,
+                              "startColumn": 2,
+                              "endLine": 519,
+                              "endColumn": 40
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "rgba(201, 169, 106, 0.05)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "rgba(201, 169, 106, 0.05)"
+                          }
+                        ]
+                      },
+                      {
+                        "selector": ".alm-card, .review-due-item, .quiz-question, .quiz-explanation, .divine-cast-stage",
+                        "matchingSelectors": [
+                          2
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                        "range": {
+                          "startLine": 2885,
+                          "startColumn": 84,
+                          "endLine": 2891,
+                          "endColumn": 0
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "radial-gradient(circle at 90% 0%, rgba(189, 135, 72, 0.07), transparent 27%),\n    linear-gradient(145deg, rgba(10, 19, 34, 0.8), rgba(5, 11, 22, 0.72))",
+                            "implicit": false,
+                            "text": "background:\n    radial-gradient(circle at 90% 0%, rgba(189, 135, 72, 0.07), transparent 27%),\n    linear-gradient(145deg, rgba(10, 19, 34, 0.8), rgba(5, 11, 22, 0.72));",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 2887,
+                              "startColumn": 2,
+                              "endLine": 2889,
+                              "endColumn": 74
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "radial-gradient(circle at 90% 0%, rgba(189, 135, 72, 0.07), transparent 27%), linear-gradient(145deg, rgba(10, 19, 34, 0.8), rgba(5, 11, 22, 0.72))"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "initial"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "radial-gradient(circle at 90% 0%, rgba(189, 135, 72, 0.07), transparent 27%), linear-gradient(145deg, rgba(10, 19, 34, 0.8), rgba(5, 11, 22, 0.72))"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "initial"
+                          }
+                        ]
+                      },
+                      {
+                        "selector": ".quiz-question, .quiz-explanation",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/immersive.css?v=51",
+                        "range": {
+                          "startLine": 462,
+                          "startColumn": 35,
+                          "endLine": 462,
+                          "endColumn": 141
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "color",
+                            "value": "var(--paper-ink)",
+                            "implicit": false,
+                            "text": "color: var(--paper-ink);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 462,
+                              "startColumn": 67,
+                              "endLine": 462,
+                              "endColumn": 91
+                            }
+                          },
+                          {
+                            "name": "background",
+                            "value": "var(--paper-warm)",
+                            "implicit": false,
+                            "text": "background: var(--paper-warm);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 462,
+                              "startColumn": 92,
+                              "endLine": 462,
+                              "endColumn": 122
+                            }
+                          },
+                          {
+                            "name": "color",
+                            "value": "var(--paper-ink)"
+                          },
+                          {
+                            "name": "background-image",
+                            "value": ""
+                          },
+                          {
+                            "name": "background-color",
+                            "value": ""
+                          }
+                        ]
+                      },
+                      {
+                        "selector": ":is(.mode-card, .today-primary-card, .today-support-card, .library-card, .academy-rank-card, .assessment-launch-card, .ability-panel, .seal-panel, .oral-review-card, .daily-study-card, .profile-empty, .data-tools, .divine-cast-stage, .cast-result-head, .divine-evidence-card, .divine-insight-grid > article)",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/immersive.css?v=51",
+                        "range": {
+                          "startLine": 424,
+                          "startColumn": 309,
+                          "endLine": 424,
+                          "endColumn": 426
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "rgba(183, 199, 220, 0.025)",
+                            "implicit": false,
+                            "text": "background: rgba(183, 199, 220, 0.025);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 424,
+                              "startColumn": 368,
+                              "endLine": 424,
+                              "endColumn": 407
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "rgba(183, 199, 220, 0.024)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "rgba(183, 199, 220, 0.024)"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "rules": [
+                      {
+                        "selector": ".detail-panel",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                        "range": {
+                          "startLine": 362,
+                          "startColumn": 15,
+                          "endLine": 373,
+                          "endColumn": 0
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "radial-gradient(circle at 80% 0%, rgba(201, 169, 106, 0.07), transparent 32%),\n    linear-gradient(180deg, rgba(12, 18, 34, 0.97) 0%, rgba(8, 12, 24, 0.99) 100%)",
+                            "implicit": false,
+                            "text": "background:\n    radial-gradient(circle at 80% 0%, rgba(201, 169, 106, 0.07), transparent 32%),\n    linear-gradient(180deg, rgba(12, 18, 34, 0.97) 0%, rgba(8, 12, 24, 0.99) 100%);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 364,
+                              "startColumn": 2,
+                              "endLine": 366,
+                              "endColumn": 83
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "radial-gradient(circle at 80% 0%, rgba(201, 169, 106, 0.07), transparent 32%), linear-gradient(rgba(12, 18, 34, 0.97) 0%, rgba(8, 12, 24, 0.99) 100%)"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "initial"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "backdrop-filter",
+                            "value": "blur(22px)",
+                            "implicit": false,
+                            "text": "backdrop-filter: blur(22px);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 367,
+                              "startColumn": 2,
+                              "endLine": 367,
+                              "endColumn": 30
+                            }
+                          },
+                          {
+                            "name": "color",
+                            "value": "var(--text-primary)",
+                            "implicit": false,
+                            "text": "color: var(--text-primary);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 369,
+                              "startColumn": 2,
+                              "endLine": 369,
+                              "endColumn": 29
+                            }
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "radial-gradient(circle at 80% 0%, rgba(201, 169, 106, 0.07), transparent 32%), linear-gradient(rgba(12, 18, 34, 0.97) 0%, rgba(8, 12, 24, 0.99) 100%)"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "backdrop-filter",
+                            "value": "blur(22px)"
+                          },
+                          {
+                            "name": "color",
+                            "value": "var(--text-primary)"
+                          }
+                        ]
+                      },
+                      {
+                        "selector": "body.workspace-mode .detail-panel[data-presentation]",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                        "range": {
+                          "startLine": 1571,
+                          "startColumn": 56,
+                          "endLine": 1578,
+                          "endColumn": 2
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "linear-gradient(155deg, rgba(13,20,36,0.985), rgba(7,12,24,0.995))",
+                            "implicit": false,
+                            "text": "background: linear-gradient(155deg, rgba(13,20,36,0.985), rgba(7,12,24,0.995));",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 1575,
+                              "startColumn": 4,
+                              "endLine": 1575,
+                              "endColumn": 83
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "linear-gradient(155deg, rgba(13, 20, 36, 0.984), rgba(7, 12, 24, 0.996))"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "initial"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "linear-gradient(155deg, rgba(13, 20, 36, 0.984), rgba(7, 12, 24, 0.996))"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "initial"
+                          }
+                        ]
+                      },
+                      {
+                        "selector": "body.workspace-mode:not(.lesson-overview-open) .detail-panel[data-presentation]",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                        "range": {
+                          "startLine": 2337,
+                          "startColumn": 83,
+                          "endLine": 2344,
+                          "endColumn": 2
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "radial-gradient(circle at 78% 4%, rgba(180, 126, 58, 0.065), transparent 30%),\n      linear-gradient(150deg, rgba(11, 19, 34, 0.975), rgba(6, 12, 24, 0.992))",
+                            "implicit": false,
+                            "text": "background:\n      radial-gradient(circle at 78% 4%, rgba(180, 126, 58, 0.065), transparent 30%),\n      linear-gradient(150deg, rgba(11, 19, 34, 0.975), rgba(6, 12, 24, 0.992));",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 2340,
+                              "startColumn": 4,
+                              "endLine": 2342,
+                              "endColumn": 79
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "radial-gradient(circle at 78% 4%, rgba(180, 126, 58, 0.067), transparent 30%), linear-gradient(150deg, rgba(11, 19, 34, 0.976), rgba(6, 12, 24, 0.992))"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "initial"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "radial-gradient(circle at 78% 4%, rgba(180, 126, 58, 0.067), transparent 30%), linear-gradient(150deg, rgba(11, 19, 34, 0.976), rgba(6, 12, 24, 0.992))"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "initial"
+                          }
+                        ]
+                      },
+                      {
+                        "selector": "body.workspace-mode .detail-panel[data-presentation], body.workspace-mode:not(.lesson-overview-open) .detail-panel[data-presentation]",
+                        "matchingSelectors": [
+                          0,
+                          1
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/immersive.css?v=51",
+                        "range": {
+                          "startLine": 400,
+                          "startColumn": 81,
+                          "endLine": 408,
+                          "endColumn": 0
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "rgba(7, 14, 25, 0.97)",
+                            "implicit": false,
+                            "text": "background: rgba(7, 14, 25, 0.97);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 406,
+                              "startColumn": 2,
+                              "endLine": 406,
+                              "endColumn": 36
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "rgba(7, 14, 25, 0.97)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "initial"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "rgba(7, 14, 25, 0.97)"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "rules": [
+                      {
+                        "selector": "body",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/main.css?v=51",
+                        "range": {
+                          "startLine": 39,
+                          "startColumn": 6,
+                          "endLine": 46,
+                          "endColumn": 0
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "var(--ink-bg)",
+                            "implicit": false,
+                            "text": "background: var(--ink-bg);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 42,
+                              "startColumn": 2,
+                              "endLine": 42,
+                              "endColumn": 28
+                            }
+                          },
+                          {
+                            "name": "color",
+                            "value": "var(--text-primary)",
+                            "implicit": false,
+                            "text": "color: var(--text-primary);",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 43,
+                              "startColumn": 2,
+                              "endLine": 43,
+                              "endColumn": 29
+                            }
+                          },
+                          {
+                            "name": "background-image",
+                            "value": ""
+                          },
+                          {
+                            "name": "background-color",
+                            "value": ""
+                          },
+                          {
+                            "name": "color",
+                            "value": "var(--text-primary)"
+                          }
+                        ]
+                      },
+                      {
+                        "selector": "body",
+                        "matchingSelectors": [
+                          0
+                        ],
+                        "sourceUrl": "http://127.0.0.1:58932/styles/immersive.css?v=51",
+                        "range": {
+                          "startLine": 32,
+                          "startColumn": 6,
+                          "endLine": 34,
+                          "endColumn": 0
+                        },
+                        "origin": "regular",
+                        "declarations": [
+                          {
+                            "name": "background",
+                            "value": "radial-gradient(ellipse at 55% 40%, #101a2c 0%, transparent 52%), #040912",
+                            "implicit": false,
+                            "text": "background: radial-gradient(ellipse at 55% 40%, #101a2c 0%, transparent 52%), #040912;",
+                            "disabled": false,
+                            "range": {
+                              "startLine": 33,
+                              "startColumn": 2,
+                              "endLine": 33,
+                              "endColumn": 88
+                            },
+                            "longhandProperties": [
+                              {
+                                "name": "background-image",
+                                "value": "radial-gradient(at 55% 40%, rgb(16, 26, 44) 0%, transparent 52%), initial"
+                              },
+                              {
+                                "name": "background-position-x",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-position-y",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-size",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-repeat",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-attachment",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-origin",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-clip",
+                                "value": "initial, initial"
+                              },
+                              {
+                                "name": "background-color",
+                                "value": "rgb(4, 9, 18)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "background-image",
+                            "value": "radial-gradient(at 55% 40%, rgb(16, 26, 44) 0%, transparent 52%), initial"
+                          },
+                          {
+                            "name": "background-color",
+                            "value": "rgb(4, 9, 18)"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "fixtures": [
+        {
+          "at": "2026-10-24T21:43:23.542Z",
+          "values": {}
+        }
+      ],
+      "faults": [],
+      "screenshots": [
+        "1440-question-readability-question-before-answer.png",
+        "1440-question-readability-failure.png"
+      ],
+      "failure": {
+        "message": "The question must use its approved opaque warm-paper background, not a competing translucent card background.\n+ actual - expected\n\n  [\n+   183,\n+   199,\n+   220,\n+   0.024\n-   240,\n-   231,\n-   213,\n-   1\n  ]\n",
+        "stack": "AssertionError [ERR_ASSERTION]: The question must use its approved opaque warm-paper background, not a competing translucent card background.\n+ actual - expected\n\n  [\n+   183,\n+   199,\n+   220,\n+   0.024\n-   240,\n-   231,\n-   213,\n-   1\n  ]\n\n    at readabilityScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-quiz-weak-questions.mjs:492:10)\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-quiz-weak-questions.mjs:504:92)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-quiz-weak-questions.mjs:536:3"
+      },
+      "failureState": {
+        "data": {
+          "stats": null,
+          "weak": null,
+          "review": null,
+          "activity": null,
+          "achievement": null,
+          "legacy": null
+        },
+        "writes": [],
+        "inputs": [
+          {
+            "type": "click",
+            "trusted": true,
+            "pointerType": "mouse",
+            "x": 795,
+            "y": 34,
+            "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+          }
+        ],
+        "message": "",
+        "feedback": "",
+        "retry": false,
+        "mode": "quiz",
+        "options": 4,
+        "question": "「中孚」的互卦（内含之卦）是？",
+        "focus": {
+          "id": "",
+          "tag": "H2"
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Headless Chromium desktop and CDP emulated touch. This is not physical-mobile, screen-reader, or real browser 200% zoom evidence.",
+    "A new random-port origin and isolated profile are used. No user profile, learning data, or private text is read.",
+    "Fixtures and quota failures are explicitly recorded. Fixture wrong histories are synthetic, not earned learning or achievement evidence.",
+    "Debugger only reads generated public question and attempt identity. No application function or DOM.click is called in the browser.",
+    "DOM geometry and scrollIntoView locate controls. Navigation, answers, retries, source opening and return use trusted CDP Input.",
+    "Offline covers already-visited modules in the same page, not first installation or a fresh offline reload."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "failure": {
+    "message": "The question must use its approved opaque warm-paper background, not a competing translucent card background.\n+ actual - expected\n\n  [\n+   183,\n+   199,\n+   220,\n+   0.024\n-   240,\n-   231,\n-   213,\n-   1\n  ]\n",
+    "stack": "AssertionError [ERR_ASSERTION]: The question must use its approved opaque warm-paper background, not a competing translucent card background.\n+ actual - expected\n\n  [\n+   183,\n+   199,\n+   220,\n+   0.024\n-   240,\n-   231,\n-   213,\n-   1\n  ]\n\n    at readabilityScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-quiz-weak-questions.mjs:492:10)\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-quiz-weak-questions.mjs:504:92)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-quiz-weak-questions.mjs:536:3"
+  },
+  "finishedAt": "2026-10-24T21:43:26.209Z",
+  "finalSourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "7b3ad942f4d51293035daa81b7c7cc3fe13ee456b1fd1f342f1ffa4f51edcb8d",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/user-data.js": "3afccc2472dbab027089a7686ec1e43249a3f889b55be8610eebacef7bca1f6d",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/modes/quiz-mode.js": "d63a0fe1ce0f231fa67c71d9b4903484c387c1b9ffb4dfdec08803e3e046600e",
+    "web/js/modes/review-mode.js": "8adbee1de930ede4f35bc471587081f606d293370313a924ad22cd1483ae4adc",
+    "web/js/modes/learning-mode.js": "f2d1a600294cf3bd2f73d5e884aecb18945d31fbde83776fd93a4d0026e68675",
+    "web/js/almanac-knowledge.js": "ba1b1ce69a46de1832dc62e9959d1ae439f10c7435bd19b5e94c57bf40eeeccd",
+    "web/js/storage.js": "13d7b5b1288991582a4102dbb48b64d0b98593d1fab1502169dce7e52be78f28",
+    "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "2e2841a10a2bc2e7fe9526b747717851e2c7f2194a0798a5b1ff593c35dd8931",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/data/almanac-yiji.json": "791c99f67bac66f7d1259d08aaeec3c53a540b3bdc8ae5403aaa107666ad6649",
+    "scripts/test-quiz-weak-questions.mjs": "136ddfc20287f066a05c33631fb16c48289eef42b1407feb69bc7d3386a40e5a"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "networkRequests": [
+    {
+      "url": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+      "method": "GET",
+      "headers": {
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/protocol-guard.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/assets/academy-astrolabe-bg.webp",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isLinkPreload": true,
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/vendor/lenis.css",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/styles/main.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/styles/immersive.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/vendor/gsap.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/vendor/lenis.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/main.js?v=51",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/manifest.webmanifest",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Medium",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/audio-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/achievement-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/achievement-storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/data-loader.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/evolution-lab.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/share-card.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/modes/guaxu-mode.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/cinematic-motion.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/motion-system.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/render.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/review-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/reading-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/search-controller.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/star-relations.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/star-map.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/svg-painter.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/ui-icons.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/achievement-storage.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/achievement-catalog.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/achievement-engine.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/evolution-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/evolution-semantics.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/hexagram-utils.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/guaxu-wheel.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/modes/guaxu-mode.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/relation-animation.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/content-provenance.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/d3-force.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/star-layouts.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/star-atmosphere.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/star-label-layout.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/data/hexagrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/data/trigrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/data/commentaries/manifest.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/data/hexagram-keywords.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/celestial-stage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/vendor/three.module.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/celestial-stage.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+      "method": "GET",
+      "headers": {
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/vendor/three.core.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/lib/vendor/three.module.min.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/protocol-guard.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/assets/academy-astrolabe-bg.webp",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isLinkPreload": true,
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/vendor/lenis.css",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/styles/main.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/styles/immersive.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/vendor/gsap.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/vendor/lenis.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/main.js?v=51",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/manifest.webmanifest",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Medium",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/audio-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/achievement-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/achievement-storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/data-loader.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/evolution-lab.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/share-card.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/modes/guaxu-mode.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/cinematic-motion.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/motion-system.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/render.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/review-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/reading-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/search-controller.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/star-relations.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/star-map.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/svg-painter.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/ui-icons.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/achievement-storage.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/achievement-catalog.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/achievement-engine.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/evolution-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/evolution-semantics.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/hexagram-utils.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/guaxu-wheel.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/modes/guaxu-mode.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/relation-animation.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/content-provenance.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/d3-force.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/star-layouts.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/star-atmosphere.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/star-label-layout.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/data/hexagrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/data/trigrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/data/commentaries/manifest.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/data/hexagram-keywords.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/celestial-stage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/modes/quiz-mode.js?v=51",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/data/almanac-terms.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/data/almanac-yiji.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/vendor/three.module.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/celestial-stage.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/quiz-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/modes/quiz-mode.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/learning-progress.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/modes/quiz-mode.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/quiz-session.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/modes/quiz-mode.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/?quiz-weak-probe=1440-question-readability",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/js/learning-curriculum.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/js/learning-progress.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:58932/lib/vendor/three.core.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:58932",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:58932/lib/vendor/three.module.min.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    }
+  ],
+  "profileRemoved": false,
+  "profileRetainedReason": "Isolated synthetic profile retained for diagnosis; no deletion attempted and no user profile touched."
+}
