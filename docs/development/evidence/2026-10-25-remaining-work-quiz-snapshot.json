@@ -681,7 +681,7 @@
     }
   ],
   "quizModuleImport": {
-    "command": "node --input-type=module -e import-check",
+    "command": "node --input-type=module -e \"try { await import('./web/js/modes/quiz-mode.js'); } catch (error) { console.error(error.code + ': ' + error.message); process.exitCode = 1; }\"",
     "exitCode": 1,
     "error": "ERR_MODULE_NOT_FOUND",
     "missing": "web/js/quiz-session.js",
