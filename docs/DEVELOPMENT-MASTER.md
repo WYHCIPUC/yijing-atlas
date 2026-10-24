@@ -1,6 +1,6 @@
 # 易象图谱开发建设总册
 
-版本：文档基线 1.18。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
+版本：文档基线 1.19。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
 
 **用途：其他 AI 或开发者只阅读本总册与关联专题，即可接手当前项目，按任务卡逐项开发、验证和交接。**
 
@@ -8,7 +8,7 @@
 
 需要查看剩余范围或复制目标时，阅读[未完成事项清单与目标文字](development/REMAINING-WORK-AND-GOAL.md)：逐项列出41项（30已确认、10建议、1独立发布）。三条既有专题要求的执行归属已明确；复习与复讲已有在制实现，梅花时间来源提示未完成，没有新增需求或采纳建议。
 
-**最新盘点边界**：T-QUIZ-01业务提交`3a5b7971d5a1ac0b44259fea7a3e4a603febb598`已同步GitHub开发分支，[对应PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40139183436)为completed/success，validate与Browser smoke均成功。T-LEARN-03另有未提交修改：共享反馈、复习提交协调器及复讲/考评页面部分接线；本次限定回归111/111，尚缺其余页面整合、真实交互及全量验收，整卡不关闭。详见[盘点记录](development/evidence/2026-10-25-remaining-work-feedback-review.md)。以下测验、推荐与课程全量结果分别适用于其交付版本，不覆盖当前未提交代码。
+**最新盘点边界**：本次起点`fb645b845d67b5d6f1f2bfc130b1956913319b09`的[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40139651916)已核对completed/success，validate与Browser smoke均成功。T-LEARN-03另有未提交的复习、测验、解卦、复讲/考评接线、共享样式和保存协调；已有整合validate终态为75脚本、602/602、exit0，配置23模块覆盖率99.72%行、93.95%分支、99.01%函数。仍有考评回调/焦点问题与待复现的长反馈可见性风险；30项新浏览器场景未运行，最终E2E及交付未完成，整卡开放。详见[最新盘点记录](development/evidence/2026-10-25-remaining-work-integrated-review.md)。远程绿灯及以下测验、推荐与课程结果只适用各自版本，不覆盖当前未提交代码。
 
 **测验业务交付版本3a5b797**：T-QUIZ-01完成本地验收：具体规则/术语方向的错题—温习—纠正、六项独立保存重试、旧摘要隔离及跨页清理已接通。320px定位与工具栏遮挡分别红→绿；修后validate退出0，72脚本、515/515，配置21模块行99.76%、分支94.04%、函数98.96%。最终18项独立专项、147次可信输入/49图通过；完整五视口E2E退出0、25图，173份源码哈希一致。原生200%偏好未生效，仍未验证。源码、测试与证据已交付；见[最终验收摘要](development/evidence/2026-10-25-quiz-final-acceptance.json)。[此前42项盘点](development/evidence/2026-10-25-remaining-work-toolbar-review.md)保留当时范围。
 
@@ -201,12 +201,13 @@ npm start
 - 不粘贴真实备份、密钥、私人问题或长私人笔记；测试只使用合成夹具。
 - 每次交接按执行卡末尾模板记录剩余任务、已改文件、实际检查、未验证项与下一动作。
 
-**本次盘点核对的GitHub起点**：`49de105`的[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40132169574) completed/success，Validate repository与Browser smoke均成功。该结果只覆盖此前提交；推荐/续读新提交的CI须另核对，开发同步和生产发布仍分别记录。
+**推荐交付前的历史GitHub起点**：`49de105`的[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40132169574) completed/success，Validate repository与Browser smoke均成功。该结果只覆盖该提交；最新盘点以本册开头和对应证据为准，开发同步和生产发布仍分别记录。
 
 ### 变更记录
 
 | 日期 | 变更 | 验证范围 |
 | --- | --- | --- |
+| 2026-10-25 反馈接线后的完整盘点 | 基线1.19；7完成、41开放，修正页面未接线的过时描述，登记审阅收尾及目标文字 | 收取此前validate终态75脚本/602项，30个新浏览器场景未运行；本次只改文档/证据，保留全部在制代码，见[盘点记录](development/evidence/2026-10-25-remaining-work-integrated-review.md) |
 | 2026-10-25 最新在制验收盘点 | 基线1.15；仍6完成、42开放，逐项未完成内容及可复制目标更新 | 核对最后CSS后的validate515/515、17/18独立专项及320失败；本次只改文档/证据，业务与探针保留，见[最新盘点](development/evidence/2026-10-25-remaining-work-latest-review.md) |
 | 2026-10-25 测验接线后的剩余盘点 | 基线1.13；仍6完成、42开放，修正已接线与未验收边界，更新目标文字 | 复核既有validate515/515、单桌面1/1和宿主中止；本次仅文档/证据检查，当前完整E2E未取得；见[盘点](development/evidence/2026-10-25-remaining-work-acceptance-status.md) |
 | 2026-10-25 在制验收后的再盘点 | 基线1.14；48卡及31确认/10建议/1独立发布不变，更新局部修复、21模块计量及剩余验收边界 | 仅文档与既有证据核对，不改业务，不以部分专项关闭T-QUIZ-01；见[本次记录](development/evidence/2026-10-25-remaining-work-current-review.md) |
