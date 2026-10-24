@@ -230,6 +230,10 @@ bestScore 为课后小试最好正确率；浏览并不等于小试通过。
 新写入函数校验分数和类型；导入 `isLearningRecord` 对 lessons 内部当前较宽，不能声称深层全校验。
 活动日期验证目前是形状验证；设备时区日期与黄历 Asia/Shanghai 日期是两套不同契约。
 
+**2026-10-25 实施增量，T-LEARN-05 尚未闭环**：当前源码新增可选 `assessmentSessions` 辅助数组，每项 `{sessionId,kind,at,correct,total,lessonId?}`，lesson 类型带课程 ID，用于本轮去重和修习谱按实际成绩回补。新抽查/阶段条目可带 sessionId，results 可带 questionId；课程在首次写入新 session 前若有旧成绩，可保留 `legacyAssessment:{score,at}` 的旧汇总凭据，不伪造旧 session。辅助数组当前不随 80 条历史截断，长期容量尚未测量。
+
+这一实现**尚未对齐 §7.1 的正式 `processedAssessmentIds` 契约**：当前未读取/校验该字段，已有 ID 却无辅助 receipt 的输入可能重复计分；不能用辅助数组取代已定 ID 集合。正式 ID 的合法值、旧数据、原子写入、导入及备份边界须按 T-LEARN-05 补齐，详见 [未完成清单](REMAINING-WORK-AND-GOAL.md)。本段描述现状，不取消下文建设约定。
+
 掌握度当前权重为浏览10、小试35、抽查20、复讲15、阶段20。
 自评与智能评阅都形成复讲证据，不存在靠成绩锁课的机制。
 不要在数据修复时抬高分数或把旧浏览记录转成已考评。

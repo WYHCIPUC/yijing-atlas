@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-25",
+  "timezone": "Asia/Shanghai",
+  "baseHead": "bb7fa46756604c6acebf7d77cd45e446ff50a765",
+  "branch": "codex/immersive-astrolabe-progress",
+  "kind": "worktree-bytes-after-final-validate-and-e2e",
+  "files": [
+    {
+      "path": "web/index.html",
+      "sha256": "3eb1072260c48ece01051af175ec44639e357b5f1ec4d151a2bb69bd07b73ec3"
+    },
+    {
+      "path": "web/js/main.js",
+      "sha256": "2c68c387383f70215420db70485bd18cbc7f00334722c6ca8fa7e6a29a1326b7"
+    },
+    {
+      "path": "web/styles/immersive.css",
+      "sha256": "7ff3555ee8a593401b365dfdef36dd5dc0213222650e3d58afd45106873327f1"
+    },
+    {
+      "path": "web/js/learning-assessment.js",
+      "sha256": "2f27c1b4b3f713ab04789347a42325bf7aef2af5b2f9c2ca984cdb1849590abf"
+    },
+    {
+      "path": "web/js/learning-progress.js",
+      "sha256": "ea594d2df553d326bf94c4b3a2fabbd4347d3af61054605adc009fb5eb3c76e8"
+    },
+    {
+      "path": "web/js/learning-assessment-page.js",
+      "sha256": "3e317065a43ca48a1661da6c18812c0b75100eb127a0276a68b9e131305a4523"
+    },
+    {
+      "path": "web/js/modes/learning-mode.js",
+      "sha256": "f4df5ea821f05781b1b4b7d1a0c9eec777e1185f34a0bed1bcaf123aef8d2090"
+    },
+    {
+      "path": "web/test/main-stage-lifecycle.test.mjs",
+      "sha256": "e1e1ca396d4275972912e121c4901db0a9f1dfa5c70f5c00e5c2fd653b185d46"
+    },
+    {
+      "path": "web/test/learning-assessment.test.mjs",
+      "sha256": "9df9f5da6bd9f55b238d618522578a5d77a5819f19d4529c314e9858703f8f82"
+    },
+    {
+      "path": "web/test/learning-progress.test.mjs",
+      "sha256": "8942721c6dec39e56822b18c59161c8e7d4bf3a2afbe06fbd3a225f2b2ca15dd"
+    },
+    {
+      "path": "web/test/learning-assessment-page.test.mjs",
+      "sha256": "fd92a02a56fe751eda4f680adaf0d577028db45d4d8ed5f9d0227e0ee6876f98"
+    },
+    {
+      "path": "scripts/test-entry-input.mjs",
+      "sha256": "a9dad97e4b8a446d39c6a846e576d50eac77536199ccb668bb9ca960166862cf"
+    },
+    {
+      "path": "web/js/star-map.js",
+      "sha256": "81b37e130999ab029d9fd5078a7adb7516d42e7cfbeb30270a8e689bed8ede0e"
+    },
+    {
+      "path": "scripts/browser-smoke.mjs",
+      "sha256": "95494d312045048a0694664d3a0d3e49c5aa4cb0813e9cbedf8f353c09d376ad"
+    }
+  ],
+  "codeCommit": "5627bc8ec917efe0265b27e24ce2463d557611e7"
+}
