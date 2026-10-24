@@ -64,6 +64,12 @@ GitHub 续验曾出现 Service Worker 接管失败；严格探针与 CI 分项�
 
 99.61/90.20/97.78 是以上集合的行/分支/函数覆盖率，**不是全仓库覆盖率，也不是每个文件都超过 90%**。reading-state 和 star-label-layout 有测试，但尚未加入 coverage include，归入 T-QA-02。
 
+### 3.1 2026-10-25测验闭环的验证增量
+
+T-QUIZ-01新增`quiz-session`进入正式coverage include，当前为21模块，原90%集合门槛不变。工具栏最终CSS与加强后的320px探针对应[本次validate](evidence/2026-10-25-quiz-toolbar-final-validation.json)：72脚本、覆盖率阶段515通过/0失败；配置集合行99.76%、分支94.04%、函数98.96%。[173份源码快照](evidence/2026-10-25-quiz-toolbar-final-source.json)与验证后文件一致，不覆盖旧历史数字。
+
+专项脚本为`scripts/test-quiz-weak-questions.mjs`，通过`YIJING_QUIZ_WEAK_SCOPE`选择独立场景；使用隔离合成资料、受控配额故障及可信CDP鼠标/触控/键盘输入。320px选项定位不足与返回按钮实际遮挡分开取得红→绿，见[诊断记录](evidence/2026-10-25-quiz-toolbar-diagnosis.md)。专项、全站E2E、整卡交付分别登记在[测验交接](evidence/2026-10-25-quiz-integration.md)，不以一个专项替代全部验收。reading-state与star-label-layout仍未纳入计量，T-QA-02继续开放。
+
 ## 4. 功能到测试映射
 
 下表名称均指 web/test 下同名 .test.mjs；历法组另注明。实施任务前应阅读原测试，不能只凭名称推断完整覆盖。
@@ -78,7 +84,8 @@ GitHub 续验曾出现 Service Worker 接管失败；严格探针与 CI 分项�
 | 外壳与布局 | immersive-shell、layout-contract、daily-overlay-layout、typography-system、ui-icons | 五视口、200%、真机、强制颜色 |
 | 课程/进度 | learning-curriculum、learning-progress、learning-ui-contract | 推荐优先级、继续章节、来源返回 |
 | 考评/复讲 | learning-assessment、learning-review | 不完整交卷、异常评阅、本地回退、错题温习 |
-| 复习/自由测验 | review-engine、quiz-engine | 自评不当正误、重复提交、具体错题恢复 |
+| 间隔复习 | review-engine、quiz-review-pages | 自评不当正误、同轮提交及失败重试仍归T-LEARN-03 |
+| 具体测验错题 | quiz-engine、quiz-question-reference、quiz-session、quiz-weak-data、quiz-mode-page、quiz-review-pages、almanac-knowledge-page及user-data/main-mode-navigation增量 | 原规则回练、两方向术语、六项保存故障恢复、旧摘要、来源往返、离页旧操作和访问后离线；专项范围见测验交接 |
 | 成就 | achievement-catalog、achievement-engine、achievement-storage | 从真实业务入口达成十二项，不能只喂引擎夹具 |
 | 占筮 | divination-engine、divination-interpretation、divination-history、meihua-engine | 无效输入、重放稳定 ID、本之深读和五步挑战 |
 | 演变/转盘 | evolution-lab、evolution-semantics、relation-animation、guaxu-wheel | 语义随帧、取消计时、模态、门禁 |

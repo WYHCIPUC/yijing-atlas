@@ -1,0 +1,9 @@
+{
+  "scope": "1440-retry-weak",
+  "stage": "final-toolbar-fixed",
+  "exitCode": 0,
+  "sessions": [],
+  "nodePath": "C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-retry-weak'\n& 'C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe' scripts/test-quiz-weak-questions.mjs",
+  "output": "START 2026-10-24T22-18-13-532Z v24.19.0 profile=C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-zTU07R\nRUN 1440-retry-weak\nPASS 1440-retry-weak\n{\"status\":\"passed\",\"passed\":1,\"total\":1,\"trace\":\"Y:\\\\易经学习项目\\\\docs\\\\development\\\\evidence\\\\2026-10-25-quiz-weak-input\\\\2026-10-24T22-18-13-532Z\\\\trace.json\",\"profile\":\"C:\\\\Users\\\\1\\\\AppData\\\\Local\\\\Temp\\\\yijing-quiz-weak-zTU07R\"}\n"
+}

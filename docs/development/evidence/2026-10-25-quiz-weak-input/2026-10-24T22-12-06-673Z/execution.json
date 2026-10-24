@@ -1,0 +1,11 @@
+{
+  "scope": "1440-term-source-readability",
+  "stage": "final-frozen",
+  "exitCode": 0,
+  "sessions": [
+    65516
+  ],
+  "nodePath": "W:\\Node.js\\node.exe",
+  "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-term-source-readability'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs",
+  "output": "START 2026-10-24T22-12-06-673Z v22.23.1 profile=C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-BtAl0l\nRUN 1440-term-source-readability\nPASS 1440-term-source-readability\n{\"status\":\"passed\",\"passed\":1,\"total\":1,\"trace\":\"Y:\\\\易经学习项目\\\\docs\\\\development\\\\evidence\\\\2026-10-25-quiz-weak-input\\\\2026-10-24T22-12-06-673Z\\\\trace.json\",\"profile\":\"C:\\\\Users\\\\1\\\\AppData\\\\Local\\\\Temp\\\\yijing-quiz-weak-BtAl0l\"}\n"
+}
