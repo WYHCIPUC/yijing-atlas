@@ -1,0 +1,14 @@
+Command: node scripts/test-reading-save.mjs
+Node: v22.23.1
+Captured exec session: 67167
+Exit code: 1
+
+PASS 1440-achievement-only
+PASS 1440-review-only
+Assertion failed: new_time >= loop->time, file c:\ws\deps\uv\src\win\core.c, line 327
+
+The native Node/libuv abort prevented the JavaScript finally block and trace export.
+The generated screenshots in this directory are incomplete-run evidence only.
+After terminal process completion, a Win32_Process query found no surviving
+yijing-reading-save browser process or scripts/serve.mjs Node process from this run.
+The subsequent script revision checkpoints completed scenarios after each pass.

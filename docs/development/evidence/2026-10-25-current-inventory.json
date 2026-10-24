@@ -1,0 +1,202 @@
+{
+  "checkedAt": "2026-10-24T19:16:21.683Z",
+  "head": "1bee1c210d675d8aa49df23c0724ba577ad8cf6d",
+  "originalCards": 48,
+  "formallyClosed": [
+    "T-DIV-01"
+  ],
+  "openEntries": 47,
+  "natureCounts": {
+    "已确认": 36,
+    "建议改进": 10,
+    "未来独立方案": 1
+  },
+  "localScopeAcceptedPendingIntegration": [
+    "T-SAVE-01",
+    "T-LEARN-05"
+  ],
+  "otherRemaining": 45,
+  "entries": [
+    "T-QA-01",
+    "T-GROW-01",
+    "T-SAVE-01",
+    "T-STAR-01",
+    "T-STAR-02",
+    "T-STAR-03",
+    "T-SEARCH-01",
+    "T-READ-01",
+    "T-READ-02",
+    "T-READ-03",
+    "T-READ-04",
+    "T-LEARN-01",
+    "T-LEARN-02",
+    "T-LEARN-03",
+    "T-QUIZ-01",
+    "T-LEARN-04",
+    "T-LEARN-05",
+    "T-DIV-02",
+    "T-DIV-03",
+    "T-GROW-02",
+    "T-PRIV-01",
+    "T-CAL-01",
+    "T-CAL-02",
+    "T-CAL-03",
+    "T-SOUND-01",
+    "T-SOUND-02",
+    "T-MODAL-01",
+    "T-ICON-01",
+    "T-ASSET-02",
+    "T-BACKUP-01",
+    "T-BACKUP-02",
+    "T-API-01",
+    "T-CACHE-01",
+    "T-CACHE-02",
+    "T-CAPACITY-01",
+    "T-SHARE-01",
+    "T-ASSET-01",
+    "T-DEP-01",
+    "T-CONTENT-01",
+    "T-CONTENT-02",
+    "T-QA-02",
+    "T-QA-03",
+    "T-A11Y-01",
+    "T-PERF-01",
+    "T-WIN-01",
+    "T-RELEASE-01",
+    "T-COPY-01"
+  ],
+  "probes": [
+    {
+      "path": "docs/development/evidence/2026-10-25-reading-save/2026-10-24T19-00-42-920Z/trace.json",
+      "status": "passed",
+      "passed": 8,
+      "total": 8,
+      "sourceStableDuringRun": true,
+      "currentSourceMismatches": []
+    },
+    {
+      "path": "docs/development/evidence/2026-10-25-assessment-session/2026-10-24T19-08-32-744Z/trace.json",
+      "status": "passed",
+      "passed": 9,
+      "total": 9,
+      "sourceStableDuringRun": true,
+      "currentSourceMismatches": []
+    }
+  ],
+  "issues": [],
+  "sourceFilesProtectedDuringInventory": [
+    {
+      "path": "scripts/browser-smoke.mjs",
+      "sha256": "994aa24f107a73452eb7c8a915749d99a26cc53103f205d5abfcea9f0f13f66e"
+    },
+    {
+      "path": "scripts/test-entry-input.mjs",
+      "sha256": "7e4561c7833c554978dd7827e73cbcdcad6fe757e2f392d0179c0f65f3d987ca"
+    },
+    {
+      "path": "scripts/test-assessment-session.mjs",
+      "sha256": "f00f3d8e697392e230d29514d7f1d9dda5a67c5be4e6ae80b54de2a9fad5091e"
+    },
+    {
+      "path": "scripts/test-reading-resize.mjs",
+      "sha256": "81966146ce5dbbb42689f2ac93e8a501a2547f53bb2735dfba7b3b915947d328"
+    },
+    {
+      "path": "scripts/test-reading-save.mjs",
+      "sha256": "8a290b870a03055eb4117a79269e7912e7dcae863d2fca7e3982e26cf38f77aa"
+    },
+    {
+      "path": "web/js/learning-assessment-page.js",
+      "sha256": "5975e61c27053bb2100b2f318a8bb21b1e58a0872b55737acdb681dacd832153"
+    },
+    {
+      "path": "web/js/learning-progress.js",
+      "sha256": "ba1cca8296bac7e421892858f81e2b6e9cbdc7e96e75f395a38ff605ca222a0d"
+    },
+    {
+      "path": "web/js/modes/learning-mode.js",
+      "sha256": "c5ed203a60edb8d682550655db3083579e950391ef908c11ebf788ae59d95d4f"
+    },
+    {
+      "path": "web/js/star-map.js",
+      "sha256": "24bb90c3cf8f6ec0445707ca6e63cdecf232513d679e7ffb7850e33943399622"
+    },
+    {
+      "path": "web/js/user-data.js",
+      "sha256": "8a47ceb0e8dea555a17d10ac253b32f0dfc84cead620ddcf13193def6e1435b1"
+    },
+    {
+      "path": "web/test/learning-assessment-page.test.mjs",
+      "sha256": "e854184358ea203b0884f0db0be4f56c3db3c567d63d0efd699e9626c647793d"
+    },
+    {
+      "path": "web/test/learning-progress.test.mjs",
+      "sha256": "fe0acd69eff354d865b059f1c0ee8e2009fa4f843a2827d7fdd61fb7836d7885"
+    },
+    {
+      "path": "web/test/user-data.test.mjs",
+      "sha256": "0173ba20915bebc32c20b40d2e4a890d28e8432a82003ccafce92e8f29ee9dde"
+    },
+    {
+      "path": "web/test/browser-smoke-reading-state.test.mjs",
+      "sha256": "a3d5491f139d11f7575a03c623339adce09f10ca80d275dbd04f08d39d244c39"
+    },
+    {
+      "path": "web/test/star-pointer-lifecycle.test.mjs",
+      "sha256": "bca816ce3888545dffd56f49096ad6cff13872290deb1d5a6f4c3d10bbda516f"
+    }
+  ],
+  "documentationCheck": {
+    "documents": 15,
+    "lines": 6643,
+    "localLinks": 695,
+    "tasks": 48,
+    "requirements": 86,
+    "sourceGuard": null,
+    "issues": []
+  },
+  "finalGuard": {
+    "sourceFilesChecked": 15,
+    "sourceChangesDuringInventory": [],
+    "extraReportLinks": 13,
+    "missing": [],
+    "documentHashes": [
+      {
+        "path": "docs/DEVELOPMENT-MASTER.md",
+        "sha256": "44c00b75bb48150c8bd97f35cd9d1527d91cdec2e72d58f6222da537506051e7"
+      },
+      {
+        "path": "docs/development/04-learning-library-assessment.md",
+        "sha256": "c1fd3e9a04b3114ca4425ea8ccb2d01f487d0e8fd59e6e188f7358f3a64ec203"
+      },
+      {
+        "path": "docs/development/06-divination-growth.md",
+        "sha256": "3a5b9a49fe481e239126b2671ea700432f2220fc267a4359e1075c3dfac6d37d"
+      },
+      {
+        "path": "docs/development/08-data-storage-content.md",
+        "sha256": "420902c3149a8efa4a62a15bb1f2a1fcc69d8741d732d7c6a75efddda102c3ec"
+      },
+      {
+        "path": "docs/development/12-ai-execution-tasks.md",
+        "sha256": "167b30bbaaf98ccc04a679e87db1da7cc3ea1c28f7ae8d36e389d280817931f9"
+      },
+      {
+        "path": "docs/development/REMAINING-WORK-AND-GOAL.md",
+        "sha256": "633270f65588269e5ddb6450c5c1188649d6ff881255ad526165dbdbee1e824b"
+      },
+      {
+        "path": "docs/development/evidence/2026-10-25-current-inventory.md",
+        "sha256": "7f92070770e5104478d69ddfd397ac8dec76de64650cd1163723c3cb23605a75"
+      }
+    ]
+  },
+  "gitHubInventoryComment": "https://github.com/WYHCIPUC/yijing-atlas/issues/9#issuecomment-6388432118",
+  "currentPointerRegression": {
+    "command": "node --test web/test/star-pointer-lifecycle.test.mjs",
+    "exitCode": 1,
+    "passed": 5,
+    "failed": 1,
+    "log": "2026-10-25-inventory-pointer-check.log"
+  }
+}

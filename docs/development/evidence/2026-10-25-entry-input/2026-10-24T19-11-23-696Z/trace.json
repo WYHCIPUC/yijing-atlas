@@ -1,0 +1,2184 @@
+{
+  "startedAt": "2026-10-24T19:11:23.699Z",
+  "node": "v24.19.0",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "output": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-entry-input\\2026-10-24T19-11-23-696Z",
+  "command": "YIJING_ENTRY_SCOPE=boundaries YIJING_ENTRY_CASE=multi-touch-outside-canvas-reset node scripts/test-entry-input.mjs",
+  "scenarios": [
+    {
+      "name": "multi-touch-outside-canvas-reset",
+      "reducedMotion": false,
+      "viewport": "390x844",
+      "checks": [
+        {
+          "action": "real-secondary-touch-on-search",
+          "point": {
+            "x": 191,
+            "y": 398,
+            "code": "111111",
+            "name": "乾",
+            "frame": 5,
+            "state": {
+              "at": 695.9000000059605,
+              "frame": 5,
+              "appearProgress": 0.18525925925925923,
+              "reducedMotion": false,
+              "autoRotate": true,
+              "activeCode": null,
+              "cameraPos": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "cameraTarget": null,
+              "cameraTransition": {
+                "from": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "elapsed": 166.73333333333332
+              },
+              "yaw": 0.006002399999999999,
+              "pitch": 0,
+              "viewScale": 1,
+              "isDragging": false,
+              "documentHasFocus": true,
+              "dragStart": null,
+              "readingStage": "none",
+              "summaryHidden": true,
+              "summaryName": "乾",
+              "detailHidden": "true"
+            }
+          },
+          "second": {
+            "x": 247.203125,
+            "y": 31.921354293823242
+          },
+          "held": {
+            "at": 773.0999999940395,
+            "frame": 8,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": true,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 3,
+              "code": "111111",
+              "x": 191,
+              "y": 398,
+              "moved": true
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          },
+          "afterSecond": {
+            "at": 804.1999999880791,
+            "frame": 10,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": true,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 3,
+              "code": "111111",
+              "x": 191,
+              "y": 398,
+              "moved": true
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          },
+          "secondary": {
+            "type": "pointerdown",
+            "phase": "after",
+            "trusted": true,
+            "pointerType": "touch",
+            "pointerId": 4,
+            "isPrimary": false,
+            "x": 247.203125,
+            "y": 31.921354293823242,
+            "target": "search",
+            "state": {
+              "at": 803.4000000059605,
+              "frame": 10,
+              "appearProgress": 1,
+              "reducedMotion": false,
+              "autoRotate": false,
+              "activeCode": null,
+              "cameraPos": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "cameraTarget": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "cameraTransition": null,
+              "yaw": 0.0792012,
+              "pitch": 0,
+              "viewScale": 1,
+              "isDragging": true,
+              "documentHasFocus": true,
+              "dragStart": {
+                "pointerId": 3,
+                "code": "111111",
+                "x": 191,
+                "y": 398,
+                "moved": true
+              },
+              "readingStage": "none",
+              "summaryHidden": true,
+              "summaryName": "乾",
+              "detailHidden": "true"
+            }
+          }
+        },
+        {
+          "action": "outside-touch-cancel-cleanup",
+          "cancelled": {
+            "at": 838.4000000059605,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "action": "touch-release-0px",
+          "point": {
+            "x": 196,
+            "y": 413,
+            "code": "111111",
+            "name": "乾",
+            "frame": 12,
+            "state": {
+              "at": 839.6999999880791,
+              "frame": 12,
+              "appearProgress": 1,
+              "reducedMotion": false,
+              "autoRotate": false,
+              "activeCode": null,
+              "cameraPos": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "cameraTarget": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "cameraTransition": null,
+              "yaw": 0.0792012,
+              "pitch": 0,
+              "viewScale": 1,
+              "isDragging": false,
+              "documentHasFocus": true,
+              "dragStart": null,
+              "readingStage": "none",
+              "summaryHidden": true,
+              "summaryName": "乾",
+              "detailHidden": "true"
+            }
+          },
+          "before": {
+            "at": 841,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          },
+          "held": {
+            "at": 872.3000000119209,
+            "frame": 13,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 5,
+              "code": "111111",
+              "x": 196,
+              "y": 413,
+              "moved": false
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          },
+          "after": {
+            "at": 955.0999999940395,
+            "frame": 16,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": "111111",
+            "cameraPos": {
+              "x": 0.00483193163737813,
+              "y": -3.3797775751679495,
+              "z": -0.3596627789546753
+            },
+            "cameraTarget": {
+              "x": 0.14089912654594627,
+              "y": -98.55431409189742,
+              "z": -10.487766634318334
+            },
+            "cameraTransition": {
+              "from": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "elapsed": 50
+            },
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": false,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          },
+          "down": {
+            "type": "pointerdown",
+            "phase": "before",
+            "trusted": true,
+            "pointerType": "touch",
+            "pointerId": 5,
+            "isPrimary": true,
+            "x": 196,
+            "y": 413,
+            "target": "star-canvas",
+            "state": {
+              "at": 871.1999999880791,
+              "frame": 13,
+              "appearProgress": 1,
+              "reducedMotion": false,
+              "autoRotate": false,
+              "activeCode": null,
+              "cameraPos": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "cameraTarget": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "cameraTransition": null,
+              "yaw": 0.0792012,
+              "pitch": 0,
+              "viewScale": 1,
+              "isDragging": false,
+              "documentHasFocus": true,
+              "dragStart": null,
+              "readingStage": "none",
+              "summaryHidden": true,
+              "summaryName": "乾",
+              "detailHidden": "true"
+            }
+          },
+          "up": {
+            "type": "pointerup",
+            "phase": "after",
+            "trusted": true,
+            "pointerType": "touch",
+            "pointerId": 5,
+            "isPrimary": true,
+            "x": 196,
+            "y": 413,
+            "target": "star-canvas",
+            "state": {
+              "at": 931.4000000059605,
+              "frame": 14,
+              "appearProgress": 1,
+              "reducedMotion": false,
+              "autoRotate": false,
+              "activeCode": "111111",
+              "cameraPos": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "cameraTarget": {
+                "x": 0.14089912654594627,
+                "y": -98.55431409189742,
+                "z": -10.487766634318334
+              },
+              "cameraTransition": {
+                "from": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "elapsed": 0
+              },
+              "yaw": 0.0792012,
+              "pitch": 0,
+              "viewScale": 1,
+              "isDragging": false,
+              "documentHasFocus": true,
+              "dragStart": null,
+              "readingStage": "none",
+              "summaryHidden": false,
+              "summaryName": "乾",
+              "detailHidden": "true"
+            }
+          },
+          "releaseDistance": 0
+        }
+      ],
+      "screenshots": [
+        "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-entry-input\\2026-10-24T19-11-23-696Z\\multi-touch-outside-canvas-reset.png"
+      ],
+      "status": "failed",
+      "welcome": {
+        "at": 232.80000001192093,
+        "frame": 0,
+        "appearProgress": 0,
+        "reducedMotion": false,
+        "autoRotate": true,
+        "activeCode": null,
+        "cameraPos": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "cameraTarget": null,
+        "cameraTransition": null,
+        "yaw": 0,
+        "pitch": 0,
+        "viewScale": 1,
+        "isDragging": false,
+        "documentHasFocus": false,
+        "dragStart": null,
+        "readingStage": "none",
+        "summaryHidden": true,
+        "summaryName": "乾",
+        "detailHidden": "true"
+      },
+      "started": {
+        "at": 556.5999999940395,
+        "frame": 1,
+        "appearProgress": 0.03703703703703704,
+        "reducedMotion": false,
+        "autoRotate": true,
+        "activeCode": null,
+        "cameraPos": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "cameraTarget": null,
+        "cameraTransition": {
+          "from": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "elapsed": 33.333333333333336
+        },
+        "yaw": 0.0012,
+        "pitch": 0,
+        "viewScale": 1,
+        "isDragging": false,
+        "documentHasFocus": true,
+        "dragStart": null,
+        "readingStage": "none",
+        "summaryHidden": true,
+        "summaryName": "乾",
+        "detailHidden": "true"
+      },
+      "failure": {
+        "message": "A secondary touch outside Canvas must reset the current drag.\n+ actual - expected\n\n+ {\n+   code: '111111',\n+   moved: true,\n+   pointerId: 3,\n+   x: 191,\n+   y: 398\n+ }\n- null\n",
+        "stack": "AssertionError [ERR_ASSERTION]: A secondary touch outside Canvas must reset the current drag.\n+ actual - expected\n\n+ {\n+   code: '111111',\n+   moved: true,\n+   pointerId: 3,\n+   x: 191,\n+   y: 398\n+ }\n- null\n\n    at file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-entry-input.mjs:614:12\n    at async runBoundary (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-entry-input.mjs:413:7)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-entry-input.mjs:583:3"
+      },
+      "events": [
+        {
+          "type": "focus",
+          "trusted": true,
+          "target": "window",
+          "state": {
+            "at": 264.69999998807907,
+            "frame": 0,
+            "appearProgress": 0,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": null,
+            "yaw": 0,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerdown",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 2,
+          "isPrimary": true,
+          "x": 195,
+          "y": 447.75,
+          "target": "explore",
+          "state": {
+            "at": 265.69999998807907,
+            "frame": 0,
+            "appearProgress": 0,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": null,
+            "yaw": 0,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerdown",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 2,
+          "isPrimary": true,
+          "x": 195,
+          "y": 447.75,
+          "target": "explore",
+          "state": {
+            "at": 265.69999998807907,
+            "frame": 0,
+            "appearProgress": 0,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": null,
+            "yaw": 0,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "gotpointercapture",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 2,
+          "isPrimary": true,
+          "x": 195,
+          "y": 447.75,
+          "target": "explore",
+          "state": {
+            "at": 296.90000000596046,
+            "frame": 0,
+            "appearProgress": 0,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": null,
+            "yaw": 0,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "gotpointercapture",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 2,
+          "isPrimary": true,
+          "x": 195,
+          "y": 447.75,
+          "target": "explore",
+          "state": {
+            "at": 296.90000000596046,
+            "frame": 0,
+            "appearProgress": 0,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": null,
+            "yaw": 0,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerup",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 2,
+          "isPrimary": true,
+          "x": 195,
+          "y": 447.75,
+          "target": "explore",
+          "state": {
+            "at": 297,
+            "frame": 0,
+            "appearProgress": 0,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": null,
+            "yaw": 0,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerup",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 2,
+          "isPrimary": true,
+          "x": 195,
+          "y": 447.75,
+          "target": "explore",
+          "state": {
+            "at": 297,
+            "frame": 0,
+            "appearProgress": 0,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": null,
+            "yaw": 0,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "lostpointercapture",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 2,
+          "isPrimary": true,
+          "x": 195,
+          "y": 447.75,
+          "target": "explore",
+          "state": {
+            "at": 297,
+            "frame": 0,
+            "appearProgress": 0,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": null,
+            "yaw": 0,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "lostpointercapture",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 2,
+          "isPrimary": true,
+          "x": 195,
+          "y": 447.75,
+          "target": "explore",
+          "state": {
+            "at": 297,
+            "frame": 0,
+            "appearProgress": 0,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": null,
+            "yaw": 0,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "click",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 2,
+          "isPrimary": false,
+          "x": 195,
+          "y": 448,
+          "target": "explore",
+          "state": {
+            "at": 299.5,
+            "frame": 0,
+            "appearProgress": 0,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": null,
+            "yaw": 0,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "click",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 2,
+          "isPrimary": false,
+          "x": 195,
+          "y": 448,
+          "target": "explore",
+          "state": {
+            "at": 333.90000000596046,
+            "frame": 0,
+            "appearProgress": 0,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": null,
+            "yaw": 0,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerdown",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 3,
+          "isPrimary": true,
+          "x": 191,
+          "y": 398,
+          "target": "star-canvas",
+          "state": {
+            "at": 714.3000000119209,
+            "frame": 6,
+            "appearProgress": 0.22225925925925918,
+            "reducedMotion": false,
+            "autoRotate": true,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": null,
+            "cameraTransition": {
+              "from": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "elapsed": 200.03333333333327
+            },
+            "yaw": 0.007201199999999997,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerdown",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 3,
+          "isPrimary": true,
+          "x": 191,
+          "y": 398,
+          "target": "star-canvas",
+          "state": {
+            "at": 714.5,
+            "frame": 6,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.007201199999999997,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 3,
+              "code": "111111",
+              "x": 191,
+              "y": 398,
+              "moved": false
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "gotpointercapture",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 3,
+          "isPrimary": true,
+          "x": 203,
+          "y": 398,
+          "target": "star-canvas",
+          "state": {
+            "at": 760.9000000059605,
+            "frame": 7,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.007201199999999997,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 3,
+              "code": "111111",
+              "x": 191,
+              "y": 398,
+              "moved": false
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "gotpointercapture",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 3,
+          "isPrimary": true,
+          "x": 203,
+          "y": 398,
+          "target": "star-canvas",
+          "state": {
+            "at": 761,
+            "frame": 7,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.007201199999999997,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 3,
+              "code": "111111",
+              "x": 191,
+              "y": 398,
+              "moved": false
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointermove",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 3,
+          "isPrimary": true,
+          "x": 203,
+          "y": 398,
+          "target": "star-canvas",
+          "state": {
+            "at": 761,
+            "frame": 7,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.007201199999999997,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 3,
+              "code": "111111",
+              "x": 191,
+              "y": 398,
+              "moved": false
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointermove",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 3,
+          "isPrimary": true,
+          "x": 203,
+          "y": 398,
+          "target": "star-canvas",
+          "state": {
+            "at": 761.1999999880791,
+            "frame": 7,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": true,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 3,
+              "code": "111111",
+              "x": 191,
+              "y": 398,
+              "moved": true
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerdown",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 4,
+          "isPrimary": false,
+          "x": 247.203125,
+          "y": 31.921354293823242,
+          "target": "search",
+          "state": {
+            "at": 803.4000000059605,
+            "frame": 10,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": true,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 3,
+              "code": "111111",
+              "x": 191,
+              "y": 398,
+              "moved": true
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerdown",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 4,
+          "isPrimary": false,
+          "x": 247.203125,
+          "y": 31.921354293823242,
+          "target": "search",
+          "state": {
+            "at": 803.4000000059605,
+            "frame": 10,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": true,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 3,
+              "code": "111111",
+              "x": 191,
+              "y": 398,
+              "moved": true
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointercancel",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 3,
+          "isPrimary": true,
+          "x": 203,
+          "y": 398,
+          "target": "star-canvas",
+          "state": {
+            "at": 837.5999999940395,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": true,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 3,
+              "code": "111111",
+              "x": 191,
+              "y": 398,
+              "moved": true
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointercancel",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 3,
+          "isPrimary": true,
+          "x": 203,
+          "y": 398,
+          "target": "star-canvas",
+          "state": {
+            "at": 837.6999999880791,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "lostpointercapture",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 3,
+          "isPrimary": true,
+          "x": 203,
+          "y": 398,
+          "target": "star-canvas",
+          "state": {
+            "at": 837.6999999880791,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "lostpointercapture",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 3,
+          "isPrimary": true,
+          "x": 203,
+          "y": 398,
+          "target": "star-canvas",
+          "state": {
+            "at": 837.6999999880791,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "gotpointercapture",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 4,
+          "isPrimary": false,
+          "x": 247.203125,
+          "y": 31.921354293823242,
+          "target": "search",
+          "state": {
+            "at": 838.1999999880791,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "gotpointercapture",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 4,
+          "isPrimary": false,
+          "x": 247.203125,
+          "y": 31.921354293823242,
+          "target": "search",
+          "state": {
+            "at": 838.1999999880791,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointercancel",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 4,
+          "isPrimary": false,
+          "x": 247.203125,
+          "y": 31.921354293823242,
+          "target": "search",
+          "state": {
+            "at": 838.1999999880791,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointercancel",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 4,
+          "isPrimary": false,
+          "x": 247.203125,
+          "y": 31.921354293823242,
+          "target": "search",
+          "state": {
+            "at": 838.1999999880791,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "lostpointercapture",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 4,
+          "isPrimary": false,
+          "x": 247.203125,
+          "y": 31.921354293823242,
+          "target": "search",
+          "state": {
+            "at": 838.1999999880791,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "lostpointercapture",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 4,
+          "isPrimary": false,
+          "x": 247.203125,
+          "y": 31.921354293823242,
+          "target": "search",
+          "state": {
+            "at": 838.1999999880791,
+            "frame": 12,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerdown",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 5,
+          "isPrimary": true,
+          "x": 196,
+          "y": 413,
+          "target": "star-canvas",
+          "state": {
+            "at": 871.1999999880791,
+            "frame": 13,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerdown",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 5,
+          "isPrimary": true,
+          "x": 196,
+          "y": 413,
+          "target": "star-canvas",
+          "state": {
+            "at": 871.3000000119209,
+            "frame": 13,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 5,
+              "code": "111111",
+              "x": 196,
+              "y": 413,
+              "moved": false
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "gotpointercapture",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 5,
+          "isPrimary": true,
+          "x": 196,
+          "y": 413,
+          "target": "star-canvas",
+          "state": {
+            "at": 902.5999999940395,
+            "frame": 14,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 5,
+              "code": "111111",
+              "x": 196,
+              "y": 413,
+              "moved": false
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "gotpointercapture",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 5,
+          "isPrimary": true,
+          "x": 196,
+          "y": 413,
+          "target": "star-canvas",
+          "state": {
+            "at": 902.5999999940395,
+            "frame": 14,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 5,
+              "code": "111111",
+              "x": 196,
+              "y": 413,
+              "moved": false
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerup",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 5,
+          "isPrimary": true,
+          "x": 196,
+          "y": 413,
+          "target": "star-canvas",
+          "state": {
+            "at": 902.5999999940395,
+            "frame": 14,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": null,
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTransition": null,
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": {
+              "pointerId": 5,
+              "code": "111111",
+              "x": 196,
+              "y": 413,
+              "moved": false
+            },
+            "readingStage": "none",
+            "summaryHidden": true,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "pointerup",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 5,
+          "isPrimary": true,
+          "x": 196,
+          "y": 413,
+          "target": "star-canvas",
+          "state": {
+            "at": 931.4000000059605,
+            "frame": 14,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": "111111",
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0.14089912654594627,
+              "y": -98.55431409189742,
+              "z": -10.487766634318334
+            },
+            "cameraTransition": {
+              "from": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "elapsed": 0
+            },
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": false,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "lostpointercapture",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 5,
+          "isPrimary": true,
+          "x": 196,
+          "y": 413,
+          "target": "star-canvas",
+          "state": {
+            "at": 931.4000000059605,
+            "frame": 14,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": "111111",
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0.14089912654594627,
+              "y": -98.55431409189742,
+              "z": -10.487766634318334
+            },
+            "cameraTransition": {
+              "from": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "elapsed": 0
+            },
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": false,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "lostpointercapture",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 5,
+          "isPrimary": true,
+          "x": 196,
+          "y": 413,
+          "target": "star-canvas",
+          "state": {
+            "at": 931.4000000059605,
+            "frame": 14,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": "111111",
+            "cameraPos": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "cameraTarget": {
+              "x": 0.14089912654594627,
+              "y": -98.55431409189742,
+              "z": -10.487766634318334
+            },
+            "cameraTransition": {
+              "from": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "elapsed": 0
+            },
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": false,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "click",
+          "phase": "before",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 5,
+          "isPrimary": false,
+          "x": 196,
+          "y": 413,
+          "target": "star-canvas",
+          "state": {
+            "at": 944.0999999940395,
+            "frame": 15,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": "111111",
+            "cameraPos": {
+              "x": 0.0005677505355939505,
+              "y": -0.39712286358654514,
+              "z": -0.042260269951899916
+            },
+            "cameraTarget": {
+              "x": 0.14089912654594627,
+              "y": -98.55431409189742,
+              "z": -10.487766634318334
+            },
+            "cameraTransition": {
+              "from": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "elapsed": 16.700000000000045
+            },
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": false,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        },
+        {
+          "type": "click",
+          "phase": "after",
+          "trusted": true,
+          "pointerType": "touch",
+          "pointerId": 5,
+          "isPrimary": false,
+          "x": 196,
+          "y": 413,
+          "target": "star-canvas",
+          "state": {
+            "at": 944.1999999880791,
+            "frame": 15,
+            "appearProgress": 1,
+            "reducedMotion": false,
+            "autoRotate": false,
+            "activeCode": "111111",
+            "cameraPos": {
+              "x": 0.0005677505355939505,
+              "y": -0.39712286358654514,
+              "z": -0.042260269951899916
+            },
+            "cameraTarget": {
+              "x": 0.14089912654594627,
+              "y": -98.55431409189742,
+              "z": -10.487766634318334
+            },
+            "cameraTransition": {
+              "from": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "elapsed": 16.700000000000045
+            },
+            "yaw": 0.0792012,
+            "pitch": 0,
+            "viewScale": 1,
+            "isDragging": false,
+            "documentHasFocus": true,
+            "dragStart": null,
+            "readingStage": "none",
+            "summaryHidden": false,
+            "summaryName": "乾",
+            "detailHidden": "true"
+          }
+        }
+      ],
+      "final": {
+        "at": 960.1999999880791,
+        "frame": 16,
+        "appearProgress": 1,
+        "reducedMotion": false,
+        "autoRotate": false,
+        "activeCode": "111111",
+        "cameraPos": {
+          "x": 0.00483193163737813,
+          "y": -3.3797775751679495,
+          "z": -0.3596627789546753
+        },
+        "cameraTarget": {
+          "x": 0.14089912654594627,
+          "y": -98.55431409189742,
+          "z": -10.487766634318334
+        },
+        "cameraTransition": {
+          "from": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "elapsed": 50
+        },
+        "yaw": 0.0792012,
+        "pitch": 0,
+        "viewScale": 1,
+        "isDragging": false,
+        "documentHasFocus": true,
+        "dragStart": null,
+        "readingStage": "none",
+        "summaryHidden": false,
+        "summaryName": "乾",
+        "detailHidden": "true"
+      }
+    }
+  ],
+  "status": "failed",
+  "head": "1bee1c210d675d8aa49df23c0724ba577ad8cf6d",
+  "sourceHashes": {
+    "web/js/star-map.js": "24bb90c3cf8f6ec0445707ca6e63cdecf232513d679e7ffb7850e33943399622",
+    "web/js/main.js": "2c68c387383f70215420db70485bd18cbc7f00334722c6ca8fa7e6a29a1326b7",
+    "scripts/test-entry-input.mjs": "a0e73edc2a707bf2c6b4782327b594fecb8c95967a0180a063a5e3334de06e22"
+  },
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "observation": "One debugger stop in the constructor before _startRenderLoop exposes a read-only instance reference; all later actions use trusted CDP Input. Canvas arcs and event snapshots are observed without calling application methods.",
+  "finishedAt": "2026-10-24T19:11:25.597Z",
+  "finalSourceHashes": {
+    "web/js/star-map.js": "24bb90c3cf8f6ec0445707ca6e63cdecf232513d679e7ffb7850e33943399622",
+    "web/js/main.js": "2c68c387383f70215420db70485bd18cbc7f00334722c6ca8fa7e6a29a1326b7",
+    "scripts/test-entry-input.mjs": "a0e73edc2a707bf2c6b4782327b594fecb8c95967a0180a063a5e3334de06e22"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "profileRemoved": true
+}

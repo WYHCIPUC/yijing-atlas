@@ -1,0 +1,8 @@
+Command: node scripts/test-assessment-session.mjs
+Runtime: Node v22.23.1
+Observed exit code: 1
+stderr: Assertion failed: new_time >= loop->time, file c:\ws\deps\uv\src\win\core.c, line 327
+
+Six scenarios completed before the native abort: desktop normal/unanswered/double-input/new-round, empty/actual-four-question-pool, desktop grade retry, desktop achievement retry, emulated-phone grade retry, emulated-phone achievement retry. Their trace snapshots are retained. The next phone normal-touch scenario had only started; the full run is not accepted.
+
+The execution handle was polled again after the assertion and confirmed terminal (exit 1). The browser at PID 20824 was verified to belong to this isolated profile; by the time Stop-Process ran it had already exited (process identifier not found). No unrelated browser or server was stopped. Profile C:\Users\1\AppData\Local\Temp\yijing-assessment-session-OzYS8K is retained. A fresh run uses the existing bundled Node v24.19.0; no installation or global runtime setting was changed.

@@ -1,0 +1,9 @@
+PASSED 1440-normal-unanswered-double-new-round
+FAILED 1440-empty-and-insufficient-real-pool: Error: Cannot hit #learning-tab-profile: {"rect":{"x":0,"y":0,"width":0,"height":0,"top":0,"right":0,"bottom":0,"left":0},"hit":"<header class=\"topbar\">\n    <div class=\"brand-lockup\" aria-label=\"易象图谱\">\n      <div class=\"logo\">易象图谱</div>\n      <div class=\"brand-subtitle\">观象 · 读经 · 知变</div>\n    </div>\n    <nav class=\"mode-switcher\" id=\"mode-switcher\" aria-label=\"主要功能\">\n      <span class=\"mode-indicator\" aria-hidden=\"true\" style=\"translate: none; rotate: none; scale: none; opac","stage":"none"}
+    at pointFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:137:11)
+    at async click (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:142:17)
+    at async hub (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:224:3)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:341:5
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:272:5)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:337:3
+{"status":"failed","browser":"Edg/155.0.4283.62","passed":1,"total":2,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-assessment-session\\2026-10-24T19-03-09-232Z\\trace.json","profileRemoved":true}

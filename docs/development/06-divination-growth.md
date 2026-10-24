@@ -135,6 +135,8 @@ castHexagram按初至上生成yaos，本卦按value拼码，之卦翻转所有ch
 
 ### 5.2 目标规格
 
+当次时区/时间来源提示随结果与历史来路由 [T-DIV-03](12-ai-execution-tasks.md#t-div-03) 承接；责任明确不表示已实现或已验收。
+
 - 数字字段有上数/下数明确label、min=1、step=1、numeric输入提示，不能仅靠placeholder。
 - 空、0、负数、小数、NaN、Infinity、不安全整数或和溢出均不得起卦。
 - 错误就地提示，aria-invalid与描述关联，聚焦首个错误字段；修改输入后清旧错误。

@@ -1,0 +1,1695 @@
+{
+  "startedAt": "2026-10-24T18:57:03.498Z",
+  "command": "node scripts/test-reading-resize.mjs",
+  "head": "1bee1c210d675d8aa49df23c0724ba577ad8cf6d",
+  "node": "v22.23.1",
+  "platform": "win32",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "rounds": 20,
+  "sourceHashes": {
+    "web/js/main.js": "2c68c387383f70215420db70485bd18cbc7f00334722c6ca8fa7e6a29a1326b7",
+    "web/styles/immersive.css": "7ff3555ee8a593401b365dfdef36dd5dc0213222650e3d58afd45106873327f1",
+    "scripts/browser-smoke.mjs": "95494d312045048a0694664d3a0d3e49c5aa4cb0813e9cbedf8f353c09d376ad",
+    "scripts/test-reading-resize.mjs": "5137cb52865bfe4fc3327ce608b48dcdb4c94fcd43aabb0967ab9bce05123b0a"
+  },
+  "motion": "prefers-reduced-motion: no-preference; no CSS/animation overrides",
+  "observation": "Read-only DOM and media-query snapshots, resize/change listeners, MutationObserver. All quick-read and tools actions use trusted CDP Input. No application methods or DOM click().",
+  "scenarios": [],
+  "status": "failed",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "initial": {
+    "type": "initial-quick",
+    "at": 873.5999999940395,
+    "detail": null,
+    "width": 1440,
+    "height": 1024,
+    "clientWidth": 1440,
+    "visualWidth": 1440,
+    "compact": false,
+    "narrow": false,
+    "reducedMotion": false,
+    "stage": "quick",
+    "modal": "false",
+    "panelOpen": true,
+    "panelInert": false,
+    "readingBackInert": false,
+    "toolsExpanded": "false",
+    "toolsHidden": true,
+    "toolsInert": true,
+    "toolsModal": null,
+    "canvasInert": false
+  },
+  "quickTools": {
+    "opacity": "0.705002",
+    "pointerEvents": "none",
+    "tabIndex": 0,
+    "hitTarget": "detail-content",
+    "mouseReachable": false
+  },
+  "toolsInput": "Quick-read CSS makes tools mouse-inaccessible. Trusted Shift+Tab and Enter are used to test whether the same hidden control remains keyboard-reachable; no focus() or DOM click() is called.",
+  "screenshots": [
+    "initial-desktop-quick.png"
+  ],
+  "failure": {
+    "message": "Real tools button did not expand desktop tools.",
+    "stack": "Error: Real tools button did not expand desktop tools.\n    at waitFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-reading-resize.mjs:37:9)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-reading-resize.mjs:194:7"
+  },
+  "failureTrace": [
+    {
+      "type": "mutation",
+      "at": 674.7000000178814,
+      "detail": [
+        {
+          "target": "detail-panel",
+          "attribute": "data-reading-stage",
+          "old": null,
+          "value": "deep"
+        },
+        {
+          "target": "star-focus-summary",
+          "attribute": "hidden",
+          "old": "",
+          "value": ""
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "aria-modal",
+          "old": "true",
+          "value": "true"
+        },
+        {
+          "target": "relation-toggle",
+          "attribute": "aria-expanded",
+          "old": "false",
+          "value": "false"
+        },
+        {
+          "target": "relation-options",
+          "attribute": "hidden",
+          "old": "",
+          "value": ""
+        },
+        {
+          "target": "relation-options",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "relation-toggle",
+          "attribute": "aria-expanded",
+          "old": "false",
+          "value": "false"
+        },
+        {
+          "target": "relation-options",
+          "attribute": "hidden",
+          "old": "",
+          "value": ""
+        },
+        {
+          "target": "relation-options",
+          "attribute": "inert",
+          "old": "",
+          "value": ""
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "data-reading-stage",
+          "old": "none",
+          "value": "deep"
+        },
+        {
+          "target": "star-focus-summary",
+          "attribute": "hidden",
+          "old": "",
+          "value": ""
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "aria-modal",
+          "old": "false",
+          "value": "true"
+        },
+        {
+          "target": "explore-tools",
+          "attribute": "hidden",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "loading",
+          "attribute": "hidden",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "daily-overlay",
+          "attribute": "hidden",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "relation-toggle",
+          "attribute": "aria-expanded",
+          "old": "false",
+          "value": "false"
+        },
+        {
+          "target": "relation-options",
+          "attribute": "hidden",
+          "old": "",
+          "value": ""
+        },
+        {
+          "target": "relation-options",
+          "attribute": "inert",
+          "old": "",
+          "value": ""
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "data-reading-stage",
+          "old": "none",
+          "value": "deep"
+        },
+        {
+          "target": "star-focus-summary",
+          "attribute": "hidden",
+          "old": "",
+          "value": ""
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "aria-modal",
+          "old": "false",
+          "value": "true"
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "aria-modal",
+          "old": "false",
+          "value": "true"
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "loading",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "daily-overlay",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "HEADER",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "celestial-canvas",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "star-canvas-description",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "star-canvas",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "star-hover-card",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "explore-tools",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "relation-layers",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "star-focus-summary",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "hint",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "ASIDE",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "SCRIPT",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "SCRIPT",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "SCRIPT",
+          "attribute": "inert",
+          "old": null,
+          "value": ""
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "aria-modal",
+          "old": "true",
+          "value": "true"
+        }
+      ],
+      "width": 1440,
+      "height": 1024,
+      "clientWidth": 1440,
+      "visualWidth": 1440,
+      "compact": false,
+      "narrow": false,
+      "reducedMotion": false,
+      "stage": "deep",
+      "modal": "true",
+      "panelOpen": true,
+      "panelInert": false,
+      "readingBackInert": false,
+      "toolsExpanded": "false",
+      "toolsHidden": true,
+      "toolsInert": true,
+      "toolsModal": null,
+      "canvasInert": true
+    },
+    {
+      "type": "trusted-input",
+      "at": 732.5999999940395,
+      "detail": {
+        "target": "reading-quicken",
+        "trusted": true
+      },
+      "width": 1440,
+      "height": 1024,
+      "clientWidth": 1440,
+      "visualWidth": 1440,
+      "compact": false,
+      "narrow": false,
+      "reducedMotion": false,
+      "stage": "deep",
+      "modal": "true",
+      "panelOpen": true,
+      "panelInert": false,
+      "readingBackInert": false,
+      "toolsExpanded": "false",
+      "toolsHidden": true,
+      "toolsInert": true,
+      "toolsModal": null,
+      "canvasInert": true
+    },
+    {
+      "type": "mutation",
+      "at": 814.8000000119209,
+      "detail": [
+        {
+          "target": "relation-toggle",
+          "attribute": "aria-expanded",
+          "old": "false",
+          "value": "false"
+        },
+        {
+          "target": "relation-options",
+          "attribute": "hidden",
+          "old": "",
+          "value": ""
+        },
+        {
+          "target": "relation-options",
+          "attribute": "inert",
+          "old": "",
+          "value": ""
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "data-reading-stage",
+          "old": "deep",
+          "value": "quick"
+        },
+        {
+          "target": "star-focus-summary",
+          "attribute": "hidden",
+          "old": "",
+          "value": ""
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "aria-modal",
+          "old": "true",
+          "value": "false"
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "loading",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "daily-overlay",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "HEADER",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "celestial-canvas",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "star-canvas-description",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "star-canvas",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "star-hover-card",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "explore-tools",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "relation-layers",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "star-focus-summary",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "hint",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "DIV",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "ASIDE",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "SCRIPT",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "SCRIPT",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "SCRIPT",
+          "attribute": "inert",
+          "old": "",
+          "value": null
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "aria-modal",
+          "old": "false",
+          "value": "false"
+        },
+        {
+          "target": "detail-panel",
+          "attribute": "aria-modal",
+          "old": "false",
+          "value": "false"
+        }
+      ],
+      "width": 1440,
+      "height": 1024,
+      "clientWidth": 1440,
+      "visualWidth": 1440,
+      "compact": false,
+      "narrow": false,
+      "reducedMotion": false,
+      "stage": "quick",
+      "modal": "false",
+      "panelOpen": true,
+      "panelInert": false,
+      "readingBackInert": false,
+      "toolsExpanded": "false",
+      "toolsHidden": true,
+      "toolsInert": true,
+      "toolsModal": null,
+      "canvasInert": false
+    },
+    {
+      "type": "initial-quick",
+      "at": 873.5999999940395,
+      "detail": null,
+      "width": 1440,
+      "height": 1024,
+      "clientWidth": 1440,
+      "visualWidth": 1440,
+      "compact": false,
+      "narrow": false,
+      "reducedMotion": false,
+      "stage": "quick",
+      "modal": "false",
+      "panelOpen": true,
+      "panelInert": false,
+      "readingBackInert": false,
+      "toolsExpanded": "false",
+      "toolsHidden": true,
+      "toolsInert": true,
+      "toolsModal": null,
+      "canvasInert": false
+    }
+  ],
+  "failureScreenshot": "failure.png",
+  "finishedAt": "2026-10-24T18:57:20.672Z",
+  "finalSourceHashes": {
+    "web/js/main.js": "2c68c387383f70215420db70485bd18cbc7f00334722c6ca8fa7e6a29a1326b7",
+    "web/styles/immersive.css": "7ff3555ee8a593401b365dfdef36dd5dc0213222650e3d58afd45106873327f1",
+    "scripts/browser-smoke.mjs": "95494d312045048a0694664d3a0d3e49c5aa4cb0813e9cbedf8f353c09d376ad",
+    "scripts/test-reading-resize.mjs": "5137cb52865bfe4fc3327ce608b48dcdb4c94fcd43aabb0967ab9bce05123b0a"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224787.24,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 160,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "noiseBurst",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 160,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 433,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 452,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.188,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 452,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.261,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 452,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.313,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 452,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.369,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 452,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.469,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 160,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "noiseBurst",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 160,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 433,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 453,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.528,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 453,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.597,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 453,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.651,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 453,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.711,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 453,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.788,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 160,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "noiseBurst",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 160,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 433,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 455,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.847,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 455,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.895,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 455,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224788.956,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 455,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "other",
+          "level": "warning",
+          "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. ",
+          "timestamp": 1792868224789.009,
+          "url": "http://127.0.0.1:53895/js/audio-engine.js",
+          "lineNumber": 117,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "shortTone",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 117,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 172,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "modalStrike",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 171,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "playNote",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 434,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "playHexagramSound",
+                "scriptId": "11",
+                "url": "http://127.0.0.1:53895/js/audio-engine.js",
+                "lineNumber": 455,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "openReading",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 949,
+                "columnNumber": 10
+              },
+              {
+                "functionName": "openDetail",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 964,
+                "columnNumber": 2
+              },
+              {
+                "functionName": "init",
+                "scriptId": "7",
+                "url": "http://127.0.0.1:53895/js/main.js?v=51",
+                "lineNumber": 1552,
+                "columnNumber": 6
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "javascript",
+          "level": "warning",
+          "text": "The resource http://127.0.0.1:53895/assets/academy-astrolabe-bg.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+          "timestamp": 1792868228076.382,
+          "url": "http://127.0.0.1:53895/"
+        }
+      }
+    }
+  ],
+  "summary": [
+    {
+      "rate": 1,
+      "total": 0,
+      "immediateMismatch": 0,
+      "firstFrameMismatch": 0,
+      "stableMismatch": 0
+    },
+    {
+      "rate": 4,
+      "total": 0,
+      "immediateMismatch": 0,
+      "firstFrameMismatch": 0,
+      "stableMismatch": 0
+    }
+  ],
+  "profileRemoved": true
+}
