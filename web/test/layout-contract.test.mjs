@@ -91,7 +91,7 @@ assert.match(main, /document\.body\.classList\.add\('mode-transitioning'\)/);
 assert.match(main, /event\.key\.toLowerCase\(\) === 'k'/);
 assert.match(main, /panel\.dataset\.presentation = workspace/);
 assert.match(main, /resetPanelViewport\(\{ focusHeading: true \}\)/);
-assert.match(main, /renderer\(panelContent, state, \(\) => setMode\('learning'\)\)/);
+assert.match(main, /renderer\(panelContent, state, \(learningEntry\) => setMode\('learning', learningEntry\)\)/);
 assert.match(main, /addReviewCard\(code\)/);
 assert.match(main, /state\.currentMode = 'explore';[\s\S]*?updateModeButtons\('explore'\)/);
 assert.match(main, /if \(document\.querySelector\('\.share-card-overlay'\)\) return/);

@@ -1031,7 +1031,7 @@ async function loadModeResources(mode) {
   }
 }
 
-async function setMode(mode) {
+async function setMode(mode, entry = {}) {
   rememberReadingDraft();
   if (state.reading.stage !== 'none') closeDetail({ resetMode: false });
   setRelationOptions(false);
@@ -1090,9 +1090,9 @@ async function setMode(mode) {
     const [renderer] = await Promise.all([loadRenderer(), loadModeResources(mode)]);
     if (requestId !== modeRequestId || state.currentMode !== mode) return;
     if (mode === 'learning') {
-      renderer(panelContent, state, (target = 'explore') => setMode(target));
+      renderer(panelContent, state, (target = 'explore', nextEntry) => setMode(target, nextEntry), entry);
     } else if (mode === 'review') {
-      renderer(panelContent, state, () => setMode('learning'));
+      renderer(panelContent, state, (learningEntry) => setMode('learning', learningEntry));
     } else if (mode === 'divination') {
       renderer(panelContent, state, (code) => openDetail(code));
     } else {

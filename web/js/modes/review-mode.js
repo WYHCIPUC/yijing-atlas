@@ -2,9 +2,14 @@ import { hexagramSvg } from '../svg-painter.js';
 import { createProgressEvent } from '../achievement-engine.js';
 import { processAchievementEvent } from '../achievement-storage.js';
 import { getDueCards, loadReviewCards, saveReview } from '../review-engine.js';
-import { recordActivity } from '../learning-progress.js';
+import { getCourseWeakQuestions, getWeakQuestionsError, loadLearningRecord, recordActivity } from '../learning-progress.js';
+import { buildLearningQuestionBank, getLesson } from '../learning-curriculum.js';
 
 let reviewCards = null;
+
+function esc(value) {
+  return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 
 function resetReviewViewport(mountEl, focusSelector = '[data-page-heading]') {
   const panel = mountEl.closest?.('.detail-panel');
@@ -27,8 +32,13 @@ export function renderReviewMode(mountEl, appState, onStartLearning) {
 function renderDueList(mountEl, appState, onStartLearning) {
   const dueCodes = getDueCards(reviewCards);
   const dueHexagrams = dueCodes.map((code) => appState.index.byCode.get(code)).filter(Boolean);
+  const record = loadLearningRecord();
+  const weakError = getWeakQuestionsError(record.weakQuestions);
+  const courseQuestions = getCourseWeakQuestions(record);
+  const availableQuestions = new Map(courseQuestions.length
+    ? buildLearningQuestionBank(appState).map(question => [question.id, question]) : []);
   appState.starMap?.setReviewDue(dueCodes);
-  if (dueHexagrams.length === 1) {
+  if (dueHexagrams.length === 1 && !courseQuestions.length && !weakError) {
     renderReviewCard(mountEl, appState, dueHexagrams[0].binaryCode, onStartLearning, true);
     return;
   }
@@ -41,8 +51,29 @@ function renderDueList(mountEl, appState, onStartLearning) {
             ? '不重读答案，先从记忆中提取。'
             : '复习内容会从已学、答错或主动加入的卦象中产生。'}</p>
           <p class="review-storage-status" role="status" aria-live="polite"></p></div>
-        <div class="mode-hero-stat"><strong>${dueHexagrams.length}</strong><span>今日待复习</span></div>
+        <div class="mode-hero-stat"><strong>${weakError ? '待核对' : dueHexagrams.length + courseQuestions.length}</strong><span>今日待温习</span></div>
       </header>
+      <section class="course-weak-queue" aria-labelledby="course-weak-title">
+        <h3 id="course-weak-title">课程温习</h3>
+        <p>按原题回练，打开原课不等于已经纠正。卦象间隔卡另列于下方。</p>
+        ${weakError ? `<p class="course-weak-status assessment-warning" role="status">课程温习记录异常：${esc(weakError)}。原有成绩仍保留，请先导出备份再检查数据。</p><button type="button" class="text-button" data-action="weak-data">前往数据备份</button>` :
+          courseQuestions.length ? `<div class="course-weak-list">${courseQuestions.map((item, index) => {
+            const lesson = getLesson(item.lessonId);
+            const question = availableQuestions.get(item.questionId);
+            const sameReference = question?.questionVersion === item.questionVersion
+              && question.lessonId === item.lessonId && question.kind === item.questionType
+              && question.targetCode === item.targetCode && question.termId === item.termId;
+            return `<article class="course-weak-item" data-weak-question-id="${esc(item.questionId)}">
+              <h4>${esc(lesson?.title || '原课程已调整')}</h4>
+              <p>${item.questionType === 'evidence' ? '依据辨析' : '概念回忆'} · 答错 ${item.wrongCount} 次 · ${item.status === 'reviewed' ? '已温习，待回练' : '待温习'}</p>
+              <p class="course-weak-prompt">${sameReference ? `原题：${esc(question.prompt)}` : `待回练第 ${index + 1} 题 · 进入后加载原题`}</p>
+              ${lesson ? '' : '<p>当前课程不可用，保留原记录；可返回学习页选择内容。</p>'}
+              <div class="course-weak-actions"><button type="button" class="text-button" data-action="weak-source-${index}">${lesson ? '回原课温习' : '返回学习页'}</button>
+                ${lesson ? `<button type="button" class="quick-btn" data-action="weak-practice-${index}">回练原题</button>` : ''}</div>
+            </article>`;
+          }).join('')}</div>` : '<p class="mode-empty">暂无待回练的课程题。</p>'}
+      </section>
+      <h3>卦象间隔卡</h3>
       ${dueHexagrams.length ? `<div class="review-queue-layout">
         <div class="review-due-list" aria-label="今日待复习卦">
           ${dueHexagrams.slice(0, 20).map((hex) => `
@@ -60,9 +91,9 @@ function renderDueList(mountEl, appState, onStartLearning) {
       </div>` : ''}
       ${dueHexagrams.length === 0
         ? `<section class="mode-empty review-empty">
-            <strong>${Object.keys(reviewCards).length ? '今日温故已经完成' : '还没有需要复习的卦象'}</strong>
+            <strong>${Object.keys(reviewCards).length ? '今日卦象间隔卡已完成' : '还没有需要复习的卦象'}</strong>
             <p>${Object.keys(reviewCards).length ? '下一批内容会在合适的间隔再次出现。' : '阅读任一卦象或在测验中发现薄弱点后，这里会安排第一次温故。'}</p>
-            ${Object.keys(reviewCards).length ? '' : '<button type="button" class="quick-btn" data-action="start-learning">从第一课开始</button>'}
+            <button type="button" class="quick-btn" data-action="start-learning">继续学习</button>
           </section>`
         : ''}
     </div>
@@ -72,6 +103,15 @@ function renderDueList(mountEl, appState, onStartLearning) {
     button.addEventListener('click', () => renderReviewCard(mountEl, appState, button.dataset.code, onStartLearning));
   });
   mountEl.querySelector('[data-action="start-learning"]')?.addEventListener('click', () => onStartLearning?.());
+  mountEl.querySelector('[data-action="weak-data"]')?.addEventListener('click', () => onStartLearning?.({ section: 'data' }));
+  courseQuestions.forEach((item, index) => {
+    const entry = { lessonId: item.lessonId, requiredQuestionId: item.questionId,
+      requiredQuestionVersion: item.questionVersion, returnTo: 'review' };
+    mountEl.querySelector(`[data-action="weak-source-${index}"]`)?.addEventListener('click', () => {
+      onStartLearning?.(getLesson(item.lessonId) ? { ...entry, section: 'path' } : { section: 'path' });
+    });
+    mountEl.querySelector(`[data-action="weak-practice-${index}"]`)?.addEventListener('click', () => onStartLearning?.({ ...entry, section: 'assessment' }));
+  });
   resetReviewViewport(mountEl);
 }
 

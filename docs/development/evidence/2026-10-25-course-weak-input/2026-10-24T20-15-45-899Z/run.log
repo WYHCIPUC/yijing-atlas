@@ -1,0 +1,10 @@
+PASSED 1440-l1-1-course-cycle
+FAILED 390-l5-1-course-cycle: Error: Cannot hit .mode-btn[data-mode="review"]: {"rect":{"x":195,"y":62,"width":61,"height":44,"top":62,"right":256,"bottom":106,"left":195},"inert":"","hit":"<html lang=\"zh-CN\"><head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"description\" content=\"以关系星图探索六十四卦，循序学习《易经》、十翼、象数与传统黄历知识。\">\n  <meta name=\"theme-color\" content=\"#050a13\">\n  <meta name=\"color-scheme\" content=\"dark\">\n  <meta name=\"referrer\" content=\"strict-origin-when-cross-origi","stage":"none"}
+    at pointFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:145:11)
+    at async click (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:150:17)
+    at async openCourseQueue (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:304:3)
+    at async sourceFromQueue (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:319:3)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:425:7
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:287:5)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:414:5
+{"status":"failed","browser":"Edg/155.0.4283.62","passed":1,"total":2,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-course-weak-input\\2026-10-24T20-15-45-899Z\\trace.json","profileRemoved":false}

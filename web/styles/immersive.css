@@ -461,6 +461,17 @@ body.workspace-mode.panel-open .workspace-insight-bar { display: none; }
 .quiz-option:hover:not(:disabled) { border-color: var(--silver); background: var(--surface-hover); }
 .review-due-item { border-color: var(--silver-line); border-radius: 4px; background: transparent; box-shadow: none; }
 .review-due-copy strong { color: var(--silver); }
+.course-weak-queue { margin-block: 28px; min-width: 0; }
+.course-weak-list { display: grid; gap: 0; margin: 16px 0 0; padding: 0; list-style: none; }
+.course-weak-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 24px; padding-block: 20px; border-top: 1px solid var(--silver-line); }
+.course-weak-item > * { grid-column: 1; min-width: 0; margin: 0; }
+.course-weak-item > .course-weak-actions { grid-column: 2; grid-row: 1 / span 4; max-width: 260px; }
+.course-weak-item :is(h3, h4, strong) { color: var(--silver); }
+.course-weak-item :is(p, small), .course-weak-status { font-size: 15px; line-height: 1.7; overflow-wrap: anywhere; }
+.course-weak-item p { margin-block: 6px; }
+.course-weak-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.course-weak-actions button { min-height: 44px; white-space: normal; }
+.course-weak-status { margin-block: 12px; color: var(--silver-muted); }
 .flip-card { border: 1px solid var(--silver-line); border-radius: 4px; color: var(--paper-ink); background: var(--paper-warm); }
 .flip-card .hexagram-svg, .review-answer-title { color: #805a34; }
 .flip-card :is(.review-eyebrow, .review-answer-text, .review-card-hint) { color: #62584b; }
@@ -540,6 +551,9 @@ body.workspace-mode.panel-open .workspace-insight-bar { display: none; }
 
 @media (max-width: 600px) {
   :root { --header-height: calc(116px + env(safe-area-inset-top)); }
+  .course-weak-item { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .course-weak-item > .course-weak-actions { grid-column: 1; grid-row: auto; max-width: none; }
+  .course-weak-actions button { flex: 1 1 110px; }
   .topbar { padding: calc(10px + env(safe-area-inset-top)) 12px 6px; gap: 8px 12px; }
   body .logo { font-size: 21px !important; letter-spacing: 0.1em; }
   .mode-switcher { gap: 0; }

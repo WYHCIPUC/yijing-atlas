@@ -1,0 +1,1446 @@
+{
+  "startedAt": "2026-10-24T20:23:49.770Z",
+  "command": "node scripts/test-course-weak-questions.mjs",
+  "node": "v24.19.0",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-course-weak-BwcBEs",
+  "head": "57ae5facda5d984fd2baf72430d3f1dcbad853bc",
+  "sourceHashes": {
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/js/modes/review-mode.js": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+    "web/js/main.js": "9196a207e7cee8e62f9c8accc6f16066cf1bb5af494848d189718e4a05d0f466",
+    "web/styles/immersive.css": "b3568ce4e89ff48b8c908d81bba79b343a806df947910479c0bc1c88f5ffd701",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/js/learning-progress.js": "055b59a6becd6b75df912bd09e8274c47b2a05df532c5f599b4f153aeda28dd9",
+    "web/js/learning-assessment.js": "a7f7281eefb507bfd51c5185609420c489f09fda0fb9d96418e37c5b9b3a8033",
+    "web/js/learning-assessment-page.js": "c712901efbfb65d5b5c4f43f7ff477008edfc23b340bc1b6acfe4e93e62a5461",
+    "web/js/modes/learning-mode.js": "fb17c1426dc0fcba4dc7fd4d4b7797b8d042538d5b9b266d957786f05576028c",
+    "web/js/user-data.js": "7252aa0e31be7fa6970be2de6d06acbfb73d9b52f1d26cf6b7b5b44799a479c6",
+    "web/js/study-page.js": "7f99d3e5db2429daa6710735f9ff3ac8a05106bc33268c16ca00faaa418997c6",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "scripts/test-course-weak-questions.mjs": "88fa2e16b987d3e358c6e79b68ab0c76bf18300302f6f4e0d4c4ad716b7a8366"
+  },
+  "scenarios": [
+    {
+      "name": "1440-l1-1-course-cycle",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fixture": "none; one real wrong answer, then original-course reading and new ordinary lesson practice",
+      "status": "failed",
+      "sessions": [
+        {
+          "id": "d12ea579-076f-4379-8da9-5872578cb3c7",
+          "kind": "lesson",
+          "lessonId": "l1-1",
+          "levelId": "L1",
+          "questions": [
+            {
+              "id": "theory-yinyang-evidence",
+              "lessonId": "l1-1",
+              "levelId": "L1",
+              "prompt": "只凭项目中的一句白话，能否把“阴阳之道”判作现实中的确定结论？",
+              "answer": "证据不足",
+              "options": [
+                {
+                  "value": "证据不足",
+                  "label": "证据不足"
+                },
+                {
+                  "value": "卦体",
+                  "label": "卦体"
+                },
+                {
+                  "value": "经传原文",
+                  "label": "经传原文"
+                },
+                {
+                  "value": "爻位",
+                  "label": "爻位"
+                }
+              ],
+              "explanation": "项目白话用于辅助理解；若要形成判断，仍须说明原文、结构、流派与现实事实。",
+              "source": "阴阳之道",
+              "kind": "evidence",
+              "evidenceType": "证据不足",
+              "questionVersion": "curriculum-v1",
+              "targetCode": null,
+              "termId": null
+            },
+            {
+              "id": "theory-yinyang-point",
+              "lessonId": "l1-1",
+              "levelId": "L1",
+              "prompt": "以下哪一要点属于“阴阳之道”？",
+              "answer": "阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。",
+              "options": [
+                {
+                  "value": "方位：乾南、坤北、离东、坎西、震东北、兑东南、巽西南、艮西北。",
+                  "label": "方位：乾南、坤北、离东、坎西、震东北、兑东南、巽西南、艮西北。"
+                },
+                {
+                  "value": "方位：震东、巽东南、离南、坤西南、兑西、乾西北、坎北、艮东北。",
+                  "label": "方位：震东、巽东南、离南、坤西南、兑西、乾西北、坎北、艮东北。"
+                },
+                {
+                  "value": "太极生两仪：阳仪、阴仪。",
+                  "label": "太极生两仪：阳仪、阴仪。"
+                },
+                {
+                  "value": "阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。",
+                  "label": "阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。"
+                }
+              ],
+              "explanation": "阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。",
+              "source": "阴阳之道",
+              "kind": "recall",
+              "evidenceType": null,
+              "questionVersion": "curriculum-v1",
+              "targetCode": null,
+              "termId": null
+            },
+            {
+              "id": "theory-yinyang-name",
+              "lessonId": "l1-1",
+              "levelId": "L1",
+              "prompt": "“《易》以阴阳为本。一阴一阳之谓道。”对应哪一项？",
+              "answer": "阴阳之道",
+              "options": [
+                {
+                  "value": "阴阳之道",
+                  "label": "阴阳之道"
+                },
+                {
+                  "value": "八卦生成",
+                  "label": "八卦生成"
+                },
+                {
+                  "value": "后天八卦（文王八卦）",
+                  "label": "后天八卦（文王八卦）"
+                },
+                {
+                  "value": "先天八卦（伏羲八卦）",
+                  "label": "先天八卦（伏羲八卦）"
+                }
+              ],
+              "explanation": "阴阳之道：《易》以阴阳为本。一阴一阳之谓道。",
+              "source": "阴阳之道",
+              "kind": "recall",
+              "evidenceType": null,
+              "questionVersion": "curriculum-v1",
+              "targetCode": null,
+              "termId": null
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "selector": "[data-entry=\"explore\"]",
+          "kind": "mouse",
+          "x": 642.9296875,
+          "y": 668.671875
+        },
+        {
+          "selector": ".mode-btn[data-mode=\"learning\"]",
+          "kind": "mouse",
+          "x": 619.359375,
+          "y": 35.45545768737793
+        },
+        {
+          "selector": "#learning-tab-path",
+          "kind": "mouse",
+          "x": 378.2734375,
+          "y": 252.59375
+        },
+        {
+          "selector": "[data-step=\"l1-1\"] [data-action=\"assess\"]",
+          "kind": "mouse",
+          "x": 1239,
+          "y": 548
+        },
+        {
+          "kind": "keyboard",
+          "key": "Tab",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": " ",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "Tab",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": " ",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "Tab",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": " ",
+          "modifiers": 0
+        },
+        {
+          "kind": "mouse-double-submit",
+          "x": 1218,
+          "y": 939.59375
+        },
+        {
+          "selector": "[data-action=\"return-review\"]",
+          "kind": "mouse",
+          "x": 347.453125,
+          "y": 865.59375
+        },
+        {
+          "selector": "[data-action=\"weak-source-0\"]",
+          "kind": "mouse",
+          "x": 1133,
+          "y": 471.234375
+        }
+      ],
+      "checks": [
+        {
+          "label": "one-wrong-original-rule-queued-once",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:23:52.925Z",
+                  "lastStudiedAt": "2026-10-24T20:23:52.925Z",
+                  "attempts": 1,
+                  "bestScore": 0.6666666666666666
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "processedAssessmentIds": [
+                "d12ea579-076f-4379-8da9-5872578cb3c7"
+              ],
+              "assessmentSessions": [
+                {
+                  "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                  "kind": "lesson",
+                  "at": "2026-10-24T20:23:52.925Z",
+                  "correct": 2,
+                  "total": 3,
+                  "lessonId": "l1-1"
+                }
+              ],
+              "weakQuestions": {
+                "theory-yinyang-evidence": {
+                  "questionId": "theory-yinyang-evidence",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "evidence",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:23:52.925Z",
+                  "lastWrongAt": "2026-10-24T20:23:52.925Z",
+                  "lastSessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            },
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "learning-record:completed:l1-1",
+                "learning-record:assessed:l1-1:d12ea579-076f-4379-8da9-5872578cb3c7"
+              ],
+              "metrics": {
+                "completedLessons": [
+                  "l1-1"
+                ],
+                "lessonScores": {
+                  "l1-1": 0.6666666666666666
+                },
+                "topicScores": {
+                  "yin-yang": 0.6666666666666666
+                },
+                "trigramRounds": [],
+                "hexagramsRead": [],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {
+                "first-lesson": {
+                  "unlockedAt": "2026-10-24T20:23:52.926Z",
+                  "evidence": {
+                    "current": 1,
+                    "target": 1
+                  }
+                }
+              }
+            },
+            "activity": {
+              "days": [
+                "2026-10-25"
+              ]
+            },
+            "cards": null,
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2225,
+                "payload": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:23:52.925Z",
+                      "lastStudiedAt": "2026-10-24T20:23:52.925Z",
+                      "attempts": 1,
+                      "bestScore": 0.6666666666666666
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "processedAssessmentIds": [
+                    "d12ea579-076f-4379-8da9-5872578cb3c7"
+                  ],
+                  "assessmentSessions": [
+                    {
+                      "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                      "kind": "lesson",
+                      "at": "2026-10-24T20:23:52.925Z",
+                      "correct": 2,
+                      "total": 3,
+                      "lessonId": "l1-1"
+                    }
+                  ],
+                  "weakQuestions": {
+                    "theory-yinyang-evidence": {
+                      "questionId": "theory-yinyang-evidence",
+                      "questionVersion": "curriculum-v1",
+                      "sourceKind": "course",
+                      "lessonId": "l1-1",
+                      "questionType": "evidence",
+                      "targetCode": null,
+                      "termId": null,
+                      "firstWrongAt": "2026-10-24T20:23:52.925Z",
+                      "lastWrongAt": "2026-10-24T20:23:52.925Z",
+                      "lastSessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                      "wrongCount": 1,
+                      "status": "due",
+                      "lastReviewedAt": null,
+                      "resolvedAt": null
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 2225.0999999940395,
+                "payload": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2225.699999988079,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-1"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-1"
+                    ],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2225.7999999821186,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-1",
+                    "learning-record:assessed:l1-1:d12ea579-076f-4379-8da9-5872578cb3c7"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-1"
+                    ],
+                    "lessonScores": {
+                      "l1-1": 0.6666666666666666
+                    },
+                    "topicScores": {
+                      "yin-yang": 0.6666666666666666
+                    },
+                    "trigramRounds": [],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {
+                    "first-lesson": {
+                      "unlockedAt": "2026-10-24T20:23:52.926Z",
+                      "evidence": {
+                        "current": 1,
+                        "target": 1
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "selector": "[data-entry=\"explore\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 642,
+                "clientY": 668
+              },
+              {
+                "selector": ".mode-btn[data-mode=\"learning\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 619,
+                "clientY": 35
+              },
+              {
+                "selector": "#learning-tab-path",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 378,
+                "clientY": 252
+              },
+              {
+                "selector": "[data-step=\"l1-1\"] [data-action=\"assess\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1239,
+                "clientY": 548
+              }
+            ],
+            "keyboardEvents": [
+              {
+                "key": "Tab",
+                "trusted": true,
+                "at": 2092.2999999821186,
+                "target": "assessment-sheet-title"
+              },
+              {
+                "key": "ArrowDown",
+                "trusted": true,
+                "at": 2094.699999988079,
+                "target": "question-0"
+              },
+              {
+                "key": " ",
+                "trusted": true,
+                "at": 2096.199999988079,
+                "target": "question-0"
+              },
+              {
+                "key": "Tab",
+                "trusted": true,
+                "at": 2097.9000000059605,
+                "target": "question-0"
+              },
+              {
+                "key": "ArrowDown",
+                "trusted": true,
+                "at": 2099.5,
+                "target": "question-1"
+              },
+              {
+                "key": "ArrowDown",
+                "trusted": true,
+                "at": 2101.0999999940395,
+                "target": "question-1"
+              },
+              {
+                "key": "ArrowDown",
+                "trusted": true,
+                "at": 2102.699999988079,
+                "target": "question-1"
+              },
+              {
+                "key": " ",
+                "trusted": true,
+                "at": 2103.7999999821186,
+                "target": "question-1"
+              },
+              {
+                "key": "Tab",
+                "trusted": true,
+                "at": 2106.0999999940395,
+                "target": "question-1"
+              },
+              {
+                "key": " ",
+                "trusted": true,
+                "at": 2108.0999999940395,
+                "target": "question-2"
+              }
+            ],
+            "submits": [
+              {
+                "at": 2224.0999999940395,
+                "trusted": true,
+                "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7"
+              }
+            ],
+            "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+            "questions": 0,
+            "score": "67分",
+            "message": "本轮成绩与学习记录已保存。",
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            },
+            "retry": false,
+            "width": 1440,
+            "content": "\n    \n      考校\n      阴阳之道 · 课后小试\n      67分\n      2/3 题正确。建议查看辨析后回到原课温习，再进行一次小试。\n      本轮成绩与学习记录已保存。\n      \n      \n        \n            1. 待温习 · 只凭项目中的一句白话，能否把“阴阳之道”判作现实中的确定结论？\n            正答：证据不足\n            项目白话用于辅助理解；若要形成判断，仍须说明原文、结构、流派与现实事实。\n            依据：阴阳之道\n            已加入课程温习。\n            \n              回原课温习\n              回练此题\n            \n          \n            2. 答对 · 以下哪一要点属于“阴阳之道”？\n            正答：阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。\n            阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。\n            依据：阴阳之道\n            本题未产生待温习记录。\n            \n              回原课温习\n              回练此题\n            \n          \n            3. 答对 · “《易》以阴阳为本。一阴一阳之谓道。”对应哪一项？\n            正答：阴阳之道\n            阴阳之道：《易》以阴阳为本。一阴一阳之谓道。\n            依据：阴阳之道\n            本题未产生待温习记录。\n            \n              回原课温习\n              回练此题\n            \n          \n      \n      返回考评中心\n      前往温故队列\n    "
+          }
+        },
+        {
+          "label": "source-is-review-not-correction",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:23:52.925Z",
+                  "lastStudiedAt": "2026-10-24T20:23:55.753Z",
+                  "attempts": 1,
+                  "bestScore": 0.6666666666666666
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "processedAssessmentIds": [
+                "d12ea579-076f-4379-8da9-5872578cb3c7"
+              ],
+              "assessmentSessions": [
+                {
+                  "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                  "kind": "lesson",
+                  "at": "2026-10-24T20:23:52.925Z",
+                  "correct": 2,
+                  "total": 3,
+                  "lessonId": "l1-1"
+                }
+              ],
+              "weakQuestions": {
+                "theory-yinyang-evidence": {
+                  "questionId": "theory-yinyang-evidence",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "evidence",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:23:52.925Z",
+                  "lastWrongAt": "2026-10-24T20:23:52.925Z",
+                  "lastSessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            },
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "learning-record:completed:l1-1",
+                "learning-record:assessed:l1-1:d12ea579-076f-4379-8da9-5872578cb3c7"
+              ],
+              "metrics": {
+                "completedLessons": [
+                  "l1-1"
+                ],
+                "lessonScores": {
+                  "l1-1": 0.6666666666666666
+                },
+                "topicScores": {
+                  "yin-yang": 0.6666666666666666
+                },
+                "trigramRounds": [],
+                "hexagramsRead": [],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {
+                "first-lesson": {
+                  "unlockedAt": "2026-10-24T20:23:52.926Z",
+                  "evidence": {
+                    "current": 1,
+                    "target": 1
+                  }
+                }
+              }
+            },
+            "activity": {
+              "days": [
+                "2026-10-25"
+              ]
+            },
+            "cards": null,
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2225,
+                "payload": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:23:52.925Z",
+                      "lastStudiedAt": "2026-10-24T20:23:52.925Z",
+                      "attempts": 1,
+                      "bestScore": 0.6666666666666666
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "processedAssessmentIds": [
+                    "d12ea579-076f-4379-8da9-5872578cb3c7"
+                  ],
+                  "assessmentSessions": [
+                    {
+                      "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                      "kind": "lesson",
+                      "at": "2026-10-24T20:23:52.925Z",
+                      "correct": 2,
+                      "total": 3,
+                      "lessonId": "l1-1"
+                    }
+                  ],
+                  "weakQuestions": {
+                    "theory-yinyang-evidence": {
+                      "questionId": "theory-yinyang-evidence",
+                      "questionVersion": "curriculum-v1",
+                      "sourceKind": "course",
+                      "lessonId": "l1-1",
+                      "questionType": "evidence",
+                      "targetCode": null,
+                      "termId": null,
+                      "firstWrongAt": "2026-10-24T20:23:52.925Z",
+                      "lastWrongAt": "2026-10-24T20:23:52.925Z",
+                      "lastSessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                      "wrongCount": 1,
+                      "status": "due",
+                      "lastReviewedAt": null,
+                      "resolvedAt": null
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 2225.0999999940395,
+                "payload": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2225.699999988079,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-1"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-1"
+                    ],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2225.7999999821186,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-1",
+                    "learning-record:assessed:l1-1:d12ea579-076f-4379-8da9-5872578cb3c7"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-1"
+                    ],
+                    "lessonScores": {
+                      "l1-1": 0.6666666666666666
+                    },
+                    "topicScores": {
+                      "yin-yang": 0.6666666666666666
+                    },
+                    "trigramRounds": [],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {
+                    "first-lesson": {
+                      "unlockedAt": "2026-10-24T20:23:52.926Z",
+                      "evidence": {
+                        "current": 1,
+                        "target": 1
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 5053.5,
+                "payload": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:23:52.925Z",
+                      "lastStudiedAt": "2026-10-24T20:23:55.753Z",
+                      "attempts": 1,
+                      "bestScore": 0.6666666666666666
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "processedAssessmentIds": [
+                    "d12ea579-076f-4379-8da9-5872578cb3c7"
+                  ],
+                  "assessmentSessions": [
+                    {
+                      "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                      "kind": "lesson",
+                      "at": "2026-10-24T20:23:52.925Z",
+                      "correct": 2,
+                      "total": 3,
+                      "lessonId": "l1-1"
+                    }
+                  ],
+                  "weakQuestions": {
+                    "theory-yinyang-evidence": {
+                      "questionId": "theory-yinyang-evidence",
+                      "questionVersion": "curriculum-v1",
+                      "sourceKind": "course",
+                      "lessonId": "l1-1",
+                      "questionType": "evidence",
+                      "targetCode": null,
+                      "termId": null,
+                      "firstWrongAt": "2026-10-24T20:23:52.925Z",
+                      "lastWrongAt": "2026-10-24T20:23:52.925Z",
+                      "lastSessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                      "wrongCount": 1,
+                      "status": "due",
+                      "lastReviewedAt": null,
+                      "resolvedAt": null
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 5053.5999999940395,
+                "payload": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "selector": "[data-entry=\"explore\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 642,
+                "clientY": 668
+              },
+              {
+                "selector": ".mode-btn[data-mode=\"learning\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 619,
+                "clientY": 35
+              },
+              {
+                "selector": "#learning-tab-path",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 378,
+                "clientY": 252
+              },
+              {
+                "selector": "[data-step=\"l1-1\"] [data-action=\"assess\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1239,
+                "clientY": 548
+              },
+              {
+                "selector": "[data-action=\"return-review\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 347,
+                "clientY": 865
+              },
+              {
+                "selector": "[data-action=\"weak-source-0\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1133,
+                "clientY": 471
+              }
+            ],
+            "keyboardEvents": [
+              {
+                "key": "Tab",
+                "trusted": true,
+                "at": 2092.2999999821186,
+                "target": "assessment-sheet-title"
+              },
+              {
+                "key": "ArrowDown",
+                "trusted": true,
+                "at": 2094.699999988079,
+                "target": "question-0"
+              },
+              {
+                "key": " ",
+                "trusted": true,
+                "at": 2096.199999988079,
+                "target": "question-0"
+              },
+              {
+                "key": "Tab",
+                "trusted": true,
+                "at": 2097.9000000059605,
+                "target": "question-0"
+              },
+              {
+                "key": "ArrowDown",
+                "trusted": true,
+                "at": 2099.5,
+                "target": "question-1"
+              },
+              {
+                "key": "ArrowDown",
+                "trusted": true,
+                "at": 2101.0999999940395,
+                "target": "question-1"
+              },
+              {
+                "key": "ArrowDown",
+                "trusted": true,
+                "at": 2102.699999988079,
+                "target": "question-1"
+              },
+              {
+                "key": " ",
+                "trusted": true,
+                "at": 2103.7999999821186,
+                "target": "question-1"
+              },
+              {
+                "key": "Tab",
+                "trusted": true,
+                "at": 2106.0999999940395,
+                "target": "question-1"
+              },
+              {
+                "key": " ",
+                "trusted": true,
+                "at": 2108.0999999940395,
+                "target": "question-2"
+              }
+            ],
+            "submits": [
+              {
+                "at": 2224.0999999940395,
+                "trusted": true,
+                "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7"
+              }
+            ],
+            "questions": 0,
+            "focus": {
+              "id": "",
+              "tag": "H3"
+            },
+            "retry": false,
+            "width": 1440,
+            "content": "\n      \n        \n          蒙学 · 入门启蒙蒙学 · 阴阳之道\n          切换课程\n        \n        \n    \n      1蒙学阴阳八卦2习经六十四卦3研传经传与注疏4明辨象数传统5通用术数与民俗\n    \n        \n          \n            本节要义\n            阴阳者，易之根本也\n            《易》以阴阳为本。一阴一阳之谓道。\n            一阴一阳之谓道。继之者善也，成之者性也。\n            要旨阴阳互根：阴中有阳，阳中有阴，相互依存、相互转化。\n          \n          \n            阴阳关系图示\n            \n              阳动 · 健 · 明 · 升\n              \n              阴静 · 顺 · 藏 · 降\n            \n            相互依存 · 彼此转化 · 消长不息\n          \n        \n        \n          1%当前掌握度\n          当前阶段蒙学 · 共 4 课\n          已浏览 1 / 25 小节连续学习 1 天\n          继续研习\n        \n      "
+          }
+        },
+        {
+          "label": "original-course-return-label",
+          "lessonId": "l1-1",
+          "actual": "切换课程",
+          "expected": "返回温故队列"
+        }
+      ],
+      "screenshots": [
+        "1440-l1-1-course-cycle-wrong-result.png",
+        "1440-l1-1-course-cycle-review-queue.png",
+        "1440-l1-1-course-cycle-failure.png"
+      ],
+      "failure": {
+        "message": "Original-course exit must describe its actual course-review destination\n\n'切换课程' !== '返回温故队列'\n",
+        "stack": "AssertionError [ERR_ASSERTION]: Original-course exit must describe its actual course-review destination\n\n'切换课程' !== '返回温故队列'\n\n    at sourceFromQueue (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:338:10)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:463:7\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:304:5)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:452:5"
+      },
+      "failureState": {
+        "record": {
+          "version": 2,
+          "lessons": {
+            "l1-1": {
+              "viewedAt": "2026-10-24T20:23:52.925Z",
+              "lastStudiedAt": "2026-10-24T20:23:55.753Z",
+              "attempts": 1,
+              "bestScore": 0.6666666666666666
+            }
+          },
+          "spotChecks": [],
+          "exams": [],
+          "oralReviews": [],
+          "processedAssessmentIds": [
+            "d12ea579-076f-4379-8da9-5872578cb3c7"
+          ],
+          "assessmentSessions": [
+            {
+              "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+              "kind": "lesson",
+              "at": "2026-10-24T20:23:52.925Z",
+              "correct": 2,
+              "total": 3,
+              "lessonId": "l1-1"
+            }
+          ],
+          "weakQuestions": {
+            "theory-yinyang-evidence": {
+              "questionId": "theory-yinyang-evidence",
+              "questionVersion": "curriculum-v1",
+              "sourceKind": "course",
+              "lessonId": "l1-1",
+              "questionType": "evidence",
+              "targetCode": null,
+              "termId": null,
+              "firstWrongAt": "2026-10-24T20:23:52.925Z",
+              "lastWrongAt": "2026-10-24T20:23:52.925Z",
+              "lastSessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+              "wrongCount": 1,
+              "status": "due",
+              "lastReviewedAt": null,
+              "resolvedAt": null
+            }
+          }
+        },
+        "achievement": {
+          "version": 1,
+          "processedKeys": [
+            "learning-record:completed:l1-1",
+            "learning-record:assessed:l1-1:d12ea579-076f-4379-8da9-5872578cb3c7"
+          ],
+          "metrics": {
+            "completedLessons": [
+              "l1-1"
+            ],
+            "lessonScores": {
+              "l1-1": 0.6666666666666666
+            },
+            "topicScores": {
+              "yin-yang": 0.6666666666666666
+            },
+            "trigramRounds": [],
+            "hexagramsRead": [],
+            "relationsExamined": [],
+            "reviewDays": [],
+            "reviewedHexagrams": [],
+            "quizRecoveries": [],
+            "sequenceExams": [],
+            "analyses": {},
+            "boundedSubjects": [],
+            "comprehensivePassed": false
+          },
+          "achievements": {
+            "first-lesson": {
+              "unlockedAt": "2026-10-24T20:23:52.926Z",
+              "evidence": {
+                "current": 1,
+                "target": 1
+              }
+            }
+          }
+        },
+        "activity": {
+          "days": [
+            "2026-10-25"
+          ]
+        },
+        "cards": null,
+        "writes": [
+          {
+            "key": "yijing-learning-record-v2",
+            "saved": true,
+            "at": 2225,
+            "payload": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:23:52.925Z",
+                  "lastStudiedAt": "2026-10-24T20:23:52.925Z",
+                  "attempts": 1,
+                  "bestScore": 0.6666666666666666
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "processedAssessmentIds": [
+                "d12ea579-076f-4379-8da9-5872578cb3c7"
+              ],
+              "assessmentSessions": [
+                {
+                  "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                  "kind": "lesson",
+                  "at": "2026-10-24T20:23:52.925Z",
+                  "correct": 2,
+                  "total": 3,
+                  "lessonId": "l1-1"
+                }
+              ],
+              "weakQuestions": {
+                "theory-yinyang-evidence": {
+                  "questionId": "theory-yinyang-evidence",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "evidence",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:23:52.925Z",
+                  "lastWrongAt": "2026-10-24T20:23:52.925Z",
+                  "lastSessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          },
+          {
+            "key": "yijing-activity-v1",
+            "saved": true,
+            "at": 2225.0999999940395,
+            "payload": {
+              "days": [
+                "2026-10-25"
+              ]
+            }
+          },
+          {
+            "key": "yijing.achievements.v1",
+            "saved": true,
+            "at": 2225.699999988079,
+            "payload": {
+              "version": 1,
+              "processedKeys": [
+                "learning-record:completed:l1-1"
+              ],
+              "metrics": {
+                "completedLessons": [
+                  "l1-1"
+                ],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            }
+          },
+          {
+            "key": "yijing.achievements.v1",
+            "saved": true,
+            "at": 2225.7999999821186,
+            "payload": {
+              "version": 1,
+              "processedKeys": [
+                "learning-record:completed:l1-1",
+                "learning-record:assessed:l1-1:d12ea579-076f-4379-8da9-5872578cb3c7"
+              ],
+              "metrics": {
+                "completedLessons": [
+                  "l1-1"
+                ],
+                "lessonScores": {
+                  "l1-1": 0.6666666666666666
+                },
+                "topicScores": {
+                  "yin-yang": 0.6666666666666666
+                },
+                "trigramRounds": [],
+                "hexagramsRead": [],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {
+                "first-lesson": {
+                  "unlockedAt": "2026-10-24T20:23:52.926Z",
+                  "evidence": {
+                    "current": 1,
+                    "target": 1
+                  }
+                }
+              }
+            }
+          },
+          {
+            "key": "yijing-learning-record-v2",
+            "saved": true,
+            "at": 5053.5,
+            "payload": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:23:52.925Z",
+                  "lastStudiedAt": "2026-10-24T20:23:55.753Z",
+                  "attempts": 1,
+                  "bestScore": 0.6666666666666666
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "processedAssessmentIds": [
+                "d12ea579-076f-4379-8da9-5872578cb3c7"
+              ],
+              "assessmentSessions": [
+                {
+                  "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                  "kind": "lesson",
+                  "at": "2026-10-24T20:23:52.925Z",
+                  "correct": 2,
+                  "total": 3,
+                  "lessonId": "l1-1"
+                }
+              ],
+              "weakQuestions": {
+                "theory-yinyang-evidence": {
+                  "questionId": "theory-yinyang-evidence",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "evidence",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:23:52.925Z",
+                  "lastWrongAt": "2026-10-24T20:23:52.925Z",
+                  "lastSessionId": "d12ea579-076f-4379-8da9-5872578cb3c7",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          },
+          {
+            "key": "yijing-activity-v1",
+            "saved": true,
+            "at": 5053.5999999940395,
+            "payload": {
+              "days": [
+                "2026-10-25"
+              ]
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "selector": "[data-entry=\"explore\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 642,
+            "clientY": 668
+          },
+          {
+            "selector": ".mode-btn[data-mode=\"learning\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 619,
+            "clientY": 35
+          },
+          {
+            "selector": "#learning-tab-path",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 378,
+            "clientY": 252
+          },
+          {
+            "selector": "[data-step=\"l1-1\"] [data-action=\"assess\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 1239,
+            "clientY": 548
+          },
+          {
+            "selector": "[data-action=\"return-review\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 347,
+            "clientY": 865
+          },
+          {
+            "selector": "[data-action=\"weak-source-0\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 1133,
+            "clientY": 471
+          }
+        ],
+        "keyboardEvents": [
+          {
+            "key": "Tab",
+            "trusted": true,
+            "at": 2092.2999999821186,
+            "target": "assessment-sheet-title"
+          },
+          {
+            "key": "ArrowDown",
+            "trusted": true,
+            "at": 2094.699999988079,
+            "target": "question-0"
+          },
+          {
+            "key": " ",
+            "trusted": true,
+            "at": 2096.199999988079,
+            "target": "question-0"
+          },
+          {
+            "key": "Tab",
+            "trusted": true,
+            "at": 2097.9000000059605,
+            "target": "question-0"
+          },
+          {
+            "key": "ArrowDown",
+            "trusted": true,
+            "at": 2099.5,
+            "target": "question-1"
+          },
+          {
+            "key": "ArrowDown",
+            "trusted": true,
+            "at": 2101.0999999940395,
+            "target": "question-1"
+          },
+          {
+            "key": "ArrowDown",
+            "trusted": true,
+            "at": 2102.699999988079,
+            "target": "question-1"
+          },
+          {
+            "key": " ",
+            "trusted": true,
+            "at": 2103.7999999821186,
+            "target": "question-1"
+          },
+          {
+            "key": "Tab",
+            "trusted": true,
+            "at": 2106.0999999940395,
+            "target": "question-1"
+          },
+          {
+            "key": " ",
+            "trusted": true,
+            "at": 2108.0999999940395,
+            "target": "question-2"
+          }
+        ],
+        "submits": [
+          {
+            "at": 2224.0999999940395,
+            "trusted": true,
+            "sessionId": "d12ea579-076f-4379-8da9-5872578cb3c7"
+          }
+        ],
+        "questions": 0,
+        "focus": {
+          "id": "",
+          "tag": "H3"
+        },
+        "retry": false,
+        "width": 1440,
+        "content": "\n      \n        \n          蒙学 · 入门启蒙蒙学 · 阴阳之道\n          切换课程\n        \n        \n    \n      1蒙学阴阳八卦2习经六十四卦3研传经传与注疏4明辨象数传统5通用术数与民俗\n    \n        \n          \n            本节要义\n            阴阳者，易之根本也\n            《易》以阴阳为本。一阴一阳之谓道。\n            一阴一阳之谓道。继之者善也，成之者性也。\n            要旨阴阳互根：阴中有阳，阳中有阴，相互依存、相互转化。\n          \n          \n            阴阳关系图示\n            \n              阳动 · 健 · 明 · 升\n              \n              阴静 · 顺 · 藏 · 降\n            \n            相互依存 · 彼此转化 · 消长不息\n          \n        \n        \n          1%当前掌握度\n          当前阶段蒙学 · 共 4 课\n          已浏览 1 / 25 小节连续学习 1 天\n          继续研习\n        \n      "
+      }
+    }
+  ],
+  "status": "failed",
+  "limitations": [
+    "Headless Chromium desktop and emulated mobile; not physical mobile, screen-reader or real 200% zoom evidence.",
+    "Read-only Debugger breakpoint captures generated public questions. No business function or DOM click is invoked. Storage quota and obsolete-reference fixtures are explicitly marked.",
+    "Operating-system IME, physical devices, screen readers and true browser zoom are outside this probe.",
+    "Storage inspection reads only generated synthetic study records. Obsolete-reference fixtures explicitly replace one synthetic question reference; they are not ordinary user flows."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "failure": {
+    "message": "Original-course exit must describe its actual course-review destination\n\n'切换课程' !== '返回温故队列'\n",
+    "stack": "AssertionError [ERR_ASSERTION]: Original-course exit must describe its actual course-review destination\n\n'切换课程' !== '返回温故队列'\n\n    at sourceFromQueue (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:338:10)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:463:7\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:304:5)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:452:5"
+  },
+  "finishedAt": "2026-10-24T20:23:56.214Z",
+  "finalSourceHashes": {
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/js/modes/review-mode.js": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+    "web/js/main.js": "9196a207e7cee8e62f9c8accc6f16066cf1bb5af494848d189718e4a05d0f466",
+    "web/styles/immersive.css": "b3568ce4e89ff48b8c908d81bba79b343a806df947910479c0bc1c88f5ffd701",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/js/learning-progress.js": "055b59a6becd6b75df912bd09e8274c47b2a05df532c5f599b4f153aeda28dd9",
+    "web/js/learning-assessment.js": "a7f7281eefb507bfd51c5185609420c489f09fda0fb9d96418e37c5b9b3a8033",
+    "web/js/learning-assessment-page.js": "c712901efbfb65d5b5c4f43f7ff477008edfc23b340bc1b6acfe4e93e62a5461",
+    "web/js/modes/learning-mode.js": "fb17c1426dc0fcba4dc7fd4d4b7797b8d042538d5b9b266d957786f05576028c",
+    "web/js/user-data.js": "7252aa0e31be7fa6970be2de6d06acbfb73d9b52f1d26cf6b7b5b44799a479c6",
+    "web/js/study-page.js": "7f99d3e5db2429daa6710735f9ff3ac8a05106bc33268c16ca00faaa418997c6",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "scripts/test-course-weak-questions.mjs": "88fa2e16b987d3e358c6e79b68ab0c76bf18300302f6f4e0d4c4ad716b7a8366"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "profileRemoved": false,
+  "profileRetainedReason": "Isolated synthetic profile retained for diagnosis; no user browser profile is used or modified."
+}

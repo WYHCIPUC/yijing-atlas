@@ -86,10 +86,13 @@ function question(id, lesson, prompt, answer, distractors, explanation, source, 
     source,
     kind: metadata.kind || 'recall',
     evidenceType: metadata.evidenceType || null,
+    questionVersion: 'curriculum-v1',
+    targetCode: metadata.targetCode || null,
+    termId: metadata.termId || null,
   };
 }
 
-function entityQuestions(lesson, entity, peers, prefix) {
+function entityQuestions(lesson, entity, peers, prefix, metadata = {}) {
   const otherNames = peers.map((item) => item.name);
   const otherDescriptions = peers.map((item) => compactText(item.desc || item.meaning));
   const ownDescription = compactText(entity.desc || entity.meaning);
@@ -101,21 +104,21 @@ function entityQuestions(lesson, entity, peers, prefix) {
   return [
     question(
       `${prefix}-${entity.id}-name`, lesson, `“${ownDescription}”对应哪一项？`, entity.name,
-      otherNames, `${entity.name}：${ownDescription}`, entity.name,
+      otherNames, `${entity.name}：${ownDescription}`, entity.name, metadata,
     ),
     question(
       `${prefix}-${entity.id}-desc`, lesson, `以下哪项是“${entity.name}”的核心说明？`, ownDescription,
-      otherDescriptions, `${entity.name}：${ownDescription}`, entity.name,
+      otherDescriptions, `${entity.name}：${ownDescription}`, entity.name, metadata,
     ),
     question(
       `${prefix}-${entity.id}-point`, lesson, `以下哪一要点属于“${entity.name}”？`, ownPoint,
-      otherPoints, ownPoint, entity.name,
+      otherPoints, ownPoint, entity.name, metadata,
     ),
     question(
       `${prefix}-${entity.id}-evidence`, lesson, `只凭项目中的一句白话，能否把“${entity.name}”判作现实中的确定结论？`,
       '证据不足', ['卦体', '爻位', '经传原文', '项目类比'],
       '项目白话用于辅助理解；若要形成判断，仍须说明原文、结构、流派与现实事实。',
-      entity.name, { kind: 'evidence', evidenceType: '证据不足' },
+      entity.name, { ...metadata, kind: 'evidence', evidenceType: '证据不足' },
     ),
   ];
 }
@@ -165,29 +168,30 @@ function buildHexagramQuestions(lesson, appState) {
   return selected.flatMap((hexagram) => {
     const peers = all.filter((item) => item.binaryCode !== hexagram.binaryCode);
     const judgement = compactText(hexagram.judgement, 42);
+    const metadata = { targetCode: hexagram.binaryCode };
     return [
       question(
         `hex-${hexagram.binaryCode}-order`, lesson, `第 ${hexagram.number} 卦是哪一卦？`, hexagram.name,
-        peers.map((item) => item.name), `第 ${hexagram.number} 卦为${hexagram.fullName}。`, '《周易》卦序',
+        peers.map((item) => item.name), `第 ${hexagram.number} 卦为${hexagram.fullName}。`, '《周易》卦序', metadata,
       ),
       question(
         `hex-${hexagram.binaryCode}-full`, lesson, `“${hexagram.name}”的完整卦名是哪一项？`, hexagram.fullName,
-        peers.map((item) => item.fullName), `${hexagram.name}：${hexagram.fullName}。`, '《周易》本经',
+        peers.map((item) => item.fullName), `${hexagram.name}：${hexagram.fullName}。`, '《周易》本经', metadata,
       ),
       question(
         `hex-${hexagram.binaryCode}-judgement`, lesson, `卦辞“${judgement}”属于哪一卦？`, hexagram.name,
-        peers.map((item) => item.name), `${hexagram.name}卦卦辞：${compactText(hexagram.judgement, 80)}`, '《周易》本经',
+        peers.map((item) => item.name), `${hexagram.name}卦卦辞：${compactText(hexagram.judgement, 80)}`, '《周易》本经', metadata,
       ),
       question(
         `hex-${hexagram.binaryCode}-evidence`, lesson, `“${judgement}”归属于${hexagram.name}卦，直接依据哪一层？`,
         '经传原文', ['卦体', '爻位', '项目类比', '证据不足'],
-        '这是卦辞文本的归属问题，直接依据本经原文。', '《周易》本经', { kind: 'evidence', evidenceType: '经传原文' },
+        '这是卦辞文本的归属问题，直接依据本经原文。', '《周易》本经', { ...metadata, kind: 'evidence', evidenceType: '经传原文' },
       ),
       question(
         `hex-${hexagram.binaryCode}-boundary`, lesson, `只凭“${hexagram.name}”卦名，能否断定一件现实事情的结果？`,
         '证据不足', ['卦体', '爻位', '经传原文', '项目类比'],
         '现实判断还需要事实、卦时、取辞依据和解释边界；卦名不能单独决定结果。',
-        '研读边界', { kind: 'evidence', evidenceType: '证据不足' },
+        '研读边界', { ...metadata, kind: 'evidence', evidenceType: '证据不足' },
       ),
     ];
   });
@@ -196,7 +200,7 @@ function buildHexagramQuestions(lesson, appState) {
 function buildAlmanacQuestions(lesson, appState) {
   const all = appState.almanacTerms || [];
   return all.filter((item) => item.category === lesson.category)
-    .flatMap((item) => entityQuestions(lesson, item, all.filter((peer) => peer.id !== item.id), 'almanac'));
+    .flatMap((item) => entityQuestions(lesson, item, all.filter((peer) => peer.id !== item.id), 'almanac', { termId: item.id }));
 }
 
 export function buildLearningQuestionBank(appState) {

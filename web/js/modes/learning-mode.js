@@ -7,6 +7,8 @@ import { recommendLesson } from '../learning-assessment.js';
 import { LEARNING_LESSONS } from '../learning-curriculum.js';
 import {
   calculateStreak,
+  getCourseWeakQuestions,
+  getWeakQuestionsError,
   loadActivity,
   loadLearningRecord,
   markLessonViewed,
@@ -45,6 +47,8 @@ function renderTodaySection(content, onNavigate) {
   const summary = summarizeLearning(record, LEARNING_LESSONS);
   const recommended = recommendLesson(record);
   const dueCount = getDueCount(loadReviewCards());
+  const weakError = getWeakQuestionsError(record.weakQuestions);
+  const courseCount = getCourseWeakQuestions(record).length;
   const streak = calculateStreak(loadActivity().days);
   const recommendedProgress = summary.masteryByLesson[recommended?.id] || 0;
   const lessonAction = recommended ? `data-lesson-id="${recommended.id}"` : 'disabled';
@@ -65,7 +69,8 @@ function renderTodaySection(content, onNavigate) {
       </article>
       <div class="today-support-grid">
         <button type="button" class="today-support-card" data-mode-target="review">
-          <span>温故队列</span><strong>${dueCount}</strong><small>${dueCount ? '项已到期，建议先主动回忆' : '今日暂无到期内容'}</small>
+          <span>温故队列</span><strong>${weakError ? '待核对' : dueCount + courseCount}</strong>
+          <small>卦象间隔卡 ${dueCount} 项 · ${weakError ? '课程温习记录异常，请先备份核对' : `课程温习 ${courseCount} 项`}</small>
         </button>
         <button type="button" class="today-support-card" data-section-target="assessment">
           <span>即时小试</span><strong>${summary.checked}/${summary.total}</strong><small>用判断发现真正的薄弱点</small>
@@ -277,7 +282,7 @@ function renderDataSection(content) {
   });
 }
 
-export function renderLearningMode(mountEl, appState, onNavigateMode) {
+export function renderLearningMode(mountEl, appState, onNavigateMode, entry = {}) {
   mountEl.innerHTML = `
     <div class="mode-panel learning-panel">
       <h2 class="mode-panel-title" data-page-heading>循序学易</h2>
@@ -337,8 +342,9 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
       ]);
     } else if (options.lessonId && sectionId === 'path') {
       renderLearningLessonPage(content, appState, options.lessonId, {
-        onBack() { showSection('path'); },
-        onAssess(lessonId) { showSection('assessment', { lessonId }); },
+        returnTo: options.returnTo,
+        onBack() { if (options.returnTo === 'review') onNavigateMode?.('review'); else showSection('path'); },
+        onAssess(lessonId) { showSection('assessment', { ...options, lessonId }); },
       });
       const lesson = LEARNING_LESSONS.find((item) => item.id === options.lessonId);
       dispatchInsight([
@@ -350,9 +356,12 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
     } else if (sectionId === 'assessment') {
       renderLearningAssessmentPage(content, appState, {
         initialLessonId: options.lessonId,
-        onNavigate(target, lessonId) {
+        requiredQuestionId: options.requiredQuestionId,
+        requiredQuestionVersion: options.requiredQuestionVersion,
+        returnTo: options.returnTo,
+        onNavigate(target, lessonId, questionEntry = {}) {
           if (target === 'explore') onNavigateMode?.('explore');
-          else showSection(target.replace('/', ''), { lessonId });
+          else showSection(target.replace('/', ''), { ...questionEntry, lessonId });
         },
       });
       dispatchInsight([
@@ -429,5 +438,5 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
     tabs[next].focus();
     showSection(tabs[next].dataset.section, { focusContent: false });
   });
-  showSection('today');
+  showSection(['path', 'assessment', 'data'].includes(entry?.section) ? entry.section : 'today', entry || {});
 }

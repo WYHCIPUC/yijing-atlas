@@ -117,7 +117,7 @@ function getLessonReading(lesson, appState) {
   return { entries, source: '传统历法与民俗术语资料', quote: entries[0]?.meaning || lesson.title, layer: '历法计算 · 民俗资料' };
 }
 
-export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, onAssess } = {}) {
+export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, onAssess, returnTo } = {}) {
   const lesson = LEARNING_LESSONS.find((item) => item.id === lessonId);
   if (!lesson) {
     onBack?.();
@@ -173,7 +173,7 @@ export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, 
       <article class="lesson-workspace lesson-overview-workspace">
         <header class="lesson-overview-heading">
           <div><span class="academy-kicker">${esc(level.name)} · 入门启蒙</span><h3 data-page-heading>${esc(level.name)} · ${esc(lesson.title)}</h3></div>
-          <button type="button" class="text-button lesson-back">切换课程</button>
+          <button type="button" class="text-button lesson-back">${returnTo === 'review' ? '返回温故队列' : '切换课程'}</button>
         </header>
         ${stageRail}
         <section class="lesson-concept-card">
@@ -211,7 +211,7 @@ export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, 
     mountEl.innerHTML = `
       <article class="lesson-workspace lesson-reader-workspace">
         <div class="lesson-toolbar">
-          <button type="button" class="text-button lesson-back">${lesson.id === 'l1-1' ? '返回课程概览' : '返回学程'}</button>
+          <button type="button" class="text-button lesson-back">${lesson.id === 'l1-1' ? '返回课程概览' : returnTo === 'review' ? '返回温故队列' : '返回学程'}</button>
           <div><span>${esc(level.name)} · 第 ${lessonIndex + 1} 课</span><button type="button" class="quick-btn lesson-assess lesson-assess-top">完成阅读 · 小试</button></div>
         </div>
         ${stageRail}
@@ -239,7 +239,7 @@ export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, 
           </aside>
         </div>
         <footer class="lesson-actions">
-          <button type="button" class="text-button lesson-back-secondary">${lesson.id === 'l1-1' ? '暂存并返回概览' : '暂存并返回'}</button>
+          <button type="button" class="text-button lesson-back-secondary">${lesson.id === 'l1-1' ? '返回课程概览' : returnTo === 'review' ? '返回温故队列' : '返回学程'}</button>
           <button type="button" class="quick-btn lesson-assess">完成阅读 · 开始小试</button>
         </footer>
       </article>`;

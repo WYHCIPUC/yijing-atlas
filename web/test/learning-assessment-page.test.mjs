@@ -7,6 +7,7 @@ import { getAchievementStorageKey, loadAchievementState, processAchievementEvent
 import { createAssessmentSession, gradeAssessment, recommendLesson } from '../js/learning-assessment.js';
 import { getLesson, getLessonRubric, LEARNING_LESSONS, LEARNING_LEVELS } from '../js/learning-curriculum.js';
 import { getLearningRecordKey, loadLearningRecord, recordActivity, recordLearningAssessment, recordOralReview } from '../js/learning-progress.js';
+import * as learningProgress from '../js/learning-progress.js';
 
 const source = readFileSync(new URL('../js/learning-assessment-page.js', import.meta.url), 'utf8')
   .replace(/^import[\s\S]*?from '[^']+';\r?\n/gm, '')
@@ -15,6 +16,7 @@ const profileSyncSource = readFileSync(new URL('../js/modes/learning-mode.js', i
   .match(/^function syncAchievementEvidence\([\s\S]*?^}/m)[0];
 const bank = Array.from({ length: 3 }, (_, index) => ({
   id: `q${index}`, lessonId: 'l1-4', levelId: 'L1', prompt: `题目${index}`,
+  kind: 'recall', questionVersion: 'curriculum-v1', targetCode: null, termId: null,
   answer: 'a', options: [{ value: 'a', label: '正答' }, { value: 'b', label: '误答' }],
 }));
 
@@ -80,6 +82,8 @@ function createHarness({ blockedKeys = [], questionBank = bank } = {}) {
     gradeAssessment, recommendLesson, getLesson, getLessonRubric, LEARNING_LESSONS, LEARNING_LEVELS,
     buildLearningQuestionBank: () => questionBank,
     loadLearningRecord: () => loadLearningRecord(storage),
+    getCourseWeakQuestions: (...args) => learningProgress.getCourseWeakQuestions(...args),
+    getWeakQuestionsError: (...args) => learningProgress.getWeakQuestionsError(...args),
     recordLearningAssessment: (kind, result) => recordLearningAssessment(kind, result, new Date('2026-10-25T08:00:00Z'), storage),
     recordActivity: () => recordActivity(new Date('2026-10-25T08:00:00Z'), storage),
     recordOralReview,
@@ -100,6 +104,151 @@ function createHarness({ blockedKeys = [], questionBank = bank } = {}) {
   const syncProfile = () => context.syncAchievementEvidence(loadLearningRecord(storage));
   return { mount, sessions, storage, writes, blocked, render, choose, submit, syncProfile };
 }
+
+test('原题回练保留默认三题，重绘沿用会话而不同原题开启新卷', () => {
+  const questionBank = [...bank, { ...bank[0], id: 'q3' }];
+  const harness = createHarness({ questionBank });
+  const entry = { initialLessonId: 'l1-4', requiredQuestionId: 'q3', requiredQuestionVersion: 'curriculum-v1', returnTo: 'review' };
+  harness.render(entry);
+  assert.equal(harness.sessions[0].questions.length, 3);
+  assert.equal(harness.sessions[0].questions.filter(item => item.id === 'q3').length, 1);
+  harness.choose(0, 'b');
+  harness.render(entry);
+  assert.equal(harness.sessions.length, 1);
+  harness.render({ ...entry, requiredQuestionId: 'q0' });
+  assert.equal(harness.sessions.length, 2, '同课不同原题不能复用旧卷');
+});
+
+test('失效原题或版本不随机替题，保留回原课和温故的真实回调', () => {
+  for (const required of [{ requiredQuestionId: 'removed', requiredQuestionVersion: 'curriculum-v1' },
+    { requiredQuestionId: 'q0', requiredQuestionVersion: 'curriculum-v0' }]) {
+    const harness = createHarness();
+    const calls = [];
+    harness.render({ initialLessonId: 'l1-4', ...required, returnTo: 'review', onNavigate: (...args) => calls.push(args) });
+    assert.equal(harness.sessions.length, 0);
+    assert.match(harness.mount.innerHTML, /题目已调整，请回原课温习/);
+    harness.mount.querySelector('[data-action="weak-source"]').events.click();
+    assert.equal(calls[0][0], 'path');
+    assert.equal(calls[0][1], 'l1-4');
+    assert.equal(calls[0][2].requiredQuestionId, required.requiredQuestionId);
+    harness.mount.querySelector('[data-action="return-review"]').events.click();
+    assert.equal(calls[1][0], 'review-mode');
+  }
+});
+
+test('错题保存失败不显示已加入，原会话重试成功后按持久化记录显示', () => {
+  const harness = createHarness({ blockedKeys: [getLearningRecordKey()] });
+  harness.render();
+  for (let index = 0; index < 3; index += 1) harness.choose(index, 'b');
+  harness.submit();
+  assert.match(harness.mount.innerHTML, /课程温习记录未保存/);
+  assert.doesNotMatch(harness.mount.innerHTML, /已加入课程温习/);
+  const session = harness.sessions[0];
+  harness.blocked.clear();
+  harness.mount.querySelector('[data-action="retry-save"]').events.click();
+  assert.equal(harness.sessions.length, 1);
+  assert.equal(loadLearningRecord(harness.storage).weakQuestions.q0.lastSessionId, session.id);
+  assert.match(harness.mount.innerHTML, /已加入课程温习/);
+  const writes = harness.writes.length;
+  harness.render();
+  assert.equal(harness.writes.length, writes);
+});
+
+test('结果原课携带原题，原题回练新会话答对后才显示本轮已纠正', () => {
+  const harness = createHarness();
+  const calls = [];
+  harness.render({ initialLessonId: 'l1-4', returnTo: 'review', onNavigate: (...args) => calls.push(args) });
+  for (let index = 0; index < 3; index += 1) harness.choose(index, 'b');
+  harness.submit();
+  assert.ok(harness.mount.querySelector('[data-action="weak-source-0"]'));
+  harness.mount.querySelector('[data-action="weak-source-0"]').events.click();
+  assert.equal(calls[0][0], 'path');
+  assert.equal(calls[0][2].requiredQuestionId, harness.sessions[0].questions[0].id);
+  const firstId = harness.sessions[0].id;
+  harness.mount.querySelector('[data-action="weak-practice-0"]').events.click();
+  assert.equal(harness.sessions.length, 2);
+  assert.notEqual(harness.sessions[1].id, firstId);
+  for (let index = 0; index < 3; index += 1) harness.choose(index);
+  harness.submit();
+  assert.match(harness.mount.innerHTML, /本轮已纠正/);
+  assert.equal(learningProgress.getCourseWeakQuestions(loadLearningRecord(harness.storage)).length, 0);
+  harness.mount.querySelector('[data-action="return-review"]').events.click();
+  assert.equal(calls.at(-1)[0], 'review-mode');
+});
+
+test('结果内新开原题回练后，父页面同入口重绘仍保留该新卷及答案', () => {
+  const harness = createHarness();
+  harness.render();
+  for (let index = 0; index < 3; index += 1) harness.choose(index, 'b');
+  harness.submit();
+  harness.mount.querySelector('[data-action="weak-practice-0"]').events.click();
+  const session = harness.sessions.at(-1);
+  harness.choose(0, 'b');
+  harness.render();
+  assert.equal(harness.sessions.length, 2);
+  assert.equal(harness.sessions.at(-1).id, session.id);
+  assert.ok(harness.mount.querySelector('input[name="question-0"]:checked'));
+});
+
+test('结果重绘从持久化读取状态，不把已移除的旧记录仍说成已加入', () => {
+  const harness = createHarness();
+  harness.render();
+  for (let index = 0; index < 3; index += 1) harness.choose(index, 'b');
+  harness.submit();
+  const record = loadLearningRecord(harness.storage);
+  delete record.weakQuestions;
+  harness.storage.setItem(getLearningRecordKey(), JSON.stringify(record));
+  harness.render();
+  assert.doesNotMatch(harness.mount.innerHTML, /已加入课程温习/);
+  assert.match(harness.mount.innerHTML, /未读取到本题已保存/);
+  assert.equal(harness.sessions.length, 1);
+});
+
+for (const [field, change] of [
+  ['questionType', { questionType: 'evidence' }],
+  ['targetCode', { targetCode: '111111' }],
+  ['termId', { termId: 'old-term' }],
+  ['sourceKind', { sourceKind: 'almanac', termId: 'old-term' }],
+]) {
+  for (const status of ['due', 'resolved']) {
+    test(`结果不把 ${field} 不同的 ${status} 旧温习记录归于当前题`, () => {
+      const harness = createHarness();
+      harness.render();
+      for (let index = 0; index < 3; index += 1) harness.choose(index, 'b');
+      harness.submit();
+      const record = loadLearningRecord(harness.storage);
+      const old = { ...record.weakQuestions.q0, ...change, status,
+        resolvedAt: status === 'resolved' ? '2026-10-25T08:01:00Z' : null };
+      record.weakQuestions.q0 = old;
+      harness.storage.setItem(getLearningRecordKey(), JSON.stringify(record));
+      harness.mount.querySelector('[data-action="back"]').events.click();
+      harness.render();
+      const session = harness.sessions.at(-1);
+      for (let index = 0; index < 3; index += 1) harness.choose(index, status === 'resolved' ? 'a' : 'b');
+      harness.submit();
+      const saved = loadLearningRecord(harness.storage);
+      assert.deepEqual(saved.weakQuestions.q0, old, '数据层应保留不同引用的原始证据');
+      assert.equal(saved.lessons['l1-4'].attempts, 2, '当前交卷本身仍成功保存');
+      const questionIndex = session.questions.findIndex(item => item.id === 'q0');
+      const statuses = [...harness.mount.innerHTML.matchAll(/<p class="course-weak-status">([^<]+)<\/p>/g)];
+      const message = statuses[questionIndex][1];
+      assert.equal(message, '原有温习记录与本题引用不同，未改动旧记录。');
+      assert.doesNotMatch(message, /已加入|已纠正|已有纠正|本题仍在/);
+    });
+  }
+}
+
+test('温故发起的原题回练取消返回温故且不保存答卷', () => {
+  const harness = createHarness();
+  const calls = [];
+  harness.render({ initialLessonId: 'l1-4', requiredQuestionId: 'q0', requiredQuestionVersion: 'curriculum-v1',
+    returnTo: 'review', onNavigate: (...args) => calls.push(args) });
+  assert.match(harness.mount.innerHTML, /data-action="cancel">返回温故队列/);
+  harness.choose(0);
+  harness.mount.querySelector('[data-action="cancel"]').events.click();
+  assert.equal(calls[0][0], 'review-mode');
+  assert.equal(harness.writes.length, 0);
+});
 
 test('真实交卷处理函数重复触发和结果重绘只计一次，新一轮独立', () => {
   const harness = createHarness();

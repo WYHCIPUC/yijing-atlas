@@ -9,6 +9,7 @@ import {
   LEARNING_LEVELS,
 } from './learning-curriculum.js';
 import {
+  getWeakQuestionsError,
   loadLearningRecord,
   recordLearningAssessment,
   recordOralReview,
@@ -48,7 +49,7 @@ function resetAssessmentViewport(container) {
   });
 }
 
-function renderQuestionForm(container, session, onComplete, draft = {}) {
+function renderQuestionForm(container, session, onComplete, draft = {}, backLabel = '返回考评中心') {
   let submitted = false;
   container.innerHTML = `
     <section class="assessment-sheet" aria-labelledby="assessment-sheet-title" data-assessment-session="${esc(session.id)}">
@@ -70,7 +71,7 @@ function renderQuestionForm(container, session, onComplete, draft = {}) {
         `).join('')}
         <p class="assessment-status" role="status" aria-live="polite"></p>
         <div class="assessment-actions">
-          <button type="button" class="text-button" data-action="cancel">返回考评中心</button>
+          <button type="button" class="text-button" data-action="cancel">${backLabel}</button>
           <button type="submit" class="quick-btn">交卷评定</button>
         </div>
       </form>
@@ -116,7 +117,26 @@ function renderQuestionForm(container, session, onComplete, draft = {}) {
   resetAssessmentViewport(container);
 }
 
-function renderResult(container, session, result, onBack, saveState, onRetry) {
+function courseQuestionStatus(item, answer, session, assessment, weakQuestions, error) {
+  if (!assessment?.saved) return '本轮成绩与课程温习记录未保存，恢复存储后可重试。';
+  if (assessment.evidenceMissing) return '旧记录缺少本轮逐题证据，未补记课程温习。';
+  if (error) return '课程温习记录异常，请先导出备份并检查数据。';
+  const weak = weakQuestions.find(entry => entry.questionId === item.id);
+  if (!weak) return answer.correct ? '本题未产生待温习记录。' : '未读取到本题已保存的课程温习记录。';
+  if (weak.sourceKind !== 'course' || weak.questionVersion !== item.questionVersion ||
+      weak.lessonId !== item.lessonId || weak.questionType !== item.kind ||
+      weak.targetCode !== item.targetCode || weak.termId !== item.termId) {
+    return '原有温习记录与本题引用不同，未改动旧记录。';
+  }
+  if (weak.status === 'resolved') return weak.lastSessionId === session.id && answer.correct
+    ? '本轮已纠正；保留此前错误记录。' : '本题已有纠正记录。';
+  return weak.lastSessionId === session.id && !answer.correct ? '已加入课程温习。' : '本题仍在课程温习队列中。';
+}
+
+function renderResult(container, session, result, onBack, saveState, onRetry, actions = {}) {
+  const storedRecord = loadLearningRecord();
+  const weakError = getWeakQuestionsError(storedRecord.weakQuestions);
+  const weakQuestions = weakError ? [] : Object.values(storedRecord.weakQuestions || {});
   const percent = Math.round(result.correct / result.total * 100);
   const pending = [];
   if (!saveState.assessment?.saved) pending.push('本轮成绩');
@@ -148,13 +168,24 @@ function renderResult(container, session, result, onBack, saveState, onRetry) {
             <p>正答：${esc(item.answer)}</p>
             <p>${esc(item.explanation)}</p>
             <small>依据：${esc(item.source)}</small>
+            <p class="course-weak-status">${esc(courseQuestionStatus(item, answer, session, saveState.assessment, weakQuestions, weakError))}</p>
+            <div class="course-weak-actions">
+              <button type="button" class="text-button" data-action="weak-source-${index}">回原课温习</button>
+              ${item.questionVersion ? `<button type="button" class="text-button" data-action="weak-practice-${index}">回练此题</button>` : ''}
+            </div>
           </details>`;
         }).join('')}
       </div>
       <button type="button" class="quick-btn" data-action="back">返回考评中心</button>
+      <button type="button" class="text-button" data-action="return-review">前往温故队列</button>
     </section>`;
   container.querySelector('[data-action="back"]').addEventListener('click', onBack);
   container.querySelector('[data-action="retry-save"]')?.addEventListener('click', onRetry);
+  container.querySelector('[data-action="return-review"]')?.addEventListener('click', actions.onReview);
+  session.questions.forEach((item, index) => {
+    container.querySelector(`[data-action="weak-source-${index}"]`)?.addEventListener('click', () => actions.onSource?.(item));
+    container.querySelector(`[data-action="weak-practice-${index}"]`)?.addEventListener('click', () => actions.onPractice?.(item));
+  });
   resetAssessmentViewport(container);
 }
 
@@ -250,7 +281,9 @@ function bindOralReview(mountEl, appState) {
   });
 }
 
-export function renderLearningAssessmentPage(mountEl, appState, { onNavigate, initialLessonId } = {}) {
+export function renderLearningAssessmentPage(mountEl, appState, {
+  onNavigate, initialLessonId, requiredQuestionId, requiredQuestionVersion, returnTo,
+} = {}) {
   const questionBank = buildLearningQuestionBank(appState);
 
   const renderHub = () => {
@@ -323,21 +356,32 @@ export function renderLearningAssessmentPage(mountEl, appState, { onNavigate, in
   const showSession = (view) => {
     if (view.result) {
       renderResult(mountEl, view.session, view.result, renderHub, view, () => {
+        if (assessmentViews.get(mountEl) !== view) return;
         saveSubmission(view);
         showSession(view);
+      }, {
+        onReview: () => onNavigate?.('review-mode'),
+        onSource: (item) => onNavigate?.('path', item.lessonId, {
+          requiredQuestionId: item.id, requiredQuestionVersion: item.questionVersion, returnTo: 'review',
+        }),
+        onPractice: (item) => startSession('lesson', {
+          lessonId: item.lessonId, requiredQuestionId: item.id,
+          requiredQuestionVersion: item.questionVersion, returnTo: 'review',
+        }),
       });
       return;
     }
     renderQuestionForm(mountEl, view.session, (result) => {
       if (view.result || assessmentViews.get(mountEl) !== view) return;
       if (!result) {
-        renderHub();
+        if (view.entry.returnTo === 'review') onNavigate?.('review-mode');
+        else renderHub();
         return;
       }
       view.result = result;
       saveSubmission(view);
       showSession(view);
-    }, view.answers);
+    }, view.answers, view.entry.returnTo === 'review' ? '返回温故队列' : '返回考评中心');
   };
 
   const saveSubmission = (view) => {
@@ -350,19 +394,35 @@ export function renderLearningAssessmentPage(mountEl, appState, { onNavigate, in
   const startSession = (kind, options) => {
     const session = createAssessmentSession(kind, questionBank, options);
     if (!session) {
+      assessmentViews.delete(mountEl);
       const unviewed = kind === 'spot' && !Object.values(options.record?.lessons || {}).some((lesson) => lesson?.viewedAt);
-      mountEl.innerHTML = `<p class="mode-empty">${unviewed ? '请先浏览一课，再进行随机抽查。' : '当前范围暂无可用题目，请先返回学习内容。'}</p><button type="button" class="quick-btn" data-action="back">返回考评中心</button>`;
+      const required = options.requiredQuestionId !== undefined || options.requiredQuestionVersion !== undefined;
+      mountEl.innerHTML = `<p class="mode-empty">${required ? '题目已调整，请回原课温习。' : unviewed ? '请先浏览一课，再进行随机抽查。' : '当前范围暂无可用题目，请先返回学习内容。'}</p>
+        ${required ? `<button type="button" class="quick-btn" data-action="weak-source">${getLesson(options.lessonId) ? '回原课温习' : '返回学习页'}</button><button type="button" class="text-button" data-action="return-review">返回温故队列</button>` : ''}
+        <button type="button" class="text-button" data-action="back">返回考评中心</button>`;
       mountEl.querySelector('[data-action="back"]').addEventListener('click', renderHub);
+      mountEl.querySelector('[data-action="weak-source"]')?.addEventListener('click', () => {
+        if (getLesson(options.lessonId)) onNavigate?.('path', options.lessonId, { ...options, returnTo: 'review' });
+        else onNavigate?.('path');
+      });
+      mountEl.querySelector('[data-action="return-review"]')?.addEventListener('click', () => onNavigate?.('review-mode'));
       return;
     }
-    const view = { session, answers: {} };
+    const view = { session, answers: {}, request: { initialLessonId, requiredQuestionId, requiredQuestionVersion }, entry: {
+      requiredQuestionId: options.requiredQuestionId,
+      requiredQuestionVersion: options.requiredQuestionVersion,
+      returnTo: options.returnTo,
+    } };
     assessmentViews.set(mountEl, view);
     showSession(view);
   };
 
   const active = assessmentViews.get(mountEl);
   const displayedSessionId = mountEl.querySelector('[data-assessment-session]')?.dataset.assessmentSession;
-  if (active && active.session.id === displayedSessionId && (!initialLessonId || initialLessonId === active.session.lessonId)) showSession(active);
-  else if (initialLessonId && getLesson(initialLessonId)) startSession('lesson', { lessonId: initialLessonId });
+  if (active && active.session.id === displayedSessionId && active.request.initialLessonId === initialLessonId &&
+      active.request.requiredQuestionId === requiredQuestionId && active.request.requiredQuestionVersion === requiredQuestionVersion) showSession(active);
+  else if (initialLessonId && (getLesson(initialLessonId) || requiredQuestionId !== undefined)) startSession('lesson', {
+    lessonId: initialLessonId, requiredQuestionId, requiredQuestionVersion, returnTo,
+  });
   else renderHub();
 }

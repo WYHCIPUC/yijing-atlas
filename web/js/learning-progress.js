@@ -1,3 +1,4 @@
+import { getLesson } from './learning-curriculum.js';
 import { isPlainObject, readJson, writeJson } from './storage.js';
 
 const ACTIVITY_KEY = 'yijing-activity-v1';
@@ -5,6 +6,8 @@ const MAX_ACTIVITY_DAYS = 400;
 const LEARNING_RECORD_KEY = 'yijing-learning-record-v2';
 const LEGACY_STUDY_KEY = 'yijing.study.v1';
 const MAX_ASSESSMENT_HISTORY = 80;
+const COURSE_QUESTION_VERSION = 'curriculum-v1';
+const QUESTION_METADATA_FIELDS = ['questionVersion', 'questionType', 'targetCode', 'termId'];
 
 function localDateKey(date) {
   const year = date.getFullYear();
@@ -88,6 +91,63 @@ export function getAssessmentIdsError(value) {
   return null;
 }
 
+function isReferenceId(value, maxLength = Infinity) {
+  return typeof value === 'string' && value.trim().length > 0 && value.length <= maxLength;
+}
+
+function isIsoTime(value) {
+  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(value) &&
+    Number.isFinite(Date.parse(value));
+}
+
+function getQuestionReferenceError(value) {
+  if (!isReferenceId(value.questionId, 160)) return 'questionId';
+  if (!isReferenceId(value.questionVersion, 120)) return 'questionVersion';
+  if (!['course', 'quiz', 'almanac'].includes(value.sourceKind)) return 'sourceKind';
+  if (value.lessonId !== null && !isReferenceId(value.lessonId)) return 'lessonId';
+  if (value.sourceKind === 'course' && value.lessonId === null) return 'lessonId';
+  if (!isReferenceId(value.questionType)) return 'questionType';
+  if (value.questionVersion === COURSE_QUESTION_VERSION && value.sourceKind === 'course' &&
+      !['recall', 'evidence'].includes(value.questionType)) return 'questionType';
+  if (value.sourceKind === 'quiz' && !['opposite', 'reversed', 'interlocking', 'name'].includes(value.questionType)) return 'questionType';
+  if (value.targetCode !== null && (typeof value.targetCode !== 'string' || !/^[01]{6}$/.test(value.targetCode))) return 'targetCode';
+  if (value.sourceKind === 'quiz' && value.targetCode === null) return 'targetCode';
+  if (value.termId !== null && !isReferenceId(value.termId)) return 'termId';
+  if (value.sourceKind === 'almanac' && value.termId === null) return 'termId';
+  return null;
+}
+
+export function getWeakQuestionsError(value) {
+  if (value === undefined) return null;
+  if (!isPlainObject(value)) return 'weakQuestions';
+  for (const [questionId, entry] of Object.entries(value)) {
+    const path = `weakQuestions[${questionId}]`;
+    if (!isPlainObject(entry)) return path;
+    if (entry.questionId !== questionId) return `${path}.questionId`;
+    const referenceError = getQuestionReferenceError(entry);
+    if (referenceError) return `${path}.${referenceError}`;
+    if (!isIsoTime(entry.firstWrongAt)) return `${path}.firstWrongAt`;
+    if (!isIsoTime(entry.lastWrongAt)) return `${path}.lastWrongAt`;
+    if (!isAssessmentId(entry.lastSessionId)) return `${path}.lastSessionId`;
+    if (!Number.isSafeInteger(entry.wrongCount) || entry.wrongCount <= 0) return `${path}.wrongCount`;
+    if (!['due', 'reviewed', 'resolved'].includes(entry.status)) return `${path}.status`;
+    if (entry.lastReviewedAt !== null && !isIsoTime(entry.lastReviewedAt)) return `${path}.lastReviewedAt`;
+    if (entry.resolvedAt !== null && !isIsoTime(entry.resolvedAt)) return `${path}.resolvedAt`;
+    if (entry.status === 'resolved' && entry.resolvedAt === null) return `${path}.resolvedAt`;
+  }
+  return null;
+}
+
+export function getCourseWeakQuestions(record, { includeResolved = false } = {}) {
+  const weakQuestions = record?.weakQuestions;
+  if (!weakQuestions || getWeakQuestionsError(weakQuestions)) return [];
+  return Object.values(weakQuestions)
+    .filter((entry) => entry.sourceKind === 'course' && (includeResolved || entry.status !== 'resolved'))
+    .map((entry) => ({ ...entry }))
+    .sort((a, b) => Date.parse(b.lastWrongAt) - Date.parse(a.lastWrongAt) ||
+      (a.questionId < b.questionId ? -1 : a.questionId > b.questionId ? 1 : 0));
+}
+
 function isLearningRecordBase(value) {
   return isPlainObject(value) && value.version === 2 && isPlainObject(value.lessons) &&
     Array.isArray(value.spotChecks) && Array.isArray(value.exams) && Array.isArray(value.oralReviews) &&
@@ -100,7 +160,8 @@ function isLearningRecordBase(value) {
 }
 
 export function isLearningRecord(value) {
-  return isLearningRecordBase(value) && getAssessmentIdsError(value.processedAssessmentIds) === null;
+  return isLearningRecordBase(value) && getAssessmentIdsError(value.processedAssessmentIds) === null &&
+    getWeakQuestionsError(value.weakQuestions) === null;
 }
 
 function migrateLegacyRecord(storage) {
@@ -121,7 +182,7 @@ export function loadLearningRecord(storage) {
   const fallback = migrateLegacyRecord(storage);
   const record = readJson(LEARNING_RECORD_KEY, fallback, isLearningRecordBase, storage);
   // 损坏的新增字段仍保留原成绩供阅读，写入口会拒绝，不能空回退后覆盖它。
-  if (getAssessmentIdsError(record.processedAssessmentIds)) return record;
+  if (getAssessmentIdsError(record.processedAssessmentIds) || getWeakQuestionsError(record.weakQuestions)) return record;
   const receiptIds = (record.assessmentSessions || []).map((item) => item.sessionId).filter(isAssessmentId);
   if (!receiptIds.length) return record;
   return { ...record, processedAssessmentIds: [...new Set([...(record.processedAssessmentIds || []), ...receiptIds])] };
@@ -149,7 +210,56 @@ function normalizeResults(results) {
     lessonId: result.lessonId,
     correct: result.correct,
     ...(typeof result.questionId === 'string' ? { questionId: result.questionId } : {}),
+    ...(hasQuestionMetadata(result) ? {
+      questionVersion: result.questionVersion, questionType: result.questionType,
+      targetCode: result.targetCode, termId: result.termId,
+    } : {}),
   })) : [];
+}
+
+function hasQuestionMetadata(result) {
+  return isPlainObject(result) && QUESTION_METADATA_FIELDS.some((field) => Object.hasOwn(result, field));
+}
+
+function hasValidCourseReferences(kind, assessment) {
+  const seen = new Map();
+  return !Array.isArray(assessment.results) || assessment.results.every((result) => {
+    if (!hasQuestionMetadata(result)) return true;
+    if (!isAssessmentId(assessment.sessionId) || typeof result.correct !== 'boolean' ||
+        result.questionVersion !== COURSE_QUESTION_VERSION ||
+        getQuestionReferenceError({ ...result, sourceKind: 'course' }) || !getLesson(result.lessonId) ||
+        (kind === 'lesson' && result.lessonId !== assessment.lessonId)) return false;
+    const previous = seen.get(result.questionId);
+    if (previous && ['lessonId', 'correct', ...QUESTION_METADATA_FIELDS]
+      .some((field) => previous[field] !== result[field])) return false;
+    seen.set(result.questionId, result);
+    return true;
+  });
+}
+
+function updateCourseWeakQuestions(record, results, sessionId, at) {
+  for (const result of results) {
+    if (!hasQuestionMetadata(result)) continue;
+    const reference = {
+      questionId: result.questionId, questionVersion: result.questionVersion, sourceKind: 'course',
+      lessonId: result.lessonId, questionType: result.questionType,
+      targetCode: result.targetCode, termId: result.termId,
+    };
+    const previous = record.weakQuestions && Object.hasOwn(record.weakQuestions, result.questionId)
+      ? record.weakQuestions[result.questionId] : null;
+    // 同 ID 的旧版本或不同来源保留原证据，不能用新题意覆盖或纠正。
+    if (previous && (previous.lastSessionId === sessionId ||
+        Object.entries(reference).some(([key, value]) => previous[key] !== value))) continue;
+    if (result.correct && !previous) continue;
+    const next = result.correct ? {
+      ...previous, status: 'resolved', lastSessionId: sessionId, lastReviewedAt: at, resolvedAt: at,
+    } : {
+      ...reference, firstWrongAt: previous?.firstWrongAt || at, lastWrongAt: at,
+      lastSessionId: sessionId, wrongCount: (previous?.wrongCount || 0) + 1,
+      status: 'due', lastReviewedAt: previous?.lastReviewedAt || null, resolvedAt: null,
+    };
+    record.weakQuestions = { ...record.weakQuestions, [result.questionId]: next };
+  }
 }
 
 export function recordLearningAssessment(kind, assessment, now = new Date(), storage) {
@@ -167,6 +277,7 @@ export function recordLearningAssessment(kind, assessment, now = new Date(), sto
     const matches = receipt && receipt.kind === kind && (kind !== 'lesson' || receipt.lessonId === assessment.lessonId);
     return { record, saved: true, duplicate: true, entry: matches ? receipt : null, evidenceMissing: !matches };
   }
+  if (!hasValidCourseReferences(kind, assessment)) return { record, saved: false };
   const entry = {
     at: now.toISOString(),
     correct: assessment.correct,
@@ -206,6 +317,7 @@ export function recordLearningAssessment(kind, assessment, now = new Date(), sto
       correct: entry.correct, total: entry.total,
       ...(kind === 'lesson' ? { lessonId: assessment.lessonId } : {}),
     }];
+    updateCourseWeakQuestions(record, entry.results, assessment.sessionId, entry.at);
   }
   return { record, saved: saveLearningRecord(record, storage), duplicate: false, entry };
 }

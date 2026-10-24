@@ -1,0 +1,256 @@
+{
+  "capturedAt": "2026-10-24T20:13:20.005Z",
+  "kind": "pure integration with real public datasets and synthetic in-memory storage; not browser evidence",
+  "questionBank": 820,
+  "courses": 25,
+  "roundTrips": [
+    {
+      "lessonId": "l1-1",
+      "type": "theory",
+      "questionId": "theory-yinyang-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l1-2",
+      "type": "theory",
+      "questionId": "theory-bagua-gen-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l1-3",
+      "type": "theory",
+      "questionId": "theory-yao-positions-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l1-4",
+      "type": "trigrams",
+      "questionId": "trigram-101-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l2-1",
+      "type": "hexagrams",
+      "questionId": "hex-100010-full",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": "100010",
+      "termId": null
+    },
+    {
+      "lessonId": "l2-2",
+      "type": "hexagrams",
+      "questionId": "hex-100110-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": "100110",
+      "termId": null
+    },
+    {
+      "lessonId": "l2-3",
+      "type": "hexagrams",
+      "questionId": "hex-100111-full",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": "100111",
+      "termId": null
+    },
+    {
+      "lessonId": "l2-4",
+      "type": "hexagrams",
+      "questionId": "hex-001010-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": "001010",
+      "termId": null
+    },
+    {
+      "lessonId": "l2-5",
+      "type": "hexagrams",
+      "questionId": "hex-001101-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": "001101",
+      "termId": null
+    },
+    {
+      "lessonId": "l3-1",
+      "type": "wings",
+      "questionId": "wing-xici-shang-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l3-2",
+      "type": "wings",
+      "questionId": "wing-wenyan-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l3-3",
+      "type": "wings",
+      "questionId": "wing-xugua-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l3-4",
+      "type": "theory",
+      "questionId": "theory-tuan-xiang-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l4-1",
+      "type": "theory",
+      "questionId": "theory-wuxing-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l4-2",
+      "type": "theory",
+      "questionId": "theory-hetu-luoshu-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l4-3",
+      "type": "theory",
+      "questionId": "theory-xiantian-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l4-4",
+      "type": "theory",
+      "questionId": "theory-cuo-zong-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l4-5",
+      "type": "theory",
+      "questionId": "theory-najia-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l4-6",
+      "type": "theory",
+      "questionId": "theory-twelve-messages-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l4-7",
+      "type": "theory",
+      "questionId": "theory-bagong-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": null
+    },
+    {
+      "lessonId": "l5-1",
+      "type": "almanac",
+      "questionId": "almanac-jianshe-kai-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": "jianshe-kai"
+    },
+    {
+      "lessonId": "l5-2",
+      "type": "almanac",
+      "questionId": "almanac-xiu-虚-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": "xiu-虚"
+    },
+    {
+      "lessonId": "l5-3",
+      "type": "almanac",
+      "questionId": "almanac-pengzu-zhi-子-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": "pengzu-zhi-子"
+    },
+    {
+      "lessonId": "l5-4",
+      "type": "almanac",
+      "questionId": "almanac-jieqi-小暑-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": "jieqi-小暑"
+    },
+    {
+      "lessonId": "l5-5",
+      "type": "almanac",
+      "questionId": "almanac-shensha-taiyang-evidence",
+      "questions": 3,
+      "status": "resolved",
+      "targetCode": null,
+      "termId": "shensha-taiyang"
+    }
+  ],
+  "wrongThenCorrectSubmissions": 50,
+  "persistenceKeys": [
+    "yijing-learning-record-v2"
+  ],
+  "backupRoundTrip": true,
+  "sourceFiles": [
+    {
+      "path": "web/js/learning-curriculum.js",
+      "sha256": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e"
+    },
+    {
+      "path": "web/js/learning-assessment.js",
+      "sha256": "a7f7281eefb507bfd51c5185609420c489f09fda0fb9d96418e37c5b9b3a8033"
+    },
+    {
+      "path": "web/js/learning-progress.js",
+      "sha256": "055b59a6becd6b75df912bd09e8274c47b2a05df532c5f599b4f153aeda28dd9"
+    },
+    {
+      "path": "web/js/user-data.js",
+      "sha256": "7252aa0e31be7fa6970be2de6d06acbfb73d9b52f1d26cf6b7b5b44799a479c6"
+    }
+  ]
+}

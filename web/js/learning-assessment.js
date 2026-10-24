@@ -57,9 +57,20 @@ export function createAssessmentSession(kind, questionBank, options = {}) {
   }
 
   if (!available.length) return null;
+  let requiredQuestion = null;
+  if (options.requiredQuestionId !== undefined || options.requiredQuestionVersion !== undefined) {
+    if (kind !== 'lesson' || typeof options.requiredQuestionId !== 'string' || !options.requiredQuestionId.trim()) return null;
+    requiredQuestion = available.find((item) => item.id === options.requiredQuestionId);
+    if (!requiredQuestion || (options.requiredQuestionVersion !== undefined &&
+        (typeof options.requiredQuestionVersion !== 'string' || !options.requiredQuestionVersion ||
+         requiredQuestion.questionVersion !== options.requiredQuestionVersion))) return null;
+  }
   const selected = kind === 'lesson'
     ? shuffle(available, random).slice(0, count)
     : diversify(available, count, random);
+  // Keep the usual draw and its size; replace only the final slot when the
+  // requested source question was not drawn. Invalid references never fall back.
+  if (requiredQuestion && !selected.some((item) => item.id === requiredQuestion.id)) selected[selected.length - 1] = requiredQuestion;
   const levelId = options.levelId || LEARNING_LESSONS.find((lesson) => lesson.id === options.lessonId)?.levelId;
   return {
     id: createSessionId(),
@@ -84,6 +95,12 @@ export function gradeAssessment(session, answers) {
     picked: picked[item.id] ?? null,
     answer: item.answer,
     correct: picked[item.id] === item.answer,
+    ...(['questionVersion', 'targetCode', 'termId'].some((key) => Object.hasOwn(item, key)) ? {
+      questionVersion: item.questionVersion,
+      questionType: item.kind,
+      targetCode: item.targetCode,
+      termId: item.termId,
+    } : {}),
   }));
   return {
     sessionId: session.id,
