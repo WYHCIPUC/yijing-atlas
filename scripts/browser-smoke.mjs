@@ -106,7 +106,7 @@ class CdpClient {
 
 async function elementPoint(client, selector) {
   try {
-    return await waitFor(() => client.evaluate(`(() => {
+    return await waitFor(() => client.evaluate(`(async () => {
     const element = document.querySelector(${JSON.stringify(selector)});
     if (!element || !element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }) || element.closest('[inert]')) return null;
     const hitPoint = () => {
@@ -115,8 +115,14 @@ async function elementPoint(client, selector) {
       const hit = document.elementFromPoint(point.x, point.y);
       return rect.width > 0 && rect.height > 0 && hit && (element === hit || element.contains(hit)) ? point : null;
     };
-    if (hitPoint()) return hitPoint();
-    element.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' });
+    if (!hitPoint()) {
+      element.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' });
+      return null;
+    }
+    const before = element.getBoundingClientRect();
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    const after = element.getBoundingClientRect();
+    if (['x', 'y', 'width', 'height'].some(key => Math.abs(before[key] - after[key]) > 0.5)) return null;
     return hitPoint();
     })()`), `真实输入无法命中 ${selector}`);
   } catch (error) {
@@ -136,6 +142,11 @@ async function elementPoint(client, selector) {
 
 async function mouseClick(client, selector) {
   const { x, y } = await elementPoint(client, selector);
+  if (selector.startsWith('[data-reading-tab=')) {
+    await client.evaluate(`document.querySelector(${JSON.stringify(selector)}).addEventListener('click', event => {
+      window.__smokeReadingClick = { trusted: event.isTrusted, tab: event.currentTarget.dataset.readingTab, x: event.clientX, y: event.clientY };
+    }, { once: true })`);
+  }
   await client.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x, y });
   await client.send('Input.dispatchMouseEvent', { type: 'mousePressed', x, y, button: 'left', buttons: 1, clickCount: 1 });
   await client.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x, y, button: 'left', buttons: 0, clickCount: 1 });
@@ -187,7 +198,9 @@ async function touchDrag(client, from, to) {
 }
 
 async function pickRenderedStar(client, { touch = false } = {}) {
-  const points = await waitFor(() => client.evaluate(`(() => {
+  const attempts = [];
+  for (let attempt = 0; attempt < 40; attempt += 1) {
+    const sample = await waitFor(() => client.evaluate(`(() => {
     const canvas = document.querySelector('#star-canvas');
     const rect = canvas.getBoundingClientRect();
     const seen = new Set();
@@ -199,9 +212,9 @@ async function pickRenderedStar(client, { touch = false } = {}) {
         seen.add(key);
         return true;
       }).slice(0, 40);
-    return points.length ? points : null;
+    return points.length ? { points, frame: window.__smokeRenderCounts.star } : null;
   })()`), '没有可供真实输入选择的星点');
-  for (const { x, y } of points) {
+    const { x, y } = sample.points[attempt % sample.points.length];
     if (touch) {
       await client.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y, id: 1 }] });
       await client.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
@@ -211,16 +224,44 @@ async function pickRenderedStar(client, { touch = false } = {}) {
       await client.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x, y, button: 'left', buttons: 0, clickCount: 1 });
     }
     if (await client.evaluate('!document.querySelector("#star-focus-summary").hidden')) return;
+    attempts.push({ x, y, frame: sample.frame });
+    await waitFor(() => client.evaluate(`window.__smokeRenderCounts.star > ${sample.frame}`), '选星失败后画布没有绘制新帧');
   }
-  throw new Error(`${touch ? '触控' : '鼠标'}未能从画布选择已绘制星点`);
+  throw new Error(`${touch ? '触控' : '鼠标'}未能从画布选择已绘制星点：${JSON.stringify(attempts)}`);
 }
+
+const screenshotRun = new Date().toISOString().replace(/[:.]/g, '-');
 
 async function screenshot(client, name) {
   if (process.env.YIJING_SMOKE_SCREENSHOTS !== '1') return;
-  const directory = join(process.cwd(), 'docs', 'screenshots', '2026-10-22-immersive');
+  const directory = join(process.cwd(), 'docs', 'screenshots', `smoke-${screenshotRun}`);
   mkdirSync(directory, { recursive: true });
   const capture = await client.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
   writeFileSync(join(directory, `${name}.png`), Buffer.from(capture.data, 'base64'));
+}
+
+async function assertReadingSection(client, section) {
+  try {
+    await waitFor(() => client.evaluate(`document.querySelector('[data-reading-tab="${section}"]').getAttribute('aria-pressed') === 'true'`), `快读 ${section} 章节未响应真实鼠标`);
+  } catch (error) {
+    const details = await client.evaluate(`(() => ({
+      click: window.__smokeReadingClick,
+      panel: document.querySelector('#detail-panel').getBoundingClientRect().toJSON(),
+      scroll: document.querySelector('#detail-panel').scrollTop,
+      toolbar: document.querySelector('#reading-toolbar').getBoundingClientRect().toJSON(),
+      tabs: [...document.querySelectorAll('[data-reading-tab]')].map(el => ({ name: el.dataset.readingTab, current: el.getAttribute('aria-current'), pressed: el.getAttribute('aria-pressed') })),
+      sections: [...document.querySelectorAll('[data-reading-section]')].map(el => ({ name: el.dataset.readingSection, margin: getComputedStyle(el).scrollMarginTop, rect: el.getBoundingClientRect().toJSON() })),
+    }))()`);
+    throw new Error(error.message + '：' + JSON.stringify(details));
+  }
+  await client.evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
+  const status = await client.evaluate(`(() => {
+    const current = [...document.querySelectorAll('[data-reading-tab][aria-current="true"]')];
+    return { count: current.length, section: current[0]?.dataset.readingTab, pressed: current[0]?.getAttribute('aria-pressed') };
+  })()`);
+  if (status.count !== 1 || status.section !== section || status.pressed !== 'true') {
+    throw new Error(`滚动处理后阅读章节不稳定：${JSON.stringify({ expected: section, ...status })}`);
+  }
 }
 
 async function assertReadingStage(client, stage, { modal = null } = {}) {
@@ -239,7 +280,7 @@ async function assertReadingStage(client, stage, { modal = null } = {}) {
 async function assertReadingGeometry(client, stage, ratio = 1) {
   await waitFor(() => client.evaluate(`(() => {
     const rect = document.querySelector('#detail-panel').getBoundingClientRect();
-    return Math.abs(rect.width - innerWidth) < 2 && Math.abs(rect.height - innerHeight * ${ratio}) < 3
+    return Math.abs(rect.left) < 2 && Math.abs(rect.width - innerWidth) < 2 && Math.abs(rect.height - innerHeight * ${ratio}) < 3
       && Math.abs(rect.bottom - innerHeight) < 2;
   })()`), `${stage} 阅读几何尺寸错误（目标高度 ${ratio} × 视口）`);
 }
@@ -791,16 +832,10 @@ try {
   if (JSON.stringify(quickEvidence) !== JSON.stringify(learningEvidence)) throw new Error('聚焦或快读提前写入深读成就/复习卡');
   await screenshot(client, '1280x720-quick');
   await mouseClick(client, '[data-reading-tab="lines"]');
-  await waitFor(() => client.evaluate(`document.querySelector('[data-reading-tab="lines"]').getAttribute('aria-pressed') === 'true'`), '快读六爻章节未响应真实鼠标');
-  if (!await client.evaluate('document.querySelectorAll("[data-reading-tab][aria-current=true]").length === 1 && document.querySelector("[data-reading-tab][aria-current=true]").dataset.readingTab === "lines"')) {
-    throw new Error('快读六爻章节的 aria-current 不是唯一当前项');
-  }
+  await assertReadingSection(client, 'lines');
   if (!await client.evaluate('document.querySelector(".yao-item").dataset.linePosition === "1"')) throw new Error('六爻正文未从初爻开始');
   await mouseClick(client, '[data-reading-tab="commentary"]');
-  await waitFor(() => client.evaluate(`document.querySelector('[data-reading-tab="commentary"]').getAttribute('aria-pressed') === 'true'`), '快读彖象章节未响应真实鼠标');
-  if (!await client.evaluate('document.querySelectorAll("[data-reading-tab][aria-current=true]").length === 1 && document.querySelector("[data-reading-tab][aria-current=true]").dataset.readingTab === "commentary"')) {
-    throw new Error('快读彖象章节的 aria-current 不是唯一当前项');
-  }
+  await assertReadingSection(client, 'commentary');
   await mouseClick(client, '[data-reading-tab="overview"]');
   await mouseClick(client, '#note-input');
   await client.send('Input.insertText', { text: '烟测草稿：初爻至上爻，快读与深读共用。' });

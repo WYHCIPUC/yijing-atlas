@@ -11,6 +11,7 @@ import { hexagramSvg } from '../svg-painter.js';
 let appState = null;
 let mountEl = null;
 let openDetail = null;
+let analysisSequence = 0;
 
 function esc(value) {
   return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -157,6 +158,7 @@ function replayHistoryItem(item) {
     renderCoinResult(mountEl.querySelector('.coin-result'), cast, {
       record: false,
       interpretation: item.interpretation,
+      analysisId: `history:${item.id}`,
     });
   } else {
     renderMeihuaResult({ ...item.cast }, {
@@ -175,6 +177,7 @@ function recordCast(entry) {
     mountEl.querySelector('.history-status').textContent = '结果已生成，但浏览器未能保存记录。';
   }
   renderHistory();
+  return historyResult.saved ? historyResult.items[0].id : null;
 }
 
 function renderInterpretation(interpretation, analysisId) {
@@ -355,7 +358,7 @@ function renderMeihuaResult(cast, options = {}) {
   const changedHex = appState.index.byCode.get(cast.changedCode);
   const analysis = analyzeTiYong(cast);
   const interpretation = options.interpretation || buildMeihuaInterpretation({ cast, primaryHex, changedHex, analysis });
-  const analysisId = options.analysisId || `meihua:${cast.primaryCode}:${cast.changedCode}:${cast.changingPos}:${Date.now()}`;
+  let analysisId = options.analysisId || `meihua:${cast.primaryCode}:${cast.changedCode}:${cast.changingPos}:${Date.now()}:${++analysisSequence}`;
   appState.starMap?.focusStar(cast.primaryCode);
   const result = mountEl.querySelector('.mh-result');
   result.innerHTML = `
@@ -372,10 +375,9 @@ function renderMeihuaResult(cast, options = {}) {
     <p class="divine-line-text">动爻：${esc(primaryHex.lines[cast.changingPos - 1]?.text || '')}</p>
     ${renderInterpretation(interpretation, analysisId)}
   `;
-  bindAnalysisCheck(result, analysisId);
   result.querySelector('.divine-interpretation-heading h3')?.setAttribute('tabindex', '-1');
   if (options.record !== false) {
-    recordCast({
+    const recordedId = recordCast({
       type: 'meihua',
       primaryCode: cast.primaryCode,
       changedCode: cast.changedCode,
@@ -383,7 +385,9 @@ function renderMeihuaResult(cast, options = {}) {
       interpretation,
       summary: `${primaryHex.name} → ${changedHex.name} · ${analysis.relationName}`,
     });
+    if (recordedId) analysisId = `history:${recordedId}`;
   }
+  bindAnalysisCheck(result, analysisId);
   revealDivinationArea(result, '.divine-interpretation-heading h3');
 }
 
@@ -392,7 +396,7 @@ function renderCoinResult(result, cast = castHexagram(), options = {}) {
   const changedHex = cast.hasChange ? appState.index.byCode.get(cast.changedCode) : null;
   const reading = getReading(cast, primaryHex, changedHex);
   const interpretation = options.interpretation || buildCoinInterpretation({ cast, primaryHex, changedHex, reading });
-  const analysisId = options.analysisId || `coin:${cast.primaryCode}:${cast.changedCode}:${cast.changingIdxs.join('-')}:${Date.now()}`;
+  let analysisId = options.analysisId || `coin:${cast.primaryCode}:${cast.changedCode}:${cast.changingIdxs.join('-')}:${Date.now()}:${++analysisSequence}`;
   appState.starMap?.focusStar(cast.primaryCode);
 
   const lines = cast.yaos.map((yao, index) => {
@@ -410,9 +414,8 @@ function renderCoinResult(result, cast = castHexagram(), options = {}) {
     ${renderInterpretation(interpretation, analysisId)}
     <button type="button" class="divine-btn divine-again">再掷一卦</button>
   `;
-  bindAnalysisCheck(result, analysisId);
   if (options.record !== false) {
-    recordCast({
+    const recordedId = recordCast({
       type: 'coin',
       primaryCode: cast.primaryCode,
       changedCode: changedHex ? cast.changedCode : null,
@@ -421,7 +424,9 @@ function renderCoinResult(result, cast = castHexagram(), options = {}) {
       interpretation,
       summary: `${primaryHex.name}${changedHex ? ` → ${changedHex.name}` : ''}`,
     });
+    if (recordedId) analysisId = `history:${recordedId}`;
   }
+  bindAnalysisCheck(result, analysisId);
   result.querySelector('.divine-again').addEventListener('click', () => renderCoinResult(result));
   revealDivinationArea(result, '#coin-result-title');
 }

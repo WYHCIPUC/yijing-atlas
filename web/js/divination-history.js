@@ -111,9 +111,16 @@ export function addDivinationHistory(entry, storage, now = new Date()) {
   const changingPositions = entry.type === 'coin'
     ? yaos.flatMap((yao, index) => yao.changing ? [index + 1] : [])
     : (Number.isInteger(cast?.changingPos) ? [cast.changingPos] : []);
+  let identity;
+  try {
+    identity = [...globalThis.crypto.getRandomValues(new Uint32Array(4))]
+      .map(value => value.toString(16).padStart(8, '0')).join('');
+  } catch {
+    return { items: existing, saved: false };
+  }
   const item = {
     version: 2,
-    id: `${createdAt}-${existing.length}`,
+    id: `${createdAt}-${identity}`,
     createdAt,
     type: entry.type === 'meihua' ? 'meihua' : 'coin',
     method: entry.type === 'meihua' ? text(cast?.method, 12) : 'three-coins',

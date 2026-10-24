@@ -18,6 +18,67 @@ const syncStarStageSource = (() => {
   return match[0];
 })();
 
+function runReadingScroll({ panelTop, toolbarBottom, toolbarHeight, previousBottom, selectedSection, margin = '140px' }) {
+  const start = source.indexOf('  let readingSectionFrame = null;');
+  const end = source.indexOf("  canvas.addEventListener('pointerdown'", start);
+  assert.ok(start >= 0 && end > start, '真实阅读滚动监听必须存在');
+  const frames = [];
+  let scroll;
+  let tabSyncs = 0;
+  const state = { reading: { ...createReadingState(), stage: 'quick', section: selectedSection } };
+  const elements = [
+    { dataset: { readingSection: selectedSection === 'lines' ? 'commentary' : 'judgement' },
+      getBoundingClientRect: () => ({ bottom: previousBottom }) },
+    { dataset: { readingSection: selectedSection },
+      getBoundingClientRect: () => ({ top: previousBottom, bottom: previousBottom + 400 }) },
+  ];
+  const context = vm.createContext({
+    state,
+    transitionReading,
+    panel: {
+      clientTop: 1,
+      getBoundingClientRect: () => ({ top: panelTop }),
+      addEventListener: (type, handler) => { assert.equal(type, 'scroll'); scroll = handler; },
+    },
+    readingToolbar: { getBoundingClientRect: () => ({ bottom: toolbarBottom, height: toolbarHeight }) },
+    panelContent: { querySelectorAll: () => elements },
+    window: {
+      getComputedStyle: () => ({ scrollMarginTop: margin }),
+      requestAnimationFrame: (callback) => { frames.push(callback); return frames.length; },
+    },
+    syncReadingTabs: () => { tabSyncs += 1; },
+  });
+  vm.runInContext(source.slice(start, end), context);
+  scroll();
+  scroll();
+  assert.equal(frames.length, 1, '同一帧合并滚动检查');
+  frames.shift()();
+  return { state, tabSyncs };
+}
+
+test('真实滚动监听不因边框与亚像素舍入把已定位章节退回上一节', () => {
+  const fixtures = [
+    { panelTop: 388.8125, toolbarBottom: 498.8125, toolbarHeight: 109, previousBottom: 530.203125, selectedSection: 'lines' },
+    { panelTop: 455.765625, toolbarBottom: 565.765625, toolbarHeight: 109, previousBottom: 597.03125, selectedSection: 'commentary' },
+    { panelTop: 211, toolbarBottom: 321, toolbarHeight: 109, previousBottom: 352.296875, selectedSection: 'commentary' },
+    { panelTop: 211, toolbarBottom: 317, toolbarHeight: 105, previousBottom: 352.046875, selectedSection: 'lines' },
+    { panelTop: 211, toolbarBottom: 317, toolbarHeight: 105, previousBottom: 351.734375, selectedSection: 'lines' },
+  ];
+  for (const fixture of fixtures) {
+    const { state, tabSyncs } = runReadingScroll(fixture);
+    assert.equal(state.reading.section, fixture.selectedSection, JSON.stringify(fixture));
+    assert.equal(tabSyncs, 0, '已正确定位不反复改写页签');
+  }
+});
+
+test('用户滚回上一节正文时仍按可见内容更新当前章节', () => {
+  const { state, tabSyncs } = runReadingScroll({
+    panelTop: 211, toolbarBottom: 317, toolbarHeight: 105, previousBottom: 380, selectedSection: 'lines',
+  });
+  assert.equal(state.reading.section, 'commentary');
+  assert.equal(tabSyncs, 1);
+});
+
 function createHarness({ loaded = true, extraReason = null } = {}) {
   const noop = () => {};
   const reasons = new Set(['mode', ...(extraReason ? [extraReason] : [])]);

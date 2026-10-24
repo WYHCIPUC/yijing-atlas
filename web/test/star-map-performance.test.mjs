@@ -42,6 +42,42 @@ function measuringContext(width = 20) {
   };
 }
 
+test('两帧之间模拟推进时，星点命中与悬浮位置仍跟随最后绘制坐标', () => {
+  const node = labelNode('乾', { x: 640, y: 140 });
+  Object.assign(node, { x: 640, y: 180, z: 0 });
+  const map = Object.create(StarMap.prototype);
+  Object.assign(map, {
+    graph: { nodes: [node] }, view: { scale: 1 }, focusVisible: null,
+    _isNodeVisible: () => true,
+    _worldToScreen: (x, y) => ({ x, y, depthFactor: 1 }),
+    canvas: { getBoundingClientRect: () => ({ left: 10, top: 20 }) },
+  });
+  assert.equal(map._nodeAt(640, 140), node, '点击当前可见星核，不追逐尚未绘制的模拟位置');
+  assert.equal(map._nodeAt(640, 180), null, '未显示的新位置不能提前命中');
+  assert.deepEqual(map._nodeViewportPoint(node), { x: 650, y: 160, depthFactor: 1 });
+  node._screen = null;
+  assert.equal(map._nodeAt(640, 180), null, '首次绘制或清屏前不可选择不可见星体');
+  assert.equal(map._nodeViewportPoint(node), null);
+});
+
+test('Canvas尺寸改变清屏时失效旧星点投影，避免在旧位置命中', () => {
+  const previousWindow = globalThis.window;
+  globalThis.window = { devicePixelRatio: 1 };
+  try {
+    const node = labelNode('乾');
+    const map = Object.create(StarMap.prototype);
+    Object.assign(map, {
+      graph: { nodes: [node] },
+      canvas: { getBoundingClientRect: () => ({ width: 390, height: 844 }) },
+      ctx: { setTransform() {}, scale() {} },
+    });
+    map._setupDpr();
+    assert.equal(node._screen, null);
+  } finally {
+    globalThis.window = previousWindow;
+  }
+});
+
 test('星空背景在镜头转动和减少动态效果时始终使用有效绘制坐标', () => {
   for (const reducedMotion of [false, true]) {
     const draws = [];

@@ -293,6 +293,7 @@ export class StarMap {
     this.dpr = dpr;
     this.canvas.width = rect.width * dpr;
     this.canvas.height = rect.height * dpr;
+    for (const node of this.graph.nodes) node._screen = null;
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.scale(dpr, dpr);
     this.width = rect.width;
@@ -604,7 +605,8 @@ export class StarMap {
     for (const n of this.graph.nodes) {
       if (!this._isNodeVisible(n)) continue;
       if (this.focusVisible && !this.focusVisible.has(n.id)) continue;
-      const p = this._worldToScreen(n.x, n.y, n.z);
+      const p = n._screen;
+      if (!p) continue;
       const r = baseR * (0.5 + p.depthFactor * 0.8); // 近的星命中范围更大
       const d = Math.hypot(p.x - sx, p.y - sy);
       if (d < r) {
@@ -617,8 +619,8 @@ export class StarMap {
   }
 
   _nodeViewportPoint(node, rect = this.canvas.getBoundingClientRect()) {
-    if (!node) return null;
-    const point = this._worldToScreen(node.x, node.y, node.z);
+    const point = node?._screen;
+    if (!point) return null;
     return {
       x: rect.left + point.x,
       y: rect.top + point.y,

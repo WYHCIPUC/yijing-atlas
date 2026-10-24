@@ -1101,9 +1101,16 @@ function bindGlobalInteractions() {
     readingSectionFrame = window.requestAnimationFrame(() => {
       readingSectionFrame = null;
       if (state.reading.stage === 'none') return;
-      const focusLine = panel.getBoundingClientRect().top + (readingToolbar?.getBoundingClientRect().height || 0) + 32;
-      const current = [...panelContent.querySelectorAll('[data-reading-section]')]
-        .find((element) => element.getBoundingClientRect().bottom > focusLine);
+      const sections = [...panelContent.querySelectorAll('[data-reading-section]')];
+      if (!sections.length) return;
+      const panelTop = panel.getBoundingClientRect().top + panel.clientTop;
+      const scrollMargin = Number.parseFloat(window.getComputedStyle(sections[0]).scrollMarginTop) || 0;
+      const focusLine = Math.max(
+        (readingToolbar?.getBoundingClientRect().bottom || panelTop) + 32,
+        panelTop + scrollMargin,
+      );
+      // scrollIntoView按像素取整；边框和移动工具栏不能让上一节抢回已定位章节。
+      const current = sections.find((element) => element.getBoundingClientRect().bottom > focusLine + 2);
       if (!current || current.dataset.readingSection === state.reading.section) return;
       state.reading = transitionReading(state.reading, { type: 'section', section: current.dataset.readingSection });
       syncReadingTabs();
