@@ -29,6 +29,11 @@ function createRandom(seed = 0x5f3759df) {
   };
 }
 
+export function celestialPixelRatio(width, height, deviceRatio = 1, lowPower = false) {
+  const area = Math.max(1, width * height);
+  return Math.min(deviceRatio || 1, lowPower ? 1 : 1.5, Math.sqrt(5_000_000 / area));
+}
+
 export function chooseCelestialFps({ reducedMotion, hidden, mode = 'explore', lowPower = false }) {
   if (hidden || reducedMotion) return 0;
   if (lowPower) return mode === 'explore' ? 20 : 12;
@@ -428,8 +433,7 @@ export function initCelestialStage(canvas, options = {}) {
   function resize() {
     const rect = canvas.getBoundingClientRect();
     if (!rect.width || !rect.height) return;
-    const dprCap = lowPower ? 1 : 1.5;
-    renderer.setPixelRatio(Math.min(windowRef.devicePixelRatio || 1, dprCap));
+    renderer.setPixelRatio(celestialPixelRatio(rect.width, rect.height, windowRef.devicePixelRatio, lowPower));
     renderer.setSize(rect.width, rect.height, false);
     camera.aspect = rect.width / rect.height;
     camera.updateProjectionMatrix();
@@ -461,13 +465,14 @@ export function initCelestialStage(canvas, options = {}) {
   }
 
   function renderOnce(time = performance.now()) {
-    if (destroyed || contextLost) return;
-    const seconds = time * 0.001;
+    if (destroyed || contextLost || pauseReasons.size > 0) return;
+    const reduced = motionPreference.matches;
+    const seconds = reduced ? 0 : time * 0.001;
     const config = modeState.config;
-    modeState.accent.lerp(modeState.targetAccent, 0.045);
-    modeState.secondary.lerp(modeState.targetSecondary, 0.045);
-    relationVisual.strength += (relationVisual.targetStrength - relationVisual.strength) * 0.1;
-    relationVisual.color.lerp(relationVisual.targetColor, 0.09);
+    modeState.accent.lerp(modeState.targetAccent, reduced ? 1 : 0.045);
+    modeState.secondary.lerp(modeState.targetSecondary, reduced ? 1 : 0.045);
+    relationVisual.strength += (relationVisual.targetStrength - relationVisual.strength) * (reduced ? 1 : 0.1);
+    relationVisual.color.lerp(relationVisual.targetColor, reduced ? 1 : 0.09);
     relationVisual.pulse *= motionPreference.matches ? 0 : 0.93;
     ringMaterial.color.copy(modeState.accent).lerp(relationVisual.color, relationVisual.strength * 0.46);
     trigramMaterial.color.copy(modeState.accent);
@@ -480,23 +485,23 @@ export function initCelestialStage(canvas, options = {}) {
     tetherParticleMaterial.color.copy(modeState.accent).lerp(relationVisual.color, relationVisual.strength * 0.48);
     nebulaMaterial.uniforms.uAccent.value.copy(modeState.accent);
     nebulaMaterial.uniforms.uSecondary.value.copy(modeState.secondary);
-    nebulaMaterial.uniforms.uIntensity.value += (config.energy - nebulaMaterial.uniforms.uIntensity.value) * 0.04;
+    nebulaMaterial.uniforms.uIntensity.value += (config.energy - nebulaMaterial.uniforms.uIntensity.value) * (reduced ? 1 : 0.04);
     nebulaMaterial.uniforms.uTime.value = seconds;
 
-    pointer.x += (pointer.targetX - pointer.x) * 0.035;
-    pointer.y += (pointer.targetY - pointer.y) * 0.035;
-    interaction.focus += (interaction.targetFocus - interaction.focus) * 0.075;
-    sharedView.yaw += (sharedView.targetYaw - sharedView.yaw) * 0.16;
-    sharedView.pitch += (sharedView.targetPitch - sharedView.pitch) * 0.16;
-    sharedView.scale += (sharedView.targetScale - sharedView.scale) * 0.16;
-    sharedView.layoutBlend += (sharedView.targetLayoutBlend - sharedView.layoutBlend) * 0.12;
+    pointer.x += (pointer.targetX - pointer.x) * (reduced ? 1 : 0.035);
+    pointer.y += (pointer.targetY - pointer.y) * (reduced ? 1 : 0.035);
+    interaction.focus += (interaction.targetFocus - interaction.focus) * (reduced ? 1 : 0.075);
+    sharedView.yaw += (sharedView.targetYaw - sharedView.yaw) * (reduced ? 1 : 0.16);
+    sharedView.pitch += (sharedView.targetPitch - sharedView.pitch) * (reduced ? 1 : 0.16);
+    sharedView.scale += (sharedView.targetScale - sharedView.scale) * (reduced ? 1 : 0.16);
+    sharedView.layoutBlend += (sharedView.targetLayoutBlend - sharedView.layoutBlend) * (reduced ? 1 : 0.12);
     // Three.js 只承载外围方位轨道，不再叠加与真实卦象无关的中心网络球。
     sharedView.centerX = sharedView.targetCenterX;
     sharedView.centerY = sharedView.targetCenterY;
     sharedView.radius = sharedView.targetRadius;
-    camera.position.x += (pointer.x * 0.1 - camera.position.x) * 0.032;
-    camera.position.y += (-pointer.y * 0.07 - camera.position.y) * 0.032;
-    camera.position.z += (config.cameraZ - camera.position.z) * 0.025;
+    camera.position.x += (pointer.x * 0.1 - camera.position.x) * (reduced ? 1 : 0.032);
+    camera.position.y += (-pointer.y * 0.07 - camera.position.y) * (reduced ? 1 : 0.032);
+    camera.position.z += (config.cameraZ - camera.position.z) * (reduced ? 1 : 0.025);
     camera.lookAt(0, 0, 0);
 
     screenToWorld(sharedView.centerX, sharedView.centerY, layoutAnchor);
@@ -511,10 +516,10 @@ export function initCelestialStage(canvas, options = {}) {
     // 外轨尺度由真实星群包围半径推导，并用关系脉冲轻微呼吸。
     const orbitScale = Math.max(0.22, Math.min(4.2,
       galaxyScale * Math.pow(sharedView.scale, 0.06) * relationPulseScale));
-    root.scale.x += (orbitScale - root.scale.x) * 0.16;
-    root.scale.y += (orbitScale - root.scale.y) * 0.16;
-    root.scale.z += (orbitScale - root.scale.z) * 0.16;
-    armillaryPitch.scale.z += (layoutDepth - armillaryPitch.scale.z) * 0.1;
+    root.scale.x += (orbitScale - root.scale.x) * (reduced ? 1 : 0.16);
+    root.scale.y += (orbitScale - root.scale.y) * (reduced ? 1 : 0.16);
+    root.scale.z += (orbitScale - root.scale.z) * (reduced ? 1 : 0.16);
+    armillaryPitch.scale.z += (layoutDepth - armillaryPitch.scale.z) * (reduced ? 1 : 0.1);
     armillaryPitch.rotation.x = sharedView.pitch;
     armillaryYaw.rotation.y = -sharedView.yaw;
     // 方位卦符不自行漂移，始终与用户正在观察的八个星团保持同向。
@@ -561,6 +566,7 @@ export function initCelestialStage(canvas, options = {}) {
       selectionGroup.position.copy(selectionAnchor);
       selectionGroup.scale.setScalar(worldPerPixel * 30 / 1.24);
     }
+    if (reduced) selection.pulse = 0;
     if (selection.pulse > 0.004) {
       selection.pulse *= 0.935;
       const pulseProgress = 1 - selection.pulse;

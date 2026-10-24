@@ -1,5 +1,6 @@
 // 阴阳流变动画：点击关系 chip 时，弹出浮层演示卦象如何变化。
 // 错卦=逐爻翻转，综卦=整体倒转，互卦=高亮2-3-4/3-4-5爻重组，变卦=指定爻翻转。
+import { installUIIcons } from './ui-icons.js';
 
 let overlayEl = null;
 let activeTimer = null;
@@ -122,7 +123,7 @@ export function showRelationAnimation(fromCode, toCode, relType, fromName, toNam
 
   overlayEl.innerHTML = `
     <div class="rel-anim-card" role="dialog" aria-modal="true" aria-labelledby="rel-anim-title">
-      <button type="button" class="rel-anim-close" aria-label="关闭关系演示">✕</button>
+      <button type="button" class="rel-anim-close" aria-label="关闭关系演示"><span data-icon="x" aria-hidden="true"></span></button>
       <div class="rel-anim-title">
         <span class="rel-anim-badge" id="rel-anim-title" style="background:${info.color}22;color:${info.color}">${info.name}</span>
         <span class="rel-anim-desc">${info.desc}</span>
@@ -298,4 +299,5 @@ function _ensureOverlay() {
     }
   });
   document.body.appendChild(overlayEl);
+  installUIIcons(overlayEl);
 }

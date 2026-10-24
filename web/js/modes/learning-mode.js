@@ -280,7 +280,9 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
   `;
 
   const content = mountEl.querySelector('.learning-content');
+  let sectionFocusRequest = 0;
   const showSection = (sectionId, options = {}) => {
+    const focusRequest = ++sectionFocusRequest;
     if (sectionId === 'review-mode') {
       onNavigateMode?.('review');
       return;
@@ -389,8 +391,10 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
     const panel = mountEl.closest?.('.detail-panel');
     if (panel) panel.scrollTop = 0;
     content.scrollTop = 0;
+    if (options.focusContent === false) return;
     const schedule = window.requestAnimationFrame || ((callback) => callback());
     schedule(() => {
+      if (focusRequest !== sectionFocusRequest) return;
       const heading = content.querySelector('[data-page-heading], h3');
       if (!heading) return;
       heading.tabIndex = -1;
@@ -409,7 +413,7 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
     const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 :
       (current + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
     tabs[next].focus();
-    showSection(tabs[next].dataset.section);
+    showSection(tabs[next].dataset.section, { focusContent: false });
   });
   showSection('today');
 }

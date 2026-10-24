@@ -44,8 +44,10 @@ function codeToName(code, hexagrams) {
 
 function provenanceTag(hexagram, field, position = null) {
   const provenance = getHexagramContentProvenance(hexagram, field, position);
-  const title = `${provenance.authorTradition} · ${provenance.edition} · ${provenance.disputeNote}`;
-  return `<span class="content-provenance" data-layer="${esc(provenance.layer)}" title="${esc(title)}">${esc(provenance.layer)} · ${esc(provenance.validationStatus)}</span>`;
+  const kind = provenance.layer === '项目导读' ? '项目导读'
+    : ['本经原文', '易传'].includes(provenance.layer) ? '原典' : '典籍依据';
+  const title = `${provenance.layer} · ${provenance.authorTradition} · ${provenance.edition} · ${provenance.disputeNote}`;
+  return `<span class="content-provenance" data-layer="${esc(provenance.layer)}" title="${esc(title)}">${kind} · ${esc(provenance.validationStatus)}</span>`;
 }
 
 // 64 卦总览网格。onPick(code) 为点击回调。
@@ -63,10 +65,10 @@ export function renderHexagramList(hexagrams, mountEl, onPick) {
   });
 }
 
-// 长卷阅读式详情：渲染到指定挂载点。
+// 快读与深读复用同一份正文；展示层级由调用方切换，避免重建笔记草稿。
 // hex - 卦对象；mountEl - 挂载点；hexagrams - 全部卦（用于关系查名）；onPickRelation - 关系chip点击回调
 export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
-  const lines = [...hex.lines].reverse()
+  const lines = [...hex.lines].sort((a, b) => a.position - b.position)
     .map((y) => {
       const label = yaoLabel(y.position, y.isYang);
       const textHtml = y.text
@@ -74,11 +76,11 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
         : `<div class="original-text" style="color:#999">（经文待补）</div>`;
       const xiangHtml = y.xiang ? `<div class="note-text">${provenanceTag(hex, 'lineXiang', y.position)}象曰：${esc(y.xiang)}</div>` : '';
       const noteHtml = y.note ? `<div class="note-text">${provenanceTag(hex, 'lineNote', y.position)}${esc(y.note)}</div>` : '';
-      return `<div class="yao-item"><span class="yao-label">${esc(label)}</span>${textHtml}${xiangHtml}${noteHtml}</div>`;
+      return `<div class="yao-item" data-line-position="${esc(String(y.position))}"><span class="yao-label">${esc(label)}</span>${textHtml}${xiangHtml}${noteHtml}</div>`;
     }).join('');
 
-  const section = (title, body, className = '', id = '') =>
-    body ? `<section class="detail-section ${className}"${id ? ` id="${id}"` : ''}>
+  const section = (title, body, className = '', id = '', readingSection = '') =>
+    body ? `<section class="detail-section ${className}"${id ? ` id="${id}"` : ''}${readingSection ? ` data-reading-section="${readingSection}"` : ''}>
       <h3 class="section-title">${esc(title)}</h3>
       ${body}
     </section>` : '';
@@ -135,8 +137,26 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
       <a href="#detail-notes"><b>知止</b><span>证据不足时保留判断，不以卦代决策</span></a>
     </nav>`;
 
+  const sourceNotes = ['judgement', 'tuan', 'scenario'].map((field) => {
+    const source = getHexagramContentProvenance(hex, field);
+    return `<div class="reading-source-note">
+      <h3>${esc(source.layer)}</h3>
+      <p class="reading-source-status">${esc(source.validationStatus)}</p>
+      <dl><dt>归属</dt><dd>${esc(source.authorTradition)}</dd><dt>文本</dt><dd>${esc(source.edition)}</dd></dl>
+      <p>${esc(source.disputeNote)}</p>
+    </div>`;
+  }).join('');
+
   mountEl.innerHTML = `
-    <div class="detail-header" id="detail-identity">
+    <div class="reading-document" data-hex-code="${esc(hex.binaryCode)}">
+    <aside class="reading-outline" aria-label="研读目录">
+      <details class="reading-disclosure reading-outline-disclosure" open>
+        <summary>研读目录</summary>
+        ${readingSlip}
+      </details>
+    </aside>
+    <article class="reading-paper" aria-labelledby="hexagram-detail-title">
+    <div class="detail-header" id="detail-identity" data-reading-section="overview">
       <div class="detail-symbol">${hexagramSvg(hex.binaryCode, { size: 140 })}</div>
       <div class="detail-heading-copy">
         <div class="detail-kicker">第 ${hex.number} 卦 · ${esc(hex.binaryCode)}</div>
@@ -148,29 +168,45 @@ export function renderHexagramDetail(hex, mountEl, hexagrams, onPickRelation) {
         </div>
       </div>
     </div>
-    ${readingSlip}
-    ${hex.scenario ? section('项目处境', `<div class="scenario-text">${provenanceTag(hex, 'scenario')}${esc(hex.scenario)}</div>`, 'scenario-section', 'detail-scenario') : ''}
-    ${section('卦辞', `<div class="original-text">${provenanceTag(hex, 'judgement')}${esc(hex.judgement)}</div>${hex.judgementNote ? `<div class="note-text">${provenanceTag(hex, 'judgementNote')}${esc(hex.judgementNote)}</div>` : ''}`, '', 'detail-judgement')}
+    ${section('项目处境', `<div class="scenario-text">${provenanceTag(hex, 'scenario')}${esc(hex.scenario || '先阅读卦辞与六爻，再核对具体处境；本卦暂未编写项目导读。')}</div>`, 'scenario-section', 'detail-scenario', 'overview')}
+    ${section('卦辞', `<div class="original-text">${provenanceTag(hex, 'judgement')}${esc(hex.judgement)}</div>${hex.judgementNote ? `<div class="note-text">${provenanceTag(hex, 'judgementNote')}${esc(hex.judgementNote)}</div>` : ''}`, '', 'detail-judgement', 'judgement')}
+    <div id="detail-classics" data-reading-section="commentary">
     ${section('彖传', `<div class="original-text">${provenanceTag(hex, 'tuan')}${esc(hex.tuan)}</div>${hex.tuanNote ? `<div class="note-text">${provenanceTag(hex, 'tuanNote')}${esc(hex.tuanNote)}</div>` : ''}`)}
     ${section('大象', `<div class="original-text">${provenanceTag(hex, 'image')}${esc(hex.image)}</div>${hex.imageNote ? `<div class="note-text">${provenanceTag(hex, 'imageNote')}${esc(hex.imageNote)}</div>` : ''}`)}
-    <section class="detail-section yao-section" id="detail-lines">
+    </div>
+    <section class="detail-section yao-section" id="detail-lines" data-reading-section="lines">
       <button type="button" class="section-title yao-collapse-toggle open" id="yao-toggle" aria-expanded="true" aria-controls="yao-body" style="width:100%; border-top:0; border-right:0; border-left:0; background:transparent; text-align:left;">六爻<span class="toggle-arrow" aria-hidden="true">▶</span></button>
       <div class="yao-list yao-collapse-body open" id="yao-body" role="region" aria-labelledby="yao-toggle">${lines}</div>
     </section>
-    ${hex.useNine ? section('用九', `<div class="original-text">${provenanceTag(hex, 'useNine')}${esc(hex.useNine)}</div>`) : ''}
-    ${hex.useSix ? section('用六', `<div class="original-text">${provenanceTag(hex, 'useSix')}${esc(hex.useSix)}</div>`) : ''}
-    <div id="detail-relations">${relHtml}</div>
-    <section class="detail-section commentary-gate" id="detail-commentary">
+    ${hex.useNine ? section('用九', `<div class="original-text">${provenanceTag(hex, 'useNine')}${esc(hex.useNine)}</div>`, '', '', 'lines') : ''}
+    ${hex.useSix ? section('用六', `<div class="original-text">${provenanceTag(hex, 'useSix')}${esc(hex.useSix)}</div>`, '', '', 'lines') : ''}
+    <div id="detail-relations" data-reading-section="relations">${relHtml}</div>
+    <section class="detail-section commentary-gate" id="detail-commentary" data-reading-section="commentary">
       <h3 class="section-title">注疏与校读</h3>
       ${section('序卦传', `<div class="original-text">${provenanceTag(hex, 'orderRemark')}${esc(hex.orderRemark)}</div>`, 'embedded-source')}
       <div class="commentary-gate-note"><strong>历代注疏尚未开放</strong><span>六家注疏来源定位与双人校对进度 0 / 3840；完成前不与原典混排。</span></div>
     </section>
-    <section class="detail-section notes-section" id="detail-notes">
-      <h3 class="section-title">我的笔记</h3>
+    <section class="detail-section notes-section" id="detail-notes" data-reading-section="overview">
+      <h3 class="section-title"><label for="note-input">我的笔记</label></h3>
       <textarea class="note-input" id="note-input" placeholder="写下你对这一卦的理解…" data-code="${esc(hex.binaryCode)}"></textarea>
-      <button class="note-save" id="note-save">保存笔记</button>
+      <button type="button" class="note-save" id="note-save">保存笔记</button>
     </section>
+    </article>
+    <aside class="reading-notes" aria-label="出处与研读提示">
+      <details class="reading-disclosure reading-notes-disclosure" open>
+        <summary>出处与研读提示</summary>
+        <div class="reading-source-notes">${sourceNotes}</div>
+        <p class="reading-boundary-note">经、传与项目导读分别阅读。处境类比与个人笔记用于学习记录，不代替事实判断。</p>
+      </details>
+    </aside>
+    </div>
   `;
+
+  // 窄屏按需打开目录与边注；之后切换快读、深读时不重置用户的展开选择。
+  const compactReading = typeof window !== 'undefined' && window.matchMedia?.('(max-width: 1100px)').matches;
+  mountEl.querySelectorAll('.reading-disclosure').forEach((disclosure) => {
+    disclosure.open = !compactReading;
+  });
 
   // 六爻折叠交互
   const yaoToggle = mountEl.querySelector('#yao-toggle');

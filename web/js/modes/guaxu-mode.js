@@ -1,6 +1,7 @@
 import { createWheelSpin, normalizeDegrees } from '../guaxu-wheel.js';
 import { startMechanicalWheelSound } from '../audio-engine.js';
 import { hexagramSvg } from '../svg-painter.js';
+import { installUIIcons } from '../ui-icons.js';
 
 let overlayEl = null;
 let activeSession = null;
@@ -218,7 +219,7 @@ export function showGuaxuWheel(hexagrams, onOpenDetail, onClose = () => {}) {
   overlayEl.className = 'guaxu-overlay';
   overlayEl.innerHTML = `
     <section class="guaxu-dialog" role="dialog" aria-modal="true" aria-labelledby="guaxu-title" aria-describedby="guaxu-description" aria-busy="false">
-      <button type="button" class="guaxu-close" aria-label="关闭卦序转盘">✕</button>
+      <button type="button" class="guaxu-close" aria-label="关闭卦序转盘"><span data-icon="x" aria-hidden="true"></span></button>
       <header class="guaxu-header"><span>观其会通</span><h2 id="guaxu-title">卦序转盘</h2><p id="guaxu-description">循文王六十四卦之序，随机抽取一卦作为本次研读入口。</p></header>
       <div class="guaxu-body">
         <div class="guaxu-wheel-stage">
@@ -230,6 +231,7 @@ export function showGuaxuWheel(hexagrams, onOpenDetail, onClose = () => {}) {
       </div>
     </section>`;
   document.body.appendChild(overlayEl);
+  installUIIcons(overlayEl);
   window.requestAnimationFrame(() => overlayEl?.classList.add('open'));
   overlayEl.querySelector('.guaxu-close').addEventListener('click', () => closeGuaxuWheel());
   overlayEl.addEventListener('click', (event) => {

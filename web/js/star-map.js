@@ -3,7 +3,8 @@
 import { forceSimulation, forceLink, forceManyBody, forceCenter, forceX, forceY } from '../lib/d3-force.js';
 import { getRelationOccurrences, relationTypesFrom } from './star-relations.js';
 import { buildLineStarOrbit, buildStarLayout, STAR_LAYOUTS } from './star-layouts.js';
-import { createGalaxyTexture, createSkyRandom, galaxyBandY } from './star-atmosphere.js';
+import { createGalaxyTexture, createSkyRandom, galaxyBandY, sampleSkyDensity } from './star-atmosphere.js';
+import { measureStarText, placeStarLabels } from './star-label-layout.js';
 
 const COLORS = {
   star: '#8a7a5a',
@@ -21,6 +22,15 @@ const GALAXY_CLUSTER_COLORS = Object.freeze([
 ]);
 const RELATION_LABELS = { opposite: '错', reversed: '综', interlocking: '互', changing: '变' };
 const RELATION_FILTERS = new Set(Object.keys(RELATION_LABELS));
+
+export function shouldPlayStarEntrance(storage, reducedMotion) {
+  if (reducedMotion) return false;
+  try {
+    if (storage?.getItem('yijing:star-entrance')) return false;
+    storage?.setItem('yijing:star-entrance', 'seen');
+  } catch { /* 私密模式可能禁用 sessionStorage，仍可正常进入星图。 */ }
+  return true;
+}
 
 export function relationPulseProgress(time, index, seed = 0, speed = 0.008) {
   const phase = time * speed + index / 3 + seed;
@@ -61,15 +71,6 @@ export function resolveStarStage({ scale = 1, activeCode = null, detailOpen = fa
   return scale < 0.85 ? 'galaxy' : 'cluster';
 }
 
-function labelBoxesOverlap(a, b, gap) {
-  return !(
-    a.right + gap <= b.left
-    || b.right + gap <= a.left
-    || a.bottom + gap <= b.top
-    || b.bottom + gap <= a.top
-  );
-}
-
 // 先按交互状态、纯卦、可见性、重要度与景深选取标签，再反向绘制，
 // 让高优先级标签最后落笔。排序末尾固定使用原始顺序，避免同分标签闪烁。
 export function layoutStarNameLabels(ctx, nodes, {
@@ -82,8 +83,14 @@ export function layoutStarNameLabels(ctx, nodes, {
   compact = false,
   showAll = false,
   classic = false,
+  keywordLayouts = null,
+  zoom = 1,
+  width = Infinity,
+  height = Infinity,
+  reservedRects = [],
+  avoidStars = false,
 } = {}) {
-  const focus = hoveredNode || activeNode;
+  const focus = activeNode || hoveredNode;
   const candidates = [];
 
   for (let index = 0; index < nodes.length; index += 1) {
@@ -108,7 +115,7 @@ export function layoutStarNameLabels(ctx, nodes, {
       : node.isPure
       ? (isFocus ? 38 : 30) * depthScale
       : (isFocus ? 20 : 15) * depthScale;
-    const fontSize = Math.max(MIN_VISIBLE_FONT_SIZE, scaledFontSize);
+    const fontSize = Math.max(MIN_VISIBLE_FONT_SIZE, Math.round(scaledFontSize));
     const fontFamily = !classic && node.isPure
       ? '"Ma Shan Zheng", "ZCOOL XiaoWei", "STKaiti", "KaiTi", serif'
       : '"Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", sans-serif';
@@ -119,22 +126,17 @@ export function layoutStarNameLabels(ctx, nodes, {
       : screen.y - (node.isPure ? 40 : 22) * depthScale;
     const labelText = node.layoutLabel || node.name;
 
-    ctx.font = font;
-    const metrics = ctx.measureText(labelText);
-    const measuredWidth = Number.isFinite(metrics.width) ? metrics.width : 0;
-    const measuredHeight = Number.isFinite(metrics.actualBoundingBoxAscent)
-      && Number.isFinite(metrics.actualBoundingBoxDescent)
-      ? metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent
-      : fontSize;
-    const width = Math.max(1, measuredWidth);
-    const height = Math.max(fontSize, measuredHeight);
+    const metrics = measureStarText(ctx, font, labelText);
+    const measuredWidth = metrics.width;
+    const measuredHeight = Math.max(fontSize, metrics.height);
 
     let priorityTier = isHidden ? 0 : 1;
     if (node.isPure || node.layoutForceLabel) priorityTier = 2;
-    if (isActive) priorityTier = 3;
-    if (isHovered) priorityTier = 4;
+    if (isHovered) priorityTier = 3;
+    if (focusVisible?.has(node.id) && !isHidden) priorityTier = 4;
+    if (isActive) priorityTier = 5;
 
-    const importance = (Number(node.degree) || 0) + screen.depthFactor * 4;
+    const importance = (Number(node.degree) || 0) + Math.round(screen.depthFactor * 4);
     const alpha = node.isPure
       ? (isFocus
         ? 1
@@ -143,6 +145,8 @@ export function layoutStarNameLabels(ctx, nodes, {
       : (isFocus ? 1 : (0.4 + screen.depthFactor * 0.4) * nameVisibility);
 
     candidates.push({
+      id: `name:${node.id}`,
+      kind: 'name',
       node,
       text: labelText,
       x,
@@ -155,34 +159,48 @@ export function layoutStarNameLabels(ctx, nodes, {
           ? `rgba(212,165,116,${alpha})`
           : `rgba(180,160,110,${alpha})`),
       forceVisible: isHovered || isActive || (!classic && node.isPure) || Boolean(node.layoutForceLabel),
+      priority: priorityTier,
       priorityTier,
       importance,
       sourceIndex: index,
-      box: {
-        left: x - width / 2,
-        right: x + width / 2,
-        top: y - height / 2,
-        bottom: y + height / 2,
-      },
+      width: measuredWidth,
+      height: measuredHeight,
+      positions: priorityTier >= 2 ? [
+        { x, y: screen.y - 54 * depthScale },
+        { x: screen.x + measuredWidth / 2 + 38 * depthScale, y: screen.y },
+        { x: screen.x - measuredWidth / 2 - 38 * depthScale, y: screen.y },
+        { x, y: screen.y + 54 * depthScale },
+        { x, y: screen.y - 86 * depthScale },
+      ] : [],
+    });
+
+    const isRelated = focusVisible?.has(node.id) && focus?.id !== node.id;
+    const detail = getKeywordDetailLevel({ zoom, depthScale, isFocus, isRelated, isPure: node.isPure });
+    const limit = isFocus ? 3 : (isRelated ? 1 : 0);
+    const words = (keywordLayouts?.[node.id] || []).filter(kw => kw.level > 0 && kw.level <= detail).slice(0, limit);
+    words.forEach((word, wordIndex) => {
+      const keywordFontSize = MIN_VISIBLE_FONT_SIZE;
+      const keywordFont = `${keywordFontSize}px "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", sans-serif`;
+      const size = measureStarText(ctx, keywordFont, word.text);
+      const offset = 48 + wordIndex * 28;
+      const kx = screen.x + (wordIndex % 2 === 0 ? 1 : -1) * (size.width / 2 + offset);
+      const ky = screen.y + (wordIndex - 1) * 35;
+      candidates.push({ id: `word:${node.id}:${wordIndex}`, kind: 'keyword', node,
+        text: word.text, x: kx, y: ky, width: size.width, height: Math.max(keywordFontSize, size.height),
+        font: keywordFont, fontSize: keywordFontSize, fillStyle: isFocus ? '#d8c39c' : '#a8b6c3',
+        priority: isFocus ? 4.5 : 3.5, importance: -wordIndex,
+        positions: [{ x: kx, y: ky + 35 }, { x: screen.x - (kx - screen.x), y: ky },
+          { x: kx, y: ky - 35 }, { x: kx, y: ky + 70 }],
+      });
     });
   }
-
-  candidates.sort((a, b) => (
-    b.priorityTier - a.priorityTier
-    || b.importance - a.importance
-    || a.sourceIndex - b.sourceIndex
-  ));
-
-  const occupied = [];
-  const visible = [];
-  for (const candidate of candidates) {
-    const collides = occupied.some(box => labelBoxesOverlap(candidate.box, box, collisionGap));
-    if (collides && !candidate.forceVisible) continue;
-    occupied.push(candidate.box);
-    visible.push(candidate);
-  }
-
-  return visible.reverse();
+  const starRects = avoidStars ? nodes.filter(node => node._screen).map(node => {
+    const radius = node.id === focus?.id ? 30 : 8;
+    return { left: node._screen.x - radius, right: node._screen.x + radius,
+      top: node._screen.y - radius, bottom: node._screen.y + radius };
+  }) : [];
+  return placeStarLabels(candidates, { width, height, gap: collisionGap,
+    reservedRects: [...reservedRects, ...starRects] });
 }
 
 export function chooseRenderFps({ reducedMotion, isDragging, cameraDistance, mode = 'explore' }) {
@@ -223,7 +241,12 @@ export class StarMap {
     this.time = 0;
     this.meteors = [];
     this.nextMeteorAt = 150;
-    this.appearProgress = 0;
+    let sessionStorage = null;
+    try { sessionStorage = window.sessionStorage; } catch { /* 可降级到单次实例入场。 */ }
+    this.appearProgress = shouldPlayStarEntrance(sessionStorage, this.reducedMotion) ? 0 : 1;
+    this.reservedRects = [];
+    this.labelLayoutCache = null;
+    this.cameraTransition = null;
     this.keywords = null;
     this.keywordLayouts = null;
     this.trail = [];          // 关系漫游旅行轨迹：[{from, to}] 序列
@@ -265,7 +288,7 @@ export class StarMap {
   _setupDpr() {
     const rect = this.canvas.getBoundingClientRect();
     const cssPixelArea = Math.max(1, rect.width * rect.height);
-    const areaLimitedDpr = Math.max(0.85, Math.sqrt(5_000_000 / cssPixelArea));
+    const areaLimitedDpr = Math.sqrt(5_000_000 / cssPixelArea);
     const dpr = Math.min(window.devicePixelRatio || 1, 2, areaLimitedDpr);
     this.dpr = dpr;
     this.canvas.width = rect.width * dpr;
@@ -378,6 +401,7 @@ export class StarMap {
           const alpha = layer.aMin + random() * (layer.aMax - layer.aMin);
           const radius = layer.rMin + random() * (layer.rMax - layer.rMin);
           const x = random() * cv.width, y = random() * cv.height;
+          if (random() > sampleSkyDensity(x / cv.width, y / cv.height, cv.width / cv.height)) continue;
           // 较亮的星画小光晕
           if (radius > 1.0) {
             const gr = cc.createRadialGradient(x, y, 0, x, y, radius * 4);
@@ -420,6 +444,8 @@ export class StarMap {
       const spread = (random() + random() + random() - 1.5) * 0.18;
       const x = progress * this.galaxyDustLayer.width;
       const y = (galaxyBandY(progress) + spread) * this.galaxyDustLayer.height;
+      if (random() > sampleSkyDensity(progress, y / this.galaxyDustLayer.height,
+        this.galaxyDustLayer.width / this.galaxyDustLayer.height)) continue;
       const alpha = 0.08 + random() * 0.25;
       const size = 0.2 + random() * 0.5;
       dust.fillStyle = index % 7 === 0
@@ -464,6 +490,25 @@ export class StarMap {
       .force('yA', forceY(d => d.targetY).strength(d => this._layoutForceStrength(d)))
       .force('center', forceCenter(this.cx, this.cy))
       .alphaDecay(0.015);
+    if (this.reducedMotion) this._settleStaticLayout();
+  }
+
+  _settleStaticLayout() {
+    this.simulation?.stop?.();
+    for (const node of this.graph.nodes) {
+      node.x = node.targetX;
+      node.y = node.targetY;
+      node.z = node._zBase;
+      node.vx = 0;
+      node.vy = 0;
+    }
+    this.cameraTarget = this.activeNode
+      ? { x: this.activeNode.targetX - this.cx, y: this.activeNode.targetY - this.cy, z: this.activeNode._zBase }
+      : null;
+    this.cameraPos = this.cameraTarget ? { ...this.cameraTarget } : { x: 0, y: 0, z: 0 };
+    this.cameraTransition = null;
+    this.labelLayoutCache = null;
+    for (const segment of this.trail || []) segment.t = 1;
   }
 
   _layoutForceStrength(node) {
@@ -478,7 +523,10 @@ export class StarMap {
     const linkForce = this.simulation.force('link');
     if (typeof linkForce?.strength === 'function') linkForce.strength(this.layoutMode === 'project' ? 0.025 : 0);
     this.simulation.force('center', forceCenter(this.cx, this.cy));
-    this.simulation.alpha(0.72).restart();
+    this.simulation.alpha(0.72);
+    if (this.reducedMotion) this._settleStaticLayout();
+    else if (!this.isPaused && !this.pauseReasons?.size) this.simulation.restart();
+    else this.simulation.stop?.();
   }
 
   _applyLayoutTargets(mode, { initial = false, preserveReveal = false } = {}) {
@@ -515,6 +563,7 @@ export class StarMap {
     if (!preserveReveal) this.layoutReveal = initial || this.reducedMotion ? 1 : 0;
     this.renderFocusId = null;
     this._refreshLayoutForces();
+    if (this.reducedMotion) this._settleStaticLayout();
   }
 
   _isNodeVisible(node) {
@@ -631,29 +680,30 @@ export class StarMap {
   _bindEvents() {
     const c = this.canvas;
     c.addEventListener('pointerdown', (e) => {
+      if (e.isPrimary === false || (e.button !== undefined && e.button !== 0) || this.dragStart) return;
       const rect = c.getBoundingClientRect();
       const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
       const node = this._nodeAt(sx, sy);
-      if (node) {
-        this.setAutoRotate(false);
-        const point = this._nodeViewportPoint(node, rect);
-        this.callbacks.onPick?.(node.id, point, this._nodeInteractionMeta(node, point));
-      } else {
-        c.setPointerCapture?.(e.pointerId);
-        this.isDragging = true;
-        this.dragStart = {
-          x: sx, y: sy, yaw: this.yaw, pitch: this.pitch,
-          viewX: this.view.x, viewY: this.view.y,
-        };
-        this.setAutoRotate(false);
-      }
+      this._interruptEntrance();
+      c.setPointerCapture?.(e.pointerId);
+      this.isDragging = false;
+      this.dragStart = {
+        pointerId: e.pointerId, node, moved: false,
+        x: sx, y: sy, yaw: this.yaw, pitch: this.pitch,
+        viewX: this.view.x, viewY: this.view.y,
+      };
+      this.setAutoRotate(false);
     });
     c.addEventListener('pointermove', (e) => {
       const rect = c.getBoundingClientRect();
       const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
-      if (this.isDragging) {
+      if (this.dragStart) {
+        if (e.pointerId !== this.dragStart.pointerId) return;
         const dx = sx - this.dragStart.x;
         const dy = sy - this.dragStart.y;
+        if (Math.hypot(dx, dy) > 6) this.dragStart.moved = true;
+        if (!this.dragStart.moved) return;
+        this.isDragging = true;
         if (this.layoutMode === 'project') {
           // 易象银河使用双轴自由旋转，观察星团的前后层次。
           this.yaw = this.dragStart.yaw + dx * 0.006;
@@ -673,18 +723,29 @@ export class StarMap {
         }
       }
     });
-    const stopDragging = (event) => {
+    const stopDragging = (event, cancelled = false) => {
+      const start = this.dragStart;
+      if (!start || event.pointerId !== start.pointerId) return;
+      const rect = c.getBoundingClientRect();
+      const distance = Math.hypot(event.clientX - rect.left - start.x, event.clientY - rect.top - start.y);
+      this.dragStart = null;
       this.isDragging = false;
-      if (event?.pointerId !== undefined) c.releasePointerCapture?.(event.pointerId);
+      if (c.hasPointerCapture?.(event.pointerId) !== false) c.releasePointerCapture?.(event.pointerId);
+      if (!cancelled && !start.moved && distance <= 6 && start.node) {
+        const point = this._nodeViewportPoint(start.node, rect);
+        this.callbacks.onPick?.(start.node.id, point, this._nodeInteractionMeta(start.node, point));
+      }
     };
     c.addEventListener('pointerup', stopDragging);
-    c.addEventListener('pointercancel', stopDragging);
+    c.addEventListener('pointercancel', event => stopDragging(event, true));
+    c.addEventListener('lostpointercapture', event => stopDragging(event, true));
     c.addEventListener('pointerleave', () => {
       this.hoveredNode = null;
       this.callbacks.onHover?.(null);
     });
     c.addEventListener('wheel', (e) => {
       e.preventDefault();
+      this._interruptEntrance();
       this.setAutoRotate(false);
       const factor = e.deltaY > 0 ? 0.9 : 1.1;
       this.view.scale = Math.max(0.3, Math.min(4, this.view.scale * factor));
@@ -715,9 +776,16 @@ export class StarMap {
       else if (event.key === '+' || event.key === '=') this.zoomBy(1.15);
       else if (event.key === '-') this.zoomBy(0.87);
       else if (event.key === 'Home') this.zoomReset();
-      else if (event.key === 'Escape') this.clearFocus();
+      else if (event.key === 'Escape') {
+        event.preventDefault();
+        event.stopPropagation();
+        if (this.callbacks.onExitFocus) this.callbacks.onExitFocus();
+        else this.clearFocus();
+        return;
+      }
       else return;
       event.preventDefault();
+      this._interruptEntrance();
       this.setAutoRotate(false);
     });
     this.handleVisibilityChange = () => {
@@ -730,8 +798,10 @@ export class StarMap {
         this.setAutoRotate(false);
         this.meteors = [];
         this.appearProgress = 1;
-        if (this.cameraTarget) this.cameraPos = { ...this.cameraTarget };
-      }
+        this.layoutReveal = 1;
+        this.relationReveal = 1;
+        this._settleStaticLayout();
+      } else if (!this.isPaused && !this.pauseReasons?.size) this.simulation?.restart?.();
     };
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
     if (this.motionPreference.addEventListener) {
@@ -739,6 +809,24 @@ export class StarMap {
     } else {
       this.motionPreference.addListener?.(this.handleMotionPreferenceChange);
     }
+  }
+
+  _interruptEntrance() {
+    this.appearProgress = 1;
+    if (this.cameraTransition || this.cameraTarget) this.cameraTarget = { ...this.cameraPos };
+    this.cameraTransition = null;
+  }
+
+  _updateCamera(deltaMs) {
+    const target = this.cameraTarget || { x: 0, y: 0, z: 0 };
+    if (this.reducedMotion) { this.cameraPos = { ...target }; this.cameraTransition = null; return; }
+    const transition = this.cameraTransition;
+    if (!transition) return;
+    transition.elapsed = Math.min(450, transition.elapsed + deltaMs);
+    const p = transition.elapsed / 450;
+    const eased = p * p * (3 - 2 * p);
+    for (const key of ['x', 'y', 'z']) this.cameraPos[key] = transition.from[key] + (target[key] - transition.from[key]) * eased;
+    if (p === 1) this.cameraTransition = null;
   }
 
   _startRenderLoop() {
@@ -774,11 +862,7 @@ export class StarMap {
       this.relationReveal = this.reducedMotion ? 1 : Math.min(1, this.relationReveal + deltaMs / 420);
       if (this.reducedMotion) this.appearProgress = 1;
       else if (this.appearProgress < 1) this.appearProgress = Math.min(1, this.appearProgress + deltaMs / 900);
-      // 相机焦点平滑过渡（点击星后飞入）
-      const cameraEase = this.reducedMotion ? 1 : 1 - Math.pow(0.94, this.frameStep);
-      this.cameraPos.x += (target.x - this.cameraPos.x) * cameraEase;
-      this.cameraPos.y += (target.y - this.cameraPos.y) * cameraEase;
-      this.cameraPos.z += (target.z - this.cameraPos.z) * cameraEase;
+      this._updateCamera(deltaMs);
       // z 轴：球状结构基准 + 缓慢振荡漂浮
       for (const n of this.graph.nodes) {
         n.z = this.reducedMotion ? n._zBase : n._zBase + Math.sin(this.time * n.zSpeed + n.zPhase) * n.zAmp;
@@ -810,7 +894,8 @@ export class StarMap {
     if (!this.isPaused && this.animationFrame !== null) return;
     this.isPaused = false;
     this.lastRenderAt = 0;
-    this.simulation?.restart?.();
+    if (this.reducedMotion) this._settleStaticLayout();
+    else this.simulation?.restart?.();
     if (this.canvas?.dataset) this.canvas.dataset.animationActive = 'true';
     this.animationFrame = requestAnimationFrame(this.renderLoop);
   }
@@ -1138,7 +1223,7 @@ export class StarMap {
     }
 
     // 第四层：关系边
-    const focus = this.hoveredNode || this.activeNode;
+    const focus = this.activeNode || this.hoveredNode;
     const focusRels = this._getFocusRelationSet(focus);
     for (const e of this.graph.edges) {
       const s = this.nodeById.get(e.source), tn = this.nodeById.get(e.target);
@@ -1259,9 +1344,9 @@ export class StarMap {
       });
 
       // 外光晕（用预渲染贴图，性能优化）—— drawImage 替代 createRadialGradient
-      const haloR = (isFocus ? 42 : (isRel ? 28 : (n.isPure ? 20 : 10 + degFactor * 13))) * ease * depthScale;
+      const haloR = (isFocus ? 42 : (isRel ? 26 : (n.isPure ? 16 : 7 + degFactor * 7))) * ease * depthScale;
       const da = (a) => a * depthAlpha;
-      const haloA = isFocus ? da(0.46) : (isRel ? da(0.32) : (n.isPure ? da(0.22) : da(0.12 + degFactor * 0.1)));
+      const haloA = isFocus ? da(0.46) : (isRel ? da(0.28) : (n.isPure ? da(0.16) : da(0.07 + degFactor * 0.05)));
       this._drawGlow(ctx, this.glowHalo, p.x, p.y, haloR, haloA);
 
       // 亮核光晕（用预渲染贴图）
@@ -1292,74 +1377,53 @@ export class StarMap {
         ctx.stroke();
       }
 
-      // ★ 关键词小星团：语义缩放只展开当前焦点、关系节点或高倍率下的八纯卦。
-      const lod = this.view.scale * depthScale;
-      const keywordDetailLevel = getKeywordDetailLevel({
-        zoom: this.view.scale,
-        depthScale,
-        isFocus,
-        isRelated: Boolean(isRel),
-        isPure: n.isPure,
-      });
-      if (this.keywordLayouts && this.keywordLayouts[n.id] && keywordDetailLevel > 0) {
-        const revealThreshold = isFocus ? 0.82 : (isRel ? 1.02 : 1.25);
-        const kwAlpha = Math.min(1, 0.28 + Math.max(0, lod - revealThreshold) / 0.62) * ease * (0.5 + depth * 0.5);
-        const layout = this.keywordLayouts[n.id];
-        const twinkle = 0.7 + 0.3 * Math.sin(t * 0.03 + n.binaryCode.charCodeAt(1));
-        let visibleKeywords = 0;
-        for (const kw of layout) {
-          if (kw.level === 0) continue; // 卦名由标签层处理
-          if (kw.level > keywordDetailLevel || (!isFocus && visibleKeywords >= 2)) continue;
-          visibleKeywords += 1;
-          // 关键词星点位置（带微浮动）
-          const floatX = Math.sin(t * 0.01 + kw.phase) * 1.5;
-          const floatY = Math.cos(t * 0.012 + kw.phase) * 1.5;
-          const kx = p.x + (kw.dx + floatX) * depthScale;
-          const ky = p.y + (kw.dy + floatY) * depthScale;
-          // 关键词发光星点（用预渲染贴图）
-          const starR = (kw.level === 1 ? 8 : (kw.level === 2 ? 6 : 5)) * depthScale;
-          const starA = (kw.level === 1 ? 0.7 : (kw.level === 2 ? 0.55 : 0.42)) * kwAlpha * twinkle;
-          this._drawGlow(ctx, this.glowCore, kx, ky, starR, starA);
-          // 关键词实心小点
-          const dotR = (kw.level === 1 ? 2 : 1.5) * depthScale;
-          ctx.globalAlpha = starA;
-          ctx.fillStyle = kw.level === 1 ? '#e8d09a' : (kw.level === 2 ? '#c9a96a' : '#a89878');
-          ctx.beginPath();
-          ctx.arc(kx, ky, dotR, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.globalAlpha = 1;
-          // 关键词文字标签（在星点旁）
-          const fs = Math.max(MIN_VISIBLE_FONT_SIZE, (kw.level === 1 ? 17 : (kw.level === 2 ? 16 : 15)) * depthScale * (0.7 + lod * 0.2));
-          ctx.font = `${fs}px "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", sans-serif`;
-          ctx.textAlign = 'left';
-          ctx.textBaseline = 'middle';
-          ctx.fillStyle = kw.level === 1 ? `rgba(232,208,154,${kwAlpha})` : (kw.level === 2 ? `rgba(200,175,120,${kwAlpha * 0.85})` : `rgba(160,140,95,${kwAlpha * 0.7})`);
-          ctx.fillText(kw.text, kx + dotR + 3, ky);
-        }
-      }
     }
     if (focus) this._drawFocusReticle(ctx, focus, t);
     ctx.globalCompositeOperation = 'source-over';
 
-    // 卦名标签：交互标签与 8 纯卦强制保留，普通标签按优先级防碰撞。
+    // 卦名与关键词共用碰撞层；重要标签换位，空间不足时隐藏次要文字。
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     const visibleNodes = this.graph.nodes.filter((node) => this._isNodeVisible(node));
-    const nameLabels = layoutStarNameLabels(ctx, visibleNodes, {
-      hoveredNode: this.hoveredNode,
-      activeNode: this.activeNode,
-      focusVisible: this.focusVisible,
-      appearProgress: this.appearProgress,
-      time: t,
-      compact: this.width <= 600,
-      showAll: this.layoutMode !== 'project',
-      classic: this.layoutMode !== 'project',
-    });
+    const nameLabels = this._getSpaceLabels(visibleNodes);
     for (const label of nameLabels) {
       ctx.font = label.font;
       ctx.fillStyle = label.fillStyle;
       ctx.fillText(label.text, label.x, label.y);
     }
+  }
+
+  _getSpaceLabels(visibleNodes) {
+    const now = (this.time || 0) * 1000 / 60;
+    const signature = [this.activeNode?.id, this.hoveredNode?.id, this.layoutMode,
+      this.relationFilter?.type, this.relationFilter?.changingPosition,
+      this.width, this.height, Math.round(this.view.scale * 10), Boolean(this.keywordLayouts)].join(':');
+    const cache = this.labelLayoutCache;
+    const moved = cache && (Math.hypot((this.yaw || 0) - cache.yaw, (this.pitch || 0) - cache.pitch) > 0.07
+      || Math.hypot((this.cameraPos?.x || 0) - cache.cameraX, (this.cameraPos?.y || 0) - cache.cameraY,
+        (this.cameraPos?.z || 0) - cache.cameraZ) > 8
+      || Math.hypot((this.view.x || 0) - cache.viewX, (this.view.y || 0) - cache.viewY) > 8);
+    if (cache && cache.signature === signature && !moved && now - cache.time < 100) return cache.labels;
+    const labels = layoutStarNameLabels(this.ctx, visibleNodes, {
+      hoveredNode: this.hoveredNode,
+      activeNode: this.activeNode,
+      focusVisible: this.focusVisible,
+      appearProgress: this.appearProgress,
+      time: this.reducedMotion ? 0 : this.time,
+      compact: this.width <= 600,
+      showAll: this.layoutMode !== 'project',
+      classic: this.layoutMode !== 'project',
+      keywordLayouts: this.keywordLayouts,
+      zoom: this.view.scale,
+      width: this.width,
+      height: this.height,
+      reservedRects: this.reservedRects || [],
+      avoidStars: true,
+    });
+    this.labelLayoutCache = { labels, signature, time: now, yaw: this.yaw || 0, pitch: this.pitch || 0,
+      cameraX: this.cameraPos?.x || 0, cameraY: this.cameraPos?.y || 0, cameraZ: this.cameraPos?.z || 0,
+      viewX: this.view.x || 0, viewY: this.view.y || 0 };
+    return labels;
   }
 
   _renderMeteors(ctx) {
@@ -1405,6 +1469,10 @@ export class StarMap {
     this.renderFocusId = null;
     // 相机飞入该星位置，居中显示
     this.cameraTarget = { x: node.x - this.cx, y: node.y - this.cy, z: node.z };
+    this.cameraTransition = { from: { ...this.cameraPos }, elapsed: 0 };
+    if (this.reducedMotion) this._updateCamera(0);
+    this.appearProgress = 1;
+    this.labelLayoutCache = null;
     const point = this._nodeViewportPoint(node);
     this.callbacks.onFocus?.(code, point, this._nodeInteractionMeta(node, point));
     this.callbacks.onRelationChange?.(this.getRelationState(code));
@@ -1413,8 +1481,11 @@ export class StarMap {
   // 退出焦点，回到球心俯瞰
   clearFocus() {
     this.cameraTarget = null;
+    this.cameraTransition = { from: { ...this.cameraPos }, elapsed: 0 };
+    if (this.reducedMotion) this._updateCamera(0);
     this.activeNode = null;
     this.focusVisible = null;
+    this.labelLayoutCache = null;
     this.callbacks.onFocus?.(null);
     this.callbacks.onRelationChange?.(this.getRelationState());
   }
@@ -1460,6 +1531,8 @@ export class StarMap {
     this.view.scale = 1;
     this.yaw = 0;
     this.pitch = 0;
+    this.cameraTransition = { from: { ...this.cameraPos }, elapsed: 0 };
+    this.labelLayoutCache = null;
     this._applyLayoutTargets(next.id);
     this.callbacks.onFocus?.(null);
     this.callbacks.onRelationChange?.(this.getRelationState());
@@ -1493,6 +1566,60 @@ export class StarMap {
 
   setMode(mode) { this.mode = mode; }
 
+  captureView() {
+    return {
+      version: 1, layoutMode: this.layoutMode, anchorR: this.anchorR, view: { ...this.view },
+      yaw: this.yaw, pitch: this.pitch, cameraTarget: this.cameraTarget ? { ...this.cameraTarget } : null,
+      cameraPos: { ...this.cameraPos }, activeCode: this.activeNode?.id || null,
+      cameraTransition: this.cameraTransition
+        ? { from: { ...this.cameraTransition.from }, elapsed: this.cameraTransition.elapsed } : null,
+      hoverCode: this.hoveredNode?.id || null, relationFilter: { ...this.relationFilter },
+      focusVisible: this.focusVisible ? [...this.focusVisible] : null,
+      autoRotate: Boolean(this.autoRotate), trail: (this.trail || []).map(segment => ({ ...segment })),
+    };
+  }
+
+  restoreView(snapshot) {
+    if (!snapshot || snapshot.version !== 1 || !STAR_LAYOUTS[snapshot.layoutMode]
+      || !snapshot.view || ![snapshot.view.x, snapshot.view.y, snapshot.view.scale, snapshot.yaw, snapshot.pitch,
+        snapshot.cameraPos?.x, snapshot.cameraPos?.y, snapshot.cameraPos?.z].every(Number.isFinite)) return false;
+    if (!RELATION_FILTERS.has(snapshot.relationFilter?.type)
+      || (snapshot.cameraTarget && !['x', 'y', 'z'].every(key => Number.isFinite(snapshot.cameraTarget[key])))) return false;
+    if (snapshot.layoutMode !== this.layoutMode) this._applyLayoutTargets(snapshot.layoutMode, { preserveReveal: true });
+    const spatialScale = snapshot.anchorR > 0 && this.anchorR > 0 ? this.anchorR / snapshot.anchorR : 1;
+    const scalePoint = (point) => point ? { x: point.x * spatialScale, y: point.y * spatialScale, z: point.z * spatialScale } : null;
+    this.view = { ...snapshot.view, x: snapshot.view.x * spatialScale, y: snapshot.view.y * spatialScale };
+    this.yaw = snapshot.yaw;
+    this.pitch = snapshot.pitch;
+    this.cameraTarget = scalePoint(snapshot.cameraTarget);
+    this.cameraPos = scalePoint(snapshot.cameraPos);
+    this.cameraTransition = snapshot.cameraTransition
+      ? { from: scalePoint(snapshot.cameraTransition.from), elapsed: snapshot.cameraTransition.elapsed } : null;
+    this.activeNode = this.graph.nodes.find(node => node.id === snapshot.activeCode) || null;
+    this.hoveredNode = this.graph.nodes.find(node => node.id === snapshot.hoverCode) || null;
+    this.relationFilter = { ...snapshot.relationFilter };
+    this.focusVisible = snapshot.focusVisible ? new Set(snapshot.focusVisible) : null;
+    this.trail = (snapshot.trail || []).map(segment => ({ ...segment }));
+    this.renderFocusId = null;
+    this.labelLayoutCache = null;
+    this.setAutoRotate(snapshot.autoRotate);
+    if (this.layoutState) this.callbacks.onLayoutChange?.(this.getLayoutState());
+    const point = this.activeNode ? this._nodeViewportPoint(this.activeNode) : null;
+    this.callbacks.onFocus?.(this.activeNode?.id || null, point);
+    this.callbacks.onRelationChange?.(this.getRelationState());
+    return true;
+  }
+
+  setReservedRects(rects = []) {
+    const next = rects.filter(rect => rect && [rect.left, rect.right, rect.top, rect.bottom].every(Number.isFinite))
+      .map(rect => ({ left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom }));
+    const signature = JSON.stringify(next);
+    if (signature === this.reservedRectsSignature) return;
+    this.reservedRects = next;
+    this.reservedRectsSignature = signature;
+    this.labelLayoutCache = null;
+  }
+
   // 设置待复习卦列表（复习模式状态层）
   setReviewDue(codes) {
     this.reviewDueSet = codes ? new Set(codes) : null;
@@ -1502,7 +1629,7 @@ export class StarMap {
   // 添加一段轨迹（从 fromCode 到 toCode）
   addTrail(fromCode, toCode) {
     if (fromCode && toCode && fromCode !== toCode) {
-      this.trail.push({ from: fromCode, to: toCode, t: 0 }); // t=动画进度
+      this.trail.push({ from: fromCode, to: toCode, t: this.reducedMotion ? 1 : 0 });
       if (this.trail.length > 5) this.trail.splice(0, this.trail.length - 5);
     }
   }
@@ -1515,9 +1642,11 @@ export class StarMap {
 
   // 缩放控制（供 UI 按钮调用）
   zoomBy(factor) {
+    this._interruptEntrance();
     this.view.scale = Math.max(0.3, Math.min(4, this.view.scale * factor));
   }
   zoomReset() {
+    this._interruptEntrance();
     this.view.scale = 1;
     this.view.x = 0;
     this.view.y = 0;
@@ -1554,8 +1683,14 @@ export class StarMap {
     this.cameraPos.x *= scale;
     this.cameraPos.y *= scale;
     this.cameraPos.z *= scale;
+    if (this.cameraTransition) {
+      for (const key of ['x', 'y', 'z']) this.cameraTransition.from[key] *= scale;
+    }
+    this.labelLayoutCache = null;
     this._initBackground();
     this._applyLayoutTargets(this.layoutMode, { preserveReveal: true });
-    this.simulation.alpha(0.3).restart();
+    this.simulation.alpha(0.3);
+    if (this.reducedMotion) this._settleStaticLayout();
+    else if (!this.isPaused && !this.pauseReasons?.size) this.simulation.restart();
   }
 }

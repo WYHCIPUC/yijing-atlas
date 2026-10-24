@@ -1,7 +1,16 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { chooseCelestialFps, writeQuadraticArc } from '../js/celestial-stage.js';
+import { chooseCelestialFps, writeQuadraticArc, celestialPixelRatio } from '../js/celestial-stage.js';
+
+test('WebGL 超大屏严格遵守五百万 backing-store 像素预算', () => {
+  for (const [width, height, dpr] of [[7680, 4320, 3], [3840, 2160, 2], [390, 844, 3]]) {
+    const ratio = celestialPixelRatio(width, height, dpr);
+    assert.ok(Math.floor(width * ratio) * Math.floor(height * ratio) <= 5_000_000);
+    assert.ok(ratio <= dpr && ratio <= 1.5);
+  }
+  assert.ok(celestialPixelRatio(7680, 4320, 3) < 0.85);
+});
 
 test('天象舞台按模式与设备能力限制帧率', () => {
   assert.equal(chooseCelestialFps({ mode: 'explore' }), 45);
@@ -28,7 +37,7 @@ test('WebGL 舞台具备上下文恢复与资源释放保护', () => {
   const source = readFileSync(new URL('../js/celestial-stage.js', import.meta.url), 'utf8');
   assert.match(source, /webglcontextlost/);
   assert.match(source, /webglcontextrestored/);
-  assert.match(source, /renderer\.setPixelRatio\(Math\.min/);
+  assert.match(source, /renderer\.setPixelRatio\(celestialPixelRatio/);
   assert.match(source, /syncView\(view\)/);
   assert.match(source, /view\.layoutMode === 'project' \? 0 : 1/);
   assert.match(source, /const layoutDepth = 1 - sharedView\.layoutBlend \* 0\.82/);
