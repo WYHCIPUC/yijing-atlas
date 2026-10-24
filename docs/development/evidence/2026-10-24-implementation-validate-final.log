@@ -1,0 +1,3764 @@
+
+> yijing-atlas@1.1.1-rc.2 validate
+> node scripts/quality-check.mjs --include-smoke && npm run test:coverage
+
+✓ JavaScript 语法与格式检查：70 个文件
+✓ JSON 可解析：11 个文件
+✓ 六家注疏目录有效，发布门禁保持关闭
+✓ 当前版本树不含 PDF、证书或私钥文件
+TAP version 13
+# Subtest: 首发目录包含十二枚可解释成就且标识唯一
+ok 1 - 首发目录包含十二枚可解释成就且标识唯一
+  ---
+  duration_ms: 0.5349
+  type: 'test'
+  ...
+# Subtest: 能力维度和五阶三状态形成完整成长契约
+ok 2 - 能力维度和五阶三状态形成完整成长契约
+  ---
+  duration_ms: 0.4397
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.0056
+TAP version 13
+# Subtest: 事件工厂使用可注入时间与随机源并拒绝危险字段
+ok 1 - 事件工厂使用可注入时间与随机源并拒绝危险字段
+  ---
+  duration_ms: 2.7556
+  type: 'test'
+  ...
+# Subtest: 完成首课与小试后解锁且重复事件保持幂等
+ok 2 - 完成首课与小试后解锁且重复事件保持幂等
+  ---
+  duration_ms: 1.0795
+  type: 'test'
+  ...
+# Subtest: 十二枚成就均可由真实学习证据达成
+ok 3 - 十二枚成就均可由真实学习证据达成
+  ---
+  duration_ms: 14.5286
+  type: 'test'
+  ...
+# Subtest: 修改重交按同一案例保留较高成绩且独立边界确认按主题去重
+ok 4 - 修改重交按同一案例保留较高成绩且独立边界确认按主题去重
+  ---
+  duration_ms: 0.3633
+  type: 'test'
+  ...
+# Subtest: 无效状态安全降级、批处理忽略坏事件并支持旧版事件迁移
+ok 5 - 无效状态安全降级、批处理忽略坏事件并支持旧版事件迁移
+  ---
+  duration_ms: 0.2576
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 24.0925
+TAP version 13
+# Subtest: 损坏、缺失和旧版状态均安全加载
+ok 1 - 损坏、缺失和旧版状态均安全加载
+  ---
+  duration_ms: 3.0862
+  type: 'test'
+  ...
+# Subtest: localStorage getter 被拒绝时成就状态仍安全回退
+ok 2 - localStorage getter 被拒绝时成就状态仍安全回退
+  ---
+  duration_ms: 0.1472
+  type: 'test'
+  ...
+# Subtest: 事件处理可持久化且重复提交不重复写入
+ok 3 - 事件处理可持久化且重复提交不重复写入
+  ---
+  duration_ms: 0.3121
+  type: 'test'
+  ...
+# Subtest: 写入失败与非法状态返回明确结果
+ok 4 - 写入失败与非法状态返回明确结果
+  ---
+  duration_ms: 0.2821
+  type: 'test'
+  ...
+# Subtest: 成就数据可导出、解析并导入另一存储
+ok 5 - 成就数据可导出、解析并导入另一存储
+  ---
+  duration_ms: 0.9074
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11.273
+TAP version 13
+# Subtest: 黄历术语使用按钮，并提供完整的模态弹层键盘交互
+ok 1 - 黄历术语使用按钮，并提供完整的模态弹层键盘交互
+  ---
+  duration_ms: 21.4759
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25.607
+TAP version 13
+# Subtest: 黄历默认日期按 Asia/Shanghai 历日而非设备时区确定
+ok 1 - 黄历默认日期按 Asia/Shanghai 历日而非设备时区确定
+  ---
+  duration_ms: 11.5237
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15.5985
+TAP version 13
+# Subtest: 机械转盘节奏先加速再减速并在落卦前停止
+ok 1 - 机械转盘节奏先加速再减速并在落卦前停止
+  ---
+  duration_ms: 0.579
+  type: 'test'
+  ...
+# Subtest: 机械转盘节奏拒绝无效和过短时长
+ok 2 - 机械转盘节奏拒绝无效和过短时长
+  ---
+  duration_ms: 0.8
+  type: 'test'
+  ...
+# Subtest: 各功能区域映射到对应声景且跳过禁用与转盘按钮
+ok 3 - 各功能区域映射到对应声景且跳过禁用与转盘按钮
+  ---
+  duration_ms: 0.2183
+  type: 'test'
+  ...
+# Subtest: 铜钱声由三枚铜钱的初次碰撞与逐级衰减反弹组成
+ok 4 - 铜钱声由三枚铜钱的初次碰撞与逐级衰减反弹组成
+  ---
+  duration_ms: 0.2786
+  type: 'test'
+  ...
+# Subtest: 机械转盘合成轮毂与棘轮声并以多层锁止音收尾
+ok 5 - 机械转盘合成轮毂与棘轮声并以多层锁止音收尾
+  ---
+  duration_ms: 2.3571
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9.3551
+TAP version 13
+# Subtest: WebGL 超大屏严格遵守五百万 backing-store 像素预算
+ok 1 - WebGL 超大屏严格遵守五百万 backing-store 像素预算
+  ---
+  duration_ms: 0.5175
+  type: 'test'
+  ...
+# Subtest: 天象舞台按模式与设备能力限制帧率
+ok 2 - 天象舞台按模式与设备能力限制帧率
+  ---
+  duration_ms: 0.1146
+  type: 'test'
+  ...
+# Subtest: 不可见或减少动态时停止连续渲染
+ok 3 - 不可见或减少动态时停止连续渲染
+  ---
+  duration_ms: 0.0608
+  type: 'test'
+  ...
+# Subtest: 空间系带保持端点准确并在中段抬升
+ok 4 - 空间系带保持端点准确并在中段抬升
+  ---
+  duration_ms: 0.4786
+  type: 'test'
+  ...
+# Subtest: WebGL 舞台具备上下文恢复与资源释放保护
+ok 5 - WebGL 舞台具备上下文恢复与资源释放保护
+  ---
+  duration_ms: 0.7553
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.8756
+TAP version 13
+# Subtest: 未完成内容保持发布门禁关闭，但来源目录可独立校验
+ok 1 - 未完成内容保持发布门禁关闭，但来源目录可独立校验
+  ---
+  duration_ms: 0.7657
+  type: 'test'
+  ...
+# Subtest: 发布状态要求底本已登记且六十四卦全部双人校对
+ok 2 - 发布状态要求底本已登记且六十四卦全部双人校对
+  ---
+  duration_ms: 0.9892
+  type: 'test'
+  ...
+# Subtest: 缺项、空原文与单人校对会阻断发布
+ok 3 - 缺项、空原文与单人校对会阻断发布
+  ---
+  duration_ms: 0.2027
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7.0457
+TAP version 13
+# Subtest: 六十四卦原文、易传与项目导读均有明确且不混并的出处层级
+ok 1 - 六十四卦原文、易传与项目导读均有明确且不混并的出处层级
+  ---
+  duration_ms: 1.5997
+  type: 'test'
+  ...
+# Subtest: 象数条目明确标为传统资料并保留流派边界
+ok 2 - 象数条目明确标为传统资料并保留流派边界
+  ---
+  duration_ms: 0.2368
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.1883
+✓ 欢迎三入口保留名称与模态交互，今日卦引文在窄屏可换行
+TAP version 13
+# Subtest: 浏览器启动只取核心数据，功能数据首次进入时加载并复用
+ok 1 - 浏览器启动只取核心数据，功能数据首次进入时加载并复用
+  ---
+  duration_ms: 9.956
+  type: 'test'
+  ...
+# Subtest: HTTP 错误包含资源路径和状态码
+ok 2 - HTTP 错误包含资源路径和状态码
+  ---
+  duration_ms: 0.3968
+  type: 'test'
+  ...
+# Subtest: 核心数据自检覆盖数量、唯一性、卦序和爻码一致性
+ok 3 - 核心数据自检覆盖数量、唯一性、卦序和爻码一致性
+  ---
+  duration_ms: 5.2664
+  type: 'test'
+  ...
+# Subtest: 功能数据失败后可重试，索引和全文搜索可用
+ok 4 - 功能数据失败后可重试，索引和全文搜索可用
+  ---
+  duration_ms: 3.3657
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 21.8671
+TAP version 13
+# Subtest: 铜钱和数正确映射四种爻象
+ok 1 - 铜钱和数正确映射四种爻象
+  ---
+  duration_ms: 0.9939
+  type: 'test'
+  ...
+# Subtest: 六次老阴得到坤卦并全变为乾卦
+ok 2 - 六次老阴得到坤卦并全变为乾卦
+  ---
+  duration_ms: 0.7586
+  type: 'test'
+  ...
+# Subtest: 无变爻取本卦卦辞，一变爻取对应爻辞
+ok 3 - 无变爻取本卦卦辞，一变爻取对应爻辞
+  ---
+  duration_ms: 0.3075
+  type: 'test'
+  ...
+# Subtest: 乾卦六爻全变取本卦用九，不误取之卦用六
+ok 4 - 乾卦六爻全变取本卦用九，不误取之卦用六
+  ---
+  duration_ms: 0.0959
+  type: 'test'
+  ...
+# Subtest: 坤卦六爻全变取本卦用六，不误取之卦用九
+ok 5 - 坤卦六爻全变取本卦用六，不误取之卦用九
+  ---
+  duration_ms: 0.122
+  type: 'test'
+  ...
+# Subtest: 二爻变保留两条爻辞并以上爻为主，三爻变合看两卦
+ok 6 - 二爻变保留两条爻辞并以上爻为主，三爻变合看两卦
+  ---
+  duration_ms: 0.1738
+  type: 'test'
+  ...
+# Subtest: 四爻变保留变卦两条不变爻并以下爻为主，五爻变取唯一不变爻
+ok 7 - 四爻变保留变卦两条不变爻并以下爻为主，五爻变取唯一不变爻
+  ---
+  duration_ms: 0.171
+  type: 'test'
+  ...
+# Subtest: 六爻全变且无用辞时回退到变卦卦辞
+ok 8 - 六爻全变且无用辞时回退到变卦卦辞
+  ---
+  duration_ms: 0.1368
+  type: 'test'
+  ...
+# Subtest: 非变爻起卦保持本卦不变
+ok 9 - 非变爻起卦保持本卦不变
+  ---
+  duration_ms: 0.1988
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9.6882
+TAP version 13
+# Subtest: 占筮记录按新到旧保存并可清空
+ok 1 - 占筮记录按新到旧保存并可清空
+  ---
+  duration_ms: 10.4037
+  type: 'test'
+  ...
+# Subtest: 旧版记录保留并明确标记为仅有卦象摘要
+ok 2 - 旧版记录保留并明确标记为仅有卦象摘要
+  ---
+  duration_ms: 0.161
+  type: 'test'
+  ...
+# Subtest: 历史满50条后同一毫秒新增的案例仍有独立且持久的标识
+ok 3 - 历史满50条后同一毫秒新增的案例仍有独立且持久的标识
+  ---
+  duration_ms: 9.6721
+  type: 'test'
+  ...
+# Subtest: 非法历史、非法卦码和写入失败安全处理
+ok 4 - 非法历史、非法卦码和写入失败安全处理
+  ---
+  duration_ms: 0.1728
+  type: 'test'
+  ...
+# Subtest: 生成案例标识失败时保留旧历史并返回保存失败
+ok 5 - 生成案例标识失败时保留旧历史并返回保存失败
+  ---
+  duration_ms: 0.6179
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 26.0733
+TAP version 13
+# Subtest: 金钱卦解释为每一卦提供原文出处、通俗释义和现实边界
+ok 1 - 金钱卦解释为每一卦提供原文出处、通俗释义和现实边界
+  ---
+  duration_ms: 1.7845
+  type: 'test'
+  ...
+# Subtest: 无变爻解释当前结构并说明不会形成之卦
+ok 2 - 无变爻解释当前结构并说明不会形成之卦
+  ---
+  duration_ms: 0.1194
+  type: 'test'
+  ...
+# Subtest: 乾坤全变引用用九、用六并给出对应通俗解释
+ok 3 - 乾坤全变引用用九、用六并给出对应通俗解释
+  ---
+  duration_ms: 0.2051
+  type: 'test'
+  ...
+# Subtest: 梅花易数解释交代起卦公式、体用术语与简化边界
+ok 4 - 梅花易数解释交代起卦公式、体用术语与简化边界
+  ---
+  duration_ms: 0.2465
+  type: 'test'
+  ...
+# Subtest: 梅花易数五种体用关系都有通俗解释
+ok 5 - 梅花易数五种体用关系都有通俗解释
+  ---
+  duration_ms: 0.1704
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7.6901
+TAP version 13
+# Subtest: 金钱V2同一历史重放重复提交沿用同一subject，导出导入后仍幂等
+ok 1 - 金钱V2同一历史重放重复提交沿用同一subject，导出导入后仍幂等
+  ---
+  duration_ms: 22.7308
+  type: 'test'
+  ...
+# Subtest: 梅花完整历史重放保持既有稳定subject且不新增历史
+ok 2 - 梅花完整历史重放保持既有稳定subject且不新增历史
+  ---
+  duration_ms: 3.7642
+  type: 'test'
+  ...
+# Subtest: 旧摘要不生成分析证据或补造六爻；仅保留研读入口
+ok 3 - 旧摘要不生成分析证据或补造六爻；仅保留研读入口
+  ---
+  duration_ms: 1.8396
+  type: 'test'
+  ...
+# Subtest: 主动新掷相同卦码仍产生独立案例并保留正常自动历史
+ok 4 - 主动新掷相同卦码仍产生独立案例并保留正常自动历史
+  ---
+  duration_ms: 3.857
+  type: 'test'
+  ...
+# Subtest: coin首次结果与首次历史回看提交属于同一案例
+ok 5 - coin首次结果与首次历史回看提交属于同一案例
+  ---
+  duration_ms: 2.653
+  type: 'test'
+  ...
+# Subtest: coin历史保存失败时本次分析身份稳定，下一次起卦仍独立
+ok 6 - coin历史保存失败时本次分析身份稳定，下一次起卦仍独立
+  ---
+  duration_ms: 2.5733
+  type: 'test'
+  ...
+# Subtest: meihua首次结果与首次历史回看提交属于同一案例
+ok 7 - meihua首次结果与首次历史回看提交属于同一案例
+  ---
+  duration_ms: 1.8743
+  type: 'test'
+  ...
+# Subtest: meihua历史保存失败时本次分析身份稳定，下一次起卦仍独立
+ok 8 - meihua历史保存失败时本次分析身份稳定，下一次起卦仍独立
+  ---
+  duration_ms: 2.1866
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 48.9297
+TAP version 13
+# Subtest: 逐爻变化保持自下而上的位序并记录历史
+ok 1 - 逐爻变化保持自下而上的位序并记录历史
+  ---
+  duration_ms: 1.0675
+  type: 'test'
+  ...
+# Subtest: 撤销、重做和新分支会正确维护历史
+ok 2 - 撤销、重做和新分支会正确维护历史
+  ---
+  duration_ms: 0.6352
+  type: 'test'
+  ...
+# Subtest: 错综互预设始终从原卦计算
+ok 3 - 错综互预设始终从原卦计算
+  ---
+  duration_ms: 0.1867
+  type: 'test'
+  ...
+# Subtest: 重置可撤销，快照解析结果卦和控制状态
+ok 4 - 重置可撤销，快照解析结果卦和控制状态
+  ---
+  duration_ms: 0.1179
+  type: 'test'
+  ...
+# Subtest: 历史边界操作保持状态稳定，未知结果安全回退
+ok 5 - 历史边界操作保持状态稳定，未知结果安全回退
+  ---
+  duration_ms: 0.078
+  type: 'test'
+  ...
+# Subtest: 演示帧按初爻到上爻依次生成且包含起止卦
+ok 6 - 演示帧按初爻到上爻依次生成且包含起止卦
+  ---
+  duration_ms: 0.1025
+  type: 'test'
+  ...
+# Subtest: 无效卦码、爻位、预设和状态会被拒绝
+ok 7 - 无效卦码、爻位、预设和状态会被拒绝
+  ---
+  duration_ms: 0.3619
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8.4037
+TAP version 13
+# Subtest: 当前卦义随帧解析并带有经传定位
+ok 1 - 当前卦义随帧解析并带有经传定位
+  ---
+  duration_ms: 0.9621
+  type: 'test'
+  ...
+# Subtest: 单帧变化同时解析前后爻辞、小象和项目释义
+ok 2 - 单帧变化同时解析前后爻辞、小象和项目释义
+  ---
+  duration_ms: 0.1975
+  type: 'test'
+  ...
+# Subtest: 无效分区、卦象和爻位会被拒绝
+ok 3 - 无效分区、卦象和爻位会被拒绝
+  ---
+  duration_ms: 0.2754
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7.2554
+TAP version 13
+# Subtest: 角度归一化并从顶部指针反推卦序索引
+ok 1 - 角度归一化并从顶部指针反推卦序索引
+  ---
+  duration_ms: 0.5331
+  type: 'test'
+  ...
+# Subtest: 随机边界可抽中首卦与末卦并精确停在指针下
+ok 2 - 随机边界可抽中首卦与末卦并精确停在指针下
+  ---
+  duration_ms: 0.1613
+  type: 'test'
+  ...
+# Subtest: 连续抽取从当前角度向前旋转且保持映射稳定
+ok 3 - 连续抽取从当前角度向前旋转且保持映射稳定
+  ---
+  duration_ms: 0.2648
+  type: 'test'
+  ...
+# Subtest: 全部六十四个索引都能映射到固定指针
+ok 4 - 全部六十四个索引都能映射到固定指针
+  ---
+  duration_ms: 0.5768
+  type: 'test'
+  ...
+# Subtest: 非法角度、数量、随机值和圈数会被拒绝
+ok 5 - 非法角度、数量、随机值和圈数会被拒绝
+  ---
+  duration_ms: 0.3736
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7.2669
+TAP version 13
+# Subtest: orderRemark 说明当前卦承接前序的理由，且覆盖完整文王卦序
+ok 1 - orderRemark 说明当前卦承接前序的理由，且覆盖完整文王卦序
+  ---
+  duration_ms: 1.6373
+  type: 'test'
+  ...
+# Subtest: 序卦上下经边界及末卦文本保持可靠链条
+ok 2 - 序卦上下经边界及末卦文本保持可靠链条
+  ---
+  duration_ms: 0.2375
+  type: 'test'
+  ...
+# Subtest: fill-all 生成链不会回写旧版错位序卦说明
+ok 3 - fill-all 生成链不会回写旧版错位序卦说明
+  ---
+  duration_ms: 92.3376
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 97.2122
+✓ 互卦(泰111000)=归妹110100
+✓ 互卦(乾111111)=乾111111
+✓ 变卦(乾111111, pos1)=姤011111
+✓ 变卦(乾111111, pos2)=同人101111
+✓ 变卦(坤000000, pos1)=复100000
+✓ 泰错=否000111
+✓ 泰综=否000111
+✓ 泰互=归妹110100
+✓ 泰变是数组(6个)
+✓ 泰变[0]=升011000
+✓ 下卦/上卦拆分
+✓ 上下卦组合
+✓ 初九/六五/上六爻题
+✓ 阴阳当位判断
+✓ 非法卦码会拒绝
+✓ 非法爻位会拒绝
+
+全部通过
+TAP version 13
+# Subtest: 紧凑星仪常驻图式和关系，辅助内容由语义按钮控制并默认隐藏
+ok 1 - 紧凑星仪常驻图式和关系，辅助内容由语义按钮控制并默认隐藏
+  ---
+  duration_ms: 0.6314
+  type: 'test'
+  ...
+# Subtest: 聚焦与阅读层提供独立入口，保留现有六导航及三种开始路径
+ok 2 - 聚焦与阅读层提供独立入口，保留现有六导航及三种开始路径
+  ---
+  duration_ms: 0.9245
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.1949
+✓ 布局响应式契约测试通过
+TAP version 13
+# Subtest: 小试、抽查和阶段考评按范围组卷
+ok 1 - 小试、抽查和阶段考评按范围组卷
+  ---
+  duration_ms: 0.8569
+  type: 'test'
+  ...
+# Subtest: 交卷会逐题记录课程归属并统计成绩
+ok 2 - 交卷会逐题记录课程归属并统计成绩
+  ---
+  duration_ms: 0.7709
+  type: 'test'
+  ...
+# Subtest: 日课先推荐未浏览课程，再推荐小试成绩较低者
+ok 3 - 日课先推荐未浏览课程，再推荐小试成绩较低者
+  ---
+  duration_ms: 0.1744
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.7063
+TAP version 13
+# Subtest: 全部学习小节均有至少三道可判分题目
+ok 1 - 全部学习小节均有至少三道可判分题目
+  ---
+  duration_ms: 9.7195
+  type: 'test'
+  ...
+# Subtest: 课程覆盖五阶与所有资料栏目，并能生成复讲要点
+ok 2 - 课程覆盖五阶与所有资料栏目，并能生成复讲要点
+  ---
+  duration_ms: 0.7235
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14.8417
+TAP version 13
+# Subtest: 记录学习日并计算包含今天的连续天数
+ok 1 - 记录学习日并计算包含今天的连续天数
+  ---
+  duration_ms: 1.5997
+  type: 'test'
+  ...
+# Subtest: 活动记录去重、损坏回退和失败写入可感知
+ok 2 - 活动记录去重、损坏回退和失败写入可感知
+  ---
+  duration_ms: 0.9901
+  type: 'test'
+  ...
+# Subtest: 旧版学习进度迁移为已浏览，并写入新版课程记录
+ok 3 - 旧版学习进度迁移为已浏览，并写入新版课程记录
+  ---
+  duration_ms: 0.3943
+  type: 'test'
+  ...
+# Subtest: 小试、抽查、复讲和阶段考评共同形成掌握度
+ok 4 - 小试、抽查、复讲和阶段考评共同形成掌握度
+  ---
+  duration_ms: 0.4487
+  type: 'test'
+  ...
+# Subtest: 学习记录拒绝无效评定，学阶覆盖全部阈值
+ok 5 - 学习记录拒绝无效评定，学阶覆盖全部阈值
+  ---
+  duration_ms: 0.1189
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8.7912
+TAP version 13
+# Subtest: 评阅配置只接受同源相对地址
+ok 1 - 评阅配置只接受同源相对地址
+  ---
+  duration_ms: 0.8662
+  type: 'test'
+  ...
+# Subtest: 智能评阅按固定协议提交并校验返回结果
+ok 2 - 智能评阅按固定协议提交并校验返回结果
+  ---
+  duration_ms: 0.331
+  type: 'test'
+  ...
+# Subtest: 智能评阅拒绝短文本、错误状态与异常数据
+ok 3 - 智能评阅拒绝短文本、错误状态与异常数据
+  ---
+  duration_ms: 1.2529
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.9243
+✓ 学习首课、典籍依据与滚动复位契约通过
+TAP version 13
+# Subtest: 真实滚动监听不因边框与亚像素舍入把已定位章节退回上一节
+ok 1 - 真实滚动监听不因边框与亚像素舍入把已定位章节退回上一节
+  ---
+  duration_ms: 2.7255
+  type: 'test'
+  ...
+# Subtest: 用户滚回上一节正文时仍按可见内容更新当前章节
+ok 2 - 用户滚回上一节正文时仍按可见内容更新当前章节
+  ---
+  duration_ms: 1.1302
+  type: 'test'
+  ...
+# Subtest: 关闭工作台回到探索时恢复天象舞台及其场景
+ok 3 - 关闭工作台回到探索时恢复天象舞台及其场景
+  ---
+  duration_ms: 0.7599
+  type: 'test'
+  ...
+# Subtest: 工作台搜索只聚焦并恢复天象舞台
+ok 4 - 工作台搜索只聚焦并恢复天象舞台
+  ---
+  duration_ms: 0.5693
+  type: 'test'
+  ...
+# Subtest: 快读与深读复用正文草稿，只有深读触发正式阅读和复习
+ok 5 - 快读与深读复用正文草稿，只有深读触发正式阅读和复习
+  ---
+  duration_ms: 1.2833
+  type: 'test'
+  ...
+# Subtest: 切换图式同步退出快读和聚焦，不保留失效摘要
+ok 6 - 切换图式同步退出快读和聚焦，不保留失效摘要
+  ---
+  duration_ms: 0.5351
+  type: 'test'
+  ...
+# Subtest: 退出阅读恢复复制的星图快照且不修改旧布局偏好
+ok 7 - 退出阅读恢复复制的星图快照且不修改旧布局偏好
+  ---
+  duration_ms: 0.5768
+  type: 'test'
+  ...
+# Subtest: 桌面快读期间的新镜头与关系在关闭时保留
+ok 8 - 桌面快读期间的新镜头与关系在关闭时保留
+  ---
+  duration_ms: 0.4899
+  type: 'test'
+  ...
+# Subtest: 快读调整后深入研读，退出恢复深入前的镜头
+ok 9 - 快读调整后深入研读，退出恢复深入前的镜头
+  ---
+  duration_ms: 0.6148
+  type: 'test'
+  ...
+# Subtest: 直接深链退出后摘要与星图使用同一个聚焦卦
+ok 10 - 直接深链退出后摘要与星图使用同一个聚焦卦
+  ---
+  duration_ms: 0.6689
+  type: 'test'
+  ...
+# Subtest: 直接深链关闭时不把焦点还给 body，改回聚焦摘要入口
+ok 11 - 直接深链关闭时不把焦点还给 body，改回聚焦摘要入口
+  ---
+  duration_ms: 0.4918
+  type: 'test'
+  ...
+# Subtest: 深读关系跳转后直接关闭仍保留新漫游轨迹
+ok 12 - 深读关系跳转后直接关闭仍保留新漫游轨迹
+  ---
+  duration_ms: 0.5589
+  type: 'test'
+  ...
+# Subtest: 天象舞台尚未加载时返回探索不会保留过期暂停原因
+ok 13 - 天象舞台尚未加载时返回探索不会保留过期暂停原因
+  ---
+  duration_ms: 0.7012
+  type: 'test'
+  ...
+# Subtest: 返回探索只解除工作台暂停，保留仍打开的分享弹窗暂停
+ok 14 - 返回探索只解除工作台暂停，保留仍打开的分享弹窗暂停
+  ---
+  duration_ms: 0.9405
+  type: 'test'
+  ...
+# Subtest: 非模式关闭和无效卦码不提前恢复工作台背景
+ok 15 - 非模式关闭和无效卦码不提前恢复工作台背景
+  ---
+  duration_ms: 0.4262
+  type: 'test'
+  ...
+# Subtest: 观察层级未变化时不重复改写 HUD DOM
+ok 16 - 观察层级未变化时不重复改写 HUD DOM
+  ---
+  duration_ms: 0.6056
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 22.066
+TAP version 13
+# Subtest: 数字起卦按八取卦、按六取动爻
+ok 1 - 数字起卦按八取卦、按六取动爻
+  ---
+  duration_ms: 0.5926
+  type: 'test'
+  ...
+# Subtest: 整除时余数取除数本身
+ok 2 - 整除时余数取除数本身
+  ---
+  duration_ms: 0.0782
+  type: 'test'
+  ...
+# Subtest: 数字起卦拒绝非正安全整数
+ok 3 - 数字起卦拒绝非正安全整数
+  ---
+  duration_ms: 0.8834
+  type: 'test'
+  ...
+# Subtest: 数字起卦拒绝上数与下数溢出安全整数范围
+ok 4 - 数字起卦拒绝上数与下数溢出安全整数范围
+  ---
+  duration_ms: 0.0844
+  type: 'test'
+  ...
+# Subtest: 时间起卦在同一输入下确定且标记来源
+ok 5 - 时间起卦在同一输入下确定且标记来源
+  ---
+  duration_ms: 1.0143
+  type: 'test'
+  ...
+# Subtest: 时间起卦拒绝无效日期
+ok 6 - 时间起卦拒绝无效日期
+  ---
+  duration_ms: 0.2557
+  type: 'test'
+  ...
+# Subtest: 体用分析返回完整五行关系
+ok 7 - 体用分析返回完整五行关系
+  ---
+  duration_ms: 0.1957
+  type: 'test'
+  ...
+# Subtest: 体用五行覆盖生、克与反向关系
+ok 8 - 体用五行覆盖生、克与反向关系
+  ---
+  duration_ms: 0.1769
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9.4328
+TAP version 13
+# Subtest: 复习完成状态位于队列与单卡的可见标题区
+ok 1 - 复习完成状态位于队列与单卡的可见标题区
+  ---
+  duration_ms: 0.485
+  type: 'test'
+  ...
+# Subtest: 测验反馈进入最近视区后聚焦下一题
+ok 2 - 测验反馈进入最近视区后聚焦下一题
+  ---
+  duration_ms: 0.6554
+  type: 'test'
+  ...
+# Subtest: 占筮阶段与结果滚动尊重 reduced-motion
+ok 3 - 占筮阶段与结果滚动尊重 reduced-motion
+  ---
+  duration_ms: 0.163
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5.697
+TAP version 13
+# Subtest: 动效错峰有界，避免长列表拖慢交互
+ok 1 - 动效错峰有界，避免长列表拖慢交互
+  ---
+  duration_ms: 0.5394
+  type: 'test'
+  ...
+# Subtest: 动效协调器集中管理可见性、动态节点与清理
+ok 2 - 动效协调器集中管理可见性、动态节点与清理
+  ---
+  duration_ms: 3.3382
+  type: 'test'
+  ...
+# Subtest: 入口、离线缓存与样式都接入同一代动效系统
+ok 3 - 入口、离线缓存与样式都接入同一代动效系统
+  ---
+  duration_ms: 2.2263
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9.4307
+TAP version 13
+# Subtest: 文件协议入口在加载样式和模块前转向本地 HTTP 服务
+ok 1 - 文件协议入口在加载样式和模块前转向本地 HTTP 服务
+  ---
+  duration_ms: 1.228
+  type: 'test'
+  ...
+# Subtest: HTTP 页面不会发生额外跳转
+ok 2 - HTTP 页面不会发生额外跳转
+  ---
+  duration_ms: 0.9716
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.355
+TAP version 13
+# Subtest: 预缓存条目全部指向现有静态资源
+ok 1 - 预缓存条目全部指向现有静态资源
+  ---
+  duration_ms: 2.3669
+  type: 'test'
+  ...
+# Subtest: 预缓存只包含首屏核心模块，功能数据按访问缓存
+ok 2 - 预缓存只包含首屏核心模块，功能数据按访问缓存
+  ---
+  duration_ms: 0.2656
+  type: 'test'
+  ...
+# Subtest: 缓存资源不再维护重复查询版本号
+ok 3 - 缓存资源不再维护重复查询版本号
+  ---
+  duration_ms: 0.5735
+  type: 'test'
+  ...
+# Subtest: 页面结构与脚本样式采用同代更新策略
+ok 4 - 页面结构与脚本样式采用同代更新策略
+  ---
+  duration_ms: 0.1922
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9.2052
+TAP version 13
+# Subtest: 生成 opposite 题时答案和候选项完整
+ok 1 - 生成 opposite 题时答案和候选项完整
+  ---
+  duration_ms: 1.0393
+  type: 'test'
+  ...
+# Subtest: 生成 reversed 题时答案和候选项完整
+ok 2 - 生成 reversed 题时答案和候选项完整
+  ---
+  duration_ms: 0.1746
+  type: 'test'
+  ...
+# Subtest: 生成 interlocking 题时答案和候选项完整
+ok 3 - 生成 interlocking 题时答案和候选项完整
+  ---
+  duration_ms: 0.1195
+  type: 'test'
+  ...
+# Subtest: 生成 name 题时答案和候选项完整
+ok 4 - 生成 name 题时答案和候选项完整
+  ---
+  duration_ms: 0.1551
+  type: 'test'
+  ...
+# Subtest: 黄历题生成四个带稳定 id 的候选项
+ok 5 - 黄历题生成四个带稳定 id 的候选项
+  ---
+  duration_ms: 0.4656
+  type: 'test'
+  ...
+# Subtest: 黄历题不足四项时拒绝出题
+ok 6 - 黄历题不足四项时拒绝出题
+  ---
+  duration_ms: 0.1451
+  type: 'test'
+  ...
+# Subtest: 黄历正向与反向题均使用同一稳定答案 id
+ok 7 - 黄历正向与反向题均使用同一稳定答案 id
+  ---
+  duration_ms: 0.2033
+  type: 'test'
+  ...
+# Subtest: 统计与错题本可持久化且忽略空 id
+ok 8 - 统计与错题本可持久化且忽略空 id
+  ---
+  duration_ms: 0.6459
+  type: 'test'
+  ...
+# Subtest: 损坏的本地统计和错题数据会安全回退
+ok 9 - 损坏的本地统计和错题数据会安全回退
+  ---
+  duration_ms: 0.2295
+  type: 'test'
+  ...
+# Subtest: 错题回练可指定目标卦，非法结构和写入失败安全回退
+ok 10 - 错题回练可指定目标卦，非法结构和写入失败安全回退
+  ---
+  duration_ms: 0.8007
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11.3662
+TAP version 13
+# Subtest: 研读正文提供同一份目录、暖纸主体和出处边注
+ok 1 - 研读正文提供同一份目录、暖纸主体和出处边注
+  ---
+  duration_ms: 1.3279
+  type: 'test'
+  ...
+# Subtest: 快读的五个入口对应可见章节，目录保留所有原有锚点
+ok 2 - 快读的五个入口对应可见章节，目录保留所有原有锚点
+  ---
+  duration_ms: 0.359
+  type: 'test'
+  ...
+# Subtest: 六爻正文按初爻至上爻阅读且保留卦象原始画法
+ok 3 - 六爻正文按初爻至上爻阅读且保留卦象原始画法
+  ---
+  duration_ms: 0.6143
+  type: 'test'
+  ...
+# Subtest: 窄屏目录与出处默认折叠，宽屏默认展开
+ok 4 - 窄屏目录与出处默认折叠，宽屏默认展开
+  ---
+  duration_ms: 0.7531
+  type: 'test'
+  ...
+# Subtest: 正文新增的爻位属性不接受注入标记
+ok 5 - 正文新增的爻位属性不接受注入标记
+  ---
+  duration_ms: 0.2047
+  type: 'test'
+  ...
+# Subtest: 阅读正文继续加载与保存原有笔记，并保留关系回调
+ok 6 - 阅读正文继续加载与保存原有笔记，并保留关系回调
+  ---
+  duration_ms: 0.6111
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9.2235
+TAP version 13
+# Subtest: 聚焦和快读不产生正式深读，深读只在有效进入时记录
+ok 1 - 聚焦和快读不产生正式深读，深读只在有效进入时记录
+  ---
+  duration_ms: 0.6233
+  type: 'test'
+  ...
+# Subtest: 逐层返回保留卦码和章节，最后返回全景
+ok 2 - 逐层返回保留卦码和章节，最后返回全景
+  ---
+  duration_ms: 0.089
+  type: 'test'
+  ...
+# Subtest: 无效编码和章节不污染状态；不同卦重新从概览开始
+ok 3 - 无效编码和章节不污染状态；不同卦重新从概览开始
+  ---
+  duration_ms: 0.3189
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.4059
+TAP version 13
+# Subtest: 错卦逐爻变化并准确到达目标卦
+ok 1 - 错卦逐爻变化并准确到达目标卦
+  ---
+  duration_ms: 1.3563
+  type: 'test'
+  ...
+# Subtest: 综卦只交换三对爻，不会在后续帧撤销翻转
+ok 2 - 综卦只交换三对爻，不会在后续帧撤销翻转
+  ---
+  duration_ms: 0.1815
+  type: 'test'
+  ...
+# Subtest: 互卦依次组成下卦与上卦
+ok 3 - 互卦依次组成下卦与上卦
+  ---
+  duration_ms: 0.0935
+  type: 'test'
+  ...
+# Subtest: 变卦只生成实际变化的爻，未知关系按变卦处理
+ok 4 - 变卦只生成实际变化的爻，未知关系按变卦处理
+  ---
+  duration_ms: 0.1431
+  type: 'test'
+  ...
+# Subtest: 无变化与非法卦码得到明确结果
+ok 5 - 无变化与非法卦码得到明确结果
+  ---
+  duration_ms: 0.3021
+  type: 'test'
+  ...
+# Subtest: 浮层支持减少动态效果、焦点管理、Esc 与计时器清理
+ok 6 - 浮层支持减少动态效果、焦点管理、Esc 与计时器清理
+  ---
+  duration_ms: 2.0714
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9.042
+TAP version 13
+# Subtest: 卦象关系入口使用原生按钮并保留演示按钮
+ok 1 - 卦象关系入口使用原生按钮并保留演示按钮
+  ---
+  duration_ms: 1.197
+  type: 'test'
+  ...
+# Subtest: 卦象详情提供稳定页面标题与可同步的六爻折叠按钮
+ok 2 - 卦象详情提供稳定页面标题与可同步的六爻折叠按钮
+  ---
+  duration_ms: 0.4498
+  type: 'test'
+  ...
+# Subtest: 卦象与八卦 SVG 爻线继承当前文字颜色
+ok 3 - 卦象与八卦 SVG 爻线继承当前文字颜色
+  ---
+  duration_ms: 0.1388
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.7433
+TAP version 13
+# Subtest: 新卡片立即到期并可持久化
+ok 1 - 新卡片立即到期并可持久化
+  ---
+  duration_ms: 1.978
+  type: 'test'
+  ...
+# Subtest: 只有明确加入的卦象才进入新手复习池
+ok 2 - 只有明确加入的卦象才进入新手复习池
+  ---
+  duration_ms: 0.1976
+  type: 'test'
+  ...
+# Subtest: 旧版本批量生成但从未复习的卡片不会继续制造 64 项待办
+ok 3 - 旧版本批量生成但从未复习的卡片不会继续制造 64 项待办
+  ---
+  duration_ms: 0.1782
+  type: 'test'
+  ...
+# Subtest: 记得会提升阶段，忘记会记录失误并回到一天间隔
+ok 4 - 记得会提升阶段，忘记会记录失误并回到一天间隔
+  ---
+  duration_ms: 0.2131
+  type: 'test'
+  ...
+# Subtest: 模糊不会把已学习卡片降为未学习
+ok 5 - 模糊不会把已学习卡片降为未学习
+  ---
+  duration_ms: 0.2605
+  type: 'test'
+  ...
+# Subtest: saveReview 创建并保存卡片
+ok 6 - saveReview 创建并保存卡片
+  ---
+  duration_ms: 0.2737
+  type: 'test'
+  ...
+# Subtest: 阶段达到上限后保持封顶
+ok 7 - 阶段达到上限后保持封顶
+  ---
+  duration_ms: 0.1331
+  type: 'test'
+  ...
+# Subtest: 损坏存储回退为空，写入失败不影响内存调度
+ok 8 - 损坏存储回退为空，写入失败不影响内存调度
+  ---
+  duration_ms: 0.188
+  type: 'test'
+  ...
+# Subtest: 结构不完整的复习数据会回退为空
+ok 9 - 结构不完整的复习数据会回退为空
+  ---
+  duration_ms: 0.1873
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11.012
+TAP version 13
+# Subtest: 搜索选择支持循环方向键与首尾跳转
+ok 1 - 搜索选择支持循环方向键与首尾跳转
+  ---
+  duration_ms: 0.426
+  type: 'test'
+  ...
+# Subtest: 深链接只接受六位阴阳码并保留其他参数
+ok 2 - 深链接只接受六位阴阳码并保留其他参数
+  ---
+  duration_ms: 0.3418
+  type: 'test'
+  ...
+# Subtest: 卦象详情与课程锚点不会残留在彼此的阅读场景
+ok 3 - 卦象详情与课程锚点不会残留在彼此的阅读场景
+  ---
+  duration_ms: 0.0995
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.0605
+TAP version 13
+# Subtest: 分享卡片模型保持卦爻自上而下的视觉顺序
+ok 1 - 分享卡片模型保持卦爻自上而下的视觉顺序
+  ---
+  duration_ms: 1.056
+  type: 'test'
+  ...
+# Subtest: 长文按画布宽度换行并在超出行数时省略
+ok 2 - 长文按画布宽度换行并在超出行数时省略
+  ---
+  duration_ms: 0.1637
+  type: 'test'
+  ...
+# Subtest: 支持文件分享时发送 PNG 文件
+ok 3 - 支持文件分享时发送 PNG 文件
+  ---
+  duration_ms: 0.2098
+  type: 'test'
+  ...
+# Subtest: 不支持文件分享时下载 PNG
+ok 4 - 不支持文件分享时下载 PNG
+  ---
+  duration_ms: 2.493
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7.3332
+TAP version 13
+# Subtest: 背景星点密度可复现且随银河云尘变化，暗尘中保留疏空
+ok 1 - 背景星点密度可复现且随银河云尘变化，暗尘中保留疏空
+  ---
+  duration_ms: 1.3699
+  type: 'test'
+  ...
+# Subtest: 银河纹理可重复生成，调整窗口不会随机更换星空
+ok 2 - 银河纹理可重复生成，调整窗口不会随机更换星空
+  ---
+  duration_ms: 24.5283
+  type: 'test'
+  ...
+# Subtest: 大屏和长屏的背景纹理有固定像素预算并保持比例
+ok 3 - 大屏和长屏的背景纹理有固定像素预算并保持比例
+  ---
+  duration_ms: 83.5903
+  type: 'test'
+  ...
+# Subtest: 银河保留暗部与亮尘带，所有像素不透明且亮度低于卦星
+ok 4 - 银河保留暗部与亮尘带，所有像素不透明且亮度低于卦星
+  ---
+  duration_ms: 12.2277
+  type: 'test'
+  ...
+# Subtest: 尚未完成布局或非法尺寸不生成无效画布
+ok 5 - 尚未完成布局或非法尺寸不生成无效画布
+  ---
+  duration_ms: 0.1717
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 127.1806
+TAP version 13
+# Subtest: 卦名与关键词共享 7px 间距，当前卦优先并尝试候选位置
+ok 1 - 卦名与关键词共享 7px 间距，当前卦优先并尝试候选位置
+  ---
+  duration_ms: 0.5847
+  type: 'test'
+  ...
+# Subtest: 长词与强制地标没有可用空间时隐藏，避免边缘裁切和强制叠字
+ok 2 - 长词与强制地标没有可用空间时隐藏，避免边缘裁切和强制叠字
+  ---
+  duration_ms: 0.3789
+  type: 'test'
+  ...
+# Subtest: 同优先级按稳定标识排序，文字尺寸按字体与文本缓存
+ok 3 - 同优先级按稳定标识排序，文字尺寸按字体与文本缓存
+  ---
+  duration_ms: 5.8319
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11.9438
+TAP version 13
+# Subtest: 易象银河按下卦形成八个星团，并以八纯卦作为团内锚点
+ok 1 - 易象银河按下卦形成八个星团，并以八纯卦作为团内锚点
+  ---
+  duration_ms: 0.9925
+  type: 'test'
+  ...
+# Subtest: 每卦生成六颗自下而上且阴阳可辨的爻星
+ok 2 - 每卦生成六颗自下而上且阴阳可辨的爻星
+  ---
+  duration_ms: 0.4882
+  type: 'test'
+  ...
+# Subtest: 八宫每宫八卦且完整覆盖六十四卦
+ok 3 - 八宫每宫八卦且完整覆盖六十四卦
+  ---
+  duration_ms: 0.3039
+  type: 'test'
+  ...
+# Subtest: 十二消息卦保持复至乾、姤至坤的消长次序与常见月令
+ok 4 - 十二消息卦保持复至乾、姤至坤的消长次序与常见月令
+  ---
+  duration_ms: 0.0769
+  type: 'test'
+  ...
+# Subtest: 先天视图仅显示八纯卦并采用南上东左的传统图式方向
+ok 5 - 先天视图仅显示八纯卦并采用南上东左的传统图式方向
+  ---
+  duration_ms: 0.1521
+  type: 'test'
+  ...
+# Subtest: 文王卦序与八宫布局覆盖六十四卦并保留可解释分组
+ok 6 - 文王卦序与八宫布局覆盖六十四卦并保留可解释分组
+  ---
+  duration_ms: 0.7739
+  type: 'test'
+  ...
+# Subtest: 十二消息视图只显示十二卦，未知布局安全回退易象银河
+ok 7 - 十二消息视图只显示十二卦，未知布局安全回退易象银河
+  ---
+  duration_ms: 0.2458
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8.4643
+TAP version 13
+# Subtest: Canvas 提供等价文字关系列表和实时状态，不误报浏览器不支持
+ok 1 - Canvas 提供等价文字关系列表和实时状态，不误报浏览器不支持
+  ---
+  duration_ms: 0.5527
+  type: 'test'
+  ...
+# Subtest: 星图提供五种明确标注来源的阅读图式
+ok 2 - 星图提供五种明确标注来源的阅读图式
+  ---
+  duration_ms: 0.1989
+  type: 'test'
+  ...
+# Subtest: 移动端六个导航入口采用紧凑单行并保留触控高度
+ok 3 - 移动端六个导航入口采用紧凑单行并保留触控高度
+  ---
+  duration_ms: 0.3551
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.1445
+TAP version 13
+# Subtest: 两帧之间模拟推进时，星点命中与悬浮位置仍跟随最后绘制坐标
+ok 1 - 两帧之间模拟推进时，星点命中与悬浮位置仍跟随最后绘制坐标
+  ---
+  duration_ms: 1.5265
+  type: 'test'
+  ...
+# Subtest: Canvas尺寸改变清屏时失效旧星点投影，避免在旧位置命中
+ok 2 - Canvas尺寸改变清屏时失效旧星点投影，避免在旧位置命中
+  ---
+  duration_ms: 0.1685
+  type: 'test'
+  ...
+# Subtest: 星空背景在镜头转动和减少动态效果时始终使用有效绘制坐标
+ok 3 - 星空背景在镜头转动和减少动态效果时始终使用有效绘制坐标
+  ---
+  duration_ms: 1.0586
+  type: 'test'
+  ...
+# Subtest: 星图空闲时降到 30 FPS，交互或相机移动时恢复 60 FPS
+ok 4 - 星图空闲时降到 30 FPS，交互或相机移动时恢复 60 FPS
+  ---
+  duration_ms: 0.0933
+  type: 'test'
+  ...
+# Subtest: 功能工作区把背景星图降到 15 FPS
+ok 5 - 功能工作区把背景星图降到 15 FPS
+  ---
+  duration_ms: 0.1038
+  type: 'test'
+  ...
+# Subtest: 减少动态效果偏好固定使用低帧率
+ok 6 - 减少动态效果偏好固定使用低帧率
+  ---
+  duration_ms: 0.0507
+  type: 'test'
+  ...
+# Subtest: 关系能量包循环前进并保持三段错峰
+ok 7 - 关系能量包循环前进并保持三段错峰
+  ---
+  duration_ms: 0.1284
+  type: 'test'
+  ...
+# Subtest: 关键词按焦点、关系和纯卦语义逐层展开
+ok 8 - 关键词按焦点、关系和纯卦语义逐层展开
+  ---
+  duration_ms: 0.0788
+  type: 'test'
+  ...
+# Subtest: 视角读数把缩放层级和球面姿态转换为稳定的五度刻度
+ok 9 - 视角读数把缩放层级和球面姿态转换为稳定的五度刻度
+  ---
+  duration_ms: 0.3057
+  type: 'test'
+  ...
+# Subtest: 四态观察层级由缩放、焦点和详情阅读状态共同决定
+ok 10 - 四态观察层级由缩放、焦点和详情阅读状态共同决定
+  ---
+  duration_ms: 0.3087
+  type: 'test'
+  ...
+# Subtest: 页面可见性恢复不会覆盖业务层暂停
+ok 11 - 页面可见性恢复不会覆盖业务层暂停
+  ---
+  duration_ms: 0.2155
+  type: 'test'
+  ...
+# Subtest: 减少动态时初始 D3 布局直接落在目标位置并停止模拟
+ok 12 - 减少动态时初始 D3 布局直接落在目标位置并停止模拟
+  ---
+  duration_ms: 66.8891
+  type: 'test'
+  ...
+# Subtest: 减少动态时切图、resize 与 resume 不重启 D3，焦点相机随新目标同步
+ok 13 - 减少动态时切图、resize 与 resume 不重启 D3，焦点相机随新目标同步
+  ---
+  duration_ms: 0.6352
+  type: 'test'
+  ...
+# Subtest: 动态偏好切换立即稳定节点，业务暂停期间取消减少动态也不重启
+ok 14 - 动态偏好切换立即稳定节点，业务暂停期间取消减少动态也不重启
+  ---
+  duration_ms: 0.2828
+  type: 'test'
+  ...
+# Subtest: 星图把可见星群的中心、包围半径和镜头姿态同步给 WebGL 外轨
+ok 15 - 星图把可见星群的中心、包围半径和镜头姿态同步给 WebGL 外轨
+  ---
+  duration_ms: 0.1986
+  type: 'test'
+  ...
+# Subtest: 星图尺寸变化时同步缩放当前焦点相机，避免面板开合后坐标漂移
+ok 16 - 星图尺寸变化时同步缩放当前焦点相机，避免面板开合后坐标漂移
+  ---
+  duration_ms: 0.2044
+  type: 'test'
+  ...
+# Subtest: 关系漫游只保留最近 5 段轨迹
+ok 17 - 关系漫游只保留最近 5 段轨迹
+  ---
+  duration_ms: 0.1247
+  type: 'test'
+  ...
+# Subtest: 星图关系层只显示当前有向关系，变卦必须指定动爻
+ok 18 - 星图关系层只显示当前有向关系，变卦必须指定动爻
+  ---
+  duration_ms: 0.1933
+  type: 'test'
+  ...
+# Subtest: 普通卦名使用实测宽度防碰撞，并优先保留重要标签
+ok 19 - 普通卦名使用实测宽度防碰撞，并优先保留重要标签
+  ---
+  duration_ms: 0.3552
+  type: 'test'
+  ...
+# Subtest: 悬停、焦点和八纯卦标签通过换位避免强制叠字
+ok 20 - 悬停、焦点和八纯卦标签通过换位避免强制叠字
+  ---
+  duration_ms: 0.576
+  type: 'test'
+  ...
+# Subtest: 入场每会话一次且减少动态时直接呈现
+ok 21 - 入场每会话一次且减少动态时直接呈现
+  ---
+  duration_ms: 0.2562
+  type: 'test'
+  ...
+# Subtest: 星核上按下不选卦，抬起才确认，拖动超过 6px 或取消不误选
+ok 22 - 星核上按下不选卦，抬起才确认，拖动超过 6px 或取消不误选
+  ---
+  duration_ms: 0.9434
+  type: 'test'
+  ...
+# Subtest: 视角快照深复制镜头、焦点、关系、图式与自动巡天
+ok 23 - 视角快照深复制镜头、焦点、关系、图式与自动巡天
+  ---
+  duration_ms: 0.3418
+  type: 'test'
+  ...
+# Subtest: 快读与全景尺寸变化后恢复镜头按空间半径换算
+ok 24 - 快读与全景尺寸变化后恢复镜头按空间半径换算
+  ---
+  duration_ms: 0.1184
+  type: 'test'
+  ...
+# Subtest: 聚焦镜头在 450ms 完成，减少动态立即完成
+ok 25 - 聚焦镜头在 450ms 完成，减少动态立即完成
+  ---
+  duration_ms: 0.1069
+  type: 'test'
+  ...
+# Subtest: 卦名和关键词共用布局，当前最多三词、关系最多一词
+ok 26 - 卦名和关键词共用布局，当前最多三词、关系最多一词
+  ---
+  duration_ms: 0.3189
+  type: 'test'
+  ...
+# Subtest: 标签布局在 100ms 内复用，焦点或视口显著变化时立即更新
+ok 27 - 标签布局在 100ms 内复用，焦点或视口显著变化时立即更新
+  ---
+  duration_ms: 0.2912
+  type: 'test'
+  ...
+# Subtest: 焦点标签不受入场标签延迟影响
+ok 28 - 焦点标签不受入场标签延迟影响
+  ---
+  duration_ms: 0.0907
+  type: 'test'
+  ...
+# Subtest: 经典图式总览只常驻结构地标，选卦后展开当前关系节点
+ok 29 - 经典图式总览只常驻结构地标，选卦后展开当前关系节点
+  ---
+  duration_ms: 0.133
+  type: 'test'
+  ...
+# Subtest: 普通卦名碰撞框保持 7px 屏幕间距
+ok 30 - 普通卦名碰撞框保持 7px 屏幕间距
+  ---
+  duration_ms: 6.3104
+  type: 'test'
+  ...
+# Subtest: 相同重要度的碰撞标签优先保留前景卦名
+ok 31 - 相同重要度的碰撞标签优先保留前景卦名
+  ---
+  duration_ms: 0.135
+  type: 'test'
+  ...
+1..31
+# tests 31
+# suites 0
+# pass 31
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 90.8947
+✓ 节点数=4
+✓ 边数>=1
+✓ 乾→坤存在错卦边
+✓ 乾→坤边含 opposite 类型
+✓ 泰→否至少1条边
+✓ 节点含 degree
+✓ 111000—000111 保留多重关系
+✓ 111000→000111 保留有向关系
+✓ 011001—100110 保留多重关系
+✓ 011001→100110 保留有向关系
+✓ 001011—110100 保留多重关系
+✓ 001011→110100 保留有向关系
+✓ 101010—010101 保留多重关系
+✓ 101010→010101 保留有向关系
+✓ 变卦关系保存具体动爻条件
+✓ 互卦作为有向发生记录保留起点和终点
+
+全部通过
+TAP version 13
+# Subtest: 安全 JSON 读写、删除和结构判断
+ok 1 - 安全 JSON 读写、删除和结构判断
+  ---
+  duration_ms: 1.0441
+  type: 'test'
+  ...
+# Subtest: 损坏、类型不符、无存储和异常均安全回退
+ok 2 - 损坏、类型不符、无存储和异常均安全回退
+  ---
+  duration_ms: 0.2032
+  type: 'test'
+  ...
+# Subtest: localStorage getter 被浏览器拒绝时也安全降级
+ok 3 - localStorage getter 被浏览器拒绝时也安全降级
+  ---
+  duration_ms: 0.1165
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.2773
+TAP version 13
+# Subtest: 界面、阅读与标题使用分工明确的中文字体栈
+ok 1 - 界面、阅读与标题使用分工明确的中文字体栈
+  ---
+  duration_ms: 0.793
+  type: 'test'
+  ...
+# Subtest: 全站字号建立 15px 硬底线并按层级递增
+ok 2 - 全站字号建立 15px 硬底线并按层级递增
+  ---
+  duration_ms: 0.3868
+  type: 'test'
+  ...
+# Subtest: 中文短语按控件原子、均衡标题和正文三层处理换行
+ok 3 - 中文短语按控件原子、均衡标题和正文三层处理换行
+  ---
+  duration_ms: 1.1107
+  type: 'test'
+  ...
+# Subtest: 卦名复合标题在详情、分享、占筮和复习中使用同一不可拆分结构
+ok 4 - 卦名复合标题在详情、分享、占筮和复习中使用同一不可拆分结构
+  ---
+  duration_ms: 0.3753
+  type: 'test'
+  ...
+# Subtest: 详情、研读笺和辅助说明不再以裁切或横向滑动隐藏文本
+ok 5 - 详情、研读笺和辅助说明不再以裁切或横向滑动隐藏文本
+  ---
+  duration_ms: 0.3644
+  type: 'test'
+  ...
+# Subtest: Canvas 经典图式标签和图式说明具有清晰的字号下限
+ok 6 - Canvas 经典图式标签和图式说明具有清晰的字号下限
+  ---
+  duration_ms: 0.1353
+  type: 'test'
+  ...
+# Subtest: 卦序轮盘仅显示当前扇区，避免 64 个放大标签互相覆盖
+ok 7 - 卦序轮盘仅显示当前扇区，避免 64 个放大标签互相覆盖
+  ---
+  duration_ms: 0.238
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9.7059
+TAP version 13
+# Subtest: 本地 Lucide 图标只创建白名单 SVG，默认从辅助技术中隐藏
+ok 1 - 本地 Lucide 图标只创建白名单 SVG，默认从辅助技术中隐藏
+  ---
+  duration_ms: 1.6765
+  type: 'test'
+  ...
+# Subtest: 图标安装可重复调用，切换图标时只更新图形而保留宿主及按钮语义
+ok 2 - 图标安装可重复调用，切换图标时只更新图形而保留宿主及按钮语义
+  ---
+  duration_ms: 0.36
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6.9687
+TAP version 13
+# Subtest: 导出仅包含项目数据并可重新导入
+ok 1 - 导出仅包含项目数据并可重新导入
+  ---
+  duration_ms: 2.3698
+  type: 'test'
+  ...
+# Subtest: 解析会拒绝损坏、超限或未知版本的备份
+ok 2 - 解析会拒绝损坏、超限或未知版本的备份
+  ---
+  duration_ms: 1.1848
+  type: 'test'
+  ...
+# Subtest: 导入忽略未知键并按 null 删除已知键
+ok 3 - 导入忽略未知键并按 null 删除已知键
+  ---
+  duration_ms: 0.2413
+  type: 'test'
+  ...
+# Subtest: 坏复习卡在写入前被拒绝且不会覆盖旧数据
+ok 4 - 坏复习卡在写入前被拒绝且不会覆盖旧数据
+  ---
+  duration_ms: 0.2456
+  type: 'test'
+  ...
+# Subtest: 通用备份包含成就状态并可完整往返
+ok 5 - 通用备份包含成就状态并可完整往返
+  ---
+  duration_ms: 0.4144
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11.8349
+✓ JD 2000/1/1 12:00 值: 2451545.0000 (期望≈2451545, 容差0.0001)
+✓ JD往返-年: 2000.0000 (期望≈2000, 容差0)
+✓ JD往返-月: 1.0000 (期望≈1, 容差0)
+✓ JD往返-日: 1.0000 (期望≈1, 容差0)
+✓ JD往返-时: 12.0000 (期望≈12, 容差0)
+✓ JD往返-分: 0.0000 (期望≈0, 容差0)
+✓ JD往返2-年: 2026.0000 (期望≈2026, 容差0)
+✓ JD往返2-月: 7.0000 (期望≈7, 容差0)
+✓ JD往返2-日: 1.0000 (期望≈1, 容差0)
+✓ JD往返2-时: 8.0000 (期望≈8, 容差0)
+✓ JD往返2-分: 30.0000 (期望≈30, 容差0)
+✓ 2024/7/1 太阳黄经: 99.6657 (期望≈99.6, 容差3)
+✓ 2026夏至(90°): 北京 2026/6/21 16:18 (期望 6/21 16.4h, 容差1h)
+✓ 2026小暑(105°): 北京 2026/7/7 09:47 (期望 7/7 9.95h, 容差1h)
+✓ 2026大暑(120°): 北京 2026/7/23 03:11 (期望 7/23 3.22h, 容差1h)
+✓ 2026立秋(135°): 北京 2026/8/7 19:38 (期望 8/7 19.7h, 容差1h)
+✓ 2025冬至(270°): 北京 2025/12/21 22:59 (期望 12/21 23.03h, 容差1h)
+✓ 定朔-2026春节: 北京 2026/2/17 (期望 2026/2/17)
+✓ 月亮黄经范围: 290.22 (应 0-360)
+
+全部通过
+✓ 天干10项
+✓ 地支12项
+✓ 生肖12项
+✓ 六十甲子60项
+✓ 纳音60项
+✓ 六十甲子序=干[k%10]+支[k%12]
+✓ 2026年=丙午年(马)  → 丙午/马
+✓ 2024年=甲辰年(龙)  → 甲辰/龙
+✓ 2024/2/3立春前=癸卯年  → 癸卯/兔
+✓ 2024/2/4立春后=甲辰年  → 甲辰/龙
+✓ 1984年=甲子年(idx0)  → idx0 甲子
+✓ 2000/1/1=戊午日(idx54)  → idx54 戊午
+✓ 2026/7/1=丙子日(idx12)  → idx12 丙子
+✓ 2024/2/10春节=甲辰日  → 甲辰
+✓ 2025/1/29春节=戊戌日  → 戊戌
+✓ 日干支JD输入与Date一致  → JD:丙子 Date:丙子
+✓ 2024/2/10=丙寅月  → 丙寅
+✓ 2025/1/29=丁丑月  → 丁丑
+✓ 2026/7/1=甲午月  → 甲午
+✓ 甲年正月丙寅(甲己丙作首)  → 丙寅
+✓ 乙年正月戊寅(乙庚戊为头)  → 戊寅
+✓ 2026/7/1午时=甲午  → 甲午
+✓ 2026/7/1子时=戊子  → 戊子
+✓ 2026/7/1早子时=戊子  → 戊子
+✓ 甲日子时=甲子(甲己还加甲)  → 甲子
+✓ baZi四柱一致  → 丙午年 甲午月 丙子日 甲午时
+
+全部通过
+✓ hexagrams 是数组
+✓ trigrams 是数组
+✓ wings 是数组
+✓ theorems 是数组
+✓ almanacTerms 是数组
+✓ almanacYiji 是对象
+✓ hexagrams 64 卦
+✓ trigrams 8 卦
+✓ wings >= 4 篇
+✓ theorems >= 5 条
+✓ almanacTerms >= 50 条
+✓ almanacYiji >= 20 项
+✓ hexagrams 非 undefined
+✓ trigrams 非 undefined
+✓ wings 非 undefined
+✓ theorems 非 undefined
+✓ almanacTerms 非 undefined
+✓ almanacYiji 非 undefined
+✓ 全部数据可序列化
+✓ state.almanacTerms 已赋值
+✓ state.almanacYiji 已赋值
+
+全部通过
+✓ 2026/7/1             → 丙午年 5月 17日 (期望 丙午年 5月 17日)
+✓ 2026春节               → 丙午年 1月 1日 (期望 丙午年 1月 1日)
+✓ 2025春节               → 乙巳年 1月 1日 (期望 乙巳年 1月 1日)
+✓ 2023闰二月初一(关键)        → 癸卯年 闰2月 1日 (期望 癸卯年 闰2月 1日)
+✓ 2025冬至次日             → 乙巳年 11月 2日 (期望 乙巳年 11月 2日)
+✓ 2024春节               → 甲辰年 1月 1日 (期望 甲辰年 1月 1日)
+✓ 朔月天数均为29/30: 通过
+✓ 非闰月月序按中气递增: 通过 (11,12,1,2,3,4,5,6,7,8,9,10,11,12,1)
+✓ 2026/2/16(春节前) → 乙巳年 12月 29日 (期望 乙巳年 腊月)
+✓ 2023/3/28(闰二月内) → 闰2月 7日
+✓ 2026/2/17 00/12/23 → 2026-1-1 / 2026-1-1 / 2026-1-1
+✓ 2033/12/22 00/12/23 → 2033-闰11-1 / 2033-闰11-1 / 2033-闰11-1
+✓ 2034/1/20→2/19 → 2033年12月1日 / 2034年1月1日
+
+全部通过
+✓ 查阅-64卦列表
+✓ 查阅-卦象详情(乾)
+✓ 查阅-卦象详情(未填经文的卦也测)
+✓ 八卦基础页
+✓ 学习-十翼
+✓ 学习-象数
+✓ 学习-学习路径
+✓ 学习-统一入口
+✓ 复习模式
+✓ 测验模式
+✓ 占筮模式
+✓ 黄历主页
+✓ 黄历知识页
+
+全部页面渲染通过
+TAP version 13
+# Subtest: 建除值位：2026/7/1（丙子日，月支午）= 破
+ok 1 - 建除值位：2026/7/1（丙子日，月支午）= 破
+  ---
+  duration_ms: 2.5586
+  type: 'test'
+  ...
+# Subtest: 建除值位：2025/1/1（庚午日，月支子，大雪节气内）= 破
+ok 2 - 建除值位：2025/1/1（庚午日，月支子，大雪节气内）= 破
+  ---
+  duration_ms: 0.2473
+  type: 'test'
+  ...
+# Subtest: 建除值位：建日（月支与日支相同）offset=0
+ok 3 - 建除值位：建日（月支与日支相同）offset=0
+  ---
+  duration_ms: 0.9833
+  type: 'test'
+  ...
+# Subtest: 建除值位连续性：相邻日值位差 1
+ok 4 - 建除值位连续性：相邻日值位差 1
+  ---
+  duration_ms: 1.2586
+  type: 'test'
+  ...
+# Subtest: 建除值位：覆盖全部 12 值位可遍历（取不跨节气的连续段）
+ok 5 - 建除值位：覆盖全部 12 值位可遍历（取不跨节气的连续段）
+  ---
+  duration_ms: 3.6828
+  type: 'test'
+  ...
+# Subtest: 二十八宿值日：2026/7/1 = 箕水豹
+ok 6 - 二十八宿值日：2026/7/1 = 箕水豹
+  ---
+  duration_ms: 0.3057
+  type: 'test'
+  ...
+# Subtest: 二十八宿值日：2025/1/1 = 参水猿
+ok 7 - 二十八宿值日：2025/1/1 = 参水猿
+  ---
+  duration_ms: 0.1888
+  type: 'test'
+  ...
+# Subtest: 二十八宿值日：2026/6/30 = 尾火虎
+ok 8 - 二十八宿值日：2026/6/30 = 尾火虎
+  ---
+  duration_ms: 0.0828
+  type: 'test'
+  ...
+# Subtest: 二十八宿连续性：逐日轮转，每相邻日 idx 差为 1（mod 28）
+ok 9 - 二十八宿连续性：逐日轮转，每相邻日 idx 差为 1（mod 28）
+  ---
+  duration_ms: 0.2768
+  type: 'test'
+  ...
+# Subtest: 二十八宿：XIU_NAMES 共28个且无重复
+ok 10 - 二十八宿：XIU_NAMES 共28个且无重复
+  ---
+  duration_ms: 0.2615
+  type: 'test'
+  ...
+# Subtest: 彭祖百忌：2026/7/1（丙子日）→ 丙不修灶 + 子不问卜
+ok 11 - 彭祖百忌：2026/7/1（丙子日）→ 丙不修灶 + 子不问卜
+  ---
+  duration_ms: 0.2008
+  type: 'test'
+  ...
+# Subtest: 彭祖百忌：癸亥日 → 癸不词讼 + 亥不嫁娶
+ok 12 - 彭祖百忌：癸亥日 → 癸不词讼 + 亥不嫁娶
+  ---
+  duration_ms: 0.089
+  type: 'test'
+  ...
+# Subtest: 彭祖百忌：十干忌表与十二支忌表完整
+ok 13 - 彭祖百忌：十干忌表与十二支忌表完整
+  ---
+  duration_ms: 0.1194
+  type: 'test'
+  ...
+# Subtest: 宜忌综合：2026/7/1（破日）输出非空，且破日大忌
+ok 14 - 宜忌综合：2026/7/1（破日）输出非空，且破日大忌
+  ---
+  duration_ms: 0.2272
+  type: 'test'
+  ...
+# Subtest: 宜忌综合：成日宜嫁娶开市
+ok 15 - 宜忌综合：成日宜嫁娶开市
+  ---
+  duration_ms: 0.1392
+  type: 'test'
+  ...
+# Subtest: 宜忌综合：yi 与 ji 不重叠（同一事项不应同时宜又忌）
+ok 16 - 宜忌综合：yi 与 ji 不重叠（同一事项不应同时宜又忌）
+  ---
+  duration_ms: 0.2095
+  type: 'test'
+  ...
+# Subtest: dailySelection：返回完整择日信息
+ok 17 - dailySelection：返回完整择日信息
+  ---
+  duration_ms: 0.3059
+  type: 'test'
+  ...
+# Subtest: getTermReading：按 id 查建除术语
+ok 18 - getTermReading：按 id 查建除术语
+  ---
+  duration_ms: 0.0768
+  type: 'test'
+  ...
+# Subtest: getTermReading：按 name 查二十八宿
+ok 19 - getTermReading：按 name 查二十八宿
+  ---
+  duration_ms: 0.062
+  type: 'test'
+  ...
+# Subtest: getTermReading：查不到返回 null
+ok 20 - getTermReading：查不到返回 null
+  ---
+  duration_ms: 0.0362
+  type: 'test'
+  ...
+# Subtest: termsByCategory：分类筛选正确
+ok 21 - termsByCategory：分类筛选正确
+  ---
+  duration_ms: 0.0547
+  type: 'test'
+  ...
+# Subtest: buildDailyReading：2026/7/1 生成完整解读段落
+ok 22 - buildDailyReading：2026/7/1 生成完整解读段落
+  ---
+  duration_ms: 0.4402
+  type: 'test'
+  ...
+# Subtest: 术语库结构完整：每条有 name/meaning，yi/ji 为数组
+ok 23 - 术语库结构完整：每条有 name/meaning，yi/ji 为数组
+  ---
+  duration_ms: 0.1161
+  type: 'test'
+  ...
+# Subtest: 宜忌映射结构完整：每项有 yi/ji 数组且值位合法
+ok 24 - 宜忌映射结构完整：每项有 yi/ji 数组且值位合法
+  ---
+  duration_ms: 0.1359
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 22.424
+✓ 2026夏至: 北京 2026/6/21 16:18 (期望 6/21 16.40h, 容差1h)
+✓ 2026小暑: 北京 2026/7/7 09:47 (期望 7/7 9.95h, 容差1h)
+✓ 2026大暑: 北京 2026/7/23 03:11 (期望 7/23 3.22h, 容差1h)
+✓ 2026立秋: 北京 2026/8/7 19:37 (期望 8/7 19.70h, 容差1h)
+✓ 2025冬至: 北京 2025/12/21 22:59 (期望 12/21 23.03h, 容差1h)
+✓ 2024立春: 2/4 (期望 2/3-5)
+✓ 2024春分: 3/20 (期望 3/19-21)
+✓ 2024清明: 4/4 (期望 4/4-6)
+✓ 2024冬至: 12/21 (期望 12/21-23)
+✓ 2026大寒: 1/20 (期望 1/19-21)
+✓ 2026惊蛰: 3/5 (期望 3/5-7)
+✓ 节气常量数量: 24
+✓ 春分起点: 春分 0°
+✓ 惊蛰末点: 惊蛰 345°
+✓ currentSolarTerm 2026/7/1: current=夏至 next=小暑 (期望 夏至→小暑)
+✓ currentSolarTerm 天数: since=9 toNext=6 (期望 9/6)
+✓ currentSolarTerm 2026/1/3: current=冬至 next=小寒 (期望 冬至→小寒)
+
+全部通过
+✓ 测试脚本通过：58 个
+
+质量检查全部通过
+
+> yijing-atlas@1.1.1-rc.2 test:coverage
+> node --test --experimental-test-coverage --test-coverage-lines=90 --test-coverage-branches=90 --test-coverage-functions=90 --test-coverage-include=web/js/achievement-catalog.js --test-coverage-include=web/js/achievement-engine.js --test-coverage-include=web/js/achievement-storage.js --test-coverage-include=web/js/data-loader.js --test-coverage-include=web/js/guaxu-wheel.js --test-coverage-include=web/js/divination-engine.js --test-coverage-include=web/js/divination-interpretation.js --test-coverage-include=web/js/divination-history.js --test-coverage-include=web/js/evolution-state.js --test-coverage-include=web/js/hexagram-utils.js --test-coverage-include=web/js/learning-assessment.js --test-coverage-include=web/js/learning-curriculum.js --test-coverage-include=web/js/learning-progress.js --test-coverage-include=web/js/learning-review.js --test-coverage-include=web/js/meihua-engine.js --test-coverage-include=web/js/quiz-engine.js --test-coverage-include=web/js/review-engine.js --test-coverage-include=web/js/search-controller.js --test-coverage-include=web/js/star-relations.js --test-coverage-include=web/js/storage.js web/test/*.test.mjs
+
+TAP version 13
+# Subtest: 首发目录包含十二枚可解释成就且标识唯一
+ok 1 - 首发目录包含十二枚可解释成就且标识唯一
+  ---
+  duration_ms: 1.5269
+  type: 'test'
+  ...
+# Subtest: 能力维度和五阶三状态形成完整成长契约
+ok 2 - 能力维度和五阶三状态形成完整成长契约
+  ---
+  duration_ms: 0.6786
+  type: 'test'
+  ...
+# Subtest: 事件工厂使用可注入时间与随机源并拒绝危险字段
+ok 3 - 事件工厂使用可注入时间与随机源并拒绝危险字段
+  ---
+  duration_ms: 2.6707
+  type: 'test'
+  ...
+# Subtest: 完成首课与小试后解锁且重复事件保持幂等
+ok 4 - 完成首课与小试后解锁且重复事件保持幂等
+  ---
+  duration_ms: 1.3392
+  type: 'test'
+  ...
+# Subtest: 十二枚成就均可由真实学习证据达成
+ok 5 - 十二枚成就均可由真实学习证据达成
+  ---
+  duration_ms: 20.5623
+  type: 'test'
+  ...
+# Subtest: 修改重交按同一案例保留较高成绩且独立边界确认按主题去重
+ok 6 - 修改重交按同一案例保留较高成绩且独立边界确认按主题去重
+  ---
+  duration_ms: 0.3073
+  type: 'test'
+  ...
+# Subtest: 无效状态安全降级、批处理忽略坏事件并支持旧版事件迁移
+ok 7 - 无效状态安全降级、批处理忽略坏事件并支持旧版事件迁移
+  ---
+  duration_ms: 0.2576
+  type: 'test'
+  ...
+# Subtest: 损坏、缺失和旧版状态均安全加载
+ok 8 - 损坏、缺失和旧版状态均安全加载
+  ---
+  duration_ms: 3.9069
+  type: 'test'
+  ...
+# Subtest: localStorage getter 被拒绝时成就状态仍安全回退
+ok 9 - localStorage getter 被拒绝时成就状态仍安全回退
+  ---
+  duration_ms: 0.1653
+  type: 'test'
+  ...
+# Subtest: 事件处理可持久化且重复提交不重复写入
+ok 10 - 事件处理可持久化且重复提交不重复写入
+  ---
+  duration_ms: 0.9172
+  type: 'test'
+  ...
+# Subtest: 写入失败与非法状态返回明确结果
+ok 11 - 写入失败与非法状态返回明确结果
+  ---
+  duration_ms: 0.3305
+  type: 'test'
+  ...
+# Subtest: 成就数据可导出、解析并导入另一存储
+ok 12 - 成就数据可导出、解析并导入另一存储
+  ---
+  duration_ms: 1.0172
+  type: 'test'
+  ...
+# Subtest: 黄历术语使用按钮，并提供完整的模态弹层键盘交互
+ok 13 - 黄历术语使用按钮，并提供完整的模态弹层键盘交互
+  ---
+  duration_ms: 25.6546
+  type: 'test'
+  ...
+# Subtest: 黄历默认日期按 Asia/Shanghai 历日而非设备时区确定
+ok 14 - 黄历默认日期按 Asia/Shanghai 历日而非设备时区确定
+  ---
+  duration_ms: 16.538
+  type: 'test'
+  ...
+# Subtest: 机械转盘节奏先加速再减速并在落卦前停止
+ok 15 - 机械转盘节奏先加速再减速并在落卦前停止
+  ---
+  duration_ms: 0.7639
+  type: 'test'
+  ...
+# Subtest: 机械转盘节奏拒绝无效和过短时长
+ok 16 - 机械转盘节奏拒绝无效和过短时长
+  ---
+  duration_ms: 0.3486
+  type: 'test'
+  ...
+# Subtest: 各功能区域映射到对应声景且跳过禁用与转盘按钮
+ok 17 - 各功能区域映射到对应声景且跳过禁用与转盘按钮
+  ---
+  duration_ms: 0.2462
+  type: 'test'
+  ...
+# Subtest: 铜钱声由三枚铜钱的初次碰撞与逐级衰减反弹组成
+ok 18 - 铜钱声由三枚铜钱的初次碰撞与逐级衰减反弹组成
+  ---
+  duration_ms: 0.223
+  type: 'test'
+  ...
+# Subtest: 机械转盘合成轮毂与棘轮声并以多层锁止音收尾
+ok 19 - 机械转盘合成轮毂与棘轮声并以多层锁止音收尾
+  ---
+  duration_ms: 2.9577
+  type: 'test'
+  ...
+# Subtest: WebGL 超大屏严格遵守五百万 backing-store 像素预算
+ok 20 - WebGL 超大屏严格遵守五百万 backing-store 像素预算
+  ---
+  duration_ms: 0.6259
+  type: 'test'
+  ...
+# Subtest: 天象舞台按模式与设备能力限制帧率
+ok 21 - 天象舞台按模式与设备能力限制帧率
+  ---
+  duration_ms: 0.113
+  type: 'test'
+  ...
+# Subtest: 不可见或减少动态时停止连续渲染
+ok 22 - 不可见或减少动态时停止连续渲染
+  ---
+  duration_ms: 0.0573
+  type: 'test'
+  ...
+# Subtest: 空间系带保持端点准确并在中段抬升
+ok 23 - 空间系带保持端点准确并在中段抬升
+  ---
+  duration_ms: 0.6916
+  type: 'test'
+  ...
+# Subtest: WebGL 舞台具备上下文恢复与资源释放保护
+ok 24 - WebGL 舞台具备上下文恢复与资源释放保护
+  ---
+  duration_ms: 0.7824
+  type: 'test'
+  ...
+# Subtest: 未完成内容保持发布门禁关闭，但来源目录可独立校验
+ok 25 - 未完成内容保持发布门禁关闭，但来源目录可独立校验
+  ---
+  duration_ms: 1.4878
+  type: 'test'
+  ...
+# Subtest: 发布状态要求底本已登记且六十四卦全部双人校对
+ok 26 - 发布状态要求底本已登记且六十四卦全部双人校对
+  ---
+  duration_ms: 0.5363
+  type: 'test'
+  ...
+# Subtest: 缺项、空原文与单人校对会阻断发布
+ok 27 - 缺项、空原文与单人校对会阻断发布
+  ---
+  duration_ms: 0.2856
+  type: 'test'
+  ...
+# Subtest: 六十四卦原文、易传与项目导读均有明确且不混并的出处层级
+ok 28 - 六十四卦原文、易传与项目导读均有明确且不混并的出处层级
+  ---
+  duration_ms: 1.7528
+  type: 'test'
+  ...
+# Subtest: 象数条目明确标为传统资料并保留流派边界
+ok 29 - 象数条目明确标为传统资料并保留流派边界
+  ---
+  duration_ms: 0.2247
+  type: 'test'
+  ...
+# ✓ 欢迎三入口保留名称与模态交互，今日卦引文在窄屏可换行
+# Subtest: web\\test\\daily-overlay-layout.test.mjs
+ok 10 - web\\test\\daily-overlay-layout.test.mjs
+  ---
+  duration_ms: 931.2591
+  type: 'test'
+  ...
+# Subtest: 浏览器启动只取核心数据，功能数据首次进入时加载并复用
+ok 31 - 浏览器启动只取核心数据，功能数据首次进入时加载并复用
+  ---
+  duration_ms: 8.1487
+  type: 'test'
+  ...
+# Subtest: HTTP 错误包含资源路径和状态码
+ok 32 - HTTP 错误包含资源路径和状态码
+  ---
+  duration_ms: 0.5432
+  type: 'test'
+  ...
+# Subtest: 核心数据自检覆盖数量、唯一性、卦序和爻码一致性
+ok 33 - 核心数据自检覆盖数量、唯一性、卦序和爻码一致性
+  ---
+  duration_ms: 6.1915
+  type: 'test'
+  ...
+# Subtest: 功能数据失败后可重试，索引和全文搜索可用
+ok 34 - 功能数据失败后可重试，索引和全文搜索可用
+  ---
+  duration_ms: 4.2268
+  type: 'test'
+  ...
+# Subtest: 铜钱和数正确映射四种爻象
+ok 35 - 铜钱和数正确映射四种爻象
+  ---
+  duration_ms: 1.4138
+  type: 'test'
+  ...
+# Subtest: 六次老阴得到坤卦并全变为乾卦
+ok 36 - 六次老阴得到坤卦并全变为乾卦
+  ---
+  duration_ms: 0.2469
+  type: 'test'
+  ...
+# Subtest: 无变爻取本卦卦辞，一变爻取对应爻辞
+ok 37 - 无变爻取本卦卦辞，一变爻取对应爻辞
+  ---
+  duration_ms: 0.3124
+  type: 'test'
+  ...
+# Subtest: 乾卦六爻全变取本卦用九，不误取之卦用六
+ok 38 - 乾卦六爻全变取本卦用九，不误取之卦用六
+  ---
+  duration_ms: 0.1047
+  type: 'test'
+  ...
+# Subtest: 坤卦六爻全变取本卦用六，不误取之卦用九
+ok 39 - 坤卦六爻全变取本卦用六，不误取之卦用九
+  ---
+  duration_ms: 0.0705
+  type: 'test'
+  ...
+# Subtest: 二爻变保留两条爻辞并以上爻为主，三爻变合看两卦
+ok 40 - 二爻变保留两条爻辞并以上爻为主，三爻变合看两卦
+  ---
+  duration_ms: 0.1621
+  type: 'test'
+  ...
+# Subtest: 四爻变保留变卦两条不变爻并以下爻为主，五爻变取唯一不变爻
+ok 41 - 四爻变保留变卦两条不变爻并以下爻为主，五爻变取唯一不变爻
+  ---
+  duration_ms: 0.1437
+  type: 'test'
+  ...
+# Subtest: 六爻全变且无用辞时回退到变卦卦辞
+ok 42 - 六爻全变且无用辞时回退到变卦卦辞
+  ---
+  duration_ms: 0.0759
+  type: 'test'
+  ...
+# Subtest: 非变爻起卦保持本卦不变
+ok 43 - 非变爻起卦保持本卦不变
+  ---
+  duration_ms: 0.1503
+  type: 'test'
+  ...
+# Subtest: 占筮记录按新到旧保存并可清空
+ok 44 - 占筮记录按新到旧保存并可清空
+  ---
+  duration_ms: 10.076
+  type: 'test'
+  ...
+# Subtest: 旧版记录保留并明确标记为仅有卦象摘要
+ok 45 - 旧版记录保留并明确标记为仅有卦象摘要
+  ---
+  duration_ms: 0.2052
+  type: 'test'
+  ...
+# Subtest: 历史满50条后同一毫秒新增的案例仍有独立且持久的标识
+ok 46 - 历史满50条后同一毫秒新增的案例仍有独立且持久的标识
+  ---
+  duration_ms: 13.2034
+  type: 'test'
+  ...
+# Subtest: 非法历史、非法卦码和写入失败安全处理
+ok 47 - 非法历史、非法卦码和写入失败安全处理
+  ---
+  duration_ms: 0.2051
+  type: 'test'
+  ...
+# Subtest: 生成案例标识失败时保留旧历史并返回保存失败
+ok 48 - 生成案例标识失败时保留旧历史并返回保存失败
+  ---
+  duration_ms: 0.4891
+  type: 'test'
+  ...
+# Subtest: 金钱卦解释为每一卦提供原文出处、通俗释义和现实边界
+ok 49 - 金钱卦解释为每一卦提供原文出处、通俗释义和现实边界
+  ---
+  duration_ms: 2.9221
+  type: 'test'
+  ...
+# Subtest: 无变爻解释当前结构并说明不会形成之卦
+ok 50 - 无变爻解释当前结构并说明不会形成之卦
+  ---
+  duration_ms: 0.2774
+  type: 'test'
+  ...
+# Subtest: 乾坤全变引用用九、用六并给出对应通俗解释
+ok 51 - 乾坤全变引用用九、用六并给出对应通俗解释
+  ---
+  duration_ms: 0.2915
+  type: 'test'
+  ...
+# Subtest: 梅花易数解释交代起卦公式、体用术语与简化边界
+ok 52 - 梅花易数解释交代起卦公式、体用术语与简化边界
+  ---
+  duration_ms: 0.3011
+  type: 'test'
+  ...
+# Subtest: 梅花易数五种体用关系都有通俗解释
+ok 53 - 梅花易数五种体用关系都有通俗解释
+  ---
+  duration_ms: 0.1866
+  type: 'test'
+  ...
+# Subtest: 金钱V2同一历史重放重复提交沿用同一subject，导出导入后仍幂等
+ok 54 - 金钱V2同一历史重放重复提交沿用同一subject，导出导入后仍幂等
+  ---
+  duration_ms: 30.6182
+  type: 'test'
+  ...
+# Subtest: 梅花完整历史重放保持既有稳定subject且不新增历史
+ok 55 - 梅花完整历史重放保持既有稳定subject且不新增历史
+  ---
+  duration_ms: 3.6725
+  type: 'test'
+  ...
+# Subtest: 旧摘要不生成分析证据或补造六爻；仅保留研读入口
+ok 56 - 旧摘要不生成分析证据或补造六爻；仅保留研读入口
+  ---
+  duration_ms: 1.3983
+  type: 'test'
+  ...
+# Subtest: 主动新掷相同卦码仍产生独立案例并保留正常自动历史
+ok 57 - 主动新掷相同卦码仍产生独立案例并保留正常自动历史
+  ---
+  duration_ms: 4.7165
+  type: 'test'
+  ...
+# Subtest: coin首次结果与首次历史回看提交属于同一案例
+ok 58 - coin首次结果与首次历史回看提交属于同一案例
+  ---
+  duration_ms: 4.9286
+  type: 'test'
+  ...
+# Subtest: coin历史保存失败时本次分析身份稳定，下一次起卦仍独立
+ok 59 - coin历史保存失败时本次分析身份稳定，下一次起卦仍独立
+  ---
+  duration_ms: 4.5811
+  type: 'test'
+  ...
+# Subtest: meihua首次结果与首次历史回看提交属于同一案例
+ok 60 - meihua首次结果与首次历史回看提交属于同一案例
+  ---
+  duration_ms: 2.5993
+  type: 'test'
+  ...
+# Subtest: meihua历史保存失败时本次分析身份稳定，下一次起卦仍独立
+ok 61 - meihua历史保存失败时本次分析身份稳定，下一次起卦仍独立
+  ---
+  duration_ms: 2.2917
+  type: 'test'
+  ...
+# Subtest: 逐爻变化保持自下而上的位序并记录历史
+ok 62 - 逐爻变化保持自下而上的位序并记录历史
+  ---
+  duration_ms: 2.1052
+  type: 'test'
+  ...
+# Subtest: 撤销、重做和新分支会正确维护历史
+ok 63 - 撤销、重做和新分支会正确维护历史
+  ---
+  duration_ms: 0.2132
+  type: 'test'
+  ...
+# Subtest: 错综互预设始终从原卦计算
+ok 64 - 错综互预设始终从原卦计算
+  ---
+  duration_ms: 0.125
+  type: 'test'
+  ...
+# Subtest: 重置可撤销，快照解析结果卦和控制状态
+ok 65 - 重置可撤销，快照解析结果卦和控制状态
+  ---
+  duration_ms: 0.104
+  type: 'test'
+  ...
+# Subtest: 历史边界操作保持状态稳定，未知结果安全回退
+ok 66 - 历史边界操作保持状态稳定，未知结果安全回退
+  ---
+  duration_ms: 0.0644
+  type: 'test'
+  ...
+# Subtest: 演示帧按初爻到上爻依次生成且包含起止卦
+ok 67 - 演示帧按初爻到上爻依次生成且包含起止卦
+  ---
+  duration_ms: 0.0963
+  type: 'test'
+  ...
+# Subtest: 无效卦码、爻位、预设和状态会被拒绝
+ok 68 - 无效卦码、爻位、预设和状态会被拒绝
+  ---
+  duration_ms: 0.4161
+  type: 'test'
+  ...
+# Subtest: 当前卦义随帧解析并带有经传定位
+ok 69 - 当前卦义随帧解析并带有经传定位
+  ---
+  duration_ms: 2.0477
+  type: 'test'
+  ...
+# Subtest: 单帧变化同时解析前后爻辞、小象和项目释义
+ok 70 - 单帧变化同时解析前后爻辞、小象和项目释义
+  ---
+  duration_ms: 0.3678
+  type: 'test'
+  ...
+# Subtest: 无效分区、卦象和爻位会被拒绝
+ok 71 - 无效分区、卦象和爻位会被拒绝
+  ---
+  duration_ms: 0.4304
+  type: 'test'
+  ...
+# Subtest: 角度归一化并从顶部指针反推卦序索引
+ok 72 - 角度归一化并从顶部指针反推卦序索引
+  ---
+  duration_ms: 1.1736
+  type: 'test'
+  ...
+# Subtest: 随机边界可抽中首卦与末卦并精确停在指针下
+ok 73 - 随机边界可抽中首卦与末卦并精确停在指针下
+  ---
+  duration_ms: 0.1911
+  type: 'test'
+  ...
+# Subtest: 连续抽取从当前角度向前旋转且保持映射稳定
+ok 74 - 连续抽取从当前角度向前旋转且保持映射稳定
+  ---
+  duration_ms: 0.1212
+  type: 'test'
+  ...
+# Subtest: 全部六十四个索引都能映射到固定指针
+ok 75 - 全部六十四个索引都能映射到固定指针
+  ---
+  duration_ms: 0.0738
+  type: 'test'
+  ...
+# Subtest: 非法角度、数量、随机值和圈数会被拒绝
+ok 76 - 非法角度、数量、随机值和圈数会被拒绝
+  ---
+  duration_ms: 0.36
+  type: 'test'
+  ...
+# Subtest: orderRemark 说明当前卦承接前序的理由，且覆盖完整文王卦序
+ok 77 - orderRemark 说明当前卦承接前序的理由，且覆盖完整文王卦序
+  ---
+  duration_ms: 2.2627
+  type: 'test'
+  ...
+# Subtest: 序卦上下经边界及末卦文本保持可靠链条
+ok 78 - 序卦上下经边界及末卦文本保持可靠链条
+  ---
+  duration_ms: 0.2221
+  type: 'test'
+  ...
+# Subtest: fill-all 生成链不会回写旧版错位序卦说明
+ok 79 - fill-all 生成链不会回写旧版错位序卦说明
+  ---
+  duration_ms: 142.5963
+  type: 'test'
+  ...
+# ✓ 互卦(泰111000)=归妹110100
+# ✓ 互卦(乾111111)=乾111111
+# ✓ 变卦(乾111111, pos1)=姤011111
+# ✓ 变卦(乾111111, pos2)=同人101111
+# ✓ 变卦(坤000000, pos1)=复100000
+# ✓ 泰错=否000111
+# ✓ 泰综=否000111
+# ✓ 泰互=归妹110100
+# ✓ 泰变是数组(6个)
+# ✓ 泰变[0]=升011000
+# ✓ 下卦/上卦拆分
+# ✓ 上下卦组合
+# ✓ 初九/六五/上六爻题
+# ✓ 阴阳当位判断
+# ✓ 非法卦码会拒绝
+# ✓ 非法爻位会拒绝
+# 全部通过
+# Subtest: web\\test\\hexagram-utils.test.mjs
+ok 20 - web\\test\\hexagram-utils.test.mjs
+  ---
+  duration_ms: 1251.8037
+  type: 'test'
+  ...
+# Subtest: 紧凑星仪常驻图式和关系，辅助内容由语义按钮控制并默认隐藏
+ok 81 - 紧凑星仪常驻图式和关系，辅助内容由语义按钮控制并默认隐藏
+  ---
+  duration_ms: 0.8226
+  type: 'test'
+  ...
+# Subtest: 聚焦与阅读层提供独立入口，保留现有六导航及三种开始路径
+ok 82 - 聚焦与阅读层提供独立入口，保留现有六导航及三种开始路径
+  ---
+  duration_ms: 1.0457
+  type: 'test'
+  ...
+# ✓ 布局响应式契约测试通过
+# Subtest: web\\test\\layout-contract.test.mjs
+ok 22 - web\\test\\layout-contract.test.mjs
+  ---
+  duration_ms: 1254.7094
+  type: 'test'
+  ...
+# Subtest: 小试、抽查和阶段考评按范围组卷
+ok 84 - 小试、抽查和阶段考评按范围组卷
+  ---
+  duration_ms: 0.9717
+  type: 'test'
+  ...
+# Subtest: 交卷会逐题记录课程归属并统计成绩
+ok 85 - 交卷会逐题记录课程归属并统计成绩
+  ---
+  duration_ms: 0.1776
+  type: 'test'
+  ...
+# Subtest: 日课先推荐未浏览课程，再推荐小试成绩较低者
+ok 86 - 日课先推荐未浏览课程，再推荐小试成绩较低者
+  ---
+  duration_ms: 0.15
+  type: 'test'
+  ...
+# Subtest: 全部学习小节均有至少三道可判分题目
+ok 87 - 全部学习小节均有至少三道可判分题目
+  ---
+  duration_ms: 15.882
+  type: 'test'
+  ...
+# Subtest: 课程覆盖五阶与所有资料栏目，并能生成复讲要点
+ok 88 - 课程覆盖五阶与所有资料栏目，并能生成复讲要点
+  ---
+  duration_ms: 1.0979
+  type: 'test'
+  ...
+# Subtest: 记录学习日并计算包含今天的连续天数
+ok 89 - 记录学习日并计算包含今天的连续天数
+  ---
+  duration_ms: 2.0491
+  type: 'test'
+  ...
+# Subtest: 活动记录去重、损坏回退和失败写入可感知
+ok 90 - 活动记录去重、损坏回退和失败写入可感知
+  ---
+  duration_ms: 1.0076
+  type: 'test'
+  ...
+# Subtest: 旧版学习进度迁移为已浏览，并写入新版课程记录
+ok 91 - 旧版学习进度迁移为已浏览，并写入新版课程记录
+  ---
+  duration_ms: 0.4948
+  type: 'test'
+  ...
+# Subtest: 小试、抽查、复讲和阶段考评共同形成掌握度
+ok 92 - 小试、抽查、复讲和阶段考评共同形成掌握度
+  ---
+  duration_ms: 0.5465
+  type: 'test'
+  ...
+# Subtest: 学习记录拒绝无效评定，学阶覆盖全部阈值
+ok 93 - 学习记录拒绝无效评定，学阶覆盖全部阈值
+  ---
+  duration_ms: 0.1192
+  type: 'test'
+  ...
+# Subtest: 评阅配置只接受同源相对地址
+ok 94 - 评阅配置只接受同源相对地址
+  ---
+  duration_ms: 2.0062
+  type: 'test'
+  ...
+# Subtest: 智能评阅按固定协议提交并校验返回结果
+ok 95 - 智能评阅按固定协议提交并校验返回结果
+  ---
+  duration_ms: 0.4447
+  type: 'test'
+  ...
+# Subtest: 智能评阅拒绝短文本、错误状态与异常数据
+ok 96 - 智能评阅拒绝短文本、错误状态与异常数据
+  ---
+  duration_ms: 0.5991
+  type: 'test'
+  ...
+# ✓ 学习首课、典籍依据与滚动复位契约通过
+# Subtest: web\\test\\learning-ui-contract.test.mjs
+ok 27 - web\\test\\learning-ui-contract.test.mjs
+  ---
+  duration_ms: 1236.0272
+  type: 'test'
+  ...
+# Subtest: 真实滚动监听不因边框与亚像素舍入把已定位章节退回上一节
+ok 98 - 真实滚动监听不因边框与亚像素舍入把已定位章节退回上一节
+  ---
+  duration_ms: 3.7208
+  type: 'test'
+  ...
+# Subtest: 用户滚回上一节正文时仍按可见内容更新当前章节
+ok 99 - 用户滚回上一节正文时仍按可见内容更新当前章节
+  ---
+  duration_ms: 0.5427
+  type: 'test'
+  ...
+# Subtest: 关闭工作台回到探索时恢复天象舞台及其场景
+ok 100 - 关闭工作台回到探索时恢复天象舞台及其场景
+  ---
+  duration_ms: 0.7905
+  type: 'test'
+  ...
+# Subtest: 工作台搜索只聚焦并恢复天象舞台
+ok 101 - 工作台搜索只聚焦并恢复天象舞台
+  ---
+  duration_ms: 0.574
+  type: 'test'
+  ...
+# Subtest: 快读与深读复用正文草稿，只有深读触发正式阅读和复习
+ok 102 - 快读与深读复用正文草稿，只有深读触发正式阅读和复习
+  ---
+  duration_ms: 1.195
+  type: 'test'
+  ...
+# Subtest: 切换图式同步退出快读和聚焦，不保留失效摘要
+ok 103 - 切换图式同步退出快读和聚焦，不保留失效摘要
+  ---
+  duration_ms: 0.5965
+  type: 'test'
+  ...
+# Subtest: 退出阅读恢复复制的星图快照且不修改旧布局偏好
+ok 104 - 退出阅读恢复复制的星图快照且不修改旧布局偏好
+  ---
+  duration_ms: 0.5324
+  type: 'test'
+  ...
+# Subtest: 桌面快读期间的新镜头与关系在关闭时保留
+ok 105 - 桌面快读期间的新镜头与关系在关闭时保留
+  ---
+  duration_ms: 0.573
+  type: 'test'
+  ...
+# Subtest: 快读调整后深入研读，退出恢复深入前的镜头
+ok 106 - 快读调整后深入研读，退出恢复深入前的镜头
+  ---
+  duration_ms: 0.5656
+  type: 'test'
+  ...
+# Subtest: 直接深链退出后摘要与星图使用同一个聚焦卦
+ok 107 - 直接深链退出后摘要与星图使用同一个聚焦卦
+  ---
+  duration_ms: 0.5253
+  type: 'test'
+  ...
+# Subtest: 直接深链关闭时不把焦点还给 body，改回聚焦摘要入口
+ok 108 - 直接深链关闭时不把焦点还给 body，改回聚焦摘要入口
+  ---
+  duration_ms: 0.4738
+  type: 'test'
+  ...
+# Subtest: 深读关系跳转后直接关闭仍保留新漫游轨迹
+ok 109 - 深读关系跳转后直接关闭仍保留新漫游轨迹
+  ---
+  duration_ms: 0.5939
+  type: 'test'
+  ...
+# Subtest: 天象舞台尚未加载时返回探索不会保留过期暂停原因
+ok 110 - 天象舞台尚未加载时返回探索不会保留过期暂停原因
+  ---
+  duration_ms: 0.7699
+  type: 'test'
+  ...
+# Subtest: 返回探索只解除工作台暂停，保留仍打开的分享弹窗暂停
+ok 111 - 返回探索只解除工作台暂停，保留仍打开的分享弹窗暂停
+  ---
+  duration_ms: 0.9136
+  type: 'test'
+  ...
+# Subtest: 非模式关闭和无效卦码不提前恢复工作台背景
+ok 112 - 非模式关闭和无效卦码不提前恢复工作台背景
+  ---
+  duration_ms: 0.4065
+  type: 'test'
+  ...
+# Subtest: 观察层级未变化时不重复改写 HUD DOM
+ok 113 - 观察层级未变化时不重复改写 HUD DOM
+  ---
+  duration_ms: 0.6505
+  type: 'test'
+  ...
+# Subtest: 数字起卦按八取卦、按六取动爻
+ok 114 - 数字起卦按八取卦、按六取动爻
+  ---
+  duration_ms: 0.6616
+  type: 'test'
+  ...
+# Subtest: 整除时余数取除数本身
+ok 115 - 整除时余数取除数本身
+  ---
+  duration_ms: 0.095
+  type: 'test'
+  ...
+# Subtest: 数字起卦拒绝非正安全整数
+ok 116 - 数字起卦拒绝非正安全整数
+  ---
+  duration_ms: 0.344
+  type: 'test'
+  ...
+# Subtest: 数字起卦拒绝上数与下数溢出安全整数范围
+ok 117 - 数字起卦拒绝上数与下数溢出安全整数范围
+  ---
+  duration_ms: 0.0725
+  type: 'test'
+  ...
+# Subtest: 时间起卦在同一输入下确定且标记来源
+ok 118 - 时间起卦在同一输入下确定且标记来源
+  ---
+  duration_ms: 1.4008
+  type: 'test'
+  ...
+# Subtest: 时间起卦拒绝无效日期
+ok 119 - 时间起卦拒绝无效日期
+  ---
+  duration_ms: 0.15
+  type: 'test'
+  ...
+# Subtest: 体用分析返回完整五行关系
+ok 120 - 体用分析返回完整五行关系
+  ---
+  duration_ms: 0.1605
+  type: 'test'
+  ...
+# Subtest: 体用五行覆盖生、克与反向关系
+ok 121 - 体用五行覆盖生、克与反向关系
+  ---
+  duration_ms: 0.171
+  type: 'test'
+  ...
+# Subtest: 复习完成状态位于队列与单卡的可见标题区
+ok 122 - 复习完成状态位于队列与单卡的可见标题区
+  ---
+  duration_ms: 0.7172
+  type: 'test'
+  ...
+# Subtest: 测验反馈进入最近视区后聚焦下一题
+ok 123 - 测验反馈进入最近视区后聚焦下一题
+  ---
+  duration_ms: 0.2082
+  type: 'test'
+  ...
+# Subtest: 占筮阶段与结果滚动尊重 reduced-motion
+ok 124 - 占筮阶段与结果滚动尊重 reduced-motion
+  ---
+  duration_ms: 0.118
+  type: 'test'
+  ...
+# Subtest: 动效错峰有界，避免长列表拖慢交互
+ok 125 - 动效错峰有界，避免长列表拖慢交互
+  ---
+  duration_ms: 1.0843
+  type: 'test'
+  ...
+# Subtest: 动效协调器集中管理可见性、动态节点与清理
+ok 126 - 动效协调器集中管理可见性、动态节点与清理
+  ---
+  duration_ms: 2.9108
+  type: 'test'
+  ...
+# Subtest: 入口、离线缓存与样式都接入同一代动效系统
+ok 127 - 入口、离线缓存与样式都接入同一代动效系统
+  ---
+  duration_ms: 2.0887
+  type: 'test'
+  ...
+# Subtest: 文件协议入口在加载样式和模块前转向本地 HTTP 服务
+ok 128 - 文件协议入口在加载样式和模块前转向本地 HTTP 服务
+  ---
+  duration_ms: 1.124
+  type: 'test'
+  ...
+# Subtest: HTTP 页面不会发生额外跳转
+ok 129 - HTTP 页面不会发生额外跳转
+  ---
+  duration_ms: 0.4293
+  type: 'test'
+  ...
+# Subtest: 预缓存条目全部指向现有静态资源
+ok 130 - 预缓存条目全部指向现有静态资源
+  ---
+  duration_ms: 2.2943
+  type: 'test'
+  ...
+# Subtest: 预缓存只包含首屏核心模块，功能数据按访问缓存
+ok 131 - 预缓存只包含首屏核心模块，功能数据按访问缓存
+  ---
+  duration_ms: 0.1834
+  type: 'test'
+  ...
+# Subtest: 缓存资源不再维护重复查询版本号
+ok 132 - 缓存资源不再维护重复查询版本号
+  ---
+  duration_ms: 1.1471
+  type: 'test'
+  ...
+# Subtest: 页面结构与脚本样式采用同代更新策略
+ok 133 - 页面结构与脚本样式采用同代更新策略
+  ---
+  duration_ms: 0.1446
+  type: 'test'
+  ...
+# Subtest: 生成 opposite 题时答案和候选项完整
+ok 134 - 生成 opposite 题时答案和候选项完整
+  ---
+  duration_ms: 1.8256
+  type: 'test'
+  ...
+# Subtest: 生成 reversed 题时答案和候选项完整
+ok 135 - 生成 reversed 题时答案和候选项完整
+  ---
+  duration_ms: 0.1442
+  type: 'test'
+  ...
+# Subtest: 生成 interlocking 题时答案和候选项完整
+ok 136 - 生成 interlocking 题时答案和候选项完整
+  ---
+  duration_ms: 0.1666
+  type: 'test'
+  ...
+# Subtest: 生成 name 题时答案和候选项完整
+ok 137 - 生成 name 题时答案和候选项完整
+  ---
+  duration_ms: 0.0958
+  type: 'test'
+  ...
+# Subtest: 黄历题生成四个带稳定 id 的候选项
+ok 138 - 黄历题生成四个带稳定 id 的候选项
+  ---
+  duration_ms: 0.3414
+  type: 'test'
+  ...
+# Subtest: 黄历题不足四项时拒绝出题
+ok 139 - 黄历题不足四项时拒绝出题
+  ---
+  duration_ms: 0.101
+  type: 'test'
+  ...
+# Subtest: 黄历正向与反向题均使用同一稳定答案 id
+ok 140 - 黄历正向与反向题均使用同一稳定答案 id
+  ---
+  duration_ms: 0.8443
+  type: 'test'
+  ...
+# Subtest: 统计与错题本可持久化且忽略空 id
+ok 141 - 统计与错题本可持久化且忽略空 id
+  ---
+  duration_ms: 0.9669
+  type: 'test'
+  ...
+# Subtest: 损坏的本地统计和错题数据会安全回退
+ok 142 - 损坏的本地统计和错题数据会安全回退
+  ---
+  duration_ms: 0.3788
+  type: 'test'
+  ...
+# Subtest: 错题回练可指定目标卦，非法结构和写入失败安全回退
+ok 143 - 错题回练可指定目标卦，非法结构和写入失败安全回退
+  ---
+  duration_ms: 0.2697
+  type: 'test'
+  ...
+# Subtest: 研读正文提供同一份目录、暖纸主体和出处边注
+ok 144 - 研读正文提供同一份目录、暖纸主体和出处边注
+  ---
+  duration_ms: 1.9135
+  type: 'test'
+  ...
+# Subtest: 快读的五个入口对应可见章节，目录保留所有原有锚点
+ok 145 - 快读的五个入口对应可见章节，目录保留所有原有锚点
+  ---
+  duration_ms: 0.4025
+  type: 'test'
+  ...
+# Subtest: 六爻正文按初爻至上爻阅读且保留卦象原始画法
+ok 146 - 六爻正文按初爻至上爻阅读且保留卦象原始画法
+  ---
+  duration_ms: 1.2312
+  type: 'test'
+  ...
+# Subtest: 窄屏目录与出处默认折叠，宽屏默认展开
+ok 147 - 窄屏目录与出处默认折叠，宽屏默认展开
+  ---
+  duration_ms: 0.3721
+  type: 'test'
+  ...
+# Subtest: 正文新增的爻位属性不接受注入标记
+ok 148 - 正文新增的爻位属性不接受注入标记
+  ---
+  duration_ms: 0.1828
+  type: 'test'
+  ...
+# Subtest: 阅读正文继续加载与保存原有笔记，并保留关系回调
+ok 149 - 阅读正文继续加载与保存原有笔记，并保留关系回调
+  ---
+  duration_ms: 0.7889
+  type: 'test'
+  ...
+# Subtest: 聚焦和快读不产生正式深读，深读只在有效进入时记录
+ok 150 - 聚焦和快读不产生正式深读，深读只在有效进入时记录
+  ---
+  duration_ms: 3.0407
+  type: 'test'
+  ...
+# Subtest: 逐层返回保留卦码和章节，最后返回全景
+ok 151 - 逐层返回保留卦码和章节，最后返回全景
+  ---
+  duration_ms: 0.1335
+  type: 'test'
+  ...
+# Subtest: 无效编码和章节不污染状态；不同卦重新从概览开始
+ok 152 - 无效编码和章节不污染状态；不同卦重新从概览开始
+  ---
+  duration_ms: 0.3384
+  type: 'test'
+  ...
+# Subtest: 错卦逐爻变化并准确到达目标卦
+ok 153 - 错卦逐爻变化并准确到达目标卦
+  ---
+  duration_ms: 1.3053
+  type: 'test'
+  ...
+# Subtest: 综卦只交换三对爻，不会在后续帧撤销翻转
+ok 154 - 综卦只交换三对爻，不会在后续帧撤销翻转
+  ---
+  duration_ms: 0.2443
+  type: 'test'
+  ...
+# Subtest: 互卦依次组成下卦与上卦
+ok 155 - 互卦依次组成下卦与上卦
+  ---
+  duration_ms: 0.1461
+  type: 'test'
+  ...
+# Subtest: 变卦只生成实际变化的爻，未知关系按变卦处理
+ok 156 - 变卦只生成实际变化的爻，未知关系按变卦处理
+  ---
+  duration_ms: 0.1043
+  type: 'test'
+  ...
+# Subtest: 无变化与非法卦码得到明确结果
+ok 157 - 无变化与非法卦码得到明确结果
+  ---
+  duration_ms: 0.3778
+  type: 'test'
+  ...
+# Subtest: 浮层支持减少动态效果、焦点管理、Esc 与计时器清理
+ok 158 - 浮层支持减少动态效果、焦点管理、Esc 与计时器清理
+  ---
+  duration_ms: 2.329
+  type: 'test'
+  ...
+# Subtest: 卦象关系入口使用原生按钮并保留演示按钮
+ok 159 - 卦象关系入口使用原生按钮并保留演示按钮
+  ---
+  duration_ms: 1.6965
+  type: 'test'
+  ...
+# Subtest: 卦象详情提供稳定页面标题与可同步的六爻折叠按钮
+ok 160 - 卦象详情提供稳定页面标题与可同步的六爻折叠按钮
+  ---
+  duration_ms: 0.6046
+  type: 'test'
+  ...
+# Subtest: 卦象与八卦 SVG 爻线继承当前文字颜色
+ok 161 - 卦象与八卦 SVG 爻线继承当前文字颜色
+  ---
+  duration_ms: 0.1551
+  type: 'test'
+  ...
+# Subtest: 新卡片立即到期并可持久化
+ok 162 - 新卡片立即到期并可持久化
+  ---
+  duration_ms: 2.121
+  type: 'test'
+  ...
+# Subtest: 只有明确加入的卦象才进入新手复习池
+ok 163 - 只有明确加入的卦象才进入新手复习池
+  ---
+  duration_ms: 0.2481
+  type: 'test'
+  ...
+# Subtest: 旧版本批量生成但从未复习的卡片不会继续制造 64 项待办
+ok 164 - 旧版本批量生成但从未复习的卡片不会继续制造 64 项待办
+  ---
+  duration_ms: 0.1566
+  type: 'test'
+  ...
+# Subtest: 记得会提升阶段，忘记会记录失误并回到一天间隔
+ok 165 - 记得会提升阶段，忘记会记录失误并回到一天间隔
+  ---
+  duration_ms: 0.2465
+  type: 'test'
+  ...
+# Subtest: 模糊不会把已学习卡片降为未学习
+ok 166 - 模糊不会把已学习卡片降为未学习
+  ---
+  duration_ms: 0.1954
+  type: 'test'
+  ...
+# Subtest: saveReview 创建并保存卡片
+ok 167 - saveReview 创建并保存卡片
+  ---
+  duration_ms: 0.157
+  type: 'test'
+  ...
+# Subtest: 阶段达到上限后保持封顶
+ok 168 - 阶段达到上限后保持封顶
+  ---
+  duration_ms: 0.1098
+  type: 'test'
+  ...
+# Subtest: 损坏存储回退为空，写入失败不影响内存调度
+ok 169 - 损坏存储回退为空，写入失败不影响内存调度
+  ---
+  duration_ms: 0.2199
+  type: 'test'
+  ...
+# Subtest: 结构不完整的复习数据会回退为空
+ok 170 - 结构不完整的复习数据会回退为空
+  ---
+  duration_ms: 0.3244
+  type: 'test'
+  ...
+# Subtest: 搜索选择支持循环方向键与首尾跳转
+ok 171 - 搜索选择支持循环方向键与首尾跳转
+  ---
+  duration_ms: 1.5929
+  type: 'test'
+  ...
+# Subtest: 深链接只接受六位阴阳码并保留其他参数
+ok 172 - 深链接只接受六位阴阳码并保留其他参数
+  ---
+  duration_ms: 0.5621
+  type: 'test'
+  ...
+# Subtest: 卦象详情与课程锚点不会残留在彼此的阅读场景
+ok 173 - 卦象详情与课程锚点不会残留在彼此的阅读场景
+  ---
+  duration_ms: 0.1209
+  type: 'test'
+  ...
+# Subtest: 分享卡片模型保持卦爻自上而下的视觉顺序
+ok 174 - 分享卡片模型保持卦爻自上而下的视觉顺序
+  ---
+  duration_ms: 2.2244
+  type: 'test'
+  ...
+# Subtest: 长文按画布宽度换行并在超出行数时省略
+ok 175 - 长文按画布宽度换行并在超出行数时省略
+  ---
+  duration_ms: 0.1865
+  type: 'test'
+  ...
+# Subtest: 支持文件分享时发送 PNG 文件
+ok 176 - 支持文件分享时发送 PNG 文件
+  ---
+  duration_ms: 0.2223
+  type: 'test'
+  ...
+# Subtest: 不支持文件分享时下载 PNG
+ok 177 - 不支持文件分享时下载 PNG
+  ---
+  duration_ms: 2.4836
+  type: 'test'
+  ...
+# Subtest: 背景星点密度可复现且随银河云尘变化，暗尘中保留疏空
+ok 178 - 背景星点密度可复现且随银河云尘变化，暗尘中保留疏空
+  ---
+  duration_ms: 2.2103
+  type: 'test'
+  ...
+# Subtest: 银河纹理可重复生成，调整窗口不会随机更换星空
+ok 179 - 银河纹理可重复生成，调整窗口不会随机更换星空
+  ---
+  duration_ms: 54.278
+  type: 'test'
+  ...
+# Subtest: 大屏和长屏的背景纹理有固定像素预算并保持比例
+ok 180 - 大屏和长屏的背景纹理有固定像素预算并保持比例
+  ---
+  duration_ms: 180.1783
+  type: 'test'
+  ...
+# Subtest: 银河保留暗部与亮尘带，所有像素不透明且亮度低于卦星
+ok 181 - 银河保留暗部与亮尘带，所有像素不透明且亮度低于卦星
+  ---
+  duration_ms: 25.7167
+  type: 'test'
+  ...
+# Subtest: 尚未完成布局或非法尺寸不生成无效画布
+ok 182 - 尚未完成布局或非法尺寸不生成无效画布
+  ---
+  duration_ms: 1.2243
+  type: 'test'
+  ...
+# Subtest: 卦名与关键词共享 7px 间距，当前卦优先并尝试候选位置
+ok 183 - 卦名与关键词共享 7px 间距，当前卦优先并尝试候选位置
+  ---
+  duration_ms: 2.2586
+  type: 'test'
+  ...
+# Subtest: 长词与强制地标没有可用空间时隐藏，避免边缘裁切和强制叠字
+ok 184 - 长词与强制地标没有可用空间时隐藏，避免边缘裁切和强制叠字
+  ---
+  duration_ms: 0.6966
+  type: 'test'
+  ...
+# Subtest: 同优先级按稳定标识排序，文字尺寸按字体与文本缓存
+ok 185 - 同优先级按稳定标识排序，文字尺寸按字体与文本缓存
+  ---
+  duration_ms: 7.4824
+  type: 'test'
+  ...
+# Subtest: 易象银河按下卦形成八个星团，并以八纯卦作为团内锚点
+ok 186 - 易象银河按下卦形成八个星团，并以八纯卦作为团内锚点
+  ---
+  duration_ms: 1.0961
+  type: 'test'
+  ...
+# Subtest: 每卦生成六颗自下而上且阴阳可辨的爻星
+ok 187 - 每卦生成六颗自下而上且阴阳可辨的爻星
+  ---
+  duration_ms: 0.8141
+  type: 'test'
+  ...
+# Subtest: 八宫每宫八卦且完整覆盖六十四卦
+ok 188 - 八宫每宫八卦且完整覆盖六十四卦
+  ---
+  duration_ms: 1.1148
+  type: 'test'
+  ...
+# Subtest: 十二消息卦保持复至乾、姤至坤的消长次序与常见月令
+ok 189 - 十二消息卦保持复至乾、姤至坤的消长次序与常见月令
+  ---
+  duration_ms: 0.1038
+  type: 'test'
+  ...
+# Subtest: 先天视图仅显示八纯卦并采用南上东左的传统图式方向
+ok 190 - 先天视图仅显示八纯卦并采用南上东左的传统图式方向
+  ---
+  duration_ms: 0.1742
+  type: 'test'
+  ...
+# Subtest: 文王卦序与八宫布局覆盖六十四卦并保留可解释分组
+ok 191 - 文王卦序与八宫布局覆盖六十四卦并保留可解释分组
+  ---
+  duration_ms: 0.3397
+  type: 'test'
+  ...
+# Subtest: 十二消息视图只显示十二卦，未知布局安全回退易象银河
+ok 192 - 十二消息视图只显示十二卦，未知布局安全回退易象银河
+  ---
+  duration_ms: 0.2398
+  type: 'test'
+  ...
+# Subtest: Canvas 提供等价文字关系列表和实时状态，不误报浏览器不支持
+ok 193 - Canvas 提供等价文字关系列表和实时状态，不误报浏览器不支持
+  ---
+  duration_ms: 0.8671
+  type: 'test'
+  ...
+# Subtest: 星图提供五种明确标注来源的阅读图式
+ok 194 - 星图提供五种明确标注来源的阅读图式
+  ---
+  duration_ms: 0.1793
+  type: 'test'
+  ...
+# Subtest: 移动端六个导航入口采用紧凑单行并保留触控高度
+ok 195 - 移动端六个导航入口采用紧凑单行并保留触控高度
+  ---
+  duration_ms: 0.1687
+  type: 'test'
+  ...
+# Subtest: 两帧之间模拟推进时，星点命中与悬浮位置仍跟随最后绘制坐标
+ok 196 - 两帧之间模拟推进时，星点命中与悬浮位置仍跟随最后绘制坐标
+  ---
+  duration_ms: 1.5326
+  type: 'test'
+  ...
+# Subtest: Canvas尺寸改变清屏时失效旧星点投影，避免在旧位置命中
+ok 197 - Canvas尺寸改变清屏时失效旧星点投影，避免在旧位置命中
+  ---
+  duration_ms: 0.1932
+  type: 'test'
+  ...
+# Subtest: 星空背景在镜头转动和减少动态效果时始终使用有效绘制坐标
+ok 198 - 星空背景在镜头转动和减少动态效果时始终使用有效绘制坐标
+  ---
+  duration_ms: 1.3128
+  type: 'test'
+  ...
+# Subtest: 星图空闲时降到 30 FPS，交互或相机移动时恢复 60 FPS
+ok 199 - 星图空闲时降到 30 FPS，交互或相机移动时恢复 60 FPS
+  ---
+  duration_ms: 0.0939
+  type: 'test'
+  ...
+# Subtest: 功能工作区把背景星图降到 15 FPS
+ok 200 - 功能工作区把背景星图降到 15 FPS
+  ---
+  duration_ms: 0.0565
+  type: 'test'
+  ...
+# Subtest: 减少动态效果偏好固定使用低帧率
+ok 201 - 减少动态效果偏好固定使用低帧率
+  ---
+  duration_ms: 0.0567
+  type: 'test'
+  ...
+# Subtest: 关系能量包循环前进并保持三段错峰
+ok 202 - 关系能量包循环前进并保持三段错峰
+  ---
+  duration_ms: 0.1091
+  type: 'test'
+  ...
+# Subtest: 关键词按焦点、关系和纯卦语义逐层展开
+ok 203 - 关键词按焦点、关系和纯卦语义逐层展开
+  ---
+  duration_ms: 0.1352
+  type: 'test'
+  ...
+# Subtest: 视角读数把缩放层级和球面姿态转换为稳定的五度刻度
+ok 204 - 视角读数把缩放层级和球面姿态转换为稳定的五度刻度
+  ---
+  duration_ms: 0.2025
+  type: 'test'
+  ...
+# Subtest: 四态观察层级由缩放、焦点和详情阅读状态共同决定
+ok 205 - 四态观察层级由缩放、焦点和详情阅读状态共同决定
+  ---
+  duration_ms: 0.0839
+  type: 'test'
+  ...
+# Subtest: 页面可见性恢复不会覆盖业务层暂停
+ok 206 - 页面可见性恢复不会覆盖业务层暂停
+  ---
+  duration_ms: 0.2202
+  type: 'test'
+  ...
+# Subtest: 减少动态时初始 D3 布局直接落在目标位置并停止模拟
+ok 207 - 减少动态时初始 D3 布局直接落在目标位置并停止模拟
+  ---
+  duration_ms: 67.1988
+  type: 'test'
+  ...
+# Subtest: 减少动态时切图、resize 与 resume 不重启 D3，焦点相机随新目标同步
+ok 208 - 减少动态时切图、resize 与 resume 不重启 D3，焦点相机随新目标同步
+  ---
+  duration_ms: 0.8511
+  type: 'test'
+  ...
+# Subtest: 动态偏好切换立即稳定节点，业务暂停期间取消减少动态也不重启
+ok 209 - 动态偏好切换立即稳定节点，业务暂停期间取消减少动态也不重启
+  ---
+  duration_ms: 0.4433
+  type: 'test'
+  ...
+# Subtest: 星图把可见星群的中心、包围半径和镜头姿态同步给 WebGL 外轨
+ok 210 - 星图把可见星群的中心、包围半径和镜头姿态同步给 WebGL 外轨
+  ---
+  duration_ms: 0.3198
+  type: 'test'
+  ...
+# Subtest: 星图尺寸变化时同步缩放当前焦点相机，避免面板开合后坐标漂移
+ok 211 - 星图尺寸变化时同步缩放当前焦点相机，避免面板开合后坐标漂移
+  ---
+  duration_ms: 0.1884
+  type: 'test'
+  ...
+# Subtest: 关系漫游只保留最近 5 段轨迹
+ok 212 - 关系漫游只保留最近 5 段轨迹
+  ---
+  duration_ms: 0.1541
+  type: 'test'
+  ...
+# Subtest: 星图关系层只显示当前有向关系，变卦必须指定动爻
+ok 213 - 星图关系层只显示当前有向关系，变卦必须指定动爻
+  ---
+  duration_ms: 0.3102
+  type: 'test'
+  ...
+# Subtest: 普通卦名使用实测宽度防碰撞，并优先保留重要标签
+ok 214 - 普通卦名使用实测宽度防碰撞，并优先保留重要标签
+  ---
+  duration_ms: 0.4017
+  type: 'test'
+  ...
+# Subtest: 悬停、焦点和八纯卦标签通过换位避免强制叠字
+ok 215 - 悬停、焦点和八纯卦标签通过换位避免强制叠字
+  ---
+  duration_ms: 0.3339
+  type: 'test'
+  ...
+# Subtest: 入场每会话一次且减少动态时直接呈现
+ok 216 - 入场每会话一次且减少动态时直接呈现
+  ---
+  duration_ms: 0.1117
+  type: 'test'
+  ...
+# Subtest: 星核上按下不选卦，抬起才确认，拖动超过 6px 或取消不误选
+ok 217 - 星核上按下不选卦，抬起才确认，拖动超过 6px 或取消不误选
+  ---
+  duration_ms: 0.9973
+  type: 'test'
+  ...
+# Subtest: 视角快照深复制镜头、焦点、关系、图式与自动巡天
+ok 218 - 视角快照深复制镜头、焦点、关系、图式与自动巡天
+  ---
+  duration_ms: 1.5697
+  type: 'test'
+  ...
+# Subtest: 快读与全景尺寸变化后恢复镜头按空间半径换算
+ok 219 - 快读与全景尺寸变化后恢复镜头按空间半径换算
+  ---
+  duration_ms: 0.2112
+  type: 'test'
+  ...
+# Subtest: 聚焦镜头在 450ms 完成，减少动态立即完成
+ok 220 - 聚焦镜头在 450ms 完成，减少动态立即完成
+  ---
+  duration_ms: 0.1437
+  type: 'test'
+  ...
+# Subtest: 卦名和关键词共用布局，当前最多三词、关系最多一词
+ok 221 - 卦名和关键词共用布局，当前最多三词、关系最多一词
+  ---
+  duration_ms: 0.4106
+  type: 'test'
+  ...
+# Subtest: 标签布局在 100ms 内复用，焦点或视口显著变化时立即更新
+ok 222 - 标签布局在 100ms 内复用，焦点或视口显著变化时立即更新
+  ---
+  duration_ms: 0.305
+  type: 'test'
+  ...
+# Subtest: 焦点标签不受入场标签延迟影响
+ok 223 - 焦点标签不受入场标签延迟影响
+  ---
+  duration_ms: 0.1356
+  type: 'test'
+  ...
+# Subtest: 经典图式总览只常驻结构地标，选卦后展开当前关系节点
+ok 224 - 经典图式总览只常驻结构地标，选卦后展开当前关系节点
+  ---
+  duration_ms: 0.199
+  type: 'test'
+  ...
+# Subtest: 普通卦名碰撞框保持 7px 屏幕间距
+ok 225 - 普通卦名碰撞框保持 7px 屏幕间距
+  ---
+  duration_ms: 5.7567
+  type: 'test'
+  ...
+# Subtest: 相同重要度的碰撞标签优先保留前景卦名
+ok 226 - 相同重要度的碰撞标签优先保留前景卦名
+  ---
+  duration_ms: 0.2111
+  type: 'test'
+  ...
+# ✓ 节点数=4
+# ✓ 边数>=1
+# ✓ 乾→坤存在错卦边
+# ✓ 乾→坤边含 opposite 类型
+# ✓ 泰→否至少1条边
+# ✓ 节点含 degree
+# ✓ 111000—000111 保留多重关系
+# ✓ 111000→000111 保留有向关系
+# ✓ 011001—100110 保留多重关系
+# ✓ 011001→100110 保留有向关系
+# ✓ 001011—110100 保留多重关系
+# ✓ 001011→110100 保留有向关系
+# ✓ 101010—010101 保留多重关系
+# ✓ 101010→010101 保留有向关系
+# ✓ 变卦关系保存具体动爻条件
+# ✓ 互卦作为有向发生记录保留起点和终点
+# 全部通过
+# Subtest: web\\test\\star-relations.test.mjs
+ok 47 - web\\test\\star-relations.test.mjs
+  ---
+  duration_ms: 218.7889
+  type: 'test'
+  ...
+# Subtest: 安全 JSON 读写、删除和结构判断
+ok 228 - 安全 JSON 读写、删除和结构判断
+  ---
+  duration_ms: 2.0473
+  type: 'test'
+  ...
+# Subtest: 损坏、类型不符、无存储和异常均安全回退
+ok 229 - 损坏、类型不符、无存储和异常均安全回退
+  ---
+  duration_ms: 0.2221
+  type: 'test'
+  ...
+# Subtest: localStorage getter 被浏览器拒绝时也安全降级
+ok 230 - localStorage getter 被浏览器拒绝时也安全降级
+  ---
+  duration_ms: 0.1134
+  type: 'test'
+  ...
+# Subtest: 界面、阅读与标题使用分工明确的中文字体栈
+ok 231 - 界面、阅读与标题使用分工明确的中文字体栈
+  ---
+  duration_ms: 1.0056
+  type: 'test'
+  ...
+# Subtest: 全站字号建立 15px 硬底线并按层级递增
+ok 232 - 全站字号建立 15px 硬底线并按层级递增
+  ---
+  duration_ms: 0.548
+  type: 'test'
+  ...
+# Subtest: 中文短语按控件原子、均衡标题和正文三层处理换行
+ok 233 - 中文短语按控件原子、均衡标题和正文三层处理换行
+  ---
+  duration_ms: 0.9947
+  type: 'test'
+  ...
+# Subtest: 卦名复合标题在详情、分享、占筮和复习中使用同一不可拆分结构
+ok 234 - 卦名复合标题在详情、分享、占筮和复习中使用同一不可拆分结构
+  ---
+  duration_ms: 0.5729
+  type: 'test'
+  ...
+# Subtest: 详情、研读笺和辅助说明不再以裁切或横向滑动隐藏文本
+ok 235 - 详情、研读笺和辅助说明不再以裁切或横向滑动隐藏文本
+  ---
+  duration_ms: 0.5528
+  type: 'test'
+  ...
+# Subtest: Canvas 经典图式标签和图式说明具有清晰的字号下限
+ok 236 - Canvas 经典图式标签和图式说明具有清晰的字号下限
+  ---
+  duration_ms: 0.2318
+  type: 'test'
+  ...
+# Subtest: 卦序轮盘仅显示当前扇区，避免 64 个放大标签互相覆盖
+ok 237 - 卦序轮盘仅显示当前扇区，避免 64 个放大标签互相覆盖
+  ---
+  duration_ms: 1.3566
+  type: 'test'
+  ...
+# Subtest: 本地 Lucide 图标只创建白名单 SVG，默认从辅助技术中隐藏
+ok 238 - 本地 Lucide 图标只创建白名单 SVG，默认从辅助技术中隐藏
+  ---
+  duration_ms: 2.3627
+  type: 'test'
+  ...
+# Subtest: 图标安装可重复调用，切换图标时只更新图形而保留宿主及按钮语义
+ok 239 - 图标安装可重复调用，切换图标时只更新图形而保留宿主及按钮语义
+  ---
+  duration_ms: 0.2965
+  type: 'test'
+  ...
+# Subtest: 导出仅包含项目数据并可重新导入
+ok 240 - 导出仅包含项目数据并可重新导入
+  ---
+  duration_ms: 2.5899
+  type: 'test'
+  ...
+# Subtest: 解析会拒绝损坏、超限或未知版本的备份
+ok 241 - 解析会拒绝损坏、超限或未知版本的备份
+  ---
+  duration_ms: 1.0306
+  type: 'test'
+  ...
+# Subtest: 导入忽略未知键并按 null 删除已知键
+ok 242 - 导入忽略未知键并按 null 删除已知键
+  ---
+  duration_ms: 0.783
+  type: 'test'
+  ...
+# Subtest: 坏复习卡在写入前被拒绝且不会覆盖旧数据
+ok 243 - 坏复习卡在写入前被拒绝且不会覆盖旧数据
+  ---
+  duration_ms: 0.2064
+  type: 'test'
+  ...
+# Subtest: 通用备份包含成就状态并可完整往返
+ok 244 - 通用备份包含成就状态并可完整往返
+  ---
+  duration_ms: 0.2423
+  type: 'test'
+  ...
+1..244
+# tests 244
+# suites 0
+# pass 244
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2775.2878
+# start of coverage report
+# -------------------------------------------------------------------------------
+# file                           | line % | branch % | funcs % | uncovered lines
+# -------------------------------------------------------------------------------
+# web                            |        |          |         | 
+#  js                            |        |          |         | 
+#   achievement-catalog.js       | 100.00 |   100.00 |  100.00 | 
+#   achievement-engine.js        | 100.00 |    94.03 |  100.00 | 
+#   achievement-storage.js       | 100.00 |    94.44 |   90.00 | 
+#   data-loader.js               |  98.68 |    96.23 |   95.83 | 100-101
+#   divination-engine.js         | 100.00 |    98.33 |  100.00 | 
+#   divination-history.js        | 100.00 |    93.02 |  100.00 | 
+#   divination-interpretation.js |  99.01 |    81.58 |  100.00 | 19
+#   evolution-state.js           | 100.00 |   100.00 |  100.00 | 
+#   guaxu-wheel.js               | 100.00 |   100.00 |  100.00 | 
+#   hexagram-utils.js            | 100.00 |   100.00 |  100.00 | 
+#   learning-assessment.js       | 100.00 |    76.19 |  100.00 | 
+#   learning-curriculum.js       |  98.76 |    86.00 |   98.04 | 209 218-219
+#   learning-progress.js         | 100.00 |    87.06 |  100.00 | 
+#   learning-review.js           | 100.00 |    88.24 |   90.00 | 
+#   meihua-engine.js             | 100.00 |   100.00 |  100.00 | 
+#   quiz-engine.js               | 100.00 |    85.71 |  100.00 | 
+#   review-engine.js             | 100.00 |    92.31 |  100.00 | 
+#   search-controller.js         | 100.00 |    96.15 |  100.00 | 
+#   star-relations.js            | 100.00 |    80.49 |  100.00 | 
+#   storage.js                   | 100.00 |   100.00 |  100.00 | 
+# -------------------------------------------------------------------------------
+# all files                      |  99.77 |    91.12 |   98.89 | 
+# -------------------------------------------------------------------------------
+# end of coverage report

@@ -2,7 +2,7 @@
 
 日期：2026-10-24（Asia/Shanghai）。返回 [开发建设总册](../DEVELOPMENT-MASTER.md)。
 
-需求状态：质量门禁已确认。实现状态：自动回归已实现、真实交互与外部验收部分实现。验证状态：validate 本轮通过；E2E 已有失败，当前精确结果以 [持久记录](evidence/2026-10-24-validation.md) 为准。
+需求状态：质量门禁已确认。实现状态：自动回归已实现、真实交互与外部验收部分实现。首次建档 E2E 失败保留在 [持久记录](evidence/2026-10-24-validation.md)；后续实施已取得本机完整流程通过，最新命令、范围与剩余限制见 [本轮实施交接](evidence/2026-10-24-implementation-progress.md)。
 
 ## 1. 如何判断“通过”
 
@@ -20,7 +20,7 @@
 | 截图 | 指定状态的视觉结果 | 隐藏状态、业务副作用和数据恢复 |
 | 内容结构校验 | 字段、覆盖、来源引用与门禁 | 原典文字已经底本双校 |
 
-“测试全部通过”必须带命令和范围。此刻浏览器门禁未关闭，不能对产品使用该表述。
+“测试全部通过”必须带命令和范围。指定 Chromium 的完整流程通过不能替代全部浏览器、设备和内容验收；不得据此称产品全面优化完成。
 
 ## 2. 环境和工作目录
 
@@ -54,6 +54,8 @@ git diff --check
 | npm run validate | checks + 57 脚本 + coverage | 不包含真实浏览器 E2E、真机、读屏、Windows 构建 |
 | npm run test:e2e | 隔离 Chromium、CDP 输入、五视口、历史/草稿/离线/降级等 | 当前存在失败；不能只保留一次偶然成功 |
 | npm run build:windows / npm run test:windows | 本地 SEA 构建及启动验证 | 本次文档任务未重建或实跑 |
+
+上表脚本数与 230 项覆盖率是首次建档快照。后续新增 `divination-replay.test.mjs` 等回归后，最终 validate 为 58 个脚本、244 项 TAP 子测试全部通过；配置的 20 模块集合覆盖率行 99.77%、分支 91.12%、函数 98.89%。这不是全项目全部代码覆盖率。
 | npm --prefix promo-video run typecheck | 宣传工程 TS 检查 | 本次文档任务未运行；不属于网页 validate |
 
 20 个 coverage 模块：achievement-catalog、achievement-engine、achievement-storage、data-loader、guaxu-wheel、divination-engine、divination-interpretation、divination-history、evolution-state、hexagram-utils、learning-assessment、learning-curriculum、learning-progress、learning-review、meihua-engine、quiz-engine、review-engine、search-controller、star-relations、storage。
