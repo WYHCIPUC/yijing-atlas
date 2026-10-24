@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-25",
+  "head": "995dd2c2befccdc0cab38300101a9efa857c021c",
+  "runtime": "Node.js v24.19.0 (existing bundled runtime; no global configuration change)",
+  "scope": "Read-only checks of preserved unfinished T-LEARN-01 work; summaries, not raw logs.",
+  "checks": [
+    {
+      "command": "node --test web/test/learning-progress.test.mjs web/test/user-data.test.mjs",
+      "exitCode": 0,
+      "tests": 47,
+      "passed": 47,
+      "failed": 0
+    },
+    {
+      "command": "node --test web/test/learning-recommendation.test.mjs",
+      "exitCode": 1,
+      "tests": 13,
+      "passed": 0,
+      "failed": 13,
+      "reason": "recommendLearningTask is undefined; all tests stop at API existence assertion"
+    },
+    {
+      "command": "node --input-type=module -e \"import('./web/js/modes/learning-mode.js')\"",
+      "exitCode": 1,
+      "reason": "SyntaxError: ../learning-assessment.js does not provide an export named recommendLearningTask"
+    }
+  ],
+  "github": {
+    "run": {
+      "workflow_runs": [
+        {
+          "id": 40130504986,
+          "name": "Quality",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 106,
+          "jobs_url": "https://api.github.com/repos/WYHCIPUC/yijing-atlas/actions/runs/40130504986/jobs",
+          "logs_url": "https://api.github.com/repos/WYHCIPUC/yijing-atlas/actions/runs/40130504986/logs",
+          "workflow_id": 328994550
+        }
+      ]
+    },
+    "jobs": {
+      "jobs": [
+        {
+          "id": 120981011970,
+          "name": "validate",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 40130504986,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Set up Node.js",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Validate repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Browser smoke test",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Post Set up Node.js",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            },
+            {
+              "name": "Post Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11
+            }
+          ]
+        }
+      ]
+    },
+    "pr": {
+      "number": 10,
+      "head": "995dd2c2befccdc0cab38300101a9efa857c021c",
+      "draft": true,
+      "merged": false
+    }
+  }
+}

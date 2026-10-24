@@ -38,4 +38,12 @@
 
 ## 最终验收与交接
 
-进行中：本机专项、完整E2E和源哈希核对已具备；最终整合差异审阅、源码及完整证据提交、整卡交接仍待完成。用户本次要求盘点与目标文字，本轮只更新对应事实，不继续业务开发或关闭T-LEARN-02。GitHub上的文档进度同步不代表未提交业务代码已推送。
+**完成：2026-10-25，本地交付。** 业务、回归、专项探针、历次失败及通过记录、纯集成工具和25张完整E2E截图已提交`995dd2c2befccdc0cab38300101a9efa857c021c`并推送`codex/immersive-astrolabe-progress`。应用与测试文件和最终验收快照一致；整合时只去掉纯集成辅助脚本末尾多余空行，语法检查通过。最终暂存diff检查通过。
+
+独立审阅分别覆盖UI/导航与数据/题库，均未发现阻断。额外隔离纯函数核对覆盖真实820题ID唯一、25课75次必选原题、50次错答/纠正提交、重复提交零额外写入和备份往返；该复核不替代上面的真实输入证据。未删除旧失败、未修改判分/调度或内容门禁。
+
+完整源与截图随业务提交可携带；原validate文本的无损gzip见[最终日志](2026-10-25-course-weak-final-validate.log.gz)，旧359项日志见[历史日志](2026-10-25-course-weak-validate.log.gz)，完整E2E见[原始日志](2026-10-25-course-weak-final-e2e.log.gz)，专项见[最终trace](2026-10-25-course-weak-input/2026-10-24T20-26-29-527Z/trace.json)，25课管线见[机器报告](2026-10-25-course-weak-pipeline.json)。工作区保留未跟踪的原始解压日志，不能据此称工作区完全干净。
+
+T-LEARN-02关闭后原48卡完成5项，剩43项（32已确认、10建议、1独立发布）。后继T-LEARN-01继续推荐与位置恢复，T-QUIZ-01处理自由测验具体错题与黄历术语；课程回练完成不替代这些任务。已实际核对`995dd2c`的[PR Quality 40130504986](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40130504986) completed/success，job 120981011970的Validate repository和Browser smoke test均success。该结果不覆盖随后尚未整合的T-LEARN-01草稿。没有合并main、发布Pages/Release或重建Windows包。
+
+回滚仅针对本卡实现提交；保留原学习记录和备份，不删除新弱项。旧界面仍能忽略可选weakQuestions，但不具备新队列能力。资料失效仍回课程，源未校勘状态继续可见。外部真机、读屏、真实200%、完整性能和Windows边界见上一节，不随本卡关闭。

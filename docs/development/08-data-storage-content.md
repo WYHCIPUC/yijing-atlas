@@ -234,7 +234,7 @@ bestScore 为课后小试最好正确率；浏览并不等于小试通过。
 
 **2026-10-25后续增量，代码25fa12a**：§7.1的正式`processedAssessmentIds`契约已实现。旧数据缺字段合法；新写入/导入要求唯一字符串数组，每项≤120字符且去除首尾空白后非空，非法项报告字段路径；不会主动改写已有ID。加载坏ID字段时保留原有效成绩，新保存仍严格校验；合法辅助receipt的真实session ID可在内存合并，不自动落盘。正式ID判重优先，缺少或类型/课程不匹配的receipt不重复计分，也不补造成绩与成就；成绩、ID及receipt在同次存储写入，ID不随80条历史截断。回归及[真实输入专项9/9](evidence/2026-10-25-assessment-session-browser.md)与[整合验收](evidence/2026-10-25-contract-input-integration.md)已完成，T-LEARN-05关闭。长期容量仍归T-CAPACITY-01，不将本次幂等修复写成容量验收。
 
-**2026-10-25 本轮工作区增量，T-LEARN-02 完整验收待完成**：课程弱项的字段校验、只读查询、交卷入队/纠正、坏字段读取保护、导入路径错误和备份往返已经实现。`lesson/spot/exam` 新会话把成绩、正式 ID、辅助凭据和弱项变化保存到同一个键，一次写入成功才算保存。数据层限定回归已通过；页面、真实交互及整卡验收不能由该结果替代，详见 §7.1。
+**2026-10-25课程弱项交付，代码995dd2c**：课程弱项的字段校验、只读查询、交卷入队/纠正、坏字段读取保护、导入路径错误和备份往返已经实现。`lesson/spot/exam`新会话把成绩、正式ID、辅助凭据和弱项变化保存到同一个键，一次写入成功才算保存。后续页面、真实交互、完整E2E与独立审阅也已完成，T-LEARN-02本地交付关闭，业务与完整证据已推送；数据回归仍只证明其限定范围，详见§7.1及[课程错题交接](evidence/2026-10-25-course-weak-integration.md)。
 
 掌握度当前权重为浏览10、小试35、抽查20、复讲15、阶段20。
 自评与智能评阅都形成复讲证据，不存在靠成绩锁课的机制。
@@ -314,13 +314,15 @@ true 课程得到 `viewedAt:new Date(0).toISOString()`，不生成虚构的最�
 
 | 字段 | 类型/约束 | 实现与验证边界 |
 | --- | --- | --- |
-| resume | null 或位置对象，缺失视 null | 已确认；仍待 T-LEARN-01 实施，本轮不写入、不宣称恢复能力已完成 |
+| resume | null 或位置对象，缺失视 null | 已确认；T-LEARN-01未提交数据草稿已有校验/保存/备份，相关47/47；推荐接口与页面完整集成未完成，不宣称恢复流程已通过 |
 | processedAssessmentIds | 唯一非空字符串数组，每项最长120字符；缺失合法 | 已实现；T-LEARN-05 的既有验证见 §6.2，不随80条历史截断；长期容量仍待 T-CAPACITY-01 |
-| weakQuestions | 以 questionId 为键的对象，缺失合法、查询视空 | 已确认；本轮课程数据契约已实现并通过限定回归，T-LEARN-02 完整验收待完成；自由测验等其他来源的生产入口仍属于后续任务 |
+| weakQuestions | 以 questionId 为键的对象，缺失合法、查询视空 | 已确认；课程数据契约、页面和原题回练已完成，T-LEARN-02本地交付及源码/证据推送完成；自由测验等其他来源的业务入口仍属于后续任务 |
 
-#### 7.1.1 resume：尚待实施的原规格
+#### 7.1.1 resume：原规格与当前未提交实现
 
-lessonId 为现有课程 ID；section 为 intro/observe/read/explain/apply/practice 之一，对应引/观/读/解/用/试；scrollTop 为 0 到 10,000,000 的有限非负数；updatedAt 为可解析 ISO 时间。目标行为仍是：无效位置不清学习成绩，回今日修习并提示；不自动存正文、选项或复讲自由文本。本轮弱项实现不代表这些读写及恢复行为已经具备。
+lessonId 为现有课程 ID；section 为 intro/observe/read/explain/apply/practice 之一，对应引/观/读/解/用/试；scrollTop 为 0 到 10,000,000 的有限非负数；updatedAt 为可解析 ISO 时间。目标行为仍是：无效位置不清学习成绩，回今日修习并提示；不自动存正文、选项或复讲自由文本。
+
+当前未提交草稿已有`getLearningResumeError`和`saveLearningResume`，只保存上述位置字段。同课新普通小试成功保存时原子清除位置，重复旧会话、跨课、抽查和阶段考评不清除；写失败不改盘上数据。2026-10-25复核数据相关47/47。页面草稿仍缺推荐导出与主模式集成，不能把数据通过写成完整续读可用。完整边界及文件见[最新盘点证据](evidence/2026-10-25-remaining-work-current-snapshot.md)。
 
 #### 7.1.2 weakQuestions：已实现字段校验
 
@@ -376,7 +378,7 @@ lessonId 为现有课程 ID；section 为 intro/observe/read/explain/apply/pract
 
 2026-10-25 使用现有 Node 24.19.0 执行 `node --test web/test/learning-progress.test.mjs web/test/user-data.test.mjs`：初始 34 项为 26 通过/8 失败，最小实现转绿；补齐同题、整数边界及新课程归属回归后最终 38/38 通过。对应两份源码与两份测试的语法检查、限定 `git diff --check` 均通过（Git 仅提示 LF/CRLF 转换）。测试位于 [learning-progress.test.mjs](../../web/test/learning-progress.test.mjs)、[user-data.test.mjs](../../web/test/user-data.test.mjs)。
 
-这些证据覆盖数据层的入队/纠正/再错、旧 ID/receipt 不补造、版本与引用保留、失败重试、80条截断后判重、坏字段读取保护、导入路径拒绝、备份往返和写失败回滚。数据层结果本身不是页面真实输入、浏览器、全量发布门禁或长期容量的通过证据。后续课程版本validate370/370、真实专项6/6与完整E2E已有通过记录，见[最新盘点](evidence/2026-10-25-remaining-work-acceptance-refresh.md)；T-LEARN-02仍待最终审阅、源码提交和交接。resume、自由测验证据、长期容量及更广的备份深校验仍按原任务分别推进。实施设计和未覆盖事项见 [课程弱项设计记录](evidence/2026-10-25-course-weak-questions-design.md)。
+这些证据覆盖数据层的入队/纠正/再错、旧 ID/receipt 不补造、版本与引用保留、失败重试、80条截断后判重、坏字段读取保护、导入路径拒绝、备份往返和写失败回滚。数据层结果本身不是页面真实输入、浏览器、全量发布门禁或长期容量的通过证据。后续课程版本已完成validate370/370、真实专项6/6、完整五视口E2E25图，以及独立数据/UI审阅；源码和完整证据已提交并推送`995dd2c`，T-LEARN-02本地交付完成，见[课程错题交接](evidence/2026-10-25-course-weak-integration.md)。[995dd2c的PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40130504986)已核对success（validate与Browser smoke均成功），仅覆盖已提交版本；真机、读屏和真实200%仍按外部验收保留。resume、自由测验证据、长期容量及更广的备份深校验仍按原任务分别推进，不能随课程卡关闭。实施设计和原始未覆盖事项见[课程弱项设计记录](evidence/2026-10-25-course-weak-questions-design.md)，当时未实施状态保留为历史。
 
 **任务关联**：[T-LEARN-02](12-ai-execution-tasks.md#t-learn-02)、[T-LEARN-01](12-ai-execution-tasks.md#t-learn-01)、[T-QUIZ-01](12-ai-execution-tasks.md#t-quiz-01)。
 
