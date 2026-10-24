@@ -314,7 +314,7 @@ true 课程得到 `viewedAt:new Date(0).toISOString()`，不生成虚构的最�
 
 | 字段 | 类型/约束 | 实现与验证边界 |
 | --- | --- | --- |
-| resume | null 或位置对象，缺失视 null | 已确认；T-LEARN-01未提交数据草稿已有校验/保存/备份，相关47/47；推荐接口与页面完整集成未完成，不宣称恢复流程已通过 |
+| resume | null 或位置对象，缺失视 null | 已确认；T-LEARN-01未提交实现已有校验/保存/备份及推荐入口，数据历史47/47；当前相关回归108/108，保存反馈修复后的完整浏览器及全量验收仍缺 |
 | processedAssessmentIds | 唯一非空字符串数组，每项最长120字符；缺失合法 | 已实现；T-LEARN-05 的既有验证见 §6.2，不随80条历史截断；长期容量仍待 T-CAPACITY-01 |
 | weakQuestions | 以 questionId 为键的对象，缺失合法、查询视空 | 已确认；课程数据契约、页面和原题回练已完成，T-LEARN-02本地交付及源码/证据推送完成；自由测验等其他来源的业务入口仍属于后续任务 |
 
@@ -322,7 +322,7 @@ true 课程得到 `viewedAt:new Date(0).toISOString()`，不生成虚构的最�
 
 lessonId 为现有课程 ID；section 为 intro/observe/read/explain/apply/practice 之一，对应引/观/读/解/用/试；scrollTop 为 0 到 10,000,000 的有限非负数；updatedAt 为可解析 ISO 时间。目标行为仍是：无效位置不清学习成绩，回今日修习并提示；不自动存正文、选项或复讲自由文本。
 
-当前未提交草稿已有`getLearningResumeError`和`saveLearningResume`，只保存上述位置字段。同课新普通小试成功保存时原子清除位置，重复旧会话、跨课、抽查和阶段考评不清除；写失败不改盘上数据。2026-10-25复核数据相关47/47。页面草稿仍缺推荐导出与主模式集成，不能把数据通过写成完整续读可用。完整边界及文件见[最新盘点证据](evidence/2026-10-25-remaining-work-current-snapshot.md)。
+当前未提交草稿已有`getLearningResumeError`和`saveLearningResume`，只保存上述位置字段。同课新普通小试成功保存时原子清除位置，重复旧会话、跨课、抽查和阶段考评不清除；写失败不改盘上数据。2026-10-25复核数据相关47/47。推荐导出与主模式集成现已接通，但保存反馈可见性修复后的浏览器验证尚未取得，不能把数据通过写成完整续读验收完成。完整边界及文件见[当前盘点证据](evidence/2026-10-25-remaining-work-integrated-snapshot.md)。
 
 #### 7.1.2 weakQuestions：已实现字段校验
 

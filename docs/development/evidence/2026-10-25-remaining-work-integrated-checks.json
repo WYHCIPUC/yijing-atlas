@@ -1,0 +1,60 @@
+{
+  "capturedAt": "2026-10-24T20:57:02.074Z",
+  "head": "ccd9961a76f3c2a27bdb1acaf805f8969551df63",
+  "cards": 48,
+  "completed": [
+    "T-DIV-01",
+    "T-SAVE-01",
+    "T-LEARN-05",
+    "T-SEARCH-01",
+    "T-LEARN-02"
+  ],
+  "openCount": 43,
+  "uniqueOpenCount": 43,
+  "classes": {
+    "已确认": 32,
+    "建议改进": 10,
+    "未来独立方案": 1
+  },
+  "missing": [],
+  "extra": [],
+  "originalTaskTitlesAndDependenciesUnchanged": true,
+  "protectedSources": 184,
+  "changedSources": [],
+  "currentTargetedTests": {
+    "files": 7,
+    "passed": 108,
+    "failed": 0,
+    "exitCode": 0,
+    "logSha256": "b5e23d510aac21d2bfdbcb6651c3ef8c57257a8359080148fdb694b477d0bca5",
+    "archive": "docs/development/evidence/2026-10-25-remaining-work-integrated-targeted.log.gz"
+  },
+  "learningModuleImport": {
+    "exitCode": 0,
+    "result": "learning-mode import: PASS"
+  },
+  "fullValidateAndE2eRerunInInventory": false,
+  "githubBaseline": {
+    "head": "ccd9961a76f3c2a27bdb1acaf805f8969551df63",
+    "runId": 40131157814,
+    "jobId": 120982962967,
+    "status": "completed",
+    "conclusion": "success",
+    "steps": [
+      "Validate repository:success",
+      "Browser smoke test:success"
+    ],
+    "coversUncommittedCode": false
+  },
+  "checkerCorrection": "First ad hoc card-section regex stopped at line ends and classified all 43 as unknown. Corrected section parsing; no product or requirement changes.",
+  "documentation": {
+    "documents": 15,
+    "lines": 6729,
+    "localLinks": 739,
+    "tasks": 48,
+    "requirements": 86,
+    "sourceGuard": null,
+    "issues": []
+  },
+  "diffCheckExitCode": 0
+}
