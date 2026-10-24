@@ -21,13 +21,20 @@ const output = resolve(process.env.YIJING_ENTRY_EVIDENCE_DIR || join(root, 'docs
 mkdirSync(output, { recursive: true });
 const temporaryRoot = realpathSync(tmpdir());
 const profile = mkdtempSync(join(temporaryRoot, 'yijing-entry-input-'));
-const report = { startedAt: new Date().toISOString(), node: process.version, browserPath, output,
+const report = { startedAt: new Date().toISOString(), node: process.version, execPath: process.execPath,
+  runtimeVersions: { uv: process.versions.uv }, browserPath, output,
   command: 'node scripts/test-entry-input.mjs', scenarios: [], status: 'running' };
+const boundaryOnly = process.env.YIJING_ENTRY_SCOPE === 'boundaries';
+const boundaryCase = process.env.YIJING_ENTRY_CASE || '';
+if (boundaryOnly) report.command = 'YIJING_ENTRY_SCOPE=boundaries node scripts/test-entry-input.mjs';
+if (boundaryCase) report.command = `YIJING_ENTRY_SCOPE=boundaries YIJING_ENTRY_CASE=${boundaryCase} node scripts/test-entry-input.mjs`;
+const saveTrace = () => writeFileSync(join(output, 'trace.json'), `${JSON.stringify(report, null, 2)}\n`);
 const observedFiles = ['web/js/star-map.js', 'web/js/main.js', 'scripts/test-entry-input.mjs'];
 const sourceHashes = () => Object.fromEntries(observedFiles.map(path => [path,
   createHash('sha256').update(readFileSync(join(root, path))).digest('hex')]));
 report.head = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 report.sourceHashes = sourceHashes();
+saveTrace(); // Preserve source/runtime provenance if the native runtime aborts before finally.
 const pause = milliseconds => new Promise(resolvePause => setTimeout(resolvePause, milliseconds));
 
 async function waitFor(check, message, timeout = 15000) {
@@ -113,7 +120,8 @@ const observer = `(() => {
       reducedMotion: map.reducedMotion, autoRotate: map.autoRotate, activeCode: map.activeNode?.id || null,
       cameraPos: { ...map.cameraPos }, cameraTarget: map.cameraTarget ? { ...map.cameraTarget } : null,
       cameraTransition: map.cameraTransition ? { from: { ...map.cameraTransition.from }, elapsed: map.cameraTransition.elapsed } : null,
-      yaw: map.yaw, pitch: map.pitch, isDragging: map.isDragging,
+      yaw: map.yaw, pitch: map.pitch, viewScale: map.view.scale, isDragging: map.isDragging,
+      documentHasFocus: document.hasFocus(),
       dragStart: map.dragStart ? { pointerId: map.dragStart.pointerId, code: map.dragStart.node?.id || null,
         x: map.dragStart.x, y: map.dragStart.y, moved: map.dragStart.moved } : null,
       readingStage: document.body.dataset.readingStage,
@@ -131,14 +139,17 @@ const observer = `(() => {
     if (this.canvas.id === 'star-canvas' && radius >= 1.2 && radius <= 8) window.__entryArcs.push({ x, y, radius });
     return arc.call(this, x, y, radius, ...args);
   };
-  for (const type of ['pointerdown', 'pointermove', 'pointerup', 'pointercancel', 'lostpointercapture', 'click']) {
+  for (const type of ['pointerdown', 'pointermove', 'pointerup', 'pointercancel', 'gotpointercapture', 'lostpointercapture', 'click']) {
     for (const capture of [true, false]) document.addEventListener(type, event => {
-      if (event.target.id !== 'star-canvas' && !event.target.closest?.('[data-entry]')) return;
+      if (event.target.id !== 'star-canvas' && !event.target.closest?.('[data-entry]') && event.isPrimary !== false) return;
       window.__entryEvents.push({ type, phase: capture ? 'before' : 'after', trusted: event.isTrusted,
-        pointerType: event.pointerType, pointerId: event.pointerId, x: event.clientX, y: event.clientY,
-        target: event.target.id || event.target.dataset.entry, state: window.__entrySnapshot() });
+        pointerType: event.pointerType, pointerId: event.pointerId, isPrimary: event.isPrimary, x: event.clientX, y: event.clientY,
+        target: event.target.id || event.target.dataset.entry || event.target.className, state: window.__entrySnapshot() });
     }, capture);
   }
+  for (const type of ['blur', 'focus']) window.addEventListener(type, event => {
+    window.__entryEvents.push({ type, trusted: event.isTrusted, target: 'window', state: window.__entrySnapshot() });
+  });
 })();`;
 
 const [sitePort, debugPort] = await Promise.all([freePort(), freePort()]);
@@ -150,6 +161,7 @@ let browser;
 let client;
 let current;
 let observerError;
+let pageTargetId;
 
 async function snapshot() { return client.evaluate('window.__entrySnapshot()'); }
 
@@ -172,7 +184,7 @@ async function touch(type, point) {
     touchPoints: point ? [{ x: point.x, y: point.y, id: 1 }] : [] });
 }
 
-async function starPoint({ exclude = null, entry = false } = {}) {
+async function starPoint({ exclude = null, entry = false, inset = 160 } = {}) {
   return waitFor(() => client.evaluate(`(() => {
     const map = window.__entryObservedMap, canvas = document.querySelector('#star-canvas');
     if (!map || !canvas || map.isPaused || canvas.closest('[inert]')) return null;
@@ -184,7 +196,7 @@ async function starPoint({ exclude = null, entry = false } = {}) {
       .sort((a, b) => a.number - b.number);
     for (const node of nodes) {
       const x = Math.round(rect.left + node._screen.x), y = Math.round(rect.top + node._screen.y);
-      if (x < 20 || y < 160 || x > innerWidth - 20 || y > innerHeight - 160 || document.elementFromPoint(x, y) !== canvas) continue;
+      if (x < 20 || y < ${inset} || x > innerWidth - 20 || y > innerHeight - ${inset} || document.elementFromPoint(x, y) !== canvas) continue;
       return { x, y, code: node.id, name: node.name, frame: window.__entryFrames, state: window.__entrySnapshot() };
     }
     return null;
@@ -192,11 +204,12 @@ async function starPoint({ exclude = null, entry = false } = {}) {
 }
 
 async function openScenario(name, reducedMotion, mobile = false) {
-  if (current) {
+  if (current && current.status === 'running') {
     current.events = await client.evaluate('window.__entryEvents');
     current.final = await snapshot();
     current.status = 'passed';
     console.log(`PASS ${current.name}`);
+    saveTrace();
   }
   current = { name, reducedMotion, viewport: mobile ? '390x844' : '1280x720', checks: [], screenshots: [], status: 'running' };
   report.scenarios.push(current);
@@ -320,6 +333,7 @@ try {
     catch { return false; }
   }, 'Chromium did not start.');
   client = new Client(target.webSocketDebuggerUrl);
+  pageTargetId = target.id;
   await client.open();
   for (const domain of ['Runtime', 'Page', 'Log', 'Debugger']) await client.send(`${domain}.enable`);
   report.browser = await client.send('Browser.getVersion');
@@ -337,6 +351,7 @@ try {
   };
   await client.send('Page.addScriptToEvaluateOnNewDocument', { source: observer });
 
+  if (!boundaryOnly) {
   await openScenario('normal-entry-pick-focus-interrupt', false);
   const first = await pick(await starPoint({ entry: true }), { entry: true });
   await waitFor(async () => { const state = await snapshot(); return state.cameraTransition?.elapsed > 0 && state.cameraTransition.elapsed < 450; }, 'First camera movement was not observed before interruption.', 450);
@@ -390,7 +405,235 @@ try {
   current.final = await snapshot();
   current.status = 'passed';
   console.log(`PASS ${current.name}`);
-  report.status = 'passed';
+  saveTrace();
+  }
+
+  const runBoundary = async (name, reduced, mobile, action) => {
+    if (boundaryCase && name !== boundaryCase) return;
+    try {
+      await openScenario(name, reduced, mobile);
+      await action();
+      current.status = 'passed';
+      console.log(`PASS ${current.name}`);
+    } catch (error) {
+      current.status = error.unsupported ? 'unsupported' : 'failed';
+      current.failure = { message: error.message, stack: error.stack };
+      console.error(`${current.status.toUpperCase()} ${current.name}: ${error.message}`);
+    } finally {
+      try { current.events = await client.evaluate('window.__entryEvents'); current.final = await snapshot(); await screenshot(current.name); }
+      catch (error) { current.captureFailure = error.message; }
+      saveTrace();
+    }
+  };
+
+  await runBoundary('reduced-mouse-second-canvas-selection', true, false, async () => {
+    const first = await pick(await starPoint({ inset: 12 }));
+    await waitFor(() => client.evaluate(`window.__entryFrames > ${first.after.frame}`), 'The focused camera has not been drawn yet.');
+    current.checks.push({ action: 'focused-camera-drawn-before-second-sample', state: await snapshot() });
+    let next;
+    for (let attempt = 0; attempt <= 4; attempt += 1) {
+      try { next = await starPoint({ exclude: first.after.activeCode, inset: 12 }); break; }
+      catch (error) {
+        current.checks.push({ action: 'second-star-not-visible', attempt, message: error.message, state: await snapshot() });
+        if (attempt === 4) break;
+      }
+      const point = await client.evaluate(`(() => {
+        const canvas = document.querySelector('#star-canvas');
+        for (const y of [0.35, 0.45, 0.25]) for (const x of [0.5, 0.35, 0.65]) {
+          const point = { x: innerWidth * x, y: innerHeight * y };
+          if (document.elementFromPoint(point.x, point.y) === canvas) return point;
+        }
+        return null;
+      })()`);
+      assert.ok(point, 'No unobscured Canvas position for real wheel input.');
+      const previousFrame = (await snapshot()).frame;
+      await client.send('Input.dispatchMouseEvent', { type: 'mouseWheel', x: point.x, y: point.y, deltaY: 100, deltaX: 0 });
+      await waitFor(() => client.evaluate(`window.__entryFrames > ${previousFrame}`), 'Zoom did not produce a frame.');
+      current.checks.push({ action: 'real-wheel-to-reveal-focused-neighbor', attempt, point, state: await snapshot() });
+    }
+    if (!next) {
+      const candidates = await client.evaluate(`(() => {
+        const map = window.__entryObservedMap, rect = map.canvas.getBoundingClientRect();
+        return map.graph.nodes.filter(node => map.focusVisible?.has(node.id) && node._screen).map(node => {
+          const x = Math.round(rect.left + node._screen.x), y = Math.round(rect.top + node._screen.y);
+          const hit = document.elementFromPoint(x, y);
+          return { code: node.id, x, y, hit: hit?.id || hit?.className,
+            drawn: window.__entryArcs.some(arc => Math.hypot(arc.x - node._screen.x, arc.y - node._screen.y) < 0.25) };
+        });
+      })()`);
+      const from = { x: 350, y: 200 }, to = { x: 350, y: 400 };
+      assert.equal(await client.evaluate(`document.elementFromPoint(${from.x}, ${from.y})?.id`), 'star-canvas');
+      const before = await snapshot();
+      await mouse('mousePressed', from);
+      await mouse('mouseMoved', to);
+      await mouse('mouseReleased', to);
+      const after = await snapshot();
+      assert.equal(after.activeCode, first.after.activeCode, 'Observation drag must not change the focused hexagram.');
+      assert.equal(after.dragStart, null);
+      assert.equal(after.isDragging, false);
+      assert.notEqual(after.pitch, before.pitch);
+      await waitFor(() => client.evaluate(`window.__entryFrames > ${after.frame}`), 'Observation drag did not render.');
+      current.checks.push({ action: 'one-bounded-real-vertical-drag-to-reveal-neighbor', candidates, from, to, before, after });
+      next = await starPoint({ exclude: first.after.activeCode, inset: 12 });
+    }
+    const second = await pick(next);
+    assert.notEqual(second.after.activeCode, first.after.activeCode);
+    assert.equal(second.after.cameraTransition, null);
+  });
+
+  await runBoundary('normal-touch-camera-interrupt', false, true, async () => {
+    await pick(await starPoint({ entry: true, inset: 12 }), { entry: true, touchInput: true });
+    await waitFor(async () => {
+      const state = await snapshot();
+      return state.cameraTransition?.elapsed > 0 && state.cameraTransition.elapsed < 450;
+    }, 'Touch focus movement was not observed before interruption.', 450);
+    const interrupted = await drag(await starPoint({ inset: 12 }), { touchInput: true });
+    assert.ok(interrupted.down.state.cameraTransition?.elapsed > 0 && interrupted.down.state.cameraTransition.elapsed < 450,
+      'Trusted touch drag did not begin during the active 450ms transition.');
+    const frame = interrupted.after.frame;
+    await waitFor(() => client.evaluate(`window.__entryFrames > ${frame}`), 'No post-touch-drag frame.');
+    assert.deepEqual((await snapshot()).cameraPos, interrupted.after.cameraPos);
+  });
+
+  await runBoundary('touch-active-capture-loss-injection', false, true, async () => {
+    const point = await starPoint({ entry: true, inset: 12 });
+    const start = (await canvasEvents()).length;
+    const before = await snapshot();
+    await touch('touchStart', point);
+    await touch('touchMove', { x: point.x + 2, y: point.y });
+    const held = await snapshot();
+    assert.ok(held.dragStart);
+    const pointerId = held.dragStart.pointerId;
+    const captured = await client.evaluate(`document.querySelector('#star-canvas').hasPointerCapture(${pointerId})`);
+    assert.equal(captured, true);
+    await client.evaluate(`document.querySelector('#star-canvas').releasePointerCapture(${pointerId})`);
+    await touch('touchMove', { x: point.x + 3, y: point.y });
+    const afterLoss = await snapshot();
+    const lost = eventSince(await canvasEvents(), start, 'lostpointercapture', 'after');
+    assert.equal(afterLoss.dragStart, null);
+    assert.equal(afterLoss.isDragging, false);
+    assert.equal(afterLoss.activeCode, before.activeCode);
+    await touch('touchEnd');
+    assert.equal((await snapshot()).activeCode, before.activeCode);
+    current.checks.push({ action: 'standard-dom-releasePointerCapture-fault-injection', point, before, held, afterLoss, lost,
+      limitation: 'The loss cause is injected through the standard DOM API, not a physical OS capture loss; the browser delivers a trusted lostpointercapture.' });
+    await pick(await starPoint({ inset: 12 }), { touchInput: true });
+  });
+
+  await runBoundary('window-focus-loss-during-drag', false, false, async () => {
+    const point = await starPoint({ entry: true, inset: 12 });
+    await mouse('mousePressed', point);
+    await mouse('mouseMoved', { x: point.x + 12, y: point.y });
+    const held = await snapshot();
+    assert.equal(held.isDragging, true);
+    const start = (await client.evaluate('window.__entryEvents')).length;
+    const { targetId } = await client.send('Target.createTarget', { url: 'about:blank', newWindow: true, background: false });
+    let focusClient;
+    try {
+      await client.send('Target.activateTarget', { targetId });
+      const focusTarget = await waitFor(async () => (await (await fetch(`http://127.0.0.1:${debugPort}/json/list`)).json())
+        .find(target => target.id === targetId), 'The isolated focus-test window is unavailable.', 1000);
+      focusClient = new Client(focusTarget.webSocketDebuggerUrl);
+      await focusClient.open();
+      await focusClient.send('Page.bringToFront');
+      await focusClient.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 20, y: 20, button: 'left', buttons: 1, clickCount: 1 });
+      await focusClient.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: 20, y: 20, button: 'left', buttons: 0, clickCount: 1 });
+      let blur;
+      try {
+        await waitFor(async () => {
+          blur = (await client.evaluate('window.__entryEvents')).slice(start).find(event => event.type === 'blur' && event.target === 'window' && event.trusted);
+          return blur;
+        }, 'Headless newWindow, Page.bringToFront and real input in that window did not produce a trusted window blur.', 1000);
+      } catch (error) {
+        current.checks.push({ action: 'isolated-new-window-focus-attempt', point, held, after: await snapshot(),
+          events: (await client.evaluate('window.__entryEvents')).slice(start), result: 'no-trusted-window-blur' });
+        error.unsupported = true;
+        throw error;
+      }
+      const afterBlur = await snapshot();
+      current.checks.push({ action: 'isolated-new-window-real-input-blur', point, held, blur, afterBlur });
+      assert.equal(afterBlur.dragStart, null, 'A trusted window blur must reset pending drag state.');
+      assert.equal(afterBlur.isDragging, false);
+    } finally {
+      focusClient?.socket.close();
+      await client.send('Target.activateTarget', { targetId: pageTargetId });
+      await client.send('Target.closeTarget', { targetId });
+      await mouse('mouseReleased', { x: point.x + 12, y: point.y });
+    }
+    await pick(await starPoint({ inset: 12 }));
+  });
+
+  await runBoundary('multi-touch-drag-reset', false, true, async () => {
+    await client.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 2 });
+    const point = await starPoint({ entry: true, inset: 12 });
+    await touch('touchStart', point);
+    await touch('touchMove', { x: point.x + 12, y: point.y });
+    const held = await snapshot();
+    assert.equal(held.isDragging, true);
+    const start = (await canvasEvents()).length;
+    const second = await client.evaluate(`(() => {
+      const canvas = document.querySelector('#star-canvas');
+      return [{ x: ${point.x} + 45, y: ${point.y} }, { x: ${point.x} - 45, y: ${point.y} }]
+        .find(point => document.elementFromPoint(point.x, point.y) === canvas);
+    })()`);
+    assert.ok(second, 'No unobscured second-touch position');
+    await client.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [
+      { x: point.x + 12, y: point.y, id: 1 }, { ...second, id: 2 },
+    ] });
+    const afterSecond = await snapshot();
+    const secondary = (await canvasEvents()).slice(start).find(event => event.type === 'pointerdown' && event.phase === 'after' && event.isPrimary === false);
+    assert.ok(secondary?.trusted, 'The browser did not deliver a trusted secondary pointer');
+    current.checks.push({ action: 'real-multi-touch-secondary-down', point, second, held, afterSecond, secondary });
+    // Cleanup and prove cancellation recovery even if the second-pointer reset assertion fails.
+    await touch('touchCancel');
+    const cancelled = await snapshot();
+    assert.equal(cancelled.dragStart, null);
+    assert.equal(cancelled.isDragging, false);
+    assert.equal(cancelled.activeCode, held.activeCode);
+    current.checks.push({ action: 'real-multi-touch-cancel-recovery', cancelled });
+    await pick(await starPoint({ inset: 12 }), { touchInput: true });
+    assert.equal(afterSecond.dragStart, null, 'A second touch must reset the single-pointer drag state.');
+    assert.equal(afterSecond.isDragging, false);
+  });
+
+  await runBoundary('multi-touch-outside-canvas-reset', false, true, async () => {
+    await client.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 2 });
+    const point = await starPoint({ entry: true, inset: 12 });
+    await touch('touchStart', point);
+    await touch('touchMove', { x: point.x + 12, y: point.y });
+    const held = await snapshot();
+    assert.equal(held.isDragging, true);
+    const start = (await client.evaluate('window.__entryEvents')).length;
+    const second = await client.evaluate(`(() => {
+      const search = document.querySelector('#search');
+      const rect = search.getBoundingClientRect();
+      const point = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+      return document.elementFromPoint(point.x, point.y) === search ? point : null;
+    })()`);
+    assert.ok(second, 'The outside-Canvas search control is not directly reachable.');
+    await client.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [
+      { x: point.x + 12, y: point.y, id: 1 }, { ...second, id: 2 },
+    ] });
+    const afterSecond = await snapshot();
+    const secondary = (await client.evaluate('window.__entryEvents')).slice(start)
+      .find(event => event.type === 'pointerdown' && event.phase === 'after' && event.isPrimary === false);
+    assert.ok(secondary?.trusted);
+    assert.equal(secondary.target, 'search');
+    current.checks.push({ action: 'real-secondary-touch-on-search', point, second, held, afterSecond, secondary });
+    await touch('touchCancel');
+    const cancelled = await snapshot();
+    assert.equal(cancelled.dragStart, null);
+    assert.equal(cancelled.isDragging, false);
+    assert.equal(cancelled.activeCode, held.activeCode);
+    current.checks.push({ action: 'outside-touch-cancel-cleanup', cancelled });
+    await pick(await starPoint({ inset: 12 }), { touchInput: true });
+    assert.equal(afterSecond.dragStart, null, 'A secondary touch outside Canvas must reset the current drag.');
+    assert.equal(afterSecond.isDragging, false);
+  });
+
+  report.status = report.scenarios.some(item => item.status === 'failed') ? 'failed'
+    : report.scenarios.some(item => item.status === 'unsupported') ? 'partial' : 'passed';
+  if (report.status !== 'passed') process.exitCode = 1;
 } catch (error) {
   report.status = 'failed';
   report.failure = { message: error.message, stack: error.stack };
@@ -413,7 +656,7 @@ try {
     try { rmSync(profile, { recursive: true, force: true, maxRetries: 3, retryDelay: 100 }); report.profileRemoved = !existsSync(profile); }
     catch (error) { report.profileRemoved = false; report.cleanupError = error.code; }
   }
-  writeFileSync(join(output, 'trace.json'), `${JSON.stringify(report, null, 2)}\n`);
+  saveTrace();
   console.log(JSON.stringify({ status: report.status, browser: report.browser?.product,
     passed: report.scenarios.filter(item => item.status === 'passed').length, total: report.scenarios.length,
     trace: join(output, 'trace.json'), profileRemoved: report.profileRemoved }));

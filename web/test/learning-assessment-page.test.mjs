@@ -234,3 +234,62 @@ test('修习谱回补采用本轮实际成绩，旧无session证据保持兼容'
   assert.equal(record.assessmentSessions.length, 1, '只给本次真实题卷保存session');
   assert.deepEqual(achievements.metrics.trigramRounds, [`learning-record:assessed:l1-4:${originalAt}`]);
 });
+
+test('已处理ID缺少成绩凭据时显示缺证据，不重计分或生成成就', () => {
+  const harness = createHarness();
+  harness.render();
+  const sessionId = harness.sessions[0].id;
+  const old = { version: 2, lessons: {}, spotChecks: [], exams: [], oralReviews: [], processedAssessmentIds: [sessionId] };
+  harness.storage.setItem(getLearningRecordKey(), JSON.stringify(old));
+  for (let index = 0; index < 3; index += 1) harness.choose(index);
+  harness.submit();
+  assert.deepEqual(loadLearningRecord(harness.storage), old);
+  assert.match(harness.mount.innerHTML, /本轮标识已处理/);
+  assert.match(harness.mount.innerHTML, /未保留.*成绩.*无法补记成就/);
+  assert.equal(harness.mount.querySelector('[data-action="retry-save"]'), null);
+  assert.equal(loadAchievementState(harness.storage).metrics.trigramRounds.length, 0);
+  harness.syncProfile();
+  assert.equal(loadAchievementState(harness.storage).metrics.trigramRounds.length, 0);
+  assert.equal(loadAchievementState(harness.storage).processedKeys.length, 0);
+});
+
+test('已有正式ID全部带真实凭据时，其他旧课程仍按旧汇总回补', () => {
+  const harness = createHarness();
+  const at = '2026-10-24T00:00:00Z';
+  harness.storage.setItem(getLearningRecordKey(), JSON.stringify({
+    version: 2, lessons: { 'l1-4': { viewedAt: at, lastStudiedAt: at, attempts: 1, bestScore: 1 } },
+    spotChecks: [], exams: [], oralReviews: [], processedAssessmentIds: ['other-lesson'],
+    assessmentSessions: [{ sessionId: 'other-lesson', kind: 'lesson', lessonId: 'l1-1', correct: 0, total: 3, at }],
+  }));
+  harness.syncProfile();
+  assert.deepEqual(loadAchievementState(harness.storage).metrics.trigramRounds, [`learning-record:assessed:l1-4:${at}`]);
+});
+
+test('已有真实低分凭据重交高分不改变成绩，也不据当前答案回补高分成就', () => {
+  const harness = createHarness();
+  harness.render();
+  const sessionId = harness.sessions[0].id;
+  const at = '2026-10-24T00:00:00Z';
+  const old = { version: 2, lessons: { 'l1-4': { viewedAt: at, lastStudiedAt: at, attempts: 1, bestScore: 0 } }, spotChecks: [], exams: [], oralReviews: [], processedAssessmentIds: [sessionId],
+    assessmentSessions: [{ sessionId, kind: 'lesson', lessonId: 'l1-4', correct: 0, total: 3, at }] };
+  harness.storage.setItem(getLearningRecordKey(), JSON.stringify(old));
+  for (let index = 0; index < 3; index += 1) harness.choose(index);
+  harness.submit();
+  assert.deepEqual(loadLearningRecord(harness.storage), old);
+  assert.equal(loadAchievementState(harness.storage).metrics.trigramRounds.length, 0);
+  assert.match(harness.mount.innerHTML, /已保存成绩为 0\/3/);
+  harness.syncProfile();
+  assert.equal(loadAchievementState(harness.storage).metrics.trigramRounds.length, 0);
+});
+
+test('正式ID存在但没有凭据时修习谱不拿聚合最高分补造该轮成就', () => {
+  const harness = createHarness();
+  const at = '2026-10-24T00:00:00Z';
+  harness.storage.setItem(getLearningRecordKey(), JSON.stringify({
+    version: 2, lessons: { 'l1-4': { viewedAt: at, lastStudiedAt: at, attempts: 1, bestScore: 1 } },
+    spotChecks: [], exams: [], oralReviews: [], processedAssessmentIds: ['missing-receipt'],
+  }));
+  harness.syncProfile();
+  assert.equal(loadAchievementState(harness.storage).metrics.trigramRounds.length, 0);
+  assert.equal(loadAchievementState(harness.storage).processedKeys.length, 0);
+});

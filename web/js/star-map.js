@@ -681,8 +681,18 @@ export class StarMap {
 
   _bindEvents() {
     const c = this.canvas;
+    const cancelDragging = () => {
+      const pointerId = this.dragStart?.pointerId;
+      this.dragStart = null;
+      this.isDragging = false;
+      if (pointerId !== undefined && c.hasPointerCapture?.(pointerId) !== false) c.releasePointerCapture?.(pointerId);
+    };
     c.addEventListener('pointerdown', (e) => {
-      if (e.isPrimary === false || (e.button !== undefined && e.button !== 0) || this.dragStart) return;
+      if (e.isPrimary === false || (this.dragStart && e.pointerId !== this.dragStart.pointerId)) {
+        cancelDragging();
+        return;
+      }
+      if ((e.button !== undefined && e.button !== 0) || this.dragStart) return;
       const rect = c.getBoundingClientRect();
       const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
       const node = this._nodeAt(sx, sy);
@@ -730,9 +740,7 @@ export class StarMap {
       if (!start || event.pointerId !== start.pointerId) return;
       const rect = c.getBoundingClientRect();
       const distance = Math.hypot(event.clientX - rect.left - start.x, event.clientY - rect.top - start.y);
-      this.dragStart = null;
-      this.isDragging = false;
-      if (c.hasPointerCapture?.(event.pointerId) !== false) c.releasePointerCapture?.(event.pointerId);
+      cancelDragging();
       if (!cancelled && !start.moved && distance <= 6 && start.node) {
         const point = this._nodeViewportPoint(start.node, rect);
         this.callbacks.onPick?.(start.node.id, point, this._nodeInteractionMeta(start.node, point));
@@ -790,8 +798,18 @@ export class StarMap {
       this._interruptEntrance();
       this.setAutoRotate(false);
     });
+    this.handleWindowBlur = cancelDragging;
+    this.eventWindow = c.ownerDocument?.defaultView ?? globalThis.window;
+    this.eventWindow?.addEventListener('blur', this.handleWindowBlur);
+    this.handleSecondaryPointerDown = (event) => {
+      if (this.dragStart && event.pointerId !== this.dragStart.pointerId) cancelDragging();
+    };
+    this.eventWindow?.addEventListener('pointerdown', this.handleSecondaryPointerDown, true);
     this.handleVisibilityChange = () => {
-      if (document.hidden) this.pause('visibility');
+      if (document.hidden) {
+        cancelDragging();
+        this.pause('visibility');
+      }
       else this.resume('visibility');
     };
     this.handleMotionPreferenceChange = (event) => {
@@ -1658,6 +1676,9 @@ export class StarMap {
   }
 
   destroy() {
+    this.handleWindowBlur?.();
+    this.eventWindow?.removeEventListener('blur', this.handleWindowBlur);
+    this.eventWindow?.removeEventListener('pointerdown', this.handleSecondaryPointerDown, true);
     this.pause('destroy');
     this.simulation.stop();
     document.removeEventListener('visibilitychange', this.handleVisibilityChange);

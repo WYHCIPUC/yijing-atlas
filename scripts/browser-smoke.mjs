@@ -265,13 +265,23 @@ async function assertReadingSection(client, section) {
 }
 
 async function assertReadingStage(client, stage, { modal = null } = {}) {
-  await waitFor(() => client.evaluate(`document.body.dataset.readingStage === ${JSON.stringify(stage)}`), `阅读层级未切换到 ${stage}`);
-  const status = await client.evaluate(`(() => {
-    const panel = document.querySelector('#detail-panel');
-    return { open: panel.classList.contains('open'), modal: panel.getAttribute('aria-modal'), deepLink: location.search.includes('hex=') };
-  })()`);
-  if (stage !== 'none' && (!status.open || status.deepLink !== (stage === 'deep'))) throw new Error(`阅读层级或链接异常：${JSON.stringify({ stage, ...status })}`);
-  if (modal !== null && status.modal !== String(modal)) throw new Error(`阅读模态状态异常：${JSON.stringify({ stage, ...status })}`);
+  let status;
+  try {
+    // CDP viewport acknowledgement can precede the media-query change event.
+    // Observe one coherent snapshot; an unchanged "quick" stage alone is insufficient.
+    await waitFor(async () => {
+      status = await client.evaluate(`(() => {
+        const panel = document.querySelector('#detail-panel');
+        return { stage: document.body.dataset.readingStage, open: panel.classList.contains('open'),
+          modal: panel.getAttribute('aria-modal'), deepLink: new URL(location.href).searchParams.has('hex'),
+          viewportWidth: innerWidth, compact: matchMedia('(max-width: 900px)').matches };
+      })()`);
+      return status.stage === stage && status.open === (stage !== 'none')
+        && status.deepLink === (stage === 'deep') && (modal === null || status.modal === String(modal));
+    }, `阅读状态未收敛到 ${stage}`);
+  } catch (error) {
+    throw new Error(`${error.message}：${JSON.stringify({ expected: { stage, modal }, actual: status })}`);
+  }
   if (stage !== 'none') {
     await waitFor(() => client.evaluate('Number(getComputedStyle(document.querySelector("#detail-content")).opacity) >= 0.99'), '阅读正文残留过渡透明度，暖纸与文字被压暗');
   }

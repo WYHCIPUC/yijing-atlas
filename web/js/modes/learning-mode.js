@@ -112,8 +112,20 @@ function renderLibrarySection(content, onNavigate) {
 
 function syncAchievementEvidence(record) {
   const topicByLesson = { 'l1-1': 'yin-yang', 'l1-4': 'eight-trigrams' };
+  const ids = record.processedAssessmentIds;
+  const hasMissingEvidence = ids !== undefined && (!Array.isArray(ids) ||
+    ids.some((id) => !record.assessmentSessions?.some((item) => item.sessionId === id)));
   Object.entries(record.lessons || {}).forEach(([lessonId, lesson]) => {
     if (!lesson?.viewedAt || !(lesson.attempts > 0)) return;
+    const sessions = (record.assessmentSessions || []).filter((item) => item.kind === 'lesson' && item.lessonId === lessonId);
+    const legacy = lesson.legacyAssessment || (!sessions.length && !hasMissingEvidence ? {
+      score: lesson.bestScore, at: lesson.lastStudiedAt || lesson.viewedAt,
+    } : null);
+    const evidence = [
+      ...(legacy ? [legacy] : []),
+      ...sessions.map((item) => ({ sessionId: item.sessionId, score: item.correct / item.total, at: item.at })),
+    ];
+    if (!evidence.length) return;
     processAchievementEvent(createProgressEvent({
       type: 'lesson.completed',
       subjectId: lessonId,
@@ -121,14 +133,6 @@ function syncAchievementEvidence(record) {
       occurredAt: lesson.lastStudiedAt || lesson.viewedAt,
       idempotencyKey: `learning-record:completed:${lessonId}`,
     }));
-    const sessions = (record.assessmentSessions || []).filter((item) => item.kind === 'lesson' && item.lessonId === lessonId);
-    const legacy = lesson.legacyAssessment || (!sessions.length ? {
-      score: lesson.bestScore, at: lesson.lastStudiedAt || lesson.viewedAt,
-    } : null);
-    const evidence = [
-      ...(legacy ? [legacy] : []),
-      ...sessions.map((item) => ({ sessionId: item.sessionId, score: item.correct / item.total, at: item.at })),
-    ];
     evidence.forEach((item) => {
       if (!Number.isFinite(item.score)) return;
       processAchievementEvent(createProgressEvent({

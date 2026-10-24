@@ -120,17 +120,25 @@ function renderResult(container, session, result, onBack, saveState, onRetry) {
   const percent = Math.round(result.correct / result.total * 100);
   const pending = [];
   if (!saveState.assessment?.saved) pending.push('本轮成绩');
-  else {
+  else if (!saveState.assessment.evidenceMissing) {
     if (!saveState.activitySaved) pending.push('学习日记录');
     if (!saveState.achievementsSaved) pending.push('成就证据');
   }
+  const missingEvidence = saveState.assessment?.evidenceMissing;
+  const receipt = saveState.assessment?.entry;
+  const saveMessage = missingEvidence
+    ? '本轮标识已处理，未重复计分；旧记录未保留本轮成绩明细，无法补记成就证据。当前答案仅供核对。'
+    : pending.length ? `${pending.join('、')}未能保存；答案和分数仍可查看。`
+      : saveState.assessment?.duplicate
+        ? `本轮已记录，未重复计分；已保存成绩为 ${receipt.correct}/${receipt.total} 题正确，当前答案仅供核对。`
+        : '本轮成绩与学习记录已保存。';
   container.innerHTML = `
     <section class="assessment-result" aria-labelledby="assessment-result-title" data-assessment-session="${esc(session.id)}">
       <span class="academy-kicker">考校</span>
       <h3 id="assessment-result-title" data-page-heading>${esc(sessionTitle(session))}</h3>
       <div class="assessment-score"><strong>${percent}</strong><span>分</span></div>
       <p>${result.correct}/${result.total} 题正确。${percent >= 80 ? '本轮掌握稳定，可继续温习或进入下一课。' : '建议查看辨析后回到原课温习，再进行一次小试。'}</p>
-      <p class="assessment-save-status ${pending.length ? 'assessment-warning' : 'assessment-success'}" role="status" aria-live="polite">${pending.length ? `${pending.join('、')}未能保存；答案和分数仍可查看。` : '本轮成绩与学习记录已保存。'}</p>
+      <p class="assessment-save-status ${pending.length || missingEvidence ? 'assessment-warning' : 'assessment-success'}" role="status" aria-live="polite">${esc(saveMessage)}</p>
       ${pending.length ? '<button type="button" class="text-button" data-action="retry-save">重试保存本轮记录</button>' : ''}
       <div class="assessment-review-list">
         ${session.questions.map((item, index) => {
@@ -177,8 +185,9 @@ function renderRubric(container, lessonId, appState, message = '') {
 function recordLessonAchievementEvents(result, saved) {
   if (result.kind !== 'lesson' || !result.lessonId) return true;
   if (!saved.saved) return false;
-  const lesson = saved.record.lessons[result.lessonId];
-  const occurredAt = saved.entry?.at || lesson?.lastStudiedAt;
+  const entry = saved.entry;
+  if (!entry || (entry.kind && (entry.kind !== 'lesson' || entry.lessonId !== result.lessonId))) return false;
+  const occurredAt = entry.at;
   if (!occurredAt) return false;
   const completed = processAchievementEvent(createProgressEvent({
     type: 'lesson.completed',
@@ -190,8 +199,8 @@ function recordLessonAchievementEvents(result, saved) {
   const assessed = processAchievementEvent(createProgressEvent({
     type: 'lesson.assessed',
     subjectId: result.lessonId,
-    score: result.correct / result.total,
-    outcome: result.correct / result.total >= 0.6 ? 'passed' : 'failed',
+    score: entry.correct / entry.total,
+    outcome: entry.correct / entry.total >= 0.6 ? 'passed' : 'failed',
     occurredAt,
     idempotencyKey: `learning-record:assessed:${result.lessonId}:${result.sessionId}`,
     metadata: TOPIC_BY_LESSON[result.lessonId] ? { topic: TOPIC_BY_LESSON[result.lessonId] } : {},
@@ -333,7 +342,7 @@ export function renderLearningAssessmentPage(mountEl, appState, { onNavigate, in
 
   const saveSubmission = (view) => {
     if (!view.assessment?.saved) view.assessment = recordLearningAssessment(view.session.kind, view.result);
-    if (!view.assessment.saved) return;
+    if (!view.assessment.saved || view.assessment.evidenceMissing) return;
     if (!view.activitySaved) view.activitySaved = recordActivity().saved;
     if (!view.achievementsSaved) view.achievementsSaved = recordLessonAchievementEvents(view.result, view.assessment);
   };

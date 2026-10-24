@@ -6,6 +6,7 @@ import {
   getActivityKey,
   getLearningRank,
   getLearningRecordKey,
+  isLearningRecord,
   loadActivity,
   loadLearningRecord,
   markLessonViewed,
@@ -139,4 +140,96 @@ test('保存失败后原session重试只增加一次，旧记录读取不补造s
   const oldRecord = { version: 2, lessons: { 'l1-1': { attempts: 2, bestScore: 0.5 } }, spotChecks: [], exams: [], oralReviews: [] };
   const oldStorage = createStorage({ [getLearningRecordKey()]: JSON.stringify(oldRecord) });
   assert.deepEqual(loadLearningRecord(oldStorage), oldRecord);
+});
+
+test('正式考评ID与成绩原子保存，历史截断后仍能判重', () => {
+  const storage = createStorage();
+  const assessment = { correct: 1, total: 1, results: [] };
+  for (let index = 0; index < 81; index += 1) {
+    assert.equal(recordLearningAssessment('spot', { ...assessment, sessionId: `round-${index}` }, new Date(), storage).saved, true);
+  }
+  const record = loadLearningRecord(storage);
+  assert.equal(record.spotChecks.length, 80);
+  assert.equal(record.processedAssessmentIds.length, 81);
+  assert.equal(record.processedAssessmentIds[0], 'round-0');
+  assert.equal(recordLearningAssessment('spot', { ...assessment, sessionId: 'round-0' }, new Date(), storage).duplicate, true);
+  assert.deepEqual(loadLearningRecord(storage), record);
+});
+
+test('只有已处理ID而没有成绩凭据时不重新计分或补造凭据', () => {
+  const record = { version: 2, lessons: { 'l1-1': { attempts: 2, bestScore: 0.5 } }, spotChecks: [], exams: [], oralReviews: [], processedAssessmentIds: ['already'] };
+  const storage = createStorage({ [getLearningRecordKey()]: JSON.stringify(record) });
+  const before = storage.getItem(getLearningRecordKey());
+  const result = recordLearningAssessment('lesson', { sessionId: 'already', lessonId: 'l1-1', correct: 1, total: 1 }, new Date(), storage);
+  assert.equal(result.duplicate, true);
+  assert.equal(result.saved, true);
+  assert.equal(result.evidenceMissing, true);
+  assert.equal(result.entry, null);
+  assert.equal(storage.getItem(getLearningRecordKey()), before);
+});
+
+test('旧真实session凭据只迁移ID，不重计成绩；无字段旧记录保持兼容', () => {
+  const receipt = { sessionId: 'existing', kind: 'lesson', lessonId: 'l1-1', at: '2026-10-25T00:00:00Z', correct: 1, total: 2 };
+  const record = { version: 2, lessons: { 'l1-1': { attempts: 1, bestScore: 0.5 } }, spotChecks: [], exams: [], oralReviews: [], assessmentSessions: [receipt] };
+  const storage = createStorage({ [getLearningRecordKey()]: JSON.stringify(record) });
+  assert.deepEqual(loadLearningRecord(storage).processedAssessmentIds, ['existing']);
+  assert.equal(JSON.parse(storage.getItem(getLearningRecordKey())).processedAssessmentIds, undefined, '读取不触发写回');
+  const repeated = recordLearningAssessment('lesson', { sessionId: 'existing', lessonId: 'l1-1', correct: 2, total: 2 }, new Date(), storage);
+  assert.equal(repeated.duplicate, true);
+  assert.deepEqual(repeated.entry, receipt);
+  assert.equal(repeated.record.lessons['l1-1'].attempts, 1);
+  markLessonViewed('l1-2', new Date(), storage);
+  assert.deepEqual(JSON.parse(storage.getItem(getLearningRecordKey())).processedAssessmentIds, ['existing']);
+});
+
+test('损坏的正式ID字段保留有效旧成绩且不允许后续写入覆盖', () => {
+  for (const ids of [null, 'bad', [''], ['   '], ['a', 'a'], ['x'.repeat(121)], [42]]) {
+    const record = { version: 2, lessons: { 'l1-1': { attempts: 3, bestScore: 1 } }, spotChecks: [], exams: [], oralReviews: [], processedAssessmentIds: ids };
+    const raw = JSON.stringify(record);
+    const storage = createStorage({ [getLearningRecordKey()]: raw });
+    assert.equal(isLearningRecord(record), false);
+    assert.equal(loadLearningRecord(storage).lessons['l1-1'].attempts, 3);
+    assert.equal(markLessonViewed('l1-2', new Date(), storage).saved, false);
+    assert.equal(recordLearningAssessment('lesson', { sessionId: 'new', lessonId: 'l1-1', correct: 1, total: 1 }, new Date(), storage).saved, false);
+    assert.equal(recordOralReview('l1-1', 80, 'self', new Date(), storage).saved, false);
+    assert.equal(storage.getItem(getLearningRecordKey()), raw);
+  }
+});
+
+test('新考评拒绝非法ID，写失败不先消费ID', () => {
+  const storage = createStorage();
+  for (const sessionId of ['', ' ', 2, 'x'.repeat(121)]) {
+    assert.equal(recordLearningAssessment('spot', { sessionId, correct: 1, total: 1 }, new Date(), storage).saved, false);
+    assert.equal(storage.getItem(getLearningRecordKey()), null);
+  }
+  const originalSet = storage.setItem;
+  storage.setItem = () => { throw new Error('quota'); };
+  const assessment = { sessionId: 'x'.repeat(120), correct: 1, total: 1 };
+  assert.equal(recordLearningAssessment('spot', assessment, new Date(), storage).saved, false);
+  assert.equal(storage.getItem(getLearningRecordKey()), null);
+  storage.setItem = originalSet;
+  assert.equal(recordLearningAssessment('spot', assessment, new Date(), storage).saved, true);
+  assert.deepEqual(loadLearningRecord(storage).processedAssessmentIds, [assessment.sessionId]);
+  assert.equal(loadLearningRecord(storage).spotChecks.length, 1);
+});
+
+test('另一课程的真实旧成绩不因已迁移session而丢失兼容凭据', () => {
+  const at = '2026-08-07T08:00:00.000Z';
+  const storage = createStorage({ [getLearningRecordKey()]: JSON.stringify({
+    version: 2, lessons: { 'l1-1': { viewedAt: at, lastStudiedAt: at, attempts: 1, bestScore: 1 } },
+    spotChecks: [], exams: [], oralReviews: [],
+  }) });
+  recordLearningAssessment('lesson', { sessionId: 'other-lesson', lessonId: 'l1-2', correct: 1, total: 1 }, new Date(), storage);
+  recordLearningAssessment('lesson', { sessionId: 'new-l1-1', lessonId: 'l1-1', correct: 0, total: 1 }, new Date(), storage);
+  assert.deepEqual(loadLearningRecord(storage).lessons['l1-1'].legacyAssessment, { score: 1, at });
+});
+
+test('已处理ID对应其他范围的凭据时不能当作当前卷成绩', () => {
+  const storage = createStorage();
+  recordLearningAssessment('lesson', { sessionId: 'same-id', lessonId: 'l1-1', correct: 1, total: 1 }, new Date(), storage);
+  const result = recordLearningAssessment('lesson', { sessionId: 'same-id', lessonId: 'l1-2', correct: 1, total: 1 }, new Date(), storage);
+  assert.equal(result.duplicate, true);
+  assert.equal(result.evidenceMissing, true);
+  assert.equal(result.entry, null);
+  assert.equal(result.record.lessons['l1-2'], undefined);
 });

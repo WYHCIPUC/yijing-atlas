@@ -77,3 +77,29 @@ test('通用备份包含成就状态并可完整往返', () => {
   importUserData(snapshot, target);
   assert.deepEqual(JSON.parse(target.getItem('yijing.achievements.v1')), state);
 });
+
+test('正式考评ID随备份往返，旧备份缺字段仍合法', () => {
+  const key = 'yijing-learning-record-v2';
+  const record = { version: 2, lessons: { 'l1-1': { attempts: 1, bestScore: 1 } }, spotChecks: [], exams: [], oralReviews: [], processedAssessmentIds: ['one', 'x'.repeat(120)] };
+  const source = storage({ [key]: JSON.stringify(record) });
+  const target = storage();
+  importUserData(parseUserData(JSON.stringify(exportUserData(source))), target);
+  assert.deepEqual(JSON.parse(target.getItem(key)), record);
+  delete record.processedAssessmentIds;
+  assert.doesNotThrow(() => importUserData({ format: 'yijing-atlas-user-data', version: 1, data: { [key]: record } }, target));
+});
+
+test('导入拒绝损坏考评ID并定位具体字段或元素，拒绝前不写其他键', () => {
+  const key = 'yijing-learning-record-v2';
+  const previous = JSON.stringify({ version: 2, lessons: { 'l1-1': { attempts: 4 } }, spotChecks: [], exams: [], oralReviews: [] });
+  for (const [ids, suffix] of [[null, ''], ['bad', ''], [[''], '[0]'], [['  '], '[0]'], [['a', 'a'], '[1]'], [['x'.repeat(121)], '[0]'], [[1], '[0]']]) {
+    const target = storage({ [key]: previous, 'yijing.study.v1': '{"old":true}' });
+    const snapshot = { format: 'yijing-atlas-user-data', version: 1, data: {
+      'yijing.study.v1': { incoming: true }, [key]: { ...JSON.parse(previous), processedAssessmentIds: ids },
+    } };
+    assert.throws(() => parseUserData(JSON.stringify(snapshot)), (error) => error.message.includes(`${key}.processedAssessmentIds${suffix}`));
+    assert.throws(() => importUserData(snapshot, target), (error) => error.message.includes(`${key}.processedAssessmentIds${suffix}`));
+    assert.equal(target.getItem(key), previous);
+    assert.equal(target.getItem('yijing.study.v1'), '{"old":true}');
+  }
+});
