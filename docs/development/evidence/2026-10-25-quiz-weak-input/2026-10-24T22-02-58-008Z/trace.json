@@ -1,0 +1,2340 @@
+{
+  "startedAt": "2026-10-24T22:02:58.013Z",
+  "command": "node scripts/test-quiz-weak-questions.mjs",
+  "node": "v22.23.1",
+  "uv": "1.51.0",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-NqrZyn",
+  "scope": "1440-retry-legacy",
+  "head": "a056573df7f971bb842fbcf9ffa668241e58443a",
+  "sourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "7b3ad942f4d51293035daa81b7c7cc3fe13ee456b1fd1f342f1ffa4f51edcb8d",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/user-data.js": "3afccc2472dbab027089a7686ec1e43249a3f889b55be8610eebacef7bca1f6d",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/modes/quiz-mode.js": "d63a0fe1ce0f231fa67c71d9b4903484c387c1b9ffb4dfdec08803e3e046600e",
+    "web/js/modes/review-mode.js": "8adbee1de930ede4f35bc471587081f606d293370313a924ad22cd1483ae4adc",
+    "web/js/modes/learning-mode.js": "f2d1a600294cf3bd2f73d5e884aecb18945d31fbde83776fd93a4d0026e68675",
+    "web/js/almanac-knowledge.js": "ba1b1ce69a46de1832dc62e9959d1ae439f10c7435bd19b5e94c57bf40eeeccd",
+    "web/js/storage.js": "13d7b5b1288991582a4102dbb48b64d0b98593d1fab1502169dce7e52be78f28",
+    "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "4d6b8421b6522999287dac7b651e05259e44b930d9d956f8bb7614ba72f79c5b",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/data/almanac-yiji.json": "791c99f67bac66f7d1259d08aaeec3c53a540b3bdc8ae5403aaa107666ad6649",
+    "scripts/test-quiz-weak-questions.mjs": "4ce6703addf56605570efd2c18f29afd44b99cfd4bc0d8d9098735b1f6f20841"
+  },
+  "status": "passed",
+  "scenarios": [
+    {
+      "name": "1440-retry-legacy",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "status": "passed",
+      "rounds": [
+        {
+          "question": {
+            "type": "reversed",
+            "question": "「乾」的综卦（上下倒转）是？",
+            "answer": "111111",
+            "candidates": [
+              "111111",
+              "001101",
+              "110110",
+              "100000"
+            ],
+            "targetCode": "111111",
+            "explanation": "综卦要把「乾」的六爻上下倒置，因此得到「乾」。",
+            "reference": {
+              "sourceKind": "quiz",
+              "questionId": "quiz:reversed:111111",
+              "questionVersion": "quiz-v1",
+              "questionType": "reversed",
+              "targetCode": "111111",
+              "termId": null,
+              "lessonId": null
+            }
+          },
+          "mode": "legacy",
+          "attemptId": "quiz:mvmy3c5t:1:149ba18a-a1cd-4147-91c2-4a9bdb2ad832"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "mouse",
+          "label": "[data-entry=\"explore\"]",
+          "x": 642.9296875,
+          "y": 668.671875
+        },
+        {
+          "kind": "mouse",
+          "label": ".mode-btn[data-mode=\"review\"]",
+          "x": 707.203125,
+          "y": 34.83804893493652
+        },
+        {
+          "kind": "mouse",
+          "label": "[data-action=\"legacy-practice-0\"]",
+          "x": 1247,
+          "y": 750.78125
+        },
+        {
+          "kind": "mouse",
+          "label": ".quiz-option[data-code=\"111111\"]",
+          "x": 426.5,
+          "y": 630.15625
+        },
+        {
+          "kind": "mouse",
+          "label": "[data-action=\"quiz-retry\"]",
+          "x": 715,
+          "y": 824.71875
+        },
+        {
+          "kind": "mouse",
+          "label": "[data-action=\"quiz-retry\"]",
+          "x": 715,
+          "y": 824.71875
+        }
+      ],
+      "checks": [
+        {
+          "label": "correct-answer",
+          "state": {
+            "data": {
+              "stats": {
+                "total": 1,
+                "correct": 1,
+                "attempts": {
+                  "quiz:mvmy3c5t:1:149ba18a-a1cd-4147-91c2-4a9bdb2ad832": {
+                    "questionId": "legacy:111111",
+                    "correct": true
+                  }
+                }
+              },
+              "weak": null,
+              "review": null,
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": null,
+              "legacy": [
+                "111111"
+              ]
+            },
+            "writes": [
+              {
+                "key": "yijing-quiz-stats",
+                "saved": true,
+                "operation": "set",
+                "at": 1995.0999999940395,
+                "value": {
+                  "total": 1,
+                  "correct": 1,
+                  "attempts": {
+                    "quiz:mvmy3c5t:1:149ba18a-a1cd-4147-91c2-4a9bdb2ad832": {
+                      "questionId": "legacy:111111",
+                      "correct": true
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "operation": "set",
+                "at": 1995.199999988079,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "saved": false,
+                "operation": "set",
+                "at": 1995.2999999821186,
+                "value": []
+              }
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 707,
+                "y": 34,
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 1247,
+                "y": 750,
+                "action": "legacy-practice-0",
+                "target": "text-button motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 426,
+                "y": 630,
+                "code": "111111",
+                "target": "SMALL"
+              }
+            ],
+            "message": "累计统计已保存。 学习活动已保存。 旧卦码摘要未能保存。 部分学习记录未能保存，可重试未完成部分；已保存的记录不会重复累计。",
+            "feedback": "回答正确\n\n为什么\n\n综卦要把「乾」的六爻上下倒置，因此得到「乾」。\n\n累计统计已保存。 学习活动已保存。 旧卦码摘要未能保存。 部分学习记录未能保存，可重试未完成部分；已保存的记录不会重复累计。\n\n重试保存未完成的记录\n下一题 →\n查看温故队列",
+            "retry": true,
+            "mode": "quiz",
+            "options": 4,
+            "question": "「乾」的综卦（上下倒转）是？",
+            "focus": {
+              "id": "",
+              "tag": "BUTTON"
+            }
+          }
+        },
+        {
+          "label": "legacy-failed-status-visible",
+          "geometry": {
+            "rect": {
+              "x": 147.21380615234375,
+              "y": 872.455810546875,
+              "width": 1135.572265625,
+              "height": 29.53082275390625,
+              "top": 872.455810546875,
+              "right": 1282.7860717773438,
+              "bottom": 901.9866333007812,
+              "left": 147.21380615234375
+            },
+            "clip": {
+              "left": 28,
+              "top": 96,
+              "right": 1412,
+              "bottom": 1000
+            },
+            "ancestors": [
+              {
+                "tag": "ASIDE",
+                "id": "detail-panel",
+                "className": "detail-panel open lenis lenis-scrolling",
+                "rect": {
+                  "x": 28,
+                  "y": 96,
+                  "width": 1384,
+                  "height": 904,
+                  "top": 96,
+                  "right": 1412,
+                  "bottom": 1000,
+                  "left": 28
+                },
+                "overflowX": "hidden",
+                "overflowY": "auto",
+                "viewport": false
+              },
+              {
+                "tag": "BODY",
+                "id": "",
+                "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 0,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "viewport": true
+              }
+            ],
+            "text": "累计统计已保存。 学习活动已保存。 旧卦码摘要未能保存。 部分学习记录未能保存，可重试未完成部分；已保存的记录不会重复累计。",
+            "fullyVisible": true,
+            "centerUnobscured": true
+          }
+        },
+        {
+          "label": "legacy-still-blocked",
+          "state": {
+            "data": {
+              "stats": {
+                "total": 1,
+                "correct": 1,
+                "attempts": {
+                  "quiz:mvmy3c5t:1:149ba18a-a1cd-4147-91c2-4a9bdb2ad832": {
+                    "questionId": "legacy:111111",
+                    "correct": true
+                  }
+                }
+              },
+              "weak": null,
+              "review": null,
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": null,
+              "legacy": [
+                "111111"
+              ]
+            },
+            "writes": [
+              {
+                "key": "yijing-quiz-stats",
+                "saved": true,
+                "operation": "set",
+                "at": 1995.0999999940395,
+                "value": {
+                  "total": 1,
+                  "correct": 1,
+                  "attempts": {
+                    "quiz:mvmy3c5t:1:149ba18a-a1cd-4147-91c2-4a9bdb2ad832": {
+                      "questionId": "legacy:111111",
+                      "correct": true
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "operation": "set",
+                "at": 1995.199999988079,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "saved": false,
+                "operation": "set",
+                "at": 1995.2999999821186,
+                "value": []
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "saved": false,
+                "operation": "set",
+                "at": 3293.2999999821186,
+                "value": []
+              }
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 707,
+                "y": 34,
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 1247,
+                "y": 750,
+                "action": "legacy-practice-0",
+                "target": "text-button motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 426,
+                "y": 630,
+                "code": "111111",
+                "target": "SMALL"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 715,
+                "y": 824,
+                "action": "quiz-retry",
+                "target": "text-button motion-pressed"
+              }
+            ],
+            "message": "累计统计已保存。 学习活动已保存。 旧卦码摘要未能保存。 部分学习记录未能保存，可重试未完成部分；已保存的记录不会重复累计。",
+            "feedback": "回答正确\n\n为什么\n\n综卦要把「乾」的六爻上下倒置，因此得到「乾」。\n\n累计统计已保存。 学习活动已保存。 旧卦码摘要未能保存。 部分学习记录未能保存，可重试未完成部分；已保存的记录不会重复累计。\n\n重试保存未完成的记录\n下一题 →\n查看温故队列",
+            "retry": true,
+            "mode": "quiz",
+            "options": 4,
+            "question": "「乾」的综卦（上下倒转）是？",
+            "focus": {
+              "id": "",
+              "action": "quiz-retry",
+              "tag": "BUTTON"
+            }
+          }
+        },
+        {
+          "label": "legacy-retry-recovered",
+          "state": {
+            "data": {
+              "stats": {
+                "total": 1,
+                "correct": 1,
+                "attempts": {
+                  "quiz:mvmy3c5t:1:149ba18a-a1cd-4147-91c2-4a9bdb2ad832": {
+                    "questionId": "legacy:111111",
+                    "correct": true
+                  }
+                }
+              },
+              "weak": null,
+              "review": null,
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": null,
+              "legacy": []
+            },
+            "writes": [
+              {
+                "key": "yijing-quiz-stats",
+                "saved": true,
+                "operation": "set",
+                "at": 1995.0999999940395,
+                "value": {
+                  "total": 1,
+                  "correct": 1,
+                  "attempts": {
+                    "quiz:mvmy3c5t:1:149ba18a-a1cd-4147-91c2-4a9bdb2ad832": {
+                      "questionId": "legacy:111111",
+                      "correct": true
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "operation": "set",
+                "at": 1995.199999988079,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "saved": false,
+                "operation": "set",
+                "at": 1995.2999999821186,
+                "value": []
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "saved": false,
+                "operation": "set",
+                "at": 3293.2999999821186,
+                "value": []
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "saved": true,
+                "operation": "set",
+                "at": 3466.7999999821186,
+                "value": []
+              }
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 707,
+                "y": 34,
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 1247,
+                "y": 750,
+                "action": "legacy-practice-0",
+                "target": "text-button motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 426,
+                "y": 630,
+                "code": "111111",
+                "target": "SMALL"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 715,
+                "y": 824,
+                "action": "quiz-retry",
+                "target": "text-button motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 715,
+                "y": 824,
+                "action": "quiz-retry",
+                "target": "text-button motion-pressed"
+              }
+            ],
+            "message": "累计统计已保存。 学习活动已保存。 旧卦码摘要已保存。",
+            "feedback": "回答正确\n\n为什么\n\n综卦要把「乾」的六爻上下倒置，因此得到「乾」。\n\n累计统计已保存。 学习活动已保存。 旧卦码摘要已保存。\n\n返回随机测验\n查看温故队列",
+            "retry": false,
+            "mode": "quiz",
+            "options": 4,
+            "question": "「乾」的综卦（上下倒转）是？",
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            }
+          }
+        },
+        {
+          "label": "legacy-recovered-status-visible",
+          "geometry": {
+            "rect": {
+              "x": 143,
+              "y": 802.96875,
+              "width": 1144,
+              "height": 29.75,
+              "top": 802.96875,
+              "right": 1287,
+              "bottom": 832.71875,
+              "left": 143
+            },
+            "clip": {
+              "left": 28,
+              "top": 96,
+              "right": 1412,
+              "bottom": 1000
+            },
+            "ancestors": [
+              {
+                "tag": "ASIDE",
+                "id": "detail-panel",
+                "className": "detail-panel open lenis",
+                "rect": {
+                  "x": 28,
+                  "y": 96,
+                  "width": 1384,
+                  "height": 904,
+                  "top": 96,
+                  "right": 1412,
+                  "bottom": 1000,
+                  "left": 28
+                },
+                "overflowX": "hidden",
+                "overflowY": "auto",
+                "viewport": false
+              },
+              {
+                "tag": "BODY",
+                "id": "",
+                "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 0,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "viewport": true
+              }
+            ],
+            "text": "累计统计已保存。 学习活动已保存。 旧卦码摘要已保存。",
+            "fullyVisible": true,
+            "centerUnobscured": true
+          }
+        }
+      ],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:02:59.643Z",
+          "values": {
+            "yijing-quiz-wrong": [
+              "111111"
+            ]
+          }
+        }
+      ],
+      "faults": [
+        {
+          "key": "yijing-quiz-wrong",
+          "kind": "QuotaExceededError",
+          "phase": "answer-and-first-retry"
+        }
+      ],
+      "screenshots": [
+        "1440-retry-legacy-legacy-failed.png",
+        "1440-retry-legacy-legacy-recovered.png"
+      ],
+      "trustedInputEvidence": [
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 707,
+          "y": 34,
+          "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 1247,
+          "y": 750,
+          "action": "legacy-practice-0",
+          "target": "text-button motion-pressed"
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 426,
+          "y": 630,
+          "code": "111111",
+          "target": "SMALL"
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 715,
+          "y": 824,
+          "action": "quiz-retry",
+          "target": "text-button motion-pressed"
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 715,
+          "y": 824,
+          "action": "quiz-retry",
+          "target": "text-button motion-pressed"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Headless Chromium desktop and CDP emulated touch. This is not physical-mobile, screen-reader, or real browser 200% zoom evidence.",
+    "A new random-port origin and isolated profile are used. No user profile, learning data, or private text is read.",
+    "Fixtures and quota failures are explicitly recorded. Fixture wrong histories are synthetic, not earned learning or achievement evidence.",
+    "Debugger only reads generated public question and attempt identity. No application function or DOM.click is called in the browser.",
+    "DOM geometry and scrollIntoView locate controls. Navigation, answers, retries, source opening and return use trusted CDP Input.",
+    "Offline covers already-visited modules in the same page, not first installation or a fresh offline reload."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "finishedAt": "2026-10-24T22:03:03.548Z",
+  "finalSourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "7b3ad942f4d51293035daa81b7c7cc3fe13ee456b1fd1f342f1ffa4f51edcb8d",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/user-data.js": "3afccc2472dbab027089a7686ec1e43249a3f889b55be8610eebacef7bca1f6d",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/modes/quiz-mode.js": "d63a0fe1ce0f231fa67c71d9b4903484c387c1b9ffb4dfdec08803e3e046600e",
+    "web/js/modes/review-mode.js": "8adbee1de930ede4f35bc471587081f606d293370313a924ad22cd1483ae4adc",
+    "web/js/modes/learning-mode.js": "f2d1a600294cf3bd2f73d5e884aecb18945d31fbde83776fd93a4d0026e68675",
+    "web/js/almanac-knowledge.js": "ba1b1ce69a46de1832dc62e9959d1ae439f10c7435bd19b5e94c57bf40eeeccd",
+    "web/js/storage.js": "13d7b5b1288991582a4102dbb48b64d0b98593d1fab1502169dce7e52be78f28",
+    "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "4d6b8421b6522999287dac7b651e05259e44b930d9d956f8bb7614ba72f79c5b",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/data/almanac-yiji.json": "791c99f67bac66f7d1259d08aaeec3c53a540b3bdc8ae5403aaa107666ad6649",
+    "scripts/test-quiz-weak-questions.mjs": "4ce6703addf56605570efd2c18f29afd44b99cfd4bc0d8d9098735b1f6f20841"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "networkRequests": [
+    {
+      "url": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+      "method": "GET",
+      "headers": {
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/protocol-guard.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/assets/academy-astrolabe-bg.webp",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isLinkPreload": true,
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/vendor/lenis.css",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/styles/main.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/styles/immersive.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/vendor/gsap.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/vendor/lenis.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/main.js?v=51",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/manifest.webmanifest",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Medium",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/audio-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/achievement-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/achievement-storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/data-loader.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/evolution-lab.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/share-card.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/modes/guaxu-mode.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/cinematic-motion.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/motion-system.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/render.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/review-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/reading-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/search-controller.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/star-relations.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/star-map.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/svg-painter.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/ui-icons.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/achievement-storage.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/achievement-catalog.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/achievement-engine.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/evolution-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/evolution-semantics.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/hexagram-utils.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/guaxu-wheel.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/modes/guaxu-mode.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/relation-animation.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/content-provenance.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/d3-force.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/star-layouts.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/star-atmosphere.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/star-label-layout.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/data/hexagrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/data/trigrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/data/commentaries/manifest.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/data/hexagram-keywords.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/celestial-stage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/vendor/three.module.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/celestial-stage.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+      "method": "GET",
+      "headers": {
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/vendor/three.core.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/lib/vendor/three.module.min.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/protocol-guard.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/assets/academy-astrolabe-bg.webp",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isLinkPreload": true,
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/vendor/lenis.css",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/styles/main.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/styles/immersive.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/vendor/gsap.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/vendor/lenis.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/main.js?v=51",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/manifest.webmanifest",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Medium",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/audio-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/achievement-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/achievement-storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/data-loader.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/evolution-lab.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/share-card.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/modes/guaxu-mode.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/cinematic-motion.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/motion-system.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/render.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/review-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/reading-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/search-controller.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/star-relations.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/star-map.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/svg-painter.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/ui-icons.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/achievement-catalog.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/achievement-engine.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/achievement-engine.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/evolution-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/evolution-semantics.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/hexagram-utils.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/guaxu-wheel.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/modes/guaxu-mode.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/relation-animation.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/content-provenance.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/d3-force.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/star-layouts.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/star-atmosphere.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/star-label-layout.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/data/hexagrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/data/trigrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/data/commentaries/manifest.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/data/hexagram-keywords.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/celestial-stage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/modes/review-mode.js?v=51",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/data/almanac-terms.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/data/almanac-yiji.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/vendor/three.module.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/celestial-stage.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/learning-progress.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/modes/review-mode.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/learning-curriculum.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/modes/review-mode.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/quiz-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/modes/review-mode.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/?quiz-weak-probe=1440-retry-legacy",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/lib/vendor/three.core.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/lib/vendor/three.module.min.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/modes/quiz-mode.js?v=51",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:63635/js/quiz-session.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:63635",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:63635/js/modes/quiz-mode.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    }
+  ],
+  "profileRemoved": false,
+  "profileRetainedReason": "Isolated synthetic profile retained for diagnosis; no deletion attempted and no user profile touched."
+}

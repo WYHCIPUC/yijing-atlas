@@ -1,0 +1,8 @@
+{
+  "scope": "390-retry-achievement",
+  "exitCode": 1,
+  "sessions": [],
+  "nodePath": "W:\\Node.js\\node.exe",
+  "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '390-retry-achievement'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs",
+  "output": "START 2026-10-24T22-03-26-596Z v22.23.1 profile=C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-ytuId5\nRUN 390-retry-achievement\nAssertion failed: new_time >= loop->time, file c:\\ws\\deps\\uv\\src\\win\\core.c, line 327\r\n"
+}
