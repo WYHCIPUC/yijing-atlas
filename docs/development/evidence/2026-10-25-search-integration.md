@@ -37,6 +37,12 @@ T-SEARCH-01按原卡完成条件关闭；原48卡已完成4项，余44项（33�
 
 Headless与模拟触控不证明手机真机、软键盘、原生中文输入法、读屏或真实浏览器200%缩放；这些外部环境继续按T-A11Y-01登记。T-QA-01真实窗口失焦等仍未闭环；本次搜索专项不能替其关闭。六家内容门禁仍关闭。
 
-搜索目标标签优先级由T-STAR-03继续处理；不将它混入本卡完成范围。后续学习线先按T-LEARN-02接通课程错题的原规则温习，T-LEARN-05为已完成前置。沿用普通lesson小试，原错题必入卷，不增加第四种session、单题课程满分或新奖励；[已核对的契约与分工](2026-10-25-course-weak-questions-design.md)仅为下一项准备，尚未实施或新增验证。
+搜索目标标签优先级由T-STAR-03继续处理；不将它混入本卡完成范围。后续学习线先按T-LEARN-02接通课程错题的原规则温习，T-LEARN-05为已完成前置。沿用普通lesson小试，原错题必入卷，不增加第四种session、单题课程满分或新奖励；[已核对的契约与分工](2026-10-25-course-weak-questions-design.md)在搜索交付时仅为下一项准备。随后新增的题库/组卷局部实现与数据红灯属于未提交增量，最新边界见[盘点证据](2026-10-25-remaining-work-final-audit.md)，不能视为本搜索提交的一部分。
+
+## 5. GitHub源码同步增补
+
+搜索提交`83ba8d44b01a2fb87d9777bee1a95f3c970d7cf4`已同步至`codex/immersive-astrolabe-progress`，远程分支与Draft PR #10头SHA已实读一致。两次普通push因连接重置失败后，通过Git对象API逐一核对104个文件的blob、tree及commit哈希，并以非强制方式更新分支；未改写提交历史。
+
+该提交的[push Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40128195308)与[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40128200588)均已实读为completed/success。尚未合并main或生产发布，课程错题未提交文件不包含在此远程版本中。
 
 回滚只针对本卡文件及局部改动；没有持久化迁移，不删除用户数据。远程同步限开发分支、Draft PR与Issue，不合并main、不发布Pages/Release。
