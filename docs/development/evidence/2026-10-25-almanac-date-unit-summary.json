@@ -1,0 +1,34 @@
+{
+  "recordedAt": "2026-10-25T00:18:55.299Z",
+  "runtime": "v22.23.1",
+  "command": "node --test web/test/almanac-date.test.mjs web/test/almanac-date-page.test.mjs web/test/almanac-page-accessibility.test.mjs web/test/almanac-timezone.test.mjs web/test/almanac-knowledge-page.test.mjs",
+  "exitCode": 0,
+  "scope": "T-CAL-01 date logic and native page DOM behavior; no browser or full validation run",
+  "initialRed": {
+    "tests": 12,
+    "passed": 0,
+    "failed": 12,
+    "log": "2026-10-25-almanac-date-red.log.gz"
+  },
+  "cancelledPickerRed": {
+    "tests": 11,
+    "passed": 10,
+    "failed": 1,
+    "log": "2026-10-25-almanac-date-cancel-red.log.gz"
+  },
+  "green": {
+    "tests": 20,
+    "passed": 20,
+    "failed": 0,
+    "log": "2026-10-25-almanac-date-green.log.gz"
+  },
+  "sources": {
+    "web/js/almanac-page.js": "31832fa710cd824fb21b4f804151f7cc20335a1b86c27e6ee36e42a4f7fdb542",
+    "web/js/almanac-date.js": "2f8c7b39d216a7cd45c744854feeb31cc0bfbd0a6c3c58a3a064e5e97aefafe7",
+    "web/test/almanac-date.test.mjs": "fc06ce7b699b2a59d3d0fdd2e8420a3c71876c825bde6e525086ab638b64a07a",
+    "web/test/almanac-date-page.test.mjs": "250aa55ab870893d52e06c6569787c0ded924c1ee62fcbcc429cc6288f956372",
+    "web/test/almanac-page-accessibility.test.mjs": "46bb5fa8930637542b4e9ca2e1e853c2924662ed564362a0df3fd6636a8ce996",
+    "web/test/almanac-timezone.test.mjs": "c47b9bb1f8ecc15f266cd9a1854271c96ddcdaecfdd146002d8ee5648c61d492",
+    "web/test/almanac-knowledge-page.test.mjs": "41517012887bbfb54f4bd92444972b4f0f4bfac6877ae689c5c69ecb97614ae3"
+  }
+}

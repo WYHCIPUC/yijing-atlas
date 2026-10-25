@@ -1,0 +1,184 @@
+TAP version 13
+# Subtest: 黄历离页调用返回的清理函数，移除日期和术语会话后再绘制新页
+not ok 1 - 黄历离页调用返回的清理函数，移除日期和术语会话后再绘制新页
+  ---
+  duration_ms: 2.3986
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-mode-navigation.test.mjs:84:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   'rendered:almanac'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'rendered:almanac'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-mode-navigation.test.mjs:88:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: 黄历面板关闭和重复清理只释放本轮一次，不遗留旧日期监听
+not ok 2 - 黄历面板关闭和重复清理只释放本轮一次，不遗留旧日期监听
+  ---
+  duration_ms: 0.9258
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\main-mode-navigation.test.mjs:92:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   'rendered:almanac'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'rendered:almanac'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/main-mode-navigation.test.mjs:98:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: 温故入口把课程与原题上下文传给加载完成后的学习页
+ok 3 - 温故入口把课程与原题上下文传给加载完成后的学习页
+  ---
+  duration_ms: 0.7934
+  type: 'test'
+  ...
+# Subtest: 学习页导航转发可选上下文，普通导航不沿用上一张原题
+ok 4 - 学习页导航转发可选上下文，普通导航不沿用上一张原题
+  ---
+  duration_ms: 0.6249
+  type: 'test'
+  ...
+# Subtest: 较旧的学习加载即使最后完成也不能覆盖新原题入口
+ok 5 - 较旧的学习加载即使最后完成也不能覆盖新原题入口
+  ---
+  duration_ms: 1.229
+  type: 'test'
+  ...
+# Subtest: 课程加载失败不显示原题试卷，重试仍可使用同一入口上下文
+ok 6 - 课程加载失败不显示原题试卷，重试仍可使用同一入口上下文
+  ---
+  duration_ms: 0.6993
+  type: 'test'
+  ...
+# Subtest: 关闭仍在加载的学习页立即清除忙碌状态，迟到resolve不重开页面
+ok 7 - 关闭仍在加载的学习页立即清除忙碌状态，迟到resolve不重开页面
+  ---
+  duration_ms: 0.5445
+  type: 'test'
+  ...
+# Subtest: 关闭仍在加载的学习页立即清除忙碌状态，迟到reject不重开页面
+ok 8 - 关闭仍在加载的学习页立即清除忙碌状态，迟到reject不重开页面
+  ---
+  duration_ms: 0.4981
+  type: 'test'
+  ...
+# Subtest: 关闭后再次打开学习时，旧加载结束不清除新请求的忙碌状态
+ok 9 - 关闭后再次打开学习时，旧加载结束不清除新请求的忙碌状态
+  ---
+  duration_ms: 0.7674
+  type: 'test'
+  ...
+# Subtest: 离开学习时在替换正文之前收尾，回星图重复清理仍只执行一次
+ok 10 - 离开学习时在替换正文之前收尾，回星图重复清理仍只执行一次
+  ---
+  duration_ms: 0.7841
+  type: 'test'
+  ...
+# Subtest: 较旧加载不会安装清理函数或销毁当前学习实例
+ok 11 - 较旧加载不会安装清理函数或销毁当前学习实例
+  ---
+  duration_ms: 0.5725
+  type: 'test'
+  ...
+# Subtest: 占筮重新进入及切换模块前清理旧结果，重复离开不再次执行
+ok 12 - 占筮重新进入及切换模块前清理旧结果，重复离开不再次执行
+  ---
+  duration_ms: 0.5799
+  type: 'test'
+  ...
+# Subtest: 推荐的旧错题入口明确传wrongOnly，普通测验不沿用
+ok 13 - 推荐的旧错题入口明确传wrongOnly，普通测验不沿用
+  ---
+  duration_ms: 1.3816
+  type: 'test'
+  ...
+# Subtest: 温故与测验转发完整原题和术语返回上下文，离开前执行各自cleanup
+ok 14 - 温故与测验转发完整原题和术语返回上下文，离开前执行各自cleanup
+  ---
+  duration_ms: 0.6291
+  type: 'test'
+  ...
+# Subtest: 旧卦码入口不补造原题引用，下一次普通测验不继承legacyCode
+ok 15 - 旧卦码入口不补造原题引用，下一次普通测验不继承legacyCode
+  ---
+  duration_ms: 0.4693
+  type: 'test'
+  ...
+# Subtest: 迟到review加载不覆盖新入口、焦点或清理函数
+ok 16 - 迟到review加载不覆盖新入口、焦点或清理函数
+  ---
+  duration_ms: 1.8334
+  type: 'test'
+  ...
+# Subtest: 迟到quiz加载不覆盖新入口、焦点或清理函数
+ok 17 - 迟到quiz加载不覆盖新入口、焦点或清理函数
+  ---
+  duration_ms: 0.671
+  type: 'test'
+  ...
+# Subtest: 原题必需资料加载失败不渲染随机题，重试仍携同一reference
+ok 18 - 原题必需资料加载失败不渲染随机题，重试仍携同一reference
+  ---
+  duration_ms: 0.7906
+  type: 'test'
+  ...
+# Subtest: 温故可选加载术语资料，失败不阻断队列；正式术语入口保留加载失败
+ok 19 - 温故可选加载术语资料，失败不阻断队列；正式术语入口保留加载失败
+  ---
+  duration_ms: 0.9464
+  type: 'test'
+  ...
+# Subtest: 欢迎的零基础路径直接进入首课，其他两条路径保持原含义
+ok 20 - 欢迎的零基础路径直接进入首课，其他两条路径保持原含义
+  ---
+  duration_ms: 0.5633
+  type: 'test'
+  ...
+# Subtest: 模式通用聚焦尊重复讲入口，旧帧不聚焦新页或已移除控件
+ok 21 - 模式通用聚焦尊重复讲入口，旧帧不聚焦新页或已移除控件
+  ---
+  duration_ms: 0.5434
+  type: 'test'
+  ...
+# Subtest: 术语summary目标优先于标题并保留原生Tab顺序
+ok 22 - 术语summary目标优先于标题并保留原生Tab顺序
+  ---
+  duration_ms: 0.7632
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 20
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 136.4355

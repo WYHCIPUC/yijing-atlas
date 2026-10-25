@@ -311,7 +311,7 @@ V1 的 `legacySummaryOnly:true` 表明不能复现六爻老少、全部动爻与
 
 **复讲会话契约（已实现）**：`generation/pending/submission`只属当前页面。首次接受的自评或评阅结果锁定`lessonId/score/mode/at`；成绩与活动分别用`reviewSaved/activitySaved`记录成功，保存重试复用这些值，只补失败部分，不再调用评阅。切课、编辑正文、开始新复讲或清理页面会使旧响应、控件和排队焦点失效；离开不自动补写，回原课动作只传本轮课程ID。正文和点评仍只在内存，持久化成绩不夹带它们，关闭/刷新不承诺恢复。
 
-实现位置：`web/js/review-session.js`（本地代码，尚未提交）、[review-engine.js](../../web/js/review-engine.js)、[learning-assessment-page.js](../../web/js/learning-assessment-page.js)。整体专项、门禁与交付状态统一见[学习反馈交接](evidence/2026-10-25-learning-feedback-integration.md)；不以这些契约已实现推定整卡或所有备份加固均已验收。
+实现位置：[review-session.js](../../web/js/review-session.js)、[review-engine.js](../../web/js/review-engine.js)、[learning-assessment-page.js](../../web/js/learning-assessment-page.js)。整体专项、门禁与交付状态统一见[学习反馈交接](evidence/2026-10-25-learning-feedback-integration.md)；不以这些契约已实现推定整卡或所有备份加固均已验收。
 
 ## 7. 迁移规则
 

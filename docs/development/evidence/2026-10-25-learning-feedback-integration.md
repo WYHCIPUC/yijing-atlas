@@ -2,7 +2,7 @@
 
 记录日期：2026-10-25（Asia/Shanghai）。本文件首次建立时已确认目标路径不存在，未覆盖旧交接材料。
 
-**当前结论：已确认需求；T-LEARN-03 本地验收完成，提交与 GitHub 同步待登记实际结果。** v9 独立专项 **51/51**，完整 `npm run validate` 实际 `exit 0`：75 个质量脚本、覆盖率阶段 629/629；完整 `npm run test:e2e` 也已 `exit 0`，五视口共 25 张截图。最终专项批次 session81090 已终态 `exit 0`；接受集使用相同 31 个观测文件，跨 Node22／Node24 运行环境。所有历史失败与中止保留，不宣称更换运行时治愈原生断言。本文不预填提交 SHA、push、远程 CI 或生产发布。
+**当前结论：已确认需求；T-LEARN-03已完成本地验收，并在8f71028提交、推送；对应PR Quality已成功。** 业务与远程边界见[实际交付记录](2026-10-25-learning-feedback-github-delivery.md)。v9 独立专项 **51/51**，完整 `npm run validate` 实际 `exit 0`：75 个质量脚本、覆盖率阶段 629/629；完整 `npm run test:e2e` 也已 `exit 0`，五视口共 25 张截图。最终专项批次 session81090 已终态 `exit 0`；接受集使用相同 31 个观测文件，跨 Node22／Node24 运行环境。所有历史失败与中止保留，不宣称更换运行时治愈原生断言。未生产发布。
 
 最新冻结记录为 [源码 v9](2026-10-25-learning-feedback-final-source-v9.json)，记录于 `2026-10-24T23:56:45.3666875Z`，共 171 文件。相对 [v8](2026-10-25-learning-feedback-final-source-v8.json) 只改变 `learning-ui-contract.test.mjs` 与 `mode-result-visibility.test.mjs`；v8 相对 [v7](2026-10-25-learning-feedback-final-source-v7.json) 只改变 `layout-contract.test.mjs`。这三次契约修订未改变浏览器观测的 31 个产品／数据／探针文件。[最终验收记录](2026-10-25-learning-feedback-final-acceptance.json)已核对 171 文件，`changed: []`，并汇总完整门禁、可信输入、独立审阅和证据包。最终提交应保持该源码对应关系；此前各候选和失败证据全部保留，见 §5.1。
 

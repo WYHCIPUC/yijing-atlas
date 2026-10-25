@@ -1,0 +1,27 @@
+{
+  "recordedAt": "2026-10-25T00:21:46.821Z",
+  "head": "8f71028b69d9b10da082740e34209f43b83d509b",
+  "cards": 48,
+  "completed": [
+    "T-DIV-01",
+    "T-SAVE-01",
+    "T-LEARN-05",
+    "T-SEARCH-01",
+    "T-LEARN-02",
+    "T-LEARN-01",
+    "T-QUIZ-01",
+    "T-LEARN-03"
+  ],
+  "open": 40,
+  "uniqueOpen": 40,
+  "kinds": {
+    "已确认": 29,
+    "建议改进": 10,
+    "未来独立方案": 1
+  },
+  "sourceFiles": 202,
+  "changed": [],
+  "evidenceMismatch": [],
+  "taskIndexUnchanged": true,
+  "issues": []
+}

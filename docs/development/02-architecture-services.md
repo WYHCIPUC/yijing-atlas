@@ -83,8 +83,8 @@ HTTP 提供方（三选一，不是三层业务服务）
 | 学习 | [learning-mode.js](../../web/js/modes/learning-mode.js)、[study-page.js](../../web/js/study-page.js) | 学习工作台、课程、典籍、数据入口 |
 | 课程和考校 | [learning-curriculum.js](../../web/js/learning-curriculum.js)、[learning-assessment.js](../../web/js/learning-assessment.js)、[learning-assessment-page.js](../../web/js/learning-assessment-page.js) | 课程引用、题库、判分、复讲与推荐 |
 | 复习与测验 | [review-engine.js](../../web/js/review-engine.js)、[quiz-engine.js](../../web/js/quiz-engine.js) 及各自 mode | 纯调度/判题与 DOM 分离，不在样式任务中修改判分 |
-| 本轮提交协调 | `web/js/review-session.js`（本地代码，尚未提交）、[quiz-session.js](../../web/js/quiz-session.js) | 不透明内存token锁定本轮评分/答案与时间，按实际保存结果重试未成功项；复习提交核对原卡快照并合并最新卡集合，不新增全局回执键 |
-| 共用修习反馈 | `web/js/learning-feedback.js`（本地代码，尚未提交） | 只组织本次结果、判断依据、学习记录、下一步四段，约束一个主行动和最多两个次行动；调用方负责动态文本转义、业务保存、事件绑定与焦点，它不是HTML净化器 |
+| 本轮提交协调 | [review-session.js](../../web/js/review-session.js)、[quiz-session.js](../../web/js/quiz-session.js) | 不透明内存token锁定本轮评分/答案与时间，按实际保存结果重试未成功项；复习提交核对原卡快照并合并最新卡集合，不新增全局回执键 |
+| 共用修习反馈 | [learning-feedback.js](../../web/js/learning-feedback.js) | 只组织本次结果、判断依据、学习记录、下一步四段，约束一个主行动和最多两个次行动；调用方负责动态文本转义、业务保存、事件绑定与焦点，它不是HTML净化器 |
 | 黄历 | [almanac-page.js](../../web/js/almanac-page.js)、[almanac/](../../web/js/almanac/) | 日期界面、天文、农历、干支、节气、择日与资料解读 |
 | 占筮 | [divination-engine.js](../../web/js/divination-engine.js)、[meihua-engine.js](../../web/js/meihua-engine.js)、[divination-interpretation.js](../../web/js/divination-interpretation.js) | 起卦、变爻取辞、体用与分层解释 |
 | 占筮记录 | [divination-history.js](../../web/js/divination-history.js) | 记录规范化、V1 兼容、V2 快照与隐私白名单 |
