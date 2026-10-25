@@ -26,6 +26,7 @@ const PRECACHE = [
   './js/learning-assessment.js',
   './js/learning-assessment-page.js',
   './js/learning-curriculum.js',
+  './js/learning-feedback.js',
   './js/learning-progress.js',
   './js/learning-review.js',
   './js/motion-system.js',

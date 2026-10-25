@@ -1,6 +1,7 @@
 import { generateAlmanacQuestion, generateQuestion, loadStats, loadWrongBook, resolveQuizQuestion } from '../quiz-engine.js';
 import { getQuizWeakQuestions, getWeakQuestionsError, loadLearningRecord } from '../learning-progress.js';
 import { createQuizAttempt, submitQuizAttempt } from '../quiz-session.js';
+import { renderLearningFeedback } from '../learning-feedback.js';
 
 function esc(value) {
   return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -10,9 +11,10 @@ function revealQuizFeedback(feedback, current, schedule, failed = false) {
   schedule(() => {
     if (!current() || feedback.isConnected === false) return;
     const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-    feedback.scrollIntoView?.({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'nearest' });
-    if (failed) feedback.querySelector('[data-action="quiz-retry"]')?.focus({ preventScroll: true });
-    else feedback.querySelector('.quiz-next')?.focus({ preventScroll: true });
+    const action = feedback.querySelector(failed ? '[data-action="quiz-retry"]' : '.quiz-next');
+    const scrollTarget = failed && action ? action : feedback;
+    scrollTarget.scrollIntoView?.({ behavior: reducedMotion ? 'auto' : 'smooth', block: failed ? 'center' : 'nearest', inline: 'nearest' });
+    action?.focus({ preventScroll: true });
   });
 }
 
@@ -87,7 +89,7 @@ export function renderQuizMode(mountEl, appState, onNavigateMode, entry = {}) {
         ${legacyCode ? '<p class="assessment-warning">旧卦码摘要：原题型未保留。本次练习不代表原具体错误已纠正。</p>' : ''}
         ${weakError ? '<p class="assessment-warning" role="status">具体温习记录异常，请先备份核对；不会清空原有成绩。</p>' : ''}
         ${question ? `<div class="mode-card quiz-question"><span>${isAlmanac ? '历法辨识' : wrongOnly ? '原规则回练' : '卦象辨识'}</span><p>${esc(question.question)}</p></div>
-          <p class="quiz-instruction">选择你的答案</p><div class="quiz-options">${options}</div><div class="quiz-feedback" aria-live="polite"></div>` :
+          <p class="quiz-instruction">选择你的答案</p><div class="quiz-options">${options}</div><div class="quiz-feedback"></div>` :
           `<section class="mode-empty"><p role="status">${esc(reason)}</p><button type="button" class="quick-btn" data-action="quiz-learning">返回学习</button>
             <button type="button" class="text-button" data-action="quiz-review">查看温故队列</button></section>`}
       </div>`;
@@ -125,13 +127,18 @@ export function renderQuizMode(mountEl, appState, onNavigateMode, entry = {}) {
       mountEl.querySelector('[data-quiz-rate]').textContent = `${savedStats.total ? Math.round(savedStats.correct / savedStats.total * 100) : 0}%`;
       if (!feedbackReady) {
         const answerName = isAlmanac ? question.answerText : appState.index.byCode.get(question.answer)?.name;
-        feedback.innerHTML = `<p class="${lastResult.correct ? 'feedback-correct' : 'feedback-wrong'}">${lastResult.correct ? '回答正确' : `正确答案是「${esc(answerName || '—')}」`}</p>
-          <div class="quiz-explanation"><strong>为什么</strong><p>${esc(question.explanation)}</p>
-            ${isAlmanac ? '<button type="button" class="text-button" data-action="quiz-source">查看原术语</button>' : ''}</div>
-          <p class="quiz-storage-status" role="status" aria-live="polite"></p>
-          <button type="button" class="text-button" data-action="quiz-retry">重试保存未完成的记录</button>
-          <button type="button" class="quiz-next">下一题 →</button>
-          <button type="button" class="text-button" data-action="quiz-review">查看温故队列</button>`;
+        feedback.innerHTML = renderLearningFeedback({
+          result: `<p class="${lastResult.correct ? 'feedback-correct' : 'feedback-wrong'}">${lastResult.correct ? '回答正确' : `正确答案是「${esc(answerName || '—')}」`}</p>
+            <p>${lastResult.correct ? '单次答对不代表已经掌握，仍需结合依据和后续温习。' : '可先核对依据，再按原规则温习。'}</p>`,
+          basis: `<div class="quiz-explanation"><p>${esc(question.explanation)}</p>
+            ${isAlmanac ? '<button type="button" class="text-button" data-action="quiz-source">查看原术语</button>' : ''}</div>`,
+          changes: '<p class="quiz-storage-status"></p><p class="quiz-feedback-status" role="status" aria-live="polite"></p>',
+          primaryAction: '<button type="button" class="quiz-next">下一题 →</button>',
+          secondaryActions: [
+            '<button type="button" class="text-button" data-action="quiz-retry">重试保存未完成的记录</button>',
+            '<button type="button" class="text-button" data-action="quiz-review">查看温故队列</button>',
+          ],
+        });
         feedbackReady = true;
         feedback.querySelector('[data-action="quiz-retry"]')?.addEventListener('click', () => { if (current() && !lastResult.saved) save(); });
         feedback.querySelector('[data-action="quiz-review"]')?.addEventListener('click', () => navigate('review'));
@@ -157,6 +164,10 @@ export function renderQuizMode(mountEl, appState, onNavigateMode, entry = {}) {
       const status = feedback.querySelector('.quiz-storage-status');
       const message = messages.join(' ');
       if (status.textContent !== message) status.textContent = message;
+      const announcement = feedback.querySelector('.quiz-feedback-status');
+      const announcementText = !lastResult.saved ? '部分学习记录未能保存，可重试未完成部分。'
+        : lastResult.error ? '保存检查完成，请核对记录说明。' : '本次学习记录已保存。';
+      if (announcement.textContent !== announcementText) announcement.textContent = announcementText;
       const retry = feedback.querySelector('[data-action="quiz-retry"]');
       retry.hidden = lastResult.saved; retry.disabled = lastResult.saved;
       const remaining = pendingQuestions().length + legacyCodes().length;

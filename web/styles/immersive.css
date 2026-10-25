@@ -487,6 +487,30 @@ body.workspace-mode.panel-open .workspace-insight-bar { display: none; }
 .flip-card .hexagram-svg, .review-answer-title { color: #805a34; }
 .flip-card :is(.review-eyebrow, .review-answer-text, .review-card-hint) { color: #62584b; }
 .review-rating-actions button { min-height: 48px; border-radius: 3px; }
+
+/* 学习反馈共用阅读顺序；主操作只出现在最后的行动区。 */
+.learning-feedback { display: grid; gap: 0; width: 100%; max-width: var(--content-measure); margin-inline: auto; min-width: 0; text-align: left; }
+.learning-feedback-section { min-width: 0; padding-block: 20px; border-top: 1px solid var(--silver-line-soft); overflow-wrap: anywhere; }
+.learning-feedback-section:first-child { border-top: 0; padding-top: 8px; }
+.learning-feedback-section > h3 { margin: 0 0 12px; color: var(--silver-muted); font-size: 15px; line-height: 1.5; font-weight: 500; }
+.learning-feedback-section :is(p, li, small, summary) { font-size: 16px; line-height: 1.8; }
+.learning-feedback-section p { margin-block: 8px; }
+.learning-feedback-section ul { margin-block: 12px; padding-left: 24px; }
+.learning-feedback-section :is(.assessment-review-list p, .assessment-review-list small) { color: var(--silver-muted); }
+.learning-feedback-section .quiz-explanation { margin: 0; text-align: left; }
+.learning-feedback-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.learning-feedback-actions > div { min-width: 0; }
+.learning-feedback-actions > div:has(> [hidden]) { display: none; }
+.learning-feedback-actions :is(button, a) { display: inline-flex; justify-content: center; align-items: center; min-height: 46px; margin: 0; padding: 10px 16px; border: 1px solid var(--silver-line); border-radius: 3px; color: var(--silver); background: transparent; font-size: 15px; line-height: 1.6; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+.learning-feedback-actions [data-feedback-action="primary"] > :is(button, a) { color: #221a12; background: var(--gold-main); border-color: var(--gold-main); }
+.learning-feedback-actions [data-feedback-action="primary"] > :is(button, a):hover { background: var(--gold-bright); }
+.learning-feedback-actions [data-feedback-action="secondary"] > :is(button, a):hover { background: var(--surface-hover); }
+.learning-feedback-actions [hidden] { display: none; }
+.review-feedback, .oral-review-output { scroll-margin-block: 24px; }
+.review-feedback [data-review-result]:focus-visible { outline: 2px solid var(--silver); outline-offset: 4px; }
+.oral-review-output :is(.learning-feedback-section, .oral-save-status):focus-visible { outline: 2px solid var(--silver); outline-offset: 4px; }
+.quiz-feedback-status { color: var(--silver-muted); font-size: 15px; line-height: 1.7; }
+
 .alm-card { border: 0; border-top: 1px solid var(--silver-line); border-radius: 0; background: transparent; box-shadow: none; }
 .almanac-view { width: 100%; padding: 14px 0 0; gap: 24px; }
 .alm-date-bar { padding-block: 0 24px; border-color: var(--silver-line); }
@@ -653,6 +677,9 @@ body.workspace-mode.panel-open .workspace-insight-bar { display: none; }
   .divine-cast-stage { padding: 22px 18px; }
   .divine-evidence-card { padding: 20px; }
   .review-rating-actions { display: grid; grid-template-columns: 1fr; }
+  .learning-feedback-section { padding-block: 16px; }
+  .learning-feedback-actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .learning-feedback-actions :is(button, a) { width: 100%; }
 }
 
 @media (max-width: 360px) {

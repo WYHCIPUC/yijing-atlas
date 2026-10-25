@@ -7,6 +7,7 @@ import * as quizEngine from '../js/quiz-engine.js';
 import * as learningProgress from '../js/learning-progress.js';
 import * as quizSession from '../js/quiz-session.js';
 import { loadAchievementState } from '../js/achievement-storage.js';
+import { renderLearningFeedback } from '../js/learning-feedback.js';
 
 const source = readFileSync(new URL('../js/modes/quiz-mode.js', import.meta.url), 'utf8')
   .replace(/^import[\s\S]*?from '[^']+';\r?\n/gm, '').replaceAll('export function ', 'function ');
@@ -24,7 +25,7 @@ function harness({ resolveError = null, resolvedQuestion = question, generated =
   const state = { hexagrams: question.candidates.map(binaryCode => ({ binaryCode, name: binaryCode === '111111' ? '乾' : '坤', fullName: '测试卦' })),
     almanacTerms: [], index: { byCode: new Map() } };
   state.hexagrams.forEach(hex => state.index.byCode.set(hex.binaryCode, hex));
-  const context = vm.createContext({ window: dom.window, document: dom.document,
+  const context = vm.createContext({ window: dom.window, document: dom.document, renderLearningFeedback,
     generateQuestion: () => { calls.generated++; return generated; }, generateAlmanacQuestion: () => generated,
     resolveQuizQuestion: (app, value) => { calls.resolved.push(value); return resolveError ? { ok: false, reason: resolveError } : { ok: true, question: resolvedQuestion }; },
     loadStats: () => ({ correct: 0, total: 0 }), loadWrongBook: () => legacy,
@@ -192,4 +193,93 @@ test('精确引用与旧摘要同时传入时明确冲突，不生成或选择�
   assert.match(h.mount.textContent, /回练来源冲突/);
   assert.equal(h.calls.resolved.length, 0); assert.equal(h.calls.generated, 0);
   assert.equal(h.calls.attempts.length, 0); assert.equal(h.mount.querySelectorAll('.quiz-option').length, 0);
+});
+
+test('测验结果按四段呈现，单次正确不宣称掌握且不整块播报', () => {
+  const h = harness(); h.render(); h.click('[data-code="000000"]');
+  const feedback = h.mount.querySelector('.quiz-feedback');
+  const sections = feedback.querySelectorAll('[data-feedback-section]');
+  assert.deepEqual(sections.map(section => section.dataset.feedbackSection), ['result', 'basis', 'changes', 'actions']);
+  assert.deepEqual(sections.map(section => section.querySelector('h3').textContent), ['本次结果', '判断依据', '学习记录', '下一步']);
+  assert.match(sections[0].textContent, /回答正确/);
+  assert.match(sections[0].textContent, /单次答对.*不.*掌握/);
+  assert.equal(sections[1].querySelector('.quiz-explanation').textContent.includes(question.explanation), true);
+  assert.equal(feedback.getAttribute('aria-live'), null);
+  const live = feedback.querySelectorAll('[aria-live="polite"]');
+  assert.equal(live.length, 1);
+  assert.equal(live[0].classList.contains('quiz-feedback-status'), true);
+  assert.ok(live[0].textContent.length <= 40);
+  assert.equal(sections[2].querySelector('.quiz-storage-status').getAttribute('aria-live'), null);
+  const actions = sections[3];
+  assert.equal(actions.querySelectorAll('[data-feedback-action="primary"]').length, 1);
+  assert.equal(actions.querySelector('[data-feedback-action="primary"]').querySelector('.quiz-next').textContent, '下一题 →');
+  assert.equal(actions.querySelectorAll('[data-feedback-action="secondary"]').length, 2);
+});
+
+test('四段反馈呈现真实部分保存变化，重试不重建结果或重复提交成功部分', () => {
+  let count = 0;
+  const h = harness({ submit: () => {
+    count++;
+    return result({ correct: false, saved: count > 1, changes: {
+      stats: { applicable: true, saved: true }, weak: { applicable: true, saved: true, outcome: 'added' },
+      review: { applicable: true, saved: count > 1, added: true }, activity: { applicable: true, saved: true },
+      achievement: { applicable: false, saved: true }, legacy: { applicable: false, saved: true },
+    } });
+  } });
+  h.render(); h.click('[data-code="111111"]');
+  const resultSection = h.mount.querySelector('[data-feedback-section="result"]');
+  const changes = h.mount.querySelector('[data-feedback-section="changes"]');
+  assert.ok(resultSection && changes);
+  assert.match(resultSection.textContent, /正确答案是/);
+  assert.match(changes.textContent, /累计统计已保存/);
+  assert.match(changes.textContent, /卦象复习卡未能保存/);
+  assert.doesNotMatch(changes.textContent, /成就记录|旧卦码摘要/);
+  assert.match(changes.querySelector('.quiz-feedback-status').textContent, /部分.*未.*保存/);
+  const retry = h.mount.querySelector('[data-action="quiz-retry"]');
+  assert.equal(retry.hidden, false); assert.equal(retry.disabled, false);
+  h.flushFrames(); assert.equal(h.document.activeElement, retry);
+  assert.equal(retry.scrolled?.block, 'center', 'Long failure feedback must reveal the focused retry control itself');
+  h.click(retry); h.click(retry);
+  assert.equal(h.mount.querySelector('[data-feedback-section="result"]'), resultSection);
+  assert.equal(h.mount.querySelector('[data-feedback-section="changes"]'), changes);
+  assert.match(changes.textContent, /卦象复习卡已保存/);
+  assert.doesNotMatch(changes.textContent, /未能保存/);
+  assert.match(changes.querySelector('.quiz-feedback-status').textContent, /已保存/);
+  assert.equal(h.calls.attempts.length, 1); assert.equal(h.calls.submits.length, 2);
+  assert.equal(h.calls.submits[0][0], h.calls.submits[1][0]);
+  assert.equal(h.calls.submits[1][1], '111111');
+  assert.equal(retry.hidden, true); assert.equal(retry.disabled, true);
+  h.flushFrames(); assert.equal(h.document.activeElement, h.mount.querySelector('.quiz-next'));
+});
+
+test('术语来源位于依据段，保留完整来路且不占下一步行动数量', () => {
+  const termReference = { sourceKind: 'almanac', questionId: 'almanac:jian:name-to-meaning', questionVersion: 'almanac-v1',
+    questionType: 'name-to-meaning', targetCode: null, termId: 'jian', lessonId: null };
+  const termQuestion = { type: 'almanac', reference: termReference, question: '建日的含义是？', answer: 'jian', answerText: '建始',
+    candidates: [{ code: 'jian', text: '建始' }, { code: 'chu', text: '除去' }], explanation: '<script>不可信文本</script> & 释义' };
+  const h = harness({ resolvedQuestion: termQuestion }); h.render({ reference: termReference }); h.click('[data-code="jian"]');
+  const basis = h.mount.querySelector('[data-feedback-section="basis"]');
+  const actions = h.mount.querySelector('[data-feedback-section="actions"]');
+  assert.ok(basis && actions);
+  assert.equal(actions.querySelector('[data-action="quiz-source"]'), null);
+  assert.equal(basis.querySelector('script'), null);
+  assert.ok(h.mount.querySelector('.quiz-feedback').innerHTML.includes('&lt;script&gt;不可信文本&lt;/script&gt; &amp; 释义'));
+  h.click(basis.querySelector('[data-action="quiz-source"]'));
+  assert.equal(h.calls.navigation[0][0], 'learning');
+  assert.equal(h.calls.navigation[0][1].quizReference, termReference);
+  assert.equal(h.calls.navigation[0][1].returnTo.entry.reference, termReference);
+  assert.equal(h.calls.submits.length, 1);
+});
+
+test('四段反馈销毁后旧重试、下一题、温故及排队焦点都不影响新页面', () => {
+  const h = harness({ submit: () => result({ saved: false, changes: { stats: { applicable: true, saved: false } } }) });
+  const cleanup = h.render(); h.click('[data-code="000000"]');
+  assert.equal(h.mount.querySelectorAll('[data-feedback-section]').length, 4);
+  const retry = h.mount.querySelector('[data-action="quiz-retry"]');
+  const next = h.mount.querySelector('.quiz-next');
+  const review = h.mount.querySelector('[data-action="quiz-review"]');
+  cleanup(); cleanup(); h.mount.innerHTML = '<h3 data-page-heading>新页面</h3>';
+  h.click(retry); h.click(next); h.click(review); h.flushFrames();
+  assert.equal(h.calls.submits.length, 1); assert.equal(h.calls.attempts.length, 1);
+  assert.equal(h.calls.navigation.length, 0); assert.equal(h.mount.querySelector('h3').focusCount, 0);
 });

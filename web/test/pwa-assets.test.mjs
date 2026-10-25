@@ -44,6 +44,20 @@ test('缓存资源不再维护重复查询版本号', () => {
   assert.equal(new Set(entryAssets.map((asset) => asset.match(/\?v=(\d+)/)[1])).size, 1);
 });
 
+test('预缓存模块的静态本地依赖可在首次离线时加载', () => {
+  const paths = new Set([...precache].map(url => url.split('?')[0]));
+  for (const resource of paths) {
+    if (!resource.endsWith('.js')) continue;
+    const modulePath = join(webRoot, resource);
+    const source = readFileSync(modulePath, 'utf8');
+    for (const match of source.matchAll(/^import\s[\s\S]*?from\s+['"]([^'"]+)['"];?/gm)) {
+      if (!match[1].startsWith('.')) continue;
+      const dependency = new URL(match[1], `https://local.test/${resource.slice(2)}`).pathname;
+      assert.ok(paths.has(`.${dependency}`), `${resource}首次离线缺少静态依赖：${match[1]}`);
+    }
+  }
+});
+
 test('页面结构与脚本样式采用同代更新策略', () => {
   const revision = entryAssets[0].match(/\?v=(\d+)/)[1];
   assert.ok(serviceWorker.includes(`const CACHE_NAME = 'yijing-atlas-v${revision}'`));

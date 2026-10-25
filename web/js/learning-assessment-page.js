@@ -16,9 +16,11 @@ import {
 } from './learning-progress.js';
 import { recordActivity } from './learning-progress.js';
 import { evaluateRecitation, loadReviewConfig } from './learning-review.js';
+import { renderLearningFeedback } from './learning-feedback.js';
 
 const TOPIC_BY_LESSON = { 'l1-1': 'yin-yang', 'l1-4': 'eight-trigrams' };
 const assessmentViews = new WeakMap();
+const assessmentPageCleanups = new WeakMap();
 
 function esc(value) {
   return String(value || '')
@@ -34,22 +36,26 @@ function sessionTitle(session) {
   return `${getLesson(session.lessonId)?.title || '课程'} · 课后小试`;
 }
 
-function resetAssessmentViewport(container) {
-  const detailPanel = container.closest?.('.detail-panel');
-  const detailContent = container.closest?.('.detail-content');
-  if (detailPanel) detailPanel.scrollTop = 0;
-  if (detailContent) detailContent.scrollTop = 0;
-  container.scrollTop = 0;
+function resetAssessmentViewport(container, isCurrent, selector = '[data-page-heading]') {
+  if (!isCurrent()) return;
+  if (selector === '[data-page-heading]') {
+    const detailPanel = container.closest?.('.detail-panel');
+    const detailContent = container.closest?.('.detail-content');
+    if (detailPanel) detailPanel.scrollTop = 0;
+    if (detailContent) detailContent.scrollTop = 0;
+    container.scrollTop = 0;
+  }
   const schedule = window.requestAnimationFrame || ((callback) => callback());
-  const heading = container.querySelector('[data-page-heading]');
+  const target = container.querySelector(selector);
   schedule(() => {
-    if (!heading || heading.isConnected === false || container.querySelector('[data-page-heading]') !== heading) return;
-    heading.tabIndex = -1;
-    heading.focus?.({ preventScroll: true });
+    if (!isCurrent() || !target || target.isConnected === false || container.querySelector(selector) !== target) return;
+    target.tabIndex = -1;
+    if (selector !== '[data-page-heading]') target.scrollIntoView?.({ block: 'center', behavior: 'instant' });
+    target.focus?.({ preventScroll: true });
   });
 }
 
-function renderQuestionForm(container, session, onComplete, draft = {}, backLabel = '返回考评中心') {
+function renderQuestionForm(container, session, onComplete, draft, backLabel, isCurrent) {
   let submitted = false;
   container.innerHTML = `
     <section class="assessment-sheet" aria-labelledby="assessment-sheet-title" data-assessment-session="${esc(session.id)}">
@@ -81,13 +87,16 @@ function renderQuestionForm(container, session, onComplete, draft = {}, backLabe
     const index = Number(selected?.value);
     return selected && Number.isInteger(index) && String(index) === selected.value ? question.options[index] : null;
   };
+  const form = container.querySelector('.assessment-form');
+  const isCurrentForm = () => !submitted && isCurrent() && form.isConnected !== false &&
+    container.querySelector('.assessment-form') === form;
   container.querySelector('[data-action="cancel"]').addEventListener('click', () => {
-    if (submitted) return;
+    if (!isCurrentForm()) return;
     submitted = true;
     onComplete(null);
   });
-  const form = container.querySelector('.assessment-form');
   form.addEventListener('change', () => {
+    if (!isCurrentForm()) return;
     session.questions.forEach((question, index) => {
       const option = readOption(container.querySelector(`input[name="question-${index}"]:checked`), question);
       if (option) draft[question.id] = option.value;
@@ -96,7 +105,7 @@ function renderQuestionForm(container, session, onComplete, draft = {}, backLabe
   });
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    if (submitted) return;
+    if (!isCurrentForm()) return;
     const answers = {};
     for (let index = 0; index < session.questions.length; index += 1) {
       const question = session.questions[index];
@@ -114,7 +123,7 @@ function renderQuestionForm(container, session, onComplete, draft = {}, backLabe
     submitted = true;
     onComplete(result);
   });
-  resetAssessmentViewport(container);
+  resetAssessmentViewport(container, isCurrentForm);
 }
 
 function courseQuestionStatus(item, answer, session, assessment, weakQuestions, error) {
@@ -152,15 +161,16 @@ function renderResult(container, session, result, onBack, saveState, onRetry, ac
       : saveState.assessment?.duplicate
         ? `本轮已记录，未重复计分；已保存成绩为 ${receipt.correct}/${receipt.total} 题正确，当前答案仅供核对。`
         : '本轮成绩与学习记录已保存。';
+  const backAction = '<button type="button" class="quick-btn" data-action="back">返回考评中心</button>';
+  const reviewAction = '<button type="button" class="text-button" data-action="return-review">前往温故队列</button>';
   container.innerHTML = `
     <section class="assessment-result" aria-labelledby="assessment-result-title" data-assessment-session="${esc(session.id)}">
       <span class="academy-kicker">考校</span>
       <h3 id="assessment-result-title" data-page-heading>${esc(sessionTitle(session))}</h3>
-      <div class="assessment-score"><strong>${percent}</strong><span>分</span></div>
-      <p>${result.correct}/${result.total} 题正确。${percent >= 80 ? '本轮掌握稳定，可继续温习或进入下一课。' : '建议查看辨析后回到原课温习，再进行一次小试。'}</p>
-      <p class="assessment-save-status ${pending.length || missingEvidence ? 'assessment-warning' : 'assessment-success'}" role="status" aria-live="polite">${esc(saveMessage)}</p>
-      ${pending.length ? '<button type="button" class="text-button" data-action="retry-save">重试保存本轮记录</button>' : ''}
-      <div class="assessment-review-list">
+      ${renderLearningFeedback({
+        result: `<div class="assessment-score"><strong>${percent}</strong><span>分</span></div>
+          <p>${result.correct}/${result.total} 题正确。${percent >= 80 ? '本轮掌握稳定，可继续温习或进入下一课。' : '建议查看辨析后回到原课温习，再进行一次小试。'}</p>`,
+        basis: `<div class="assessment-review-list">
         ${session.questions.map((item, index) => {
           const answer = result.results[index];
           return `<details ${answer.correct ? '' : 'open'}>
@@ -175,9 +185,11 @@ function renderResult(container, session, result, onBack, saveState, onRetry, ac
             </div>
           </details>`;
         }).join('')}
-      </div>
-      <button type="button" class="quick-btn" data-action="back">返回考评中心</button>
-      <button type="button" class="text-button" data-action="return-review">前往温故队列</button>
+        </div>`,
+        changes: `<p class="assessment-save-status ${pending.length || missingEvidence ? 'assessment-warning' : 'assessment-success'}" role="status" aria-live="polite">${esc(saveMessage)}</p>`,
+        primaryAction: pending.length ? '<button type="button" class="text-button" data-action="retry-save">重试保存本轮记录</button>' : backAction,
+        secondaryActions: pending.length ? [backAction, reviewAction] : [reviewAction],
+      })}
     </section>`;
   container.querySelector('[data-action="back"]').addEventListener('click', onBack);
   container.querySelector('[data-action="retry-save"]')?.addEventListener('click', onRetry);
@@ -186,13 +198,14 @@ function renderResult(container, session, result, onBack, saveState, onRetry, ac
     container.querySelector(`[data-action="weak-source-${index}"]`)?.addEventListener('click', () => actions.onSource?.(item));
     container.querySelector(`[data-action="weak-practice-${index}"]`)?.addEventListener('click', () => actions.onPractice?.(item));
   });
-  resetAssessmentViewport(container);
+  resetAssessmentViewport(container, actions.isCurrent,
+    pending.length || missingEvidence ? '.assessment-save-status' : '[data-feedback-section="result"]');
 }
 
-function renderRubric(container, lessonId, appState, message = '') {
+function renderRubric(container, lessonId, appState, onScore, message = '') {
   const rubric = getLessonRubric(lessonId, appState);
   container.innerHTML = `
-    ${message ? `<p class="assessment-warning">${esc(message)}</p>` : ''}
+    ${message ? `<p class="assessment-warning" role="status">${esc(message)}</p>` : ''}
     <div class="oral-rubric">
       <h4>典籍要点核对</h4>
       <p>对照下列要点检查自己的复讲。自评只记录个人温习状态，不作为强制门槛。</p>
@@ -206,9 +219,7 @@ function renderRubric(container, lessonId, appState, message = '') {
     </div>`;
   container.querySelectorAll('[data-score]').forEach((button) => {
     button.addEventListener('click', () => {
-      const result = recordOralReview(lessonId, Number(button.dataset.score), 'self');
-      recordActivity();
-      container.innerHTML = `<p class="assessment-success">本次复讲已按“${esc(button.textContent)}”记录${result.saved ? '。' : '，但浏览器未能保存记录。'}</p>`;
+      onScore(Number(button.dataset.score));
     });
   });
 }
@@ -239,23 +250,112 @@ function recordLessonAchievementEvents(result, saved) {
   return completed.saved && assessed.saved;
 }
 
-function bindOralReview(mountEl, appState) {
+function bindOralReview(mountEl, appState, onNavigate) {
   const lessonSelect = mountEl.querySelector('[data-field="oral-lesson"]');
   const response = mountEl.querySelector('[data-field="oral-response"]');
   const output = mountEl.querySelector('.oral-review-output');
   const aiButton = mountEl.querySelector('[data-action="ai-review"]');
+  const selfButton = mountEl.querySelector('[data-action="self-review"]');
   const config = loadReviewConfig();
+  let disposed = false;
+  let generation = 0;
+  let pending = false;
+  let submission = null;
   aiButton.disabled = !config.endpoint;
   aiButton.title = config.endpoint ? '' : '请先在“数据”栏目配置安全的服务端评阅地址';
 
-  mountEl.querySelector('[data-action="self-review"]').addEventListener('click', () => {
-    renderRubric(output, lessonSelect.value, appState);
-  });
-  aiButton.addEventListener('click', async () => {
+  const isCurrent = token => !disposed && token === generation && response.isConnected !== false &&
+    mountEl.querySelector('.oral-review-output') === output;
+  const invalidate = () => {
+    if (disposed) return;
+    generation++;
+    pending = false;
+    submission = null;
+    output.innerHTML = '';
+    aiButton.disabled = !config.endpoint;
+  };
+  const saveSubmission = view => {
+    if (!isCurrent(view.generation) || submission !== view) return;
+    if (!view.reviewSaved) view.reviewSaved = recordOralReview(view.lessonId, view.score, view.mode, view.at).saved;
+    if (!view.activitySaved) view.activitySaved = recordActivity(view.at).saved;
+  };
+  const showResult = view => {
+    if (!isCurrent(view.generation) || submission !== view) return;
+    const incomplete = !view.reviewSaved || !view.activitySaved;
+    const lesson = getLesson(view.lessonId);
+    const rubric = getLessonRubric(view.lessonId, appState);
+    const newAction = '<button type="button" class="text-button" data-action="oral-new">开始新的复讲</button>';
+    const sourceActions = lesson ? ['<button type="button" class="text-button" data-action="oral-source">回原课温习</button>'] : [];
+    output.innerHTML = `
+      <div class="oral-ai-result">
+        ${renderLearningFeedback({
+          result: `<span class="review-mode-badge">${view.mode === 'ai' ? '智能评阅' : '基于要点的自评'}</span><strong>${view.score} 分</strong>
+            <p>${esc(view.review?.summary || '这是个人对要点掌握情况的自评，不作为客观考评结果。')}</p>
+            ${view.review?.strengths.length ? `<h4>已掌握</h4><ul>${view.review.strengths.map(item => `<li>${esc(item)}</li>`).join('')}</ul>` : ''}
+            ${view.review?.improvements.length ? `<h4>再温习</h4><ul>${view.review.improvements.map(item => `<li>${esc(item)}</li>`).join('')}</ul>` : ''}`,
+          basis: `<h4>项目课程要点</h4><p>课程：${esc(lesson?.title || '原课暂不可定位')}</p>
+            <ul>${rubric.map(item => `<li>${esc(item)}</li>`).join('')}</ul>
+            <p class="oral-source-notice">本结果未附原典出处定位，出处与校验状态待核对；请回原课查看。</p>`,
+          changes: `<p class="oral-save-status ${incomplete ? 'assessment-warning' : 'assessment-success'}" role="status">复讲成绩${view.reviewSaved ? '已保存' : '未能保存'}；学习日记录${view.activitySaved ? '已保存' : '未能保存'}。</p>`,
+          primaryAction: incomplete ? '<button type="button" class="quick-btn" data-action="oral-retry-save">仅重试保存本轮记录</button>' : newAction,
+          secondaryActions: incomplete ? [newAction, ...sourceActions] : sourceActions,
+        })}
+      </div>`;
+    output.querySelector('[data-action="oral-retry-save"]')?.addEventListener('click', () => {
+      if (!isCurrent(view.generation) || submission !== view) return;
+      saveSubmission(view);
+      showResult(view);
+      output.querySelector(`[data-action="${!view.reviewSaved || !view.activitySaved ? 'oral-retry-save' : 'oral-new'}"]`)?.focus();
+    });
+    output.querySelector('[data-action="oral-new"]')?.addEventListener('click', () => {
+      if (!isCurrent(view.generation) || submission !== view) return;
+      invalidate();
+      response.focus();
+    });
+    const sourceButton = output.querySelector('[data-action="oral-source"]');
+    sourceButton?.addEventListener('click', () => {
+      if (!isCurrent(view.generation) || submission !== view || output.querySelector('[data-action="oral-source"]') !== sourceButton) return;
+      onNavigate?.('path', view.lessonId);
+    });
+  };
+  const complete = (token, lessonId, score, mode, review = null) => {
+    if (!isCurrent(token) || submission) return;
+    submission = { generation: token, lessonId, score, mode, review, at: new Date(), reviewSaved: false, activitySaved: false };
+    saveSubmission(submission);
+    showResult(submission);
+    const view = submission;
+    const selector = view.reviewSaved && view.activitySaved ? '[data-feedback-section="result"]' : '.oral-save-status';
+    const target = output.querySelector(selector);
+    const schedule = window.requestAnimationFrame || (callback => callback());
+    schedule(() => {
+      if (!isCurrent(token) || submission !== view || !target || target.isConnected === false || output.querySelector(selector) !== target) return;
+      target.tabIndex = -1;
+      target.scrollIntoView?.({ block: 'center', behavior: 'instant' });
+      target.focus?.({ preventScroll: true });
+    });
+  };
+  const showSelfReview = (token, lessonId, message = '') => {
+    renderRubric(output, lessonId, appState, score => complete(token, lessonId, score, 'self'), message);
+  };
+  const selfReview = () => {
+    if (disposed) return;
+    invalidate();
+    showSelfReview(generation, lessonSelect.value);
+  };
+  const aiReview = async () => {
+    if (!isCurrent(generation) || pending || submission || !config.endpoint) return;
     const lesson = getLesson(lessonSelect.value);
+    if (!lesson) return;
+    if (response.value.trim().length < 20) {
+      output.innerHTML = '<p class="assessment-warning" role="status">请至少写下 20 个字，再提交复讲。</p>';
+      response.focus();
+      return;
+    }
+    const token = ++generation;
     const rubric = getLessonRubric(lesson.id, appState);
+    pending = true;
     aiButton.disabled = true;
-    output.innerHTML = '<p class="assessment-status">正在请先生评阅复讲…</p>';
+    output.innerHTML = '<p class="assessment-status" role="status">正在请先生评阅复讲…</p>';
     try {
       const review = await evaluateRecitation({
         endpoint: config.endpoint,
@@ -263,30 +363,51 @@ function bindOralReview(mountEl, appState) {
         response: response.value,
         rubric,
       });
-      const saved = recordOralReview(lesson.id, review.score, 'ai');
-      recordActivity();
-      output.innerHTML = `
-        <div class="oral-ai-result">
-          <span class="review-mode-badge">智能评阅</span><strong>${review.score} 分</strong>
-          <p>${esc(review.summary)}</p>
-          ${review.strengths.length ? `<h4>已掌握</h4><ul>${review.strengths.map((item) => `<li>${esc(item)}</li>`).join('')}</ul>` : ''}
-          ${review.improvements.length ? `<h4>再温习</h4><ul>${review.improvements.map((item) => `<li>${esc(item)}</li>`).join('')}</ul>` : ''}
-          ${saved.saved ? '' : '<small>点评已返回，但浏览器未能保存本次记录。</small>'}
-        </div>`;
+      complete(token, lesson.id, review.score, 'ai', review);
     } catch (error) {
-      renderRubric(output, lesson.id, appState, `${error.message}，已切换为本地要点自评。`);
+      if (isCurrent(token)) showSelfReview(token, lesson.id, `${error.message}，已切换为本地要点自评。`);
     } finally {
-      aiButton.disabled = !config.endpoint;
+      if (isCurrent(token)) {
+        pending = false;
+        aiButton.disabled = !config.endpoint;
+      }
     }
-  });
+  };
+  selfButton.addEventListener('click', selfReview);
+  aiButton.addEventListener('click', aiReview);
+  lessonSelect.addEventListener('change', invalidate);
+  response.addEventListener('input', invalidate);
+  return () => {
+    if (disposed) return;
+    disposed = true;
+    generation++;
+    submission = null;
+    selfButton.removeEventListener('click', selfReview);
+    aiButton.removeEventListener('click', aiReview);
+    lessonSelect.removeEventListener('change', invalidate);
+    response.removeEventListener('input', invalidate);
+  };
 }
 
 export function renderLearningAssessmentPage(mountEl, appState, {
   onNavigate, initialLessonId, requiredQuestionId, requiredQuestionVersion, returnTo, initialOralLessonId,
 } = {}) {
+  assessmentPageCleanups.get(mountEl)?.();
+  let disposed = false;
+  let oralCleanup = null;
+  const clearOral = () => { oralCleanup?.(); oralCleanup = null; };
+  const cleanup = () => {
+    if (disposed) return;
+    disposed = true;
+    clearOral();
+    if (assessmentPageCleanups.get(mountEl) === cleanup) assessmentPageCleanups.delete(mountEl);
+  };
+  assessmentPageCleanups.set(mountEl, cleanup);
   const questionBank = buildLearningQuestionBank(appState);
 
   const renderHub = () => {
+    if (disposed) return;
+    clearOral();
     assessmentViews.delete(mountEl);
     const record = loadLearningRecord();
     const recommended = recommendLesson(record);
@@ -334,7 +455,7 @@ export function renderLearningAssessmentPage(mountEl, appState, {
           <button type="button" class="text-button" data-action="self-review">查看要点并自评</button>
           <button type="button" class="quick-btn" data-action="ai-review">提交智能评阅</button>
         </div>
-        <div class="oral-review-output" aria-live="polite"></div>
+        <div class="oral-review-output"></div>
       </section>`;
 
     mountEl.querySelector('[data-action="daily-study"]')?.addEventListener('click', () => {
@@ -349,29 +470,35 @@ export function renderLearningAssessmentPage(mountEl, appState, {
     mountEl.querySelector('[data-action="exam"]').addEventListener('click', () => {
       startSession('exam', { levelId: mountEl.querySelector('[data-field="level"]').value });
     });
-    bindOralReview(mountEl, appState);
-    resetAssessmentViewport(mountEl);
+    oralCleanup = bindOralReview(mountEl, appState, onNavigate);
+    resetAssessmentViewport(mountEl, () => !disposed);
     if (initialOralLessonId && getLesson(initialOralLessonId)) {
       const select = mountEl.querySelector('[data-field="oral-lesson"]');
       const response = mountEl.querySelector('[data-field="oral-response"]');
       select.value = initialOralLessonId;
       const schedule = window.requestAnimationFrame || ((callback) => callback());
       // Let the parent mode finish its scroll reset and initial heading focus first.
-      schedule(() => schedule(() => {
-        if (response.isConnected === false || mountEl.querySelector('[data-field="oral-response"]') !== response) return;
-        response.scrollIntoView?.({ block: 'center', behavior: 'auto' });
-        response.focus?.({ preventScroll: true });
-      }));
+      schedule(() => {
+        if (disposed) return;
+        schedule(() => {
+          if (disposed || response.isConnected === false || mountEl.querySelector('[data-field="oral-response"]') !== response) return;
+          response.scrollIntoView?.({ block: 'center', behavior: 'auto' });
+          response.focus?.({ preventScroll: true });
+        });
+      });
     }
   };
 
   const showSession = (view) => {
+    if (disposed) return;
+    const isCurrent = () => !disposed && assessmentViews.get(mountEl) === view;
     if (view.result) {
       renderResult(mountEl, view.session, view.result, renderHub, view, () => {
-        if (assessmentViews.get(mountEl) !== view) return;
+        if (disposed || assessmentViews.get(mountEl) !== view) return;
         saveSubmission(view);
         showSession(view);
       }, {
+        isCurrent,
         onReview: () => onNavigate?.('review-mode'),
         onSource: (item) => onNavigate?.('path', item.lessonId, {
           requiredQuestionId: item.id, requiredQuestionVersion: item.questionVersion, returnTo: 'review',
@@ -384,7 +511,7 @@ export function renderLearningAssessmentPage(mountEl, appState, {
       return;
     }
     renderQuestionForm(mountEl, view.session, (result) => {
-      if (view.result || assessmentViews.get(mountEl) !== view) return;
+      if (disposed || view.result || assessmentViews.get(mountEl) !== view) return;
       if (!result) {
         if (view.entry.returnTo === 'review') onNavigate?.('review-mode');
         else renderHub();
@@ -393,10 +520,11 @@ export function renderLearningAssessmentPage(mountEl, appState, {
       view.result = result;
       saveSubmission(view);
       showSession(view);
-    }, view.answers, view.entry.returnTo === 'review' ? '返回温故队列' : '返回考评中心');
+    }, view.answers, view.entry.returnTo === 'review' ? '返回温故队列' : '返回考评中心', isCurrent);
   };
 
   const saveSubmission = (view) => {
+    if (disposed) return;
     if (!view.assessment?.saved) view.assessment = recordLearningAssessment(view.session.kind, view.result);
     if (!view.assessment.saved || view.assessment.evidenceMissing) return;
     if (!view.activitySaved) view.activitySaved = recordActivity().saved;
@@ -404,6 +532,8 @@ export function renderLearningAssessmentPage(mountEl, appState, {
   };
 
   const startSession = (kind, options) => {
+    if (disposed) return;
+    clearOral();
     const session = createAssessmentSession(kind, questionBank, options);
     if (!session) {
       assessmentViews.delete(mountEl);
@@ -438,4 +568,5 @@ export function renderLearningAssessmentPage(mountEl, appState, {
     lessonId: initialLessonId, requiredQuestionId, requiredQuestionVersion, returnTo,
   });
   else renderHub();
+  return cleanup;
 }

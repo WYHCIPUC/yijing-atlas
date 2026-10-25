@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import * as progress from '../js/learning-progress.js';
 import { buildLearningQuestionBank, getLesson } from '../js/learning-curriculum.js';
 import { createPageDom } from './helpers/quiz-page-dom.mjs';
+import { getHexagramContentProvenance } from '../js/content-provenance.js';
 
 const source = readFileSync(new URL('../js/modes/review-mode.js', import.meta.url), 'utf8')
   .replace(/^import[\s\S]*?from '[^']+';\r?\n/gm, '').replaceAll('export function ', 'function ');
@@ -13,14 +14,15 @@ const question = (sourceKind, extra = {}) => ({ sourceKind, questionId: sourceKi
   targetCode: sourceKind === 'almanac' ? null : '111111', termId: sourceKind === 'almanac' ? 'jian' : null, lessonId: null,
   firstWrongAt: '2026-10-25T01:00:00Z', lastWrongAt: '2026-10-25T01:00:00Z', lastSessionId: 'attempt-1', wrongCount: 1,
   status: 'due', lastReviewedAt: null, resolvedAt: null, ...extra });
-function harness(items = [question('quiz'), question('almanac')], { due = ['111111'], legacy = ['000000'], terms } = {}) {
+function harness(items = [question('quiz'), question('almanac')], { due = ['111111'], legacy = ['000000'], terms, cards = { '111111': { code: '111111' } } } = {}) {
   const dom = createPageDom(), calls = [];
+  dom.window.setTimeout = callback => dom.window.requestAnimationFrame(callback);
   const record = { weakQuestions: Object.fromEntries(items.map(item => [item.questionId, item])) };
   const context = vm.createContext({ window: dom.window, document: dom.document,
     loadLearningRecord: () => record, getWeakQuestionsError: progress.getWeakQuestionsError,
     getCourseWeakQuestions: progress.getCourseWeakQuestions, getQuizWeakQuestions: progress.getQuizWeakQuestions,
     buildLearningQuestionBank, getLesson, loadWrongBook: () => legacy,
-    loadReviewCards: () => ({ '111111': { code: '111111' } }), getDueCards: () => due, hexagramSvg: () => '<svg></svg>',
+    loadReviewCards: () => cards, getDueCards: () => due, hexagramSvg: () => '<svg></svg>', getHexagramContentProvenance,
   });
   vm.runInContext(source, context);
   const hexagrams = ['111111', '000000'].map((binaryCode, number) => ({ binaryCode, number, name: number ? '坤' : '乾', fullName: number ? '坤为地' : '乾为天' }));
@@ -82,4 +84,17 @@ test('具体卦题来源进入原卦卡并可返回同一队列，打开来源�
   h.click('.review-back'); assert.equal(h.mount.querySelectorAll('[data-quiz-question-id]').length, 1);
   assert.equal(JSON.stringify(h.record), before); assert.deepEqual(h.calls, []);
   h.click('[data-action="quiz-practice-0"]'); assert.equal(h.calls[0][1].reference.questionType, 'opposite');
+});
+
+test('尚未引入间隔卡的卦题来源只读，翻面不出现评分，返回恢复原来源焦点', () => {
+  const cards = {}, h = harness([question('quiz')], { due: [], legacy: [], cards });
+  const before = JSON.stringify(h.record);
+  h.click('[data-action="quiz-source-0"]'); h.click('.flip-card'); h.flushFrames();
+  assert.equal(h.mount.querySelector('.review-rating'), null);
+  assert.match(h.mount.textContent, /只读|仅供核对/);
+  assert.match(h.mount.textContent, /待校验/);
+  h.click('.review-back'); h.flushFrames();
+  assert.equal(h.document.activeElement, h.mount.querySelector('[data-action="quiz-source-0"]'));
+  assert.equal(h.document.activeElement.scrolled?.block, 'center', 'restored source is brought into view');
+  assert.equal(JSON.stringify(h.record), before); assert.deepEqual(cards, {});
 });

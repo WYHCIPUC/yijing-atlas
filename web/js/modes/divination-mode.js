@@ -1,10 +1,11 @@
 import { castHexagram, getReading } from '../divination-engine.js';
-import { createProgressEvent } from '../achievement-engine.js';
-import { processAchievementEvent } from '../achievement-storage.js';
+import { createProgressEvent, isAchievementState, isProgressEvent } from '../achievement-engine.js';
+import { getAchievementStorageKey, processAchievementEvent } from '../achievement-storage.js';
 import { addDivinationHistory, clearDivinationHistory, loadDivinationHistory } from '../divination-history.js';
 import { buildCoinInterpretation, buildMeihuaInterpretation } from '../divination-interpretation.js';
 import { yaoLabel } from '../hexagram-utils.js';
 import { recordActivity } from '../learning-progress.js';
+import { renderLearningFeedback } from '../learning-feedback.js';
 import { analyzeTiYong, castByNumber, castByTime } from '../meihua-engine.js';
 import { hexagramSvg } from '../svg-painter.js';
 
@@ -12,15 +13,49 @@ let appState = null;
 let mountEl = null;
 let openDetail = null;
 let analysisSequence = 0;
+let activeView = null;
+let pageVersion = 0;
+let resultVersion = 0;
+let historyVersion = 0;
+
+function isActiveView(view) {
+  return Boolean(view?.active && activeView === view);
+}
 
 function esc(value) {
   return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+function saveAnalysisProgress(event) {
+  try {
+    const storage = globalThis.localStorage;
+    if (!storage) return { saved: false };
+    const key = getAchievementStorageKey();
+    const raw = storage.getItem(key);
+    const value = raw === null ? null : JSON.parse(raw);
+    if (raw !== null && !isAchievementState(value) &&
+        !(value?.version === 0 && Array.isArray(value.events) && value.events.every(isProgressEvent))) {
+      return { saved: false };
+    }
+    // 只把已校验的同一次读取交给迁移与写入，避免读失败回退为空后覆盖旧证据。
+    const checked = {
+      getItem: requested => requested === key ? raw : storage.getItem(requested),
+      setItem: (requested, text) => storage.setItem(requested, text),
+    };
+    return processAchievementEvent(event, { storage: checked });
+  } catch {
+    return { saved: false };
+  }
+}
+
 function revealDivinationArea(target, focusSelector) {
+  const view = activeView;
+  const page = pageVersion;
+  const result = resultVersion;
   const schedule = window.requestAnimationFrame || ((callback) => callback());
   schedule(() => {
+    if (!isActiveView(view) || page !== pageVersion || result !== resultVersion || target?.isConnected === false) return;
     const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
     target.scrollIntoView?.({
       behavior: reducedMotion ? 'auto' : 'smooth',
@@ -28,11 +63,16 @@ function revealDivinationArea(target, focusSelector) {
       inline: 'nearest',
     });
     if (!focusSelector) return;
-    target.querySelector(focusSelector)?.focus({ preventScroll: true });
+    const control = target.querySelector(focusSelector);
+    control?.scrollIntoView?.({ behavior: 'auto', block: 'nearest', inline: 'nearest' });
+    control?.focus({ preventScroll: true });
   });
 }
 
 export function renderDivinationMode(target, state, onOpenDetail) {
+  if (activeView) activeView.active = false;
+  const view = { active: true };
+  activeView = view;
   appState = state;
   mountEl = target;
   openDetail = onOpenDetail;
@@ -64,6 +104,7 @@ export function renderDivinationMode(target, state, onOpenDetail) {
 
   const tabs = [...mountEl.querySelectorAll('.divine-tab')];
   const activateTab = (tab) => {
+    if (!isActiveView(view)) return;
     tabs.forEach((item) => {
       const selected = item === tab;
       item.classList.toggle('active', selected);
@@ -79,6 +120,7 @@ export function renderDivinationMode(target, state, onOpenDetail) {
     tab.addEventListener('click', () => activateTab(tab));
   });
   mountEl.querySelector('.divine-tabs').addEventListener('keydown', (event) => {
+    if (!isActiveView(view)) return;
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
     const current = tabs.indexOf(document.activeElement);
@@ -88,15 +130,23 @@ export function renderDivinationMode(target, state, onOpenDetail) {
     activateTab(tabs[next]);
   });
   mountEl.querySelector('.history-clear').addEventListener('click', () => {
+    if (!isActiveView(view)) return;
     const status = mountEl.querySelector('.history-status');
     status.textContent = clearDivinationHistory() ? '起卦记录已清空。' : '清空失败，请检查浏览器存储权限。';
     renderHistory();
   });
   renderCoin();
   renderHistory();
+  return () => {
+    if (!view.active) return;
+    view.active = false;
+    if (activeView === view) activeView = null;
+  };
 }
 
 function renderHistory() {
+  const view = activeView;
+  const version = ++historyVersion;
   const list = mountEl?.querySelector('.history-list');
   if (!list) return;
   const items = loadDivinationHistory();
@@ -113,6 +163,7 @@ function renderHistory() {
   }).join('') : '<p class="mode-empty">尚无记录；每次起卦后会自动保存在当前浏览器。</p>';
   list.querySelectorAll('.history-item').forEach((button) => {
     button.addEventListener('click', () => {
+      if (!isActiveView(view) || version !== historyVersion || button.isConnected === false) return;
       const item = items.find((entry) => entry.id === button.dataset.historyId);
       if (item) replayHistoryItem(item);
     });
@@ -126,6 +177,9 @@ function activateHistoryTab(type) {
 
 function replayHistoryItem(item) {
   activateHistoryTab(item.type);
+  const view = activeView;
+  const page = pageVersion;
+  const version = resultVersion;
   const status = mountEl.querySelector('.history-status');
   if (item.legacySummaryOnly) {
     const primary = appState.index.byCode.get(item.primaryCode);
@@ -139,6 +193,7 @@ function replayHistoryItem(item) {
         <button type="button" class="text-button history-open-primary">只研读本卦</button>
       </section>`;
     result.querySelector('.history-open-primary')?.addEventListener('click', () => {
+      if (!isActiveView(view) || page !== pageVersion || version !== resultVersion) return;
       if (openDetail) openDetail(item.primaryCode);
       else appState.starMap?.focusStar(item.primaryCode);
     });
@@ -232,7 +287,7 @@ function renderInterpretation(interpretation, analysisId) {
       ${analysisId ? `
         <section class="divine-analysis-check" aria-labelledby="divine-analysis-title">
           <h4 id="divine-analysis-title">完成一次研读</h4>
-          <p>按自己的理解逐项核对；这是学习记录，不是对现实事件的预测。</p>
+          <p>按自己的理解逐项勾选自评；这不是客观结构检验，也不是对现实事件的预测。</p>
           <div class="divine-analysis-options">
             ${[
               ['identification', '我能说清本卦、之卦和动爻'],
@@ -244,21 +299,70 @@ function renderInterpretation(interpretation, analysisId) {
           </div>
           <button type="button" class="text-button divine-analysis-submit">记录这次研读</button>
           <p class="divine-analysis-status" role="status" aria-live="polite"></p>
+          <div class="divine-analysis-feedback"></div>
         </section>` : ''}
       <p class="divine-safety-note">本解读用于传统文化学习与自我反思，不替代医疗、法律、财务、婚姻或其他现实决策。</p>
     </section>
   `;
 }
 
-function bindAnalysisCheck(result, analysisId) {
+function bindAnalysisCheck(result, analysisId, interpretation) {
   const submit = result.querySelector('.divine-analysis-submit');
   const status = result.querySelector('.divine-analysis-status');
-  if (!submit || !status) return;
+  const feedback = result.querySelector('.divine-analysis-feedback');
+  if (!submit || !status || !feedback) return;
+  const view = activeView;
+  const page = pageVersion;
+  const version = resultVersion;
+  const isCurrent = () => isActiveView(view) && page === pageVersion && version === resultVersion &&
+    result.isConnected !== false && result.querySelector('.divine-analysis-submit') === submit;
+  let submission = null;
+  const showFeedback = () => {
+    if (!isCurrent() || !submission) return;
+    const { event, progress } = submission;
+    const totalScore = event.metadata.totalScore;
+    const saved = progress?.saved;
+    const previousScore = progress?.state?.metrics?.analyses?.[analysisId]?.totalScore;
+    const message = !saved ? '本轮勾选自评未能保存到成就记录；可仅重试保存。'
+      : progress.duplicate ? Number.isFinite(previousScore)
+        ? `此前已保存本案例研读记录（${previousScore} 分），本次未重复计分或改动旧记录。`
+        : '此前已处理本案例标识，旧记录未保留可核对的研读分数；未补造明细或重复计分。'
+        : `已保存本轮勾选自评记录（${totalScore} 分）；这不代表客观理解或现实判断已获验证。`;
+    const basisAction = '<button type="button" class="text-button divine-analysis-view-basis">回看本页取辞依据</button>';
+    feedback.innerHTML = renderLearningFeedback({
+      result: `<p><strong>本次勾选自评：${totalScore} 分</strong></p><p>分数来自五项自我勾选，每项20分；这不是客观结构检验，也不评价自由说明或现实应验。</p>`,
+      basis: `<p>取辞方法：${esc(interpretation.method)}</p><p>${esc(interpretation.basis)}</p>
+        <ul>${interpretation.focus.map(item => `<li>来源：${esc(item.source)}</li>`).join('')}</ul>
+        <p>方法边界：${esc(interpretation.caveat)}</p>`,
+      changes: '<div class="divine-analysis-save-state"></div>',
+      primaryAction: saved ? basisAction : '<button type="button" class="quick-btn divine-analysis-retry">仅重试保存本轮记录</button>',
+      secondaryActions: saved ? [] : [basisAction],
+    });
+    feedback.querySelector('.divine-analysis-save-state').append(status);
+    status.textContent = message;
+    feedback.querySelector('.divine-analysis-retry')?.addEventListener('click', () => {
+      if (!isCurrent() || submission.progress?.saved) return;
+      saveSubmission();
+      showFeedback();
+      revealDivinationArea(feedback, submission.progress?.saved ? '.divine-analysis-view-basis' : '.divine-analysis-retry');
+    });
+    feedback.querySelector('.divine-analysis-view-basis')?.addEventListener('click', () => {
+      if (!isCurrent()) return;
+      const details = result.querySelector('.divine-reading-details');
+      if (details) details.open = true;
+      revealDivinationArea(result, '.divine-reading-details summary');
+    });
+  };
+  const saveSubmission = () => {
+    if (!isCurrent() || !submission || submission.progress?.saved) return;
+    submission.progress = saveAnalysisProgress(submission.event);
+  };
   submit.addEventListener('click', () => {
+    if (!isCurrent() || submission) return;
     const dimensions = Object.fromEntries([...result.querySelectorAll('[data-analysis-dimension]')]
       .map((input) => [input.dataset.analysisDimension, input.checked ? 20 : 0]));
     const totalScore = Object.values(dimensions).reduce((sum, score) => sum + score, 0);
-    const progress = processAchievementEvent(createProgressEvent({
+    const event = createProgressEvent({
       type: 'divination.analysis.submitted',
       subjectId: analysisId,
       outcome: 'completed',
@@ -270,13 +374,20 @@ function bindAnalysisCheck(result, analysisId) {
         boundaryAcknowledged: dimensions.boundary >= 20,
         dimensions,
       },
-    }));
+    });
+    submission = { event, progress: null };
     submit.disabled = true;
-    status.textContent = progress.saved ? `已记录本次研读（${totalScore} 分）。` : '研读已完成，但浏览器未能保存成就记录。';
+    result.querySelectorAll('[data-analysis-dimension]').forEach(input => { input.disabled = true; });
+    saveSubmission();
+    showFeedback();
+    revealDivinationArea(feedback, submission.progress?.saved ? '.divine-analysis-view-basis' : '.divine-analysis-retry');
   });
 }
 
 function renderCoin() {
+  const view = activeView;
+  const page = ++pageVersion;
+  resultVersion++;
   const body = mountEl.querySelector('.divine-body');
   body.innerHTML = `
     <section class="divine-cast-stage" aria-labelledby="coin-stage-title">
@@ -288,10 +399,16 @@ function renderCoin() {
     </section>
     <div class="coin-result" aria-live="off"></div>
   `;
-  body.querySelector('.coin-cast').addEventListener('click', () => renderCoinResult(body.querySelector('.coin-result')));
+  body.querySelector('.coin-cast').addEventListener('click', () => {
+    if (isActiveView(view) && page === pageVersion) renderCoinResult(body.querySelector('.coin-result'));
+  });
 }
 
 function renderMeihua() {
+  const view = activeView;
+  const page = ++pageVersion;
+  resultVersion++;
+  const isCurrent = () => isActiveView(view) && page === pageVersion;
   const body = mountEl.querySelector('.divine-body');
   body.innerHTML = `
     <p class="divine-intro">以数字或当前时间起卦，观察体用与五行关系。时间法以公历作简化换算，不等同于严格历法推演。</p>
@@ -302,13 +419,14 @@ function renderMeihua() {
     </div>
     <p id="mh-error" class="mh-error" role="alert" aria-live="assertive" hidden></p>
     <button type="button" class="mh-btn mh-time">以当前公历时间起卦（简化）</button>
-    <div class="mh-result" aria-live="polite"></div>
+    <div class="mh-result" aria-live="off"></div>
   `;
   const upperInput = body.querySelector('.mh-upper');
   const lowerInput = body.querySelector('.mh-lower');
   const error = body.querySelector('.mh-error');
   const inputs = [upperInput, lowerInput];
   const clearMeihuaError = () => {
+    if (!isCurrent()) return;
     error.hidden = true;
     error.textContent = '';
     inputs.forEach((input) => {
@@ -332,6 +450,7 @@ function renderMeihua() {
   };
   inputs.forEach((input) => input.addEventListener('input', clearMeihuaError));
   body.querySelector('.mh-cast').addEventListener('click', () => {
+    if (!isCurrent()) return;
     const invalidInputs = inputs.filter((input) => {
       const value = Number(input.value);
       return !Number.isSafeInteger(value) || value < 1;
@@ -350,10 +469,13 @@ function renderMeihua() {
       showMeihuaError(caught instanceof Error ? caught.message : '起卦失败，请检查输入。');
     }
   });
-  body.querySelector('.mh-time').addEventListener('click', () => renderMeihuaResult(castByTime(new Date())));
+  body.querySelector('.mh-time').addEventListener('click', () => {
+    if (isCurrent()) renderMeihuaResult(castByTime(new Date()));
+  });
 }
 
 function renderMeihuaResult(cast, options = {}) {
+  resultVersion++;
   const primaryHex = appState.index.byCode.get(cast.primaryCode);
   const changedHex = appState.index.byCode.get(cast.changedCode);
   const analysis = analyzeTiYong(cast);
@@ -387,11 +509,13 @@ function renderMeihuaResult(cast, options = {}) {
     });
     if (recordedId) analysisId = `history:${recordedId}`;
   }
-  bindAnalysisCheck(result, analysisId);
+  bindAnalysisCheck(result, analysisId, interpretation);
   revealDivinationArea(result, '.divine-interpretation-heading h3');
 }
 
 function renderCoinResult(result, cast = castHexagram(), options = {}) {
+  const view = activeView;
+  const version = ++resultVersion;
   const primaryHex = appState.index.byCode.get(cast.primaryCode);
   const changedHex = cast.hasChange ? appState.index.byCode.get(cast.changedCode) : null;
   const reading = getReading(cast, primaryHex, changedHex);
@@ -426,7 +550,9 @@ function renderCoinResult(result, cast = castHexagram(), options = {}) {
     });
     if (recordedId) analysisId = `history:${recordedId}`;
   }
-  bindAnalysisCheck(result, analysisId);
-  result.querySelector('.divine-again').addEventListener('click', () => renderCoinResult(result));
+  bindAnalysisCheck(result, analysisId, interpretation);
+  result.querySelector('.divine-again').addEventListener('click', () => {
+    if (isActiveView(view) && version === resultVersion) renderCoinResult(result);
+  });
   revealDivinationArea(result, '#coin-result-title');
 }

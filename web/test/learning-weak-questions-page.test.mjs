@@ -220,7 +220,7 @@ test('学习入口回原课后试章节保留原题，返回回到温故', () =>
   const entries = [], assessments = [], exits = [];
   const context = vm.createContext({ ...shared(record),
     renderLearningLessonPage: (node, state, id, options) => { entries.push({ id, options }); return () => {}; },
-    renderLearningAssessmentPage: (node, state, options) => assessments.push(options),
+    renderLearningAssessmentPage: (node, state, options) => { assessments.push(options); },
     loadReviewCards: () => ({}), getDueCount: () => 0,
     loadActivity: () => ({ days: [] }), calculateStreak: () => 0,
     summarizeLearning: () => ({ masteryByLesson: {}, rank: { label: '初闻' }, checked: 0, total: 25 }),
@@ -260,7 +260,11 @@ function learningModeHarness(entry) {
       lessons.push(item); setContent(`lesson:${id}`);
       return () => { item.cleanupCount++; };
     },
-    renderLearningAssessmentPage(node, state, options) { assessments.push(options); setContent('assessment', Boolean(options.initialOralLessonId)); },
+    renderLearningAssessmentPage(node, state, options) {
+      options.cleanupCount = 0;
+      assessments.push(options); setContent('assessment', Boolean(options.initialOralLessonId));
+      return () => { options.cleanupCount++; };
+    },
     renderStudyPathPage() { setContent('path'); },
     renderAlmanacKnowledgePage(node, state, options) {
       const item = { options, cleanupCount: 0 }; almanacs.push(item); setContent('term');
@@ -308,6 +312,18 @@ test('学习模块切换先清理课程，外层cleanup幂等且旧回调不能�
   assert.equal(h.assessments.length, 1);
   assert.deepEqual(h.exits, []);
   assert.deepEqual(h.focused, []);
+});
+
+test('复讲子页在切页与离开学习模式时清理一次，旧导航回调失效', () => {
+  for (const exit of ['tab', 'mode']) {
+    const h = learningModeHarness({ section: 'assessment', initialOralLessonId: 'l5-1' });
+    const page = h.assessments[0];
+    if (exit === 'tab') h.tabs[1].events.click();
+    h.cleanup(); h.cleanup();
+    page.onNavigate('review-mode');
+    assert.equal(page.cleanupCount, 1);
+    assert.deepEqual(h.exits, []);
+  }
 });
 
 test('学习模块切页后旧课程聚焦失效，复讲目标不被通用标题抢焦点', () => {

@@ -1116,7 +1116,8 @@ async function setMode(mode, entry = {}) {
       const cleanup = renderer(panelContent, state, (target = 'explore', nextEntry) => setMode(target, nextEntry), entry);
       modeCleanup = typeof cleanup === 'function' ? cleanup : null;
     } else if (mode === 'divination') {
-      renderer(panelContent, state, (code) => openDetail(code));
+      const cleanup = renderer(panelContent, state, (code) => openDetail(code));
+      modeCleanup = typeof cleanup === 'function' ? cleanup : null;
     } else {
       renderer(panelContent, state);
     }

@@ -29,7 +29,7 @@ function createHarness() {
   const renderer = name => (...args) => {
     renders.push({ name, args });
     panelContent.innerHTML = `rendered:${name}`;
-    if (['learning', 'review', 'quiz'].includes(name)) return () => cleanups.push(panelContent.innerHTML);
+    if (['learning', 'review', 'quiz', 'divination'].includes(name)) return () => cleanups.push(panelContent.innerHTML);
   };
   const context = vm.createContext({
     state, panelContent, modeRequestId: 0, modeCleanup: null,
@@ -193,6 +193,18 @@ test('较旧加载不会安装清理函数或销毁当前学习实例', async ()
   assert.equal(h.cleanups.length, 0);
   await h.context.setMode('review');
   assert.deepEqual(h.cleanups, ['rendered:learning']);
+});
+
+test('占筮重新进入及切换模块前清理旧结果，重复离开不再次执行', async () => {
+  const h = createHarness();
+  await h.context.setMode('divination');
+  await h.context.setMode('divination');
+  assert.deepEqual(h.cleanups, ['rendered:divination']);
+  await h.context.setMode('quiz');
+  assert.deepEqual(h.cleanups, ['rendered:divination', 'rendered:divination']);
+  await h.context.setMode('explore');
+  await h.context.setMode('explore');
+  assert.deepEqual(h.cleanups, ['rendered:divination', 'rendered:divination', 'rendered:quiz']);
 });
 
 test('推荐的旧错题入口明确传wrongOnly，普通测验不沿用', async () => {

@@ -405,7 +405,7 @@ export function renderLearningMode(mountEl, appState, onNavigateMode, entry = {}
         ['推荐专注', '25 分钟'],
       ]);
     } else if (sectionId === 'assessment') {
-      renderLearningAssessmentPage(content, appState, {
+      lessonCleanup = renderLearningAssessmentPage(content, appState, {
         initialLessonId: options.lessonId,
         initialOralLessonId: options.initialOralLessonId,
         requiredQuestionId: options.requiredQuestionId,

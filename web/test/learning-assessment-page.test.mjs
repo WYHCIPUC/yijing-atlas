@@ -8,6 +8,8 @@ import { createAssessmentSession, gradeAssessment, recommendLesson } from '../js
 import { getLesson, getLessonRubric, LEARNING_LESSONS, LEARNING_LEVELS } from '../js/learning-curriculum.js';
 import { getLearningRecordKey, loadLearningRecord, recordActivity, recordLearningAssessment, recordOralReview } from '../js/learning-progress.js';
 import * as learningProgress from '../js/learning-progress.js';
+import { evaluateRecitation } from '../js/learning-review.js';
+import { renderLearningFeedback } from '../js/learning-feedback.js';
 
 const source = readFileSync(new URL('../js/learning-assessment-page.js', import.meta.url), 'utf8')
   .replace(/^import[\s\S]*?from '[^']+';\r?\n/gm, '')
@@ -24,14 +26,16 @@ function createElement() {
   return {
     events: {}, textContent: '', value: '', dataset: {}, disabled: false,
     addEventListener(type, handler) { this.events[type] = handler; },
+    removeEventListener(type, handler) { if (this.events[type] === handler) delete this.events[type]; },
     focus() { this.focused = true; },
+    scrollIntoView(options) { this.scrolled = options; },
     insertAdjacentHTML(position, html) { this.inserted = html; },
   };
 }
 
 function createMount() {
   const mount = {
-    html: '', nodes: new Map(), radios: [], scrollTop: 0,
+    html: '', nodes: new Map(), radios: [], scores: [], scrollTop: 0,
     set innerHTML(html) {
       this.html = html;
       this.nodes = new Map();
@@ -39,8 +43,10 @@ function createMount() {
         .map(([, name, value, rest]) => ({ ...createElement(), name, value, checked: /\bchecked\b/.test(rest) }));
       for (const [, action] of html.matchAll(/data-action="([^"]+)"/g)) this.nodes.set(`[data-action="${action}"]`, createElement());
       for (const [, field] of html.matchAll(/data-field="([^"]+)"/g)) this.nodes.set(`[data-field="${field}"]`, createElement());
-      for (const selector of ['.assessment-form', '.assessment-status', '.assessment-save-status', '[data-page-heading]', '.oral-review-output', '.assessment-result p']) {
-        this.nodes.set(selector, createElement());
+      this.scores = [...html.matchAll(/data-score="([^"]+)"[^>]*>([^<]*)/g)]
+        .map(([, score, textContent]) => ({ ...createElement(), dataset: { score }, textContent }));
+      for (const selector of ['.assessment-form', '.assessment-status', '.assessment-save-status', '[data-page-heading]', '.oral-review-output', '.assessment-result p', '.oral-save-status', '[data-feedback-section="result"]']) {
+        this.nodes.set(selector, selector === '.oral-review-output' ? createMount() : createElement());
       }
       const marker = html.match(/data-assessment-session="([^"]+)"/);
       if (marker) this.nodes.set('[data-assessment-session]', { dataset: { assessmentSession: marker[1] } });
@@ -51,13 +57,13 @@ function createMount() {
       if (radio) return this.radios.find((item) => item.name === radio[1] && (!radio[2] || item.checked)) || null;
       return this.nodes.get(selector) || null;
     },
-    querySelectorAll() { return []; },
+    querySelectorAll(selector) { return selector === '[data-score]' ? this.scores : []; },
     closest() { return null; },
   };
   return mount;
 }
 
-function createHarness({ blockedKeys = [], questionBank = bank, deferFrames = false } = {}) {
+function createHarness({ blockedKeys = [], questionBank = bank, deferFrames = false, endpoint = '', fetchImpl } = {}) {
   const values = new Map();
   const blocked = new Set(blockedKeys);
   const writes = [];
@@ -88,8 +94,10 @@ function createHarness({ blockedKeys = [], questionBank = bank, deferFrames = fa
     getWeakQuestionsError: (...args) => learningProgress.getWeakQuestionsError(...args),
     recordLearningAssessment: (kind, result) => recordLearningAssessment(kind, result, new Date('2026-10-25T08:00:00Z'), storage),
     recordActivity: () => recordActivity(new Date('2026-10-25T08:00:00Z'), storage),
-    recordOralReview,
-    loadReviewConfig: () => ({ endpoint: '' }),
+    recordOralReview: (lessonId, score, mode, now) => recordOralReview(lessonId, score, mode, now, storage),
+    evaluateRecitation: args => evaluateRecitation(args, fetchImpl),
+    renderLearningFeedback,
+    loadReviewConfig: () => ({ endpoint }),
   });
   vm.runInContext(source, context);
   vm.runInContext(profileSyncSource, context);
@@ -109,6 +117,274 @@ function createHarness({ blockedKeys = [], questionBank = bank, deferFrames = fa
   };
   return { mount, sessions, storage, writes, blocked, render, choose, submit, syncProfile, schedule, flushFrames };
 }
+
+function deferred() {
+  let resolve, reject;
+  const promise = new Promise((yes, no) => { resolve = yes; reject = no; });
+  return { promise, resolve, reject };
+}
+
+const reviewPayload = { score: 82, summary: '能说明阴阳变化，仍需补充原典依据。', strengths: ['概念清楚'], improvements: ['补充出处'] };
+const reviewResponse = () => ({ ok: true, json: async () => reviewPayload });
+
+function oralControls(h) {
+  return {
+    select: h.mount.querySelector('[data-field="oral-lesson"]'),
+    response: h.mount.querySelector('[data-field="oral-response"]'),
+    ai: h.mount.querySelector('[data-action="ai-review"]'),
+    self: h.mount.querySelector('[data-action="self-review"]'),
+    output: h.mount.querySelector('.oral-review-output'),
+  };
+}
+
+function startOralRequest(h) {
+  const controls = oralControls(h);
+  controls.select.value = 'l1-4';
+  controls.response.value = '这是公开课程示例复讲，阴阳变化应联系卦象与原文依据共同理解。';
+  return { ...controls, completion: controls.ai.events.click() };
+}
+
+for (const exit of ['lesson', 'response', 'self', 'quiz', 'hub', 'cleanup']) {
+  for (const outcome of ['success', 'failure']) {
+    test(`复讲${exit}后旧${outcome}不写记录、不覆盖当前界面或finally状态`, async () => {
+      const pending = deferred();
+      const h = createHarness({ endpoint: '/api/learning-review', fetchImpl: () => pending.promise });
+      const cleanup = h.render({});
+      const old = startOralRequest(h);
+      if (exit === 'lesson') { old.select.value = 'l5-1'; old.select.events.change?.(); }
+      if (exit === 'response') { old.response.value += '新输入'; old.response.events.input?.(); }
+      if (exit === 'self') old.self.events.click();
+      if (exit === 'quiz') {
+        h.mount.querySelector('[data-field="lesson"]').value = 'l1-4';
+        h.mount.querySelector('[data-action="lesson-quiz"]').events.click();
+      }
+      if (exit === 'hub') h.render({});
+      if (exit === 'cleanup') { cleanup?.(); cleanup?.(); }
+      const expected = { html: h.mount.innerHTML, output: old.output.innerHTML, disabled: old.ai.disabled };
+      if (outcome === 'success') pending.resolve(reviewResponse());
+      else pending.reject(new Error('受控的旧请求失败'));
+      await old.completion;
+      if (exit === 'cleanup') assert.equal(typeof cleanup, 'function');
+      assert.equal(h.writes.length, 0, '旧请求不得写入成绩或活动');
+      assert.equal(h.mount.innerHTML, expected.html);
+      assert.equal(old.output.innerHTML, expected.output, '旧成功或catch不能覆盖已切换输出');
+      assert.equal(old.ai.disabled, expected.disabled, '旧finally不能改动按钮状态');
+    });
+  }
+}
+
+test('旧复讲finally不能解锁后继请求；双提交只发送一次当前请求', async () => {
+  const first = deferred(), second = deferred();
+  const requests = [];
+  const h = createHarness({ endpoint: '/api/learning-review', fetchImpl: (url, options) => {
+    requests.push({ url, options });
+    return requests.length === 1 ? first.promise : second.promise;
+  } });
+  h.render({});
+  const old = startOralRequest(h);
+  old.response.value += '另一轮'; old.response.events.input?.();
+  const current = old.ai.events.click();
+  const duplicate = old.ai.events.click();
+  first.resolve(reviewResponse()); await old.completion;
+  const afterFirst = { disabled: old.ai.disabled, writes: h.writes.length, html: old.output.innerHTML };
+  second.resolve(reviewResponse()); await Promise.all([current, duplicate]);
+  assert.equal(requests.length, 2, '后继请求重复点击不能再次POST');
+  assert.equal(afterFirst.disabled, true);
+  assert.equal(afterFirst.writes, 0);
+  assert.match(afterFirst.html, /正在.*评阅/);
+  assert.equal(old.ai.disabled, false);
+  assert.equal(loadLearningRecord(h.storage).oralReviews.length, 1);
+  assert.equal(loadLearningRecord(h.storage).oralReviews[0].lessonId, 'l1-4');
+});
+
+for (const mode of ['ai', 'self']) {
+  for (const failed of ['score', 'activity', 'both']) {
+    test(`${mode}复讲${failed}保存失败仅补失败部分，同轮双击不新增POST或成绩`, async () => {
+      const keys = { score: getLearningRecordKey(), activity: learningProgress.getActivityKey() };
+      let posts = 0;
+      const h = createHarness({ endpoint: mode === 'ai' ? '/api/learning-review' : '',
+        blockedKeys: failed === 'both' ? Object.values(keys) : [keys[failed]],
+        fetchImpl: async () => { posts++; return reviewResponse(); } });
+      h.render({});
+      const controls = oralControls(h);
+      controls.select.value = 'l1-4';
+      let scoreButton;
+      if (mode === 'ai') await startOralRequest(h).completion;
+      else {
+        controls.self.events.click();
+        scoreButton = controls.output.querySelectorAll('[data-score]').find(button => button.dataset.score === '80');
+        scoreButton.events.click();
+        scoreButton.events.click();
+      }
+      assert.equal(posts, mode === 'ai' ? 1 : 0);
+      const initialWrites = [...h.writes];
+      assert.equal(initialWrites.filter(key => key === keys.score).length, 1, '双击不能重复保存成绩');
+      assert.equal(initialWrites.filter(key => key === keys.activity).length, 1);
+      assert.equal(loadLearningRecord(h.storage).oralReviews.length, failed === 'activity' ? 1 : 0);
+      assert.match(controls.output.innerHTML, /未.*保存|未保存/);
+      const retry = controls.output.querySelector('[data-action="oral-retry-save"]');
+      assert.ok(retry, '须提供仅重试保存入口');
+      h.blocked.clear();
+      retry.events.click();
+      retry.events.click();
+      assert.equal(posts, mode === 'ai' ? 1 : 0);
+      assert.equal(h.writes.filter(key => key === keys.score).length, failed === 'activity' ? 1 : 2);
+      assert.equal(h.writes.filter(key => key === keys.activity).length, failed === 'score' ? 1 : 2);
+      const record = loadLearningRecord(h.storage);
+      assert.equal(record.oralReviews.length, 1);
+      assert.equal(record.oralReviews[0].mode, mode);
+      assert.deepEqual(Object.keys(record.oralReviews[0]).sort(), ['at', 'lessonId', 'mode', 'score']);
+      assert.equal(controls.output.querySelector('[data-action="oral-retry-save"]'), null);
+      assert.match(controls.output.innerHTML, /已保存/);
+    });
+  }
+}
+
+test('复讲原文不足20字就地说明并聚焦，不POST、不保存', async () => {
+  let posts = 0;
+  const h = createHarness({ endpoint: '/api/learning-review', fetchImpl: async () => { posts++; return reviewResponse(); } });
+  h.render({});
+  const controls = oralControls(h);
+  controls.select.value = 'l1-4'; controls.response.value = '太短';
+  await controls.ai.events.click();
+  assert.equal(posts, 0); assert.equal(h.writes.length, 0);
+  assert.match(controls.output.innerHTML, /20/);
+  assert.equal(controls.response.focused, true);
+});
+
+for (const failed of [false, true]) {
+  test(`复讲自评${failed ? '保存失败说明' : '结果'}由页面主动显示并获得焦点`, () => {
+    const h = createHarness({ deferFrames: true, blockedKeys: failed ? [getLearningRecordKey()] : [] });
+    h.render({}); h.flushFrames();
+    const controls = oralControls(h);
+    controls.select.value = 'l1-4';
+    controls.self.events.click();
+    controls.output.querySelectorAll('[data-score]')[2].events.click();
+    const target = controls.output.querySelector(failed ? '.oral-save-status' : '[data-feedback-section="result"]');
+    h.flushFrames();
+    assert.equal(target.focused, true, '原评分按钮已移除，焦点不能留在脱离节点');
+    assert.ok(target.scrolled, '必须由产品定位结果，不能依赖测试滚动');
+  });
+}
+
+test('复讲结果定位帧在离页后失效，不抢回焦点', () => {
+  const h = createHarness({ deferFrames: true });
+  const cleanup = h.render({}); h.flushFrames();
+  const controls = oralControls(h);
+  controls.select.value = 'l1-4'; controls.self.events.click();
+  controls.output.querySelectorAll('[data-score]')[2].events.click();
+  const old = controls.output.querySelector('[data-feedback-section="result"]');
+  cleanup(); h.flushFrames();
+  assert.equal(old.focused, undefined);
+  assert.equal(old.scrolled, undefined);
+});
+
+test('复讲失败可本地自评；四段反馈依据可读，模型文本转义且不存正文', async () => {
+  let posts = 0;
+  const h = createHarness({ endpoint: '/api/learning-review', fetchImpl: async () => {
+    posts++; throw new Error('服务暂不可用');
+  } });
+  h.render({});
+  const controls = startOralRequest(h); await controls.completion;
+  assert.match(controls.output.innerHTML, /服务暂不可用.*本地要点自评/);
+  assert.equal(h.writes.length, 0);
+  controls.output.querySelectorAll('[data-score]')[2].events.click();
+  assert.equal(posts, 1);
+  assert.equal(loadLearningRecord(h.storage).oralReviews[0].mode, 'self');
+  for (const section of ['result', 'basis', 'changes', 'actions']) {
+    assert.match(controls.output.innerHTML, new RegExp(`data-feedback-section="${section}"`));
+  }
+  assert.match(controls.output.innerHTML, /个人.*自评/);
+
+  const ai = createHarness({ endpoint: '/api/learning-review', fetchImpl: async () => ({ ok: true, json: async () => ({
+    ...reviewPayload, summary: '<img src=x onerror=alert(1)>', strengths: ['<b>测试</b>'], improvements: ['<script>bad()</script>'],
+  }) }) });
+  ai.render({});
+  const result = startOralRequest(ai); await result.completion;
+  assert.match(result.output.innerHTML, /&lt;img/);
+  assert.doesNotMatch(result.output.innerHTML, /<img|<script>|<b>测试/);
+  assert.doesNotMatch(ai.storage.getItem(getLearningRecordKey()), /公开课程示例|onerror|bad\(\)/);
+});
+
+for (const mode of ['ai', 'self']) {
+  for (const failed of [false, true]) {
+    test(`${mode}复讲${failed ? '保存失败' : '成功'}结果指向本轮原课，离开不补写或新增评阅`, async () => {
+      const calls = [];
+      let posts = 0, cleanup;
+      const h = createHarness({ endpoint: mode === 'ai' ? '/api/learning-review' : '',
+        blockedKeys: failed ? [getLearningRecordKey(), learningProgress.getActivityKey()] : [],
+        fetchImpl: async () => { posts++; return reviewResponse(); } });
+      cleanup = h.render({ onNavigate: (...args) => { calls.push(args); cleanup(); } });
+      const controls = oralControls(h);
+      controls.select.value = 'l1-4';
+      if (mode === 'ai') await startOralRequest(h).completion;
+      else {
+        controls.self.events.click();
+        controls.output.querySelectorAll('[data-score]')[2].events.click();
+      }
+      const basis = controls.output.innerHTML.match(/data-feedback-section="basis"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+      assert.match(basis || '', /项目课程要点/);
+      assert.ok(basis.includes(getLesson('l1-4').title), '结果说明实际原课标题');
+      assert.match(basis, /原典出处.*(?:待核对|待校验)/, '不能把课程要点冒称已经校验的原典');
+      assert.equal((controls.output.innerHTML.match(/data-feedback-action="primary"/g) || []).length, 1);
+      assert.equal((controls.output.innerHTML.match(/data-feedback-action="secondary"/g) || []).length, failed ? 2 : 1);
+      const sourceButton = controls.output.querySelector('[data-action="oral-source"]');
+      assert.ok(sourceButton, '成功和失败结果均可回原课核对');
+      const writes = [...h.writes], record = h.storage.getItem(getLearningRecordKey());
+      controls.select.value = 'l5-1';
+      sourceButton.events.click();
+      assert.deepEqual(calls, [['path', 'l1-4']], '来源使用锁定的本轮课程，不读取后来选项值');
+      assert.deepEqual(h.writes, writes);
+      assert.equal(h.storage.getItem(getLearningRecordKey()), record);
+      assert.equal(posts, mode === 'ai' ? 1 : 0);
+      sourceButton.events.click();
+      assert.equal(calls.length, 1, '离开后的旧来源控件失效');
+    });
+  }
+}
+
+for (const exit of ['lesson', 'response', 'self', 'new', 'quiz', 'hub', 'cleanup', 'retry']) {
+  test(`复讲${exit}后旧来源按钮不导航或保存`, () => {
+    const calls = [];
+    const h = createHarness({ blockedKeys: [getLearningRecordKey()] });
+    const options = { onNavigate: (...args) => calls.push(args) };
+    const cleanup = h.render(options);
+    const controls = oralControls(h);
+    controls.select.value = 'l1-4'; controls.self.events.click();
+    controls.output.querySelectorAll('[data-score]')[2].events.click();
+    const sourceButton = controls.output.querySelector('[data-action="oral-source"]');
+    assert.ok(sourceButton);
+    if (exit === 'lesson') { controls.select.value = 'l5-1'; controls.select.events.change(); }
+    if (exit === 'response') { controls.response.value = '重新编辑'; controls.response.events.input(); }
+    if (exit === 'self') controls.self.events.click();
+    if (exit === 'new') controls.output.querySelector('[data-action="oral-new"]').events.click();
+    if (exit === 'quiz') {
+      h.mount.querySelector('[data-field="lesson"]').value = 'l1-4';
+      h.mount.querySelector('[data-action="lesson-quiz"]').events.click();
+    }
+    if (exit === 'hub') h.render(options);
+    if (exit === 'cleanup') cleanup();
+    if (exit === 'retry') { h.blocked.clear(); controls.output.querySelector('[data-action="oral-retry-save"]').events.click(); }
+    const writes = [...h.writes];
+    sourceButton.events.click();
+    assert.deepEqual(calls, []);
+    assert.deepEqual(h.writes, writes);
+  });
+}
+
+test('课程考评沿用四段反馈，既有依据、保存重试及返回行动仍可达', () => {
+  const h = createHarness({ blockedKeys: [getLearningRecordKey()] });
+  h.render();
+  for (let index = 0; index < 3; index++) h.choose(index, 'b');
+  h.submit();
+  for (const section of ['result', 'basis', 'changes', 'actions']) {
+    assert.match(h.mount.innerHTML, new RegExp(`data-feedback-section="${section}"`));
+  }
+  assert.match(h.mount.innerHTML, /正答：/);
+  for (const action of ['retry-save', 'back', 'return-review', 'weak-source-0', 'weak-practice-0']) {
+    assert.ok(h.mount.querySelector(`[data-action="${action}"]`));
+  }
+});
 
 test('复讲入口选定具体课程并聚焦复讲，不误开小试或写学习成绩', () => {
   const harness = createHarness();
@@ -154,6 +430,96 @@ test('容器整体移除后复讲RAF不再聚焦旧内容', () => {
   heading.isConnected = false;
   h.flushFrames();
   assert.equal(response.focused, undefined);
+  assert.equal(heading.focused, undefined);
+});
+
+for (const options of [{ initialLessonId: 'l1-4' }, { initialOralLessonId: 'l5-1' }]) {
+  test(`清理保留DOM后初始${options.initialOralLessonId ? '复讲入口' : '题卷标题'}RAF不再滚动或聚焦`, () => {
+    const h = createHarness({ deferFrames: true });
+    const cleanup = h.render(options);
+    const heading = h.mount.querySelector('[data-page-heading]');
+    const response = h.mount.querySelector('[data-field="oral-response"]');
+    cleanup();
+    h.mount.scrollTop = 173;
+    h.flushFrames();
+    assert.equal(heading.focused, undefined, 'cleanup必须取消仍连接的旧标题焦点');
+    assert.equal(response?.focused, undefined);
+    assert.equal(response?.scrolled, undefined);
+    assert.equal(h.mount.scrollTop, 173);
+    assert.equal(h.writes.length, 0);
+  });
+}
+
+test('重绘后旧表单change不读取新控件或改写仍保留的本轮草稿', () => {
+  const h = createHarness();
+  h.render();
+  h.choose(0, 'b');
+  const staleChange = h.mount.querySelector('.assessment-form').events.change;
+  h.render();
+  const question = h.sessions[0].questions[0];
+  const currentOption = String(question.options.findIndex(option => option.value === 'a'));
+  h.mount.radios.filter(radio => radio.name === 'question-0').forEach(radio => {
+    radio.checked = radio.value === currentOption;
+  });
+  staleChange();
+  h.render();
+  assert.equal(h.mount.querySelector('input[name="question-0"]:checked').value,
+    String(question.options.findIndex(option => option.value === 'b')), '旧change不能把新DOM选择写进共享草稿');
+  assert.equal(h.writes.length, 0);
+});
+
+test('旧未交卷表单submit不得改写新卷状态或移动新卷焦点', () => {
+  const h = createHarness();
+  h.render();
+  const staleSubmit = h.mount.querySelector('.assessment-form').events.submit;
+  h.render({ initialLessonId: 'l1-4', requiredQuestionId: 'q0', requiredQuestionVersion: 'curriculum-v1' });
+  assert.equal(h.sessions.length, 2);
+  const status = h.mount.querySelector('.assessment-status');
+  status.textContent = '新卷保持未提交';
+  staleSubmit({ preventDefault() {} });
+  assert.equal(status.textContent, '新卷保持未提交');
+  assert.ok(h.mount.radios.every(radio => radio.focused === undefined));
+  assert.equal(h.writes.length, 0);
+});
+
+test('十题全错长卷保存失败定位保存状态，重试成功返回结果焦点', () => {
+  const questionBank = Array.from({ length: 10 }, (_, index) => ({ ...bank[0], id: `long-${index}`,
+    prompt: `长卷题目${index}`, explanation: '合成的长依据说明。'.repeat(30), source: '合成测试资料' }));
+  const h = createHarness({ questionBank, blockedKeys: [getLearningRecordKey()], deferFrames: true });
+  h.render({});
+  h.mount.querySelector('[data-field="level"]').value = 'L1';
+  h.mount.querySelector('[data-action="exam"]').events.click();
+  assert.equal(h.sessions[0].questions.length, 10);
+  h.flushFrames();
+  for (let index = 0; index < 10; index++) h.choose(index, 'b');
+  h.submit();
+  h.flushFrames();
+  assert.equal([...h.mount.innerHTML.matchAll(/<details open>/g)].length, 10);
+  const status = h.mount.querySelector('.assessment-save-status');
+  assert.equal(status.focused, true, '长依据之后的保存失败状态必须成为焦点目标，不能只滚到卷首');
+  assert.equal(status.scrolled?.block, 'center');
+  assert.equal(h.mount.querySelector('[data-page-heading]').focused, undefined);
+  assert.ok(h.mount.querySelector('[data-action="retry-save"]'));
+  h.blocked.clear();
+  h.mount.querySelector('[data-action="retry-save"]').events.click();
+  h.flushFrames();
+  assert.match(h.mount.innerHTML, /本轮成绩与学习记录已保存/);
+  assert.equal(h.mount.querySelector('[data-feedback-section="result"]').focused, true);
+  assert.equal(loadLearningRecord(h.storage).exams.length, 1);
+});
+
+test('结果定位排队后清理页面不滚动或聚焦旧保存状态', () => {
+  const h = createHarness({ blockedKeys: [getLearningRecordKey()], deferFrames: true });
+  const cleanup = h.render();
+  h.flushFrames();
+  for (let index = 0; index < 3; index++) h.choose(index);
+  h.submit();
+  const status = h.mount.querySelector('.assessment-save-status');
+  const heading = h.mount.querySelector('[data-page-heading]');
+  cleanup();
+  h.flushFrames();
+  assert.equal(status.focused, undefined);
+  assert.equal(status.scrolled, undefined);
   assert.equal(heading.focused, undefined);
 });
 

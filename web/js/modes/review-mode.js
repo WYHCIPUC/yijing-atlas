@@ -1,8 +1,9 @@
 import { hexagramSvg } from '../svg-painter.js';
-import { createProgressEvent } from '../achievement-engine.js';
-import { processAchievementEvent } from '../achievement-storage.js';
-import { getDueCards, loadReviewCards, saveReview } from '../review-engine.js';
-import { getCourseWeakQuestions, getQuizWeakQuestions, getWeakQuestionsError, loadLearningRecord, recordActivity } from '../learning-progress.js';
+import { getDueCards, loadReviewCards } from '../review-engine.js';
+import { createReviewAttempt, submitReviewAttempt } from '../review-session.js';
+import { renderLearningFeedback } from '../learning-feedback.js';
+import { getHexagramContentProvenance } from '../content-provenance.js';
+import { getCourseWeakQuestions, getQuizWeakQuestions, getWeakQuestionsError, loadLearningRecord } from '../learning-progress.js';
 import { buildLearningQuestionBank, getLesson } from '../learning-curriculum.js';
 import { loadWrongBook } from '../quiz-engine.js';
 
@@ -18,7 +19,8 @@ function resetReviewViewport(mountEl, focusSelector = '[data-page-heading]', cur
   const target = mountEl.querySelector(focusSelector);
   schedule(() => {
     if (!current() || !target?.focus || target.isConnected === false || mountEl.querySelector(focusSelector) !== target) return;
-    target.tabIndex = -1;
+    if (!['BUTTON', 'A', 'INPUT', 'SUMMARY'].includes(target.tagName)) target.tabIndex = -1;
+    if (focusSelector !== '[data-page-heading]') target.scrollIntoView?.({ block: 'center', behavior: 'instant' });
     target.focus({ preventScroll: true });
   });
 }
@@ -30,8 +32,9 @@ export function renderReviewMode(mountEl, appState, onNavigateMode, entry = {}) 
   return () => { context.disposed = true; };
 }
 
-function renderDueList(mountEl, appState, context) {
+function renderDueList(mountEl, appState, context, { autoOpen = true, focusSelector = '[data-page-heading]' } = {}) {
   if (context.disposed) return;
+  context.cards = loadReviewCards();
   const dueCodes = getDueCards(context.cards);
   const dueHexagrams = dueCodes.map((code) => appState.index.byCode.get(code)).filter(Boolean);
   const record = loadLearningRecord();
@@ -42,7 +45,7 @@ function renderDueList(mountEl, appState, context) {
   const availableQuestions = new Map(courseQuestions.length
     ? buildLearningQuestionBank(appState).map(question => [question.id, question]) : []);
   appState.starMap?.setReviewDue(dueCodes);
-  if (dueHexagrams.length === 1 && !courseQuestions.length && !quizQuestions.length && !legacyCodes.length && !weakError) {
+  if (autoOpen && dueHexagrams.length === 1 && !courseQuestions.length && !quizQuestions.length && !legacyCodes.length && !weakError) {
     renderReviewCard(mountEl, appState, dueHexagrams[0].binaryCode, context, true);
     return;
   }
@@ -108,7 +111,7 @@ function renderDueList(mountEl, appState, context) {
         <aside class="review-method-note">
           <span class="academy-kicker">书院温故法</span>
           <h3>先忆象，再对经，后自评</h3>
-          <ol><li>先凭卦象回想卦名与上下卦。</li><li>翻面核对卦辞，不急于求快。</li><li>按真实记忆选择忘了、模糊或记得。</li></ol>
+          <ol><li>先凭卦象回想卦名与上下卦。</li><li>翻面核对卦辞，不急于求快。</li><li>基于你的自评，选择暂未想起、有些模糊或能清楚复述。</li></ol>
         </aside>
       </div>` : ''}
       ${dueHexagrams.length === 0
@@ -144,17 +147,18 @@ function renderDueList(mountEl, appState, context) {
       if (!current()) return;
       if (item.sourceKind === 'almanac') navigate('learning', { section: 'almanac', termId: item.termId,
         quizReference: item, returnTo: { mode: 'review' } });
-      else if (appState.index.byCode.has(item.targetCode)) renderReviewCard(mountEl, appState, item.targetCode, context);
+      else if (appState.index.byCode.has(item.targetCode)) renderReviewCard(mountEl, appState, item.targetCode, context, false,
+        { sourceOnly: true, returnFocus: `[data-action="quiz-source-${index}"]` });
       else navigate('learning');
     });
   });
   legacyCodes.forEach((legacyCode, index) => mountEl.querySelector(`[data-action="legacy-practice-${index}"]`)?.addEventListener('click', () => navigate('quiz', {
     wrongOnly: true, legacyCode, returnTo: { mode: 'review' },
   })));
-  resetReviewViewport(mountEl, '[data-page-heading]', current);
+  resetReviewViewport(mountEl, mountEl.querySelector(focusSelector) ? focusSelector : '[data-page-heading]', current);
 }
 
-function renderReviewCard(mountEl, appState, code, context, singleCard = false) {
+function renderReviewCard(mountEl, appState, code, context, singleCard = false, { sourceOnly = false, returnFocus = '[data-page-heading]' } = {}) {
   if (context.disposed) return;
   const hex = appState.index.byCode.get(code);
   if (!hex) return;
@@ -163,11 +167,16 @@ function renderReviewCard(mountEl, appState, code, context, singleCard = false) 
   const structure = lower && upper
     ? `下卦 ${lower.nature}·${lower.name} · 上卦 ${upper.nature}·${upper.name}`
     : `下卦 ${hex.trigramLower} · 上卦 ${hex.trigramUpper}`;
+  const provenance = getHexagramContentProvenance(hex, 'judgement');
+  const citation = `${provenance.authorTradition} · ${provenance.location} · ${provenance.validationStatus}`;
+  const attempt = sourceOnly ? null : createReviewAttempt(context.cards[code]);
+  const canRate = !sourceOnly && Boolean(attempt);
 
   mountEl.innerHTML = `
     <div class="mode-panel review-card-panel">
-      <h2 class="mode-panel-title" data-page-heading>今日温故</h2>
-      <p class="review-storage-status" role="status" aria-live="polite"></p>
+      <h2 class="mode-panel-title" data-page-heading>${sourceOnly ? '核对卦象资料' : '今日温故'}</h2>
+      ${sourceOnly ? '<p class="review-source-note">此处只读核对资料，不改变错题或间隔复习记录。</p>' : ''}
+      ${!sourceOnly && !canRate ? '<p role="status">原复习卡暂不可用，未创建或保存新记录；请返回温故队列核对。</p>' : ''}
       ${singleCard ? '<p class="review-single-note">今日仅此一卦，完成回忆即可结束温故。</p>' : '<button type="button" class="text-button review-back">← 返回今日复习</button>'}
       <button type="button" class="flip-card" aria-expanded="false" aria-controls="review-answer" aria-label="翻开复习卡片查看答案">
         <span class="flip-card-inner">
@@ -180,18 +189,20 @@ function renderReviewCard(mountEl, appState, code, context, singleCard = false) 
           <span class="flip-card-back" id="review-answer" hidden aria-hidden="true">
             ${hexagramSvg(hex.binaryCode, { size: 80 })}
             <span class="review-answer-title compound-title compound-title--hexagram" aria-label="${hex.name} · ${hex.fullName}"><span class="compound-title-primary">${hex.name}</span><span class="compound-title-separator" aria-hidden="true">·</span><span class="compound-title-secondary">${hex.fullName}</span></span>
-            <span class="review-answer-text">${hex.judgement || ''}</span>
+            <span class="review-answer-text">${esc(hex.judgement || '本卦暂缺卦辞文本。')}</span>
+            <span class="content-provenance" title="${esc(provenance.edition)}">${esc(citation)}</span>
           </span>
         </span>
       </button>
-      <div class="review-rating" hidden>
-        <p>这次记得如何？</p>
+      <button type="button" class="text-button" data-action="review-feedback-return" hidden>返回本次反馈</button>
+      ${canRate ? `<div class="review-rating" hidden>
+        <p>基于你的自评，这次回忆得如何？</p>
         <div class="review-rating-actions">
-          <button type="button" class="rate-btn rate-forgot" data-rate="0">忘了</button>
-          <button type="button" class="rate-btn rate-fuzzy" data-rate="1">模糊</button>
-          <button type="button" class="rate-btn rate-remember" data-rate="2">记得</button>
+          <button type="button" class="rate-btn rate-forgot" data-rate="0">暂未想起</button>
+          <button type="button" class="rate-btn rate-fuzzy" data-rate="1">有些模糊</button>
+          <button type="button" class="rate-btn rate-remember" data-rate="2">能清楚复述</button>
         </div>
-      </div>
+      </div><div class="review-feedback" hidden></div>` : ''}
     </div>
   `;
 
@@ -202,7 +213,27 @@ function renderReviewCard(mountEl, appState, code, context, singleCard = false) 
   const front = mountEl.querySelector('.flip-card-front');
   const answer = mountEl.querySelector('#review-answer');
   const rating = mountEl.querySelector('.review-rating');
-  mountEl.querySelector('.review-back')?.addEventListener('click', () => { if (current()) renderDueList(mountEl, appState, context); });
+  const feedback = mountEl.querySelector('.review-feedback');
+  const feedbackReturn = mountEl.querySelector('[data-action="review-feedback-return"]');
+  let submitted = false, selectedRating = null, lastResult = null;
+  const returnToQueue = () => {
+    if (current()) renderDueList(mountEl, appState, context, { autoOpen: false, focusSelector: returnFocus });
+  };
+  const reveal = target => {
+    const schedule = window.requestAnimationFrame || (callback => callback());
+    schedule(() => {
+      if (!current() || !target || target.isConnected === false) return;
+      if (!['BUTTON', 'A'].includes(target.tagName)) target.tabIndex = -1;
+      target.scrollIntoView?.({ block: 'center', behavior: 'instant' });
+      target.focus?.({ preventScroll: true });
+    });
+  };
+  mountEl.querySelector('.review-back')?.addEventListener('click', returnToQueue);
+  feedbackReturn.addEventListener('click', () => {
+    if (!current() || !lastResult) return;
+    feedbackReturn.hidden = true;
+    reveal(feedback.querySelector('[data-review-result]'));
+  });
   card.addEventListener('click', () => {
     if (!current() || card.getAttribute('aria-expanded') === 'true') return;
     card.setAttribute('aria-expanded', 'true');
@@ -213,27 +244,56 @@ function renderReviewCard(mountEl, appState, code, context, singleCard = false) 
     const schedule = window.requestAnimationFrame || ((callback) => callback());
     schedule(() => { if (current()) inner.classList.add('flipped'); });
     window.setTimeout?.(() => { if (current()) front.hidden = true; }, 260);
-    rating.hidden = false;
-    window.setTimeout(() => { if (current()) rating.querySelector('.rate-btn')?.focus({ preventScroll: true }); }, 280);
+    if (rating) {
+      rating.hidden = false;
+      window.setTimeout(() => { if (current() && !submitted) rating.querySelector('.rate-btn')?.focus({ preventScroll: true }); }, 280);
+    }
   });
-  rating.querySelectorAll('.rate-btn').forEach((button) => {
+  const save = () => {
+    if (!current()) return;
+    lastResult = submitReviewAttempt(attempt, selectedRating);
+    if (lastResult.changes.card.saved) context.cards[code] = lastResult.card;
+    const labels = ['暂未想起', '有些模糊', '能清楚复述'];
+    const messages = Object.entries({ card: '复习卡', activity: '学习活动', achievement: '成就记录' })
+      .filter(([key]) => lastResult.changes[key].applicable)
+      .map(([key, label]) => `${label}${lastResult.changes[key].saved ? '已保存' : '未能保存'}。`);
+    const days = lastResult.card ? Math.round((lastResult.card.due - lastResult.reviewedAt) / 86400000) : null;
+    messages.push(lastResult.changes.card.saved ? `预计 ${days} 日后再次出现。` : '本轮尚未更新排期。');
+    if (lastResult.error) messages.push(lastResult.error);
+    const conflict = ['card-conflict', 'card-missing', 'card-invalid', 'invalid-attempt'].includes(lastResult.errorCode);
+    const action = lastResult.saved ? 'review-next' : conflict ? 'review-queue' : 'review-retry';
+    const label = lastResult.saved ? '继续温故' : conflict ? '返回温故队列' : '重试保存未完成的记录';
+    feedback.innerHTML = renderLearningFeedback({
+      result: `<p data-review-result>基于你的自评：${esc(labels[selectedRating])}。这是你的回忆判断，不代表系统已经判定掌握。</p>`,
+      basis: `<p>核对卦名、上下卦与卦辞后，按实际回忆选择自评。</p><p>${esc(citation)}</p>`,
+      changes: `<p class="review-storage-status" role="status" aria-live="polite">${esc(messages.join(' '))}</p>${lastResult.saved ? '' : '<p>本轮答案和原评分暂留在此页；离开后只保留已经保存的记录。</p>'}`,
+      primaryAction: `<button type="button" class="quick-btn" data-action="${action}">${label}</button>`,
+      secondaryActions: [...(conflict ? [] : ['<button type="button" class="text-button" data-action="review-queue">返回温故队列</button>']),
+        '<button type="button" class="text-button" data-action="review-source">核对本卦卦辞</button>'],
+    });
+    feedback.hidden = false;
+    feedbackReturn.hidden = true;
+    const bind = (name, handler) => {
+      const target = feedback.querySelector(`[data-action="${name}"]`);
+      target?.addEventListener('click', () => {
+        if (current() && feedback.querySelector(`[data-action="${name}"]`) === target) handler();
+      });
+    };
+    bind('review-retry', () => { if (!lastResult.saved) save(); });
+    bind('review-next', () => renderDueList(mountEl, appState, context));
+    bind('review-queue', returnToQueue);
+    bind('review-source', () => { feedbackReturn.hidden = false; reveal(answer); });
+    reveal(feedback.querySelector(lastResult.saved ? '[data-review-result]' : `[data-action="${action}"]`));
+  };
+  rating?.querySelectorAll('.rate-btn').forEach((button) => {
     button.addEventListener('click', () => {
-      if (!current()) return;
-      const reviewResult = saveReview(context.cards, code, Number.parseInt(button.dataset.rate, 10));
-      const activityResult = recordActivity();
-      const achievementResult = reviewResult.saved ? processAchievementEvent(createProgressEvent({
-        type: 'review.completed',
-        subjectId: code,
-        outcome: 'completed',
-        idempotencyKey: `review:${code}:${reviewResult.card.lastReview}`,
-        metadata: { hexagramCode: code, reviewKind: 'spaced' },
-      })) : { saved: false };
-      renderDueList(mountEl, appState, context);
-      const days = Math.max(1, Math.round((reviewResult.card.due - Date.now()) / 86400000));
-      const status = mountEl.querySelector('.review-storage-status');
-      status.textContent = !reviewResult.saved || !activityResult.saved || !achievementResult.saved
-        ? '复习已完成，但浏览器未能保存记录。'
-        : `已记录为“${button.textContent.trim()}”，预计 ${days} 日后再次出现。`;
+      if (!current() || submitted || button.disabled || rating.hidden || card.getAttribute('aria-expanded') !== 'true' || !/^[012]$/.test(button.dataset.rate)) return;
+      submitted = true; selectedRating = Number(button.dataset.rate);
+      rating.querySelectorAll('.rate-btn').forEach(option => {
+        option.disabled = true;
+        option.setAttribute('aria-pressed', String(option === button));
+      });
+      save();
     });
   });
   resetReviewViewport(mountEl, '[data-page-heading]', current);

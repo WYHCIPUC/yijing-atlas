@@ -123,6 +123,9 @@ assert.match(reviewMode, /const context = \{ cards: loadReviewCards\(\)/);
 assert.doesNotMatch(reviewMode, /^(?:let|var) reviewCards\b/m);
 assert.match(reviewMode, /aria-controls="review-answer"/);
 assert.match(reviewMode, /id="review-answer" hidden aria-hidden="true"/);
-assert.match(quizMode, /feedback\.scrollIntoView\?\.\(\{[\s\S]*?block:\s*'nearest'/);
+// Failure recovery reveals the actionable retry; ordinary feedback stays nearby.
+// quiz-mode-page.test.mjs checks the actual target, focus and lifecycle behavior.
+assert.match(quizMode, /const scrollTarget = failed && action \? action : feedback/);
+assert.match(quizMode, /scrollTarget\.scrollIntoView\?\.\(\{[^}]*block:\s*failed \? 'center' : 'nearest'/);
 
 console.log('✓ 布局响应式契约测试通过');
