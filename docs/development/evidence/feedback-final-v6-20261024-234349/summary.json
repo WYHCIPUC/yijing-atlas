@@ -1,0 +1,58 @@
+[
+  {
+    "scope": "1440-oral-self-record-retry",
+    "attempt": 0,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "trace": "Y:/易经学习项目/docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-43-12-168Z/trace.json",
+    "seed": true
+  },
+  {
+    "scope": "390-oral-self-activity-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v6-20261024-234349/390-oral-self-activity-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-43-49-534Z\\trace.json"
+  },
+  {
+    "scope": "1440-oral-ai-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v6-20261024-234349/1440-oral-ai-save-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-43-59-480Z\\trace.json"
+  },
+  {
+    "scope": "390-oral-ai-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v6-20261024-234349/390-oral-ai-save-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-44-13-520Z\\trace.json"
+  },
+  {
+    "scope": "390-oral-ai-stale-leave",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v6-20261024-234349/390-oral-ai-stale-leave-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-44-23-807Z\\trace.json"
+  },
+  {
+    "scope": "1440-review-card-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v6-20261024-234349/1440-review-card-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-44-30-283Z\\trace.json"
+  },
+  {
+    "scope": "1440-review-activity-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v6-20261024-234349/1440-review-activity-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-44-40-264Z\\trace.json"
+  }
+]

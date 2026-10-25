@@ -1,0 +1,1240 @@
+{
+  "capturedAt": "2026-10-24T19:29:27.231Z",
+  "scope": "inventory-and-goal-text-only",
+  "head": "25fa12a24b3b21b39f1bf269b70ad0e77fbc1ca2",
+  "branch": "codex/immersive-astrolabe-progress",
+  "sourceFiles": [
+    {
+      "path": "package-lock.json",
+      "sha256": "db82e424b60db04792b88573c626485b412a4c53f3ef62e286e5e122df6aeb61"
+    },
+    {
+      "path": "package.json",
+      "sha256": "8e75ccd8379ba2a4646466f50776c38cf56d633f7a6daa4b04da578765d961a9"
+    },
+    {
+      "path": "scripts/browser-smoke.mjs",
+      "sha256": "994aa24f107a73452eb7c8a915749d99a26cc53103f205d5abfcea9f0f13f66e"
+    },
+    {
+      "path": "scripts/build-windows.mjs",
+      "sha256": "25b2dc6ef57c393b3e48a4a3628536fad83e5fdd8cad25091f4571f9351d9891"
+    },
+    {
+      "path": "scripts/desktop-launcher.cjs",
+      "sha256": "a6c7eb93d672d554a2fdde9022af69970e057e7858f34b12e0049814a5079d82"
+    },
+    {
+      "path": "scripts/quality-check.mjs",
+      "sha256": "21c24309bf4e3183d6c17c20d40d8a2324aea5ee51c6c7b4a0ef82205db06814"
+    },
+    {
+      "path": "scripts/serve.mjs",
+      "sha256": "21ffdb9e9c86d3e75038a4256a7c4874696739fa4e194d34a4a320c02918c3c4"
+    },
+    {
+      "path": "scripts/test-assessment-session.mjs",
+      "sha256": "f00f3d8e697392e230d29514d7f1d9dda5a67c5be4e6ae80b54de2a9fad5091e"
+    },
+    {
+      "path": "scripts/test-entry-input.mjs",
+      "sha256": "288d2f108fbedb9a26aa9ace4474f9c39786258586793e42b369ba2a5394cc9e"
+    },
+    {
+      "path": "scripts/test-reading-resize.mjs",
+      "sha256": "81966146ce5dbbb42689f2ac93e8a501a2547f53bb2735dfba7b3b915947d328"
+    },
+    {
+      "path": "scripts/test-reading-save.mjs",
+      "sha256": "8a290b870a03055eb4117a79269e7912e7dcae863d2fca7e3982e26cf38f77aa"
+    },
+    {
+      "path": "scripts/test-windows-build.mjs",
+      "sha256": "19f1bc934b7b0fce0ddb9a65b4a906485a0d05e3678a8ddb1fe2dbb06215140b"
+    },
+    {
+      "path": "scripts/validate-commentaries.mjs",
+      "sha256": "6cc24ac5d924b20966235d5ccabcc36b88a9369679b47596b40e24874a0127cb"
+    },
+    {
+      "path": "test/almanac/astronomy.test.mjs",
+      "sha256": "a150fcf16adb16f6ca499853f4dd0d40063195a403040e8f984861eeec605052"
+    },
+    {
+      "path": "test/almanac/ganzhi.test.mjs",
+      "sha256": "e2c2fa62a5a0ff923e98990346ffb135ba01dbe209742cd1ffdd43c72ec920ae"
+    },
+    {
+      "path": "test/almanac/load-all-data.test.mjs",
+      "sha256": "d2204ded0a6ca7a63925263d933ab8c8b591ef128013bf71116a5519eae2d43c"
+    },
+    {
+      "path": "test/almanac/lunar.test.mjs",
+      "sha256": "714538d0fd3af1f240183e84fb803d985e804925474dafdd368b0ceb49c30c99"
+    },
+    {
+      "path": "test/almanac/render-smoke.test.mjs",
+      "sha256": "fd74e25c578023580a49bd97172ce5e10ad524c3407d2bf5d64bfc49d8231fc3"
+    },
+    {
+      "path": "test/almanac/selection.test.mjs",
+      "sha256": "f3e23bb5f9f27b7e0a0861ec906403cb2141fb8cfdda35ae23963231f3e939d4"
+    },
+    {
+      "path": "test/almanac/solar-terms.test.mjs",
+      "sha256": "ce35f05177cac00f71264c6a7c8ccc01110e5cbe6e1a6dc18450e574ba6d62c6"
+    },
+    {
+      "path": "web/.nojekyll",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "web/README.md",
+      "sha256": "447ef7913e7a74ed04838df4596e8d1f43fafb33398e2549ad36a982138f9b84"
+    },
+    {
+      "path": "web/assets/academy-astrolabe-bg.webp",
+      "sha256": "0f9e3eca1eb3b6200f186d6c9af87551b36be8a8d1851f87d49b7e8b807095c6"
+    },
+    {
+      "path": "web/assets/favicon.svg",
+      "sha256": "addaee055c42fa2f0bcaee5c729012a437864a0d30aedc7f4eb2d06241f91b14"
+    },
+    {
+      "path": "web/assets/taiji-mechanism.webp",
+      "sha256": "f0cfdd32fb37e9a81053e2930331a1ee4260bce2060b49165ae6ff7baa1090d1"
+    },
+    {
+      "path": "web/data/almanac-terms.json",
+      "sha256": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad"
+    },
+    {
+      "path": "web/data/almanac-yiji.json",
+      "sha256": "791c99f67bac66f7d1259d08aaeec3c53a540b3bdc8ae5403aaa107666ad6649"
+    },
+    {
+      "path": "web/data/commentaries/manifest.json",
+      "sha256": "a36a388c3de129a67b1487cf1efd7e1ac950c12d7c814a5dfcced0e4765d5d3c"
+    },
+    {
+      "path": "web/data/commentaries/sources.json",
+      "sha256": "8017312aebef8046f7afb9db8da67912efe5e4361470014c1ffea6501e6b5ffd"
+    },
+    {
+      "path": "web/data/hexagram-keywords.json",
+      "sha256": "7c146c9d708f5975c2e9b64aff84cf0eaaf95b40a48af6da01579db37ed3c68b"
+    },
+    {
+      "path": "web/data/hexagrams.json",
+      "sha256": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080"
+    },
+    {
+      "path": "web/data/theorems.json",
+      "sha256": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3"
+    },
+    {
+      "path": "web/data/trigrams.json",
+      "sha256": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8"
+    },
+    {
+      "path": "web/data/wings.json",
+      "sha256": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721"
+    },
+    {
+      "path": "web/index.html",
+      "sha256": "3eb1072260c48ece01051af175ec44639e357b5f1ec4d151a2bb69bd07b73ec3"
+    },
+    {
+      "path": "web/js/achievement-catalog.js",
+      "sha256": "81bccb10cc29e418c6e8da913520b6a63f49014d3111f06a43d617b4697bc210"
+    },
+    {
+      "path": "web/js/achievement-engine.js",
+      "sha256": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0"
+    },
+    {
+      "path": "web/js/achievement-storage.js",
+      "sha256": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098"
+    },
+    {
+      "path": "web/js/almanac-knowledge.js",
+      "sha256": "31d8c913c5d919aafdc1aaa10fc7362ef94c1d52ac43451860f7ecb0bda52912"
+    },
+    {
+      "path": "web/js/almanac-page.js",
+      "sha256": "7fcd83f4a849609ba96e2f7b57dade843248f8f502988cc8e399b845fd5c9cb8"
+    },
+    {
+      "path": "web/js/almanac/astronomy.js",
+      "sha256": "140fc8ba4bfb34c65f1d21ece9507b86342184bd9d8aef0a8799031b13d0eec0"
+    },
+    {
+      "path": "web/js/almanac/ganzhi.js",
+      "sha256": "4a51302d321b81add9e7201b32c8dca8f29f39a1cefed1aaaa7a3528f68f3d46"
+    },
+    {
+      "path": "web/js/almanac/lunar.js",
+      "sha256": "81d9e09cc54cdb6d63c69dfbbff30cbb37717321c01459fe70fef87e375f26c8"
+    },
+    {
+      "path": "web/js/almanac/reading.js",
+      "sha256": "fb5b994555d2c7ca004c4fb1aec8015a6d9a19163d4cb90fc91196861490bcd6"
+    },
+    {
+      "path": "web/js/almanac/selection.js",
+      "sha256": "dfecae8bbada33b73584e71b8f18a4f09643b70f972dd7e9ace6b2184b26f937"
+    },
+    {
+      "path": "web/js/almanac/solar-terms.js",
+      "sha256": "4796db274d7b6d946b6eab72b55732a704dad52722af13bf93c612b1bfc176c5"
+    },
+    {
+      "path": "web/js/audio-engine.js",
+      "sha256": "d05ba615f16a4de7733638c1d16b389c306960a513e6436ff544620830ebcf86"
+    },
+    {
+      "path": "web/js/celestial-stage.js",
+      "sha256": "e6a2f52a59ba406f7d4f2b6cdf1de6c77748705f3a60858b5334761f936a5b88"
+    },
+    {
+      "path": "web/js/cinematic-motion.js",
+      "sha256": "5b1b1c88580b46a026527771853ef0970abebd1fa6176306729228e278e06b8b"
+    },
+    {
+      "path": "web/js/commentary-catalog.js",
+      "sha256": "cad1775d6e83132657223fdf500ccd21bc7021562a8cfd9c8c7d7501fd7da358"
+    },
+    {
+      "path": "web/js/content-provenance.js",
+      "sha256": "5836cd83dfd295b515f9d4f1ac77e9f220eae49cd044db5083a908c42aed9681"
+    },
+    {
+      "path": "web/js/data-loader.js",
+      "sha256": "bb46b30bab562f648df3a0e6887ba01a02e627bebf46b6fc2c9411eb5c52404a"
+    },
+    {
+      "path": "web/js/divination-engine.js",
+      "sha256": "f3b2a41090adeb25021d06ff60d710a9c1e5a8132384ce2feff629436a6c1e2d"
+    },
+    {
+      "path": "web/js/divination-history.js",
+      "sha256": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660"
+    },
+    {
+      "path": "web/js/divination-interpretation.js",
+      "sha256": "1fa8bf21fea4c8856e98fa139c1b4fdf551eeedcead8e63e6b048804a28238cf"
+    },
+    {
+      "path": "web/js/evolution-lab.js",
+      "sha256": "e5d2783b5665d56154d1f492608f31f6c0b5ae8a1f0f07d8e3e3e16b965b6003"
+    },
+    {
+      "path": "web/js/evolution-semantics.js",
+      "sha256": "b43bb7e6da618ff7638db9584538690a52bc32ce72432e4a8c1c1028d34b44fd"
+    },
+    {
+      "path": "web/js/evolution-state.js",
+      "sha256": "ac09b9175d5ec2bf78cbd3e6b9e284acb1835169127628832f500514bb859a74"
+    },
+    {
+      "path": "web/js/guaxu-wheel.js",
+      "sha256": "6f0a8d0d67ff56a4aa9a0a3d4240386833c3fcb14b2b5e95f36a311c11936e3f"
+    },
+    {
+      "path": "web/js/hexagram-utils.js",
+      "sha256": "d52499fd34fd201df09beb2b485e11936b4cabc0aa93776795570aaa35067ee1"
+    },
+    {
+      "path": "web/js/learning-assessment-page.js",
+      "sha256": "5975e61c27053bb2100b2f318a8bb21b1e58a0872b55737acdb681dacd832153"
+    },
+    {
+      "path": "web/js/learning-assessment.js",
+      "sha256": "2f27c1b4b3f713ab04789347a42325bf7aef2af5b2f9c2ca984cdb1849590abf"
+    },
+    {
+      "path": "web/js/learning-curriculum.js",
+      "sha256": "439146d5f6f66ad3b82b597b8d931d7e7ce677a086ef4926bf0c46f5f930b9d0"
+    },
+    {
+      "path": "web/js/learning-progress.js",
+      "sha256": "ba1cca8296bac7e421892858f81e2b6e9cbdc7e96e75f395a38ff605ca222a0d"
+    },
+    {
+      "path": "web/js/learning-review.js",
+      "sha256": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad"
+    },
+    {
+      "path": "web/js/main.js",
+      "sha256": "2c68c387383f70215420db70485bd18cbc7f00334722c6ca8fa7e6a29a1326b7"
+    },
+    {
+      "path": "web/js/meihua-engine.js",
+      "sha256": "3310a0ede88f2f05ad1663aed48efed99c64828bcb4fced4a51e4733fdd45074"
+    },
+    {
+      "path": "web/js/modes/divination-mode.js",
+      "sha256": "0f383341726f6d97a29f762c5b7aa503e02cb38aa02d088f8717e8456b368b51"
+    },
+    {
+      "path": "web/js/modes/guaxu-mode.js",
+      "sha256": "28479453ab62f68c1dfb80bf4458c4e08f68df41b4fe149527f1e293e988d58e"
+    },
+    {
+      "path": "web/js/modes/learning-mode.js",
+      "sha256": "c5ed203a60edb8d682550655db3083579e950391ef908c11ebf788ae59d95d4f"
+    },
+    {
+      "path": "web/js/modes/quiz-mode.js",
+      "sha256": "7a60bcd0b713a6b43bac4a0ca6761f77877419f16f01901bfbc67e0c3f9734a1"
+    },
+    {
+      "path": "web/js/modes/review-mode.js",
+      "sha256": "5d7aaccdf78a3f7cd4e373e788a79adada460579568e13f76ed4ba6107a4ac3f"
+    },
+    {
+      "path": "web/js/motion-system.js",
+      "sha256": "f651f048d502500d58af0eeb5a8e4ed97c8d7ecf463c1ce66e7c4ea036abcd1f"
+    },
+    {
+      "path": "web/js/protocol-guard.js",
+      "sha256": "67f6ecb47fcb795bfb78af70b440a7ea4a272242291510d8a8e90e8546cabd67"
+    },
+    {
+      "path": "web/js/quiz-engine.js",
+      "sha256": "4b9e087b6c080b9e6a05cd69d15887634e8cb6cfe0b921e559bc48b7cbda1fba"
+    },
+    {
+      "path": "web/js/reading-state.js",
+      "sha256": "86fac1c3178fed62c9932cce72944f932f4c6ecd3753252765f99fcf2f76387d"
+    },
+    {
+      "path": "web/js/relation-animation.js",
+      "sha256": "99eab835d975d38a510cda77152583a03c080eca5f5660606a2366c13ffd62cf"
+    },
+    {
+      "path": "web/js/render.js",
+      "sha256": "b8801a6363fcb6714173f22384c1f866b83dfb02902a5d1d3a84461568d51757"
+    },
+    {
+      "path": "web/js/review-engine.js",
+      "sha256": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7"
+    },
+    {
+      "path": "web/js/search-controller.js",
+      "sha256": "48a183cec80f496317806b56aea85a0ca5098772bd5fca395dfe7ca367f9bffc"
+    },
+    {
+      "path": "web/js/share-card.js",
+      "sha256": "f395053adad507eb6f77d9430671af76f064307aafc58c807c3993dd238a4dc3"
+    },
+    {
+      "path": "web/js/star-atmosphere.js",
+      "sha256": "9a7db611a64c9feae205378b7b95689a29aef1288b63a501b066acf457379964"
+    },
+    {
+      "path": "web/js/star-label-layout.js",
+      "sha256": "aff233a2f34d93a3ded0d7fdcb1052241842567bf21b1bf54520fc99d843f991"
+    },
+    {
+      "path": "web/js/star-layouts.js",
+      "sha256": "fc8190c9fdc1ab0454e061b877345939f6bae4e36d55bee4289c2f1d6259b3fe"
+    },
+    {
+      "path": "web/js/star-map.js",
+      "sha256": "e80d81873dbefea45977c8036ab921e71337a0f5e581ecf87df13129d9fff72b"
+    },
+    {
+      "path": "web/js/star-relations.js",
+      "sha256": "04ffc7a7de8b29673317097307ce0d74b64829b48bc3e5f6299341c45b565fd0"
+    },
+    {
+      "path": "web/js/storage.js",
+      "sha256": "13d7b5b1288991582a4102dbb48b64d0b98593d1fab1502169dce7e52be78f28"
+    },
+    {
+      "path": "web/js/study-page.js",
+      "sha256": "7f99d3e5db2429daa6710735f9ff3ac8a05106bc33268c16ca00faaa418997c6"
+    },
+    {
+      "path": "web/js/svg-painter.js",
+      "sha256": "c9a31cf9699a138caadbab285756c17a1d4fa1e0de658a4c93df7f6a7fda860f"
+    },
+    {
+      "path": "web/js/ui-icons.js",
+      "sha256": "d7a824bf568c4746c2259dbd7e3deb9eca9ebbccb69509a148c80f0651a7a1f6"
+    },
+    {
+      "path": "web/js/user-data.js",
+      "sha256": "8a47ceb0e8dea555a17d10ac253b32f0dfc84cead620ddcf13193def6e1435b1"
+    },
+    {
+      "path": "web/lib/d3-force.js",
+      "sha256": "11af883da9dbacd4674448007693acc57971af2c58497abcedb17a198f0feef0"
+    },
+    {
+      "path": "web/lib/vendor/GSAP-NOTICE.txt",
+      "sha256": "8f25067cc586c221ef330527878633d93fd25cc5debc1a2b35d8a26803969f11"
+    },
+    {
+      "path": "web/lib/vendor/LENIS-LICENSE.txt",
+      "sha256": "bba15b1137346a73ed8c35e7f20961a69e0ed842d956a50339240c3e7b08c089"
+    },
+    {
+      "path": "web/lib/vendor/LUCIDE-LICENSE.txt",
+      "sha256": "169ae0f967410d2c6444294704d0f3a52243f5a29f1ffbaec9255f13bd5f7281"
+    },
+    {
+      "path": "web/lib/vendor/THREE-LICENSE.txt",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "web/lib/vendor/gsap.min.js",
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "path": "web/lib/vendor/lenis.css",
+      "sha256": "2f668ae84a668327f246faf8a770383a2bf69196d214290fbc4d5548910606c5"
+    },
+    {
+      "path": "web/lib/vendor/lenis.min.js",
+      "sha256": "53195c9797e7ce7bf9d7fa9242b08209e57f46de4c9dac126a6494fa780e3346"
+    },
+    {
+      "path": "web/lib/vendor/three.core.min.js",
+      "sha256": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90"
+    },
+    {
+      "path": "web/lib/vendor/three.module.min.js",
+      "sha256": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+    },
+    {
+      "path": "web/manifest.webmanifest",
+      "sha256": "8b325c89660eb25a81015b20c1bb7c98ed3e8cbdc3d9eec597f8eb10c49fd990"
+    },
+    {
+      "path": "web/robots.txt",
+      "sha256": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95"
+    },
+    {
+      "path": "web/serve.bat",
+      "sha256": "b197c351c7cfc580f2014b59bc47bf71047b594c5761668cb8354f0b0dd3ae12"
+    },
+    {
+      "path": "web/serve.sh",
+      "sha256": "2737952bd05f582caba81ca473d2f78304d7121decaa30100d9f8bc20cc63846"
+    },
+    {
+      "path": "web/styles/immersive.css",
+      "sha256": "7ff3555ee8a593401b365dfdef36dd5dc0213222650e3d58afd45106873327f1"
+    },
+    {
+      "path": "web/styles/main.css",
+      "sha256": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268"
+    },
+    {
+      "path": "web/sw.js",
+      "sha256": "8d7a49f868751942dd42e1ece73f179acfb027f69d942352ef496ef430f1edf1"
+    },
+    {
+      "path": "web/test/achievement-catalog.test.mjs",
+      "sha256": "4ef51aff630d90d3578f297e6d6b2c8ff2614223dddb3b3c825eb87d9c6c7f43"
+    },
+    {
+      "path": "web/test/achievement-engine.test.mjs",
+      "sha256": "4b6c6b6608803ff5089c5ef1124f4253a6b7d410dac90a551a61284c39351625"
+    },
+    {
+      "path": "web/test/achievement-storage.test.mjs",
+      "sha256": "8410d20a500c9968d915fb893c91336231b4c5e5581bdedea8728df3a5a6b0cc"
+    },
+    {
+      "path": "web/test/almanac-page-accessibility.test.mjs",
+      "sha256": "c371be169d2af7eab079838f96ec8fbc3eb11f9350fb384e8d225d0de5c31362"
+    },
+    {
+      "path": "web/test/almanac-timezone.test.mjs",
+      "sha256": "c47b9bb1f8ecc15f266cd9a1854271c96ddcdaecfdd146002d8ee5648c61d492"
+    },
+    {
+      "path": "web/test/audio-engine.test.mjs",
+      "sha256": "c780d46685e1c5ce1edf72aadaa699482bb65c16587b645652d3fa7809c21faf"
+    },
+    {
+      "path": "web/test/browser-smoke-reading-state.test.mjs",
+      "sha256": "a3d5491f139d11f7575a03c623339adce09f10ca80d275dbd04f08d39d244c39"
+    },
+    {
+      "path": "web/test/celestial-stage.test.mjs",
+      "sha256": "06461e8689f20a88359f46bcc89f77cd3ac6f84381cc204ba4c2bd88965a0877"
+    },
+    {
+      "path": "web/test/commentary-catalog.test.mjs",
+      "sha256": "814893f40f7ebc30a3472b0e745ec45d58bcf933559f83dfb8a34a52523e16cf"
+    },
+    {
+      "path": "web/test/content-provenance.test.mjs",
+      "sha256": "c9ea6c9e66d072c04a7edbd461eb1a708af7461f0e2041cda05b1e5fa7f9005c"
+    },
+    {
+      "path": "web/test/daily-overlay-layout.test.mjs",
+      "sha256": "3d43642684693d30488503fec2a45cb4187c892bf15c203ee4df84e6ddc88df6"
+    },
+    {
+      "path": "web/test/data-loader.test.mjs",
+      "sha256": "fc6f7b94a21de5584ef43e2138b3ff894800e63fdd6a841725b0c85633da2f60"
+    },
+    {
+      "path": "web/test/divination-engine.test.mjs",
+      "sha256": "6b7444e525a26df6ef2db5e6d5e8216ab1bbbca77832feb75f9100928487aa9c"
+    },
+    {
+      "path": "web/test/divination-history.test.mjs",
+      "sha256": "b4a611ca6eb4fff2eefecc36503eec7b66e142f049f2aeb0f1716062ca8fca52"
+    },
+    {
+      "path": "web/test/divination-interpretation.test.mjs",
+      "sha256": "13702d0a1aa4521f54fbcca20d2c2a72a1d605ae16adc9bd3b7f012559762d6d"
+    },
+    {
+      "path": "web/test/divination-replay.test.mjs",
+      "sha256": "cb38a9560d495b45d3a773ea8930413cf56fd6132ea5e7a00fe0e4d2445aec1c"
+    },
+    {
+      "path": "web/test/evolution-lab.test.mjs",
+      "sha256": "895c996205bb1fe401fe19dde2c4c35c37e40279642bbd2b1b10661c2fca2fc0"
+    },
+    {
+      "path": "web/test/evolution-semantics.test.mjs",
+      "sha256": "0a2b531bfa7798d86ce9ff1ffe05a62cc30050db49ea958c2364f80606480a1e"
+    },
+    {
+      "path": "web/test/guaxu-wheel.test.mjs",
+      "sha256": "0c90012330058d5cab858ca81bee931b0b1d97c3888aba313135ae4a83e0a297"
+    },
+    {
+      "path": "web/test/hexagram-order-remarks.test.mjs",
+      "sha256": "d2de65e66ec5c283d274a1deb9aae9315b1f4ca6b17de6c3589aae041c681a69"
+    },
+    {
+      "path": "web/test/hexagram-utils.test.mjs",
+      "sha256": "f80d970dd0e2ed73e02abad666ad2f6a5d98751b966c0870413346219345e9c6"
+    },
+    {
+      "path": "web/test/immersive-shell.test.mjs",
+      "sha256": "ffba29ab3bf0e8269f2b303bc7e2cf2bd20dc5b3dd4a1caefa81b09cda46b039"
+    },
+    {
+      "path": "web/test/layout-contract.test.mjs",
+      "sha256": "65867e4a3c77e09abc52fef65e75d7158e28421a3bf6810fc68633cd35e19e8a"
+    },
+    {
+      "path": "web/test/learning-assessment-page.test.mjs",
+      "sha256": "e854184358ea203b0884f0db0be4f56c3db3c567d63d0efd699e9626c647793d"
+    },
+    {
+      "path": "web/test/learning-assessment.test.mjs",
+      "sha256": "9df9f5da6bd9f55b238d618522578a5d77a5819f19d4529c314e9858703f8f82"
+    },
+    {
+      "path": "web/test/learning-curriculum.test.mjs",
+      "sha256": "755018d35b81e97e961ecc30972ca31e4c7a9e2244539be1dba0345795f7aa9f"
+    },
+    {
+      "path": "web/test/learning-progress.test.mjs",
+      "sha256": "fe0acd69eff354d865b059f1c0ee8e2009fa4f843a2827d7fdd61fb7836d7885"
+    },
+    {
+      "path": "web/test/learning-review.test.mjs",
+      "sha256": "8f27e082273e14b4b9f9eb225457567e8a2724a63b8412b71912fedb5217c9ce"
+    },
+    {
+      "path": "web/test/learning-ui-contract.test.mjs",
+      "sha256": "eb1e1111384878fe259fbb006c62fd6297c32f18713af8852550bfb1d299668b"
+    },
+    {
+      "path": "web/test/main-stage-lifecycle.test.mjs",
+      "sha256": "e1e1ca396d4275972912e121c4901db0a9f1dfa5c70f5c00e5c2fd653b185d46"
+    },
+    {
+      "path": "web/test/meihua-engine.test.mjs",
+      "sha256": "5d5e3786526f4285467c82a282bdb028438c86080aa211835679405fcf239ea0"
+    },
+    {
+      "path": "web/test/mode-result-visibility.test.mjs",
+      "sha256": "741799e355e9e9213a0062f5161c214aac17cd58ea0efd03cf387316fa78c7b9"
+    },
+    {
+      "path": "web/test/motion-system.test.mjs",
+      "sha256": "6f7511ef48d4a756320b94ac0124c4fe1eb20a7166725ca8884f7fe41631b346"
+    },
+    {
+      "path": "web/test/protocol-guard.test.mjs",
+      "sha256": "be172b8381a82f33af1b0c4520467c5c844491ff856f2eec0dcf7d1527c526e1"
+    },
+    {
+      "path": "web/test/pwa-assets.test.mjs",
+      "sha256": "9c8a53f9363fc41f65ccbe0f8980241ed1c8e880f53cfe556a40373558405680"
+    },
+    {
+      "path": "web/test/quiz-engine.test.mjs",
+      "sha256": "a1bcb882bb169abe1220250bba90d2cf146f6af217e70343ec58d28205e76bf1"
+    },
+    {
+      "path": "web/test/reading-document.test.mjs",
+      "sha256": "17cee473f6ec57884c74d8e9978c6a9bd50979986302406f069ae1d935214fe1"
+    },
+    {
+      "path": "web/test/reading-state.test.mjs",
+      "sha256": "8d5d818fe1ab08f5af44f4f5451c820369be3ad821402fce2d1ae6d4ad13396f"
+    },
+    {
+      "path": "web/test/relation-animation.test.mjs",
+      "sha256": "ce1745bf66f4d44958f4a817130f78b7c7f4ac5acd89a1432d5452195aaf4cc5"
+    },
+    {
+      "path": "web/test/render-accessibility.test.mjs",
+      "sha256": "f1df2f57044c2ee78762903cd509d3fb53ecc273ca217afdcd45d77472f831cc"
+    },
+    {
+      "path": "web/test/review-engine.test.mjs",
+      "sha256": "8c9f4571ea1821d645644427f0e031f29d1b5b9de335aabd7bade60465d82ca3"
+    },
+    {
+      "path": "web/test/search-controller.test.mjs",
+      "sha256": "bd71325a8a52fd14617d1b42c89d8e2d14e8cfd2fa98fbd9c57cc5e188677357"
+    },
+    {
+      "path": "web/test/share-card.test.mjs",
+      "sha256": "c4dc74430fa8a1c5377afe7074dd2e0a22bfcf3c5b619e803cdc73347c23e2b5"
+    },
+    {
+      "path": "web/test/star-atmosphere.test.mjs",
+      "sha256": "93d3817d23d21f58a382cf0078b7362746f40bb006c6ef8a1eea909d4efb9c93"
+    },
+    {
+      "path": "web/test/star-label-layout.test.mjs",
+      "sha256": "6f025efbaebfc24e13c9920db568ff9fb03ab73d2445b4937dab7eabd218948d"
+    },
+    {
+      "path": "web/test/star-layouts.test.mjs",
+      "sha256": "00892d46009b7bd46554f59613a905eb4bc88ceb3805ce142e2a8f61ad3c6d01"
+    },
+    {
+      "path": "web/test/star-map-accessibility.test.mjs",
+      "sha256": "a3993209845af238cc3560e9c9f927e0e77e02beab3279e3a9052dce7a60b8ac"
+    },
+    {
+      "path": "web/test/star-map-performance.test.mjs",
+      "sha256": "845dbd72e3abaec1dcbed1021a9727316de4d1bd227ebda36adaf6b0d46b7588"
+    },
+    {
+      "path": "web/test/star-pointer-lifecycle.test.mjs",
+      "sha256": "bca816ce3888545dffd56f49096ad6cff13872290deb1d5a6f4c3d10bbda516f"
+    },
+    {
+      "path": "web/test/star-relations.test.mjs",
+      "sha256": "3980e6a8b04eed6985ae28f6f88c516a1957f2b31254ad7d89c783124e72b1f6"
+    },
+    {
+      "path": "web/test/storage.test.mjs",
+      "sha256": "87cfe4b1a479bbeb31b6434cb73ccc9c1c7bf3e2ece8861b52f9764a8a78aeeb"
+    },
+    {
+      "path": "web/test/typography-system.test.mjs",
+      "sha256": "6e9cd79d7fecf3ee2701f3a7d8f7ed8c2022a46eab06fe1eb969089dff099ead"
+    },
+    {
+      "path": "web/test/ui-icons.test.mjs",
+      "sha256": "3d396642a48c42aff138fd2ed8349e9de9c3f1469c22718f0c2c1d6042ddf5ad"
+    },
+    {
+      "path": "web/test/user-data.test.mjs",
+      "sha256": "0173ba20915bebc32c20b40d2e4a890d28e8432a82003ccafce92e8f29ee9dde"
+    },
+    {
+      "path": "web/tool/fill-all.mjs",
+      "sha256": "0a5b56b43ff2706c2ab0783868155e1fa2735b45b18a90a54dfde38672fb8be9"
+    },
+    {
+      "path": "web/tool/gen-almanac-data.mjs",
+      "sha256": "151a088d4f8ca1c1b6c8671292e7804a069ee9b4f8a03529b71b100ab30cebf9"
+    },
+    {
+      "path": "web/tool/gen-keywords.mjs",
+      "sha256": "b4af82f07a5382f97aa9dbb5e7a56b155727dddcf3cb8886b45604e630f19c71"
+    },
+    {
+      "path": "web/tool/gen-notes.mjs",
+      "sha256": "a3a3df0071ffac722032515bdc3c9872871443a73736d64c05c2740ada54458f"
+    },
+    {
+      "path": "web/tool/gen-theorems.mjs",
+      "sha256": "229c7320654a265e08cdd14d8f0ec9f887c9f17ec994c0edd2e0147ebbb5865a"
+    },
+    {
+      "path": "web/tool/gen-tuan-notes.mjs",
+      "sha256": "833832fe5863cb77afe2a44d320eebaddcfcbf8afd16c51525364bdb6ea0fbf9"
+    },
+    {
+      "path": "web/tool/gen-wings.mjs",
+      "sha256": "0c8cce231b9fe812636d59e5a9f64db51a81cce5d596d7123647258bb79aff44"
+    },
+    {
+      "path": "scripts/test-search-input.mjs",
+      "sha256": "a59f9acef024c351d5915aad40c52818445c9ceda45d633540c928f7fcb951af"
+    }
+  ],
+  "checkedAt": "2026-10-24T19:31:26.169Z",
+  "inventory": {
+    "totalCards": 48,
+    "completedCards": [
+      "T-DIV-01",
+      "T-SAVE-01",
+      "T-LEARN-05"
+    ],
+    "openCards": [
+      {
+        "id": "T-QA-01",
+        "title": "定位并修复真实输入 E2E 失败",
+        "priority": "P0",
+        "nature": "已确认",
+        "currentBoundary": "P0；已修复resize及跨区域取消，部分证据未取得",
+        "remaining": "补真实窗口失焦及适用取消边界证据；保存默认摘要遮挡需转动才能第二选星的限制、主动失捕获为故障注入的边界和历史B-01无完整trace的归因限制。独立失败项逐一结案，不以全量烟测替代未取得输入",
+        "dependencies": []
+      },
+      {
+        "id": "T-GROW-01",
+        "title": "从真实考评入口接通成就证据",
+        "priority": "P0",
+        "nature": "已确认",
+        "currentBoundary": "P0；引擎存在，业务入口与证据部分接通",
+        "remaining": "补八卦完整 24 题轮次、上下经各 10 题、25 题综合考评的真实入口及提交证据；完成十二成就的条件—入口—事件—幂等映射、旧记录回补和保存失败处理，不能靠改 metrics 解锁",
+        "dependencies": [
+          "T-LEARN-05",
+          "T-QA-01"
+        ]
+      },
+      {
+        "id": "T-STAR-01",
+        "title": "统一星图焦点退出和漫游路径",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；部分实现，摘要残留需真实复现",
+        "remaining": "统一双击空白、Escape、全景返回、轨迹清除的焦点与摘要状态；DOM 关系目标和详情跳转一致记录 from/to；补可见最近五个卦节点路径、回退和清除，兼容底层五段轨迹",
+        "dependencies": [
+          "T-QA-01"
+        ]
+      },
+      {
+        "id": "T-STAR-02",
+        "title": "关系颜色线型与标记统一",
+        "priority": "P2",
+        "nature": "已确认",
+        "currentBoundary": "P2；关系逻辑已有，呈现未统一",
+        "remaining": "Canvas、图例、按钮/徽记及对读统一错综互变的颜色、线型和文字/方向标记；减少动态、灰度/强制颜色下仍可辨，保留明确动爻才生成变卦的规则",
+        "dependencies": [
+          "T-STAR-01"
+        ]
+      },
+      {
+        "id": "T-STAR-03",
+        "title": "接通任务和搜索目标标签优先级",
+        "priority": "P2",
+        "nature": "已确认",
+        "currentBoundary": "P2；共享避让及缓存已有",
+        "remaining": "接入经六位码校验的搜索/课程只读目标，按当前卦→关系→搜索→学习任务→地标→普通排序；退出时清目标，目标变化参与缓存失效；补长词、边缘、控件占位和稳定排序证据",
+        "dependencies": [
+          "T-SEARCH-01"
+        ]
+      },
+      {
+        "id": "T-SEARCH-01",
+        "title": "补齐序号编码和上下卦搜索",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；新查询/排序纯逻辑已写入未提交成果，相关16/16；UI尚未整合",
+        "remaining": "接入真实八卦资料及可选关键词，补六位码、1—64/第N卦、上下卦的可见语法帮助；核对非法值/无结果、输入法与ARIA；实际完成键盘/鼠标/触控搜索、最多8项、取消保留镜头关系且仅聚焦的验收，再做整合回归",
+        "dependencies": []
+      },
+      {
+        "id": "T-READ-01",
+        "title": "六爻正文与卦象逐爻联动",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；正文初至上、卦象初在下已实现",
+        "remaining": "增加单一选爻状态与原生可达控件，联动图中爻位、爻辞/小象/项目解释及来源；补键盘选择、初爻默认、换卦重置、同卦快深读保留、指定动爻演示与缺字段提示",
+        "dependencies": [
+          "T-QA-01"
+        ]
+      },
+      {
+        "id": "T-READ-02",
+        "title": "关系正视对读和双动作",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；关系入口与演示能力已有",
+        "remaining": "完成本卦→规则→目标卦的正视对读、改变爻及互卦取爻/综卦倒序依据；区分「星图定位」与「研读目标卦」动作；统一关系路径、指定变化带入实验室和退出来路，完整往返恢复镜头及关系",
+        "dependencies": [
+          "T-READ-01",
+          "T-STAR-01"
+        ]
+      },
+      {
+        "id": "T-READ-03",
+        "title": "跨模块经文上下文与返回",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；深链和运行内镜头/草稿已有",
+        "remaining": "补课程逐卦与章节入口、内存来路对象；课程、占筮、复习与星图进入阅读后返回原上下文/滚动/有效控件；不重起卦或丢草稿；popstate 只恢复，过期上下文安全降级",
+        "dependencies": [
+          "T-DIV-03",
+          "T-LEARN-01",
+          "T-QA-01"
+        ]
+      },
+      {
+        "id": "T-READ-04",
+        "title": "快读信息布局与长正文协调",
+        "priority": "P2",
+        "nature": "已确认",
+        "currentBoundary": "P2；46/75dvh、暖纸及同 DOM 保留已有",
+        "remaining": "将完整长正文在快读中组织成身份、核心经文/摘要、关系与学习状态信息区；同 DOM 渐进呈现，不复制经文或笔记输入；补窄屏目录/来源、五视口、多次快深切换、非零滚动与草稿证据",
+        "dependencies": [
+          "T-QA-01",
+          "T-READ-02"
+        ]
+      },
+      {
+        "id": "T-LEARN-01",
+        "title": "推荐优先队列与继续阅读",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；部分实现",
+        "remaining": "落实未完课程→到期复习→薄弱项→下一未学→复讲/解卦的稳定推荐、原因和入口；保存恢复最小课程位置；欢迎「零基础开始」直达 l1-1，不能把当前今日修习入口当作已经完成",
+        "dependencies": []
+      },
+      {
+        "id": "T-LEARN-02",
+        "title": "课程错题形成独立温习闭环",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；文案与实际队列尚未完整接通",
+        "remaining": "按具体题记录 weakQuestions、同轮去重、来源温习与原规则回练；有效答对后纠正；兼容题库换版和旧备份，不只显示「答错加入复习」",
+        "dependencies": [
+          "T-LEARN-05"
+        ]
+      },
+      {
+        "id": "T-LEARN-03",
+        "title": "统一四段修习反馈",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；部分实现",
+        "remaining": "考评、复习、自由测验和解卦统一结果/依据/实际记录变化/下一步；说明基于自评、真实保存状态及来源返回；补读屏顺序、一个主行动和至多两个次行动。本卡同时承接既有复习同轮幂等/失败重试、复讲旧响应隔离/仅保存重试，见第 11 节",
+        "dependencies": [
+          "T-LEARN-02",
+          "T-QUIZ-01"
+        ]
+      },
+      {
+        "id": "T-QUIZ-01",
+        "title": "具体错题证据与黄历薄弱项",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；自由测验判分已有",
+        "remaining": "由卦码摘要补充规则、题型、目标证据；答对原规则才能清错；无卦码的黄历术语也能进入温习；纠正与复习证据关联；不把旧卦码伪造成具体旧题",
+        "dependencies": [
+          "T-LEARN-02"
+        ]
+      },
+      {
+        "id": "T-LEARN-04",
+        "title": "区分三种学习层级称谓",
+        "priority": "P2",
+        "nature": "已确认",
+        "currentBoundary": "P2；部分实现",
+        "remaining": "在标签、帮助、推荐和来源中区分课程五阶、掌握状态、修习成长 15 态；不重算原掌握度或修习值",
+        "dependencies": []
+      },
+      {
+        "id": "T-DIV-02",
+        "title": "三路径与五步结构化解卦挑战",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；部分实现",
+        "remaining": "补引导/自主/直接研读分流；按定象、取意、援经、成说、知止与 20 个结构检查点反馈，支持修改与幂等事件；记录路径/证据版本，「言之成理」只计合格自主案例，不评价现实应验或伪称理解了自由文本",
+        "dependencies": [
+          "T-DIV-01",
+          "T-GROW-01"
+        ]
+      },
+      {
+        "id": "T-DIV-03",
+        "title": "占筮本卦与之卦正式研读入口",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；部分实现",
+        "remaining": "金钱、数字梅花、时间梅花和完整历史结果提供明确本卦/之卦读经动作与正确章节；无变不重复按钮；读经不重起卦、不新增历史；完整返回上下文与 T-READ-03 对接。本卡同时承接时间法的当次时区/时间来源提示及历史保留，见第 11 节",
+        "dependencies": [
+          "T-DIV-01"
+        ]
+      },
+      {
+        "id": "T-GROW-02",
+        "title": "修习谱十二项进度与证据视图",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；引擎已有，展示部分实现",
+        "remaining": "完成总览/印谱/能力视图，展示十二项条件、进度、达成时间、来源、规则版本和下一步；诚实标旧汇总证据，回补幂等；观象录实际保存由后继任务负责",
+        "dependencies": [
+          "T-GROW-01"
+        ]
+      },
+      {
+        "id": "T-PRIV-01",
+        "title": "主动保存的观象录",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；未实现",
+        "remaining": "按既有 yijing-observations-v1 契约补主动保存、独立同意的可选私文、列表/查看/编辑/删除与失败反馈；同时交付备份恢复和公开分享排除；自动技术历史不能当观象录",
+        "dependencies": [
+          "T-BACKUP-02",
+          "T-DIV-02",
+          "T-GROW-02"
+        ]
+      },
+      {
+        "id": "T-CAL-01",
+        "title": "黄历七日轴与日期语义",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；部分实现",
+        "remaining": "补七日轴、日期选择、返回今日、1900—2199 边界和键盘同步；非今日称谓准确；说明欢迎设备日与黄历上海日差异，不借界面改造擅自统一算法口径",
+        "dependencies": []
+      },
+      {
+        "id": "T-CAL-02",
+        "title": "三段日课与内联术语笺注",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；部分实现",
+        "remaining": "时序/民俗/学习三段默认展开，区分来源；补内联术语、焦点恢复、宜忌清单、真实节气区间进度和缺数据说明；空宜/空忌不从空数组推「诸事不宜」，先核对数据语义；不得合成古籍引文填空",
+        "dependencies": [
+          "T-CAL-01"
+        ]
+      },
+      {
+        "id": "T-CAL-03",
+        "title": "公开历笺分享",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；未实现",
+        "remaining": "为所选日期建立公开白名单模型，本地生成、可访问预览、PNG 下载及可用时系统分享；覆盖取消、绘图失败、长文案和边界回退，图片/链接/分享文字排除私文与配置",
+        "dependencies": [
+          "T-CAL-02",
+          "T-SHARE-01"
+        ]
+      },
+      {
+        "id": "T-SOUND-01",
+        "title": "音效由业务成功显式触发",
+        "priority": "P1",
+        "nature": "已确认",
+        "currentBoundary": "P1；部分实现",
+        "remaining": "去除 document click/class 猜测业务结果的方式，成功状态改变后显式触发；复习自评、术语、非法输入、取消和保存失败不误发完成声；补重复/重渲染边界",
+        "dependencies": []
+      },
+      {
+        "id": "T-SOUND-02",
+        "title": "正式音源台账与音量并发控制",
+        "priority": "P2",
+        "nature": "已确认",
+        "currentBoundary": "P2；控制部分实现，正式素材有外部输入",
+        "remaining": "补既定 0—100 音量、恢复/静音、冷却并发与降级；正式文件对应批准用途和许可，完成长时/耳机试听；未批准的第二轮声景不能写成正式资产",
+        "dependencies": [
+          "T-ASSET-01",
+          "T-SOUND-01"
+        ]
+      },
+      {
+        "id": "T-MODAL-01",
+        "title": "统一模态、隐藏控件与焦点栈",
+        "priority": "P2",
+        "nature": "已确认",
+        "currentBoundary": "P2；部分实现；焦点警告及透明工具可 Tab 到已复现",
+        "remaining": "修复欢迎按钮/梅花输入仍有焦点时祖先设 aria-hidden、快读透明工具仍在 Tab 顺序的问题；统一顶层 Escape、原 inert 恢复、有效焦点、嵌套/resize/失败清理及独立暂停原因；不能用隐藏日志代替修复",
+        "dependencies": [
+          "T-QA-01"
+        ]
+      },
+      {
+        "id": "T-ICON-01",
+        "title": "残留字符图标与可访问名称",
+        "priority": "P2",
+        "nature": "已确认",
+        "currentBoundary": "P2；本地图标系统已有",
+        "remaining": "清点黄历箭头/关闭、转盘及反馈中的字符假图标，用本地 SVG 白名单替换；装饰隐藏、按钮准确命名；补重复安装幂等、强制颜色和窄屏，保留真实卦符及知识文字",
+        "dependencies": []
+      },
+      {
+        "id": "T-ASSET-02",
+        "title": "检查并替换伪文字材质",
+        "priority": "P2",
+        "nature": "已确认",
+        "currentBoundary": "P2；已知风险待实际视觉复核",
+        "remaining": "查看太极仪纹理并定位可疑环及使用处；用获准无字资产或完整遮蔽后以真实数据重绘；核许可、体积、系统/浏览器放大与失败降级；不能把待复核风险写成已发现全部伪字",
+        "dependencies": [
+          "T-ASSET-01"
+        ]
+      },
+      {
+        "id": "T-BACKUP-01",
+        "title": "备份容量可往返",
+        "priority": "P2",
+        "nature": "建议改进",
+        "currentBoundary": "部分实现；导出/导入限制不对称已从代码确认",
+        "remaining": "统一 UTF-8 字节容量策略，验证接近、等于、超过 1 MiB 的合成备份能否往返；超限要提示并保全原数据，不截断笔记；兼容既有备份、成就专用限制及 Blob 失败",
+        "dependencies": []
+      },
+      {
+        "id": "T-BACKUP-02",
+        "title": "深层校验与回滚失败反馈",
+        "priority": "P2",
+        "nature": "建议改进",
+        "currentBoundary": "部分实现；损坏样例与回滚失败需补复现",
+        "remaining": "补嵌套字段和领域校验、准确错误位置、全量通过后再写；覆盖第 n 次写入失败及回滚也失败，明确可能部分恢复并给恢复指引；保留缺失键不变、null 删除、未知键不写的兼容规则",
+        "dependencies": []
+      },
+      {
+        "id": "T-API-01",
+        "title": "可选评阅端点解析与异常防护",
+        "priority": "P2",
+        "nature": "建议改进",
+        "currentBoundary": "客户端部分实现；仓库没有评阅服务端",
+        "remaining": "使用 URL 解析严格判断同源、协议和异常路径，限制不可信重定向、验证响应；覆盖未配置、静态 404、20 字边界、15 秒超时和畸形响应，本地自评始终可用；不新增 API 服务或网页密钥",
+        "dependencies": []
+      },
+      {
+        "id": "T-CACHE-01",
+        "title": "SW只删除自身缓存",
+        "priority": "P2",
+        "nature": "建议改进",
+        "currentBoundary": "部分实现；清理范围风险已由代码确认",
+        "remaining": "激活时只清理本应用旧代缓存，保留其他同源应用的 CacheStorage；验证首次安装、升级、旧页并存与离线恢复，不触碰 localStorage 和用户备份",
+        "dependencies": []
+      },
+      {
+        "id": "T-CACHE-02",
+        "title": "离线范围与版本更新可见",
+        "priority": "P2",
+        "nature": "建议改进",
+        "currentBoundary": "核心预缓存、可选模块访问后缓存已有实现",
+        "remaining": "补首次/访问后离线矩阵，区分未下载、网络失败和数据损坏；补可见注册/更新状态与重试；有草稿时不自动刷新，清理只涉及本应用缓存；不承诺未访问模块全部离线",
+        "dependencies": [
+          "T-CACHE-01"
+        ]
+      },
+      {
+        "id": "T-CAPACITY-01",
+        "title": "长期本地容量与幂等保全",
+        "priority": "P2",
+        "nature": "建议改进",
+        "currentBoundary": "未完成长期容量专项测量，不等于已发生数据丢失",
+        "remaining": "用 1/3/10 年合成事件与长笔记测量字节、写入耗时、导出大小及失败点；形成容量预算和恢复演练；如需压缩，应保留等价幂等证据与旧备份兼容，不能裁键造成重复奖励",
+        "dependencies": [
+          "T-BACKUP-01",
+          "T-BACKUP-02"
+        ]
+      },
+      {
+        "id": "T-SHARE-01",
+        "title": "分享链接显式公开白名单",
+        "priority": "P2",
+        "nature": "建议改进",
+        "currentBoundary": "公开图片模型已有隐私边界；链接仍保留其他 query",
+        "remaining": "所有分享出口共用公开 URL 白名单，只保留已批准的公开字段，排除其他 query、hash 和凭据；验证 Pages 子路径、六位码深链、系统分享取消及不支持时下载回退；仅用合成敏感参数测试",
+        "dependencies": []
+      },
+      {
+        "id": "T-ASSET-01",
+        "title": "资产和第三方许可总账",
+        "priority": "P2",
+        "nature": "已确认",
+        "currentBoundary": "P2 / 已确认；部分实现",
+        "remaining": "清点 vendor、图、字体、声音与参考帧，区分运行/研究/宣传用途；统一版本、来源、作者、许可、修改、批准与分发范围索引，缺证明保留限制；不能统一把 GSAP 写成 MIT 或把研究资料当公开资产",
+        "dependencies": []
+      },
+      {
+        "id": "T-DEP-01",
+        "title": "依赖与本地vendor版本维护",
+        "priority": "P2",
+        "nature": "建议改进",
+        "currentBoundary": "P2 / 建议改进；部分实现",
+        "remaining": "建立包锁/vendor 头版本/入口账本，先报告漂移；确需升级时逐库核官方变更和许可，同步本地文件、缓存、回归与回退；不进行无关批量大版本升级，也不以现有检查断言无漏洞",
+        "dependencies": [
+          "T-ASSET-01"
+        ]
+      },
+      {
+        "id": "T-CONTENT-01",
+        "title": "原典与项目资料逐条校勘",
+        "priority": "持续内容",
+        "nature": "已确认",
+        "currentBoundary": "持续内容 / 已确认；校勘未完成",
+        "remaining": "按卦/篇/条目确定可用底本及授权，逐字段对影印，记位置、异文、校对者与日期；数据 diff 和派生回归后更新校验状态；缺来源仍显示待校验",
+        "dependencies": [
+          "T-ASSET-01"
+        ]
+      },
+      {
+        "id": "T-CONTENT-02",
+        "title": "六家3840锚点内容工程",
+        "priority": "持续内容",
+        "nature": "已确认",
+        "currentBoundary": "持续内容 / 已确认；草稿，受门禁约束",
+        "remaining": "先在门禁关闭下补既定 --draft-batch 校验和合成回归，再按六家×64 卦×10 锚点逐批补真实文本/不适用理由、定位及双校；当前 0/64、0/3840、releaseReady=false，全量证据齐备再审开放",
+        "dependencies": [
+          "T-CONTENT-01"
+        ]
+      },
+      {
+        "id": "T-QA-02",
+        "title": "新增纯逻辑覆盖率纳入计量",
+        "priority": "P2",
+        "nature": "已确认",
+        "currentBoundary": "P2 / 已确认；已有测试，计量范围未补",
+        "remaining": "测 reading-state、star-label-layout 的真实缺口，补非法动作/代码/section、长词/视口/排序/缓存等有效边界，再加入正式 include；报告集合和各模块三指标，不降门槛",
+        "dependencies": []
+      },
+      {
+        "id": "T-QA-03",
+        "title": "证据目录参数与可携带日志",
+        "priority": "P2",
+        "nature": "建议改进",
+        "currentBoundary": "P2 / 建议改进；局部完成",
+        "remaining": "补受控目录参数、证据根约束、失败也写环境/HEAD/快照/命令/退出码/截图清单的摘要契约；补并行 run、不存在目录及写失败测试；新 smoke-ISO 目录、25 图和随仓库日志已完成",
+        "dependencies": []
+      },
+      {
+        "id": "T-A11Y-01",
+        "title": "真机读屏真实缩放与兼容验收",
+        "priority": "外部验收",
+        "nature": "已确认",
+        "currentBoundary": "外部验收 / 已确认；缺目标环境证据",
+        "remaining": "在实际 Android/iOS、NVDA/VoiceOver、真实 200% 和既定浏览器/强制颜色环境跑主流程；记录设备版本、焦点播报、软键盘/安全区、对比度、长词与恢复；CDP 触控/视口/AX 树不能代替",
+        "dependencies": [
+          "T-MODAL-01",
+          "T-QA-01"
+        ]
+      },
+      {
+        "id": "T-PERF-01",
+        "title": "当前UI性能与长时降级证据",
+        "priority": "外部验收",
+        "nature": "已确认",
+        "currentBoundary": "外部验收 / 已确认；当前完整证据未取得",
+        "remaining": "固定设备/缓存/节流，采三次原始结果及中位数；测首屏、首次意图、漫游、阅读暂停、长时内存、标签频率、像素预算和销毁监听；正常/减少动态/低功耗/后台分别测，仅按热点最小优化",
+        "dependencies": [
+          "T-QA-01"
+        ]
+      },
+      {
+        "id": "T-WIN-01",
+        "title": "当前源码本地Windows重建验收",
+        "priority": "本地收尾",
+        "nature": "已确认",
+        "currentBoundary": "本地收尾 / 已确认；当前包未验收",
+        "remaining": "当前源码构建并运行 test:windows，人工启动/退出、无 Node 环境、端口占用顺延、GET/HEAD/404/405、深链、离线和恢复；保存源快照、版本、嵌入清单及 SHA256；不上传、不冒用旧 EXE",
+        "dependencies": [
+          "T-ASSET-01",
+          "T-QA-01"
+        ]
+      },
+      {
+        "id": "T-RELEASE-01",
+        "title": "未来独立远程发布与生产复验",
+        "priority": "独立发布",
+        "nature": "未来独立方案",
+        "currentBoundary": "独立发布 / 未来独立方案；当前不执行",
+        "remaining": "另行要求发布后，确定发布单元、版本/tag/资产与门禁，执行 Quality/Pages/Release；生产复验资源、深链、SW、分享、离线、三次性能并留回滚记录；GitHub 开发同步不等于发布许可",
+        "dependencies": [
+          "T-A11Y-01",
+          "T-PERF-01",
+          "T-QA-01",
+          "T-WIN-01"
+        ]
+      },
+      {
+        "id": "T-COPY-01",
+        "title": "无Git副本的检查兼容方案",
+        "priority": "P2",
+        "nature": "建议改进",
+        "currentBoundary": "P2 / 建议改进；可选兼容未实现",
+        "remaining": "用隔离夹具复现无 .git 情况，提供显式副本检查模式/独立命令、分发文件范围与异常扩展名检查；正常仓库仍查 Git 跟踪树；不暗中 git init，不把复制源文件当浏览器学习数据迁移",
+        "dependencies": []
+      }
+    ],
+    "natureCounts": {
+      "已确认": 34,
+      "建议改进": 10,
+      "未来独立方案": 1
+    },
+    "priorityCounts": {
+      "P0": 2,
+      "P1": 17,
+      "P2": 20,
+      "持续内容": 2,
+      "外部验收": 2,
+      "本地收尾": 1,
+      "独立发布": 1
+    }
+  },
+  "verification": {
+    "docsCheck": {
+      "documents": 15,
+      "lines": 6651,
+      "localLinks": 701,
+      "tasks": 48,
+      "requirements": 86,
+      "sourceGuard": null,
+      "issues": []
+    },
+    "unchangedSourceFiles": 170,
+    "searchLogic": {
+      "command": "node --test web/test/data-loader.test.mjs web/test/search-controller.test.mjs",
+      "exitCode": 0,
+      "passed": 16,
+      "failed": 0,
+      "log": "2026-10-25-inventory-search-check.log"
+    },
+    "diffCheck": {
+      "exitCode": 0
+    },
+    "fullValidate": "not rerun for this documentation inventory",
+    "fullE2e": "not rerun for this documentation inventory"
+  },
+  "github": {
+    "verifiedHead": "25fa12a24b3b21b39f1bf269b70ad0e77fbc1ca2",
+    "pr": 10,
+    "draft": true,
+    "issue": 9,
+    "issueOpen": true,
+    "qualityRuns": [
+      {
+        "id": 40125128358,
+        "conclusion": "success"
+      },
+      {
+        "id": 40125131822,
+        "conclusion": "success"
+      }
+    ],
+    "commentUrl": "https://github.com/WYHCIPUC/yijing-atlas/issues/9#issuecomment-6388587490",
+    "issueBodyMatches": true,
+    "prBodyMatches": true,
+    "documentsCommitted": false
+  },
+  "issues": [],
+  "finalVerifiedAt": "2026-10-24T19:32:44.371Z"
+}

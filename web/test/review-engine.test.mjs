@@ -84,7 +84,7 @@ test('阶段达到上限后保持封顶', () => {
   assert.equal(getMastery(card), 1);
 });
 
-test('损坏存储回退为空，写入失败不影响内存调度', () => {
+test('损坏存储读取兼容空列表，保存失败不推进原内存卡', () => {
   const originalWarn = console.warn;
   console.warn = () => {};
   globalThis.localStorage = {
@@ -96,12 +96,55 @@ test('损坏存储回退为空，写入失败不影响内存调度', () => {
     assert.deepEqual(loadReviewCards(), {});
     const cards = initAllCards({}, ['111111']);
     assert.equal(cards['111111'].code, '111111');
+    const before = structuredClone(cards);
     const result = saveReview(cards, '111111', 1);
     assert.equal(result.card.stage, 1);
     assert.equal(result.saved, false);
+    assert.deepEqual(cards, before);
   } finally {
     console.warn = originalWarn;
   }
+});
+
+test('非法自评不按记得处理且不修改卡', () => {
+  for (const rating of [-1, 3, 0.5, '2', null, undefined, NaN]) {
+    const card = { code: '111111', stage: 2, due: 10, lapses: 0, reps: 1, lastReview: 1 };
+    const before = structuredClone(card);
+    assert.throws(() => reviewCard(card, rating), /评分/);
+    assert.deepEqual(card, before);
+  }
+});
+
+test('一次调度复用显式时间并保留原间隔序列', () => {
+  const at = Date.parse('2026-10-25T01:00:00Z');
+  for (const [rating, stage, days, lapses] of [[0, 1, 1, 1], [1, 4, 7, 0], [2, 5, 15, 0]]) {
+    const card = { code: '111111', stage: 4, due: 10, lapses: 0, reps: 3, lastReview: 1 };
+    reviewCard(card, rating, at);
+    assert.deepEqual([card.stage, card.due, card.lapses, card.reps, card.lastReview], [stage, at + days * 86400000, lapses, 4, at]);
+  }
+});
+
+test('保存失败不修改已有卡或凭空加入内存新卡', () => {
+  for (const existing of [true, false]) {
+    const cards = existing ? { '111111': { code: '111111', stage: 1, due: 10, lapses: 0, reps: 1, lastReview: 1 } } : {};
+    const before = structuredClone(cards);
+    const storage = { getItem: () => JSON.stringify(before), setItem: () => { throw new Error('quota'); } };
+    const result = saveReview(cards, '111111', 2, storage);
+    assert.equal(result.saved, false);
+    assert.deepEqual(cards, before);
+  }
+});
+
+test('保存当前卡合并最新其他卡，冲突不覆盖', () => {
+  const cards = { '111111': { code: '111111', stage: 1, due: 10, lapses: 0, reps: 1, lastReview: 1 } };
+  const other = { code: '000000', stage: 3, due: 20, lapses: 0, reps: 2, lastReview: 2 };
+  localStorage.setItem('yijing-review-cards', JSON.stringify({ ...cards, '000000': other }));
+  assert.equal(saveReview(cards, '111111', 2).saved, true);
+  assert.deepEqual(loadReviewCards()['000000'], other);
+  const stale = { '111111': { ...cards['111111'], reps: 0 } };
+  const before = localStorage.getItem('yijing-review-cards');
+  assert.equal(saveReview(stale, '111111', 2).saved, false);
+  assert.equal(localStorage.getItem('yijing-review-cards'), before);
 });
 
 test('结构不完整的复习数据会回退为空', () => {
@@ -110,4 +153,27 @@ test('结构不完整的复习数据会回退为空', () => {
     '111111': { code: '111111', stage: 99 },
   }));
   assert.deepEqual(loadReviewCards(), {});
+});
+
+test('异常时间或计数溢出不会部分推进卡', () => {
+  const cases = [
+    [{ code: '111111', stage: 2, due: 0, lapses: 0, reps: 1, lastReview: 0 }, NaN, 2],
+    [{ code: '111111', stage: 7, due: 0, lapses: 0, reps: 1, lastReview: 0 }, 8640000000000000, 2],
+    [{ code: '111111', stage: 2, due: 0, lapses: 0, reps: Number.MAX_SAFE_INTEGER, lastReview: 0 }, Date.now(), 2],
+    [{ code: '111111', stage: 2, due: 0, lapses: Number.MAX_SAFE_INTEGER, reps: 1, lastReview: 0 }, Date.now(), 0],
+  ];
+  for (const [card, now, rating] of cases) {
+    const before = structuredClone(card);
+    assert.throws(() => reviewCard(card, rating, now));
+    assert.deepEqual(card, before);
+  }
+});
+
+test('存储损坏时即使写入可用也不从空集合覆盖', () => {
+  const cards = { '111111': { code: '111111', stage: 1, due: 1, lapses: 0, reps: 1, lastReview: 1 } };
+  localStorage.setItem('yijing-review-cards', '{broken');
+  const before = structuredClone(cards);
+  assert.equal(saveReview(cards, '111111', 2).errorCode, 'card-store-invalid');
+  assert.equal(localStorage.getItem('yijing-review-cards'), '{broken');
+  assert.deepEqual(cards, before);
 });

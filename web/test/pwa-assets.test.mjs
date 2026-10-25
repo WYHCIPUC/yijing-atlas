@@ -10,7 +10,7 @@ const main = readFileSync(join(webRoot, 'js', 'main.js'), 'utf8');
 const precacheBlock = serviceWorker.match(/const PRECACHE = \[([\s\S]*?)\];/)?.[1] || '';
 const precache = new Set([...precacheBlock.matchAll(/'([^']+)'/g)].map((match) => match[1]));
 const html = readFileSync(join(webRoot, 'index.html'), 'utf8');
-const entryAssets = [...html.matchAll(/(?:src|href)="((?:js\/main\.js|styles\/main\.css)\?v=\d+)"/g)]
+const entryAssets = [...html.matchAll(/(?:src|href)="((?:js\/main\.js|styles\/(?:main|immersive)\.css)\?v=\d+)"/g)]
   .map((match) => `./${match[1]}`);
 
 test('预缓存条目全部指向现有静态资源', () => {
@@ -28,6 +28,7 @@ test('预缓存只包含首屏核心模块，功能数据按访问缓存', () =>
     './js/celestial-stage.js', './js/cinematic-motion.js', './js/content-provenance.js', './js/motion-system.js', './js/render.js', './js/star-map.js', './js/star-layouts.js',
     './js/relation-animation.js', './js/star-relations.js', './js/star-atmosphere.js', './js/storage.js',
     './js/review-engine.js', './js/search-controller.js',
+    './js/reading-state.js', './js/star-label-layout.js', './js/ui-icons.js',
     './data/hexagrams.json', './data/trigrams.json',
   ];
   core.forEach((url) => assert.ok(precache.has(url), `核心资源未预缓存：${url}`));
@@ -38,8 +39,23 @@ test('预缓存只包含首屏核心模块，功能数据按访问缓存', () =>
 
 test('缓存资源不再维护重复查询版本号', () => {
   const revisioned = [...precache].filter((url) => url.includes('?v='));
-  assert.equal(entryAssets.length, 2);
+  assert.equal(entryAssets.length, 3);
   assert.deepEqual(revisioned.sort(), entryAssets.sort());
+  assert.equal(new Set(entryAssets.map((asset) => asset.match(/\?v=(\d+)/)[1])).size, 1);
+});
+
+test('预缓存模块的静态本地依赖可在首次离线时加载', () => {
+  const paths = new Set([...precache].map(url => url.split('?')[0]));
+  for (const resource of paths) {
+    if (!resource.endsWith('.js')) continue;
+    const modulePath = join(webRoot, resource);
+    const source = readFileSync(modulePath, 'utf8');
+    for (const match of source.matchAll(/^import\s[\s\S]*?from\s+['"]([^'"]+)['"];?/gm)) {
+      if (!match[1].startsWith('.')) continue;
+      const dependency = new URL(match[1], `https://local.test/${resource.slice(2)}`).pathname;
+      assert.ok(paths.has(`.${dependency}`), `${resource}首次离线缺少静态依赖：${match[1]}`);
+    }
+  }
 });
 
 test('页面结构与脚本样式采用同代更新策略', () => {

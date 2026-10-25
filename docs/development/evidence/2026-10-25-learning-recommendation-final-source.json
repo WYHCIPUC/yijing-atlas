@@ -1,0 +1,79 @@
+{
+  "capturedAt": "2026-10-24T21:03:31.618Z",
+  "head": "49de1059e556d3841ef29a9d5a0db7ae5256ecf0",
+  "scope": "T-LEARN-01 final validation source; business increment remains uncommitted",
+  "files": [
+    {
+      "path": "docs/development/tools/check-learning-recommendation-input.mjs",
+      "sha256": "d5a3eb3af7014b2275b5f0c4a7cae2fc0979abc9c0c9ff6c4077bc84c12eb284"
+    },
+    {
+      "path": "web/js/learning-assessment-page.js",
+      "sha256": "d896c82e026da67bd57a1edc94cc34a6151aae41f992563eacf973a83c884095"
+    },
+    {
+      "path": "web/js/learning-assessment.js",
+      "sha256": "cd8ab9272d3ca1e9f0585486f8e79dca00dc2fded4d9301709270a2e630de165"
+    },
+    {
+      "path": "web/js/learning-progress.js",
+      "sha256": "41389087183f1054035e62b4d0f03a5edca0f72124d16aa24b7be1f242b08f81"
+    },
+    {
+      "path": "web/js/main.js",
+      "sha256": "4678ff60c750a43375c345b4136c9b1d9df10372602a43dd9a2417ed5f1ce786"
+    },
+    {
+      "path": "web/js/modes/learning-mode.js",
+      "sha256": "74838284cc1b0a5a241d676dfa0bd2850796a81ab5d8bd9755e7623cec7bdc5c"
+    },
+    {
+      "path": "web/js/study-page.js",
+      "sha256": "d8a62656eb50f95649aa74bd5231153739d9db0c7002c0f7d5ba95df4bfed11f"
+    },
+    {
+      "path": "web/js/user-data.js",
+      "sha256": "52ae1c42d07747413a5da56d7e683e8f67534a80fffa6395048ab76c1250c530"
+    },
+    {
+      "path": "web/styles/immersive.css",
+      "sha256": "2e2841a10a2bc2e7fe9526b747717851e2c7f2194a0798a5b1ff593c35dd8931"
+    },
+    {
+      "path": "web/test/learning-assessment-page.test.mjs",
+      "sha256": "d34e410c480a49e6f4068c41b463167b5375cef81ff278298b8fb2871db1e9ff"
+    },
+    {
+      "path": "web/test/learning-progress.test.mjs",
+      "sha256": "668dcc8b93345a43ce5249a27c60d131aa802afd77e712c6b2fe09f6d11b5a23"
+    },
+    {
+      "path": "web/test/learning-recommendation.test.mjs",
+      "sha256": "32471e272dbb101ad65f9246915676e63458e09644586c81334aae736b2199d7"
+    },
+    {
+      "path": "web/test/learning-ui-contract.test.mjs",
+      "sha256": "8313432488df94f941b647e029fc391af885f6197f578bc681529659fb02af77"
+    },
+    {
+      "path": "web/test/learning-weak-questions-page.test.mjs",
+      "sha256": "7d2e6b0b28ea576e792924d1db614aa94be81e7c8f0ec2a1e211f4d7301ad342"
+    },
+    {
+      "path": "web/test/lesson-resume-page.test.mjs",
+      "sha256": "9d1e689627bb7560729f2fa62440aff650ab89d1c17d4c27b490ac05b33b5de3"
+    },
+    {
+      "path": "web/test/main-mode-navigation.test.mjs",
+      "sha256": "de740f597fa09f01f4647e3ea461a40443dedf6d071b7664f7e3692fcee66533"
+    },
+    {
+      "path": "web/test/main-stage-lifecycle.test.mjs",
+      "sha256": "343119415599e3fdbc853805710f5bb0b8975cb57c42dcffd5c7324e24b6dfad"
+    },
+    {
+      "path": "web/test/user-data.test.mjs",
+      "sha256": "269210e905a7defe8f419d3e6e087554fba05c88ec8f094e40ff2d6b73b32e1d"
+    }
+  ]
+}

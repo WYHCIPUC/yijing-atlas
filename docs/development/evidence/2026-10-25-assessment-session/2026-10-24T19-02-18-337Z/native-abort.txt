@@ -1,0 +1,5 @@
+Command: node scripts/test-assessment-session.mjs
+Observed exit code: 1
+stderr: Assertion failed: new_time >= loop->time, file c:\ws\deps\uv\src\win\core.c, line 327
+
+The Node v22.23.1 process aborted natively before any scenario completed, so its finally block could not finalize trace.json. The trace's running status is an interrupted snapshot, not a live job or a pass. No application flow is accepted from this attempt. External process inspection found no remaining assessment-session browser/server. Automatic approval rejected the isolated-profile removal request despite an exact parent-directory and prefix check. The temporary profile is retained; no alternative deletion route was used.

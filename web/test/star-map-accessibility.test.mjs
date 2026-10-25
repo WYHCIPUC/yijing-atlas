@@ -5,11 +5,12 @@ import test from 'node:test';
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const main = readFileSync(new URL('../js/main.js', import.meta.url), 'utf8');
 const css = readFileSync(new URL('../styles/main.css', import.meta.url), 'utf8');
+const immersive = readFileSync(new URL('../styles/immersive.css', import.meta.url), 'utf8');
 
 test('Canvas 提供等价文字关系列表和实时状态，不误报浏览器不支持', () => {
   assert.match(html, /id="star-canvas"[^>]+aria-describedby="star-canvas-description star-layout-description star-relation-status"/);
   assert.match(html, /id="star-accessible-list"/);
-  assert.match(main, /starMap\?\.focusStar\(relationButton\.dataset\.code\)/);
+  assert.match(main, /focusHexagram\(relationButton\.dataset\.code\)/);
   assert.match(html, /id="star-relation-status" role="status" aria-live="polite"/);
   assert.doesNotMatch(html, /你的浏览器不支持星图画布/);
   assert.match(main, /updateRelationInterface/);
@@ -27,9 +28,10 @@ test('星图提供五种明确标注来源的阅读图式', () => {
   assert.match(main, /starMap\?\.setLayoutMode/);
 });
 
-test('移动端主导航以三列两行完整展示六个入口', () => {
-  const compactBlock = css.match(/\/\* 移动端主导航完整可见[\s\S]*$/)?.[0] || '';
-  assert.match(compactBlock, /grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/);
-  assert.match(compactBlock, /overflow:\s*visible/);
-  assert.match(compactBlock, /--header-height:\s*174px/);
+test('移动端六个导航入口采用紧凑单行并保留触控高度', () => {
+  assert.match(immersive, /\.mode-switcher\s*\{[^}]*display:\s*flex/);
+  assert.match(immersive, /--header-height:\s*116px/);
+  assert.match(immersive, /\.mode-btn\s*\{[^}]*min-height:\s*44px/);
+  assert.match(immersive, /\.mode-btn \[data-icon\]\s*\{\s*display:\s*none/);
+  assert.match(css, /\.mode-btn/);
 });

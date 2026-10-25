@@ -1,0 +1,5766 @@
+{
+  "startedAt": "2026-10-24T19:54:30.717Z",
+  "command": "YIJING_SEARCH_SCOPE=visual-geometry node scripts/test-search-input.mjs",
+  "node": "v24.19.0",
+  "execPath": "C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "uv": "1.52.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "head": "ec0f63c5c6f6aa052909014ec909090175451d10",
+  "sourceHashes": {
+    "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+    "web/js/search-controller.js": "cb256d0f22e4c7f14b0a37ac79644c297300299d4de7b44fa6a192c2496f0ee6",
+    "web/js/main.js": "dd9c86db49308fc379944841cd77aaf6a7e848119450055b28f0bb1412f8d2e2",
+    "web/js/star-map.js": "23787057a90bee36ad2afa2f54163530856938e60e58d6e8197889ef94eab851",
+    "web/js/user-data.js": "8a47ceb0e8dea555a17d10ac253b32f0dfc84cead620ddcf13193def6e1435b1",
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/styles/immersive.css": "84a9e8f17c5e23bbfc3607992d3d9c4e8b6834bd51c763aa9a1b03a670415b43",
+    "scripts/test-search-input.mjs": "87afaa208a95cd1d387e678b42d1b648504c39587734d8be939d40461f5956eb"
+  },
+  "scenarios": [
+    {
+      "name": "320-visual-geometry",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "inputs": [
+        {
+          "action": "touch",
+          "selector": "[data-entry=\"explore\"]",
+          "x": 160,
+          "y": 524.625
+        },
+        {
+          "action": "touch",
+          "selector": "#search",
+          "x": 205.8046875,
+          "y": 31.422119140625
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "上坤下乾"
+        },
+        {
+          "action": "touch",
+          "selector": ".search-option[data-index=\"0\"]",
+          "x": 159.00001525878906,
+          "y": 284.4568099975586
+        },
+        {
+          "action": "touch",
+          "selector": "#search",
+          "x": 205.8046875,
+          "y": 32
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "君子"
+        },
+        {
+          "action": "key",
+          "key": "Home",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "touch",
+          "selector": ".search-option[data-index=\"7\"]",
+          "x": 159,
+          "y": 650.234375
+        }
+      ],
+      "checks": [
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "上坤下乾",
+          "pointer": true,
+          "results": {
+            "url": "http://127.0.0.1:60474/?search-probe=320",
+            "stage": "none",
+            "activeCode": null,
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "target": null,
+              "transition": {
+                "elapsed": 100.03333333333327
+              },
+              "yaw": 0.003601199999999997,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": true,
+            "detailHidden": "true",
+            "value": "上坤下乾",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "泰",
+                "fullName": "地天泰",
+                "code": "111000",
+                "number": 11,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": null,
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:60474/?search-probe=320",
+            "stage": "none",
+            "activeCode": "111000",
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -17.16752797891681,
+                "y": -105.8958896077213,
+                "z": 2.5254188224109475
+              },
+              "target": {
+                "x": -17.16752797891681,
+                "y": -105.8958896077213,
+                "z": 2.5254188224109475
+              },
+              "transition": null,
+              "yaw": 0.026400000000000007,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "泰",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "泰",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "泰",
+                "fullName": "地天泰",
+                "code": "111000",
+                "number": 11,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111000",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "screenshot-rendering-observation",
+          "screenshot": "320-search-open-help",
+          "rendering": {
+            "popup": {
+              "id": "search-popup",
+              "opacity": "1",
+              "effectiveOpacity": 1,
+              "background": "rgb(9, 17, 30) none repeat scroll 0% 0% / auto padding-box border-box",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "position": "absolute",
+              "zIndex": "90",
+              "rect": {
+                "x": 11,
+                "y": 63,
+                "width": 296,
+                "height": 620,
+                "top": 63,
+                "right": 307,
+                "bottom": 683,
+                "left": 11
+              },
+              "scrollTop": 0,
+              "visibleWithinPopup": true,
+              "hit": {
+                "id": "search-option-1",
+                "className": "search-option motion-item",
+                "text": "02坤坤为地000000"
+              },
+              "hitWithin": true
+            },
+            "results": {
+              "id": "search-results",
+              "opacity": "1",
+              "effectiveOpacity": 1,
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "transform": "none",
+              "position": "static",
+              "zIndex": "auto",
+              "rect": {
+                "x": 20,
+                "y": 253.234375,
+                "width": 278,
+                "height": 512,
+                "top": 253.234375,
+                "right": 298,
+                "bottom": 765.234375,
+                "left": 20
+              },
+              "scrollTop": 0,
+              "visibleWithinPopup": true,
+              "hit": {
+                "id": "search-option-4",
+                "className": "search-option motion-item",
+                "text": "05需水天需111010"
+              },
+              "hitWithin": true
+            },
+            "options": [
+              {
+                "id": "search-option-0",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 253.234375,
+                  "width": 278,
+                  "height": 64,
+                  "top": 253.234375,
+                  "right": 298,
+                  "bottom": 317.234375,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "乾为天"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-1",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 317.234375,
+                  "width": 278,
+                  "height": 64,
+                  "top": 317.234375,
+                  "right": 298,
+                  "bottom": 381.234375,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "坤"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-2",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 381.234375,
+                  "width": 278,
+                  "height": 64,
+                  "top": 381.234375,
+                  "right": 298,
+                  "bottom": 445.234375,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "屯"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-3",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 445.234375,
+                  "width": 278,
+                  "height": 64,
+                  "top": 445.234375,
+                  "right": 298,
+                  "bottom": 509.234375,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "蒙"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-4",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 509.234375,
+                  "width": 278,
+                  "height": 64,
+                  "top": 509.234375,
+                  "right": 298,
+                  "bottom": 573.234375,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "需"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-5",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 573.234375,
+                  "width": 278,
+                  "height": 64,
+                  "top": 573.234375,
+                  "right": 298,
+                  "bottom": 637.234375,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "讼"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-6",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 637.234375,
+                  "width": 278,
+                  "height": 64,
+                  "top": 637.234375,
+                  "right": 298,
+                  "bottom": 701.234375,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "师"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-7",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 701.234375,
+                  "width": 278,
+                  "height": 64,
+                  "top": 701.234375,
+                  "right": 298,
+                  "bottom": 765.234375,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": false,
+                "hit": {
+                  "id": "",
+                  "className": "active",
+                  "text": "错"
+                },
+                "hitWithin": false
+              }
+            ],
+            "runningAnimations": []
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 0,
+            "number": 1,
+            "expectedCode": "111111",
+            "text": "111111",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 239,
+              "y": 273.234375,
+              "width": 48,
+              "height": 24,
+              "top": 273.234375,
+              "right": 287,
+              "bottom": 297.234375,
+              "left": 239
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 709,
+            "optionClientWidth": 278,
+            "optionScrollWidth": 278,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 1,
+            "number": 2,
+            "expectedCode": "000000",
+            "text": "000000",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 239,
+              "y": 337.734375,
+              "width": 48,
+              "height": 24,
+              "top": 337.734375,
+              "right": 287,
+              "bottom": 361.734375,
+              "left": 239
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 709,
+            "optionClientWidth": 278,
+            "optionScrollWidth": 278,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 2,
+            "number": 3,
+            "expectedCode": "100010",
+            "text": "100010",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 239,
+              "y": 401.734375,
+              "width": 48,
+              "height": 24,
+              "top": 401.734375,
+              "right": 287,
+              "bottom": 425.734375,
+              "left": 239
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 709,
+            "optionClientWidth": 278,
+            "optionScrollWidth": 278,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 3,
+            "number": 4,
+            "expectedCode": "010001",
+            "text": "010001",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 239,
+              "y": 465.734375,
+              "width": 48,
+              "height": 24,
+              "top": 465.734375,
+              "right": 287,
+              "bottom": 489.734375,
+              "left": 239
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 709,
+            "optionClientWidth": 278,
+            "optionScrollWidth": 278,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 4,
+            "number": 5,
+            "expectedCode": "111010",
+            "text": "111010",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 239,
+              "y": 529.734375,
+              "width": 48,
+              "height": 24,
+              "top": 529.734375,
+              "right": 287,
+              "bottom": 553.734375,
+              "left": 239
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 709,
+            "optionClientWidth": 278,
+            "optionScrollWidth": 278,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 5,
+            "number": 6,
+            "expectedCode": "010111",
+            "text": "010111",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 239,
+              "y": 593.734375,
+              "width": 48,
+              "height": 24,
+              "top": 593.734375,
+              "right": 287,
+              "bottom": 617.734375,
+              "left": 239
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 709,
+            "optionClientWidth": 278,
+            "optionScrollWidth": 278,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 6,
+            "number": 7,
+            "expectedCode": "010000",
+            "text": "010000",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 239,
+              "y": 638.734375,
+              "width": 48,
+              "height": 24,
+              "top": 638.734375,
+              "right": 287,
+              "bottom": 662.734375,
+              "left": 239
+            },
+            "popupScrollTop": 19,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 709,
+            "optionClientWidth": 278,
+            "optionScrollWidth": 278,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 7,
+            "number": 9,
+            "expectedCode": "111011",
+            "text": "111011",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 239,
+              "y": 638.734375,
+              "width": 48,
+              "height": 24,
+              "top": 638.734375,
+              "right": 287,
+              "bottom": 662.734375,
+              "left": 239
+            },
+            "popupScrollTop": 83,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 709,
+            "optionClientWidth": 278,
+            "optionScrollWidth": 278,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "search-popup-geometry-and-last-option-reachable",
+          "geometry": {
+            "viewport": {
+              "width": 320,
+              "height": 844
+            },
+            "rect": {
+              "x": 11,
+              "y": 63,
+              "width": 296,
+              "height": 620,
+              "top": 63,
+              "right": 307,
+              "bottom": 683,
+              "left": 11
+            },
+            "documentWidth": 320,
+            "popupClientWidth": 294,
+            "popupScrollWidth": 294,
+            "helpFontSize": "17px",
+            "helpVisible": true,
+            "statusRole": "status"
+          },
+          "results": {
+            "url": "http://127.0.0.1:60474/?search-probe=320",
+            "stage": "none",
+            "activeCode": "111000",
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -17.16752797891681,
+                "y": -105.8958896077213,
+                "z": 2.5254188224109475
+              },
+              "target": {
+                "x": -17.16752797891681,
+                "y": -105.8958896077213,
+                "z": 2.5254188224109475
+              },
+              "transition": null,
+              "yaw": 0.02880120000000001,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "泰",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "君子",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到57卦，显示前8项。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到57卦，显示前8项。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-1",
+                "index": "1",
+                "name": "坤",
+                "fullName": "坤为地",
+                "code": "000000",
+                "number": 2,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-2",
+                "index": "2",
+                "name": "屯",
+                "fullName": "水雷屯",
+                "code": "100010",
+                "number": 3,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-3",
+                "index": "3",
+                "name": "蒙",
+                "fullName": "山水蒙",
+                "code": "010001",
+                "number": 4,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-4",
+                "index": "4",
+                "name": "需",
+                "fullName": "水天需",
+                "code": "111010",
+                "number": 5,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-5",
+                "index": "5",
+                "name": "讼",
+                "fullName": "天水讼",
+                "code": "010111",
+                "number": 6,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-6",
+                "index": "6",
+                "name": "师",
+                "fullName": "地水师",
+                "code": "010000",
+                "number": 7,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-7",
+                "index": "7",
+                "name": "小畜",
+                "fullName": "风天小畜",
+                "code": "111011",
+                "number": 9,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111000",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "codeObservations": [
+            {
+              "index": 0,
+              "number": 1,
+              "expectedCode": "111111",
+              "text": "111111",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 239,
+                "y": 273.234375,
+                "width": 48,
+                "height": 24,
+                "top": 273.234375,
+                "right": 287,
+                "bottom": 297.234375,
+                "left": 239
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 709,
+              "optionClientWidth": 278,
+              "optionScrollWidth": 278,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 1,
+              "number": 2,
+              "expectedCode": "000000",
+              "text": "000000",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 239,
+                "y": 337.734375,
+                "width": 48,
+                "height": 24,
+                "top": 337.734375,
+                "right": 287,
+                "bottom": 361.734375,
+                "left": 239
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 709,
+              "optionClientWidth": 278,
+              "optionScrollWidth": 278,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 2,
+              "number": 3,
+              "expectedCode": "100010",
+              "text": "100010",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 239,
+                "y": 401.734375,
+                "width": 48,
+                "height": 24,
+                "top": 401.734375,
+                "right": 287,
+                "bottom": 425.734375,
+                "left": 239
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 709,
+              "optionClientWidth": 278,
+              "optionScrollWidth": 278,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 3,
+              "number": 4,
+              "expectedCode": "010001",
+              "text": "010001",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 239,
+                "y": 465.734375,
+                "width": 48,
+                "height": 24,
+                "top": 465.734375,
+                "right": 287,
+                "bottom": 489.734375,
+                "left": 239
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 709,
+              "optionClientWidth": 278,
+              "optionScrollWidth": 278,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 4,
+              "number": 5,
+              "expectedCode": "111010",
+              "text": "111010",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 239,
+                "y": 529.734375,
+                "width": 48,
+                "height": 24,
+                "top": 529.734375,
+                "right": 287,
+                "bottom": 553.734375,
+                "left": 239
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 709,
+              "optionClientWidth": 278,
+              "optionScrollWidth": 278,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 5,
+              "number": 6,
+              "expectedCode": "010111",
+              "text": "010111",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 239,
+                "y": 593.734375,
+                "width": 48,
+                "height": 24,
+                "top": 593.734375,
+                "right": 287,
+                "bottom": 617.734375,
+                "left": 239
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 709,
+              "optionClientWidth": 278,
+              "optionScrollWidth": 278,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 6,
+              "number": 7,
+              "expectedCode": "010000",
+              "text": "010000",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 239,
+                "y": 638.734375,
+                "width": 48,
+                "height": 24,
+                "top": 638.734375,
+                "right": 287,
+                "bottom": 662.734375,
+                "left": 239
+              },
+              "popupScrollTop": 19,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 709,
+              "optionClientWidth": 278,
+              "optionScrollWidth": 278,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 7,
+              "number": 9,
+              "expectedCode": "111011",
+              "text": "111011",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 239,
+                "y": 638.734375,
+                "width": 48,
+                "height": 24,
+                "top": 638.734375,
+                "right": 287,
+                "bottom": 662.734375,
+                "left": 239
+              },
+              "popupScrollTop": 83,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 709,
+              "optionClientWidth": 278,
+              "optionScrollWidth": 278,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            }
+          ],
+          "selected": {
+            "url": "http://127.0.0.1:60474/?search-probe=320",
+            "stage": "none",
+            "activeCode": "111011",
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -16.897722507061474,
+                "y": -105.13672800729694,
+                "z": 2.4792015196333756
+              },
+              "target": {
+                "x": 0.007640660606938354,
+                "y": -57.56948457865508,
+                "z": -0.4166637225062657
+              },
+              "transition": {
+                "elapsed": 33.40000000000009
+              },
+              "yaw": 0.048000000000000036,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "小畜",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "小畜",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-1",
+                "index": "1",
+                "name": "坤",
+                "fullName": "坤为地",
+                "code": "000000",
+                "number": 2,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-2",
+                "index": "2",
+                "name": "屯",
+                "fullName": "水雷屯",
+                "code": "100010",
+                "number": 3,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-3",
+                "index": "3",
+                "name": "蒙",
+                "fullName": "山水蒙",
+                "code": "010001",
+                "number": 4,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-4",
+                "index": "4",
+                "name": "需",
+                "fullName": "水天需",
+                "code": "111010",
+                "number": 5,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-5",
+                "index": "5",
+                "name": "讼",
+                "fullName": "天水讼",
+                "code": "010111",
+                "number": 6,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-6",
+                "index": "6",
+                "name": "师",
+                "fullName": "地水师",
+                "code": "010000",
+                "number": 7,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-7",
+                "index": "7",
+                "name": "小畜",
+                "fullName": "风天小畜",
+                "code": "111011",
+                "number": 9,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111011",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        }
+      ],
+      "screenshots": [
+        "320-search-open-help.png",
+        "320-search-last-selected.png"
+      ],
+      "status": "passed",
+      "baseline": {
+        "url": "http://127.0.0.1:60474/?search-probe=320",
+        "stage": "none",
+        "activeCode": null,
+        "autoRotate": true,
+        "relation": {
+          "type": "opposite",
+          "changingPosition": null
+        },
+        "camera": {
+          "pos": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "target": null,
+          "transition": {
+            "elapsed": 33.333333333333336
+          },
+          "yaw": 0.0012,
+          "pitch": 0,
+          "view": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        "focusName": "乾",
+        "summaryHidden": true,
+        "detailHidden": "true",
+        "value": "",
+        "expanded": "false",
+        "describedBy": "search-help",
+        "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+        "searchStatus": "",
+        "statusRole": "status",
+        "activeDescendant": null,
+        "focus": "star-canvas",
+        "resultsHidden": true,
+        "empty": null,
+        "options": [],
+        "data": {
+          "yijing-review-cards": null,
+          "yijing.achievements.v1": null,
+          "yijing-quiz-wrong": null,
+          "yijing-quiz-stats": null,
+          "yijing.study.v1": null,
+          "yijing-notes": null,
+          "yijing-activity-v1": null,
+          "yijing-learning-record-v2": null,
+          "yijing-learning-review-config-v1": null,
+          "yijing-divination-history-v1": null,
+          "yijing-divination-history-v2": null
+        },
+        "writes": [],
+        "history": {
+          "hex": null,
+          "reading": {
+            "focusedCode": null,
+            "readingCode": null,
+            "stage": "none",
+            "section": "overview"
+          }
+        }
+      },
+      "final": {
+        "url": "http://127.0.0.1:60474/?search-probe=320",
+        "stage": "none",
+        "activeCode": "111011",
+        "autoRotate": true,
+        "relation": {
+          "type": "opposite",
+          "changingPosition": null
+        },
+        "camera": {
+          "pos": {
+            "x": -15.00001698462849,
+            "y": -99.79708403478016,
+            "z": 2.15412719808669
+          },
+          "target": {
+            "x": 0.007640660606938354,
+            "y": -57.56948457865508,
+            "z": -0.4166637225062657
+          },
+          "transition": {
+            "elapsed": 100
+          },
+          "yaw": 0.050397600000000035,
+          "pitch": 0,
+          "view": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        "focusName": "小畜",
+        "summaryHidden": false,
+        "detailHidden": "true",
+        "value": "小畜",
+        "expanded": "false",
+        "describedBy": "search-help",
+        "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+        "searchStatus": "",
+        "statusRole": "status",
+        "activeDescendant": null,
+        "focus": "search",
+        "resultsHidden": true,
+        "empty": null,
+        "options": [
+          {
+            "id": "search-option-0",
+            "index": "0",
+            "name": "乾",
+            "fullName": "乾为天",
+            "code": "111111",
+            "number": 1,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-1",
+            "index": "1",
+            "name": "坤",
+            "fullName": "坤为地",
+            "code": "000000",
+            "number": 2,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-2",
+            "index": "2",
+            "name": "屯",
+            "fullName": "水雷屯",
+            "code": "100010",
+            "number": 3,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-3",
+            "index": "3",
+            "name": "蒙",
+            "fullName": "山水蒙",
+            "code": "010001",
+            "number": 4,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-4",
+            "index": "4",
+            "name": "需",
+            "fullName": "水天需",
+            "code": "111010",
+            "number": 5,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-5",
+            "index": "5",
+            "name": "讼",
+            "fullName": "天水讼",
+            "code": "010111",
+            "number": 6,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-6",
+            "index": "6",
+            "name": "师",
+            "fullName": "地水师",
+            "code": "010000",
+            "number": 7,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-7",
+            "index": "7",
+            "name": "小畜",
+            "fullName": "风天小畜",
+            "code": "111011",
+            "number": 9,
+            "selected": "true"
+          }
+        ],
+        "data": {
+          "yijing-review-cards": null,
+          "yijing.achievements.v1": null,
+          "yijing-quiz-wrong": null,
+          "yijing-quiz-stats": null,
+          "yijing.study.v1": null,
+          "yijing-notes": null,
+          "yijing-activity-v1": null,
+          "yijing-learning-record-v2": null,
+          "yijing-learning-review-config-v1": null,
+          "yijing-divination-history-v1": null,
+          "yijing-divination-history-v2": null
+        },
+        "writes": [],
+        "history": {
+          "hex": null,
+          "reading": {
+            "focusedCode": "111011",
+            "readingCode": null,
+            "stage": "none",
+            "section": "overview"
+          }
+        }
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "explore",
+          "at": 353.09999999403954
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "explore",
+          "at": 388.40000000596046
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "explore",
+          "at": 391.5
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "",
+          "at": 705.7000000178814
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "",
+          "at": 716.7000000178814
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "",
+          "at": 718.8000000119209
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 721.2000000178814
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 722
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 722.4000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 723
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "上坤下乾",
+          "at": 724.0999999940395
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-0",
+          "at": 874
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-0",
+          "at": 883.3000000119209
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-0",
+          "at": 884.4000000059605
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "泰",
+          "at": 1384
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "泰",
+          "at": 1407.9000000059605
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "泰",
+          "at": 1408.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 1412.800000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 1414.5999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 1415.2000000178814
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 1416.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 1417.5999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1420.9000000059605
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Home",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1821.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Home",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1823.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1825.9000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1827.2000000178814
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1828.800000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1829.7000000178814
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1840.9000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1843
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1845.2000000178814
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1846.5999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1848.300000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1849.800000011921
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1851.7000000178814
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1853.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1856.5999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1857.5999999940395
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-7",
+          "at": 1910.5999999940395
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-7",
+          "at": 1919.300000011921
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-7",
+          "at": 1919.800000011921
+        }
+      ]
+    },
+    {
+      "name": "390-visual-geometry",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inputs": [
+        {
+          "action": "touch",
+          "selector": "[data-entry=\"explore\"]",
+          "x": 195,
+          "y": 447.75
+        },
+        {
+          "action": "touch",
+          "selector": "#search",
+          "x": 247.203125,
+          "y": 31.768163681030273
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "上坤下乾"
+        },
+        {
+          "action": "touch",
+          "selector": ".search-option[data-index=\"0\"]",
+          "x": 194.00001525878906,
+          "y": 256.5616989135742
+        },
+        {
+          "action": "touch",
+          "selector": "#search",
+          "x": 247.203125,
+          "y": 32
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "君子"
+        },
+        {
+          "action": "key",
+          "key": "Home",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "touch",
+          "selector": ".search-option[data-index=\"7\"]",
+          "x": 194,
+          "y": 650.1875
+        }
+      ],
+      "checks": [
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "上坤下乾",
+          "pointer": true,
+          "results": {
+            "url": "http://127.0.0.1:60474/?search-probe=390",
+            "stage": "none",
+            "activeCode": null,
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "target": null,
+              "transition": {
+                "elapsed": 99.93333333333337
+              },
+              "yaw": 0.0035976000000000003,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": true,
+            "detailHidden": "true",
+            "value": "上坤下乾",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "泰",
+                "fullName": "地天泰",
+                "code": "111000",
+                "number": 11,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": null,
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:60474/?search-probe=390",
+            "stage": "none",
+            "activeCode": "111000",
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -20.71399183171488,
+                "y": -123.8139901047993,
+                "z": 3.077712848775704
+              },
+              "target": {
+                "x": -20.71399183171488,
+                "y": -123.8139901047993,
+                "z": 3.077712848775704
+              },
+              "transition": null,
+              "yaw": 0.025798800000000004,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "泰",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "泰",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "泰",
+                "fullName": "地天泰",
+                "code": "111000",
+                "number": 11,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111000",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "screenshot-rendering-observation",
+          "screenshot": "390-search-open-help",
+          "rendering": {
+            "popup": {
+              "id": "search-popup",
+              "opacity": "1",
+              "effectiveOpacity": 1,
+              "background": "rgb(9, 17, 30) none repeat scroll 0% 0% / auto padding-box border-box",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "position": "absolute",
+              "zIndex": "90",
+              "rect": {
+                "x": 11,
+                "y": 63,
+                "width": 366,
+                "height": 620,
+                "top": 63,
+                "right": 377,
+                "bottom": 683,
+                "left": 11
+              },
+              "scrollTop": 0,
+              "visibleWithinPopup": true,
+              "hit": {
+                "id": "",
+                "className": "",
+                "text": "屯"
+              },
+              "hitWithin": true
+            },
+            "results": {
+              "id": "search-results",
+              "opacity": "1",
+              "effectiveOpacity": 1,
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "transform": "none",
+              "position": "static",
+              "zIndex": "auto",
+              "rect": {
+                "x": 20,
+                "y": 225.1875,
+                "width": 348,
+                "height": 512,
+                "top": 225.1875,
+                "right": 368,
+                "bottom": 737.1875,
+                "left": 20
+              },
+              "scrollTop": 0,
+              "visibleWithinPopup": true,
+              "hit": {
+                "id": "search-option-4",
+                "className": "search-option motion-item",
+                "text": "05需水天需111010"
+              },
+              "hitWithin": true
+            },
+            "options": [
+              {
+                "id": "search-option-0",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 225.1875,
+                  "width": 348,
+                  "height": 64,
+                  "top": 225.1875,
+                  "right": 368,
+                  "bottom": 289.1875,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "乾为天"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-1",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 289.1875,
+                  "width": 348,
+                  "height": 64,
+                  "top": 289.1875,
+                  "right": 368,
+                  "bottom": 353.1875,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "坤"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-2",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 353.1875,
+                  "width": 348,
+                  "height": 64,
+                  "top": 353.1875,
+                  "right": 368,
+                  "bottom": 417.1875,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "屯"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-3",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 417.1875,
+                  "width": 348,
+                  "height": 64,
+                  "top": 417.1875,
+                  "right": 368,
+                  "bottom": 481.1875,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "蒙"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-4",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 481.1875,
+                  "width": 348,
+                  "height": 64,
+                  "top": 481.1875,
+                  "right": 368,
+                  "bottom": 545.1875,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "需"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-5",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 545.1875,
+                  "width": 348,
+                  "height": 64,
+                  "top": 545.1875,
+                  "right": 368,
+                  "bottom": 609.1875,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "讼"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-6",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 609.1875,
+                  "width": 348,
+                  "height": 64,
+                  "top": 609.1875,
+                  "right": 368,
+                  "bottom": 673.1875,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "师"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-7",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 20,
+                  "y": 673.1875,
+                  "width": 348,
+                  "height": 64,
+                  "top": 673.1875,
+                  "right": 368,
+                  "bottom": 737.1875,
+                  "left": 20
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "relation-layers",
+                  "className": "relation-layers",
+                  "text": "\n    \n      项目银河布局图式与关系\n      工具\n    \n    \n      观图\n      \n        易象银河\n        "
+                },
+                "hitWithin": false
+              }
+            ],
+            "runningAnimations": []
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 0,
+            "number": 1,
+            "expectedCode": "111111",
+            "text": "111111",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 309,
+              "y": 245.1875,
+              "width": 48,
+              "height": 24,
+              "top": 245.1875,
+              "right": 357,
+              "bottom": 269.1875,
+              "left": 309
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 348,
+            "optionScrollWidth": 348,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 1,
+            "number": 2,
+            "expectedCode": "000000",
+            "text": "000000",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 309,
+              "y": 309.6875,
+              "width": 48,
+              "height": 24,
+              "top": 309.6875,
+              "right": 357,
+              "bottom": 333.6875,
+              "left": 309
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 348,
+            "optionScrollWidth": 348,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 2,
+            "number": 3,
+            "expectedCode": "100010",
+            "text": "100010",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 309,
+              "y": 373.6875,
+              "width": 48,
+              "height": 24,
+              "top": 373.6875,
+              "right": 357,
+              "bottom": 397.6875,
+              "left": 309
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 348,
+            "optionScrollWidth": 348,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 3,
+            "number": 4,
+            "expectedCode": "010001",
+            "text": "010001",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 309,
+              "y": 437.6875,
+              "width": 48,
+              "height": 24,
+              "top": 437.6875,
+              "right": 357,
+              "bottom": 461.6875,
+              "left": 309
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 348,
+            "optionScrollWidth": 348,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 4,
+            "number": 5,
+            "expectedCode": "111010",
+            "text": "111010",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 309,
+              "y": 501.6875,
+              "width": 48,
+              "height": 24,
+              "top": 501.6875,
+              "right": 357,
+              "bottom": 525.6875,
+              "left": 309
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 348,
+            "optionScrollWidth": 348,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 5,
+            "number": 6,
+            "expectedCode": "010111",
+            "text": "010111",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 309,
+              "y": 565.6875,
+              "width": 48,
+              "height": 24,
+              "top": 565.6875,
+              "right": 357,
+              "bottom": 589.6875,
+              "left": 309
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 348,
+            "optionScrollWidth": 348,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 6,
+            "number": 7,
+            "expectedCode": "010000",
+            "text": "010000",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 309,
+              "y": 629.6875,
+              "width": 48,
+              "height": 24,
+              "top": 629.6875,
+              "right": 357,
+              "bottom": 653.6875,
+              "left": 309
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 348,
+            "optionScrollWidth": 348,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 7,
+            "number": 9,
+            "expectedCode": "111011",
+            "text": "111011",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 309,
+              "y": 638.6875,
+              "width": 48,
+              "height": 24,
+              "top": 638.6875,
+              "right": 357,
+              "bottom": 662.6875,
+              "left": 309
+            },
+            "popupScrollTop": 55,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 348,
+            "optionScrollWidth": 348,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "search-popup-geometry-and-last-option-reachable",
+          "geometry": {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "rect": {
+              "x": 11,
+              "y": 63,
+              "width": 366,
+              "height": 620,
+              "top": 63,
+              "right": 377,
+              "bottom": 683,
+              "left": 11
+            },
+            "documentWidth": 390,
+            "popupClientWidth": 364,
+            "popupScrollWidth": 364,
+            "helpFontSize": "17px",
+            "helpVisible": true,
+            "statusRole": "status"
+          },
+          "results": {
+            "url": "http://127.0.0.1:60474/?search-probe=390",
+            "stage": "none",
+            "activeCode": "111000",
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -20.71399183171488,
+                "y": -123.8139901047993,
+                "z": 3.077712848775704
+              },
+              "target": {
+                "x": -20.71399183171488,
+                "y": -123.8139901047993,
+                "z": 3.077712848775704
+              },
+              "transition": null,
+              "yaw": 0.029395199999999996,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "泰",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "君子",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到57卦，显示前8项。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到57卦，显示前8项。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-1",
+                "index": "1",
+                "name": "坤",
+                "fullName": "坤为地",
+                "code": "000000",
+                "number": 2,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-2",
+                "index": "2",
+                "name": "屯",
+                "fullName": "水雷屯",
+                "code": "100010",
+                "number": 3,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-3",
+                "index": "3",
+                "name": "蒙",
+                "fullName": "山水蒙",
+                "code": "010001",
+                "number": 4,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-4",
+                "index": "4",
+                "name": "需",
+                "fullName": "水天需",
+                "code": "111010",
+                "number": 5,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-5",
+                "index": "5",
+                "name": "讼",
+                "fullName": "天水讼",
+                "code": "010111",
+                "number": 6,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-6",
+                "index": "6",
+                "name": "师",
+                "fullName": "地水师",
+                "code": "010000",
+                "number": 7,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-7",
+                "index": "7",
+                "name": "小畜",
+                "fullName": "风天小畜",
+                "code": "111011",
+                "number": 9,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111000",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "codeObservations": [
+            {
+              "index": 0,
+              "number": 1,
+              "expectedCode": "111111",
+              "text": "111111",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 309,
+                "y": 245.1875,
+                "width": 48,
+                "height": 24,
+                "top": 245.1875,
+                "right": 357,
+                "bottom": 269.1875,
+                "left": 309
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 348,
+              "optionScrollWidth": 348,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 1,
+              "number": 2,
+              "expectedCode": "000000",
+              "text": "000000",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 309,
+                "y": 309.6875,
+                "width": 48,
+                "height": 24,
+                "top": 309.6875,
+                "right": 357,
+                "bottom": 333.6875,
+                "left": 309
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 348,
+              "optionScrollWidth": 348,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 2,
+              "number": 3,
+              "expectedCode": "100010",
+              "text": "100010",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 309,
+                "y": 373.6875,
+                "width": 48,
+                "height": 24,
+                "top": 373.6875,
+                "right": 357,
+                "bottom": 397.6875,
+                "left": 309
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 348,
+              "optionScrollWidth": 348,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 3,
+              "number": 4,
+              "expectedCode": "010001",
+              "text": "010001",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 309,
+                "y": 437.6875,
+                "width": 48,
+                "height": 24,
+                "top": 437.6875,
+                "right": 357,
+                "bottom": 461.6875,
+                "left": 309
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 348,
+              "optionScrollWidth": 348,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 4,
+              "number": 5,
+              "expectedCode": "111010",
+              "text": "111010",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 309,
+                "y": 501.6875,
+                "width": 48,
+                "height": 24,
+                "top": 501.6875,
+                "right": 357,
+                "bottom": 525.6875,
+                "left": 309
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 348,
+              "optionScrollWidth": 348,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 5,
+              "number": 6,
+              "expectedCode": "010111",
+              "text": "010111",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 309,
+                "y": 565.6875,
+                "width": 48,
+                "height": 24,
+                "top": 565.6875,
+                "right": 357,
+                "bottom": 589.6875,
+                "left": 309
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 348,
+              "optionScrollWidth": 348,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 6,
+              "number": 7,
+              "expectedCode": "010000",
+              "text": "010000",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 309,
+                "y": 629.6875,
+                "width": 48,
+                "height": 24,
+                "top": 629.6875,
+                "right": 357,
+                "bottom": 653.6875,
+                "left": 309
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 348,
+              "optionScrollWidth": 348,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 7,
+              "number": 9,
+              "expectedCode": "111011",
+              "text": "111011",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 309,
+                "y": 638.6875,
+                "width": 48,
+                "height": 24,
+                "top": 638.6875,
+                "right": 357,
+                "bottom": 662.6875,
+                "left": 309
+              },
+              "popupScrollTop": 55,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 348,
+              "optionScrollWidth": 348,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            }
+          ],
+          "selected": {
+            "url": "http://127.0.0.1:60474/?search-probe=390",
+            "stage": "none",
+            "activeCode": "111011",
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -20.38551593327972,
+                "y": -122.96366036454936,
+                "z": 3.0272607101063835
+              },
+              "target": {
+                "x": 0.3184912639177355,
+                "y": -69.36693334135998,
+                "z": -0.15276390387549332
+              },
+              "transition": {
+                "elapsed": 33.29999999999973
+              },
+              "yaw": 0.05099520000000001,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "小畜",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "小畜",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-1",
+                "index": "1",
+                "name": "坤",
+                "fullName": "坤为地",
+                "code": "000000",
+                "number": 2,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-2",
+                "index": "2",
+                "name": "屯",
+                "fullName": "水雷屯",
+                "code": "100010",
+                "number": 3,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-3",
+                "index": "3",
+                "name": "蒙",
+                "fullName": "山水蒙",
+                "code": "010001",
+                "number": 4,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-4",
+                "index": "4",
+                "name": "需",
+                "fullName": "水天需",
+                "code": "111010",
+                "number": 5,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-5",
+                "index": "5",
+                "name": "讼",
+                "fullName": "天水讼",
+                "code": "010111",
+                "number": 6,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-6",
+                "index": "6",
+                "name": "师",
+                "fullName": "地水师",
+                "code": "010000",
+                "number": 7,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-7",
+                "index": "7",
+                "name": "小畜",
+                "fullName": "风天小畜",
+                "code": "111011",
+                "number": 9,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111011",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        }
+      ],
+      "screenshots": [
+        "390-search-open-help.png",
+        "390-search-last-selected.png"
+      ],
+      "status": "passed",
+      "baseline": {
+        "url": "http://127.0.0.1:60474/?search-probe=390",
+        "stage": "none",
+        "activeCode": null,
+        "autoRotate": true,
+        "relation": {
+          "type": "opposite",
+          "changingPosition": null
+        },
+        "camera": {
+          "pos": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "target": null,
+          "transition": {
+            "elapsed": 0
+          },
+          "yaw": 0,
+          "pitch": 0,
+          "view": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        "focusName": "乾",
+        "summaryHidden": true,
+        "detailHidden": "true",
+        "value": "",
+        "expanded": "false",
+        "describedBy": "search-help",
+        "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+        "searchStatus": "",
+        "statusRole": "status",
+        "activeDescendant": null,
+        "focus": "star-canvas",
+        "resultsHidden": true,
+        "empty": null,
+        "options": [],
+        "data": {
+          "yijing-review-cards": null,
+          "yijing.achievements.v1": null,
+          "yijing-quiz-wrong": null,
+          "yijing-quiz-stats": null,
+          "yijing.study.v1": null,
+          "yijing-notes": null,
+          "yijing-activity-v1": null,
+          "yijing-learning-record-v2": null,
+          "yijing-learning-review-config-v1": null,
+          "yijing-divination-history-v1": null,
+          "yijing-divination-history-v2": null
+        },
+        "writes": [],
+        "history": {
+          "hex": null,
+          "reading": {
+            "focusedCode": null,
+            "readingCode": null,
+            "stage": "none",
+            "section": "overview"
+          }
+        }
+      },
+      "final": {
+        "url": "http://127.0.0.1:60474/?search-probe=390",
+        "stage": "none",
+        "activeCode": "111011",
+        "autoRotate": true,
+        "relation": {
+          "type": "opposite",
+          "changingPosition": null
+        },
+        "camera": {
+          "pos": {
+            "x": -16.270727633915293,
+            "y": -112.3116555068085,
+            "z": 2.3952512662980983
+          },
+          "target": {
+            "x": 0.3184912639177355,
+            "y": -69.36693334135998,
+            "z": -0.15276390387549332
+          },
+          "transition": {
+            "elapsed": 133.29999999999973
+          },
+          "yaw": 0.05459520000000002,
+          "pitch": 0,
+          "view": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        "focusName": "小畜",
+        "summaryHidden": false,
+        "detailHidden": "true",
+        "value": "小畜",
+        "expanded": "false",
+        "describedBy": "search-help",
+        "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+        "searchStatus": "",
+        "statusRole": "status",
+        "activeDescendant": null,
+        "focus": "search",
+        "resultsHidden": true,
+        "empty": null,
+        "options": [
+          {
+            "id": "search-option-0",
+            "index": "0",
+            "name": "乾",
+            "fullName": "乾为天",
+            "code": "111111",
+            "number": 1,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-1",
+            "index": "1",
+            "name": "坤",
+            "fullName": "坤为地",
+            "code": "000000",
+            "number": 2,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-2",
+            "index": "2",
+            "name": "屯",
+            "fullName": "水雷屯",
+            "code": "100010",
+            "number": 3,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-3",
+            "index": "3",
+            "name": "蒙",
+            "fullName": "山水蒙",
+            "code": "010001",
+            "number": 4,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-4",
+            "index": "4",
+            "name": "需",
+            "fullName": "水天需",
+            "code": "111010",
+            "number": 5,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-5",
+            "index": "5",
+            "name": "讼",
+            "fullName": "天水讼",
+            "code": "010111",
+            "number": 6,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-6",
+            "index": "6",
+            "name": "师",
+            "fullName": "地水师",
+            "code": "010000",
+            "number": 7,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-7",
+            "index": "7",
+            "name": "小畜",
+            "fullName": "风天小畜",
+            "code": "111011",
+            "number": 9,
+            "selected": "true"
+          }
+        ],
+        "data": {
+          "yijing-review-cards": null,
+          "yijing.achievements.v1": null,
+          "yijing-quiz-wrong": null,
+          "yijing-quiz-stats": null,
+          "yijing.study.v1": null,
+          "yijing-notes": null,
+          "yijing-activity-v1": null,
+          "yijing-learning-record-v2": null,
+          "yijing-learning-review-config-v1": null,
+          "yijing-divination-history-v1": null,
+          "yijing-divination-history-v2": null
+        },
+        "writes": [],
+        "history": {
+          "hex": null,
+          "reading": {
+            "focusedCode": "111011",
+            "readingCode": null,
+            "stage": "none",
+            "section": "overview"
+          }
+        }
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "explore",
+          "at": 434.19999998807907
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "explore",
+          "at": 467.80000001192093
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "explore",
+          "at": 470.5
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "",
+          "at": 774.4000000059605
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "",
+          "at": 795.1999999880791
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "",
+          "at": 797.3000000119209
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 799.1999999880791
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 800
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 800.4000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 801.1999999880791
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "上坤下乾",
+          "at": 802.0999999940395
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-0",
+          "at": 952.6999999880791
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-0",
+          "at": 962.5
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-0",
+          "at": 963.5
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "泰",
+          "at": 1480.699999988079
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "泰",
+          "at": 1514.5
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search",
+          "value": "泰",
+          "at": 1515.4000000059605
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 1517.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 1519.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 1520.300000011921
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 1521.800000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 1522.5999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1523.4000000059605
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Home",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1927.4000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Home",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1936
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1938.4000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1940.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1949.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1951.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1952.5999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1954
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1956.800000011921
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1967.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1970
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1971.4000000059605
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1972.9000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1973.5999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1975.199999988079
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1976.199999988079
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-7",
+          "at": 2054.0999999940395
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-7",
+          "at": 2081.9000000059605
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "touch",
+          "target": "search-option-7",
+          "at": 2083
+        }
+      ]
+    },
+    {
+      "name": "768-visual-geometry",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "inputs": [
+        {
+          "action": "mouse",
+          "selector": "[data-entry=\"explore\"]",
+          "x": 237.8203125,
+          "y": 715.859375
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "上坤下乾"
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "k",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "action": "key",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "action": "committed-text-CDP",
+          "text": "君子"
+        },
+        {
+          "action": "key",
+          "key": "Home",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "key",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "action": "mouse",
+          "selector": ".search-option[data-index=\"7\"]",
+          "x": 544.5,
+          "y": 650.1875
+        }
+      ],
+      "checks": [
+        {
+          "action": "query-and-confirm-focus-only",
+          "query": "上坤下乾",
+          "pointer": false,
+          "results": {
+            "url": "http://127.0.0.1:60474/?search-probe=768",
+            "stage": "none",
+            "activeCode": null,
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "target": null,
+              "transition": {
+                "elapsed": 33.333333333333336
+              },
+              "yaw": 0.0012,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "乾",
+            "summaryHidden": true,
+            "detailHidden": "true",
+            "value": "上坤下乾",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到1卦。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到1卦。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "泰",
+                "fullName": "地天泰",
+                "code": "111000",
+                "number": 11,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": null,
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "after": {
+            "url": "http://127.0.0.1:60474/?search-probe=768",
+            "stage": "none",
+            "activeCode": "111000",
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -19.10667995646554,
+                "y": -179.83634626553578,
+                "z": 6.1467888618718725
+              },
+              "target": {
+                "x": -19.10667995646554,
+                "y": -179.83634626553578,
+                "z": 6.1467888618718725
+              },
+              "transition": null,
+              "yaw": 0.021601199999999997,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "泰",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "泰",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "泰",
+                "fullName": "地天泰",
+                "code": "111000",
+                "number": 11,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111000",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        },
+        {
+          "action": "screenshot-rendering-observation",
+          "screenshot": "768-search-open-help",
+          "rendering": {
+            "popup": {
+              "id": "search-popup",
+              "opacity": "1",
+              "effectiveOpacity": 1,
+              "background": "rgb(9, 17, 30) none repeat scroll 0% 0% / auto padding-box border-box",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "position": "absolute",
+              "zIndex": "90",
+              "rect": {
+                "x": 357,
+                "y": 63,
+                "width": 390,
+                "height": 620,
+                "top": 63,
+                "right": 747,
+                "bottom": 683,
+                "left": 357
+              },
+              "scrollTop": 0,
+              "visibleWithinPopup": true,
+              "hit": {
+                "id": "",
+                "className": "",
+                "text": "屯"
+              },
+              "hitWithin": true
+            },
+            "results": {
+              "id": "search-results",
+              "opacity": "1",
+              "effectiveOpacity": 1,
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "transform": "none",
+              "position": "static",
+              "zIndex": "auto",
+              "rect": {
+                "x": 366,
+                "y": 225.1875,
+                "width": 357,
+                "height": 512,
+                "top": 225.1875,
+                "right": 723,
+                "bottom": 737.1875,
+                "left": 366
+              },
+              "scrollTop": 0,
+              "visibleWithinPopup": true,
+              "hit": {
+                "id": "search-option-4",
+                "className": "search-option motion-item",
+                "text": "05需水天需111010"
+              },
+              "hitWithin": true
+            },
+            "options": [
+              {
+                "id": "search-option-0",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 366,
+                  "y": 225.1875,
+                  "width": 357,
+                  "height": 64,
+                  "top": 225.1875,
+                  "right": 723,
+                  "bottom": 289.1875,
+                  "left": 366
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "乾为天"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-1",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 366,
+                  "y": 289.1875,
+                  "width": 357,
+                  "height": 64,
+                  "top": 289.1875,
+                  "right": 723,
+                  "bottom": 353.1875,
+                  "left": 366
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "坤"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-2",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 366,
+                  "y": 353.1875,
+                  "width": 357,
+                  "height": 64,
+                  "top": 353.1875,
+                  "right": 723,
+                  "bottom": 417.1875,
+                  "left": 366
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "屯"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-3",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 366,
+                  "y": 417.1875,
+                  "width": 357,
+                  "height": 64,
+                  "top": 417.1875,
+                  "right": 723,
+                  "bottom": 481.1875,
+                  "left": 366
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "蒙"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-4",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 366,
+                  "y": 481.1875,
+                  "width": 357,
+                  "height": 64,
+                  "top": 481.1875,
+                  "right": 723,
+                  "bottom": 545.1875,
+                  "left": 366
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "需"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-5",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 366,
+                  "y": 545.1875,
+                  "width": 357,
+                  "height": 64,
+                  "top": 545.1875,
+                  "right": 723,
+                  "bottom": 609.1875,
+                  "left": 366
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "讼"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-6",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 366,
+                  "y": 609.1875,
+                  "width": 357,
+                  "height": 64,
+                  "top": 609.1875,
+                  "right": 723,
+                  "bottom": 673.1875,
+                  "left": 366
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "",
+                  "className": "",
+                  "text": "师"
+                },
+                "hitWithin": true
+              },
+              {
+                "id": "search-option-7",
+                "opacity": "1",
+                "effectiveOpacity": 1,
+                "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+                "transform": "none",
+                "position": "static",
+                "zIndex": "auto",
+                "rect": {
+                  "x": 366,
+                  "y": 673.1875,
+                  "width": 357,
+                  "height": 64,
+                  "top": 673.1875,
+                  "right": 723,
+                  "bottom": 737.1875,
+                  "left": 366
+                },
+                "scrollTop": 0,
+                "visibleWithinPopup": true,
+                "hit": {
+                  "id": "star-focus-summary",
+                  "className": "star-focus-summary",
+                  "text": "\n    第 11 卦泰地天泰\n    上卦 坤 · 下卦 乾\n    泰：小往大来，吉，亨。\n    \n      研读此卦\n      返回全景\n    \n"
+                },
+                "hitWithin": false
+              }
+            ],
+            "runningAnimations": []
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 0,
+            "number": 1,
+            "expectedCode": "111111",
+            "text": "111111",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 664,
+              "y": 245.1875,
+              "width": 48,
+              "height": 24,
+              "top": 245.1875,
+              "right": 712,
+              "bottom": 269.1875,
+              "left": 664
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 357,
+            "optionScrollWidth": 357,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 1,
+            "number": 2,
+            "expectedCode": "000000",
+            "text": "000000",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 664,
+              "y": 309.6875,
+              "width": 48,
+              "height": 24,
+              "top": 309.6875,
+              "right": 712,
+              "bottom": 333.6875,
+              "left": 664
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 357,
+            "optionScrollWidth": 357,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 2,
+            "number": 3,
+            "expectedCode": "100010",
+            "text": "100010",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 664,
+              "y": 373.6875,
+              "width": 48,
+              "height": 24,
+              "top": 373.6875,
+              "right": 712,
+              "bottom": 397.6875,
+              "left": 664
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 357,
+            "optionScrollWidth": 357,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 3,
+            "number": 4,
+            "expectedCode": "010001",
+            "text": "010001",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 664,
+              "y": 437.6875,
+              "width": 48,
+              "height": 24,
+              "top": 437.6875,
+              "right": 712,
+              "bottom": 461.6875,
+              "left": 664
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 357,
+            "optionScrollWidth": 357,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 4,
+            "number": 5,
+            "expectedCode": "111010",
+            "text": "111010",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 664,
+              "y": 501.6875,
+              "width": 48,
+              "height": 24,
+              "top": 501.6875,
+              "right": 712,
+              "bottom": 525.6875,
+              "left": 664
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 357,
+            "optionScrollWidth": 357,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 5,
+            "number": 6,
+            "expectedCode": "010111",
+            "text": "010111",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 664,
+              "y": 565.6875,
+              "width": 48,
+              "height": 24,
+              "top": 565.6875,
+              "right": 712,
+              "bottom": 589.6875,
+              "left": 664
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 357,
+            "optionScrollWidth": 357,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 6,
+            "number": 7,
+            "expectedCode": "010000",
+            "text": "010000",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 664,
+              "y": 629.6875,
+              "width": 48,
+              "height": 24,
+              "top": 629.6875,
+              "right": 712,
+              "bottom": 653.6875,
+              "left": 664
+            },
+            "popupScrollTop": 0,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 357,
+            "optionScrollWidth": 357,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "visible-result-code-observed",
+          "observation": {
+            "index": 7,
+            "number": 9,
+            "expectedCode": "111011",
+            "text": "111011",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "visible": true,
+            "rect": {
+              "x": 664,
+              "y": 638.6875,
+              "width": 48,
+              "height": 24,
+              "top": 638.6875,
+              "right": 712,
+              "bottom": 662.6875,
+              "left": 664
+            },
+            "popupScrollTop": 55,
+            "popupClientHeight": 618,
+            "popupScrollHeight": 681,
+            "optionClientWidth": 357,
+            "optionScrollWidth": 357,
+            "inPopup": true,
+            "hitWithinCode": true,
+            "hitId": "",
+            "hitClass": ""
+          }
+        },
+        {
+          "action": "search-popup-geometry-and-last-option-reachable",
+          "geometry": {
+            "viewport": {
+              "width": 768,
+              "height": 1024
+            },
+            "rect": {
+              "x": 357,
+              "y": 63,
+              "width": 390,
+              "height": 620,
+              "top": 63,
+              "right": 747,
+              "bottom": 683,
+              "left": 357
+            },
+            "documentWidth": 768,
+            "popupClientWidth": 373,
+            "popupScrollWidth": 373,
+            "helpFontSize": "17px",
+            "helpVisible": true,
+            "statusRole": "status"
+          },
+          "results": {
+            "url": "http://127.0.0.1:60474/?search-probe=768",
+            "stage": "none",
+            "activeCode": "111000",
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -19.10667995646554,
+                "y": -179.83634626553578,
+                "z": 6.1467888618718725
+              },
+              "target": {
+                "x": -19.10667995646554,
+                "y": -179.83634626553578,
+                "z": 6.1467888618718725
+              },
+              "transition": null,
+              "yaw": 0.021601199999999997,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "泰",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "君子",
+            "expanded": "true",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "找到57卦，显示前8项。",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": false,
+            "empty": "找到57卦，显示前8项。",
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-1",
+                "index": "1",
+                "name": "坤",
+                "fullName": "坤为地",
+                "code": "000000",
+                "number": 2,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-2",
+                "index": "2",
+                "name": "屯",
+                "fullName": "水雷屯",
+                "code": "100010",
+                "number": 3,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-3",
+                "index": "3",
+                "name": "蒙",
+                "fullName": "山水蒙",
+                "code": "010001",
+                "number": 4,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-4",
+                "index": "4",
+                "name": "需",
+                "fullName": "水天需",
+                "code": "111010",
+                "number": 5,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-5",
+                "index": "5",
+                "name": "讼",
+                "fullName": "天水讼",
+                "code": "010111",
+                "number": 6,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-6",
+                "index": "6",
+                "name": "师",
+                "fullName": "地水师",
+                "code": "010000",
+                "number": 7,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-7",
+                "index": "7",
+                "name": "小畜",
+                "fullName": "风天小畜",
+                "code": "111011",
+                "number": 9,
+                "selected": "false"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111000",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          },
+          "codeObservations": [
+            {
+              "index": 0,
+              "number": 1,
+              "expectedCode": "111111",
+              "text": "111111",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 664,
+                "y": 245.1875,
+                "width": 48,
+                "height": 24,
+                "top": 245.1875,
+                "right": 712,
+                "bottom": 269.1875,
+                "left": 664
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 357,
+              "optionScrollWidth": 357,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 1,
+              "number": 2,
+              "expectedCode": "000000",
+              "text": "000000",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 664,
+                "y": 309.6875,
+                "width": 48,
+                "height": 24,
+                "top": 309.6875,
+                "right": 712,
+                "bottom": 333.6875,
+                "left": 664
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 357,
+              "optionScrollWidth": 357,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 2,
+              "number": 3,
+              "expectedCode": "100010",
+              "text": "100010",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 664,
+                "y": 373.6875,
+                "width": 48,
+                "height": 24,
+                "top": 373.6875,
+                "right": 712,
+                "bottom": 397.6875,
+                "left": 664
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 357,
+              "optionScrollWidth": 357,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 3,
+              "number": 4,
+              "expectedCode": "010001",
+              "text": "010001",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 664,
+                "y": 437.6875,
+                "width": 48,
+                "height": 24,
+                "top": 437.6875,
+                "right": 712,
+                "bottom": 461.6875,
+                "left": 664
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 357,
+              "optionScrollWidth": 357,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 4,
+              "number": 5,
+              "expectedCode": "111010",
+              "text": "111010",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 664,
+                "y": 501.6875,
+                "width": 48,
+                "height": 24,
+                "top": 501.6875,
+                "right": 712,
+                "bottom": 525.6875,
+                "left": 664
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 357,
+              "optionScrollWidth": 357,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 5,
+              "number": 6,
+              "expectedCode": "010111",
+              "text": "010111",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 664,
+                "y": 565.6875,
+                "width": 48,
+                "height": 24,
+                "top": 565.6875,
+                "right": 712,
+                "bottom": 589.6875,
+                "left": 664
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 357,
+              "optionScrollWidth": 357,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 6,
+              "number": 7,
+              "expectedCode": "010000",
+              "text": "010000",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 664,
+                "y": 629.6875,
+                "width": 48,
+                "height": 24,
+                "top": 629.6875,
+                "right": 712,
+                "bottom": 653.6875,
+                "left": 664
+              },
+              "popupScrollTop": 0,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 357,
+              "optionScrollWidth": 357,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            },
+            {
+              "index": 7,
+              "number": 9,
+              "expectedCode": "111011",
+              "text": "111011",
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1",
+              "visible": true,
+              "rect": {
+                "x": 664,
+                "y": 638.6875,
+                "width": 48,
+                "height": 24,
+                "top": 638.6875,
+                "right": 712,
+                "bottom": 662.6875,
+                "left": 664
+              },
+              "popupScrollTop": 55,
+              "popupClientHeight": 618,
+              "popupScrollHeight": 681,
+              "optionClientWidth": 357,
+              "optionScrollWidth": 357,
+              "inPopup": true,
+              "hitWithinCode": true,
+              "hitId": "",
+              "hitClass": ""
+            }
+          ],
+          "selected": {
+            "url": "http://127.0.0.1:60474/?search-probe=768",
+            "stage": "none",
+            "activeCode": "111011",
+            "autoRotate": true,
+            "relation": {
+              "type": "opposite",
+              "changingPosition": null
+            },
+            "camera": {
+              "pos": {
+                "x": -19.10667995646554,
+                "y": -179.83634626553578,
+                "z": 6.1467888618718725
+              },
+              "target": {
+                "x": 0.23473248821409243,
+                "y": -144.09145444280472,
+                "z": -1.998578555681601
+              },
+              "transition": {
+                "elapsed": 0
+              },
+              "yaw": 0.043197599999999996,
+              "pitch": 0,
+              "view": {
+                "x": 0,
+                "y": 0,
+                "scale": 1
+              }
+            },
+            "focusName": "小畜",
+            "summaryHidden": false,
+            "detailHidden": "true",
+            "value": "小畜",
+            "expanded": "false",
+            "describedBy": "search-help",
+            "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+            "searchStatus": "",
+            "statusRole": "status",
+            "activeDescendant": null,
+            "focus": "search",
+            "resultsHidden": true,
+            "empty": null,
+            "options": [
+              {
+                "id": "search-option-0",
+                "index": "0",
+                "name": "乾",
+                "fullName": "乾为天",
+                "code": "111111",
+                "number": 1,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-1",
+                "index": "1",
+                "name": "坤",
+                "fullName": "坤为地",
+                "code": "000000",
+                "number": 2,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-2",
+                "index": "2",
+                "name": "屯",
+                "fullName": "水雷屯",
+                "code": "100010",
+                "number": 3,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-3",
+                "index": "3",
+                "name": "蒙",
+                "fullName": "山水蒙",
+                "code": "010001",
+                "number": 4,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-4",
+                "index": "4",
+                "name": "需",
+                "fullName": "水天需",
+                "code": "111010",
+                "number": 5,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-5",
+                "index": "5",
+                "name": "讼",
+                "fullName": "天水讼",
+                "code": "010111",
+                "number": 6,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-6",
+                "index": "6",
+                "name": "师",
+                "fullName": "地水师",
+                "code": "010000",
+                "number": 7,
+                "selected": "false"
+              },
+              {
+                "id": "search-option-7",
+                "index": "7",
+                "name": "小畜",
+                "fullName": "风天小畜",
+                "code": "111011",
+                "number": 9,
+                "selected": "true"
+              }
+            ],
+            "data": {
+              "yijing-review-cards": null,
+              "yijing.achievements.v1": null,
+              "yijing-quiz-wrong": null,
+              "yijing-quiz-stats": null,
+              "yijing.study.v1": null,
+              "yijing-notes": null,
+              "yijing-activity-v1": null,
+              "yijing-learning-record-v2": null,
+              "yijing-learning-review-config-v1": null,
+              "yijing-divination-history-v1": null,
+              "yijing-divination-history-v2": null
+            },
+            "writes": [],
+            "history": {
+              "hex": null,
+              "reading": {
+                "focusedCode": "111011",
+                "readingCode": null,
+                "stage": "none",
+                "section": "overview"
+              }
+            }
+          }
+        }
+      ],
+      "screenshots": [
+        "768-search-open-help.png",
+        "768-search-last-selected.png"
+      ],
+      "status": "passed",
+      "baseline": {
+        "url": "http://127.0.0.1:60474/?search-probe=768",
+        "stage": "none",
+        "activeCode": null,
+        "autoRotate": true,
+        "relation": {
+          "type": "opposite",
+          "changingPosition": null
+        },
+        "camera": {
+          "pos": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "target": null,
+          "transition": {
+            "elapsed": 33.333333333333336
+          },
+          "yaw": 0.0012,
+          "pitch": 0,
+          "view": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        "focusName": "乾",
+        "summaryHidden": true,
+        "detailHidden": "true",
+        "value": "",
+        "expanded": "false",
+        "describedBy": "search-help",
+        "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+        "searchStatus": "",
+        "statusRole": "status",
+        "activeDescendant": null,
+        "focus": "star-canvas",
+        "resultsHidden": true,
+        "empty": null,
+        "options": [],
+        "data": {
+          "yijing-review-cards": null,
+          "yijing.achievements.v1": null,
+          "yijing-quiz-wrong": null,
+          "yijing-quiz-stats": null,
+          "yijing.study.v1": null,
+          "yijing-notes": null,
+          "yijing-activity-v1": null,
+          "yijing-learning-record-v2": null,
+          "yijing-learning-review-config-v1": null,
+          "yijing-divination-history-v1": null,
+          "yijing-divination-history-v2": null
+        },
+        "writes": [],
+        "history": {
+          "hex": null,
+          "reading": {
+            "focusedCode": null,
+            "readingCode": null,
+            "stage": "none",
+            "section": "overview"
+          }
+        }
+      },
+      "final": {
+        "url": "http://127.0.0.1:60474/?search-probe=768",
+        "stage": "none",
+        "activeCode": "111011",
+        "autoRotate": true,
+        "relation": {
+          "type": "opposite",
+          "changingPosition": null
+        },
+        "camera": {
+          "pos": {
+            "x": -8.901104048384186,
+            "y": -160.97540692791333,
+            "z": 1.848852208237191
+          },
+          "target": {
+            "x": 0.23473248821409243,
+            "y": -144.09145444280472,
+            "z": -1.998578555681601
+          },
+          "transition": {
+            "elapsed": 233.29999999999995
+          },
+          "yaw": 0.0515964,
+          "pitch": 0,
+          "view": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        "focusName": "小畜",
+        "summaryHidden": false,
+        "detailHidden": "true",
+        "value": "小畜",
+        "expanded": "false",
+        "describedBy": "search-help",
+        "help": "可查卦名、1—64（如第64卦）、六位卦码（如111111）、上乾下坤或下坤上乾，也可查关键词和经文。",
+        "searchStatus": "",
+        "statusRole": "status",
+        "activeDescendant": null,
+        "focus": "search",
+        "resultsHidden": true,
+        "empty": null,
+        "options": [
+          {
+            "id": "search-option-0",
+            "index": "0",
+            "name": "乾",
+            "fullName": "乾为天",
+            "code": "111111",
+            "number": 1,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-1",
+            "index": "1",
+            "name": "坤",
+            "fullName": "坤为地",
+            "code": "000000",
+            "number": 2,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-2",
+            "index": "2",
+            "name": "屯",
+            "fullName": "水雷屯",
+            "code": "100010",
+            "number": 3,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-3",
+            "index": "3",
+            "name": "蒙",
+            "fullName": "山水蒙",
+            "code": "010001",
+            "number": 4,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-4",
+            "index": "4",
+            "name": "需",
+            "fullName": "水天需",
+            "code": "111010",
+            "number": 5,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-5",
+            "index": "5",
+            "name": "讼",
+            "fullName": "天水讼",
+            "code": "010111",
+            "number": 6,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-6",
+            "index": "6",
+            "name": "师",
+            "fullName": "地水师",
+            "code": "010000",
+            "number": 7,
+            "selected": "false"
+          },
+          {
+            "id": "search-option-7",
+            "index": "7",
+            "name": "小畜",
+            "fullName": "风天小畜",
+            "code": "111011",
+            "number": 9,
+            "selected": "true"
+          }
+        ],
+        "data": {
+          "yijing-review-cards": null,
+          "yijing.achievements.v1": null,
+          "yijing-quiz-wrong": null,
+          "yijing-quiz-stats": null,
+          "yijing.study.v1": null,
+          "yijing-notes": null,
+          "yijing-activity-v1": null,
+          "yijing-learning-record-v2": null,
+          "yijing-learning-review-config-v1": null,
+          "yijing-divination-history-v1": null,
+          "yijing-divination-history-v2": null
+        },
+        "writes": [],
+        "history": {
+          "hex": null,
+          "reading": {
+            "focusedCode": "111011",
+            "readingCode": null,
+            "stage": "none",
+            "section": "overview"
+          }
+        }
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "explore",
+          "at": 323.09999999403954
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "explore",
+          "at": 327.90000000596046
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "explore",
+          "at": 328.09999999403954
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 631.9000000059605
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 633.2999999821186
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 633.7999999821186
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 634
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 634.7999999821186
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "上坤下乾",
+          "at": 636
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "上坤下乾",
+          "at": 670.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "上坤下乾",
+          "at": 698.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "上坤下乾",
+          "at": 703.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 762.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 1187.7999999821186
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "k",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 1188.699999988079
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 1192.7999999821186
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 1193.699999988079
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "泰",
+          "at": 1194.0999999940395
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 1194.9000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Backspace",
+          "composing": false,
+          "target": "search",
+          "value": "",
+          "at": 1195.5
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1196.2999999821186
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Home",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1659.699999988079
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Home",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1660.5999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1661.699999988079
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1662.2999999821186
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1663.699999988079
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1682
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1700.5999999940395
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1704.2999999821186
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1706
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1706.7999999821186
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1708
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1708.5999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1709.5
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1710.0999999940395
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1710.9000000059605
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowDown",
+          "composing": false,
+          "target": "search",
+          "value": "君子",
+          "at": 1711.5999999940395
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "search-option-7",
+          "at": 1776.5999999940395
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "search-option-7",
+          "at": 1780.0999999940395
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "target": "search-option-7",
+          "at": 1780.0999999940395
+        }
+      ]
+    }
+  ],
+  "status": "passed",
+  "limitations": [
+    "Headless desktop and CDP mobile emulation are not physical-device, screen-reader or real 200% zoom evidence.",
+    "ASCII search uses trusted key events; Chinese text is committed through CDP Input.insertText, not a real operating-system IME.",
+    "One constructor debugger stop exposes a read-only StarMap reference; no business method is called."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "finishedAt": "2026-10-24T19:54:37.814Z",
+  "finalSourceHashes": {
+    "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+    "web/js/search-controller.js": "cb256d0f22e4c7f14b0a37ac79644c297300299d4de7b44fa6a192c2496f0ee6",
+    "web/js/main.js": "dd9c86db49308fc379944841cd77aaf6a7e848119450055b28f0bb1412f8d2e2",
+    "web/js/star-map.js": "23787057a90bee36ad2afa2f54163530856938e60e58d6e8197889ef94eab851",
+    "web/js/user-data.js": "8a47ceb0e8dea555a17d10ac253b32f0dfc84cead620ddcf13193def6e1435b1",
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/styles/immersive.css": "84a9e8f17c5e23bbfc3607992d3d9c4e8b6834bd51c763aa9a1b03a670415b43",
+    "scripts/test-search-input.mjs": "87afaa208a95cd1d387e678b42d1b648504c39587734d8be939d40461f5956eb"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "profileRemoved": true
+}

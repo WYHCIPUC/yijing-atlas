@@ -1,0 +1,107 @@
+{
+  "checkedAt": "2026-10-24T21:40:48.043Z",
+  "sourceHead": "80f8f2070a95101ea6fc04ce5b4b92523dad34ec",
+  "cards": 48,
+  "completed": [
+    "T-DIV-01",
+    "T-SAVE-01",
+    "T-LEARN-05",
+    "T-SEARCH-01",
+    "T-LEARN-02",
+    "T-LEARN-01"
+  ],
+  "open": 42,
+  "openKinds": {
+    "confirmed": 31,
+    "suggestions": 10,
+    "independent": 1
+  },
+  "openTaskIds": [
+    "T-QA-01",
+    "T-GROW-01",
+    "T-STAR-01",
+    "T-STAR-02",
+    "T-STAR-03",
+    "T-READ-01",
+    "T-READ-02",
+    "T-READ-03",
+    "T-READ-04",
+    "T-LEARN-03",
+    "T-QUIZ-01",
+    "T-LEARN-04",
+    "T-DIV-02",
+    "T-DIV-03",
+    "T-GROW-02",
+    "T-PRIV-01",
+    "T-CAL-01",
+    "T-CAL-02",
+    "T-CAL-03",
+    "T-SOUND-01",
+    "T-SOUND-02",
+    "T-MODAL-01",
+    "T-ICON-01",
+    "T-ASSET-02",
+    "T-BACKUP-01",
+    "T-BACKUP-02",
+    "T-API-01",
+    "T-CACHE-01",
+    "T-CACHE-02",
+    "T-CAPACITY-01",
+    "T-SHARE-01",
+    "T-ASSET-01",
+    "T-DEP-01",
+    "T-CONTENT-01",
+    "T-CONTENT-02",
+    "T-QA-02",
+    "T-QA-03",
+    "T-A11Y-01",
+    "T-PERF-01",
+    "T-WIN-01",
+    "T-RELEASE-01",
+    "T-COPY-01"
+  ],
+  "unchangedCardTitlesDependenciesAndRequirementKinds": true,
+  "protectedFilesUnchanged": 173,
+  "archivedLogsVerified": 25,
+  "probeSourceFilesMatched": 23,
+  "documents": {
+    "documents": 15,
+    "lines": 6906,
+    "localLinks": 764,
+    "tasks": 48,
+    "requirements": 86,
+    "sourceGuard": null,
+    "issues": []
+  },
+  "evidenceReportLocalLinks": 11,
+  "github": {
+    "pr": 10,
+    "draft": true,
+    "merged": false,
+    "head": "80f8f2070a95101ea6fc04ce5b4b92523dad34ec",
+    "issue": 9,
+    "state": "open",
+    "completed": 6,
+    "open": 42,
+    "workflowRun": 40134222757,
+    "conclusion": "success",
+    "job": 120992249856,
+    "steps": [
+      "Validate repository:success",
+      "Browser smoke test:success"
+    ],
+    "scope": "Committed version only; local quiz implementation excluded."
+  },
+  "businessValidation": "Reviewed existing logs only; no full validate or E2E rerun during inventory.",
+  "issues": [],
+  "initialInventoryCheck": {
+    "issues": [
+      "Evidence link missing 2026-10-25-remaining-work-acceptance-checks.json"
+    ],
+    "resolution": "The generated checks file did not exist until the first run wrote it. All report links, protected hashes, archives, document links and diff rechecked after generation."
+  },
+  "independentReview": {
+    "result": "passed",
+    "scope": "48 cards, 42 open IDs, original requirement scope, validation and unpublished-source boundaries; read only."
+  }
+}

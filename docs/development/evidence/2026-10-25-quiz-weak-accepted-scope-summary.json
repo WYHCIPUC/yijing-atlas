@@ -1,0 +1,1992 @@
+{
+  "schemaVersion": 1,
+  "taskId": "T-QUIZ-01",
+  "generatedAt": "2026-10-24T22:28:17.0558546Z",
+  "status": "specialist-acceptance-complete-awaiting-full-e2e-and-task-integration",
+  "head": "9715d5bdc9c978e51c99e6bad56dd8e8087870ac",
+  "currentSource": {
+    "hashAlgorithm": "SHA256",
+    "count": 23,
+    "hashes": {
+      "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+      "web/js/main.js": "7b3ad942f4d51293035daa81b7c7cc3fe13ee456b1fd1f342f1ffa4f51edcb8d",
+      "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+      "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+      "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+      "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+      "web/js/user-data.js": "3afccc2472dbab027089a7686ec1e43249a3f889b55be8610eebacef7bca1f6d",
+      "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+      "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+      "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+      "web/js/modes/quiz-mode.js": "d63a0fe1ce0f231fa67c71d9b4903484c387c1b9ffb4dfdec08803e3e046600e",
+      "web/js/modes/review-mode.js": "8adbee1de930ede4f35bc471587081f606d293370313a924ad22cd1483ae4adc",
+      "web/js/modes/learning-mode.js": "f2d1a600294cf3bd2f73d5e884aecb18945d31fbde83776fd93a4d0026e68675",
+      "web/js/almanac-knowledge.js": "ba1b1ce69a46de1832dc62e9959d1ae439f10c7435bd19b5e94c57bf40eeeccd",
+      "web/js/storage.js": "13d7b5b1288991582a4102dbb48b64d0b98593d1fab1502169dce7e52be78f28",
+      "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+      "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+      "web/styles/immersive.css": "8f8060c3b041bbdb7bc8f7b90336861a9aba99552c1722f6dd5a46eddefd9155",
+      "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+      "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+      "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+      "web/data/almanac-yiji.json": "791c99f67bac66f7d1259d08aaeec3c53a540b3bdc8ae5403aaa107666ad6649",
+      "scripts/test-quiz-weak-questions.mjs": "8e0610b4aedd2afb6e83d1c0983bf1ed7c21f47555af9927c98888b11ba4e4e2"
+    },
+    "includesProbe": true
+  },
+  "counts": {
+    "plannedScopes": 18,
+    "passedCurrentSource": 18,
+    "unverifiedCurrentSource": 0,
+    "trustedInputEvents": 147.0,
+    "screenshots": 49.0,
+    "historicalRuns": 62,
+    "historicalNativeAborts": 14,
+    "acceptedPageErrors": 0
+  },
+  "scopes": [
+    {
+      "scope": "1440-question-readability",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-18-729Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 1,
+      "screenshotCount": 1,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:16:20.057Z",
+          "values": {}
+        }
+      ],
+      "faults": [],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-18-729Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-18-729Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-question-readability'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "1440-term-source-readability",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-25-836Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 26,
+      "screenshotCount": 4,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:16:27.066Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "almanac:jianshe-jian:name-to-meaning": {
+                  "sourceKind": "almanac",
+                  "questionId": "almanac:jianshe-jian:name-to-meaning",
+                  "questionVersion": "almanac-v1",
+                  "questionType": "name-to-meaning",
+                  "targetCode": null,
+                  "termId": "jianshe-jian",
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-almanac:jianshe-jian:name-to-meaning",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-25-836Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-25-836Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-term-source-readability'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "390-term-source-readability",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-35-996Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 4,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:16:37.125Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "almanac:jianshe-jian:name-to-meaning": {
+                  "sourceKind": "almanac",
+                  "questionId": "almanac:jianshe-jian:name-to-meaning",
+                  "questionVersion": "almanac-v1",
+                  "questionType": "name-to-meaning",
+                  "targetCode": null,
+                  "termId": "jianshe-jian",
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-almanac:jianshe-jian:name-to-meaning",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-35-996Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-35-996Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '390-term-source-readability'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "1440-original-cycle",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-54-459Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [
+        47658
+      ],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 23,
+      "screenshotCount": 5,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:16:55.742Z",
+          "values": {}
+        }
+      ],
+      "faults": [],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-54-459Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-54-459Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-original-cycle'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "390-original-cycle",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-07-046Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 9,
+      "screenshotCount": 5,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:17:08.213Z",
+          "values": {}
+        }
+      ],
+      "faults": [],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-07-046Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-07-046Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '390-original-cycle'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "1440-same-hex-other-rule",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-16-721Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 7,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:17:18.004Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "quiz:opposite:111111": {
+                  "sourceKind": "quiz",
+                  "questionId": "quiz:opposite:111111",
+                  "questionVersion": "quiz-v1",
+                  "questionType": "opposite",
+                  "targetCode": "111111",
+                  "termId": null,
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                },
+                "quiz:name:111111": {
+                  "sourceKind": "quiz",
+                  "questionId": "quiz:name:111111",
+                  "questionVersion": "quiz-v1",
+                  "questionType": "name",
+                  "targetCode": "111111",
+                  "termId": null,
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00.001Z",
+                  "lastWrongAt": "2026-10-24T08:00:00.001Z",
+                  "lastSessionId": "synthetic-wrong-1-quiz:name:111111",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-16-721Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-16-721Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-same-hex-other-rule'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "390-same-term-other-direction",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-39-375Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 6,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:17:40.479Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "almanac:jianshe-jian:name-to-meaning": {
+                  "sourceKind": "almanac",
+                  "questionId": "almanac:jianshe-jian:name-to-meaning",
+                  "questionVersion": "almanac-v1",
+                  "questionType": "name-to-meaning",
+                  "targetCode": null,
+                  "termId": "jianshe-jian",
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-almanac:jianshe-jian:name-to-meaning",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                },
+                "almanac:jianshe-jian:meaning-to-name": {
+                  "sourceKind": "almanac",
+                  "questionId": "almanac:jianshe-jian:meaning-to-name",
+                  "questionVersion": "almanac-v1",
+                  "questionType": "meaning-to-name",
+                  "targetCode": null,
+                  "termId": "jianshe-jian",
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00.001Z",
+                  "lastWrongAt": "2026-10-24T08:00:00.001Z",
+                  "lastSessionId": "synthetic-wrong-1-almanac:jianshe-jian:meaning-to-name",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-39-375Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-39-375Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '390-same-term-other-direction'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "1440-retry-stats",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-47-018Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:17:48.263Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "quiz:opposite:111111": {
+                  "sourceKind": "quiz",
+                  "questionId": "quiz:opposite:111111",
+                  "questionVersion": "quiz-v1",
+                  "questionType": "opposite",
+                  "targetCode": "111111",
+                  "termId": null,
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [
+        {
+          "key": "yijing-quiz-stats",
+          "kind": "QuotaExceededError",
+          "phase": "answer-and-first-retry"
+        }
+      ],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-47-018Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-47-018Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-retry-stats'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "1440-retry-weak",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-13-532Z",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:18:14.691Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "quiz:opposite:111111": {
+                  "sourceKind": "quiz",
+                  "questionId": "quiz:opposite:111111",
+                  "questionVersion": "quiz-v1",
+                  "questionType": "opposite",
+                  "targetCode": "111111",
+                  "termId": null,
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [
+        {
+          "key": "yijing-learning-record-v2",
+          "kind": "QuotaExceededError",
+          "phase": "answer-and-first-retry"
+        }
+      ],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-13-532Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-13-532Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-retry-weak'\n& 'C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "1440-retry-review",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-40-385Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:18:41.61Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "quiz:opposite:111111": {
+                  "sourceKind": "quiz",
+                  "questionId": "quiz:opposite:111111",
+                  "questionVersion": "quiz-v1",
+                  "questionType": "opposite",
+                  "targetCode": "111111",
+                  "termId": null,
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [
+        {
+          "key": "yijing-review-cards",
+          "kind": "QuotaExceededError",
+          "phase": "answer-and-first-retry"
+        }
+      ],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-40-385Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-40-385Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-retry-review'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "1440-retry-activity",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-50-414Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [
+        55689
+      ],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:18:51.908Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "quiz:opposite:111111": {
+                  "sourceKind": "quiz",
+                  "questionId": "quiz:opposite:111111",
+                  "questionVersion": "quiz-v1",
+                  "questionType": "opposite",
+                  "targetCode": "111111",
+                  "termId": null,
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [
+        {
+          "key": "yijing-activity-v1",
+          "kind": "QuotaExceededError",
+          "phase": "answer-and-first-retry"
+        }
+      ],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-50-414Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-50-414Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-retry-activity'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "1440-retry-achievement",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-19-00-351Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:19:01.663Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "quiz:opposite:111111": {
+                  "sourceKind": "quiz",
+                  "questionId": "quiz:opposite:111111",
+                  "questionVersion": "quiz-v1",
+                  "questionType": "opposite",
+                  "targetCode": "111111",
+                  "termId": null,
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [
+        {
+          "key": "yijing.achievements.v1",
+          "kind": "QuotaExceededError",
+          "phase": "answer-and-first-retry"
+        }
+      ],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-19-00-351Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-19-00-351Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-retry-achievement'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "1440-retry-legacy",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-14-587Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:25:16.135Z",
+          "values": {
+            "yijing-quiz-wrong": [
+              "111111"
+            ]
+          }
+        }
+      ],
+      "faults": [
+        {
+          "key": "yijing-quiz-wrong",
+          "kind": "QuotaExceededError",
+          "phase": "answer-and-first-retry"
+        }
+      ],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-14-587Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-14-587Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-retry-legacy'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "390-retry-weak",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-50-312Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:26:51.519Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "quiz:opposite:111111": {
+                  "sourceKind": "quiz",
+                  "questionId": "quiz:opposite:111111",
+                  "questionVersion": "quiz-v1",
+                  "questionType": "opposite",
+                  "targetCode": "111111",
+                  "termId": null,
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [
+        {
+          "key": "yijing-learning-record-v2",
+          "kind": "QuotaExceededError",
+          "phase": "answer-and-first-retry"
+        }
+      ],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-50-312Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-50-312Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '390-retry-weak'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "390-retry-achievement",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-04-910Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:26:06.443Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "quiz:opposite:111111": {
+                  "sourceKind": "quiz",
+                  "questionId": "quiz:opposite:111111",
+                  "questionVersion": "quiz-v1",
+                  "questionType": "opposite",
+                  "targetCode": "111111",
+                  "termId": null,
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [
+        {
+          "key": "yijing.achievements.v1",
+          "kind": "QuotaExceededError",
+          "phase": "answer-and-first-retry"
+        }
+      ],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-04-910Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-04-910Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '390-retry-achievement'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "1440-legacy-unavailable",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-12-847Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [
+        76255
+      ],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 3,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:26:14.44Z",
+          "values": {
+            "yijing-quiz-wrong": [
+              "111111"
+            ]
+          }
+        },
+        {
+          "at": "2026-10-24T22:26:18.66Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "almanac:retired-public-term:name-to-meaning": {
+                  "sourceKind": "almanac",
+                  "questionId": "almanac:retired-public-term:name-to-meaning",
+                  "questionVersion": "almanac-v1",
+                  "questionType": "name-to-meaning",
+                  "targetCode": null,
+                  "termId": "retired-public-term",
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-almanac:retired-public-term:name-to-meaning",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-12-847Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-12-847Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '1440-legacy-unavailable'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "390-stale-offline",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-27-521Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [
+        53230
+      ],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 15,
+      "screenshotCount": 3,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:26:28.978Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "almanac:jianshe-jian:name-to-meaning": {
+                  "sourceKind": "almanac",
+                  "questionId": "almanac:jianshe-jian:name-to-meaning",
+                  "questionVersion": "almanac-v1",
+                  "questionType": "name-to-meaning",
+                  "targetCode": null,
+                  "termId": "jianshe-jian",
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-almanac:jianshe-jian:name-to-meaning",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [
+        {
+          "kind": "CDP-network-offline",
+          "scope": "already-visited-quiz-review-term-modules"
+        }
+      ],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-27-521Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-27-521Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '390-stale-offline'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    },
+    {
+      "scope": "320-queue-term-geometry",
+      "status": "passed-current-source",
+      "accepted": true,
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-15-24-543Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sessions": [
+        3953
+      ],
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 11,
+      "screenshotCount": 6,
+      "pageErrors": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T22:15:25.629Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "quiz:opposite:111111": {
+                  "sourceKind": "quiz",
+                  "questionId": "quiz:opposite:111111",
+                  "questionVersion": "quiz-v1",
+                  "questionType": "opposite",
+                  "targetCode": "111111",
+                  "termId": null,
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00Z",
+                  "lastWrongAt": "2026-10-24T08:00:00Z",
+                  "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                },
+                "quiz:name:111111": {
+                  "sourceKind": "quiz",
+                  "questionId": "quiz:name:111111",
+                  "questionVersion": "quiz-v1",
+                  "questionType": "name",
+                  "targetCode": "111111",
+                  "termId": null,
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00.001Z",
+                  "lastWrongAt": "2026-10-24T08:00:00.001Z",
+                  "lastSessionId": "synthetic-wrong-1-quiz:name:111111",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                },
+                "almanac:jianshe-jian:name-to-meaning": {
+                  "sourceKind": "almanac",
+                  "questionId": "almanac:jianshe-jian:name-to-meaning",
+                  "questionVersion": "almanac-v1",
+                  "questionType": "name-to-meaning",
+                  "targetCode": null,
+                  "termId": "jianshe-jian",
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00.002Z",
+                  "lastWrongAt": "2026-10-24T08:00:00.002Z",
+                  "lastSessionId": "synthetic-wrong-2-almanac:jianshe-jian:name-to-meaning",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                },
+                "almanac:jianshe-jian:meaning-to-name": {
+                  "sourceKind": "almanac",
+                  "questionId": "almanac:jianshe-jian:meaning-to-name",
+                  "questionVersion": "almanac-v1",
+                  "questionType": "meaning-to-name",
+                  "targetCode": null,
+                  "termId": "jianshe-jian",
+                  "lessonId": null,
+                  "firstWrongAt": "2026-10-24T08:00:00.003Z",
+                  "lastWrongAt": "2026-10-24T08:00:00.003Z",
+                  "lastSessionId": "synthetic-wrong-3-almanac:jianshe-jian:meaning-to-name",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            }
+          }
+        }
+      ],
+      "faults": [],
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-15-24-543Z/trace.json",
+      "execution": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-15-24-543Z/execution.json",
+      "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '320-queue-term-geometry'\n& 'W:\\Node.js\\node.exe' scripts/test-quiz-weak-questions.mjs"
+    }
+  ],
+  "history": [
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-35-42-693Z",
+      "scope": "1440-original-cycle",
+      "runtime": "v24.19.0",
+      "rawStatus": "running",
+      "current23StartMatch": false,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-35-42-693Z/host-interruption.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-35-42-693Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-36-17-670Z",
+      "scope": "1440-original-cycle",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "Prior summary and recorded terminal tool result",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-36-17-670Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-43-22-054Z",
+      "scope": "1440-question-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "failed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 1,
+      "exitEvidence": "Prior summary and recorded terminal tool result",
+      "nativeAbort": false,
+      "failure": "The question must use its approved opaque warm-paper background, not a competing translucent card background.\n+ actual - expected\n\n  [\n+   183,\n+   199,\n+   220,\n+   0.024\n-   240,\n-   231,\n-   213,\n-   1\n  ]\n",
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-43-22-054Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-12-782Z",
+      "scope": "1440-question-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "Prior summary and recorded terminal tool result",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-12-782Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-51-298Z",
+      "scope": null,
+      "runtime": "v22.23.1",
+      "rawStatus": "running",
+      "current23StartMatch": false,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-51-298Z/host-interruption.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-51-298Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-45-20-566Z",
+      "scope": null,
+      "runtime": "v22.23.1",
+      "rawStatus": "running",
+      "current23StartMatch": false,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-45-20-566Z/host-interruption.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-45-20-566Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-46-38-029Z",
+      "scope": "390-term-source-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "failed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 1,
+      "exitEvidence": "Prior summary and recorded terminal tool result",
+      "nativeAbort": false,
+      "failure": "Source action must meet 4.5:1 against the paper surface; observed 1.18:1.",
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-46-38-029Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-47-25-594Z",
+      "scope": "1440-term-source-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "failed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 1,
+      "exitEvidence": "Prior summary and recorded terminal tool result",
+      "nativeAbort": false,
+      "failure": "Source action must meet 4.5:1 against the paper surface; observed 1.18:1.",
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-47-25-594Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-12-538Z",
+      "scope": "1440-term-source-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "Prior summary and recorded terminal tool result",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-12-538Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-41-926Z",
+      "scope": "390-term-source-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "running",
+      "current23StartMatch": false,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-41-926Z/host-interruption.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-41-926Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-03-241Z",
+      "scope": "390-term-source-readability",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "Prior summary and recorded terminal tool result",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-03-241Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-36-722Z",
+      "scope": "1440-question-readability",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-36-722Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-36-722Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-43-937Z",
+      "scope": "1440-original-cycle",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-43-937Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-43-937Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-56-129Z",
+      "scope": "390-original-cycle",
+      "runtime": "v24.19.0",
+      "rawStatus": "running",
+      "current23StartMatch": false,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-56-129Z/execution.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-56-129Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-07-837Z",
+      "scope": "1440-same-hex-other-rule",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-07-837Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-07-837Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-17-580Z",
+      "scope": "390-same-term-other-direction",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-17-580Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-17-580Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-25-466Z",
+      "scope": "1440-retry-stats",
+      "runtime": "v24.19.0",
+      "rawStatus": "running",
+      "current23StartMatch": false,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-25-466Z/execution.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-25-466Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-43-331Z",
+      "scope": "1440-retry-weak",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-43-331Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-43-331Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-53-870Z",
+      "scope": "1440-retry-review",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-53-870Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-53-870Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-51-03-712Z",
+      "scope": "1440-retry-activity",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-51-03-712Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-51-03-712Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-01-21-108Z",
+      "scope": "390-original-cycle",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-01-21-108Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-01-21-108Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-04-186Z",
+      "scope": "1440-retry-stats",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-04-186Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-04-186Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-27-233Z",
+      "scope": "1440-retry-achievement",
+      "runtime": "v24.19.0",
+      "rawStatus": "running",
+      "current23StartMatch": false,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-27-233Z/execution.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-27-233Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-43-651Z",
+      "scope": "1440-retry-achievement",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-43-651Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-43-651Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-58-008Z",
+      "scope": "1440-retry-legacy",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-58-008Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-02-58-008Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-03-10-896Z",
+      "scope": "390-retry-weak",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-03-10-896Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-03-10-896Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-03-26-596Z",
+      "scope": "390-retry-achievement",
+      "runtime": "v22.23.1",
+      "rawStatus": "running",
+      "current23StartMatch": false,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-03-26-596Z/execution.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-03-26-596Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-03-49-865Z",
+      "scope": "390-retry-achievement",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-03-49-865Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-03-49-865Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-04-01-826Z",
+      "scope": "1440-legacy-unavailable",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-04-01-826Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-04-01-826Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-04-24-992Z",
+      "scope": "390-stale-offline",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-04-24-992Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-04-24-992Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-04-43-464Z",
+      "scope": "320-queue-term-geometry",
+      "runtime": "v24.19.0",
+      "rawStatus": "failed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-04-43-464Z/execution.json",
+      "nativeAbort": false,
+      "failure": "320-option-visible is not fully visible",
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-04-43-464Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-10-51-378Z",
+      "scope": "320-queue-term-geometry",
+      "runtime": "v22.23.1",
+      "rawStatus": "failed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-10-51-378Z/execution.json",
+      "nativeAbort": false,
+      "failure": "320-option-visible is not fully visible",
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-10-51-378Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-11-28-905Z",
+      "scope": "320-queue-term-geometry",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-11-28-905Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-11-28-905Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-11-59-753Z",
+      "scope": "1440-question-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-11-59-753Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-11-59-753Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-06-673Z",
+      "scope": "1440-term-source-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-06-673Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-06-673Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-18-252Z",
+      "scope": "390-term-source-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "running",
+      "current23StartMatch": false,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-18-252Z/execution.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-18-252Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-36-487Z",
+      "scope": "390-term-source-readability",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-36-487Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-36-487Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-44-113Z",
+      "scope": "1440-original-cycle",
+      "runtime": "v24.19.0",
+      "rawStatus": "running",
+      "current23StartMatch": false,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-44-113Z/execution.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-12-44-113Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-13-26-408Z",
+      "scope": "320-queue-term-geometry",
+      "runtime": "v22.23.1",
+      "rawStatus": "failed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-13-26-408Z/execution.json",
+      "nativeAbort": false,
+      "failure": "Quiz navigation overlaps the close control at 320px",
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-13-26-408Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-14-47-544Z",
+      "scope": "320-queue-term-geometry",
+      "runtime": "v22.23.1",
+      "rawStatus": "failed",
+      "current23StartMatch": false,
+      "current23EndMatch": false,
+      "endEvidencePresent": true,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-14-47-544Z/execution.json",
+      "nativeAbort": false,
+      "failure": "320px quiz navigation must not overlap the close control",
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-14-47-544Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-15-24-543Z",
+      "scope": "320-queue-term-geometry",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-15-24-543Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-15-24-543Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-18-729Z",
+      "scope": "1440-question-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-18-729Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-18-729Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-25-836Z",
+      "scope": "1440-term-source-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-25-836Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-25-836Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-35-996Z",
+      "scope": "390-term-source-readability",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-35-996Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-35-996Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-54-459Z",
+      "scope": "1440-original-cycle",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-54-459Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-16-54-459Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-07-046Z",
+      "scope": "390-original-cycle",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-07-046Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-07-046Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-16-721Z",
+      "scope": "1440-same-hex-other-rule",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-16-721Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-16-721Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-39-375Z",
+      "scope": "390-same-term-other-direction",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-39-375Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-39-375Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-47-018Z",
+      "scope": "1440-retry-stats",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-47-018Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-47-018Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-55-767Z",
+      "scope": "1440-retry-weak",
+      "runtime": "v22.23.1",
+      "rawStatus": "running",
+      "current23StartMatch": true,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-55-767Z/execution.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-17-55-767Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-13-532Z",
+      "scope": "1440-retry-weak",
+      "runtime": "v24.19.0",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-13-532Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-13-532Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-22-092Z",
+      "scope": "1440-retry-review",
+      "runtime": "v24.19.0",
+      "rawStatus": "running",
+      "current23StartMatch": true,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-22-092Z/execution.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-22-092Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-40-385Z",
+      "scope": "1440-retry-review",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-40-385Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-40-385Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-50-414Z",
+      "scope": "1440-retry-activity",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-50-414Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-18-50-414Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-19-00-351Z",
+      "scope": "1440-retry-achievement",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-19-00-351Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-19-00-351Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-14-587Z",
+      "scope": "1440-retry-legacy",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-14-587Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-14-587Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-23-794Z",
+      "scope": "390-retry-weak",
+      "runtime": "v22.23.1",
+      "rawStatus": "running",
+      "current23StartMatch": true,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-23-794Z/execution.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-23-794Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-45-209Z",
+      "scope": "390-retry-weak",
+      "runtime": "v24.19.0",
+      "rawStatus": "running",
+      "current23StartMatch": true,
+      "current23EndMatch": null,
+      "endEvidencePresent": false,
+      "exitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-45-209Z/execution.json",
+      "nativeAbort": true,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-45-209Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-04-910Z",
+      "scope": "390-retry-achievement",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-04-910Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-04-910Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-12-847Z",
+      "scope": "1440-legacy-unavailable",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-12-847Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-12-847Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-27-521Z",
+      "scope": "390-stale-offline",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-27-521Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-27-521Z/trace.json"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-50-312Z",
+      "scope": "390-retry-weak",
+      "runtime": "v22.23.1",
+      "rawStatus": "passed",
+      "current23StartMatch": true,
+      "current23EndMatch": true,
+      "endEvidencePresent": true,
+      "exitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-50-312Z/execution.json",
+      "nativeAbort": false,
+      "failure": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-26-50-312Z/trace.json"
+    }
+  ],
+  "acceptancePolicy": "18 independent scopes passed the identical final 23-file snapshot, each with terminal exit 0 and stable matching start/end hashes. This is not a single successful 18-scope invocation. Every prior native abort, probe failure and product red test remains preserved; no incomplete output is counted.",
+  "previousSummaries": [
+    "docs/development/evidence/2026-10-25-quiz-weak-current-scope-summary.json",
+    "docs/development/evidence/2026-10-25-quiz-weak-final-scope-summary.json",
+    "docs/development/evidence/2026-10-25-quiz-weak-toolbar-current-scope-summary.json"
+  ],
+  "diagnoses": [
+    {
+      "kind": "probe-location-condition",
+      "originalFailure": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-04-43-464Z/trace.json",
+      "diagnosticRed": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-10-51-378Z/trace.json",
+      "minimalFixGreen": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-11-28-905Z/trace.json",
+      "facts": "Final diagnostic rectangle bottom866.406 exceeded clip bottom844 while centerUnobscured=true. Narrow geometry now explicitly positions the full option; complete visibility and hit assertions unchanged. This early green predates the toolbar finding and is not final acceptance."
+    },
+    {
+      "kind": "product-toolbar-close-overlap",
+      "diagnosticRed": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-13-26-408Z/trace.json",
+      "formalRed": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-14-47-544Z/trace.json",
+      "formalGreen": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-15-24-543Z/trace.json",
+      "facts": "Original return-to-queue overlapped close44x40.72px and edge hits reached close. Root changed narrow toolbar CSS; enhanced formal scope checks no overlap, center/edge ownership, complete visibility, actual touch return to random and queue, and no storage writes."
+    }
+  ],
+  "processState": {
+    "checkedAt": "2026-10-24T22:28:17.0746901Z",
+    "query": "CommandLine matches this specialist script, diagnostic script or yijing-quiz-weak- isolated profiles; generic serve processes must be attributed by parent PID",
+    "matchingSpecialistProcesses": [],
+    "matchingSpecialistCount": 0,
+    "allKnownSpecialistRunsTerminal": true,
+    "lastSession": 53230,
+    "lastSessionExitCode": 0,
+    "lastInvocationScope": "390-retry-weak",
+    "lastInvocationExitCode": 0,
+    "lastInvocationReturnedWithoutSession": true,
+    "browserOwnership": "handed back to parent for standard full E2E; this agent will not start another browser",
+    "parentFullE2EObserved": [],
+    "parentProcessExplanation": "Parent independently began browser-smoke after handoff (PID38124, child serve40940 and Edge48504); those are not specialist leftovers and were not terminated.",
+    "profilesRetained": true
+  },
+  "remaining": [
+    "Parent must finish standard full npm run test:e2e on this source; this specialist summary does not claim its result.",
+    "Complete task-level final review/documentation, commit/push and new CI verification. Only the specialist 18-scope matrix is complete here.",
+    "Physical mobile, screen-reader and genuine browser 200% zoom evidence are outside this CDP-emulated specialist matrix."
+  ],
+  "limitations": [
+    "Headless Chromium desktop and CDP emulated touch. This is not physical-mobile, screen-reader, or real browser 200% zoom evidence.",
+    "A new random-port origin and isolated profile are used. No user profile, learning data, or private text is read.",
+    "Fixtures and quota failures are explicitly recorded. Fixture wrong histories are synthetic, not earned learning or achievement evidence.",
+    "Debugger only reads generated public question and attempt identity. No application function or DOM.click is called in the browser.",
+    "DOM geometry and scrollIntoView locate controls. Navigation, answers, retries, source opening and return use trusted CDP Input.",
+    "Offline covers already-visited modules in the same page, not first installation or a fresh offline reload."
+  ],
+  "latestContinuation": {
+    "scope": "last five only",
+    "newSuccessfulRuns": [
+      "2026-10-24T22-25-14-587Z",
+      "2026-10-24T22-26-50-312Z",
+      "2026-10-24T22-26-04-910Z",
+      "2026-10-24T22-26-12-847Z",
+      "2026-10-24T22-26-27-521Z"
+    ],
+    "nativeAbortsPreserved": [
+      "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-23-794Z/execution.json",
+      "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T22-25-45-209Z/execution.json"
+    ],
+    "applicationChanged": false,
+    "probeChanged": false,
+    "gitOperationsPerformed": false
+  }
+}

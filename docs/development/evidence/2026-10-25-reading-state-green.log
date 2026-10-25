@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: viewport acknowledgement before media change waits for coherent quick-reading modality
+ok 1 - viewport acknowledgement before media change waits for coherent quick-reading modality
+  ---
+  duration_ms: 2.1212
+  type: 'test'
+  ...
+# Subtest: deep reading waits for its panel and URL to agree with the stage
+ok 2 - deep reading waits for its panel and URL to agree with the stage
+  ---
+  duration_ms: 1.2181
+  type: 'test'
+  ...
+# Subtest: a permanently incorrect modal still fails with actual viewport and expected state
+ok 3 - a permanently incorrect modal still fails with actual viewport and expected state
+  ---
+  duration_ms: 1.3533
+  type: 'test'
+  ...
+# Subtest: an inconsistent open panel or deep link cannot pass a quick-reading assertion
+ok 4 - an inconsistent open panel or deep link cannot pass a quick-reading assertion
+  ---
+  duration_ms: 1.5343
+  type: 'test'
+  ...
+# Subtest: closed reading requires both the panel and deep link to be cleared
+ok 5 - closed reading requires both the panel and deep link to be cleared
+  ---
+  duration_ms: 2.0083
+  type: 'test'
+  ...
+# Subtest: visible-state convergence does not skip the existing readable-content assertion
+ok 6 - visible-state convergence does not skip the existing readable-content assertion
+  ---
+  duration_ms: 1.3221
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 114.3615

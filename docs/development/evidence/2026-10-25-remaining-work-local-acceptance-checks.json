@@ -1,0 +1,105 @@
+{
+  "checkedAt": "2026-10-25T00:11:18.992Z",
+  "head": "20b2e47e973f85db13a4206c09d50475e7d06a7e",
+  "documents": 16,
+  "localLinks": 903,
+  "originalCards": 48,
+  "requirements": 86,
+  "completedLocally": [
+    "T-DIV-01",
+    "T-SAVE-01",
+    "T-LEARN-05",
+    "T-SEARCH-01",
+    "T-LEARN-02",
+    "T-LEARN-01",
+    "T-QUIZ-01",
+    "T-LEARN-03"
+  ],
+  "businessDelivered": 7,
+  "localBusinessNotCommitted": [
+    "T-LEARN-03"
+  ],
+  "open": 40,
+  "openKinds": {
+    "已确认": 29,
+    "建议改进": 10,
+    "未来独立方案": 1
+  },
+  "openTaskIds": [
+    "T-QA-01",
+    "T-GROW-01",
+    "T-STAR-01",
+    "T-STAR-02",
+    "T-STAR-03",
+    "T-READ-01",
+    "T-READ-02",
+    "T-READ-03",
+    "T-READ-04",
+    "T-LEARN-04",
+    "T-DIV-02",
+    "T-DIV-03",
+    "T-GROW-02",
+    "T-PRIV-01",
+    "T-CAL-01",
+    "T-CAL-02",
+    "T-CAL-03",
+    "T-SOUND-01",
+    "T-SOUND-02",
+    "T-MODAL-01",
+    "T-ICON-01",
+    "T-ASSET-02",
+    "T-BACKUP-01",
+    "T-BACKUP-02",
+    "T-API-01",
+    "T-CACHE-01",
+    "T-CACHE-02",
+    "T-CAPACITY-01",
+    "T-SHARE-01",
+    "T-ASSET-01",
+    "T-DEP-01",
+    "T-CONTENT-01",
+    "T-CONTENT-02",
+    "T-QA-02",
+    "T-QA-03",
+    "T-A11Y-01",
+    "T-PERF-01",
+    "T-WIN-01",
+    "T-RELEASE-01",
+    "T-COPY-01"
+  ],
+  "originalTaskRowsUnchanged": true,
+  "originalDependenciesUnchanged": true,
+  "sourceGuard": {
+    "files": 171,
+    "changed": []
+  },
+  "existingProductEvidence": {
+    "validate": {
+      "command": "npm run validate",
+      "exitCode": 0,
+      "qualityScripts": 75,
+      "coverageTests": 629,
+      "passed": 629,
+      "failed": 0,
+      "coverageModules": 23,
+      "line": 99.72,
+      "branch": 93.9,
+      "function": 99.01,
+      "log": "docs/development/evidence/2026-10-25-learning-feedback-v9-final-validate.log",
+      "sha256": "3d4bc3093cdea402a420dd5b434dec0434cbb82569fc161b2ca4ae7221237f34"
+    },
+    "e2e": {
+      "exitCode": 0,
+      "screenshots": 25
+    },
+    "browser": {
+      "scopeCount": 51,
+      "observedFiles": 31
+    },
+    "archiveHashVerified": true
+  },
+  "newProductTestsRun": false,
+  "newBrowserBatchStarted": false,
+  "diffCheckExitCode": 0,
+  "issues": []
+}

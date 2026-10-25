@@ -76,7 +76,8 @@ assert.match(main, /document\.body\.classList\.add\('panel-open'\)/);
 assert.match(main, /document\.body\.classList\.remove\('panel-open'\)/);
 assert.match(main, /canvas\.addEventListener\('transitionend'/);
 assert.match(main, /\['width', 'height'\]\.includes\(event\.propertyName\)/);
-assert.match(main, /panel\.setAttribute\('aria-modal', String\(compactPanelQuery\.matches\)\)/);
+assert.match(main, /panel\.setAttribute\('aria-modal', String\(modal\)\)/);
+assert.match(main, /state\.reading\.stage === 'deep' \|\| compactPanelQuery\.matches/);
 assert.match(main, /const PANEL_LAYOUT_KEY = 'yijing-panel-layout'/);
 assert.match(main, /const defaultLayout = compactPanelQuery\.matches \? 'bottom' : 'left'/);
 assert.match(main, /const DRAWER_SIZES = \['compact', 'medium', 'large'\]/);
@@ -90,7 +91,8 @@ assert.match(main, /document\.body\.classList\.add\('mode-transitioning'\)/);
 assert.match(main, /event\.key\.toLowerCase\(\) === 'k'/);
 assert.match(main, /panel\.dataset\.presentation = workspace/);
 assert.match(main, /resetPanelViewport\(\{ focusHeading: true \}\)/);
-assert.match(main, /renderer\(panelContent, state, \(\) => setMode\('learning'\)\)/);
+assert.match(main, /\['learning', 'review', 'quiz'\]\.includes\(mode\)[\s\S]*?const cleanup = renderer\(panelContent, state, \(target = 'explore', nextEntry\) => setMode\(target, nextEntry\), entry\)/);
+assert.match(main, /modeCleanup = typeof cleanup === 'function' \? cleanup : null/);
 assert.match(main, /addReviewCard\(code\)/);
 assert.match(main, /state\.currentMode = 'explore';[\s\S]*?updateModeButtons\('explore'\)/);
 assert.match(main, /if \(document\.querySelector\('\.share-card-overlay'\)\) return/);
@@ -117,10 +119,13 @@ assert.match(main, /cinematicMotion\.enterSurface\(panelContent, mode\)/);
 assert.match(main, /setPanelLayout\(panelLayoutSelect\.value, \{ persist: true \}\)/);
 assert.match(render, /<section class="detail-section/);
 assert.match(render, /class="detail-heading-copy"/);
-assert.match(reviewMode, /reviewCards = loadReviewCards\(\)/);
-assert.doesNotMatch(reviewMode, /if \(!reviewCards\) reviewCards = loadReviewCards\(\)/);
+assert.match(reviewMode, /const context = \{ cards: loadReviewCards\(\)/);
+assert.doesNotMatch(reviewMode, /^(?:let|var) reviewCards\b/m);
 assert.match(reviewMode, /aria-controls="review-answer"/);
 assert.match(reviewMode, /id="review-answer" hidden aria-hidden="true"/);
-assert.match(quizMode, /feedback\.scrollIntoView\?\.\(\{[\s\S]*?block:\s*'nearest'/);
+// Failure recovery reveals the actionable retry; ordinary feedback stays nearby.
+// quiz-mode-page.test.mjs checks the actual target, focus and lifecycle behavior.
+assert.match(quizMode, /const scrollTarget = failed && action \? action : feedback/);
+assert.match(quizMode, /scrollTarget\.scrollIntoView\?\.\(\{[^}]*block:\s*failed \? 'center' : 'nearest'/);
 
 console.log('✓ 布局响应式契约测试通过');

@@ -1,3 +1,4 @@
+import { installUIIcons } from './ui-icons.js';
 import {
   applyEvolutionPreset,
   changedEvolutionPositions,
@@ -378,7 +379,7 @@ export function showEvolutionLab(baseHex, hexagrams, onOpenHexagram, onClose = n
   activeSession.playback = createPlayback(activeSession);
   overlayEl.innerHTML = `
     <div class="evolution-card" role="dialog" aria-modal="true" aria-labelledby="evolution-title">
-      <button type="button" class="evolution-close" aria-label="关闭卦象演变实验室">✕</button>
+      <button type="button" class="evolution-close" aria-label="关闭卦象演变实验室"><span data-icon="x" aria-hidden="true"></span></button>
       <header class="evolution-header">
         <span>交互学习</span>
         <h2 id="evolution-title" tabindex="-1">卦象演变实验室</h2>
@@ -390,6 +391,7 @@ export function showEvolutionLab(baseHex, hexagrams, onOpenHexagram, onClose = n
   overlayEl.classList.add('open');
   overlayEl.setAttribute('aria-hidden', 'false');
   renderLab();
+  installUIIcons(overlayEl);
   overlayEl.querySelector('.evolution-close')?.focus();
 }
 

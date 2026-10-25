@@ -1,0 +1,986 @@
+{
+  "startedAt": "2026-10-24T20:51:22.364Z",
+  "command": "node docs/development/tools/check-learning-recommendation-input.mjs",
+  "node": "v24.19.0",
+  "uv": "1.52.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-recommendation-8PhGlO",
+  "scope": "1440-save-failure-completion",
+  "head": "ccd9961a76f3c2a27bdb1acaf805f8969551df63",
+  "sourceHashes": {
+    "web/js/main.js": "1556c793ef4492f32ec7cd7e14b8cd291921048743838c6b258db254a2edf82f",
+    "web/js/learning-assessment.js": "cd8ab9272d3ca1e9f0585486f8e79dca00dc2fded4d9301709270a2e630de165",
+    "web/js/learning-progress.js": "41389087183f1054035e62b4d0f03a5edca0f72124d16aa24b7be1f242b08f81",
+    "web/js/learning-assessment-page.js": "d896c82e026da67bd57a1edc94cc34a6151aae41f992563eacf973a83c884095",
+    "web/js/modes/learning-mode.js": "74838284cc1b0a5a241d676dfa0bd2850796a81ab5d8bd9755e7623cec7bdc5c",
+    "web/js/modes/review-mode.js": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+    "web/js/modes/quiz-mode.js": "7a60bcd0b713a6b43bac4a0ca6761f77877419f16f01901bfbc67e0c3f9734a1",
+    "web/js/study-page.js": "0967444da28f07dcb8306740299b4c529129fd79bbb4386cfccb40c113c7d5a7",
+    "web/js/user-data.js": "52ae1c42d07747413a5da56d7e683e8f67534a80fffa6395048ab76c1250c530",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/quiz-engine.js": "4b9e087b6c080b9e6a05cd69d15887634e8cb6cfe0b921e559bc48b7cbda1fba",
+    "web/styles/immersive.css": "b3568ce4e89ff48b8c908d81bba79b343a806df947910479c0bc1c88f5ffd701",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "docs/development/tools/check-learning-recommendation-input.mjs": "09931101f8f05378fede889ac27d4c3b5c33200d3164452d86cb942bfedbf5ac"
+  },
+  "status": "failed",
+  "scenarios": [
+    {
+      "name": "1440-save-failure-completion",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "status": "failed",
+      "inputs": [
+        {
+          "kind": "mouse",
+          "selector": "[data-entry=\"explore\"]",
+          "x": 642.9296875,
+          "y": 668.671875
+        },
+        {
+          "kind": "keyboard",
+          "key": "Enter"
+        },
+        {
+          "kind": "mouse",
+          "selector": ".lesson-continue",
+          "x": 1157,
+          "y": 892.875
+        },
+        {
+          "kind": "mouse",
+          "selector": ".lesson-method-rail a[href=\"#lesson-explain\"]",
+          "x": 623.6640625,
+          "y": 550.875
+        },
+        {
+          "kind": "wheel",
+          "x": 288,
+          "y": 516,
+          "distance": 60
+        },
+        {
+          "kind": "mouse",
+          "selector": ".lesson-method-rail a[href=\"#lesson-apply\"]",
+          "x": 726.9921875,
+          "y": 117
+        }
+      ],
+      "checks": [
+        {
+          "label": "welcome-opens-first-course",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:51:23.918Z",
+                  "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "intro",
+                "scrollTop": 0,
+                "updatedAt": "2026-10-24T20:51:24.005Z"
+              }
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 188.09999999403954
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 188.5
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 329.59999999403954,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:51:23.918Z",
+                      "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 329.69999998807907,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 417.69999998807907,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:51:23.918Z",
+                      "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 0,
+                    "updatedAt": "2026-10-24T20:51:24.005Z"
+                  }
+                }
+              }
+            ],
+            "heading": "蒙学 · 阴阳之道",
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "status": "已记住阅读位置。",
+            "statusGeometry": {
+              "rect": {
+                "x": 143.34320068359375,
+                "y": 136.2493896484375,
+                "width": 1143.3134765625,
+                "height": 29.732147216796875,
+                "top": 136.2493896484375,
+                "right": 1286.6566772460938,
+                "bottom": 165.98153686523438,
+                "left": 143.34320068359375
+              },
+              "clip": {
+                "left": 143.34320068359375,
+                "top": 136.2493896484375,
+                "right": 1286.6566772460938,
+                "bottom": 0
+              },
+              "ancestors": [
+                {
+                  "tag": "DIV",
+                  "id": "learning-content",
+                  "className": "learning-content",
+                  "overflowX": "hidden",
+                  "overflowY": "hidden",
+                  "rect": {
+                    "x": 143.34320068359375,
+                    "y": 136.2493896484375,
+                    "width": 1143.3134765625,
+                    "height": 799.52001953125,
+                    "top": 136.2493896484375,
+                    "right": 1286.6566772460938,
+                    "bottom": 935.7694091796875,
+                    "left": 143.34320068359375
+                  }
+                },
+                {
+                  "tag": "ASIDE",
+                  "id": "detail-panel",
+                  "className": "detail-panel lenis open",
+                  "overflowX": "hidden",
+                  "overflowY": "hidden",
+                  "rect": {
+                    "x": 28,
+                    "y": 96,
+                    "width": 1384,
+                    "height": 904,
+                    "top": 96,
+                    "right": 1412,
+                    "bottom": 1000,
+                    "left": 28
+                  }
+                },
+                {
+                  "tag": "BODY",
+                  "id": "",
+                  "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open lesson-overview-open",
+                  "overflowX": "hidden",
+                  "overflowY": "hidden",
+                  "rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1440,
+                    "height": 0,
+                    "top": 0,
+                    "right": 1440,
+                    "bottom": 0,
+                    "left": 0
+                  }
+                }
+              ],
+              "fullyVisible": false,
+              "centerUnobscured": true,
+              "hit": "lesson-resume-status"
+            },
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "H3"
+            }
+          }
+        },
+        {
+          "label": "saved-explain-nonzero-position",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:51:23.918Z",
+                  "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "explain",
+                "scrollTop": 1193,
+                "updatedAt": "2026-10-24T20:51:25.678Z"
+              }
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 188.09999999403954
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 188.5
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn lesson-continue motion-item magnetic-control is-magnetic motion-pressed",
+                "at": 971.5999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "A",
+                "at": 1130.199999988079
+              },
+              {
+                "type": "wheel",
+                "trusted": true,
+                "target": "lesson-explain",
+                "at": 1271.5
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 329.59999999403954,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:51:23.918Z",
+                      "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 329.69999998807907,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 417.69999998807907,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:51:23.918Z",
+                      "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 0,
+                    "updatedAt": "2026-10-24T20:51:24.005Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2089.5999999940395,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:51:23.918Z",
+                      "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1193,
+                    "updatedAt": "2026-10-24T20:51:25.678Z"
+                  }
+                }
+              }
+            ],
+            "heading": "阴阳之道",
+            "scrollTop": 1193,
+            "scrollHeight": 2346,
+            "clientHeight": 902,
+            "status": "已记住阅读位置。",
+            "statusGeometry": {
+              "rect": {
+                "x": 143,
+                "y": -1058,
+                "width": 1144,
+                "height": 29.75,
+                "top": -1058,
+                "right": 1287,
+                "bottom": -1028.25,
+                "left": 143
+              },
+              "clip": {
+                "left": 28,
+                "top": 96,
+                "right": 1412,
+                "bottom": 0
+              },
+              "ancestors": [
+                {
+                  "tag": "ASIDE",
+                  "id": "detail-panel",
+                  "className": "detail-panel open lenis lenis-scrolling lenis-smooth",
+                  "overflowX": "hidden",
+                  "overflowY": "auto",
+                  "rect": {
+                    "x": 28,
+                    "y": 96,
+                    "width": 1384,
+                    "height": 904,
+                    "top": 96,
+                    "right": 1412,
+                    "bottom": 1000,
+                    "left": 28
+                  }
+                },
+                {
+                  "tag": "BODY",
+                  "id": "",
+                  "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+                  "overflowX": "hidden",
+                  "overflowY": "hidden",
+                  "rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1440,
+                    "height": 0,
+                    "top": 0,
+                    "right": 1440,
+                    "bottom": 0,
+                    "left": 0
+                  }
+                }
+              ],
+              "fullyVisible": false,
+              "centerUnobscured": false
+            },
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "A"
+            }
+          }
+        },
+        {
+          "label": "storage-failure-readable-and-honest",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:51:23.918Z",
+                  "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "explain",
+                "scrollTop": 1193,
+                "updatedAt": "2026-10-24T20:51:25.678Z"
+              }
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 188.09999999403954
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+                "at": 188.5
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn lesson-continue motion-item magnetic-control is-magnetic motion-pressed",
+                "at": 971.5999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "A",
+                "at": 1130.199999988079
+              },
+              {
+                "type": "wheel",
+                "trusted": true,
+                "target": "lesson-explain",
+                "at": 1271.5
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "A",
+                "at": 2223.699999988079
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 329.59999999403954,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:51:23.918Z",
+                      "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 329.69999998807907,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 417.69999998807907,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:51:23.918Z",
+                      "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 0,
+                    "updatedAt": "2026-10-24T20:51:24.005Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2089.5999999940395,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:51:23.918Z",
+                      "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1193,
+                    "updatedAt": "2026-10-24T20:51:25.678Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": false,
+                "at": 2526.4000000059605,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:51:23.918Z",
+                      "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1194,
+                    "updatedAt": "2026-10-24T20:51:26.115Z"
+                  }
+                }
+              }
+            ],
+            "heading": "阴阳之道",
+            "scrollTop": 1194,
+            "scrollHeight": 2346,
+            "clientHeight": 902,
+            "status": "浏览器未能保存阅读位置；你仍可继续学习。",
+            "statusGeometry": {
+              "rect": {
+                "x": 143,
+                "y": -1059,
+                "width": 1144,
+                "height": 29.75,
+                "top": -1059,
+                "right": 1287,
+                "bottom": -1029.25,
+                "left": 143
+              },
+              "clip": {
+                "left": 28,
+                "top": 96,
+                "right": 1412,
+                "bottom": 0
+              },
+              "ancestors": [
+                {
+                  "tag": "ASIDE",
+                  "id": "detail-panel",
+                  "className": "detail-panel open lenis",
+                  "overflowX": "hidden",
+                  "overflowY": "auto",
+                  "rect": {
+                    "x": 28,
+                    "y": 96,
+                    "width": 1384,
+                    "height": 904,
+                    "top": 96,
+                    "right": 1412,
+                    "bottom": 1000,
+                    "left": 28
+                  }
+                },
+                {
+                  "tag": "BODY",
+                  "id": "",
+                  "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+                  "overflowX": "hidden",
+                  "overflowY": "hidden",
+                  "rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1440,
+                    "height": 0,
+                    "top": 0,
+                    "right": 1440,
+                    "bottom": 0,
+                    "left": 0
+                  }
+                }
+              ],
+              "fullyVisible": false,
+              "centerUnobscured": false
+            },
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "A"
+            }
+          }
+        }
+      ],
+      "sessions": [],
+      "documents": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T20:51:23.576Z",
+          "values": {},
+          "welcome": true
+        },
+        {
+          "kind": "QuotaExceededError",
+          "key": "yijing-learning-record-v2",
+          "purpose": "reading-position save failure only"
+        }
+      ],
+      "screenshots": [
+        "1440-save-failure-completion-save-failed-readable.png",
+        "1440-save-failure-completion-failure.png"
+      ],
+      "failure": {
+        "message": "Reading save failure must be visible at the current reading position: {\"rect\":{\"x\":143,\"y\":-1059,\"width\":1144,\"height\":29.75,\"top\":-1059,\"right\":1287,\"bottom\":-1029.25,\"left\":143},\"clip\":{\"left\":28,\"top\":96,\"right\":1412,\"bottom\":0},\"ancestors\":[{\"tag\":\"ASIDE\",\"id\":\"detail-panel\",\"className\":\"detail-panel open lenis\",\"overflowX\":\"hidden\",\"overflowY\":\"auto\",\"rect\":{\"x\":28,\"y\":96,\"width\":1384,\"height\":904,\"top\":96,\"right\":1412,\"bottom\":1000,\"left\":28}},{\"tag\":\"BODY\",\"id\":\"\",\"className\":\"motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open\",\"overflowX\":\"hidden\",\"overflowY\":\"hidden\",\"rect\":{\"x\":0,\"y\":0,\"width\":1440,\"height\":0,\"top\":0,\"right\":1440,\"bottom\":0,\"left\":0}}],\"fullyVisible\":false,\"centerUnobscured\":false}",
+        "stack": "AssertionError [ERR_ASSERTION]: Reading save failure must be visible at the current reading position: {\"rect\":{\"x\":143,\"y\":-1059,\"width\":1144,\"height\":29.75,\"top\":-1059,\"right\":1287,\"bottom\":-1029.25,\"left\":143},\"clip\":{\"left\":28,\"top\":96,\"right\":1412,\"bottom\":0},\"ancestors\":[{\"tag\":\"ASIDE\",\"id\":\"detail-panel\",\"className\":\"detail-panel open lenis\",\"overflowX\":\"hidden\",\"overflowY\":\"auto\",\"rect\":{\"x\":28,\"y\":96,\"width\":1384,\"height\":904,\"top\":96,\"right\":1412,\"bottom\":1000,\"left\":28}},{\"tag\":\"BODY\",\"id\":\"\",\"className\":\"motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open\",\"overflowX\":\"hidden\",\"overflowY\":\"hidden\",\"rect\":{\"x\":0,\"y\":0,\"width\":1440,\"height\":0,\"top\":0,\"right\":1440,\"bottom\":0,\"left\":0}}],\"fullyVisible\":false,\"centerUnobscured\":false}\n    at failureAndCompletion (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:453:10)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:323:5)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:529:5"
+      },
+      "failureState": {
+        "record": {
+          "version": 2,
+          "lessons": {
+            "l1-1": {
+              "viewedAt": "2026-10-24T20:51:23.918Z",
+              "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+            }
+          },
+          "spotChecks": [],
+          "exams": [],
+          "oralReviews": [],
+          "resume": {
+            "lessonId": "l1-1",
+            "section": "explain",
+            "scrollTop": 1193,
+            "updatedAt": "2026-10-24T20:51:25.678Z"
+          }
+        },
+        "cards": null,
+        "wrong": null,
+        "inputs": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Enter",
+            "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+            "at": 188.09999999403954
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "pointerType": "",
+            "target": "daily-enter daily-enter-primary motion-item magnetic-control",
+            "at": 188.5
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "pointerType": "mouse",
+            "target": "quick-btn lesson-continue motion-item magnetic-control is-magnetic motion-pressed",
+            "at": 971.5999999940395
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "pointerType": "mouse",
+            "target": "A",
+            "at": 1130.199999988079
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "target": "lesson-explain",
+            "at": 1271.5
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "pointerType": "mouse",
+            "target": "A",
+            "at": 2223.699999988079
+          }
+        ],
+        "writes": [
+          {
+            "key": "yijing-learning-record-v2",
+            "saved": true,
+            "at": 329.59999999403954,
+            "value": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:51:23.918Z",
+                  "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            }
+          },
+          {
+            "key": "yijing-activity-v1",
+            "saved": true,
+            "at": 329.69999998807907,
+            "value": {
+              "days": [
+                "2026-10-25"
+              ]
+            }
+          },
+          {
+            "key": "yijing-learning-record-v2",
+            "saved": true,
+            "at": 417.69999998807907,
+            "value": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:51:23.918Z",
+                  "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "intro",
+                "scrollTop": 0,
+                "updatedAt": "2026-10-24T20:51:24.005Z"
+              }
+            }
+          },
+          {
+            "key": "yijing-learning-record-v2",
+            "saved": true,
+            "at": 2089.5999999940395,
+            "value": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:51:23.918Z",
+                  "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "explain",
+                "scrollTop": 1193,
+                "updatedAt": "2026-10-24T20:51:25.678Z"
+              }
+            }
+          },
+          {
+            "key": "yijing-learning-record-v2",
+            "saved": false,
+            "at": 2526.4000000059605,
+            "value": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:51:23.918Z",
+                  "lastStudiedAt": "2026-10-24T20:51:23.918Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "explain",
+                "scrollTop": 1194,
+                "updatedAt": "2026-10-24T20:51:26.115Z"
+              }
+            }
+          }
+        ],
+        "heading": "阴阳之道",
+        "scrollTop": 1194,
+        "scrollHeight": 2346,
+        "clientHeight": 902,
+        "status": "浏览器未能保存阅读位置；你仍可继续学习。",
+        "statusGeometry": {
+          "rect": {
+            "x": 143,
+            "y": -1059,
+            "width": 1144,
+            "height": 29.75,
+            "top": -1059,
+            "right": 1287,
+            "bottom": -1029.25,
+            "left": 143
+          },
+          "clip": {
+            "left": 28,
+            "top": 96,
+            "right": 1412,
+            "bottom": 0
+          },
+          "ancestors": [
+            {
+              "tag": "ASIDE",
+              "id": "detail-panel",
+              "className": "detail-panel open lenis",
+              "overflowX": "hidden",
+              "overflowY": "auto",
+              "rect": {
+                "x": 28,
+                "y": 96,
+                "width": 1384,
+                "height": 904,
+                "top": 96,
+                "right": 1412,
+                "bottom": 1000,
+                "left": 28
+              }
+            },
+            {
+              "tag": "BODY",
+              "id": "",
+              "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+              "overflowX": "hidden",
+              "overflowY": "hidden",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 0,
+                "left": 0
+              }
+            }
+          ],
+          "fullyVisible": false,
+          "centerUnobscured": false
+        },
+        "questionCount": 0,
+        "focus": {
+          "id": "",
+          "tag": "A"
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Headless Chromium at 1440x1024 and 390x844 emulated touch; not physical mobile, a screen reader or true browser 200% zoom.",
+    "Priority records are explicit localStorage fixtures using public question references, not earned user evidence. No private user profile or records are accessed.",
+    "Only the synthetic learning storage key is fault-injected. Debugger reads generated sessions without changing them; all course, navigation and submission actions use trusted CDP Input.",
+    "DOM reads and scrollIntoView locate reachable controls; reading-position evidence is generated by a real anchor activation and trusted wheel/touch scrolling."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "failure": {
+    "message": "Reading save failure must be visible at the current reading position: {\"rect\":{\"x\":143,\"y\":-1059,\"width\":1144,\"height\":29.75,\"top\":-1059,\"right\":1287,\"bottom\":-1029.25,\"left\":143},\"clip\":{\"left\":28,\"top\":96,\"right\":1412,\"bottom\":0},\"ancestors\":[{\"tag\":\"ASIDE\",\"id\":\"detail-panel\",\"className\":\"detail-panel open lenis\",\"overflowX\":\"hidden\",\"overflowY\":\"auto\",\"rect\":{\"x\":28,\"y\":96,\"width\":1384,\"height\":904,\"top\":96,\"right\":1412,\"bottom\":1000,\"left\":28}},{\"tag\":\"BODY\",\"id\":\"\",\"className\":\"motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open\",\"overflowX\":\"hidden\",\"overflowY\":\"hidden\",\"rect\":{\"x\":0,\"y\":0,\"width\":1440,\"height\":0,\"top\":0,\"right\":1440,\"bottom\":0,\"left\":0}}],\"fullyVisible\":false,\"centerUnobscured\":false}",
+    "stack": "AssertionError [ERR_ASSERTION]: Reading save failure must be visible at the current reading position: {\"rect\":{\"x\":143,\"y\":-1059,\"width\":1144,\"height\":29.75,\"top\":-1059,\"right\":1287,\"bottom\":-1029.25,\"left\":143},\"clip\":{\"left\":28,\"top\":96,\"right\":1412,\"bottom\":0},\"ancestors\":[{\"tag\":\"ASIDE\",\"id\":\"detail-panel\",\"className\":\"detail-panel open lenis\",\"overflowX\":\"hidden\",\"overflowY\":\"auto\",\"rect\":{\"x\":28,\"y\":96,\"width\":1384,\"height\":904,\"top\":96,\"right\":1412,\"bottom\":1000,\"left\":28}},{\"tag\":\"BODY\",\"id\":\"\",\"className\":\"motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open\",\"overflowX\":\"hidden\",\"overflowY\":\"hidden\",\"rect\":{\"x\":0,\"y\":0,\"width\":1440,\"height\":0,\"top\":0,\"right\":1440,\"bottom\":0,\"left\":0}}],\"fullyVisible\":false,\"centerUnobscured\":false}\n    at failureAndCompletion (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:453:10)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:323:5)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/docs/development/tools/check-learning-recommendation-input.mjs:529:5"
+  },
+  "finishedAt": "2026-10-24T20:51:27.107Z",
+  "finalSourceHashes": {
+    "web/js/main.js": "1556c793ef4492f32ec7cd7e14b8cd291921048743838c6b258db254a2edf82f",
+    "web/js/learning-assessment.js": "cd8ab9272d3ca1e9f0585486f8e79dca00dc2fded4d9301709270a2e630de165",
+    "web/js/learning-progress.js": "41389087183f1054035e62b4d0f03a5edca0f72124d16aa24b7be1f242b08f81",
+    "web/js/learning-assessment-page.js": "d896c82e026da67bd57a1edc94cc34a6151aae41f992563eacf973a83c884095",
+    "web/js/modes/learning-mode.js": "74838284cc1b0a5a241d676dfa0bd2850796a81ab5d8bd9755e7623cec7bdc5c",
+    "web/js/modes/review-mode.js": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+    "web/js/modes/quiz-mode.js": "7a60bcd0b713a6b43bac4a0ca6761f77877419f16f01901bfbc67e0c3f9734a1",
+    "web/js/study-page.js": "0967444da28f07dcb8306740299b4c529129fd79bbb4386cfccb40c113c7d5a7",
+    "web/js/user-data.js": "52ae1c42d07747413a5da56d7e683e8f67534a80fffa6395048ab76c1250c530",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/quiz-engine.js": "4b9e087b6c080b9e6a05cd69d15887634e8cb6cfe0b921e559bc48b7cbda1fba",
+    "web/styles/immersive.css": "b3568ce4e89ff48b8c908d81bba79b343a806df947910479c0bc1c88f5ffd701",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "docs/development/tools/check-learning-recommendation-input.mjs": "09931101f8f05378fede889ac27d4c3b5c33200d3164452d86cb942bfedbf5ac"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "profileRemoved": false,
+  "profileRetainedReason": "Isolated synthetic profile retained for diagnosis; no deletion attempted and no user profile touched."
+}

@@ -1,0 +1,3558 @@
+{
+  "schema": "yijing-learning-feedback-evidence-v1",
+  "createdAt": "2026-10-25T00:05:13.545Z",
+  "scopeCount": 51,
+  "observedFileCount": 31,
+  "expectedScopes": [
+    "1440-review-card-retry",
+    "1440-review-activity-retry",
+    "1440-review-achievement-retry",
+    "1440-review-leave",
+    "1440-oral-self-record-retry",
+    "1440-oral-self-activity-retry",
+    "1440-oral-ai-save-retry",
+    "1440-oral-ai-stale-course",
+    "1440-oral-ai-stale-edit",
+    "1440-oral-ai-stale-leave",
+    "1440-assessment-result",
+    "1440-assessment-save-retry",
+    "1440-quiz-result",
+    "1440-quiz-save-retry",
+    "1440-divination-result",
+    "1440-divination-save-retry",
+    "1440-meihua-number-result",
+    "1440-meihua-number-save-retry",
+    "1440-meihua-time-result",
+    "1440-meihua-time-save-retry",
+    "390-review-card-retry",
+    "390-review-activity-retry",
+    "390-review-achievement-retry",
+    "390-review-leave",
+    "390-oral-self-record-retry",
+    "390-oral-self-activity-retry",
+    "390-oral-ai-save-retry",
+    "390-oral-ai-stale-course",
+    "390-oral-ai-stale-edit",
+    "390-oral-ai-stale-leave",
+    "390-assessment-result",
+    "390-assessment-save-retry",
+    "390-quiz-result",
+    "390-quiz-save-retry",
+    "390-divination-result",
+    "390-divination-save-retry",
+    "390-meihua-number-result",
+    "390-meihua-number-save-retry",
+    "390-meihua-time-result",
+    "390-meihua-time-save-retry",
+    "320-quiz-save-retry",
+    "1280-quiz-save-retry",
+    "1280-assessment-save-retry",
+    "1280-oral-self-record-retry",
+    "1280-review-card-retry",
+    "1280-meihua-number-save-retry",
+    "768-quiz-save-retry",
+    "768-assessment-save-retry",
+    "768-oral-self-record-retry",
+    "768-review-card-retry",
+    "768-meihua-number-save-retry"
+  ],
+  "sourceSnapshot": "docs/development/evidence/2026-10-25-learning-feedback-final-source-v9.json",
+  "sourceSnapshotSha256": "a9dcc62b9abf31edf49929027c6cc86e6e1ce5c04c7c6afe1378adc90aceebda",
+  "summary": "docs/development/evidence/feedback-final-v9-node22-20261024-235906/summary.json",
+  "summarySha256": "428a2f4015e8b1362537de6c1f61f873a27abc3f78eb4c17d6419d5845b18569",
+  "collectorSha256": "de91c7452f9dc0e1cbc4ab28469ee59529133d4c670d6e62babef525d0bef0d2",
+  "selections": [
+    {
+      "scope": "1440-review-card-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-14-162Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:47:14.209Z",
+      "finishedAt": "2026-10-24T23:47:21.454Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 3,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-review-card-retry-automatic-0.png",
+        "1440-review-card-retry-automatic-1.png",
+        "1440-review-card-retry-queue-after-last.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-review-activity-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-24-621Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:47:24.671Z",
+      "finishedAt": "2026-10-24T23:47:31.754Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 3,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-review-activity-retry-automatic-0.png",
+        "1440-review-activity-retry-automatic-1.png",
+        "1440-review-activity-retry-queue-after-last.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-review-achievement-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-34-939Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:47:34.988Z",
+      "finishedAt": "2026-10-24T23:47:42.402Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 3,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-review-achievement-retry-automatic-0.png",
+        "1440-review-achievement-retry-automatic-1.png",
+        "1440-review-achievement-retry-queue-after-last.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-review-leave",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-45-575Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:47:45.629Z",
+      "finishedAt": "2026-10-24T23:47:52.216Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-review-leave-automatic-0.png",
+        "1440-review-leave-fresh-card-no-old-feedback.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-oral-self-record-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-55-383Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:47:55.432Z",
+      "finishedAt": "2026-10-24T23:48:05.052Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 5,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-oral-self-record-retry-automatic-0.png",
+        "1440-oral-self-record-retry-automatic-1.png",
+        "1440-oral-self-record-retry-oral-self-saved-source.png",
+        "1440-oral-self-record-retry-automatic-3.png",
+        "1440-oral-self-record-retry-oral-self-failed-source.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-oral-self-activity-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-48-08-211Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:48:08.256Z",
+      "finishedAt": "2026-10-24T23:48:17.865Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 5,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-oral-self-activity-retry-automatic-0.png",
+        "1440-oral-self-activity-retry-automatic-1.png",
+        "1440-oral-self-activity-retry-oral-self-saved-source.png",
+        "1440-oral-self-activity-retry-automatic-3.png",
+        "1440-oral-self-activity-retry-oral-self-failed-source.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-oral-ai-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-39-613Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:46:39.896Z",
+      "finishedAt": "2026-10-24T23:46:54.062Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 5,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-oral-ai-save-retry-automatic-0.png",
+        "1440-oral-ai-save-retry-automatic-1.png",
+        "1440-oral-ai-save-retry-oral-ai-saved-source.png",
+        "1440-oral-ai-save-retry-automatic-3.png",
+        "1440-oral-ai-save-retry-oral-ai-failed-source.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-oral-ai-stale-course",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-50-19-746Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v24.19.0",
+      "uv": "1.52.1",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:50:19.795Z",
+      "finishedAt": "2026-10-24T23:50:24.259Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 1,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-oral-ai-stale-course-automatic-0.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-oral-ai-stale-edit",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-58-39-975Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:58:40.026Z",
+      "finishedAt": "2026-10-24T23:58:46.625Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 1,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-oral-ai-stale-edit-automatic-0.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-oral-ai-stale-leave",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-07-069Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:59:07.117Z",
+      "finishedAt": "2026-10-24T23:59:12.102Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 1,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-oral-ai-stale-leave-late-result-stayed-on-quiz.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-assessment-result",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-15-303Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:59:15.355Z",
+      "finishedAt": "2026-10-24T23:59:19.859Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 1,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-assessment-result-automatic-0.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-assessment-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-24-127Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:59:24.175Z",
+      "finishedAt": "2026-10-24T23:59:30.879Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-assessment-save-retry-automatic-0.png",
+        "1440-assessment-save-retry-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-quiz-result",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-35-724Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:59:35.770Z",
+      "finishedAt": "2026-10-24T23:59:40.687Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 1,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-quiz-result-automatic-0.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-quiz-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-43-872Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:59:43.918Z",
+      "finishedAt": "2026-10-24T23:59:49.574Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-quiz-save-retry-automatic-0.png",
+        "1440-quiz-save-retry-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-divination-result",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-54-981Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:59:55.031Z",
+      "finishedAt": "2026-10-24T23:59:59.776Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 1,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-divination-result-automatic-0.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-divination-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-02-957Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:00:03.009Z",
+      "finishedAt": "2026-10-25T00:00:09.781Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 3,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-divination-save-retry-automatic-0.png",
+        "1440-divination-save-retry-automatic-1.png",
+        "1440-divination-save-retry-automatic-2.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-meihua-number-result",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-12-976Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:00:13.035Z",
+      "finishedAt": "2026-10-25T00:00:19.422Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-meihua-number-result-automatic-meihua-cast.png",
+        "1440-meihua-number-result-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-meihua-number-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-22-585Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:00:22.793Z",
+      "finishedAt": "2026-10-25T00:00:30.992Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 4,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-meihua-number-save-retry-automatic-meihua-cast.png",
+        "1440-meihua-number-save-retry-automatic-1.png",
+        "1440-meihua-number-save-retry-automatic-2.png",
+        "1440-meihua-number-save-retry-automatic-3.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-meihua-time-result",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-34-211Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:00:34.257Z",
+      "finishedAt": "2026-10-25T00:00:40.367Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-meihua-time-result-automatic-meihua-cast.png",
+        "1440-meihua-time-result-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1440-meihua-time-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-43-548Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:00:43.598Z",
+      "finishedAt": "2026-10-25T00:00:51.518Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 4,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1440-meihua-time-save-retry-automatic-meihua-cast.png",
+        "1440-meihua-time-save-retry-automatic-1.png",
+        "1440-meihua-time-save-retry-automatic-2.png",
+        "1440-meihua-time-save-retry-automatic-3.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-review-card-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-56-068Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:00:56.115Z",
+      "finishedAt": "2026-10-25T00:01:00.245Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 3,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-review-card-retry-automatic-0.png",
+        "390-review-card-retry-automatic-1.png",
+        "390-review-card-retry-queue-after-last.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-review-activity-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-03-448Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:01:03.508Z",
+      "finishedAt": "2026-10-25T00:01:09.012Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 3,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-review-activity-retry-automatic-0.png",
+        "390-review-activity-retry-automatic-1.png",
+        "390-review-activity-retry-queue-after-last.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-review-achievement-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-12-567Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:01:12.617Z",
+      "finishedAt": "2026-10-25T00:01:16.859Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 3,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-review-achievement-retry-automatic-0.png",
+        "390-review-achievement-retry-automatic-1.png",
+        "390-review-achievement-retry-queue-after-last.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-review-leave",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-20-129Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:01:20.193Z",
+      "finishedAt": "2026-10-25T00:01:25.240Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-review-leave-automatic-0.png",
+        "390-review-leave-fresh-card-no-old-feedback.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-oral-self-record-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-28-483Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:01:28.535Z",
+      "finishedAt": "2026-10-25T00:01:35.084Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 5,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-oral-self-record-retry-automatic-0.png",
+        "390-oral-self-record-retry-automatic-1.png",
+        "390-oral-self-record-retry-oral-self-saved-source.png",
+        "390-oral-self-record-retry-automatic-3.png",
+        "390-oral-self-record-retry-oral-self-failed-source.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-oral-self-activity-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-09-038Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:46:09.085Z",
+      "finishedAt": "2026-10-24T23:46:16.405Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 5,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-oral-self-activity-retry-automatic-0.png",
+        "390-oral-self-activity-retry-automatic-1.png",
+        "390-oral-self-activity-retry-oral-self-saved-source.png",
+        "390-oral-self-activity-retry-automatic-3.png",
+        "390-oral-self-activity-retry-oral-self-failed-source.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-oral-ai-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-57-274Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:46:57.324Z",
+      "finishedAt": "2026-10-24T23:47:04.558Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 5,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-oral-ai-save-retry-automatic-0.png",
+        "390-oral-ai-save-retry-automatic-1.png",
+        "390-oral-ai-save-retry-oral-ai-saved-source.png",
+        "390-oral-ai-save-retry-automatic-3.png",
+        "390-oral-ai-save-retry-oral-ai-failed-source.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-oral-ai-stale-course",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-38-445Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:01:38.495Z",
+      "finishedAt": "2026-10-25T00:01:41.848Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 1,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-oral-ai-stale-course-automatic-0.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-oral-ai-stale-edit",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-46-668Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:01:46.724Z",
+      "finishedAt": "2026-10-25T00:01:49.961Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 1,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-oral-ai-stale-edit-automatic-0.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-oral-ai-stale-leave",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-07-740Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-24T23:47:07.786Z",
+      "finishedAt": "2026-10-24T23:47:10.960Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 1,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-oral-ai-stale-leave-late-result-stayed-on-quiz.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-assessment-result",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-53-134Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:01:53.182Z",
+      "finishedAt": "2026-10-25T00:01:55.907Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 1,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-assessment-result-automatic-0.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-assessment-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-59-158Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:01:59.212Z",
+      "finishedAt": "2026-10-25T00:02:02.842Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-assessment-save-retry-automatic-0.png",
+        "390-assessment-save-retry-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-quiz-result",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-07-090Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:02:07.140Z",
+      "finishedAt": "2026-10-25T00:02:11.660Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-quiz-result-automatic-0.png",
+        "390-quiz-result-320-actions.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-quiz-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-14-832Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:02:14.893Z",
+      "finishedAt": "2026-10-25T00:02:19.965Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 3,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-quiz-save-retry-automatic-0.png",
+        "390-quiz-save-retry-automatic-1.png",
+        "390-quiz-save-retry-320-actions.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-divination-result",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-23-139Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:02:23.194Z",
+      "finishedAt": "2026-10-25T00:02:26.635Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 1,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-divination-result-automatic-0.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-divination-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-29-814Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:02:29.867Z",
+      "finishedAt": "2026-10-25T00:02:33.734Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 3,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-divination-save-retry-automatic-0.png",
+        "390-divination-save-retry-automatic-1.png",
+        "390-divination-save-retry-automatic-2.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-meihua-number-result",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-36-914Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:02:36.969Z",
+      "finishedAt": "2026-10-25T00:02:41.467Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-meihua-number-result-automatic-meihua-cast.png",
+        "390-meihua-number-result-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-meihua-number-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-44-661Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:02:44.715Z",
+      "finishedAt": "2026-10-25T00:02:49.702Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 4,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-meihua-number-save-retry-automatic-meihua-cast.png",
+        "390-meihua-number-save-retry-automatic-1.png",
+        "390-meihua-number-save-retry-automatic-2.png",
+        "390-meihua-number-save-retry-automatic-3.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-meihua-time-result",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-52-886Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:02:52.935Z",
+      "finishedAt": "2026-10-25T00:02:57.284Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-meihua-time-result-automatic-meihua-cast.png",
+        "390-meihua-time-result-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "390-meihua-time-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-00-522Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:03:00.580Z",
+      "finishedAt": "2026-10-25T00:03:05.585Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 4,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "390-meihua-time-save-retry-automatic-meihua-cast.png",
+        "390-meihua-time-save-retry-automatic-1.png",
+        "390-meihua-time-save-retry-automatic-2.png",
+        "390-meihua-time-save-retry-automatic-3.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "320-quiz-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-08-762Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:03:08.808Z",
+      "finishedAt": "2026-10-25T00:03:12.575Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "320-quiz-save-retry-automatic-0.png",
+        "320-quiz-save-retry-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1280-quiz-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-15-747Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:03:15.796Z",
+      "finishedAt": "2026-10-25T00:03:20.196Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1280-quiz-save-retry-automatic-0.png",
+        "1280-quiz-save-retry-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1280-assessment-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-23-369Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:03:23.418Z",
+      "finishedAt": "2026-10-25T00:03:29.343Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1280-assessment-save-retry-automatic-0.png",
+        "1280-assessment-save-retry-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1280-oral-self-record-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-32-524Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:03:32.573Z",
+      "finishedAt": "2026-10-25T00:03:41.178Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 5,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1280-oral-self-record-retry-automatic-0.png",
+        "1280-oral-self-record-retry-automatic-1.png",
+        "1280-oral-self-record-retry-oral-self-saved-source.png",
+        "1280-oral-self-record-retry-automatic-3.png",
+        "1280-oral-self-record-retry-oral-self-failed-source.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1280-review-card-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-44-372Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:03:44.422Z",
+      "finishedAt": "2026-10-25T00:03:50.970Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 3,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1280-review-card-retry-automatic-0.png",
+        "1280-review-card-retry-automatic-1.png",
+        "1280-review-card-retry-queue-after-last.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "1280-meihua-number-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-54-141Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:03:54.200Z",
+      "finishedAt": "2026-10-25T00:04:01.510Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 4,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "1280-meihua-number-save-retry-automatic-meihua-cast.png",
+        "1280-meihua-number-save-retry-automatic-1.png",
+        "1280-meihua-number-save-retry-automatic-2.png",
+        "1280-meihua-number-save-retry-automatic-3.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "768-quiz-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-04-708Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:04:04.755Z",
+      "finishedAt": "2026-10-25T00:04:09.144Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "768-quiz-save-retry-automatic-0.png",
+        "768-quiz-save-retry-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "768-assessment-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-12-314Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:04:12.365Z",
+      "finishedAt": "2026-10-25T00:04:16.622Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 2,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "768-assessment-save-retry-automatic-0.png",
+        "768-assessment-save-retry-automatic-1.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "768-oral-self-record-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-19-797Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:04:19.844Z",
+      "finishedAt": "2026-10-25T00:04:27.401Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 5,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "768-oral-self-record-retry-automatic-0.png",
+        "768-oral-self-record-retry-automatic-1.png",
+        "768-oral-self-record-retry-oral-self-saved-source.png",
+        "768-oral-self-record-retry-automatic-3.png",
+        "768-oral-self-record-retry-oral-self-failed-source.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "768-review-card-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-30-578Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:04:30.624Z",
+      "finishedAt": "2026-10-25T00:04:34.951Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 3,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "768-review-card-retry-automatic-0.png",
+        "768-review-card-retry-automatic-1.png",
+        "768-review-card-retry-queue-after-last.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    },
+    {
+      "scope": "768-meihua-number-save-retry",
+      "selectedTrace": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-38-109Z/trace.json",
+      "selection": "last successful summary row",
+      "successfulRowCount": 1,
+      "node": "v22.23.1",
+      "uv": "1.51.0",
+      "browser": {
+        "protocolVersion": "1.3",
+        "product": "Edg/155.0.4283.62",
+        "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "jsVersion": "15.5.9.7"
+      },
+      "startedAt": "2026-10-25T00:04:38.161Z",
+      "finishedAt": "2026-10-25T00:04:43.680Z",
+      "status": "passed",
+      "exitCode": 0,
+      "sourceStableDuringRun": true,
+      "observedFileCount": 31,
+      "pageErrorCount": 0,
+      "screenshotCount": 4,
+      "included": [
+        "trace.json",
+        "run.log",
+        "server-stdout.log",
+        "768-meihua-number-save-retry-automatic-meihua-cast.png",
+        "768-meihua-number-save-retry-automatic-1.png",
+        "768-meihua-number-save-retry-automatic-2.png",
+        "768-meihua-number-save-retry-automatic-3.png"
+      ],
+      "absentServerLogs": [
+        "server-stderr.log"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "entry": "metadata/final-summary.json",
+      "source": "docs/development/evidence/feedback-final-v9-node22-20261024-235906/summary.json",
+      "bytes": 19407,
+      "sha256": "428a2f4015e8b1362537de6c1f61f873a27abc3f78eb4c17d6419d5845b18569"
+    },
+    {
+      "entry": "metadata/source-snapshot.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-final-source-v9.json",
+      "bytes": 25454,
+      "sha256": "a9dcc62b9abf31edf49929027c6cc86e6e1ce5c04c7c6afe1378adc90aceebda"
+    },
+    {
+      "entry": "metadata/collector.mjs",
+      "source": "temporary collector supplied for review",
+      "bytes": 14672,
+      "sha256": "de91c7452f9dc0e1cbc4ab28469ee59529133d4c670d6e62babef525d0bef0d2"
+    },
+    {
+      "entry": "scopes/1440-review-card-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-14-162Z/trace.json",
+      "bytes": 111064,
+      "sha256": "322c0610a0d918a29a3fd07f7f2b15e730248749a7c6ace015b765fb39d291fc"
+    },
+    {
+      "entry": "scopes/1440-review-card-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-14-162Z/run.log",
+      "bytes": 347,
+      "sha256": "64995343195cfedfb4afee65df4f2ef57444a5150e9ed14a3b4a774fadaf6389"
+    },
+    {
+      "entry": "scopes/1440-review-card-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-14-162Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "7773c1182c067b1b9a6392bb967ef6a2b37a198268bee5ef288d32aece88a892"
+    },
+    {
+      "entry": "scopes/1440-review-card-retry/1440-review-card-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-14-162Z/1440-review-card-retry-automatic-0.png",
+      "bytes": 116603,
+      "sha256": "48ac3e16d506609c91454dd18e736173c2843ce84563c206e1c7bb2341eccf10"
+    },
+    {
+      "entry": "scopes/1440-review-card-retry/1440-review-card-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-14-162Z/1440-review-card-retry-automatic-1.png",
+      "bytes": 110010,
+      "sha256": "56e0a027cb8a71d43a74e4d92369f50869b2d77083d936683e137d7429ae2fad"
+    },
+    {
+      "entry": "scopes/1440-review-card-retry/1440-review-card-retry-queue-after-last.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-14-162Z/1440-review-card-retry-queue-after-last.png",
+      "bytes": 117623,
+      "sha256": "1499f738a95fb9e4e839dd854ac5ce3ed5d9aff8209a05d52feb4dee337a22a0"
+    },
+    {
+      "entry": "scopes/1440-review-activity-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-24-621Z/trace.json",
+      "bytes": 116922,
+      "sha256": "5a1bdd586033237d238202f66401a6b04074d5927b9a0b92ca4dd731737d611d"
+    },
+    {
+      "entry": "scopes/1440-review-activity-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-24-621Z/run.log",
+      "bytes": 355,
+      "sha256": "645a175cb73ce19fc85ab4395aa7d998ed15bfc04f7180b318b278e615224564"
+    },
+    {
+      "entry": "scopes/1440-review-activity-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-24-621Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "a1b86eb4330333b03ba5a124bb6896b22ce78f6c0a7d9f323057d5f1134ddba3"
+    },
+    {
+      "entry": "scopes/1440-review-activity-retry/1440-review-activity-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-24-621Z/1440-review-activity-retry-automatic-0.png",
+      "bytes": 114964,
+      "sha256": "1b2afa88a5630be326750d962bffc9e087ff486d444ddc8bf420358f5deea85e"
+    },
+    {
+      "entry": "scopes/1440-review-activity-retry/1440-review-activity-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-24-621Z/1440-review-activity-retry-automatic-1.png",
+      "bytes": 110054,
+      "sha256": "c34771276ce66f53247e2b6cf13a81ae28684205324d75921128ad7eb6f72d91"
+    },
+    {
+      "entry": "scopes/1440-review-activity-retry/1440-review-activity-retry-queue-after-last.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-24-621Z/1440-review-activity-retry-queue-after-last.png",
+      "bytes": 117694,
+      "sha256": "d74e43d4941c42f22514c94fa8bb5f983f44ea7031f8f001c9bc891a5b756945"
+    },
+    {
+      "entry": "scopes/1440-review-achievement-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-34-939Z/trace.json",
+      "bytes": 116330,
+      "sha256": "1aaa4be0119d825a41cac0da20008458391c3da3fd3d805afff0aeb1efe7d570"
+    },
+    {
+      "entry": "scopes/1440-review-achievement-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-34-939Z/run.log",
+      "bytes": 361,
+      "sha256": "46d77ea5df8085d308402784fb60cd514e1d5caf8e3775b5e0cf54330af42b2d"
+    },
+    {
+      "entry": "scopes/1440-review-achievement-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-34-939Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "c2d2952b66d4ecfa17716e813a31e61d1204c6edbada22bbb85f472a76556b9c"
+    },
+    {
+      "entry": "scopes/1440-review-achievement-retry/1440-review-achievement-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-34-939Z/1440-review-achievement-retry-automatic-0.png",
+      "bytes": 115196,
+      "sha256": "33676f7ca6409c400c0615ee3c236432bd3889c29fd101577fa4c2976d74836a"
+    },
+    {
+      "entry": "scopes/1440-review-achievement-retry/1440-review-achievement-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-34-939Z/1440-review-achievement-retry-automatic-1.png",
+      "bytes": 110148,
+      "sha256": "c28dab5cf0517d6741d54dce579cd7bee8859566b00dbe382bde2211a628eb60"
+    },
+    {
+      "entry": "scopes/1440-review-achievement-retry/1440-review-achievement-retry-queue-after-last.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-34-939Z/1440-review-achievement-retry-queue-after-last.png",
+      "bytes": 117576,
+      "sha256": "38f80b693ccd3479b71f7113ecd6b75cedf5074f5dc2b834dd77306dead8e57a"
+    },
+    {
+      "entry": "scopes/1440-review-leave/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-45-575Z/trace.json",
+      "bytes": 102502,
+      "sha256": "bedbf044c607de95c3cfa3af33ea65dbe2e0ef356c8948c1a27aca568cb242f0"
+    },
+    {
+      "entry": "scopes/1440-review-leave/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-45-575Z/run.log",
+      "bytes": 337,
+      "sha256": "bb15d5de7fe567aadde580cba2c91f64279a24a17a86df92a5bb8cc49f6e7aa9"
+    },
+    {
+      "entry": "scopes/1440-review-leave/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-45-575Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "400d8def424294ec2eacd9702df5c25dfe0b1bca406bb62162aefd31dbafc595"
+    },
+    {
+      "entry": "scopes/1440-review-leave/1440-review-leave-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-45-575Z/1440-review-leave-automatic-0.png",
+      "bytes": 116154,
+      "sha256": "69146ad572ccae677608d1439dd1e312e5a69d559504d8b1eca31031d24dfdbd"
+    },
+    {
+      "entry": "scopes/1440-review-leave/1440-review-leave-fresh-card-no-old-feedback.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-45-575Z/1440-review-leave-fresh-card-no-old-feedback.png",
+      "bytes": 71499,
+      "sha256": "a41f9b85d5e35b75251f3af771c24499a79cdeac1a70dd984e9bd833c5af8288"
+    },
+    {
+      "entry": "scopes/1440-oral-self-record-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-55-383Z/trace.json",
+      "bytes": 210170,
+      "sha256": "353b70ec4189a34bd881a0fd1c9856a1ef0fecb9f8d4a2f7ffa4a63a634014ad"
+    },
+    {
+      "entry": "scopes/1440-oral-self-record-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-55-383Z/run.log",
+      "bytes": 357,
+      "sha256": "4cff831033dd0a4a28ac2bd3f019a5ae5ac920aa4c8c9eb43a52a7f05db6f820"
+    },
+    {
+      "entry": "scopes/1440-oral-self-record-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-55-383Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "909e8c16314a8e11dd01a64f379c980b79cb44b2d2494479299e283e38e3a034"
+    },
+    {
+      "entry": "scopes/1440-oral-self-record-retry/1440-oral-self-record-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-55-383Z/1440-oral-self-record-retry-automatic-0.png",
+      "bytes": 120770,
+      "sha256": "60c5b73f757efabb4ec898f630f2273e428c669e72e036ffa8c18af5ce31bf4a"
+    },
+    {
+      "entry": "scopes/1440-oral-self-record-retry/1440-oral-self-record-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-55-383Z/1440-oral-self-record-retry-automatic-1.png",
+      "bytes": 118885,
+      "sha256": "a87938c3ae71401e9ab2dec1ccfd91496514190975cb4f7efdd65ea7f3a7839c"
+    },
+    {
+      "entry": "scopes/1440-oral-self-record-retry/1440-oral-self-record-retry-oral-self-saved-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-55-383Z/1440-oral-self-record-retry-oral-self-saved-source.png",
+      "bytes": 217558,
+      "sha256": "b5c4169a8b2f050ddeb54efb2c3ae477791677360cebfd85f31c762922086473"
+    },
+    {
+      "entry": "scopes/1440-oral-self-record-retry/1440-oral-self-record-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-55-383Z/1440-oral-self-record-retry-automatic-3.png",
+      "bytes": 116631,
+      "sha256": "8be4ac7a3af55fdcf099c4abb5616031641af0059304583d3b52a34767a287ba"
+    },
+    {
+      "entry": "scopes/1440-oral-self-record-retry/1440-oral-self-record-retry-oral-self-failed-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-55-383Z/1440-oral-self-record-retry-oral-self-failed-source.png",
+      "bytes": 145106,
+      "sha256": "8b62529862433768551fd65751e27e640ba223dc86121025d5acfad7e4fb540b"
+    },
+    {
+      "entry": "scopes/1440-oral-self-activity-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-48-08-211Z/trace.json",
+      "bytes": 209756,
+      "sha256": "609bb0eedd4a64c0adbbe30ac02a48b5f74b93cb14b7c17ea5c489d4255b0cf5"
+    },
+    {
+      "entry": "scopes/1440-oral-self-activity-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-48-08-211Z/run.log",
+      "bytes": 361,
+      "sha256": "c9a4bc8f9194c71a67626bd46391f466a72b38130cf0889f05027f10a7b38af5"
+    },
+    {
+      "entry": "scopes/1440-oral-self-activity-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-48-08-211Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "000bcd3b2f781b630f74ec4aabd67157ca9b4b3bd5c325521b7f5c34210a7387"
+    },
+    {
+      "entry": "scopes/1440-oral-self-activity-retry/1440-oral-self-activity-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-48-08-211Z/1440-oral-self-activity-retry-automatic-0.png",
+      "bytes": 120874,
+      "sha256": "125238b7ced5e715652994edba21d7455f31b732e2b837903cc2286468cc9bb9"
+    },
+    {
+      "entry": "scopes/1440-oral-self-activity-retry/1440-oral-self-activity-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-48-08-211Z/1440-oral-self-activity-retry-automatic-1.png",
+      "bytes": 118717,
+      "sha256": "000d46eb8bff4a45ab7baf120003476ba4df89845940c2423f5c0feb6a2c4334"
+    },
+    {
+      "entry": "scopes/1440-oral-self-activity-retry/1440-oral-self-activity-retry-oral-self-saved-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-48-08-211Z/1440-oral-self-activity-retry-oral-self-saved-source.png",
+      "bytes": 217622,
+      "sha256": "ee8b70d8f9258345c1cf4830916a9855483dea85c7adea0df29a454d596127d5"
+    },
+    {
+      "entry": "scopes/1440-oral-self-activity-retry/1440-oral-self-activity-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-48-08-211Z/1440-oral-self-activity-retry-automatic-3.png",
+      "bytes": 116877,
+      "sha256": "9e2e20f9f5428120ad00afe05bf034f7b3602c06657fdd3b5ac3371d2620319d"
+    },
+    {
+      "entry": "scopes/1440-oral-self-activity-retry/1440-oral-self-activity-retry-oral-self-failed-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-48-08-211Z/1440-oral-self-activity-retry-oral-self-failed-source.png",
+      "bytes": 144843,
+      "sha256": "8db158d9087f4256b19d8c6b6c2484c388f8fc64ae5a48e4c3f786f2c87e81d1"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-39-613Z/trace.json",
+      "bytes": 237056,
+      "sha256": "86140bc54c531a6ea1ac737c5ae01790f089543bd99cf4a222aa0392984e3d70"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-39-613Z/run.log",
+      "bytes": 349,
+      "sha256": "0e5592065d6f05e6bf52a6c7b0c6ee9710e5ab604fb4db908766a17ddd5d4893"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-39-613Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "569c23b623c6338546735392c862df2566f5c56083c1a6d5892c67ee4b8a4409"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-save-retry/1440-oral-ai-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-39-613Z/1440-oral-ai-save-retry-automatic-0.png",
+      "bytes": 114302,
+      "sha256": "f81b60fa97e184b9673b865779fe02b1906184142c16c37280a287411a6bd085"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-save-retry/1440-oral-ai-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-39-613Z/1440-oral-ai-save-retry-automatic-1.png",
+      "bytes": 112308,
+      "sha256": "0a19d32b536522295feba4cc24051579a45284a634d34e30fd13705a554b96a0"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-save-retry/1440-oral-ai-save-retry-oral-ai-saved-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-39-613Z/1440-oral-ai-save-retry-oral-ai-saved-source.png",
+      "bytes": 217573,
+      "sha256": "61e987ea393c4d2f092d15ca3c05169d6052456e86e2d19fc209b6a17c019739"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-save-retry/1440-oral-ai-save-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-39-613Z/1440-oral-ai-save-retry-automatic-3.png",
+      "bytes": 110128,
+      "sha256": "5db1ddb33c093a3f36229fe092f7d78c1f6f09ff39c2a70a8ebe9b2cb2a39e13"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-save-retry/1440-oral-ai-save-retry-oral-ai-failed-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-39-613Z/1440-oral-ai-save-retry-oral-ai-failed-source.png",
+      "bytes": 145229,
+      "sha256": "5f69c3391161548a8c6e0bd1b4178c377c7d5693a4c7b573100c7be3c04beaba"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-course/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-50-19-746Z/trace.json",
+      "bytes": 118554,
+      "sha256": "ee452d0c48c0e21257287bcd44cc2ec2208d6a10895c51c743598ce9a3d01086"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-course/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-50-19-746Z/run.log",
+      "bytes": 353,
+      "sha256": "6c0e5640129ebc08813e33463112f92920ee727ea725b0595487a91824af235c"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-course/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-50-19-746Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "f8379fa131fdb26d0badb77fe737a5362b6ed4648749f0e3545b3c773dec36ea"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-course/1440-oral-ai-stale-course-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-50-19-746Z/1440-oral-ai-stale-course-automatic-0.png",
+      "bytes": 108529,
+      "sha256": "1877fadb37c6717b285631490ee2bc689513a867eecf6e87aab8fe6c42ca19a4"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-edit/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-58-39-975Z/trace.json",
+      "bytes": 119876,
+      "sha256": "b09ff8349e605a35512c6512cb81f885a5a9ba75e5b277712a931a133917e9d5"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-edit/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-58-39-975Z/run.log",
+      "bytes": 349,
+      "sha256": "9fc9270e98ca5273cab690628985501742459b2f2398b27ec7c422179fb636fe"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-edit/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-58-39-975Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "31122569a1c2270997802c23e8a7a830e7425a7d765fcecda19099d2f9f88812"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-edit/1440-oral-ai-stale-edit-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-58-39-975Z/1440-oral-ai-stale-edit-automatic-0.png",
+      "bytes": 113085,
+      "sha256": "f863c9cf3bc6d24ccba0424d3a7ca430a739f278107dc3a96a47f7bbd31edba2"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-leave/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-07-069Z/trace.json",
+      "bytes": 100916,
+      "sha256": "a2bfff4ea2783b5fdbf2d9199f1fec78ea9d182d76bf0728ca1da97442caac3f"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-leave/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-07-069Z/run.log",
+      "bytes": 351,
+      "sha256": "bdddc88dc5776f92278b961f7eb4b4755df6aa9485bf350a9fae35523f65bc2d"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-leave/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-07-069Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "5fdf3ba4f1891caad0ba3c3ec496917f8c75b8812ba80701414afe12645599bd"
+    },
+    {
+      "entry": "scopes/1440-oral-ai-stale-leave/1440-oral-ai-stale-leave-late-result-stayed-on-quiz.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-07-069Z/1440-oral-ai-stale-leave-late-result-stayed-on-quiz.png",
+      "bytes": 89754,
+      "sha256": "dd01d746d474c4982daa125339a14556cf4cd55ee8192903853779125cf41f62"
+    },
+    {
+      "entry": "scopes/1440-assessment-result/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-15-303Z/trace.json",
+      "bytes": 122253,
+      "sha256": "9c6ec455e46f8528ebd1b3e69fd6d11c8dd822240e112b6101f52b0e5097d0d9"
+    },
+    {
+      "entry": "scopes/1440-assessment-result/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-15-303Z/run.log",
+      "bytes": 347,
+      "sha256": "b82d63fc15ccda8e67d562aebf096ec6040af4bc00cfd474f99198499805701d"
+    },
+    {
+      "entry": "scopes/1440-assessment-result/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-15-303Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "172a02d6a454ecd47ba071a814f29bc85ff1d57b71d3abc6138981581ed5bcba"
+    },
+    {
+      "entry": "scopes/1440-assessment-result/1440-assessment-result-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-15-303Z/1440-assessment-result-automatic-0.png",
+      "bytes": 125237,
+      "sha256": "6e4adff00d95e6c77a0ec12501324e60526d7cb100da7851a7ff37bc3a01fca7"
+    },
+    {
+      "entry": "scopes/1440-assessment-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-24-127Z/trace.json",
+      "bytes": 253585,
+      "sha256": "4b4a3602fec6f887bf58717899e53f5fadd82af9c65e3be29b0e8a20f6122928"
+    },
+    {
+      "entry": "scopes/1440-assessment-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-24-127Z/run.log",
+      "bytes": 355,
+      "sha256": "c65e6f5fa3d32f637ff885dcb825922603af09d130dcdac4053b266f1a3837dd"
+    },
+    {
+      "entry": "scopes/1440-assessment-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-24-127Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "9177629db822ae9f7a6699b3bfb2dff4cc34b65023bddbc7ccc0521d2b3e6920"
+    },
+    {
+      "entry": "scopes/1440-assessment-save-retry/1440-assessment-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-24-127Z/1440-assessment-save-retry-automatic-0.png",
+      "bytes": 105923,
+      "sha256": "21d597bb08df68d400efae310605bbd57cb193eeaedb1418047c3dff12967b2d"
+    },
+    {
+      "entry": "scopes/1440-assessment-save-retry/1440-assessment-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-24-127Z/1440-assessment-save-retry-automatic-1.png",
+      "bytes": 116346,
+      "sha256": "78990a6289a5a38a66cee84efb8b11e1207f2b56c31cbad459f9ef46a2226ccc"
+    },
+    {
+      "entry": "scopes/1440-quiz-result/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-35-724Z/trace.json",
+      "bytes": 96675,
+      "sha256": "054ab239e627c6a7a18b1564b8cc5dc4ff9e5c11aa6232430eb708e55423d1a6"
+    },
+    {
+      "entry": "scopes/1440-quiz-result/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-35-724Z/run.log",
+      "bytes": 335,
+      "sha256": "6b33507ad5cd8b51524c61de1f24d807492a2459179d59d259f2261f0b5980d5"
+    },
+    {
+      "entry": "scopes/1440-quiz-result/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-35-724Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "68797fc3ba9287316c08c2e4000d8c171ec736e087a9f2e8abfcc2b5c8d34910"
+    },
+    {
+      "entry": "scopes/1440-quiz-result/1440-quiz-result-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-35-724Z/1440-quiz-result-automatic-0.png",
+      "bytes": 111626,
+      "sha256": "b03d3f26e0d833d66f0ecf2c6ee87dbfac85c3601a445d707558fafffee92df0"
+    },
+    {
+      "entry": "scopes/1440-quiz-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-43-872Z/trace.json",
+      "bytes": 132834,
+      "sha256": "4605a4c492caf17b796bf7798c970b27816f5754d000eafa2c2ea930a26714c1"
+    },
+    {
+      "entry": "scopes/1440-quiz-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-43-872Z/run.log",
+      "bytes": 343,
+      "sha256": "d021fb8224e6096dc6b796bceceb3a28d4e481ccb79e7a0a473a17b8f95fe5ac"
+    },
+    {
+      "entry": "scopes/1440-quiz-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-43-872Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "65d4711f413ed3b30dd5a526c1d6af1c9bce5d49c6d441f95eba89d2feabd28b"
+    },
+    {
+      "entry": "scopes/1440-quiz-save-retry/1440-quiz-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-43-872Z/1440-quiz-save-retry-automatic-0.png",
+      "bytes": 112720,
+      "sha256": "78c9358766e68ff6fdd3d475067624a8be4e79bed216cb8c0f310311d42ad081"
+    },
+    {
+      "entry": "scopes/1440-quiz-save-retry/1440-quiz-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-43-872Z/1440-quiz-save-retry-automatic-1.png",
+      "bytes": 104866,
+      "sha256": "a4d4122573fb26baa3ed3235c83236042b96d8caee0239ee0002799a5b788dfb"
+    },
+    {
+      "entry": "scopes/1440-divination-result/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-54-981Z/trace.json",
+      "bytes": 145422,
+      "sha256": "b54af07f502ace2c455d1d13582629a1afbfb8d0a15fd1048a1c6a81ce5b3fec"
+    },
+    {
+      "entry": "scopes/1440-divination-result/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-54-981Z/run.log",
+      "bytes": 347,
+      "sha256": "0167456885ba7ecd9d2a547944b16127d24898dd3d470640658c6ab90bff1661"
+    },
+    {
+      "entry": "scopes/1440-divination-result/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-54-981Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "876e534c214b0113e9fc070acf41538f1bac40517b0d8237e9a870e624176275"
+    },
+    {
+      "entry": "scopes/1440-divination-result/1440-divination-result-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-59-54-981Z/1440-divination-result-automatic-0.png",
+      "bytes": 301089,
+      "sha256": "374b6c6d81ce8f8ae7c50f0801baee8ef352516c67e447222625bf79c64b3b7f"
+    },
+    {
+      "entry": "scopes/1440-divination-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-02-957Z/trace.json",
+      "bytes": 231410,
+      "sha256": "667fd4dfb18af214a7ec8b616303d20692c9912da2218f1844e4ec000995eb0a"
+    },
+    {
+      "entry": "scopes/1440-divination-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-02-957Z/run.log",
+      "bytes": 355,
+      "sha256": "ad49767df137238af9719fe538e0aa2edc0a46c96b5201fe1a1fdd6177defd47"
+    },
+    {
+      "entry": "scopes/1440-divination-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-02-957Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "f7a0ea0e3f3a348a5850218624e4c89d2a62c622874e225b6bede32dc8d3a420"
+    },
+    {
+      "entry": "scopes/1440-divination-save-retry/1440-divination-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-02-957Z/1440-divination-save-retry-automatic-0.png",
+      "bytes": 291749,
+      "sha256": "7900fbde63dc78265d5ed6e8000e3dd0118c0ee462b95c1de5adb40371bad48f"
+    },
+    {
+      "entry": "scopes/1440-divination-save-retry/1440-divination-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-02-957Z/1440-divination-save-retry-automatic-1.png",
+      "bytes": 291808,
+      "sha256": "ac6c5ce6171214872cdcb531bb9b0640141c2db219c7bcd5841165fb9ebf46df"
+    },
+    {
+      "entry": "scopes/1440-divination-save-retry/1440-divination-save-retry-automatic-2.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-02-957Z/1440-divination-save-retry-automatic-2.png",
+      "bytes": 292529,
+      "sha256": "c940d350e2a2d26a01798a47ef7c671ca3457d2f9973b3ca6a68430ce37e3321"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-result/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-12-976Z/trace.json",
+      "bytes": 166844,
+      "sha256": "1e5216ac179eb2b1e4c092fb11e4b1ad35c8ffd5da12fe3cda59112ed5b1e750"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-result/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-12-976Z/run.log",
+      "bytes": 353,
+      "sha256": "b9c4b000d5a832fa4512bb7ebb4ec458519900e4d61a72745bce4498b68e8a83"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-result/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-12-976Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "645eac15f659be3130352acae8e2811ba37afb74c6c9e48a579cea5626df1fe8"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-result/1440-meihua-number-result-automatic-meihua-cast.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-12-976Z/1440-meihua-number-result-automatic-meihua-cast.png",
+      "bytes": 146033,
+      "sha256": "0da97f4d8d50cb3adc9b388de5cf98fdaa78b087702d18b71b9f536aca7482f7"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-result/1440-meihua-number-result-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-12-976Z/1440-meihua-number-result-automatic-1.png",
+      "bytes": 306189,
+      "sha256": "145ef40896bf84314783719ef219ad97bf2418381636f8897573d1a64b821f73"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-22-585Z/trace.json",
+      "bytes": 246337,
+      "sha256": "021db09f0559023d282df5955f80245cae672f33b05d437826fe7a6616ab363b"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-22-585Z/run.log",
+      "bytes": 361,
+      "sha256": "e62ff290696381ed5a2501757d673d7f2b02dc9ae7c38ed15b5e4a1edd611806"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-22-585Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "e78b405642527faf65c1438c7c2095e0f208b714f5d47a74c86ee6228a9459d5"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-save-retry/1440-meihua-number-save-retry-automatic-meihua-cast.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-22-585Z/1440-meihua-number-save-retry-automatic-meihua-cast.png",
+      "bytes": 145925,
+      "sha256": "a29d67c1a774fac8fa1a9bab73463b48b46b38f25a077d2b4e0eb628ef8807c3"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-save-retry/1440-meihua-number-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-22-585Z/1440-meihua-number-save-retry-automatic-1.png",
+      "bytes": 305927,
+      "sha256": "cc8c5df2f804e0b35de90f7be177e4bfdaec4a1ab8abae786c7f9b6c4c770f95"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-save-retry/1440-meihua-number-save-retry-automatic-2.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-22-585Z/1440-meihua-number-save-retry-automatic-2.png",
+      "bytes": 305821,
+      "sha256": "677d911d21fe74fd22458662ed92ff3a4b4f2d9a49d706af3d3ab104811cfce2"
+    },
+    {
+      "entry": "scopes/1440-meihua-number-save-retry/1440-meihua-number-save-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-22-585Z/1440-meihua-number-save-retry-automatic-3.png",
+      "bytes": 306299,
+      "sha256": "7e25a7ffeb1de51bf04a9f1e79fb6c61ce29e9028d5511d260e3caced60aeb79"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-result/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-34-211Z/trace.json",
+      "bytes": 151121,
+      "sha256": "ef77bf033e66c9a2c156e0b24457ac11b55a481c074fa4f4c42e7e0096d54893"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-result/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-34-211Z/run.log",
+      "bytes": 349,
+      "sha256": "525ba22cfc1646c2c683a46e01ad863bd573e29c8b56c75ec8cf6b5ee23cccb7"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-result/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-34-211Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "02e34cc4a334f089adc67d61e8d3c49ef6d4336063f5360214b0f94d48b940a4"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-result/1440-meihua-time-result-automatic-meihua-cast.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-34-211Z/1440-meihua-time-result-automatic-meihua-cast.png",
+      "bytes": 145985,
+      "sha256": "f1b7e2614ed18f9f44e5693d31a39ca9bb49597445f9ce1eee6460062e313dfe"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-result/1440-meihua-time-result-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-34-211Z/1440-meihua-time-result-automatic-1.png",
+      "bytes": 307250,
+      "sha256": "4ba03cd3a262a1f71af780a4ae66b76d9ce55cccdbf86e35488a65421348f174"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-43-548Z/trace.json",
+      "bytes": 224450,
+      "sha256": "d2538a4de6c357cf3fd251de672eb6e91143d03fac6a5e0b6afebd5ddf75d1f5"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-43-548Z/run.log",
+      "bytes": 357,
+      "sha256": "2bc69441e0f77519a7043e19c99f09ac4f5a8019b0f4e2010eaabbdecbfcc529"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-43-548Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "22e488b6e71e80d44429154561f3aa4222a732a76754e4772cf1e7f3cd933e3e"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-save-retry/1440-meihua-time-save-retry-automatic-meihua-cast.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-43-548Z/1440-meihua-time-save-retry-automatic-meihua-cast.png",
+      "bytes": 146033,
+      "sha256": "7c53a37574ef03cfde9bcb3e87afd9a5421d53c7643212bd00e8eda4cfb4d5f4"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-save-retry/1440-meihua-time-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-43-548Z/1440-meihua-time-save-retry-automatic-1.png",
+      "bytes": 306775,
+      "sha256": "a3165893f65f162010d44feb8725a3ef96fc07680cbe639438b4bb58780f61e9"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-save-retry/1440-meihua-time-save-retry-automatic-2.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-43-548Z/1440-meihua-time-save-retry-automatic-2.png",
+      "bytes": 306823,
+      "sha256": "0bacf724a18173fb632e6246ddb8260ca4b24a4a35b54656115928f918ad8c4b"
+    },
+    {
+      "entry": "scopes/1440-meihua-time-save-retry/1440-meihua-time-save-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-43-548Z/1440-meihua-time-save-retry-automatic-3.png",
+      "bytes": 307226,
+      "sha256": "ace5db31c2fa3497c0361a5f0e5cab84cfa915f48e83110bfd62d7d978c0f4ee"
+    },
+    {
+      "entry": "scopes/390-review-card-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-56-068Z/trace.json",
+      "bytes": 119386,
+      "sha256": "73ac6fae14200abacda8a47106fab6fe11be57fa74e81ca1e6c8237a8e208b81"
+    },
+    {
+      "entry": "scopes/390-review-card-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-56-068Z/run.log",
+      "bytes": 345,
+      "sha256": "2623305f3c4cb9d5d2e26700e973b81f4d8a8d4eedc8ad92029365bef933c294"
+    },
+    {
+      "entry": "scopes/390-review-card-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-56-068Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "56764a2135267118bd7c194d19a3c9c6682f9ee46ed6e4d3765589bcdb19b302"
+    },
+    {
+      "entry": "scopes/390-review-card-retry/390-review-card-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-56-068Z/390-review-card-retry-automatic-0.png",
+      "bytes": 42119,
+      "sha256": "883563688aad21dd26d293f8487f3dbf5d4beab7fbf8dbf2febf0bdbd09f7e14"
+    },
+    {
+      "entry": "scopes/390-review-card-retry/390-review-card-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-56-068Z/390-review-card-retry-automatic-1.png",
+      "bytes": 44826,
+      "sha256": "f0930969011ee4ef59e3059221c539ad4e7c163697a8549fa8120da04ad27661"
+    },
+    {
+      "entry": "scopes/390-review-card-retry/390-review-card-retry-queue-after-last.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-00-56-068Z/390-review-card-retry-queue-after-last.png",
+      "bytes": 56946,
+      "sha256": "c1c762d20e75735b174197e699339cf79bea80c421d7a5884115ea2ed24d923e"
+    },
+    {
+      "entry": "scopes/390-review-activity-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-03-448Z/trace.json",
+      "bytes": 124997,
+      "sha256": "ad82e2f0129ab9c715823145beabdc0a9bdcff3792211aa8f65348f921138d3b"
+    },
+    {
+      "entry": "scopes/390-review-activity-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-03-448Z/run.log",
+      "bytes": 353,
+      "sha256": "7437e61e966fa4916bc75c686dca3fdc891f8bd3c4a7b3d26e069213482d77ae"
+    },
+    {
+      "entry": "scopes/390-review-activity-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-03-448Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "829ce2e0171f970a9847f1b6a7af019ca9be09868ab75726723d32c92c281dba"
+    },
+    {
+      "entry": "scopes/390-review-activity-retry/390-review-activity-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-03-448Z/390-review-activity-retry-automatic-0.png",
+      "bytes": 44935,
+      "sha256": "9e70e4a2b1fd529077378d28f523f6f450def1d03141ab2ad8d8a7e188c97763"
+    },
+    {
+      "entry": "scopes/390-review-activity-retry/390-review-activity-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-03-448Z/390-review-activity-retry-automatic-1.png",
+      "bytes": 44826,
+      "sha256": "f0930969011ee4ef59e3059221c539ad4e7c163697a8549fa8120da04ad27661"
+    },
+    {
+      "entry": "scopes/390-review-activity-retry/390-review-activity-retry-queue-after-last.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-03-448Z/390-review-activity-retry-queue-after-last.png",
+      "bytes": 52100,
+      "sha256": "a945ead31a1917898ada879b44201048e56d98704b02fcbf9df3d2fbfce89ab6"
+    },
+    {
+      "entry": "scopes/390-review-achievement-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-12-567Z/trace.json",
+      "bytes": 124838,
+      "sha256": "e010a1e5e2a1def162401eacab39773a0b5324a78b455b3b87952ad957f37570"
+    },
+    {
+      "entry": "scopes/390-review-achievement-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-12-567Z/run.log",
+      "bytes": 359,
+      "sha256": "84f6691121df815107161c0d606cf5a75dc5d1f5bdab7cee83e705a660a66153"
+    },
+    {
+      "entry": "scopes/390-review-achievement-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-12-567Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "09e3c1098681c3872a63e7c02241fbc41353ccb1d072987cfd023a388147ed6a"
+    },
+    {
+      "entry": "scopes/390-review-achievement-retry/390-review-achievement-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-12-567Z/390-review-achievement-retry-automatic-0.png",
+      "bytes": 44797,
+      "sha256": "5e67bdeb0781b7c26e79cc9bbdfbc0920864615ef70db0a5afcbf2f7174cfbdc"
+    },
+    {
+      "entry": "scopes/390-review-achievement-retry/390-review-achievement-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-12-567Z/390-review-achievement-retry-automatic-1.png",
+      "bytes": 44826,
+      "sha256": "f0930969011ee4ef59e3059221c539ad4e7c163697a8549fa8120da04ad27661"
+    },
+    {
+      "entry": "scopes/390-review-achievement-retry/390-review-achievement-retry-queue-after-last.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-12-567Z/390-review-achievement-retry-queue-after-last.png",
+      "bytes": 56946,
+      "sha256": "c1c762d20e75735b174197e699339cf79bea80c421d7a5884115ea2ed24d923e"
+    },
+    {
+      "entry": "scopes/390-review-leave/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-20-129Z/trace.json",
+      "bytes": 108007,
+      "sha256": "72e07d5303a8493aa6bb52c74dc6af34f0b806a59af87b2cf4916a2f148aab92"
+    },
+    {
+      "entry": "scopes/390-review-leave/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-20-129Z/run.log",
+      "bytes": 335,
+      "sha256": "7412cf951c7fa692689f057de517d0cef7946f1ad6e3597b39d56b61a4f0b8c2"
+    },
+    {
+      "entry": "scopes/390-review-leave/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-20-129Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "ec7db0f2c94a81ddfc4256ec28dc2cd48e2a3b5255e84c59fd1fafd7443b1dd1"
+    },
+    {
+      "entry": "scopes/390-review-leave/390-review-leave-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-20-129Z/390-review-leave-automatic-0.png",
+      "bytes": 42119,
+      "sha256": "883563688aad21dd26d293f8487f3dbf5d4beab7fbf8dbf2febf0bdbd09f7e14"
+    },
+    {
+      "entry": "scopes/390-review-leave/390-review-leave-fresh-card-no-old-feedback.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-20-129Z/390-review-leave-fresh-card-no-old-feedback.png",
+      "bytes": 25445,
+      "sha256": "ba8e24748c0c0e68c0ed2f756bb5a71d98b96aa64024a2d900d6fc38ad3c135f"
+    },
+    {
+      "entry": "scopes/390-oral-self-record-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-28-483Z/trace.json",
+      "bytes": 237657,
+      "sha256": "5c747ac8aea59e48292c0023e9d205379f61c3527704e456b1270ddd8d1f6860"
+    },
+    {
+      "entry": "scopes/390-oral-self-record-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-28-483Z/run.log",
+      "bytes": 355,
+      "sha256": "bb30037d77f1f69a9af52357e6dd5a6a297ce8a908796bbcacb0be2f3d6dc356"
+    },
+    {
+      "entry": "scopes/390-oral-self-record-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-28-483Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "f5406e629ce5a947f62560deaa6d974bef298e51919dc1f9a5d4c2369fa6a1f0"
+    },
+    {
+      "entry": "scopes/390-oral-self-record-retry/390-oral-self-record-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-28-483Z/390-oral-self-record-retry-automatic-0.png",
+      "bytes": 40554,
+      "sha256": "7be36184ffaceae49ae9225586b8e3d827e6cd8147c7b076f2c4857f8264e680"
+    },
+    {
+      "entry": "scopes/390-oral-self-record-retry/390-oral-self-record-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-28-483Z/390-oral-self-record-retry-automatic-1.png",
+      "bytes": 42039,
+      "sha256": "72e851535a1b55009a31a194939bd412d0faede3f6946fee577fe72bfab67995"
+    },
+    {
+      "entry": "scopes/390-oral-self-record-retry/390-oral-self-record-retry-oral-self-saved-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-28-483Z/390-oral-self-record-retry-oral-self-saved-source.png",
+      "bytes": 48278,
+      "sha256": "6bdd46bff8e4938d2d1b173cb9884a70368446b570fee94e694803c656ac5f61"
+    },
+    {
+      "entry": "scopes/390-oral-self-record-retry/390-oral-self-record-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-28-483Z/390-oral-self-record-retry-automatic-3.png",
+      "bytes": 41564,
+      "sha256": "6bcdbee62b39e9af9cc3d7d19078e71612a9dfdf369229ab9acb5bc2c4aedbab"
+    },
+    {
+      "entry": "scopes/390-oral-self-record-retry/390-oral-self-record-retry-oral-self-failed-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-28-483Z/390-oral-self-record-retry-oral-self-failed-source.png",
+      "bytes": 47397,
+      "sha256": "237d89f5d53566397647d684f805f4eb45836f74af1d400b2fc3d770c2ee4efa"
+    },
+    {
+      "entry": "scopes/390-oral-self-activity-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-09-038Z/trace.json",
+      "bytes": 237412,
+      "sha256": "79e07888b6b531d7236e8eb1b4d02c7f879dcbc1dae4f80371a30b0e675cabc2"
+    },
+    {
+      "entry": "scopes/390-oral-self-activity-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-09-038Z/run.log",
+      "bytes": 359,
+      "sha256": "e61d831257d1c0ac6db4ca1de892b5bd2df604f53ab72b93c821e1cab0d8e393"
+    },
+    {
+      "entry": "scopes/390-oral-self-activity-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-09-038Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "bf3800c5acb968c9d72f9ec3dc4507759de38442b167e4d612e1f092048baa20"
+    },
+    {
+      "entry": "scopes/390-oral-self-activity-retry/390-oral-self-activity-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-09-038Z/390-oral-self-activity-retry-automatic-0.png",
+      "bytes": 40547,
+      "sha256": "4a684415df0d89255e9a780613eff5ec4d04f002076683321ae106e0a86c51a7"
+    },
+    {
+      "entry": "scopes/390-oral-self-activity-retry/390-oral-self-activity-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-09-038Z/390-oral-self-activity-retry-automatic-1.png",
+      "bytes": 42039,
+      "sha256": "72e851535a1b55009a31a194939bd412d0faede3f6946fee577fe72bfab67995"
+    },
+    {
+      "entry": "scopes/390-oral-self-activity-retry/390-oral-self-activity-retry-oral-self-saved-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-09-038Z/390-oral-self-activity-retry-oral-self-saved-source.png",
+      "bytes": 48278,
+      "sha256": "6bdd46bff8e4938d2d1b173cb9884a70368446b570fee94e694803c656ac5f61"
+    },
+    {
+      "entry": "scopes/390-oral-self-activity-retry/390-oral-self-activity-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-09-038Z/390-oral-self-activity-retry-automatic-3.png",
+      "bytes": 41559,
+      "sha256": "eb1a31a51a335b97966a8146c54aa0c0f264acf110407ce63dd785aa7732dc82"
+    },
+    {
+      "entry": "scopes/390-oral-self-activity-retry/390-oral-self-activity-retry-oral-self-failed-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-09-038Z/390-oral-self-activity-retry-oral-self-failed-source.png",
+      "bytes": 47058,
+      "sha256": "b52645afd3f1f1f1a6c893a490cbac98bc846bd3a6d9b71733417304dae06534"
+    },
+    {
+      "entry": "scopes/390-oral-ai-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-57-274Z/trace.json",
+      "bytes": 268782,
+      "sha256": "4cbcc64237593c8a7ba8db84727a2400f17ed7a301ba67a68b9325e239bf57e7"
+    },
+    {
+      "entry": "scopes/390-oral-ai-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-57-274Z/run.log",
+      "bytes": 347,
+      "sha256": "e4cb85e20aebb623355dbaed94c34e5ad164e4238c9d947943429bee35b1692c"
+    },
+    {
+      "entry": "scopes/390-oral-ai-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-57-274Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "4430d18c0bab6bc5b50a376a04e89a1cfd148f431cef08f7f2dd08d030e5635d"
+    },
+    {
+      "entry": "scopes/390-oral-ai-save-retry/390-oral-ai-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-57-274Z/390-oral-ai-save-retry-automatic-0.png",
+      "bytes": 40551,
+      "sha256": "b21db07ffa9da703234947b89919f7e4bd9e5130ad0381adbfaa136cb42edc29"
+    },
+    {
+      "entry": "scopes/390-oral-ai-save-retry/390-oral-ai-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-57-274Z/390-oral-ai-save-retry-automatic-1.png",
+      "bytes": 42028,
+      "sha256": "bbecdecaeda9e675b6068c0ab07ab2c548eab6723e84f019de5d10680ccd2857"
+    },
+    {
+      "entry": "scopes/390-oral-ai-save-retry/390-oral-ai-save-retry-oral-ai-saved-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-57-274Z/390-oral-ai-save-retry-oral-ai-saved-source.png",
+      "bytes": 48278,
+      "sha256": "6bdd46bff8e4938d2d1b173cb9884a70368446b570fee94e694803c656ac5f61"
+    },
+    {
+      "entry": "scopes/390-oral-ai-save-retry/390-oral-ai-save-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-57-274Z/390-oral-ai-save-retry-automatic-3.png",
+      "bytes": 41437,
+      "sha256": "9a72fcbbed8f7d30b3e71a3f7beffecbf220cf88ce9ce338b5c79979b1d6a3fb"
+    },
+    {
+      "entry": "scopes/390-oral-ai-save-retry/390-oral-ai-save-retry-oral-ai-failed-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-57-274Z/390-oral-ai-save-retry-oral-ai-failed-source.png",
+      "bytes": 47397,
+      "sha256": "237d89f5d53566397647d684f805f4eb45836f74af1d400b2fc3d770c2ee4efa"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-course/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-38-445Z/trace.json",
+      "bytes": 127580,
+      "sha256": "88a10e6da4b775c31703f524fcba2a9482dc8081171463ad4f4638d25ef94554"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-course/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-38-445Z/run.log",
+      "bytes": 351,
+      "sha256": "126bc1d9c9005112fc39debad866c786636972ab4e06578aca0bdc3c7a7db574"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-course/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-38-445Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "417773f4ace84cb266c1ecc480171c34b7d944f312fb4d80bd64e1ba8102061c"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-course/390-oral-ai-stale-course-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-38-445Z/390-oral-ai-stale-course-automatic-0.png",
+      "bytes": 43203,
+      "sha256": "772dd771ebba8acb203f09e8880ab9340273036324dc5884a0d8c2801d7e4976"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-edit/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-46-668Z/trace.json",
+      "bytes": 128836,
+      "sha256": "3624719c1886c23649af750250ad327dedcbc44749f2cf276d59c312e7743f8f"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-edit/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-46-668Z/run.log",
+      "bytes": 347,
+      "sha256": "0300383fe2ace1ad0a6ad5218523290301c2de57d27f277bbbba48b86a0ae8c6"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-edit/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-46-668Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "b1dc5045f736e94e0e617fb3e24ff0f217319bb624fba1dfa9b072534211c5cd"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-edit/390-oral-ai-stale-edit-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-46-668Z/390-oral-ai-stale-edit-automatic-0.png",
+      "bytes": 43684,
+      "sha256": "84615d0126e60f5b196053f878df52b19fd56af84c952dcdb44bfb1fab41d09b"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-leave/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-07-740Z/trace.json",
+      "bytes": 106527,
+      "sha256": "3d1b0bac77b2c6be7875a105943c69be056e7125e145c9036c6ec8df1e625ebc"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-leave/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-07-740Z/run.log",
+      "bytes": 349,
+      "sha256": "fbadfc4dbd832d8f4db800dfbd8bb5afbbfcfdfa25ecc0a2aa1850d6c47d5287"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-leave/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-07-740Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "3ad677a2e90c5039d297c7864b39448f813a6ed905e06b7a9fab4adab8b0df49"
+    },
+    {
+      "entry": "scopes/390-oral-ai-stale-leave/390-oral-ai-stale-leave-late-result-stayed-on-quiz.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-47-07-740Z/390-oral-ai-stale-leave-late-result-stayed-on-quiz.png",
+      "bytes": 40538,
+      "sha256": "6e31486b472768bca976cb73ecd29004f414e4bc3b8e168716f06e9a6ffd7ba5"
+    },
+    {
+      "entry": "scopes/390-assessment-result/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-53-134Z/trace.json",
+      "bytes": 131694,
+      "sha256": "d3c2be7a748c1834359f3c56a17aba9552210f1fe0cf097c332edc09a62762ac"
+    },
+    {
+      "entry": "scopes/390-assessment-result/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-53-134Z/run.log",
+      "bytes": 345,
+      "sha256": "1b3dc590639d88b8794ffa36d532476eb08815118f713b456d16d48760584286"
+    },
+    {
+      "entry": "scopes/390-assessment-result/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-53-134Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "9fc5f1520e36ce7453f4c7ce0768c7111ae664865a8ae693431e0b8bec492c58"
+    },
+    {
+      "entry": "scopes/390-assessment-result/390-assessment-result-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-53-134Z/390-assessment-result-automatic-0.png",
+      "bytes": 52377,
+      "sha256": "3f7484d668d99af87823070fce858b9c821691963e4dd8d77cb4841125b2578c"
+    },
+    {
+      "entry": "scopes/390-assessment-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-59-158Z/trace.json",
+      "bytes": 270256,
+      "sha256": "cfa2c9a7a9e38f61e544754a5e3c64420a9cee4fd58a42b8b851ec6f5e4d4487"
+    },
+    {
+      "entry": "scopes/390-assessment-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-59-158Z/run.log",
+      "bytes": 353,
+      "sha256": "1181c8d4e8ffeb083f4a8545f96f2c6b881e967ad30cc7358ccc7d0f7c628e1a"
+    },
+    {
+      "entry": "scopes/390-assessment-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-59-158Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "59df58f74530f450335351cb303c6095cfc4ea8f4e1f4b9ffed33f3c18e710c1"
+    },
+    {
+      "entry": "scopes/390-assessment-save-retry/390-assessment-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-59-158Z/390-assessment-save-retry-automatic-0.png",
+      "bytes": 37332,
+      "sha256": "81cefa690df58639b4bfebfc00b37849db2a8649da365f79b6b6c9098395489e"
+    },
+    {
+      "entry": "scopes/390-assessment-save-retry/390-assessment-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-01-59-158Z/390-assessment-save-retry-automatic-1.png",
+      "bytes": 49537,
+      "sha256": "649ff2456f325ce7e73f1d741697df63091db76107bfffd7935412ba466a39b5"
+    },
+    {
+      "entry": "scopes/390-quiz-result/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-07-090Z/trace.json",
+      "bytes": 103579,
+      "sha256": "8d978a8b9f1e6b6db4c1da387cea7f91a97c032bbfe81f21f1540e1e77b10930"
+    },
+    {
+      "entry": "scopes/390-quiz-result/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-07-090Z/run.log",
+      "bytes": 333,
+      "sha256": "4122528bfd4f91b8688f36d049261d93984581803de10283b2adde9ecc6cd384"
+    },
+    {
+      "entry": "scopes/390-quiz-result/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-07-090Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "1d6a595c3e0fa4d6792b2d274f72f2437324b32c9074246aa16ef2414ccf9d79"
+    },
+    {
+      "entry": "scopes/390-quiz-result/390-quiz-result-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-07-090Z/390-quiz-result-automatic-0.png",
+      "bytes": 46788,
+      "sha256": "2b101ab6a7d38281690f5d1e01840613fd6245072040781fc5c28f53c84ec761"
+    },
+    {
+      "entry": "scopes/390-quiz-result/390-quiz-result-320-actions.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-07-090Z/390-quiz-result-320-actions.png",
+      "bytes": 39405,
+      "sha256": "08e1145d7434b9956e7caca7879f6f710ccb5a2b7d1264f6d787ca47501f6e3b"
+    },
+    {
+      "entry": "scopes/390-quiz-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-14-832Z/trace.json",
+      "bytes": 142859,
+      "sha256": "e26d809c123c817c28596de60ec7c1cf1d986b98045434c8f04b8978e05feaa5"
+    },
+    {
+      "entry": "scopes/390-quiz-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-14-832Z/run.log",
+      "bytes": 341,
+      "sha256": "b185ab142acce31cbd577fccb58f0d333fc02e88d32085683053dd7988c59f7d"
+    },
+    {
+      "entry": "scopes/390-quiz-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-14-832Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "0f773d0a786358f458ac20cf9df7768d6bb446d1d93e8338fa07b7b85ee10a8b"
+    },
+    {
+      "entry": "scopes/390-quiz-save-retry/390-quiz-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-14-832Z/390-quiz-save-retry-automatic-0.png",
+      "bytes": 42716,
+      "sha256": "97a3376ddf073cfc2caa149aff38cacf7242c195a086f0485ff8f9752c0dc468"
+    },
+    {
+      "entry": "scopes/390-quiz-save-retry/390-quiz-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-14-832Z/390-quiz-save-retry-automatic-1.png",
+      "bytes": 44269,
+      "sha256": "dd2e5fcb2e6af6369e889101ead589753ec593e348b58461223da46d4ea838e3"
+    },
+    {
+      "entry": "scopes/390-quiz-save-retry/390-quiz-save-retry-320-actions.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-14-832Z/390-quiz-save-retry-320-actions.png",
+      "bytes": 38231,
+      "sha256": "16280f1b69adfabc812e66c734d07aeca21bad79a0027feb3a31ee93f01c5313"
+    },
+    {
+      "entry": "scopes/390-divination-result/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-23-139Z/trace.json",
+      "bytes": 150224,
+      "sha256": "06c91a97f0068c606ab45234a98e54a5b617d84c77ed1db30b3dcb05fd00e373"
+    },
+    {
+      "entry": "scopes/390-divination-result/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-23-139Z/run.log",
+      "bytes": 345,
+      "sha256": "81a09cdfe0214363f6004e85dd216b5cccf0b48fa2450f7537dcae9bbdcd7210"
+    },
+    {
+      "entry": "scopes/390-divination-result/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-23-139Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "46dd4681d6cc6c249a92550a3dde908b44861d2dfc14cc4dfe2885deb0271be4"
+    },
+    {
+      "entry": "scopes/390-divination-result/390-divination-result-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-23-139Z/390-divination-result-automatic-0.png",
+      "bytes": 109490,
+      "sha256": "6e3fbec8f9d540d1507fbd8b5b4cfdcea72044adcc6f2a653ac42d299a6d9881"
+    },
+    {
+      "entry": "scopes/390-divination-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-29-814Z/trace.json",
+      "bytes": 232494,
+      "sha256": "82c9e00bf5b5a1e3c819382d68d1105e0abe82cd23006dda03eced7b68e1c3fd"
+    },
+    {
+      "entry": "scopes/390-divination-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-29-814Z/run.log",
+      "bytes": 353,
+      "sha256": "2cf03047c2193a8953ed43fb9d779b462dd557dbf9d5e6a979d61cc354cf29d9"
+    },
+    {
+      "entry": "scopes/390-divination-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-29-814Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "f1288da0124df051ddeb5f7ee83edb3b76a6afc1db94f625741c142f147e0db9"
+    },
+    {
+      "entry": "scopes/390-divination-save-retry/390-divination-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-29-814Z/390-divination-save-retry-automatic-0.png",
+      "bytes": 110021,
+      "sha256": "eead4c02d921cd5cbbf7d287e03191fc83cf37e3fe20f1bd5b5d6bd6ab464fee"
+    },
+    {
+      "entry": "scopes/390-divination-save-retry/390-divination-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-29-814Z/390-divination-save-retry-automatic-1.png",
+      "bytes": 110021,
+      "sha256": "eead4c02d921cd5cbbf7d287e03191fc83cf37e3fe20f1bd5b5d6bd6ab464fee"
+    },
+    {
+      "entry": "scopes/390-divination-save-retry/390-divination-save-retry-automatic-2.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-29-814Z/390-divination-save-retry-automatic-2.png",
+      "bytes": 110074,
+      "sha256": "ecaf6c8eacecdc5c2bc98f1f84f917250dcbe359266e1693d31931705ba86292"
+    },
+    {
+      "entry": "scopes/390-meihua-number-result/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-36-914Z/trace.json",
+      "bytes": 176685,
+      "sha256": "803a8d8b986d5fa64a8e4d93d697a4b03cdfe1e049a2925131ce98c52e86f6a5"
+    },
+    {
+      "entry": "scopes/390-meihua-number-result/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-36-914Z/run.log",
+      "bytes": 351,
+      "sha256": "44f8d1ec91231e87ce448419de42d811835232ef787acc01b05be126e30114a2"
+    },
+    {
+      "entry": "scopes/390-meihua-number-result/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-36-914Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "06c21ab1189d4fe972d508682abbc9c015bde3f6d00606d918a796b3795accaf"
+    },
+    {
+      "entry": "scopes/390-meihua-number-result/390-meihua-number-result-automatic-meihua-cast.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-36-914Z/390-meihua-number-result-automatic-meihua-cast.png",
+      "bytes": 53080,
+      "sha256": "38d3cc979e1f402e2bdf1ff30872c9238d3daca435c702961fa02736f4fff678"
+    },
+    {
+      "entry": "scopes/390-meihua-number-result/390-meihua-number-result-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-36-914Z/390-meihua-number-result-automatic-1.png",
+      "bytes": 113424,
+      "sha256": "b8fb08dd127f12545ecc1e57cf9f5a9c31e9a2be6b2ff8010becb863fdce0fd2"
+    },
+    {
+      "entry": "scopes/390-meihua-number-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-44-661Z/trace.json",
+      "bytes": 266003,
+      "sha256": "06ae27b9259559fc535ca8fb05b95c0ebb28e3888426761dc79b170d0fc6af5b"
+    },
+    {
+      "entry": "scopes/390-meihua-number-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-44-661Z/run.log",
+      "bytes": 359,
+      "sha256": "1b16f155e01cdd691282bf250d7277e117cc388f79627f59e1eb7b6f86d85b2b"
+    },
+    {
+      "entry": "scopes/390-meihua-number-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-44-661Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "167c60f388f4a4a44991d2126456371c40ab093a0168d5a07f146b8f6b82b9db"
+    },
+    {
+      "entry": "scopes/390-meihua-number-save-retry/390-meihua-number-save-retry-automatic-meihua-cast.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-44-661Z/390-meihua-number-save-retry-automatic-meihua-cast.png",
+      "bytes": 53080,
+      "sha256": "38d3cc979e1f402e2bdf1ff30872c9238d3daca435c702961fa02736f4fff678"
+    },
+    {
+      "entry": "scopes/390-meihua-number-save-retry/390-meihua-number-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-44-661Z/390-meihua-number-save-retry-automatic-1.png",
+      "bytes": 111267,
+      "sha256": "2b8ea39493e7302b6279824b74777c00494896d4919b757ebbd44fbbb9fe4bc2"
+    },
+    {
+      "entry": "scopes/390-meihua-number-save-retry/390-meihua-number-save-retry-automatic-2.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-44-661Z/390-meihua-number-save-retry-automatic-2.png",
+      "bytes": 111267,
+      "sha256": "2b8ea39493e7302b6279824b74777c00494896d4919b757ebbd44fbbb9fe4bc2"
+    },
+    {
+      "entry": "scopes/390-meihua-number-save-retry/390-meihua-number-save-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-44-661Z/390-meihua-number-save-retry-automatic-3.png",
+      "bytes": 113424,
+      "sha256": "b8fb08dd127f12545ecc1e57cf9f5a9c31e9a2be6b2ff8010becb863fdce0fd2"
+    },
+    {
+      "entry": "scopes/390-meihua-time-result/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-52-886Z/trace.json",
+      "bytes": 158242,
+      "sha256": "2350582c2b38de47687ab5752f7f6c856c038217b9c5ab69f7eca5acf8deadb0"
+    },
+    {
+      "entry": "scopes/390-meihua-time-result/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-52-886Z/run.log",
+      "bytes": 347,
+      "sha256": "b0b1fc72dbc795989b1a17e225eea0f1efddaaf7e6e6c9ac189d08046aa1a37e"
+    },
+    {
+      "entry": "scopes/390-meihua-time-result/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-52-886Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "d395dc3630ae59e43d8472b7e71bc9c47bd228da43244d819dc11625cba436e1"
+    },
+    {
+      "entry": "scopes/390-meihua-time-result/390-meihua-time-result-automatic-meihua-cast.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-52-886Z/390-meihua-time-result-automatic-meihua-cast.png",
+      "bytes": 52879,
+      "sha256": "5b6da6796bf860b50e78f32cc023dc24e6e2fd5f62e56ca3c33f2ef34541c60c"
+    },
+    {
+      "entry": "scopes/390-meihua-time-result/390-meihua-time-result-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-02-52-886Z/390-meihua-time-result-automatic-1.png",
+      "bytes": 114249,
+      "sha256": "f636c5fb8c3d1dc5eea717c6fa0d8be4546ada44346c62c39d5ffb143359001e"
+    },
+    {
+      "entry": "scopes/390-meihua-time-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-00-522Z/trace.json",
+      "bytes": 239635,
+      "sha256": "0c90fbfeb16652a3a4e60bb8d00c876f903fb08fd8f5e1f406795b3717d6b0d3"
+    },
+    {
+      "entry": "scopes/390-meihua-time-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-00-522Z/run.log",
+      "bytes": 355,
+      "sha256": "670095e772f9719a17ac733ddf4ed7d7b6c84bb3d62dfca263a36b34502a2f83"
+    },
+    {
+      "entry": "scopes/390-meihua-time-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-00-522Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "5d276d8e30e4dfa62a7f19acc45ff541552bc4eb59b632bbfc5bb52575a3e1a8"
+    },
+    {
+      "entry": "scopes/390-meihua-time-save-retry/390-meihua-time-save-retry-automatic-meihua-cast.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-00-522Z/390-meihua-time-save-retry-automatic-meihua-cast.png",
+      "bytes": 53076,
+      "sha256": "866e3dac891813a4204c9005e2d57475ab049020303279c903c8d32c054109b5"
+    },
+    {
+      "entry": "scopes/390-meihua-time-save-retry/390-meihua-time-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-00-522Z/390-meihua-time-save-retry-automatic-1.png",
+      "bytes": 112244,
+      "sha256": "77db7dc620c7a0e28e2de6b576a1a12f8a0251898aef6cfe777b8967de400e18"
+    },
+    {
+      "entry": "scopes/390-meihua-time-save-retry/390-meihua-time-save-retry-automatic-2.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-00-522Z/390-meihua-time-save-retry-automatic-2.png",
+      "bytes": 112244,
+      "sha256": "77db7dc620c7a0e28e2de6b576a1a12f8a0251898aef6cfe777b8967de400e18"
+    },
+    {
+      "entry": "scopes/390-meihua-time-save-retry/390-meihua-time-save-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-00-522Z/390-meihua-time-save-retry-automatic-3.png",
+      "bytes": 114249,
+      "sha256": "f636c5fb8c3d1dc5eea717c6fa0d8be4546ada44346c62c39d5ffb143359001e"
+    },
+    {
+      "entry": "scopes/320-quiz-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-08-762Z/trace.json",
+      "bytes": 137790,
+      "sha256": "1fc139abacc876f85949f573afca899e6ba06c63cc5d16ec6f665ac778c940fd"
+    },
+    {
+      "entry": "scopes/320-quiz-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-08-762Z/run.log",
+      "bytes": 341,
+      "sha256": "5f6c6f674aed79b872f6d48ccd6aca3bf70a6307664c998073c11365fc303d80"
+    },
+    {
+      "entry": "scopes/320-quiz-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-08-762Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "c76692d731a5442d52e8134ec8bb4a1deec768d1af0ef2a772b4e4e3fe539cce"
+    },
+    {
+      "entry": "scopes/320-quiz-save-retry/320-quiz-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-08-762Z/320-quiz-save-retry-automatic-0.png",
+      "bytes": 35122,
+      "sha256": "ffe4d7ab854e24c806394320a634e9f644ffa8173194d2b44228d2f02a31e364"
+    },
+    {
+      "entry": "scopes/320-quiz-save-retry/320-quiz-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-08-762Z/320-quiz-save-retry-automatic-1.png",
+      "bytes": 41255,
+      "sha256": "7747971b24000dd53c8e76f2d88146f79954d077894f73c8833165722841cecc"
+    },
+    {
+      "entry": "scopes/1280-quiz-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-15-747Z/trace.json",
+      "bytes": 132836,
+      "sha256": "597dc4c16d2d282be9ab122a2a9b7d9f5fefb15543c675c1c7ecd877ec91c76e"
+    },
+    {
+      "entry": "scopes/1280-quiz-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-15-747Z/run.log",
+      "bytes": 343,
+      "sha256": "2cff74ff32ba674c9a4bc239c57f65ae502b30f7af4d7d52dbfced8bdb299720"
+    },
+    {
+      "entry": "scopes/1280-quiz-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-15-747Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "e06bd1c4cce458b130cd67aafdf76deeeb9a347580e53a4a903ebb5798f2bbda"
+    },
+    {
+      "entry": "scopes/1280-quiz-save-retry/1280-quiz-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-15-747Z/1280-quiz-save-retry-automatic-0.png",
+      "bytes": 82044,
+      "sha256": "9e9ef035d32884a79900def13b4807cab8bcc68e2259388f47f63677cfc49246"
+    },
+    {
+      "entry": "scopes/1280-quiz-save-retry/1280-quiz-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-15-747Z/1280-quiz-save-retry-automatic-1.png",
+      "bytes": 77508,
+      "sha256": "268d258817914fb92729899afd96b1af3fd1a46b382fa69b00d618826a8583c4"
+    },
+    {
+      "entry": "scopes/1280-assessment-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-23-369Z/trace.json",
+      "bytes": 253949,
+      "sha256": "0f41c9ab068c2bddede4c4fe6c88d28d70c10b3534cacf88000e1f0bd8e1c5cb"
+    },
+    {
+      "entry": "scopes/1280-assessment-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-23-369Z/run.log",
+      "bytes": 355,
+      "sha256": "9ac81540a96d3eab06d3c040b00d465ed224603159cdfdc627d204a408f8a254"
+    },
+    {
+      "entry": "scopes/1280-assessment-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-23-369Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "0ba7dcf95632e1a85efef6f6b63ecc26410ebfedeecdd627e228085bef3ac4bc"
+    },
+    {
+      "entry": "scopes/1280-assessment-save-retry/1280-assessment-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-23-369Z/1280-assessment-save-retry-automatic-0.png",
+      "bytes": 74614,
+      "sha256": "327f55ed85ce55717745b927dfa1b3adb4ad7dfff23eb50b2841dcd700a16f85"
+    },
+    {
+      "entry": "scopes/1280-assessment-save-retry/1280-assessment-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-23-369Z/1280-assessment-save-retry-automatic-1.png",
+      "bytes": 88645,
+      "sha256": "f7e8bae891330df421f69d71ab6d9c8001cf00753d1ff3cec60c44c4195a6353"
+    },
+    {
+      "entry": "scopes/1280-oral-self-record-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-32-524Z/trace.json",
+      "bytes": 209987,
+      "sha256": "9f760256aa0aceeb872f3d89d7206c77ccbbc1ff1883b7ef3d18d1ea159a2634"
+    },
+    {
+      "entry": "scopes/1280-oral-self-record-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-32-524Z/run.log",
+      "bytes": 357,
+      "sha256": "defec2565fd0aa0f624da5e8a091dbd01e3380cf7f467d1010d69698122ae5c9"
+    },
+    {
+      "entry": "scopes/1280-oral-self-record-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-32-524Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "d8aed0cd33594ebe39716ba2811bfa59f4201445200dd087427e10864eca9c97"
+    },
+    {
+      "entry": "scopes/1280-oral-self-record-retry/1280-oral-self-record-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-32-524Z/1280-oral-self-record-retry-automatic-0.png",
+      "bytes": 87003,
+      "sha256": "bd22f7415f64991b7e70b8d578b3cad9fcd590e34d03ee79b8df0c0a4cd66098"
+    },
+    {
+      "entry": "scopes/1280-oral-self-record-retry/1280-oral-self-record-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-32-524Z/1280-oral-self-record-retry-automatic-1.png",
+      "bytes": 84981,
+      "sha256": "d8e0f8072caac78d333abe9069fac9b3f4907485bbb5159a918e045abfc98a4c"
+    },
+    {
+      "entry": "scopes/1280-oral-self-record-retry/1280-oral-self-record-retry-oral-self-saved-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-32-524Z/1280-oral-self-record-retry-oral-self-saved-source.png",
+      "bytes": 144028,
+      "sha256": "e74ca306d04a2edc6fb1296effd0f7a0cfdf7bc69aaf15274050d9a288657f81"
+    },
+    {
+      "entry": "scopes/1280-oral-self-record-retry/1280-oral-self-record-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-32-524Z/1280-oral-self-record-retry-automatic-3.png",
+      "bytes": 83123,
+      "sha256": "4d7c565ec89e426c72f5c7cac53c72aa2bd3ff17adadd514876fede92ca7b1ca"
+    },
+    {
+      "entry": "scopes/1280-oral-self-record-retry/1280-oral-self-record-retry-oral-self-failed-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-32-524Z/1280-oral-self-record-retry-oral-self-failed-source.png",
+      "bytes": 97585,
+      "sha256": "e7b56d5485868a73dfad7edb4a47e934699e23d00a57eed42ee572eaaaacb7da"
+    },
+    {
+      "entry": "scopes/1280-review-card-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-44-372Z/trace.json",
+      "bytes": 110999,
+      "sha256": "1caefc25aa9e9c1c61b0e2a47abe1b488b811a5371ca0a19000ca393641dd638"
+    },
+    {
+      "entry": "scopes/1280-review-card-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-44-372Z/run.log",
+      "bytes": 347,
+      "sha256": "0cdb0dc13fa8306db2c3b3f3ecd260890bde3f72db0477e3830e7e484900e432"
+    },
+    {
+      "entry": "scopes/1280-review-card-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-44-372Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "45d6b8635a7fb6b645fd61597b021d2fcacc0e10439af917de7102720a0815cd"
+    },
+    {
+      "entry": "scopes/1280-review-card-retry/1280-review-card-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-44-372Z/1280-review-card-retry-automatic-0.png",
+      "bytes": 85312,
+      "sha256": "a713f5b8e6debd1ac555918643709a48c3c9c25d4540db2058cd5e4d7a28dc05"
+    },
+    {
+      "entry": "scopes/1280-review-card-retry/1280-review-card-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-44-372Z/1280-review-card-retry-automatic-1.png",
+      "bytes": 86431,
+      "sha256": "64365326ebfbe47a7c78503ba189da0245af802e71bf300daced276a639a1030"
+    },
+    {
+      "entry": "scopes/1280-review-card-retry/1280-review-card-retry-queue-after-last.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-44-372Z/1280-review-card-retry-queue-after-last.png",
+      "bytes": 94636,
+      "sha256": "a7022ead70e6bac7c7344ae7ebcd60fe030fb1e1df8631b14094783a61c81f8d"
+    },
+    {
+      "entry": "scopes/1280-meihua-number-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-54-141Z/trace.json",
+      "bytes": 247149,
+      "sha256": "bf222a2bd2f1e211a513980eaff1dcf4c474dc65c109baf89063d6a23dfdaa83"
+    },
+    {
+      "entry": "scopes/1280-meihua-number-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-54-141Z/run.log",
+      "bytes": 361,
+      "sha256": "ba433588e044477fa164f72e45cbfb450306bdb5d7f587f8ad6b9bada83b8f86"
+    },
+    {
+      "entry": "scopes/1280-meihua-number-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-54-141Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "5af5fe1c0cb13d9ead1d3af458af90578bd8643c08b193b802574e9dd939be37"
+    },
+    {
+      "entry": "scopes/1280-meihua-number-save-retry/1280-meihua-number-save-retry-automatic-meihua-cast.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-54-141Z/1280-meihua-number-save-retry-automatic-meihua-cast.png",
+      "bytes": 110030,
+      "sha256": "9605f84654f0e5ae60b193322f454c1e8a65c6a526ad14a61338c3736954b78d"
+    },
+    {
+      "entry": "scopes/1280-meihua-number-save-retry/1280-meihua-number-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-54-141Z/1280-meihua-number-save-retry-automatic-1.png",
+      "bytes": 199899,
+      "sha256": "3f21b7785304dd0616cd7f30366b13321595e104375c7989f644533dc8bca870"
+    },
+    {
+      "entry": "scopes/1280-meihua-number-save-retry/1280-meihua-number-save-retry-automatic-2.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-54-141Z/1280-meihua-number-save-retry-automatic-2.png",
+      "bytes": 199627,
+      "sha256": "ef3a1f34e51829df1d3aca64253c00e17afac3ab7bd8119735326f962f7f2daf"
+    },
+    {
+      "entry": "scopes/1280-meihua-number-save-retry/1280-meihua-number-save-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-03-54-141Z/1280-meihua-number-save-retry-automatic-3.png",
+      "bytes": 200278,
+      "sha256": "11d2c8ec2a50cc952b33981bac431b1807f1a4e672a59ec61cc32c3fb1887053"
+    },
+    {
+      "entry": "scopes/768-quiz-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-04-708Z/trace.json",
+      "bytes": 137567,
+      "sha256": "b3f2c0c3fe6520d059ee95f18a028b592b4372f44541415dcf4879ac7240e4e7"
+    },
+    {
+      "entry": "scopes/768-quiz-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-04-708Z/run.log",
+      "bytes": 341,
+      "sha256": "48752f32c788a228f6e8e217ae139a8d9402a5562948990de7c84ec0465dfb7a"
+    },
+    {
+      "entry": "scopes/768-quiz-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-04-708Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "82dbc5acc031c321b859d83ebc72c18702b08fc40905cc25185812b07ccce03e"
+    },
+    {
+      "entry": "scopes/768-quiz-save-retry/768-quiz-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-04-708Z/768-quiz-save-retry-automatic-0.png",
+      "bytes": 62196,
+      "sha256": "5315de7a8670885b4bddf7807b75d54f1e75437e74c5cc71a25bad07fb0c283f"
+    },
+    {
+      "entry": "scopes/768-quiz-save-retry/768-quiz-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-04-708Z/768-quiz-save-retry-automatic-1.png",
+      "bytes": 56178,
+      "sha256": "97a5307a014a6f1cb946f302b9ee41365c06c9d9102d63b7ace0a06f96687d5a"
+    },
+    {
+      "entry": "scopes/768-assessment-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-12-314Z/trace.json",
+      "bytes": 270618,
+      "sha256": "39e9f93ac84ec48f744f55626f78fff079146b3432657ab43e2bde212cdb3eed"
+    },
+    {
+      "entry": "scopes/768-assessment-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-12-314Z/run.log",
+      "bytes": 353,
+      "sha256": "751efc5e14b24e2df3b9816d229780ea1ec58a609e6b58d4af8696b0419df9e1"
+    },
+    {
+      "entry": "scopes/768-assessment-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-12-314Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "003eeb9702bcf6d406b5e0b19411d7c336e0e2018748b86df2d47c89fd4c1fb1"
+    },
+    {
+      "entry": "scopes/768-assessment-save-retry/768-assessment-save-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-12-314Z/768-assessment-save-retry-automatic-0.png",
+      "bytes": 64624,
+      "sha256": "b47bd11f52f59c3ee914d16da72e477f625a6ca0289e7367bb7fba5a75ae2284"
+    },
+    {
+      "entry": "scopes/768-assessment-save-retry/768-assessment-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-12-314Z/768-assessment-save-retry-automatic-1.png",
+      "bytes": 70914,
+      "sha256": "817232e554616f7298f71e9243ffe37e9fbffa19b9662c4bfc62a189acdf0b3e"
+    },
+    {
+      "entry": "scopes/768-oral-self-record-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-19-797Z/trace.json",
+      "bytes": 237054,
+      "sha256": "7c34482424f3eaf3a036c966fad4599ba791df5bdac64aaa2fd876adf7138d8c"
+    },
+    {
+      "entry": "scopes/768-oral-self-record-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-19-797Z/run.log",
+      "bytes": 355,
+      "sha256": "14ff3233d1f79e2bbbb3d0ec5b64204c26a7610bd8cedeb5fd5b5d6f0380b628"
+    },
+    {
+      "entry": "scopes/768-oral-self-record-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-19-797Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "a9d5e35d53dd41df0beab59404ed2563e28ac0b7e718e08a8013b35fd000e900"
+    },
+    {
+      "entry": "scopes/768-oral-self-record-retry/768-oral-self-record-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-19-797Z/768-oral-self-record-retry-automatic-0.png",
+      "bytes": 70037,
+      "sha256": "0dfb20c13c15b6a2f0189eb31495d3d69b2497805063e85f98eb6186a649fe37"
+    },
+    {
+      "entry": "scopes/768-oral-self-record-retry/768-oral-self-record-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-19-797Z/768-oral-self-record-retry-automatic-1.png",
+      "bytes": 67959,
+      "sha256": "ed0c86c1f12286524e3a182f8b8115b1a15cebec4f564c5e8d88a414b7b67eda"
+    },
+    {
+      "entry": "scopes/768-oral-self-record-retry/768-oral-self-record-retry-oral-self-saved-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-19-797Z/768-oral-self-record-retry-oral-self-saved-source.png",
+      "bytes": 146686,
+      "sha256": "59e0a75ae9e507d1461f70a13cd24dfe3a0039d823b9d96ffffe3c400578a3bf"
+    },
+    {
+      "entry": "scopes/768-oral-self-record-retry/768-oral-self-record-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-19-797Z/768-oral-self-record-retry-automatic-3.png",
+      "bytes": 66212,
+      "sha256": "eb3bb83b64601c0755aca02b8e9b4b282b14c8d4266967da0548bf4919c2527c"
+    },
+    {
+      "entry": "scopes/768-oral-self-record-retry/768-oral-self-record-retry-oral-self-failed-source.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-19-797Z/768-oral-self-record-retry-oral-self-failed-source.png",
+      "bytes": 76513,
+      "sha256": "fc1c2d2d7f4325ef088b2cc7ef03ea4fd8c9904b7c3c403bee7bee3d7e0aa69b"
+    },
+    {
+      "entry": "scopes/768-review-card-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-30-578Z/trace.json",
+      "bytes": 118521,
+      "sha256": "e65b910b8235da62956c9eaf52a3022c014d7d5a02997a16c21c2f9860ab6df6"
+    },
+    {
+      "entry": "scopes/768-review-card-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-30-578Z/run.log",
+      "bytes": 345,
+      "sha256": "5fa9cff718e59005ce0e71095064108c080437cfccb11dcc2ef454f2b8811372"
+    },
+    {
+      "entry": "scopes/768-review-card-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-30-578Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "0b582d0731d625e924a97aaf0e17a1658dc8171cb590aeba5db74effc697dcef"
+    },
+    {
+      "entry": "scopes/768-review-card-retry/768-review-card-retry-automatic-0.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-30-578Z/768-review-card-retry-automatic-0.png",
+      "bytes": 64112,
+      "sha256": "d22c10a9512374456b9c653fa16464801483b887761a2ef430afe7ad3c7fb4d4"
+    },
+    {
+      "entry": "scopes/768-review-card-retry/768-review-card-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-30-578Z/768-review-card-retry-automatic-1.png",
+      "bytes": 69037,
+      "sha256": "d05bfbac95f8fd4d6cb08a5d4cd20f2132280da33f4f5bfde0ff56dd5935603f"
+    },
+    {
+      "entry": "scopes/768-review-card-retry/768-review-card-retry-queue-after-last.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-30-578Z/768-review-card-retry-queue-after-last.png",
+      "bytes": 72451,
+      "sha256": "0db5c60c1cb5e1e6646a54e3d56dd135ad8767fb039524216cafd859828ba6a3"
+    },
+    {
+      "entry": "scopes/768-meihua-number-save-retry/trace.json",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-38-109Z/trace.json",
+      "bytes": 266069,
+      "sha256": "e90bb8ce21c2977c2d59d15bc6da444b6b2119622e6bb6e85b0901ee2d1374a6"
+    },
+    {
+      "entry": "scopes/768-meihua-number-save-retry/run.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-38-109Z/run.log",
+      "bytes": 359,
+      "sha256": "bcd6805b6424e78a3ca28069147f80faae8508b5c8b0b68d4a2ddf592ef404f6"
+    },
+    {
+      "entry": "scopes/768-meihua-number-save-retry/server-stdout.log",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-38-109Z/server-stdout.log",
+      "bytes": 54,
+      "sha256": "b180c42c6af4e081b85c1ed575bc1ecbfd73ccfa954aebab8b593c489acaf9b9"
+    },
+    {
+      "entry": "scopes/768-meihua-number-save-retry/768-meihua-number-save-retry-automatic-meihua-cast.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-38-109Z/768-meihua-number-save-retry-automatic-meihua-cast.png",
+      "bytes": 85474,
+      "sha256": "fd558a0cfa581cc162fc042ecf7ecbbdd902b23d3809d4bbd8ddc4d126ca2044"
+    },
+    {
+      "entry": "scopes/768-meihua-number-save-retry/768-meihua-number-save-retry-automatic-1.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-38-109Z/768-meihua-number-save-retry-automatic-1.png",
+      "bytes": 237097,
+      "sha256": "580f5759e59b5ffef4df009c6bd712b4f207bc89451d5c66ea58449978269223"
+    },
+    {
+      "entry": "scopes/768-meihua-number-save-retry/768-meihua-number-save-retry-automatic-2.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-38-109Z/768-meihua-number-save-retry-automatic-2.png",
+      "bytes": 237097,
+      "sha256": "4cfb2ec50e005c724855ff1f6e758062d8ea4a33a638c4ae8954f22872941a50"
+    },
+    {
+      "entry": "scopes/768-meihua-number-save-retry/768-meihua-number-save-retry-automatic-3.png",
+      "source": "docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-25T00-04-38-109Z/768-meihua-number-save-retry-automatic-3.png",
+      "bytes": 237449,
+      "sha256": "6e9178627311771ccdcaa106efe62ca047fe6b5a887c57bf88a25b61da171362"
+    }
+  ],
+  "exclusions": [
+    "No browser profile directories or files are read or included.",
+    "Only explicitly referenced successful-scope screenshots, trace, run/server logs, summary, source snapshot and collector are included.",
+    "Historical failed attempts remain in their original locations; they are referenced by the summary and are not deleted.",
+    "This package does not claim real-device, screen-reader, native 200% zoom or deployed AI service verification.",
+    "Full validate/E2E evidence is separate; this package covers only the 51 feedback scopes."
+  ]
+}

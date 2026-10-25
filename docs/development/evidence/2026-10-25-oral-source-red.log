@@ -1,0 +1,329 @@
+✔ 复讲lesson后旧success不写记录、不覆盖当前界面或finally状态 (4.0263ms)
+✔ 复讲lesson后旧failure不写记录、不覆盖当前界面或finally状态 (0.7131ms)
+✔ 复讲response后旧success不写记录、不覆盖当前界面或finally状态 (0.6204ms)
+✔ 复讲response后旧failure不写记录、不覆盖当前界面或finally状态 (0.4964ms)
+✔ 复讲self后旧success不写记录、不覆盖当前界面或finally状态 (0.6539ms)
+✔ 复讲self后旧failure不写记录、不覆盖当前界面或finally状态 (0.9039ms)
+✔ 复讲quiz后旧success不写记录、不覆盖当前界面或finally状态 (3.2582ms)
+✔ 复讲quiz后旧failure不写记录、不覆盖当前界面或finally状态 (0.6404ms)
+✔ 复讲hub后旧success不写记录、不覆盖当前界面或finally状态 (0.7816ms)
+✔ 复讲hub后旧failure不写记录、不覆盖当前界面或finally状态 (0.8195ms)
+✔ 复讲cleanup后旧success不写记录、不覆盖当前界面或finally状态 (0.5236ms)
+✔ 复讲cleanup后旧failure不写记录、不覆盖当前界面或finally状态 (1.083ms)
+✔ 旧复讲finally不能解锁后继请求；双提交只发送一次当前请求 (1.6731ms)
+✔ ai复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩 (1.8311ms)
+✔ ai复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.7408ms)
+✔ ai复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.6654ms)
+✔ self复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.7801ms)
+✔ self复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.6673ms)
+✔ self复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.5717ms)
+✔ 复讲原文不足20字就地说明并聚焦，不POST、不保存 (0.5588ms)
+✔ 复讲自评结果由页面主动显示并获得焦点 (1.1337ms)
+✔ 复讲自评保存失败说明由页面主动显示并获得焦点 (0.5357ms)
+✔ 复讲结果定位帧在离页后失效，不抢回焦点 (0.5948ms)
+✔ 复讲失败可本地自评；四段反馈依据可读，模型文本转义且不存正文 (1.4048ms)
+✖ ai复讲成功结果指向本轮原课，离开不补写或新增评阅 (1.1769ms)
+✖ ai复讲保存失败结果指向本轮原课，离开不补写或新增评阅 (0.702ms)
+✖ self复讲成功结果指向本轮原课，离开不补写或新增评阅 (0.5977ms)
+✖ self复讲保存失败结果指向本轮原课，离开不补写或新增评阅 (0.5787ms)
+✖ 复讲lesson后旧来源按钮不导航或保存 (4.1197ms)
+✖ 复讲response后旧来源按钮不导航或保存 (0.7535ms)
+✖ 复讲self后旧来源按钮不导航或保存 (1.623ms)
+✖ 复讲new后旧来源按钮不导航或保存 (0.638ms)
+✖ 复讲quiz后旧来源按钮不导航或保存 (0.5618ms)
+✖ 复讲hub后旧来源按钮不导航或保存 (0.5993ms)
+✖ 复讲cleanup后旧来源按钮不导航或保存 (0.6232ms)
+✖ 复讲retry后旧来源按钮不导航或保存 (0.6371ms)
+✔ 课程考评沿用四段反馈，既有依据、保存重试及返回行动仍可达 (1.5504ms)
+✔ 复讲入口选定具体课程并聚焦复讲，不误开小试或写学习成绩 (0.5031ms)
+✔ 明确复讲入口在外层标题RAF之后获得焦点，并声明本次焦点目标 (0.481ms)
+✔ 复讲入口退出后旧RAF不聚焦已脱离的输入或新页面标题 (0.4676ms)
+✔ 容器整体移除后复讲RAF不再聚焦旧内容 (1.1338ms)
+✔ 清理保留DOM后初始题卷标题RAF不再滚动或聚焦 (0.4529ms)
+✔ 清理保留DOM后初始复讲入口RAF不再滚动或聚焦 (0.4054ms)
+✔ 重绘后旧表单change不读取新控件或改写仍保留的本轮草稿 (0.5418ms)
+✔ 旧未交卷表单submit不得改写新卷状态或移动新卷焦点 (0.5479ms)
+✔ 十题全错长卷保存失败定位保存状态，重试成功返回结果焦点 (1.6919ms)
+✔ 结果定位排队后清理页面不滚动或聚焦旧保存状态 (0.6314ms)
+✔ 原题回练保留默认三题，重绘沿用会话而不同原题开启新卷 (0.5906ms)
+✔ 失效原题或版本不随机替题，保留回原课和温故的真实回调 (0.7673ms)
+✔ 错题保存失败不显示已加入，原会话重试成功后按持久化记录显示 (1.5528ms)
+✔ 结果原课携带原题，原题回练新会话答对后才显示本轮已纠正 (1.3911ms)
+✔ 结果内新开原题回练后，父页面同入口重绘仍保留该新卷及答案 (0.7797ms)
+✔ 结果重绘从持久化读取状态，不把已移除的旧记录仍说成已加入 (0.8997ms)
+✔ 结果不把 questionType 不同的 due 旧温习记录归于当前题 (2.0108ms)
+✔ 结果不把 questionType 不同的 resolved 旧温习记录归于当前题 (1.0581ms)
+✔ 结果不把 targetCode 不同的 due 旧温习记录归于当前题 (0.9861ms)
+✔ 结果不把 targetCode 不同的 resolved 旧温习记录归于当前题 (0.935ms)
+✔ 结果不把 termId 不同的 due 旧温习记录归于当前题 (0.9104ms)
+✔ 结果不把 termId 不同的 resolved 旧温习记录归于当前题 (0.9128ms)
+✔ 结果不把 sourceKind 不同的 due 旧温习记录归于当前题 (0.936ms)
+✔ 结果不把 sourceKind 不同的 resolved 旧温习记录归于当前题 (0.9429ms)
+✔ 温故发起的原题回练取消返回温故且不保存答卷 (1.101ms)
+✔ 真实交卷处理函数重复触发和结果重绘只计一次，新一轮独立 (1.0365ms)
+✔ 本轮重绘保留题序与已选答案，离开后不恢复未提交卷 (0.5556ms)
+✔ 重绘前已脱离页面的取消处理不能撤销已交卷结果 (0.5959ms)
+✔ 未答和篡改选项定位首个未答题，取消不保存 (0.8826ms)
+✔ 成绩保存失败可读且可重试，重试与重绘复用本轮 (0.7582ms)
+✔ 新用户抽查空态说明先学一课并可返回 (0.5124ms)
+✔ 仅成就保存失败时重试不重写成绩，沿用原session证据 (0.8474ms)
+✔ 小试交卷后进入修习谱不以旧时间戳再计同轮证据 (0.8684ms)
+✔ 修习谱回补采用本轮实际成绩，旧无session证据保持兼容 (0.8727ms)
+✔ 已处理ID缺少成绩凭据时显示缺证据，不重计分或生成成就 (0.6027ms)
+✔ 已有正式ID全部带真实凭据时，其他旧课程仍按旧汇总回补 (0.471ms)
+✔ 已有真实低分凭据重交高分不改变成绩，也不据当前答案回补高分成就 (0.7215ms)
+✔ 正式ID存在但没有凭据时修习谱不拿聚合最高分补造该轮成就 (0.3625ms)
+ℹ tests 75
+ℹ suites 0
+ℹ pass 63
+ℹ fail 12
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 190.3897
+
+✖ failing tests:
+
+test at web\test\learning-assessment-page.test.mjs:311:5
+✖ ai复讲成功结果指向本轮原课，离开不补写或新增评阅 (1.1769ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /项目课程要点/. Input:
+  
+  '<h3>判断依据</h3><h4>典籍要点核对</h4><ul><li>能辨认八卦三爻符号</li><li>能说出八卦的自然之象</li><li>能说明八卦的核心德性</li></ul>'
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:326:14)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<h3>判断依据</h3><h4>典籍要点核对</h4><ul><li>能辨认八卦三爻符号</li><li>能说出八卦的自然之象</li><li>能说明八卦的核心德性</li></ul>',
+    expected: /项目课程要点/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at web\test\learning-assessment-page.test.mjs:311:5
+✖ ai复讲保存失败结果指向本轮原课，离开不补写或新增评阅 (0.702ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /项目课程要点/. Input:
+  
+  '<h3>判断依据</h3><h4>典籍要点核对</h4><ul><li>能辨认八卦三爻符号</li><li>能说出八卦的自然之象</li><li>能说明八卦的核心德性</li></ul>'
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:326:14)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<h3>判断依据</h3><h4>典籍要点核对</h4><ul><li>能辨认八卦三爻符号</li><li>能说出八卦的自然之象</li><li>能说明八卦的核心德性</li></ul>',
+    expected: /项目课程要点/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at web\test\learning-assessment-page.test.mjs:311:5
+✖ self复讲成功结果指向本轮原课，离开不补写或新增评阅 (0.5977ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /项目课程要点/. Input:
+  
+  '<h3>判断依据</h3><h4>典籍要点核对</h4><ul><li>能辨认八卦三爻符号</li><li>能说出八卦的自然之象</li><li>能说明八卦的核心德性</li></ul>'
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:326:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<h3>判断依据</h3><h4>典籍要点核对</h4><ul><li>能辨认八卦三爻符号</li><li>能说出八卦的自然之象</li><li>能说明八卦的核心德性</li></ul>',
+    expected: /项目课程要点/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at web\test\learning-assessment-page.test.mjs:311:5
+✖ self复讲保存失败结果指向本轮原课，离开不补写或新增评阅 (0.5787ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /项目课程要点/. Input:
+  
+  '<h3>判断依据</h3><h4>典籍要点核对</h4><ul><li>能辨认八卦三爻符号</li><li>能说出八卦的自然之象</li><li>能说明八卦的核心德性</li></ul>'
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:326:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<h3>判断依据</h3><h4>典籍要点核对</h4><ul><li>能辨认八卦三爻符号</li><li>能说出八卦的自然之象</li><li>能说明八卦的核心德性</li></ul>',
+    expected: /项目课程要点/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at web\test\learning-assessment-page.test.mjs:347:3
+✖ 复讲lesson后旧来源按钮不导航或保存 (4.1197ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(sourceButton)
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:356:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web\test\learning-assessment-page.test.mjs:347:3
+✖ 复讲response后旧来源按钮不导航或保存 (0.7535ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(sourceButton)
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:356:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web\test\learning-assessment-page.test.mjs:347:3
+✖ 复讲self后旧来源按钮不导航或保存 (1.623ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(sourceButton)
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:356:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web\test\learning-assessment-page.test.mjs:347:3
+✖ 复讲new后旧来源按钮不导航或保存 (0.638ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(sourceButton)
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:356:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web\test\learning-assessment-page.test.mjs:347:3
+✖ 复讲quiz后旧来源按钮不导航或保存 (0.5618ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(sourceButton)
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:356:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web\test\learning-assessment-page.test.mjs:347:3
+✖ 复讲hub后旧来源按钮不导航或保存 (0.5993ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(sourceButton)
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:356:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web\test\learning-assessment-page.test.mjs:347:3
+✖ 复讲cleanup后旧来源按钮不导航或保存 (0.6232ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(sourceButton)
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:356:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at web\test\learning-assessment-page.test.mjs:347:3
+✖ 复讲retry后旧来源按钮不导航或保存 (0.6371ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(sourceButton)
+  
+      at TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-assessment-page.test.mjs:356:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

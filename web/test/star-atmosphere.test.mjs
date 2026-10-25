@@ -1,6 +1,17 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { createGalaxyTexture, createSkyRandom } from '../js/star-atmosphere.js';
+import { createGalaxyTexture, createSkyRandom, sampleSkyDensity } from '../js/star-atmosphere.js';
+
+test('背景星点密度可复现且随银河云尘变化，暗尘中保留疏空', () => {
+  const samples = [];
+  for (let y = 0; y <= 10; y += 1) for (let x = 0; x <= 20; x += 1) {
+    const first = sampleSkyDensity(x / 20, y / 10, 16 / 9);
+    assert.equal(first, sampleSkyDensity(x / 20, y / 10, 16 / 9));
+    assert.ok(first >= 0.1 && first <= 1);
+    samples.push(first);
+  }
+  assert.ok(Math.max(...samples) - Math.min(...samples) > 0.35);
+});
 
 test('银河纹理可重复生成，调整窗口不会随机更换星空', () => {
   const first = createGalaxyTexture(320, 180);

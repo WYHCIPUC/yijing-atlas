@@ -1,0 +1,6235 @@
+{
+  "startedAt": "2026-10-24T18:57:03.907Z",
+  "command": "node scripts/test-reading-save.mjs",
+  "node": "v22.23.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "head": "1bee1c210d675d8aa49df23c0724ba577ad8cf6d",
+  "sourceHashes": {
+    "web/js/main.js": "2c68c387383f70215420db70485bd18cbc7f00334722c6ca8fa7e6a29a1326b7",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/index.html": "3eb1072260c48ece01051af175ec44639e357b5f1ec4d151a2bb69bd07b73ec3",
+    "web/styles/immersive.css": "7ff3555ee8a593401b365dfdef36dd5dc0213222650e3d58afd45106873327f1",
+    "scripts/test-reading-save.mjs": "7331d29a23889d4953654fee450e356dd3c8fd59777e15c51003fca626cb1ad7"
+  },
+  "scenarios": [
+    {
+      "name": "1440-achievement-only",
+      "mode": "achievement-only",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "code": "000000",
+      "hexagram": "坤",
+      "inputs": [
+        {
+          "selector": "#search",
+          "kind": "mouse",
+          "x": 1287,
+          "y": 34.54319763183594
+        },
+        {
+          "selector": ".search-option[data-index=\"1\"]",
+          "kind": "mouse",
+          "x": 1216,
+          "y": 171.28550720214844
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "mouse",
+          "x": 585,
+          "y": 871
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "mouse",
+          "x": 1341,
+          "y": 587.96875
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "mouse",
+          "x": 1338,
+          "y": 156
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "mouse",
+          "x": 1338,
+          "y": 156
+        },
+        {
+          "selector": "#reading-back",
+          "kind": "mouse",
+          "x": 74,
+          "y": 41
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "mouse",
+          "x": 585,
+          "y": 871
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "mouse",
+          "x": 1341,
+          "y": 587.96875
+        }
+      ],
+      "checks": [
+        {
+          "label": "focus-and-quick-no-formal-write",
+          "focused": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "quick": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "modal": false
+        },
+        {
+          "label": "deep-failure-readable-and-specific",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "payload": {
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1287,
+                "clientY": 34
+              },
+              {
+                "selector": ".search-option[data-index=\"1\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1216,
+                "clientY": 171
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 585,
+                "clientY": 871
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1341,
+                "clientY": 587
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录未保存，正文仍可阅读。可恢复浏览器存储后重试。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": false,
+            "focus": "reading-quicken",
+            "title": "坤·坤为地",
+            "bodyVisible": true,
+            "bodyCharacters": 2531
+          }
+        },
+        {
+          "label": "failed-retry-only-unsaved-half",
+          "counts": {
+            "yijing.achievements.v1": 2,
+            "yijing-review-cards": 1
+          },
+          "savedCounts": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 1
+          }
+        },
+        {
+          "label": "recovered-single-event-and-card-old-records-intact",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "payload": {
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1287,
+                "clientY": 34
+              },
+              {
+                "selector": ".search-option[data-index=\"1\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1216,
+                "clientY": 171
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 585,
+                "clientY": 871
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1341,
+                "clientY": 587
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1338,
+                "clientY": 156
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1338,
+                "clientY": 156
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡已保存。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": true,
+            "focus": "reading-save-status",
+            "title": "坤·坤为地",
+            "bodyVisible": true,
+            "bodyCharacters": 2531
+          }
+        },
+        {
+          "label": "normal-reentry-idempotent-and-trusted-input",
+          "counts": {
+            "yijing.achievements.v1": 3,
+            "yijing-review-cards": 1
+          },
+          "inputs": [
+            {
+              "selector": "#search",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1287,
+              "clientY": 34
+            },
+            {
+              "selector": ".search-option[data-index=\"1\"]",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1216,
+              "clientY": 171
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 585,
+              "clientY": 871
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1341,
+              "clientY": 587
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1338,
+              "clientY": 156
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1338,
+              "clientY": 156
+            },
+            {
+              "selector": "#reading-back",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 74,
+              "clientY": 41
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 585,
+              "clientY": 871
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1341,
+              "clientY": 587
+            }
+          ]
+        }
+      ],
+      "screenshots": [
+        "1440-achievement-only-failure-visible.png",
+        "1440-achievement-only-recovered.png"
+      ],
+      "pendingEvents": [
+        {
+          "code": "000000",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "000000",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:000000",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "000000"
+            },
+            "occurredAt": "2026-10-24T18:57:09.704Z"
+          }
+        },
+        {
+          "code": "000000",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "000000",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:000000",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "000000"
+            },
+            "occurredAt": "2026-10-24T18:57:09.704Z"
+          }
+        },
+        {
+          "code": "000000",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "000000",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:000000",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "000000"
+            },
+            "occurredAt": "2026-10-24T18:57:09.704Z"
+          }
+        },
+        {
+          "code": "000000",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "000000",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:000000",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "000000"
+            },
+            "occurredAt": "2026-10-24T18:57:11.150Z"
+          }
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "name": "1440-review-only",
+      "mode": "review-only",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "code": "100010",
+      "hexagram": "屯",
+      "inputs": [
+        {
+          "selector": "#search",
+          "kind": "mouse",
+          "x": 1287,
+          "y": 34.68947792053223
+        },
+        {
+          "selector": ".search-option[data-index=\"0\"]",
+          "kind": "mouse",
+          "x": 1216,
+          "y": 106.723876953125
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "mouse",
+          "x": 585,
+          "y": 871
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "mouse",
+          "x": 1341,
+          "y": 587.96875
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "mouse",
+          "x": 1338,
+          "y": 156
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "mouse",
+          "x": 1338,
+          "y": 156
+        },
+        {
+          "selector": "#reading-back",
+          "kind": "mouse",
+          "x": 74,
+          "y": 41
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "mouse",
+          "x": 585,
+          "y": 871
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "mouse",
+          "x": 1341,
+          "y": 587.96875
+        }
+      ],
+      "checks": [
+        {
+          "label": "focus-and-quick-no-formal-write",
+          "focused": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "quick": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "modal": false
+        },
+        {
+          "label": "deep-failure-readable-and-specific",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868232860,
+                    "introducedAt": 1792868232860,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1287,
+                "clientY": 34
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1216,
+                "clientY": 106
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 585,
+                "clientY": 871
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1341,
+                "clientY": 587
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "复习卡未保存，正文仍可阅读。可恢复浏览器存储后重试。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": false,
+            "focus": "reading-quicken",
+            "title": "屯·水雷屯",
+            "bodyVisible": true,
+            "bodyCharacters": 2466
+          }
+        },
+        {
+          "label": "failed-retry-only-unsaved-half",
+          "counts": {
+            "yijing.achievements.v1": 1,
+            "yijing-review-cards": 2
+          },
+          "savedCounts": {
+            "yijing.achievements.v1": 1,
+            "yijing-review-cards": 0
+          }
+        },
+        {
+          "label": "recovered-single-event-and-card-old-records-intact",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868232860,
+                    "introducedAt": 1792868232860,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233371,
+                    "introducedAt": 1792868233371,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1287,
+                "clientY": 34
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1216,
+                "clientY": 106
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 585,
+                "clientY": 871
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1341,
+                "clientY": 587
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1338,
+                "clientY": 156
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1338,
+                "clientY": 156
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡已保存。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": true,
+            "focus": "reading-save-status",
+            "title": "屯·水雷屯",
+            "bodyVisible": true,
+            "bodyCharacters": 2466
+          }
+        },
+        {
+          "label": "normal-reentry-idempotent-and-trusted-input",
+          "counts": {
+            "yijing.achievements.v1": 1,
+            "yijing-review-cards": 3
+          },
+          "inputs": [
+            {
+              "selector": "#search",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1287,
+              "clientY": 34
+            },
+            {
+              "selector": ".search-option[data-index=\"0\"]",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1216,
+              "clientY": 106
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 585,
+              "clientY": 871
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1341,
+              "clientY": 587
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1338,
+              "clientY": 156
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1338,
+              "clientY": 156
+            },
+            {
+              "selector": "#reading-back",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 74,
+              "clientY": 41
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 585,
+              "clientY": 871
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1341,
+              "clientY": 587
+            }
+          ]
+        }
+      ],
+      "screenshots": [
+        "1440-review-only-failure-visible.png",
+        "1440-review-only-recovered.png"
+      ],
+      "pendingEvents": [
+        {
+          "code": "100010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "100010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:100010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "100010"
+            },
+            "occurredAt": "2026-10-24T18:57:12.857Z"
+          }
+        },
+        {
+          "code": "100010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "100010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:100010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "100010"
+            },
+            "occurredAt": "2026-10-24T18:57:12.857Z"
+          }
+        },
+        {
+          "code": "100010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "100010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:100010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "100010"
+            },
+            "occurredAt": "2026-10-24T18:57:12.857Z"
+          }
+        },
+        {
+          "code": "100010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "100010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:100010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "100010"
+            },
+            "occurredAt": "2026-10-24T18:57:14.270Z"
+          }
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "name": "1440-both",
+      "mode": "both",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "code": "010001",
+      "hexagram": "蒙",
+      "inputs": [
+        {
+          "selector": "#search",
+          "kind": "mouse",
+          "x": 1287,
+          "y": 34.371764183044434
+        },
+        {
+          "selector": ".search-option[data-index=\"0\"]",
+          "kind": "mouse",
+          "x": 1216,
+          "y": 106.72342681884766
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "mouse",
+          "x": 585,
+          "y": 871
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "mouse",
+          "x": 1341,
+          "y": 587.96875
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "mouse",
+          "x": 1338,
+          "y": 156
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "mouse",
+          "x": 1338,
+          "y": 156
+        },
+        {
+          "selector": "#reading-back",
+          "kind": "mouse",
+          "x": 74,
+          "y": 41
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "mouse",
+          "x": 585,
+          "y": 871
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "mouse",
+          "x": 1341,
+          "y": 587.96875
+        }
+      ],
+      "checks": [
+        {
+          "label": "focus-and-quick-no-formal-write",
+          "focused": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "quick": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "modal": false
+        },
+        {
+          "label": "deep-failure-readable-and-specific",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868235756,
+                    "introducedAt": 1792868235756,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1287,
+                "clientY": 34
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1216,
+                "clientY": 106
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 585,
+                "clientY": 871
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1341,
+                "clientY": 587
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡未保存，正文仍可阅读。可恢复浏览器存储后重试。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": false,
+            "focus": "reading-quicken",
+            "title": "蒙·山水蒙",
+            "bodyVisible": true,
+            "bodyCharacters": 2427
+          }
+        },
+        {
+          "label": "failed-retry-only-unsaved-half",
+          "counts": {
+            "yijing.achievements.v1": 2,
+            "yijing-review-cards": 2
+          },
+          "savedCounts": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          }
+        },
+        {
+          "label": "recovered-single-event-and-card-old-records-intact",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010",
+                "hexagram:read:010001"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010",
+                  "010001"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010001": {
+                "code": "010001",
+                "stage": 0,
+                "due": 1792868236335,
+                "introducedAt": 1792868236335,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868235756,
+                    "introducedAt": 1792868235756,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236153,
+                    "introducedAt": 1792868236153,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1287,
+                "clientY": 34
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1216,
+                "clientY": 106
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 585,
+                "clientY": 871
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1341,
+                "clientY": 587
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1338,
+                "clientY": 156
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1338,
+                "clientY": 156
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡已保存。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": true,
+            "focus": "reading-save-status",
+            "title": "蒙·山水蒙",
+            "bodyVisible": true,
+            "bodyCharacters": 2427
+          }
+        },
+        {
+          "label": "normal-reentry-idempotent-and-trusted-input",
+          "counts": {
+            "yijing.achievements.v1": 3,
+            "yijing-review-cards": 3
+          },
+          "inputs": [
+            {
+              "selector": "#search",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1287,
+              "clientY": 34
+            },
+            {
+              "selector": ".search-option[data-index=\"0\"]",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1216,
+              "clientY": 106
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 585,
+              "clientY": 871
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1341,
+              "clientY": 587
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1338,
+              "clientY": 156
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1338,
+              "clientY": 156
+            },
+            {
+              "selector": "#reading-back",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 74,
+              "clientY": 41
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 585,
+              "clientY": 871
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1341,
+              "clientY": 587
+            }
+          ]
+        }
+      ],
+      "screenshots": [
+        "1440-both-failure-visible.png",
+        "1440-both-recovered.png"
+      ],
+      "pendingEvents": [
+        {
+          "code": "010001",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010001",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010001",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010001"
+            },
+            "occurredAt": "2026-10-24T18:57:15.753Z"
+          }
+        },
+        {
+          "code": "010001",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010001",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010001",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010001"
+            },
+            "occurredAt": "2026-10-24T18:57:15.753Z"
+          }
+        },
+        {
+          "code": "010001",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010001",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010001",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010001"
+            },
+            "occurredAt": "2026-10-24T18:57:15.753Z"
+          }
+        },
+        {
+          "code": "010001",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010001",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010001",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010001"
+            },
+            "occurredAt": "2026-10-24T18:57:17.223Z"
+          }
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "name": "1440-getter-denied",
+      "mode": "getter-denied",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "code": "111010",
+      "hexagram": "需",
+      "inputs": [
+        {
+          "selector": "#search",
+          "kind": "mouse",
+          "x": 1287,
+          "y": 34.37260627746582
+        },
+        {
+          "selector": ".search-option[data-index=\"0\"]",
+          "kind": "mouse",
+          "x": 1216,
+          "y": 106.694091796875
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "mouse",
+          "x": 585,
+          "y": 871
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "mouse",
+          "x": 1341,
+          "y": 587.96875
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "mouse",
+          "x": 1338,
+          "y": 156
+        },
+        {
+          "selector": "#reading-back",
+          "kind": "mouse",
+          "x": 74,
+          "y": 41
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "mouse",
+          "x": 585,
+          "y": 871
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "mouse",
+          "x": 1341,
+          "y": 587.96875
+        },
+        {
+          "selector": "#reading-back",
+          "kind": "mouse",
+          "x": 74,
+          "y": 41
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "mouse",
+          "x": 585,
+          "y": 871
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "mouse",
+          "x": 1341,
+          "y": 587.96875
+        }
+      ],
+      "checks": [
+        {
+          "label": "focus-and-quick-no-formal-write",
+          "focused": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "quick": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "modal": false
+        },
+        {
+          "label": "deep-failure-readable-and-specific",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010",
+                "hexagram:read:010001"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010",
+                  "010001"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010001": {
+                "code": "010001",
+                "stage": 0,
+                "due": 1792868236335,
+                "introducedAt": 1792868236335,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [],
+            "getterReads": 5,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1287,
+                "clientY": 34
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1216,
+                "clientY": 106
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 585,
+                "clientY": 871
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1341,
+                "clientY": 587
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡未保存，正文仍可阅读。可恢复浏览器存储后重试。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": false,
+            "focus": "reading-quicken",
+            "title": "需·水天需",
+            "bodyVisible": true,
+            "bodyCharacters": 2423
+          }
+        },
+        {
+          "label": "failed-retry-only-unsaved-half",
+          "counts": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "savedCounts": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          }
+        },
+        {
+          "label": "recovered-single-event-and-card-old-records-intact",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010",
+                "hexagram:read:010001",
+                "hexagram:read:111010"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010",
+                  "010001",
+                  "111010"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111010": {
+                "code": "111010",
+                "stage": 0,
+                "due": 1792868240104,
+                "introducedAt": 1792868240104,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010001": {
+                "code": "010001",
+                "stage": 0,
+                "due": 1792868236335,
+                "introducedAt": 1792868236335,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 9,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1287,
+                "clientY": 34
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1216,
+                "clientY": 106
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 585,
+                "clientY": 871
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1341,
+                "clientY": 587
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1338,
+                "clientY": 156
+              },
+              {
+                "selector": "#reading-back",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 74,
+                "clientY": 41
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 585,
+                "clientY": 871
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1341,
+                "clientY": 587
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡已保存。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": true,
+            "focus": "reading-quicken",
+            "title": "需·水天需",
+            "bodyVisible": true,
+            "bodyCharacters": 2423
+          }
+        },
+        {
+          "label": "normal-reentry-idempotent-and-trusted-input",
+          "counts": {
+            "yijing.achievements.v1": 1,
+            "yijing-review-cards": 1
+          },
+          "inputs": [
+            {
+              "selector": "#search",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1287,
+              "clientY": 34
+            },
+            {
+              "selector": ".search-option[data-index=\"0\"]",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1216,
+              "clientY": 106
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 585,
+              "clientY": 871
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1341,
+              "clientY": 587
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1338,
+              "clientY": 156
+            },
+            {
+              "selector": "#reading-back",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 74,
+              "clientY": 41
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 585,
+              "clientY": 871
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1341,
+              "clientY": 587
+            },
+            {
+              "selector": "#reading-back",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 74,
+              "clientY": 41
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 585,
+              "clientY": 871
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "mouse",
+              "clientX": 1341,
+              "clientY": 587
+            }
+          ]
+        }
+      ],
+      "screenshots": [
+        "1440-getter-denied-failure-visible.png",
+        "1440-getter-denied-recovered.png"
+      ],
+      "pendingEvents": [
+        {
+          "code": "111010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "111010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:111010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "111010"
+            },
+            "occurredAt": "2026-10-24T18:57:18.868Z"
+          }
+        },
+        {
+          "code": "111010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "111010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:111010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "111010"
+            },
+            "occurredAt": "2026-10-24T18:57:18.868Z"
+          }
+        },
+        {
+          "code": "111010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "111010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:111010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "111010"
+            },
+            "occurredAt": "2026-10-24T18:57:18.868Z"
+          }
+        },
+        {
+          "code": "111010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "111010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:111010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "111010"
+            },
+            "occurredAt": "2026-10-24T18:57:21.118Z"
+          }
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "name": "390-achievement-only",
+      "mode": "achievement-only",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "code": "010111",
+      "hexagram": "讼",
+      "inputs": [
+        {
+          "selector": "#search",
+          "kind": "touch",
+          "x": 247.203125,
+          "y": 30.871963500976562
+        },
+        {
+          "selector": ".search-option[data-index=\"0\"]",
+          "kind": "touch",
+          "x": 194,
+          "y": 103.15879440307617
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "touch",
+          "x": 152.5,
+          "y": 376.53125
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "touch",
+          "x": 322,
+          "y": 244
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "touch",
+          "x": 76,
+          "y": 219.5
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "touch",
+          "x": 76,
+          "y": 219.5
+        },
+        {
+          "selector": "#reading-back",
+          "kind": "touch",
+          "x": 58,
+          "y": 39
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "touch",
+          "x": 152.5,
+          "y": 376.53125
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "touch",
+          "x": 322,
+          "y": 244
+        }
+      ],
+      "checks": [
+        {
+          "label": "focus-and-quick-no-formal-write",
+          "focused": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "quick": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "modal": true
+        },
+        {
+          "label": "deep-failure-readable-and-specific",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010",
+                "hexagram:read:010001",
+                "hexagram:read:111010"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010",
+                  "010001",
+                  "111010"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111010": {
+                "code": "111010",
+                "stage": 0,
+                "due": 1792868240104,
+                "introducedAt": 1792868240104,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010001": {
+                "code": "010001",
+                "stage": 0,
+                "due": 1792868236335,
+                "introducedAt": 1792868236335,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010111": {
+                "code": "010111",
+                "stage": 0,
+                "due": 1792868242536,
+                "introducedAt": 1792868242536,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010",
+                    "hexagram:read:010111"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010",
+                      "010111"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010111": {
+                    "code": "010111",
+                    "stage": 0,
+                    "due": 1792868242536,
+                    "introducedAt": 1792868242536,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 247,
+                "clientY": 31
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 194,
+                "clientY": 103
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 153,
+                "clientY": 377
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 322,
+                "clientY": 244
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录未保存，正文仍可阅读。可恢复浏览器存储后重试。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": false,
+            "focus": "reading-quicken",
+            "title": "讼·天水讼",
+            "bodyVisible": true,
+            "bodyCharacters": 2437
+          }
+        },
+        {
+          "label": "failed-retry-only-unsaved-half",
+          "counts": {
+            "yijing.achievements.v1": 2,
+            "yijing-review-cards": 1
+          },
+          "savedCounts": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 1
+          }
+        },
+        {
+          "label": "recovered-single-event-and-card-old-records-intact",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010",
+                "hexagram:read:010001",
+                "hexagram:read:111010",
+                "hexagram:read:010111"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010",
+                  "010001",
+                  "111010",
+                  "010111"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111010": {
+                "code": "111010",
+                "stage": 0,
+                "due": 1792868240104,
+                "introducedAt": 1792868240104,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010001": {
+                "code": "010001",
+                "stage": 0,
+                "due": 1792868236335,
+                "introducedAt": 1792868236335,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010111": {
+                "code": "010111",
+                "stage": 0,
+                "due": 1792868242536,
+                "introducedAt": 1792868242536,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010",
+                    "hexagram:read:010111"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010",
+                      "010111"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010111": {
+                    "code": "010111",
+                    "stage": 0,
+                    "due": 1792868242536,
+                    "introducedAt": 1792868242536,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010",
+                    "hexagram:read:010111"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010",
+                      "010111"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010",
+                    "hexagram:read:010111"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010",
+                      "010111"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 247,
+                "clientY": 31
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 194,
+                "clientY": 103
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 153,
+                "clientY": 377
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 322,
+                "clientY": 244
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 76,
+                "clientY": 220
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 76,
+                "clientY": 220
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡已保存。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": true,
+            "focus": "reading-save-status",
+            "title": "讼·天水讼",
+            "bodyVisible": true,
+            "bodyCharacters": 2437
+          }
+        },
+        {
+          "label": "normal-reentry-idempotent-and-trusted-input",
+          "counts": {
+            "yijing.achievements.v1": 3,
+            "yijing-review-cards": 1
+          },
+          "inputs": [
+            {
+              "selector": "#search",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 247,
+              "clientY": 31
+            },
+            {
+              "selector": ".search-option[data-index=\"0\"]",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 194,
+              "clientY": 103
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 153,
+              "clientY": 377
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 322,
+              "clientY": 244
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 76,
+              "clientY": 220
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 76,
+              "clientY": 220
+            },
+            {
+              "selector": "#reading-back",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 58,
+              "clientY": 39
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 153,
+              "clientY": 377
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 322,
+              "clientY": 244
+            }
+          ]
+        }
+      ],
+      "screenshots": [
+        "390-achievement-only-failure-visible.png",
+        "390-achievement-only-recovered.png"
+      ],
+      "pendingEvents": [
+        {
+          "code": "010111",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010111",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010111",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010111"
+            },
+            "occurredAt": "2026-10-24T18:57:22.532Z"
+          }
+        },
+        {
+          "code": "010111",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010111",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010111",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010111"
+            },
+            "occurredAt": "2026-10-24T18:57:22.532Z"
+          }
+        },
+        {
+          "code": "010111",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010111",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010111",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010111"
+            },
+            "occurredAt": "2026-10-24T18:57:22.532Z"
+          }
+        },
+        {
+          "code": "010111",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010111",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010111",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010111"
+            },
+            "occurredAt": "2026-10-24T18:57:23.498Z"
+          }
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "name": "390-review-only",
+      "mode": "review-only",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "code": "010000",
+      "hexagram": "师",
+      "inputs": [
+        {
+          "selector": "#search",
+          "kind": "touch",
+          "x": 247.203125,
+          "y": 30.872207641601562
+        },
+        {
+          "selector": ".search-option[data-index=\"0\"]",
+          "kind": "touch",
+          "x": 193.99998474121094,
+          "y": 102.91373825073242
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "touch",
+          "x": 152.5,
+          "y": 347.640625
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "touch",
+          "x": 322,
+          "y": 244
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "touch",
+          "x": 76,
+          "y": 219.5
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "touch",
+          "x": 76,
+          "y": 219.5
+        },
+        {
+          "selector": "#reading-back",
+          "kind": "touch",
+          "x": 58,
+          "y": 39
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "touch",
+          "x": 152.5,
+          "y": 347.640625
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "touch",
+          "x": 322,
+          "y": 239.33673095703125
+        }
+      ],
+      "checks": [
+        {
+          "label": "focus-and-quick-no-formal-write",
+          "focused": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "quick": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "modal": true
+        },
+        {
+          "label": "deep-failure-readable-and-specific",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010",
+                "hexagram:read:010001",
+                "hexagram:read:111010",
+                "hexagram:read:010111",
+                "hexagram:read:010000"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010",
+                  "010001",
+                  "111010",
+                  "010111",
+                  "010000"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111010": {
+                "code": "111010",
+                "stage": 0,
+                "due": 1792868240104,
+                "introducedAt": 1792868240104,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010001": {
+                "code": "010001",
+                "stage": 0,
+                "due": 1792868236335,
+                "introducedAt": 1792868236335,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010111": {
+                "code": "010111",
+                "stage": 0,
+                "due": 1792868242536,
+                "introducedAt": 1792868242536,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010",
+                    "hexagram:read:010111",
+                    "hexagram:read:010000"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010",
+                      "010111",
+                      "010000"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010111": {
+                    "code": "010111",
+                    "stage": 0,
+                    "due": 1792868242536,
+                    "introducedAt": 1792868242536,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010000": {
+                    "code": "010000",
+                    "stage": 0,
+                    "due": 1792868244820,
+                    "introducedAt": 1792868244820,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 247,
+                "clientY": 31
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 194,
+                "clientY": 103
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 153,
+                "clientY": 348
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 322,
+                "clientY": 244
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "复习卡未保存，正文仍可阅读。可恢复浏览器存储后重试。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": false,
+            "focus": "reading-quicken",
+            "title": "师·地水师",
+            "bodyVisible": true,
+            "bodyCharacters": 2418
+          }
+        },
+        {
+          "label": "failed-retry-only-unsaved-half",
+          "counts": {
+            "yijing.achievements.v1": 1,
+            "yijing-review-cards": 2
+          },
+          "savedCounts": {
+            "yijing.achievements.v1": 1,
+            "yijing-review-cards": 0
+          }
+        },
+        {
+          "label": "recovered-single-event-and-card-old-records-intact",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010",
+                "hexagram:read:010001",
+                "hexagram:read:111010",
+                "hexagram:read:010111",
+                "hexagram:read:010000"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010",
+                  "010001",
+                  "111010",
+                  "010111",
+                  "010000"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111010": {
+                "code": "111010",
+                "stage": 0,
+                "due": 1792868240104,
+                "introducedAt": 1792868240104,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010001": {
+                "code": "010001",
+                "stage": 0,
+                "due": 1792868236335,
+                "introducedAt": 1792868236335,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010111": {
+                "code": "010111",
+                "stage": 0,
+                "due": 1792868242536,
+                "introducedAt": 1792868242536,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010000": {
+                "code": "010000",
+                "stage": 0,
+                "due": 1792868245132,
+                "introducedAt": 1792868245132,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010",
+                    "hexagram:read:010111",
+                    "hexagram:read:010000"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010",
+                      "010111",
+                      "010000"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010111": {
+                    "code": "010111",
+                    "stage": 0,
+                    "due": 1792868242536,
+                    "introducedAt": 1792868242536,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010000": {
+                    "code": "010000",
+                    "stage": 0,
+                    "due": 1792868244820,
+                    "introducedAt": 1792868244820,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010111": {
+                    "code": "010111",
+                    "stage": 0,
+                    "due": 1792868242536,
+                    "introducedAt": 1792868242536,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010000": {
+                    "code": "010000",
+                    "stage": 0,
+                    "due": 1792868245035,
+                    "introducedAt": 1792868245035,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010111": {
+                    "code": "010111",
+                    "stage": 0,
+                    "due": 1792868242536,
+                    "introducedAt": 1792868242536,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010000": {
+                    "code": "010000",
+                    "stage": 0,
+                    "due": 1792868245132,
+                    "introducedAt": 1792868245132,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 247,
+                "clientY": 31
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 194,
+                "clientY": 103
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 153,
+                "clientY": 348
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 322,
+                "clientY": 244
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 76,
+                "clientY": 220
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 76,
+                "clientY": 220
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡已保存。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": true,
+            "focus": "reading-save-status",
+            "title": "师·地水师",
+            "bodyVisible": true,
+            "bodyCharacters": 2418
+          }
+        },
+        {
+          "label": "normal-reentry-idempotent-and-trusted-input",
+          "counts": {
+            "yijing.achievements.v1": 1,
+            "yijing-review-cards": 3
+          },
+          "inputs": [
+            {
+              "selector": "#search",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 247,
+              "clientY": 31
+            },
+            {
+              "selector": ".search-option[data-index=\"0\"]",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 194,
+              "clientY": 103
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 153,
+              "clientY": 348
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 322,
+              "clientY": 244
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 76,
+              "clientY": 220
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 76,
+              "clientY": 220
+            },
+            {
+              "selector": "#reading-back",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 58,
+              "clientY": 39
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 153,
+              "clientY": 348
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 322,
+              "clientY": 239
+            }
+          ]
+        }
+      ],
+      "screenshots": [
+        "390-review-only-failure-visible.png",
+        "390-review-only-recovered.png"
+      ],
+      "pendingEvents": [
+        {
+          "code": "010000",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010000",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010000",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010000"
+            },
+            "occurredAt": "2026-10-24T18:57:24.816Z"
+          }
+        },
+        {
+          "code": "010000",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010000",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010000",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010000"
+            },
+            "occurredAt": "2026-10-24T18:57:24.816Z"
+          }
+        },
+        {
+          "code": "010000",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010000",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010000",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010000"
+            },
+            "occurredAt": "2026-10-24T18:57:24.816Z"
+          }
+        },
+        {
+          "code": "010000",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "010000",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:010000",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "010000"
+            },
+            "occurredAt": "2026-10-24T18:57:25.665Z"
+          }
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "name": "390-both",
+      "mode": "both",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "code": "000010",
+      "hexagram": "比",
+      "inputs": [
+        {
+          "selector": "#search",
+          "kind": "touch",
+          "x": 247.203125,
+          "y": 30.87205219268799
+        },
+        {
+          "selector": ".search-option[data-index=\"0\"]",
+          "kind": "touch",
+          "x": 194.00001525878906,
+          "y": 103.15754318237305
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "touch",
+          "x": 152.5,
+          "y": 376.53125
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "touch",
+          "x": 322,
+          "y": 244
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "touch",
+          "x": 76,
+          "y": 219.5
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "touch",
+          "x": 76,
+          "y": 219.5
+        },
+        {
+          "selector": "#reading-back",
+          "kind": "touch",
+          "x": 58,
+          "y": 39
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "touch",
+          "x": 152.5,
+          "y": 376.53125
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "touch",
+          "x": 322,
+          "y": 244
+        }
+      ],
+      "checks": [
+        {
+          "label": "focus-and-quick-no-formal-write",
+          "focused": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "quick": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "modal": true
+        },
+        {
+          "label": "deep-failure-readable-and-specific",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010",
+                "hexagram:read:010001",
+                "hexagram:read:111010",
+                "hexagram:read:010111",
+                "hexagram:read:010000"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010",
+                  "010001",
+                  "111010",
+                  "010111",
+                  "010000"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111010": {
+                "code": "111010",
+                "stage": 0,
+                "due": 1792868240104,
+                "introducedAt": 1792868240104,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010001": {
+                "code": "010001",
+                "stage": 0,
+                "due": 1792868236335,
+                "introducedAt": 1792868236335,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010111": {
+                "code": "010111",
+                "stage": 0,
+                "due": 1792868242536,
+                "introducedAt": 1792868242536,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010000": {
+                "code": "010000",
+                "stage": 0,
+                "due": 1792868245132,
+                "introducedAt": 1792868245132,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010",
+                    "hexagram:read:010111",
+                    "hexagram:read:010000",
+                    "hexagram:read:000010"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010",
+                      "010111",
+                      "010000",
+                      "000010"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010111": {
+                    "code": "010111",
+                    "stage": 0,
+                    "due": 1792868242536,
+                    "introducedAt": 1792868242536,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010000": {
+                    "code": "010000",
+                    "stage": 0,
+                    "due": 1792868245132,
+                    "introducedAt": 1792868245132,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000010": {
+                    "code": "000010",
+                    "stage": 0,
+                    "due": 1792868247002,
+                    "introducedAt": 1792868247002,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 247,
+                "clientY": 31
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 194,
+                "clientY": 103
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 153,
+                "clientY": 377
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 322,
+                "clientY": 244
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡未保存，正文仍可阅读。可恢复浏览器存储后重试。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": false,
+            "focus": "reading-quicken",
+            "title": "比·水地比",
+            "bodyVisible": true,
+            "bodyCharacters": 2400
+          }
+        },
+        {
+          "label": "failed-retry-only-unsaved-half",
+          "counts": {
+            "yijing.achievements.v1": 2,
+            "yijing-review-cards": 2
+          },
+          "savedCounts": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          }
+        },
+        {
+          "label": "recovered-single-event-and-card-old-records-intact",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010",
+                "hexagram:read:010001",
+                "hexagram:read:111010",
+                "hexagram:read:010111",
+                "hexagram:read:010000",
+                "hexagram:read:000010"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010",
+                  "010001",
+                  "111010",
+                  "010111",
+                  "010000",
+                  "000010"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111010": {
+                "code": "111010",
+                "stage": 0,
+                "due": 1792868240104,
+                "introducedAt": 1792868240104,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010001": {
+                "code": "010001",
+                "stage": 0,
+                "due": 1792868236335,
+                "introducedAt": 1792868236335,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010111": {
+                "code": "010111",
+                "stage": 0,
+                "due": 1792868242536,
+                "introducedAt": 1792868242536,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010000": {
+                "code": "010000",
+                "stage": 0,
+                "due": 1792868245132,
+                "introducedAt": 1792868245132,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000010": {
+                "code": "000010",
+                "stage": 0,
+                "due": 1792868247316,
+                "introducedAt": 1792868247316,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010",
+                    "hexagram:read:010111",
+                    "hexagram:read:010000",
+                    "hexagram:read:000010"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010",
+                      "010111",
+                      "010000",
+                      "000010"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010111": {
+                    "code": "010111",
+                    "stage": 0,
+                    "due": 1792868242536,
+                    "introducedAt": 1792868242536,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010000": {
+                    "code": "010000",
+                    "stage": 0,
+                    "due": 1792868245132,
+                    "introducedAt": 1792868245132,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000010": {
+                    "code": "000010",
+                    "stage": 0,
+                    "due": 1792868247002,
+                    "introducedAt": 1792868247002,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010",
+                    "hexagram:read:010111",
+                    "hexagram:read:010000",
+                    "hexagram:read:000010"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010",
+                      "010111",
+                      "010000",
+                      "000010"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": false,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010111": {
+                    "code": "010111",
+                    "stage": 0,
+                    "due": 1792868242536,
+                    "introducedAt": 1792868242536,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010000": {
+                    "code": "010000",
+                    "stage": 0,
+                    "due": 1792868245132,
+                    "introducedAt": 1792868245132,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000010": {
+                    "code": "000010",
+                    "stage": 0,
+                    "due": 1792868247217,
+                    "introducedAt": 1792868247217,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010",
+                    "hexagram:read:010111",
+                    "hexagram:read:010000",
+                    "hexagram:read:000010"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010",
+                      "010111",
+                      "010000",
+                      "000010"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010111": {
+                    "code": "010111",
+                    "stage": 0,
+                    "due": 1792868242536,
+                    "introducedAt": 1792868242536,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010000": {
+                    "code": "010000",
+                    "stage": 0,
+                    "due": 1792868245132,
+                    "introducedAt": 1792868245132,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000010": {
+                    "code": "000010",
+                    "stage": 0,
+                    "due": 1792868247316,
+                    "introducedAt": 1792868247316,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 0,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 247,
+                "clientY": 31
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 194,
+                "clientY": 103
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 153,
+                "clientY": 377
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 322,
+                "clientY": 244
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 76,
+                "clientY": 220
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 76,
+                "clientY": 220
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡已保存。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": true,
+            "focus": "reading-save-status",
+            "title": "比·水地比",
+            "bodyVisible": true,
+            "bodyCharacters": 2400
+          }
+        },
+        {
+          "label": "normal-reentry-idempotent-and-trusted-input",
+          "counts": {
+            "yijing.achievements.v1": 3,
+            "yijing-review-cards": 3
+          },
+          "inputs": [
+            {
+              "selector": "#search",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 247,
+              "clientY": 31
+            },
+            {
+              "selector": ".search-option[data-index=\"0\"]",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 194,
+              "clientY": 103
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 153,
+              "clientY": 377
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 322,
+              "clientY": 244
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 76,
+              "clientY": 220
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 76,
+              "clientY": 220
+            },
+            {
+              "selector": "#reading-back",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 58,
+              "clientY": 39
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 153,
+              "clientY": 377
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 322,
+              "clientY": 244
+            }
+          ]
+        }
+      ],
+      "screenshots": [
+        "390-both-failure-visible.png",
+        "390-both-recovered.png"
+      ],
+      "pendingEvents": [
+        {
+          "code": "000010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "000010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:000010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "000010"
+            },
+            "occurredAt": "2026-10-24T18:57:26.999Z"
+          }
+        },
+        {
+          "code": "000010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "000010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:000010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "000010"
+            },
+            "occurredAt": "2026-10-24T18:57:26.999Z"
+          }
+        },
+        {
+          "code": "000010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "000010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:000010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "000010"
+            },
+            "occurredAt": "2026-10-24T18:57:26.999Z"
+          }
+        },
+        {
+          "code": "000010",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "000010",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:000010",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "000010"
+            },
+            "occurredAt": "2026-10-24T18:57:27.916Z"
+          }
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "name": "390-getter-denied",
+      "mode": "getter-denied",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "code": "111011",
+      "hexagram": "小畜",
+      "inputs": [
+        {
+          "selector": "#search",
+          "kind": "touch",
+          "x": 247.203125,
+          "y": 31.04371929168701
+        },
+        {
+          "selector": ".search-option[data-index=\"0\"]",
+          "kind": "touch",
+          "x": 194.00001525878906,
+          "y": 103.19373321533203
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "touch",
+          "x": 152.5,
+          "y": 347.640625
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "touch",
+          "x": 322,
+          "y": 244
+        },
+        {
+          "selector": "#reading-save-retry",
+          "kind": "touch",
+          "x": 76,
+          "y": 219.5
+        },
+        {
+          "selector": "#reading-back",
+          "kind": "touch",
+          "x": 58,
+          "y": 39
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "touch",
+          "x": 152.5,
+          "y": 347.640625
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "touch",
+          "x": 322,
+          "y": 244
+        },
+        {
+          "selector": "#reading-back",
+          "kind": "touch",
+          "x": 58,
+          "y": 39
+        },
+        {
+          "selector": "#focus-read",
+          "kind": "touch",
+          "x": 152.5,
+          "y": 347.640625
+        },
+        {
+          "selector": "#reading-deepen",
+          "kind": "touch",
+          "x": 322,
+          "y": 244
+        }
+      ],
+      "checks": [
+        {
+          "label": "focus-and-quick-no-formal-write",
+          "focused": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "quick": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "modal": true
+        },
+        {
+          "label": "deep-failure-readable-and-specific",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010",
+                "hexagram:read:010001",
+                "hexagram:read:111010",
+                "hexagram:read:010111",
+                "hexagram:read:010000",
+                "hexagram:read:000010"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010",
+                  "010001",
+                  "111010",
+                  "010111",
+                  "010000",
+                  "000010"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111010": {
+                "code": "111010",
+                "stage": 0,
+                "due": 1792868240104,
+                "introducedAt": 1792868240104,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010001": {
+                "code": "010001",
+                "stage": 0,
+                "due": 1792868236335,
+                "introducedAt": 1792868236335,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010111": {
+                "code": "010111",
+                "stage": 0,
+                "due": 1792868242536,
+                "introducedAt": 1792868242536,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010000": {
+                "code": "010000",
+                "stage": 0,
+                "due": 1792868245132,
+                "introducedAt": 1792868245132,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000010": {
+                "code": "000010",
+                "stage": 0,
+                "due": 1792868247316,
+                "introducedAt": 1792868247316,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [],
+            "getterReads": 5,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 247,
+                "clientY": 31
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 194,
+                "clientY": 103
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 153,
+                "clientY": 348
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 322,
+                "clientY": 244
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡未保存，正文仍可阅读。可恢复浏览器存储后重试。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": false,
+            "focus": "reading-quicken",
+            "title": "小畜·风天小畜",
+            "bodyVisible": true,
+            "bodyCharacters": 2403
+          }
+        },
+        {
+          "label": "failed-retry-only-unsaved-half",
+          "counts": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          },
+          "savedCounts": {
+            "yijing.achievements.v1": 0,
+            "yijing-review-cards": 0
+          }
+        },
+        {
+          "label": "recovered-single-event-and-card-old-records-intact",
+          "state": {
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "hexagram:read:111111",
+                "hexagram:read:000000",
+                "hexagram:read:100010",
+                "hexagram:read:010001",
+                "hexagram:read:111010",
+                "hexagram:read:010111",
+                "hexagram:read:010000",
+                "hexagram:read:000010",
+                "hexagram:read:111011"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111",
+                  "000000",
+                  "100010",
+                  "010001",
+                  "111010",
+                  "010111",
+                  "010000",
+                  "000010",
+                  "111011"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "cards": {
+              "100010": {
+                "code": "100010",
+                "stage": 0,
+                "due": 1792868233475,
+                "introducedAt": 1792868233475,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111010": {
+                "code": "111010",
+                "stage": 0,
+                "due": 1792868240104,
+                "introducedAt": 1792868240104,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111011": {
+                "code": "111011",
+                "stage": 0,
+                "due": 1792868249934,
+                "introducedAt": 1792868249934,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792868227487,
+                "introducedAt": 1792868227487,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000000": {
+                "code": "000000",
+                "stage": 0,
+                "due": 1792868229708,
+                "introducedAt": 1792868229708,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010001": {
+                "code": "010001",
+                "stage": 0,
+                "due": 1792868236335,
+                "introducedAt": 1792868236335,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010111": {
+                "code": "010111",
+                "stage": 0,
+                "due": 1792868242536,
+                "introducedAt": 1792868242536,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "010000": {
+                "code": "010000",
+                "stage": 0,
+                "due": 1792868245132,
+                "introducedAt": 1792868245132,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              },
+              "000010": {
+                "code": "000010",
+                "stage": 0,
+                "due": 1792868247316,
+                "introducedAt": 1792868247316,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "writes": [
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "hexagram:read:111111",
+                    "hexagram:read:000000",
+                    "hexagram:read:100010",
+                    "hexagram:read:010001",
+                    "hexagram:read:111010",
+                    "hexagram:read:010111",
+                    "hexagram:read:010000",
+                    "hexagram:read:000010",
+                    "hexagram:read:111011"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111",
+                      "000000",
+                      "100010",
+                      "010001",
+                      "111010",
+                      "010111",
+                      "010000",
+                      "000010",
+                      "111011"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "payload": {
+                  "100010": {
+                    "code": "100010",
+                    "stage": 0,
+                    "due": 1792868233475,
+                    "introducedAt": 1792868233475,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111010": {
+                    "code": "111010",
+                    "stage": 0,
+                    "due": 1792868240104,
+                    "introducedAt": 1792868240104,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111011": {
+                    "code": "111011",
+                    "stage": 0,
+                    "due": 1792868249934,
+                    "introducedAt": 1792868249934,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "111111": {
+                    "code": "111111",
+                    "stage": 0,
+                    "due": 1792868227487,
+                    "introducedAt": 1792868227487,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000000": {
+                    "code": "000000",
+                    "stage": 0,
+                    "due": 1792868229708,
+                    "introducedAt": 1792868229708,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010001": {
+                    "code": "010001",
+                    "stage": 0,
+                    "due": 1792868236335,
+                    "introducedAt": 1792868236335,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010111": {
+                    "code": "010111",
+                    "stage": 0,
+                    "due": 1792868242536,
+                    "introducedAt": 1792868242536,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "010000": {
+                    "code": "010000",
+                    "stage": 0,
+                    "due": 1792868245132,
+                    "introducedAt": 1792868245132,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  },
+                  "000010": {
+                    "code": "000010",
+                    "stage": 0,
+                    "due": 1792868247316,
+                    "introducedAt": 1792868247316,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              }
+            ],
+            "getterReads": 9,
+            "inputs": [
+              {
+                "selector": "#search",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 247,
+                "clientY": 31
+              },
+              {
+                "selector": ".search-option[data-index=\"0\"]",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 194,
+                "clientY": 103
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 153,
+                "clientY": 348
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 322,
+                "clientY": 244
+              },
+              {
+                "selector": "#reading-save-retry",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 76,
+                "clientY": 220
+              },
+              {
+                "selector": "#reading-back",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 58,
+                "clientY": 39
+              },
+              {
+                "selector": "#focus-read",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 153,
+                "clientY": 348
+              },
+              {
+                "selector": "#reading-deepen",
+                "trusted": true,
+                "pointerType": "touch",
+                "clientX": 322,
+                "clientY": 244
+              }
+            ],
+            "stage": "deep",
+            "feedbackHidden": false,
+            "feedbackVisible": true,
+            "message": "阅读记录与复习卡已保存。",
+            "statusRole": "status",
+            "live": "polite",
+            "retryHidden": true,
+            "focus": "reading-quicken",
+            "title": "小畜·风天小畜",
+            "bodyVisible": true,
+            "bodyCharacters": 2403
+          }
+        },
+        {
+          "label": "normal-reentry-idempotent-and-trusted-input",
+          "counts": {
+            "yijing.achievements.v1": 1,
+            "yijing-review-cards": 1
+          },
+          "inputs": [
+            {
+              "selector": "#search",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 247,
+              "clientY": 31
+            },
+            {
+              "selector": ".search-option[data-index=\"0\"]",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 194,
+              "clientY": 103
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 153,
+              "clientY": 348
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 322,
+              "clientY": 244
+            },
+            {
+              "selector": "#reading-save-retry",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 76,
+              "clientY": 220
+            },
+            {
+              "selector": "#reading-back",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 58,
+              "clientY": 39
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 153,
+              "clientY": 348
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 322,
+              "clientY": 244
+            },
+            {
+              "selector": "#reading-back",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 58,
+              "clientY": 39
+            },
+            {
+              "selector": "#focus-read",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 153,
+              "clientY": 348
+            },
+            {
+              "selector": "#reading-deepen",
+              "trusted": true,
+              "pointerType": "touch",
+              "clientX": 322,
+              "clientY": 244
+            }
+          ]
+        }
+      ],
+      "screenshots": [
+        "390-getter-denied-failure-visible.png",
+        "390-getter-denied-recovered.png"
+      ],
+      "pendingEvents": [
+        {
+          "code": "111011",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "111011",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:111011",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "111011"
+            },
+            "occurredAt": "2026-10-24T18:57:29.132Z"
+          }
+        },
+        {
+          "code": "111011",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "111011",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:111011",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "111011"
+            },
+            "occurredAt": "2026-10-24T18:57:29.132Z"
+          }
+        },
+        {
+          "code": "111011",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "111011",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:111011",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "111011"
+            },
+            "occurredAt": "2026-10-24T18:57:29.132Z"
+          }
+        },
+        {
+          "code": "111011",
+          "event": {
+            "type": "hexagram.read",
+            "subjectId": "111011",
+            "outcome": "completed",
+            "idempotencyKey": "hexagram:read:111011",
+            "metadata": {
+              "deep": true,
+              "hexagramCode": "111011"
+            },
+            "occurredAt": "2026-10-24T18:57:30.616Z"
+          }
+        }
+      ],
+      "status": "passed"
+    }
+  ],
+  "status": "passed",
+  "limitations": [
+    "Headless Chromium desktop and emulated mobile; not physical mobile, screen-reader or real 200% zoom evidence.",
+    "Read-only Debugger breakpoint captures the existing pending event. It does not alter application state or invoke business functions."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "baseline": {
+    "achievement": {
+      "version": 1,
+      "processedKeys": [
+        "hexagram:read:111111"
+      ],
+      "metrics": {
+        "completedLessons": [],
+        "lessonScores": {},
+        "topicScores": {},
+        "trigramRounds": [],
+        "hexagramsRead": [
+          "111111"
+        ],
+        "relationsExamined": [],
+        "reviewDays": [],
+        "reviewedHexagrams": [],
+        "quizRecoveries": [],
+        "sequenceExams": [],
+        "analyses": {},
+        "boundedSubjects": [],
+        "comprehensivePassed": false
+      },
+      "achievements": {}
+    },
+    "cards": {
+      "111111": {
+        "code": "111111",
+        "stage": 0,
+        "due": 1792868227487,
+        "introducedAt": 1792868227487,
+        "lapses": 0,
+        "reps": 0,
+        "lastReview": 0
+      }
+    },
+    "writes": [
+      {
+        "key": "yijing.achievements.v1",
+        "saved": true,
+        "payload": {
+          "version": 1,
+          "processedKeys": [
+            "hexagram:read:111111"
+          ],
+          "metrics": {
+            "completedLessons": [],
+            "lessonScores": {},
+            "topicScores": {},
+            "trigramRounds": [],
+            "hexagramsRead": [
+              "111111"
+            ],
+            "relationsExamined": [],
+            "reviewDays": [],
+            "reviewedHexagrams": [],
+            "quizRecoveries": [],
+            "sequenceExams": [],
+            "analyses": {},
+            "boundedSubjects": [],
+            "comprehensivePassed": false
+          },
+          "achievements": {}
+        }
+      },
+      {
+        "key": "yijing-review-cards",
+        "saved": true,
+        "payload": {
+          "111111": {
+            "code": "111111",
+            "stage": 0,
+            "due": 1792868227487,
+            "introducedAt": 1792868227487,
+            "lapses": 0,
+            "reps": 0,
+            "lastReview": 0
+          }
+        }
+      }
+    ],
+    "getterReads": 0,
+    "inputs": [
+      {
+        "selector": "[data-entry=\"explore\"]",
+        "trusted": true,
+        "pointerType": "mouse",
+        "clientX": 642,
+        "clientY": 668
+      },
+      {
+        "selector": "#search",
+        "trusted": true,
+        "pointerType": "mouse",
+        "clientX": 1287,
+        "clientY": 35
+      },
+      {
+        "selector": ".search-option[data-index=\"0\"]",
+        "trusted": true,
+        "pointerType": "mouse",
+        "clientX": 1216,
+        "clientY": 107
+      },
+      {
+        "selector": "#focus-read",
+        "trusted": true,
+        "pointerType": "mouse",
+        "clientX": 585,
+        "clientY": 871
+      },
+      {
+        "selector": "#reading-deepen",
+        "trusted": true,
+        "pointerType": "mouse",
+        "clientX": 1341,
+        "clientY": 587
+      }
+    ],
+    "stage": "deep",
+    "feedbackHidden": true,
+    "feedbackVisible": false,
+    "message": "",
+    "statusRole": "status",
+    "live": "polite",
+    "retryHidden": true,
+    "focus": "reading-quicken",
+    "title": "乾·乾为天",
+    "bodyVisible": true,
+    "bodyCharacters": 2448
+  },
+  "finishedAt": "2026-10-24T18:57:30.646Z",
+  "finalSourceHashes": {
+    "web/js/main.js": "2c68c387383f70215420db70485bd18cbc7f00334722c6ca8fa7e6a29a1326b7",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/index.html": "3eb1072260c48ece01051af175ec44639e357b5f1ec4d151a2bb69bd07b73ec3",
+    "web/styles/immersive.css": "7ff3555ee8a593401b365dfdef36dd5dc0213222650e3d58afd45106873327f1",
+    "scripts/test-reading-save.mjs": "7331d29a23889d4953654fee450e356dd3c8fd59777e15c51003fca626cb1ad7"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "profileRemoved": true
+}

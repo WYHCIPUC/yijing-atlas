@@ -1,0 +1,14 @@
+{
+  "classification": "host-native-abort",
+  "executionExitCode": 1,
+  "runtime": "Node v24.19.0 / libuv 1.52.1",
+  "observedStderr": "Assertion failed: new_time >= loop->time, file src\\win\\core.c, line 327",
+  "scenario": "1440-original-cycle",
+  "completedScenarios": 0,
+  "productAssertionResult": "not obtained",
+  "traceStatus": "running; original bytes retained because the runtime did not reach finally",
+  "endHashesAndPageErrors": "not obtained",
+  "processInspection": "No remaining test-quiz-weak-questions, matching isolated profile browser, or scripts/serve.mjs process found after exit",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-jF4nJS",
+  "profileRemoved": false
+}

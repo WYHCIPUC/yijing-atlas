@@ -1,0 +1,3921 @@
+{
+  "startedAt": "2026-10-24T23:50:19.795Z",
+  "command": [
+    "node",
+    "scripts/test-learning-feedback.mjs",
+    "--scope",
+    "1440-oral-ai-stale-course"
+  ],
+  "head": "ac7025211b3aa45ea13c799c5689f03a19483c60",
+  "node": "v24.19.0",
+  "uv": "1.52.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-feedback-TWWEbl",
+  "output": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-50-19-746Z",
+  "scope": "1440-oral-ai-stale-course",
+  "sourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "a403744525846aad387912a8f48b174251d5ea563189ef546851a09faba22bcd",
+    "web/js/learning-feedback.js": "297b8116a05c6c2543e31dc2fdf0915f82f49d9d61f8d7af016ec6ad0ce93c28",
+    "web/js/review-session.js": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54",
+    "web/js/review-engine.js": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-review.js": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/learning-assessment-page.js": "ad401a42d10b3c93d2d249a96e3cf8efc7b733d5f89575387726882dfc7c0773",
+    "web/js/modes/learning-mode.js": "5a6009b61e2a846b5ab0a9b92e9a7fc6711d0c81bcdfd6431b2e764f42962bef",
+    "web/js/modes/review-mode.js": "082b67ab4b38a63979024b7d5a6ca61c111d0c7c168f76227a7d756e4b39bc55",
+    "web/js/modes/quiz-mode.js": "9a4e0828ddcf2788efc6d84eb49c0e937a9420edb7ada494ecb0ddf848ee3090",
+    "web/js/modes/divination-mode.js": "de316cb98d507712af99b63947bff6f9b666c8c57e11a2d2680e7193e25445cb",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/divination-history.js": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660",
+    "web/js/meihua-engine.js": "3310a0ede88f2f05ad1663aed48efed99c64828bcb4fced4a51e4733fdd45074",
+    "web/js/divination-interpretation.js": "1fa8bf21fea4c8856e98fa139c1b4fdf551eeedcead8e63e6b048804a28238cf",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "03d697b4e5f7b129c96615176915b43df9d93920c06a4b28a0f9713b89ddcc7a",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/sw.js": "cdc31bd2491a6964a5af9b5e3f4a387617b2f53fb596e166fddb09ac110a2055",
+    "scripts/serve.mjs": "21ffdb9e9c86d3e75038a4256a7c4874696739fa4e194d34a4a320c02918c3c4",
+    "scripts/test-learning-feedback.mjs": "811426cd08b3b7eaf5300a2263e8cdef5b2b849d5b566d5a86079ee8240a9329"
+  },
+  "status": "passed",
+  "scenarios": [
+    {
+      "name": "1440-oral-ai-stale-course",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "inputMode": "mouse",
+      "emulatedMobile": false,
+      "status": "passed",
+      "inputs": [
+        {
+          "kind": "mouse",
+          "label": "[data-entry=\"explore\"]",
+          "x": 642.9296875,
+          "y": 668.671875,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "mouse",
+          "label": ".mode-btn[data-mode=\"learning\"]",
+          "x": 619.359375,
+          "y": 34.40844535827637,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "mouse",
+          "label": "[data-section-target=\"assessment\"]",
+          "x": 714.9921875,
+          "y": 670.578125,
+          "hit": {
+            "tag": "STRONG",
+            "id": ""
+          }
+        },
+        {
+          "kind": "mouse",
+          "label": "[data-field=\"oral-response\"]",
+          "x": 715,
+          "y": 744.4375,
+          "hit": {
+            "tag": "TEXTAREA",
+            "id": ""
+          }
+        },
+        {
+          "kind": "keyboard",
+          "key": "a",
+          "modifiers": 2
+        },
+        {
+          "kind": "keyboard",
+          "key": "Backspace",
+          "modifiers": 0
+        },
+        {
+          "kind": "text",
+          "selector": "[data-field=\"oral-response\"]",
+          "synthetic": true,
+          "characters": 30
+        },
+        {
+          "kind": "mouse",
+          "label": "[data-action=\"ai-review\"]",
+          "x": 1202,
+          "y": 880,
+          "hit": {
+            "tag": "BUTTON",
+            "id": "",
+            "action": "ai-review"
+          }
+        },
+        {
+          "kind": "mouse",
+          "label": "[data-field=\"oral-lesson\"]",
+          "x": 715,
+          "y": 578.375,
+          "hit": {
+            "tag": "SELECT",
+            "id": ""
+          }
+        },
+        {
+          "kind": "keyboard",
+          "key": "Home",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "ArrowDown",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "kind": "mouse",
+          "label": "[data-action=\"ai-review\"]",
+          "x": 1202,
+          "y": 880,
+          "hit": {
+            "tag": "BUTTON",
+            "id": "",
+            "action": "ai-review"
+          }
+        }
+      ],
+      "checks": [
+        {
+          "label": "old-request-pending",
+          "state": {
+            "data": {
+              "card": null,
+              "record": null,
+              "activity": null,
+              "achievement": null,
+              "stats": null,
+              "legacy": null,
+              "config": {
+                "endpoint": "/api/learning-review"
+              },
+              "history": null
+            },
+            "raw": {
+              "card": null,
+              "record": null,
+              "activity": null,
+              "achievement": null,
+              "stats": null,
+              "legacy": null,
+              "config": "{\"endpoint\":\"/api/learning-review\"}",
+              "history": null
+            },
+            "reads": [
+              {
+                "key": "yijing.study.v1",
+                "readable": true,
+                "at": 645.0999999940395
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "readable": true,
+                "at": 645.1999999880791
+              },
+              {
+                "key": "yijing-review-cards",
+                "readable": true,
+                "at": 645.5
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "readable": true,
+                "at": 645.5
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "readable": true,
+                "at": 645.5999999940395
+              },
+              {
+                "key": "yijing-activity-v1",
+                "readable": true,
+                "at": 645.6999999880791
+              },
+              {
+                "key": "yijing.study.v1",
+                "readable": true,
+                "at": 1219.800000011921
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "readable": true,
+                "at": 1219.800000011921
+              },
+              {
+                "key": "yijing-learning-review-config-v1",
+                "readable": true,
+                "at": 1220.9000000059605
+              }
+            ],
+            "writes": [],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 486.19999998807907,
+                "x": 619,
+                "y": 34,
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1213.0999999940395,
+                "x": 714,
+                "y": 670,
+                "target": "STRONG"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1453.5,
+                "x": 715,
+                "y": 744,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "a",
+                "at": 1455.300000011921,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Backspace",
+                "at": 1456.199999988079,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1459,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1645.300000011921,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1646.5,
+                "x": 1202,
+                "y": 880,
+                "target": "quick-btn magnetic-control is-magnetic motion-pressed",
+                "action": "ai-review"
+              }
+            ],
+            "mode": "learning",
+            "focus": {
+              "tag": "BUTTON",
+              "id": "",
+              "action": "ai-review"
+            },
+            "oralText": "正在请先生评阅复讲…",
+            "oralLesson": "l1-1",
+            "aiDisabled": true,
+            "feedback": []
+          }
+        },
+        {
+          "label": "old-finished-new-pending",
+          "state": {
+            "data": {
+              "card": null,
+              "record": null,
+              "activity": null,
+              "achievement": null,
+              "stats": null,
+              "legacy": null,
+              "config": {
+                "endpoint": "/api/learning-review"
+              },
+              "history": null
+            },
+            "raw": {
+              "card": null,
+              "record": null,
+              "activity": null,
+              "achievement": null,
+              "stats": null,
+              "legacy": null,
+              "config": "{\"endpoint\":\"/api/learning-review\"}",
+              "history": null
+            },
+            "reads": [
+              {
+                "key": "yijing.study.v1",
+                "readable": true,
+                "at": 645.0999999940395
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "readable": true,
+                "at": 645.1999999880791
+              },
+              {
+                "key": "yijing-review-cards",
+                "readable": true,
+                "at": 645.5
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "readable": true,
+                "at": 645.5
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "readable": true,
+                "at": 645.5999999940395
+              },
+              {
+                "key": "yijing-activity-v1",
+                "readable": true,
+                "at": 645.6999999880791
+              },
+              {
+                "key": "yijing.study.v1",
+                "readable": true,
+                "at": 1219.800000011921
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "readable": true,
+                "at": 1219.800000011921
+              },
+              {
+                "key": "yijing-learning-review-config-v1",
+                "readable": true,
+                "at": 1220.9000000059605
+              }
+            ],
+            "writes": [],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 486.19999998807907,
+                "x": 619,
+                "y": 34,
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1213.0999999940395,
+                "x": 714,
+                "y": 670,
+                "target": "STRONG"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1453.5,
+                "x": 715,
+                "y": 744,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "a",
+                "at": 1455.300000011921,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Backspace",
+                "at": 1456.199999988079,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1459,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1645.300000011921,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1646.5,
+                "x": 1202,
+                "y": 880,
+                "target": "quick-btn magnetic-control is-magnetic motion-pressed",
+                "action": "ai-review"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1806.9000000059605,
+                "x": 715,
+                "y": 578,
+                "target": "SELECT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1810.800000011921,
+                "target": "SELECT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1810.9000000059605,
+                "target": "SELECT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1811.4000000059605,
+                "x": 161,
+                "y": 558,
+                "target": "SELECT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1967,
+                "x": 1202,
+                "y": 880,
+                "target": "quick-btn magnetic-control is-magnetic motion-pressed",
+                "action": "ai-review"
+              }
+            ],
+            "mode": "learning",
+            "focus": {
+              "tag": "BODY",
+              "id": ""
+            },
+            "oralText": "正在请先生评阅复讲…",
+            "oralLesson": "l1-2",
+            "aiDisabled": true,
+            "feedback": []
+          }
+        },
+        {
+          "label": "automatic-feedback-before-locator-scroll",
+          "container": ".oral-review-output",
+          "failed": false,
+          "structure": {
+            "sections": [
+              "result",
+              "basis",
+              "changes",
+              "actions"
+            ],
+            "primary": 1,
+            "secondary": 1,
+            "wholeLive": null,
+            "focus": {
+              "tag": "SECTION",
+              "inside": true,
+              "visible": true,
+              "hit": true,
+              "rect": {
+                "x": 355,
+                "y": 385,
+                "width": 720,
+                "height": 325.78125,
+                "top": 385,
+                "right": 1075,
+                "bottom": 710.78125,
+                "left": 355
+              }
+            },
+            "selection": ""
+          },
+          "result": {
+            "rect": {
+              "x": 355,
+              "y": 385,
+              "width": 720,
+              "height": 325.78125,
+              "top": 385,
+              "right": 1075,
+              "bottom": 710.78125,
+              "left": 355
+            },
+            "clip": {
+              "left": 28,
+              "top": 96,
+              "right": 1412,
+              "bottom": 1000
+            },
+            "text": "本次结果\n智能评阅91 分\n\n当前会话合成评阅\n\n已掌握\n概念清楚\n再温习\n补充出处",
+            "visible": true,
+            "full": true,
+            "hit": true
+          },
+          "status": {
+            "rect": {
+              "x": 355,
+              "y": 1139.34375,
+              "width": 720,
+              "height": 30.59375,
+              "top": 1139.34375,
+              "right": 1075,
+              "bottom": 1169.9375,
+              "left": 355
+            },
+            "clip": {
+              "left": 28,
+              "top": 96,
+              "right": 1412,
+              "bottom": 1000
+            },
+            "text": "复讲成绩已保存；学习日记录已保存。",
+            "visible": false,
+            "full": false,
+            "hit": false
+          },
+          "primary": {
+            "rect": {
+              "x": 355,
+              "y": 1275.9375,
+              "width": 130,
+              "height": 47.59375,
+              "top": 1275.9375,
+              "right": 485,
+              "bottom": 1323.53125,
+              "left": 355
+            },
+            "clip": {
+              "left": 28,
+              "top": 96,
+              "right": 1412,
+              "bottom": 1000
+            },
+            "text": "开始新的复讲",
+            "visible": false,
+            "full": false,
+            "hit": false,
+            "disabled": false
+          },
+          "retry": null
+        },
+        {
+          "label": "oral-source-notice-horizontal-fit",
+          "provenance": {
+            "text": "本结果未附原典出处定位，出处与校验状态待核对；请回原课查看。",
+            "rect": {
+              "x": 355,
+              "y": 1002.75,
+              "width": 720,
+              "height": 30.59375,
+              "top": 1002.75,
+              "right": 1075,
+              "bottom": 1033.34375,
+              "left": 355
+            },
+            "container": {
+              "x": 355,
+              "y": 710.78125,
+              "width": 720,
+              "height": 350.5625,
+              "top": 710.78125,
+              "right": 1075,
+              "bottom": 1061.34375,
+              "left": 355
+            },
+            "scrollWidth": 720,
+            "clientWidth": 720,
+            "display": "block",
+            "whiteSpace": "normal"
+          }
+        },
+        {
+          "label": "new-session-only",
+          "state": {
+            "data": {
+              "card": null,
+              "record": {
+                "version": 2,
+                "lessons": {},
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [
+                  {
+                    "lessonId": "l1-2",
+                    "score": 91,
+                    "mode": "ai",
+                    "at": "2026-10-24T23:50:23.352Z"
+                  }
+                ]
+              },
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": null,
+              "stats": null,
+              "legacy": null,
+              "config": {
+                "endpoint": "/api/learning-review"
+              },
+              "history": null
+            },
+            "raw": {
+              "card": null,
+              "record": "{\"version\":2,\"lessons\":{},\"spotChecks\":[],\"exams\":[],\"oralReviews\":[{\"lessonId\":\"l1-2\",\"score\":91,\"mode\":\"ai\",\"at\":\"2026-10-24T23:50:23.352Z\"}]}",
+              "activity": "{\"days\":[\"2026-10-25\"]}",
+              "achievement": null,
+              "stats": null,
+              "legacy": null,
+              "config": "{\"endpoint\":\"/api/learning-review\"}",
+              "history": null
+            },
+            "reads": [
+              {
+                "key": "yijing.study.v1",
+                "readable": true,
+                "at": 645.0999999940395
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "readable": true,
+                "at": 645.1999999880791
+              },
+              {
+                "key": "yijing-review-cards",
+                "readable": true,
+                "at": 645.5
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "readable": true,
+                "at": 645.5
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "readable": true,
+                "at": 645.5999999940395
+              },
+              {
+                "key": "yijing-activity-v1",
+                "readable": true,
+                "at": 645.6999999880791
+              },
+              {
+                "key": "yijing.study.v1",
+                "readable": true,
+                "at": 1219.800000011921
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "readable": true,
+                "at": 1219.800000011921
+              },
+              {
+                "key": "yijing-learning-review-config-v1",
+                "readable": true,
+                "at": 1220.9000000059605
+              },
+              {
+                "key": "yijing.study.v1",
+                "readable": true,
+                "at": 2198.300000011921
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "readable": true,
+                "at": 2198.300000011921
+              },
+              {
+                "key": "yijing-activity-v1",
+                "readable": true,
+                "at": 2198.5
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2198.4000000059605,
+                "value": {
+                  "version": 2,
+                  "lessons": {},
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [
+                    {
+                      "lessonId": "l1-2",
+                      "score": 91,
+                      "mode": "ai",
+                      "at": "2026-10-24T23:50:23.352Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 2198.5,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 486.19999998807907,
+                "x": 619,
+                "y": 34,
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1213.0999999940395,
+                "x": 714,
+                "y": 670,
+                "target": "STRONG"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1453.5,
+                "x": 715,
+                "y": 744,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "a",
+                "at": 1455.300000011921,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Backspace",
+                "at": 1456.199999988079,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1459,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1645.300000011921,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1646.5,
+                "x": 1202,
+                "y": 880,
+                "target": "quick-btn magnetic-control is-magnetic motion-pressed",
+                "action": "ai-review"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1806.9000000059605,
+                "x": 715,
+                "y": 578,
+                "target": "SELECT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1810.800000011921,
+                "target": "SELECT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1810.9000000059605,
+                "target": "SELECT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1811.4000000059605,
+                "x": 161,
+                "y": 558,
+                "target": "SELECT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1967,
+                "x": 1202,
+                "y": 880,
+                "target": "quick-btn magnetic-control is-magnetic motion-pressed",
+                "action": "ai-review"
+              }
+            ],
+            "mode": "learning",
+            "focus": {
+              "tag": "SECTION",
+              "id": ""
+            },
+            "oralText": "本次结果\n智能评阅91 分\n\n当前会话合成评阅\n\n已掌握\n概念清楚\n再温习\n补充出处\n判断依据\n项目课程要点\n\n课程：八卦生成\n\n太极生两仪：阳仪、阴仪。\n两仪生四象：太阳（老阳）、少阴、少阳、太阴（老阴）。\n四象生八卦：每象上加一阳/一阴，得乾兑离震巽坎艮坤。\n先天八卦次序（自上而下变）：乾一、兑二、离三、震四、巽五、坎六、艮七、坤八。\n\n本结果未附原典出处定位，出处与校验状态待核对；请回原课查看。\n\n学习记录\n\n复讲成绩已保存；学习日记录已保存。\n\n下一步\n开始新的复讲\n回原课温习",
+            "oralLesson": "l1-2",
+            "aiDisabled": false,
+            "feedback": [
+              "本次结果\n智能评阅91 分\n\n当前会话合成评阅\n\n已掌握\n概念清楚\n再温习\n补充出处\n判断依据\n项目课程要点\n\n课程：八卦生成\n\n太极生两仪：阳仪、阴仪。\n两仪生四象：太阳（老阳）、少阴、少阳、太阴（老阴）。\n四象生八卦：每象上加一阳/一阴，得乾兑离震巽坎艮坤。\n先天八卦次序（自上而下变）：乾一、兑二、离三、震四、巽五、坎六、艮七、坤八。\n\n本结果未附原典出处定位，出处与校验状态待核对；请回原课查看。\n\n学习记录\n\n复讲成绩已保存；学习日记录已保存。\n\n下一步\n开始新的复讲\n回原课温习"
+            ]
+          }
+        },
+        {
+          "label": "final",
+          "state": {
+            "data": {
+              "card": null,
+              "record": {
+                "version": 2,
+                "lessons": {},
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [
+                  {
+                    "lessonId": "l1-2",
+                    "score": 91,
+                    "mode": "ai",
+                    "at": "2026-10-24T23:50:23.352Z"
+                  }
+                ]
+              },
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": null,
+              "stats": null,
+              "legacy": null,
+              "config": {
+                "endpoint": "/api/learning-review"
+              },
+              "history": null
+            },
+            "raw": {
+              "card": null,
+              "record": "{\"version\":2,\"lessons\":{},\"spotChecks\":[],\"exams\":[],\"oralReviews\":[{\"lessonId\":\"l1-2\",\"score\":91,\"mode\":\"ai\",\"at\":\"2026-10-24T23:50:23.352Z\"}]}",
+              "activity": "{\"days\":[\"2026-10-25\"]}",
+              "achievement": null,
+              "stats": null,
+              "legacy": null,
+              "config": "{\"endpoint\":\"/api/learning-review\"}",
+              "history": null
+            },
+            "reads": [
+              {
+                "key": "yijing.study.v1",
+                "readable": true,
+                "at": 645.0999999940395
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "readable": true,
+                "at": 645.1999999880791
+              },
+              {
+                "key": "yijing-review-cards",
+                "readable": true,
+                "at": 645.5
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "readable": true,
+                "at": 645.5
+              },
+              {
+                "key": "yijing-quiz-wrong",
+                "readable": true,
+                "at": 645.5999999940395
+              },
+              {
+                "key": "yijing-activity-v1",
+                "readable": true,
+                "at": 645.6999999880791
+              },
+              {
+                "key": "yijing.study.v1",
+                "readable": true,
+                "at": 1219.800000011921
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "readable": true,
+                "at": 1219.800000011921
+              },
+              {
+                "key": "yijing-learning-review-config-v1",
+                "readable": true,
+                "at": 1220.9000000059605
+              },
+              {
+                "key": "yijing.study.v1",
+                "readable": true,
+                "at": 2198.300000011921
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "readable": true,
+                "at": 2198.300000011921
+              },
+              {
+                "key": "yijing-activity-v1",
+                "readable": true,
+                "at": 2198.5
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2198.4000000059605,
+                "value": {
+                  "version": 2,
+                  "lessons": {},
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [
+                    {
+                      "lessonId": "l1-2",
+                      "score": 91,
+                      "mode": "ai",
+                      "at": "2026-10-24T23:50:23.352Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 2198.5,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 486.19999998807907,
+                "x": 619,
+                "y": 34,
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1213.0999999940395,
+                "x": 714,
+                "y": 670,
+                "target": "STRONG"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1453.5,
+                "x": 715,
+                "y": 744,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "a",
+                "at": 1455.300000011921,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Backspace",
+                "at": 1456.199999988079,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1459,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1645.300000011921,
+                "target": "TEXTAREA"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1646.5,
+                "x": 1202,
+                "y": 880,
+                "target": "quick-btn magnetic-control is-magnetic motion-pressed",
+                "action": "ai-review"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1806.9000000059605,
+                "x": 715,
+                "y": 578,
+                "target": "SELECT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1810.800000011921,
+                "target": "SELECT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1810.9000000059605,
+                "target": "SELECT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1811.4000000059605,
+                "x": 161,
+                "y": 558,
+                "target": "SELECT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1967,
+                "x": 1202,
+                "y": 880,
+                "target": "quick-btn magnetic-control is-magnetic motion-pressed",
+                "action": "ai-review"
+              }
+            ],
+            "mode": "learning",
+            "focus": {
+              "tag": "SECTION",
+              "id": ""
+            },
+            "oralText": "本次结果\n智能评阅91 分\n\n当前会话合成评阅\n\n已掌握\n概念清楚\n再温习\n补充出处\n判断依据\n项目课程要点\n\n课程：八卦生成\n\n太极生两仪：阳仪、阴仪。\n两仪生四象：太阳（老阳）、少阴、少阳、太阴（老阴）。\n四象生八卦：每象上加一阳/一阴，得乾兑离震巽坎艮坤。\n先天八卦次序（自上而下变）：乾一、兑二、离三、震四、巽五、坎六、艮七、坤八。\n\n本结果未附原典出处定位，出处与校验状态待核对；请回原课查看。\n\n学习记录\n\n复讲成绩已保存；学习日记录已保存。\n\n下一步\n开始新的复讲\n回原课温习",
+            "oralLesson": "l1-2",
+            "aiDisabled": false,
+            "feedback": [
+              "本次结果\n智能评阅91 分\n\n当前会话合成评阅\n\n已掌握\n概念清楚\n再温习\n补充出处\n判断依据\n项目课程要点\n\n课程：八卦生成\n\n太极生两仪：阳仪、阴仪。\n两仪生四象：太阳（老阳）、少阴、少阳、太阴（老阴）。\n四象生八卦：每象上加一阳/一阴，得乾兑离震巽坎艮坤。\n先天八卦次序（自上而下变）：乾一、兑二、离三、震四、巽五、坎六、艮七、坤八。\n\n本结果未附原典出处定位，出处与校验状态待核对；请回原课查看。\n\n学习记录\n\n复讲成绩已保存；学习日记录已保存。\n\n下一步\n开始新的复讲\n回原课温习"
+            ]
+          }
+        }
+      ],
+      "requests": [
+        {
+          "number": 1,
+          "id": "interception-job-46.0",
+          "networkId": "40532.235",
+          "method": "POST",
+          "url": "http://127.0.0.1:52033/api/learning-review",
+          "payload": {
+            "schemaVersion": 1,
+            "task": "yijing-learning-recitation",
+            "lesson": {
+              "id": "l1-1",
+              "title": "阴阳之道"
+            },
+            "rubric": [
+              "阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。",
+              "阴（--）：主静、柔顺、暗、寒、女、地、偶数。爻象为中断的两短横。",
+              "阴阳互根：阴中有阳，阳中有阴，相互依存、相互转化。",
+              "阴阳消长：阴阳二气的盛衰推移，构成四时变化与万物生杀。十二消息卦即明此理。"
+            ],
+            "response": "这是合成的公开课程复讲输入，仅用于隔离环境的交互与保存验证。"
+          },
+          "interceptedBeforeNetwork": true,
+          "reply": {
+            "status": 503,
+            "payload": {
+              "score": 82,
+              "summary": "合成评阅 1",
+              "strengths": [
+                "概念清楚"
+              ],
+              "improvements": [
+                "补充出处"
+              ]
+            }
+          },
+          "completed": true
+        },
+        {
+          "number": 2,
+          "id": "interception-job-47.0",
+          "networkId": "40532.236",
+          "method": "POST",
+          "url": "http://127.0.0.1:52033/api/learning-review",
+          "payload": {
+            "schemaVersion": 1,
+            "task": "yijing-learning-recitation",
+            "lesson": {
+              "id": "l1-2",
+              "title": "八卦生成"
+            },
+            "rubric": [
+              "太极生两仪：阳仪、阴仪。",
+              "两仪生四象：太阳（老阳）、少阴、少阳、太阴（老阴）。",
+              "四象生八卦：每象上加一阳/一阴，得乾兑离震巽坎艮坤。",
+              "先天八卦次序（自上而下变）：乾一、兑二、离三、震四、巽五、坎六、艮七、坤八。"
+            ],
+            "response": "这是合成的公开课程复讲输入，仅用于隔离环境的交互与保存验证。"
+          },
+          "interceptedBeforeNetwork": true,
+          "reply": {
+            "status": 200,
+            "payload": {
+              "score": 91,
+              "summary": "当前会话合成评阅",
+              "strengths": [
+                "概念清楚"
+              ],
+              "improvements": [
+                "补充出处"
+              ]
+            }
+          },
+          "completed": true
+        }
+      ],
+      "fixtures": [
+        {
+          "at": "2026-10-24T23:50:21.143Z",
+          "values": {
+            "yijing-learning-review-config-v1": {
+              "endpoint": "/api/learning-review"
+            }
+          }
+        }
+      ],
+      "faults": [],
+      "screenshots": [
+        "1440-oral-ai-stale-course-automatic-0.png"
+      ]
+    }
+  ],
+  "limitations": [
+    "Synthetic isolated profile and origin; no existing user data, private text or authenticated service is accessed.",
+    "Desktop headless Chromium / CDP touch and CSS viewport checks only; no physical device, screen reader or native browser zoom proof.",
+    "Storage fixtures/read/quota faults and Fetch replies are deliberate test injections. No DOM.click or browser application function is invoked.",
+    "Evidence snapshots bypass injected reads through saved native getItem; application reads use the patched prototype and can throw.",
+    "Input actions use actual hit coordinates or keyboard focus. Locator scrollIntoView is allowed only after automatic result visibility capture.",
+    "AI replies are synthetic and intercepted before network dispatch. This does not validate a deployed backend or real model quality.",
+    "Oral drafts and pending retries are page-memory only. Leaving a page does not promise persistence of an unsaved submission.",
+    "1280x720 and 768x1024 cover five representative feedback/retry flows only. Meihua time has the same result renderer; its distinct time-button entry is covered at 1440/390, not additionally claimed at these two representative viewports."
+  ],
+  "server": {
+    "pid": 62932,
+    "runtime": "C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "url": "http://127.0.0.1:52033/",
+    "startedAt": "2026-10-24T23:50:19.849Z",
+    "stdout": "易象图谱开发服务器：http://127.0.0.1:52033/\n",
+    "stderr": "",
+    "exit": {
+      "code": null,
+      "signal": "SIGTERM",
+      "at": "2026-10-24T23:50:24.332Z",
+      "duringCleanup": true
+    },
+    "close": {
+      "code": null,
+      "signal": "SIGTERM",
+      "at": "2026-10-24T23:50:24.333Z"
+    }
+  },
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "finishedAt": "2026-10-24T23:50:24.259Z",
+  "finalSourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "a403744525846aad387912a8f48b174251d5ea563189ef546851a09faba22bcd",
+    "web/js/learning-feedback.js": "297b8116a05c6c2543e31dc2fdf0915f82f49d9d61f8d7af016ec6ad0ce93c28",
+    "web/js/review-session.js": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54",
+    "web/js/review-engine.js": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-review.js": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/learning-assessment-page.js": "ad401a42d10b3c93d2d249a96e3cf8efc7b733d5f89575387726882dfc7c0773",
+    "web/js/modes/learning-mode.js": "5a6009b61e2a846b5ab0a9b92e9a7fc6711d0c81bcdfd6431b2e764f42962bef",
+    "web/js/modes/review-mode.js": "082b67ab4b38a63979024b7d5a6ca61c111d0c7c168f76227a7d756e4b39bc55",
+    "web/js/modes/quiz-mode.js": "9a4e0828ddcf2788efc6d84eb49c0e937a9420edb7ada494ecb0ddf848ee3090",
+    "web/js/modes/divination-mode.js": "de316cb98d507712af99b63947bff6f9b666c8c57e11a2d2680e7193e25445cb",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/divination-history.js": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660",
+    "web/js/meihua-engine.js": "3310a0ede88f2f05ad1663aed48efed99c64828bcb4fced4a51e4733fdd45074",
+    "web/js/divination-interpretation.js": "1fa8bf21fea4c8856e98fa139c1b4fdf551eeedcead8e63e6b048804a28238cf",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "03d697b4e5f7b129c96615176915b43df9d93920c06a4b28a0f9713b89ddcc7a",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/sw.js": "cdc31bd2491a6964a5af9b5e3f4a387617b2f53fb596e166fddb09ac110a2055",
+    "scripts/serve.mjs": "21ffdb9e9c86d3e75038a4256a7c4874696739fa4e194d34a4a320c02918c3c4",
+    "scripts/test-learning-feedback.mjs": "811426cd08b3b7eaf5300a2263e8cdef5b2b849d5b566d5a86079ee8240a9329"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [
+    {
+      "source": "network",
+      "level": "error",
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+      "timestamp": 1792885823184.7,
+      "url": "http://127.0.0.1:52033/api/learning-review",
+      "networkRequestId": "40532.235"
+    }
+  ],
+  "networkRequests": [
+    {
+      "requestId": "81B1F553DE6CDB95923F563F773270B9",
+      "url": "http://127.0.0.1:52033/?feedback-probe=1440-oral-ai-stale-course",
+      "method": "GET",
+      "type": "Document",
+      "timestamp": 253524.198844
+    },
+    {
+      "requestId": "40532.2",
+      "url": "http://127.0.0.1:52033/js/protocol-guard.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.290771
+    },
+    {
+      "requestId": "40532.3",
+      "url": "http://127.0.0.1:52033/assets/academy-astrolabe-bg.webp",
+      "method": "GET",
+      "type": "Image",
+      "timestamp": 253524.311979
+    },
+    {
+      "requestId": "40532.4",
+      "url": "http://127.0.0.1:52033/lib/vendor/lenis.css",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253524.312068
+    },
+    {
+      "requestId": "40532.5",
+      "url": "http://127.0.0.1:52033/styles/main.css?v=51",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253524.312104
+    },
+    {
+      "requestId": "40532.6",
+      "url": "http://127.0.0.1:52033/styles/immersive.css?v=51",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253524.31213
+    },
+    {
+      "requestId": "40532.7",
+      "url": "http://127.0.0.1:52033/lib/vendor/gsap.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.312935
+    },
+    {
+      "requestId": "40532.8",
+      "url": "http://127.0.0.1:52033/lib/vendor/lenis.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.312978
+    },
+    {
+      "requestId": "40532.9",
+      "url": "http://127.0.0.1:52033/js/main.js?v=51",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.313036
+    },
+    {
+      "requestId": "40532.10",
+      "url": "http://127.0.0.1:52033/manifest.webmanifest",
+      "method": "GET",
+      "type": "Manifest",
+      "timestamp": 253524.314029
+    },
+    {
+      "requestId": "40532.11",
+      "url": "http://127.0.0.1:52033/js/audio-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.38036
+    },
+    {
+      "requestId": "40532.12",
+      "url": "http://127.0.0.1:52033/js/achievement-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380439
+    },
+    {
+      "requestId": "40532.13",
+      "url": "http://127.0.0.1:52033/js/achievement-storage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380464
+    },
+    {
+      "requestId": "40532.14",
+      "url": "http://127.0.0.1:52033/js/data-loader.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380484
+    },
+    {
+      "requestId": "40532.15",
+      "url": "http://127.0.0.1:52033/js/evolution-lab.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380519
+    },
+    {
+      "requestId": "40532.16",
+      "url": "http://127.0.0.1:52033/js/share-card.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380543
+    },
+    {
+      "requestId": "40532.17",
+      "url": "http://127.0.0.1:52033/js/modes/guaxu-mode.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380566
+    },
+    {
+      "requestId": "40532.18",
+      "url": "http://127.0.0.1:52033/js/cinematic-motion.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.38059
+    },
+    {
+      "requestId": "40532.19",
+      "url": "http://127.0.0.1:52033/js/motion-system.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380616
+    },
+    {
+      "requestId": "40532.20",
+      "url": "http://127.0.0.1:52033/js/render.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380638
+    },
+    {
+      "requestId": "40532.21",
+      "url": "http://127.0.0.1:52033/js/review-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380657
+    },
+    {
+      "requestId": "40532.22",
+      "url": "http://127.0.0.1:52033/js/reading-state.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380676
+    },
+    {
+      "requestId": "40532.23",
+      "url": "http://127.0.0.1:52033/js/search-controller.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380722
+    },
+    {
+      "requestId": "40532.24",
+      "url": "http://127.0.0.1:52033/js/star-relations.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380749
+    },
+    {
+      "requestId": "40532.25",
+      "url": "http://127.0.0.1:52033/js/star-map.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380768
+    },
+    {
+      "requestId": "40532.26",
+      "url": "http://127.0.0.1:52033/js/svg-painter.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.38079
+    },
+    {
+      "requestId": "40532.27",
+      "url": "http://127.0.0.1:52033/js/ui-icons.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.380813
+    },
+    {
+      "requestId": "40532.28",
+      "url": "http://127.0.0.1:52033/js/storage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.392541
+    },
+    {
+      "requestId": "40532.29",
+      "url": "http://127.0.0.1:52033/js/achievement-catalog.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.392609
+    },
+    {
+      "requestId": "40532.30",
+      "url": "http://127.0.0.1:52033/js/evolution-state.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.392949
+    },
+    {
+      "requestId": "40532.31",
+      "url": "http://127.0.0.1:52033/js/evolution-semantics.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.392988
+    },
+    {
+      "requestId": "40532.32",
+      "url": "http://127.0.0.1:52033/js/hexagram-utils.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.39301
+    },
+    {
+      "requestId": "40532.33",
+      "url": "http://127.0.0.1:52033/js/guaxu-wheel.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.393055
+    },
+    {
+      "requestId": "40532.34",
+      "url": "http://127.0.0.1:52033/js/relation-animation.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.393581
+    },
+    {
+      "requestId": "40532.35",
+      "url": "http://127.0.0.1:52033/js/content-provenance.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.393625
+    },
+    {
+      "requestId": "40532.36",
+      "url": "http://127.0.0.1:52033/lib/d3-force.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.395699
+    },
+    {
+      "requestId": "40532.37",
+      "url": "http://127.0.0.1:52033/js/star-layouts.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.395737
+    },
+    {
+      "requestId": "40532.38",
+      "url": "http://127.0.0.1:52033/js/star-atmosphere.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.395755
+    },
+    {
+      "requestId": "40532.39",
+      "url": "http://127.0.0.1:52033/js/star-label-layout.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.395771
+    },
+    {
+      "requestId": "40532.40",
+      "url": "http://127.0.0.1:52033/data/hexagrams.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253524.416471
+    },
+    {
+      "requestId": "40532.41",
+      "url": "http://127.0.0.1:52033/data/trigrams.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253524.416575
+    },
+    {
+      "requestId": "40532.42",
+      "url": "http://127.0.0.1:52033/assets/favicon.svg",
+      "method": "GET",
+      "type": "Other",
+      "timestamp": 253524.423128
+    },
+    {
+      "requestId": "40532.43",
+      "url": "http://127.0.0.1:52033/assets/favicon.svg",
+      "method": "GET",
+      "type": "Other",
+      "timestamp": 253524.423483
+    },
+    {
+      "requestId": "40532.44",
+      "url": "http://127.0.0.1:52033/data/commentaries/manifest.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253524.427717
+    },
+    {
+      "requestId": "40532.45",
+      "url": "http://127.0.0.1:52033/data/hexagram-keywords.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253524.439429
+    },
+    {
+      "requestId": "40532.100",
+      "url": "http://127.0.0.1:52033/js/celestial-stage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.669372
+    },
+    {
+      "requestId": "40532.102",
+      "url": "http://127.0.0.1:52033/lib/vendor/three.module.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.824827
+    },
+    {
+      "requestId": "486646590524E94D1644D36D36EF1EB5",
+      "url": "http://127.0.0.1:52033/?feedback-probe=1440-oral-ai-stale-course",
+      "method": "GET",
+      "type": "Document",
+      "timestamp": 253524.837052
+    },
+    {
+      "requestId": "40532.104",
+      "url": "http://127.0.0.1:52033/lib/vendor/three.core.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.836767
+    },
+    {
+      "requestId": "40532.108",
+      "url": "http://127.0.0.1:52033/js/protocol-guard.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.855302
+    },
+    {
+      "requestId": "40532.110",
+      "url": "http://127.0.0.1:52033/assets/academy-astrolabe-bg.webp",
+      "method": "GET",
+      "type": "Image",
+      "timestamp": 253524.859389
+    },
+    {
+      "requestId": "40532.111",
+      "url": "http://127.0.0.1:52033/lib/vendor/lenis.css",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253524.859465
+    },
+    {
+      "requestId": "40532.112",
+      "url": "http://127.0.0.1:52033/styles/main.css?v=51",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253524.859494
+    },
+    {
+      "requestId": "40532.113",
+      "url": "http://127.0.0.1:52033/styles/immersive.css?v=51",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253524.859526
+    },
+    {
+      "requestId": "40532.117",
+      "url": "http://127.0.0.1:52033/lib/vendor/gsap.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.860402
+    },
+    {
+      "requestId": "40532.118",
+      "url": "http://127.0.0.1:52033/lib/vendor/lenis.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.860445
+    },
+    {
+      "requestId": "40532.119",
+      "url": "http://127.0.0.1:52033/js/main.js?v=51",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.860491
+    },
+    {
+      "requestId": "40532.124",
+      "url": "http://127.0.0.1:52033/manifest.webmanifest",
+      "method": "GET",
+      "type": "Manifest",
+      "timestamp": 253524.864292
+    },
+    {
+      "requestId": "40532.126",
+      "url": "http://127.0.0.1:52033/js/audio-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876149
+    },
+    {
+      "requestId": "40532.127",
+      "url": "http://127.0.0.1:52033/js/achievement-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876211
+    },
+    {
+      "requestId": "40532.128",
+      "url": "http://127.0.0.1:52033/js/achievement-storage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876239
+    },
+    {
+      "requestId": "40532.129",
+      "url": "http://127.0.0.1:52033/js/data-loader.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876263
+    },
+    {
+      "requestId": "40532.130",
+      "url": "http://127.0.0.1:52033/js/evolution-lab.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876284
+    },
+    {
+      "requestId": "40532.131",
+      "url": "http://127.0.0.1:52033/js/share-card.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876302
+    },
+    {
+      "requestId": "40532.132",
+      "url": "http://127.0.0.1:52033/js/modes/guaxu-mode.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876326
+    },
+    {
+      "requestId": "40532.133",
+      "url": "http://127.0.0.1:52033/js/cinematic-motion.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876345
+    },
+    {
+      "requestId": "40532.134",
+      "url": "http://127.0.0.1:52033/js/motion-system.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876373
+    },
+    {
+      "requestId": "40532.135",
+      "url": "http://127.0.0.1:52033/js/render.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876395
+    },
+    {
+      "requestId": "40532.136",
+      "url": "http://127.0.0.1:52033/js/review-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876426
+    },
+    {
+      "requestId": "40532.137",
+      "url": "http://127.0.0.1:52033/js/reading-state.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876443
+    },
+    {
+      "requestId": "40532.138",
+      "url": "http://127.0.0.1:52033/js/search-controller.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876471
+    },
+    {
+      "requestId": "40532.139",
+      "url": "http://127.0.0.1:52033/js/star-relations.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876492
+    },
+    {
+      "requestId": "40532.140",
+      "url": "http://127.0.0.1:52033/js/star-map.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876513
+    },
+    {
+      "requestId": "40532.141",
+      "url": "http://127.0.0.1:52033/js/svg-painter.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876535
+    },
+    {
+      "requestId": "40532.142",
+      "url": "http://127.0.0.1:52033/js/ui-icons.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.876561
+    },
+    {
+      "requestId": "40532.160",
+      "url": "http://127.0.0.1:52033/js/achievement-catalog.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.882212
+    },
+    {
+      "requestId": "40532.161",
+      "url": "http://127.0.0.1:52033/js/storage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.882336
+    },
+    {
+      "requestId": "40532.164",
+      "url": "http://127.0.0.1:52033/js/evolution-state.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.885488
+    },
+    {
+      "requestId": "40532.165",
+      "url": "http://127.0.0.1:52033/js/evolution-semantics.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.885564
+    },
+    {
+      "requestId": "40532.166",
+      "url": "http://127.0.0.1:52033/js/hexagram-utils.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.8856
+    },
+    {
+      "requestId": "40532.169",
+      "url": "http://127.0.0.1:52033/js/guaxu-wheel.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.886755
+    },
+    {
+      "requestId": "40532.172",
+      "url": "http://127.0.0.1:52033/js/relation-animation.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.890351
+    },
+    {
+      "requestId": "40532.173",
+      "url": "http://127.0.0.1:52033/js/content-provenance.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.890433
+    },
+    {
+      "requestId": "40532.176",
+      "url": "http://127.0.0.1:52033/lib/d3-force.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.89626
+    },
+    {
+      "requestId": "40532.177",
+      "url": "http://127.0.0.1:52033/js/star-layouts.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.896316
+    },
+    {
+      "requestId": "40532.178",
+      "url": "http://127.0.0.1:52033/js/star-atmosphere.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.89634
+    },
+    {
+      "requestId": "40532.179",
+      "url": "http://127.0.0.1:52033/js/star-label-layout.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253524.89636
+    },
+    {
+      "requestId": "40532.184",
+      "url": "http://127.0.0.1:52033/data/hexagrams.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253524.912903
+    },
+    {
+      "requestId": "40532.185",
+      "url": "http://127.0.0.1:52033/data/trigrams.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253524.913
+    },
+    {
+      "requestId": "40532.188",
+      "url": "http://127.0.0.1:52033/data/commentaries/manifest.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253524.917857
+    },
+    {
+      "requestId": "40532.189",
+      "url": "http://127.0.0.1:52033/assets/favicon.svg",
+      "method": "GET",
+      "type": "Other",
+      "timestamp": 253524.918064
+    },
+    {
+      "requestId": "40532.192",
+      "url": "http://127.0.0.1:52033/data/hexagram-keywords.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253524.926684
+    },
+    {
+      "requestId": "40532.194",
+      "url": "http://127.0.0.1:52033/js/celestial-stage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.322455
+    },
+    {
+      "requestId": "40532.197",
+      "url": "http://127.0.0.1:52033/js/modes/learning-mode.js?v=51",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.410634
+    },
+    {
+      "requestId": "40532.198",
+      "url": "http://127.0.0.1:52033/data/wings.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253525.410889
+    },
+    {
+      "requestId": "40532.199",
+      "url": "http://127.0.0.1:52033/data/theorems.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253525.410943
+    },
+    {
+      "requestId": "40532.200",
+      "url": "http://127.0.0.1:52033/data/almanac-terms.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253525.411001
+    },
+    {
+      "requestId": "40532.201",
+      "url": "http://127.0.0.1:52033/data/almanac-yiji.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253525.411036
+    },
+    {
+      "requestId": "40532.207",
+      "url": "http://127.0.0.1:52033/lib/vendor/three.module.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.452886
+    },
+    {
+      "requestId": "40532.209",
+      "url": "http://127.0.0.1:52033/js/almanac-knowledge.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.453452
+    },
+    {
+      "requestId": "40532.210",
+      "url": "http://127.0.0.1:52033/js/learning-assessment-page.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.453493
+    },
+    {
+      "requestId": "40532.211",
+      "url": "http://127.0.0.1:52033/js/learning-assessment.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.453518
+    },
+    {
+      "requestId": "40532.212",
+      "url": "http://127.0.0.1:52033/js/learning-curriculum.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.453539
+    },
+    {
+      "requestId": "40532.213",
+      "url": "http://127.0.0.1:52033/js/learning-progress.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.453558
+    },
+    {
+      "requestId": "40532.214",
+      "url": "http://127.0.0.1:52033/js/learning-review.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.453577
+    },
+    {
+      "requestId": "40532.215",
+      "url": "http://127.0.0.1:52033/js/quiz-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.453612
+    },
+    {
+      "requestId": "40532.216",
+      "url": "http://127.0.0.1:52033/js/study-page.js?v=50",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.453637
+    },
+    {
+      "requestId": "40532.217",
+      "url": "http://127.0.0.1:52033/js/user-data.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.453664
+    },
+    {
+      "requestId": "40532.220",
+      "url": "http://127.0.0.1:52033/assets/favicon.svg",
+      "method": "GET",
+      "type": "Other",
+      "timestamp": 253525.45427
+    },
+    {
+      "requestId": "40532.229",
+      "url": "http://127.0.0.1:52033/js/learning-feedback.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.466139
+    },
+    {
+      "requestId": "40532.231",
+      "url": "http://127.0.0.1:52033/lib/vendor/three.core.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.466628
+    },
+    {
+      "requestId": "40532.233",
+      "url": "http://127.0.0.1:52033/js/divination-history.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253525.468446
+    },
+    {
+      "requestId": "40532.235",
+      "url": "http://127.0.0.1:52033/api/learning-review",
+      "method": "POST",
+      "type": "Fetch",
+      "timestamp": 253526.482879
+    },
+    {
+      "requestId": "40532.236",
+      "url": "http://127.0.0.1:52033/api/learning-review",
+      "method": "POST",
+      "type": "Fetch",
+      "timestamp": 253526.802787
+    }
+  ],
+  "networkResponses": [
+    {
+      "requestId": "81B1F553DE6CDB95923F563F773270B9",
+      "type": "Document",
+      "timestamp": 253524.28606,
+      "url": "http://127.0.0.1:52033/?feedback-probe=1440-oral-ai-stale-course",
+      "status": 200,
+      "mimeType": "text/html",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "requestId": "40532.2",
+      "type": "Script",
+      "timestamp": 253524.311566,
+      "url": "http://127.0.0.1:52033/js/protocol-guard.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.4",
+      "type": "Stylesheet",
+      "timestamp": 253524.318246,
+      "url": "http://127.0.0.1:52033/lib/vendor/lenis.css",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "40532.3",
+      "type": "Image",
+      "timestamp": 253524.318724,
+      "url": "http://127.0.0.1:52033/assets/academy-astrolabe-bg.webp",
+      "status": 200,
+      "mimeType": "image/webp",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "image/webp"
+    },
+    {
+      "requestId": "40532.5",
+      "type": "Stylesheet",
+      "timestamp": 253524.325764,
+      "url": "http://127.0.0.1:52033/styles/main.css?v=51",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "40532.6",
+      "type": "Stylesheet",
+      "timestamp": 253524.326086,
+      "url": "http://127.0.0.1:52033/styles/immersive.css?v=51",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "40532.8",
+      "type": "Script",
+      "timestamp": 253524.376226,
+      "url": "http://127.0.0.1:52033/lib/vendor/lenis.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.10",
+      "type": "Manifest",
+      "timestamp": 253524.376333,
+      "url": "http://127.0.0.1:52033/manifest.webmanifest",
+      "status": 200,
+      "mimeType": "application/manifest+json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/manifest+json"
+    },
+    {
+      "requestId": "40532.9",
+      "type": "Script",
+      "timestamp": 253524.376607,
+      "url": "http://127.0.0.1:52033/js/main.js?v=51",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.7",
+      "type": "Script",
+      "timestamp": 253524.376856,
+      "url": "http://127.0.0.1:52033/lib/vendor/gsap.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.13",
+      "type": "Script",
+      "timestamp": 253524.391703,
+      "url": "http://127.0.0.1:52033/js/achievement-storage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.12",
+      "type": "Script",
+      "timestamp": 253524.39192,
+      "url": "http://127.0.0.1:52033/js/achievement-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.11",
+      "type": "Script",
+      "timestamp": 253524.392008,
+      "url": "http://127.0.0.1:52033/js/audio-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.14",
+      "type": "Script",
+      "timestamp": 253524.39208,
+      "url": "http://127.0.0.1:52033/js/data-loader.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.16",
+      "type": "Script",
+      "timestamp": 253524.392143,
+      "url": "http://127.0.0.1:52033/js/share-card.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.15",
+      "type": "Script",
+      "timestamp": 253524.392214,
+      "url": "http://127.0.0.1:52033/js/evolution-lab.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.17",
+      "type": "Script",
+      "timestamp": 253524.392288,
+      "url": "http://127.0.0.1:52033/js/modes/guaxu-mode.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.18",
+      "type": "Script",
+      "timestamp": 253524.392376,
+      "url": "http://127.0.0.1:52033/js/cinematic-motion.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.19",
+      "type": "Script",
+      "timestamp": 253524.392415,
+      "url": "http://127.0.0.1:52033/js/motion-system.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.21",
+      "type": "Script",
+      "timestamp": 253524.392675,
+      "url": "http://127.0.0.1:52033/js/review-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.20",
+      "type": "Script",
+      "timestamp": 253524.392822,
+      "url": "http://127.0.0.1:52033/js/render.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.22",
+      "type": "Script",
+      "timestamp": 253524.39348,
+      "url": "http://127.0.0.1:52033/js/reading-state.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.23",
+      "type": "Script",
+      "timestamp": 253524.393672,
+      "url": "http://127.0.0.1:52033/js/search-controller.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.24",
+      "type": "Script",
+      "timestamp": 253524.393775,
+      "url": "http://127.0.0.1:52033/js/star-relations.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.25",
+      "type": "Script",
+      "timestamp": 253524.395435,
+      "url": "http://127.0.0.1:52033/js/star-map.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.26",
+      "type": "Script",
+      "timestamp": 253524.39562,
+      "url": "http://127.0.0.1:52033/js/svg-painter.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.27",
+      "type": "Script",
+      "timestamp": 253524.396887,
+      "url": "http://127.0.0.1:52033/js/ui-icons.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.28",
+      "type": "Script",
+      "timestamp": 253524.402494,
+      "url": "http://127.0.0.1:52033/js/storage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.30",
+      "type": "Script",
+      "timestamp": 253524.402609,
+      "url": "http://127.0.0.1:52033/js/evolution-state.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.31",
+      "type": "Script",
+      "timestamp": 253524.40269,
+      "url": "http://127.0.0.1:52033/js/evolution-semantics.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.29",
+      "type": "Script",
+      "timestamp": 253524.402745,
+      "url": "http://127.0.0.1:52033/js/achievement-catalog.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.32",
+      "type": "Script",
+      "timestamp": 253524.403138,
+      "url": "http://127.0.0.1:52033/js/hexagram-utils.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.33",
+      "type": "Script",
+      "timestamp": 253524.403227,
+      "url": "http://127.0.0.1:52033/js/guaxu-wheel.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.35",
+      "type": "Script",
+      "timestamp": 253524.405413,
+      "url": "http://127.0.0.1:52033/js/content-provenance.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.34",
+      "type": "Script",
+      "timestamp": 253524.40565,
+      "url": "http://127.0.0.1:52033/js/relation-animation.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.37",
+      "type": "Script",
+      "timestamp": 253524.405784,
+      "url": "http://127.0.0.1:52033/js/star-layouts.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.36",
+      "type": "Script",
+      "timestamp": 253524.405846,
+      "url": "http://127.0.0.1:52033/lib/d3-force.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.38",
+      "type": "Script",
+      "timestamp": 253524.408053,
+      "url": "http://127.0.0.1:52033/js/star-atmosphere.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.39",
+      "type": "Script",
+      "timestamp": 253524.4082,
+      "url": "http://127.0.0.1:52033/js/star-label-layout.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.41",
+      "type": "Fetch",
+      "timestamp": 253524.422768,
+      "url": "http://127.0.0.1:52033/data/trigrams.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.40",
+      "type": "Fetch",
+      "timestamp": 253524.423362,
+      "url": "http://127.0.0.1:52033/data/hexagrams.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.42",
+      "type": "Other",
+      "timestamp": 253524.430757,
+      "url": "http://127.0.0.1:52033/assets/favicon.svg",
+      "status": 200,
+      "mimeType": "image/svg+xml",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "requestId": "40532.43",
+      "type": "Other",
+      "timestamp": 253524.432705,
+      "url": "http://127.0.0.1:52033/assets/favicon.svg",
+      "status": 200,
+      "mimeType": "image/svg+xml",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "requestId": "40532.44",
+      "type": "Fetch",
+      "timestamp": 253524.433981,
+      "url": "http://127.0.0.1:52033/data/commentaries/manifest.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.45",
+      "type": "Fetch",
+      "timestamp": 253524.54507,
+      "url": "http://127.0.0.1:52033/data/hexagram-keywords.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.100",
+      "type": "Script",
+      "timestamp": 253524.822595,
+      "url": "http://127.0.0.1:52033/js/celestial-stage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.102",
+      "type": "Script",
+      "timestamp": 253524.836398,
+      "url": "http://127.0.0.1:52033/lib/vendor/three.module.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "486646590524E94D1644D36D36EF1EB5",
+      "type": "Document",
+      "timestamp": 253524.842364,
+      "url": "http://127.0.0.1:52033/?feedback-probe=1440-oral-ai-stale-course",
+      "status": 200,
+      "mimeType": "text/html",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "requestId": "40532.108",
+      "type": "Script",
+      "timestamp": 253524.859073,
+      "url": "http://127.0.0.1:52033/js/protocol-guard.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.110",
+      "type": "Image",
+      "timestamp": 253524.860779,
+      "url": "http://127.0.0.1:52033/assets/academy-astrolabe-bg.webp",
+      "status": 200,
+      "mimeType": "image/webp",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "image/webp"
+    },
+    {
+      "requestId": "40532.111",
+      "type": "Stylesheet",
+      "timestamp": 253524.863399,
+      "url": "http://127.0.0.1:52033/lib/vendor/lenis.css",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "40532.113",
+      "type": "Stylesheet",
+      "timestamp": 253524.864422,
+      "url": "http://127.0.0.1:52033/styles/immersive.css?v=51",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "40532.112",
+      "type": "Stylesheet",
+      "timestamp": 253524.86529,
+      "url": "http://127.0.0.1:52033/styles/main.css?v=51",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "40532.124",
+      "type": "Manifest",
+      "timestamp": 253524.866056,
+      "url": "http://127.0.0.1:52033/manifest.webmanifest",
+      "status": 200,
+      "mimeType": "application/manifest+json",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "application/manifest+json"
+    },
+    {
+      "requestId": "40532.118",
+      "type": "Script",
+      "timestamp": 253524.870975,
+      "url": "http://127.0.0.1:52033/lib/vendor/lenis.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.119",
+      "type": "Script",
+      "timestamp": 253524.875075,
+      "url": "http://127.0.0.1:52033/js/main.js?v=51",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.117",
+      "type": "Script",
+      "timestamp": 253524.875339,
+      "url": "http://127.0.0.1:52033/lib/vendor/gsap.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.126",
+      "type": "Script",
+      "timestamp": 253524.881755,
+      "url": "http://127.0.0.1:52033/js/audio-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.127",
+      "type": "Script",
+      "timestamp": 253524.88203,
+      "url": "http://127.0.0.1:52033/js/achievement-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.128",
+      "type": "Script",
+      "timestamp": 253524.884929,
+      "url": "http://127.0.0.1:52033/js/achievement-storage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.129",
+      "type": "Script",
+      "timestamp": 253524.885144,
+      "url": "http://127.0.0.1:52033/js/data-loader.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.131",
+      "type": "Script",
+      "timestamp": 253524.885238,
+      "url": "http://127.0.0.1:52033/js/share-card.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.130",
+      "type": "Script",
+      "timestamp": 253524.88532,
+      "url": "http://127.0.0.1:52033/js/evolution-lab.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.132",
+      "type": "Script",
+      "timestamp": 253524.885853,
+      "url": "http://127.0.0.1:52033/js/modes/guaxu-mode.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.133",
+      "type": "Script",
+      "timestamp": 253524.885994,
+      "url": "http://127.0.0.1:52033/js/cinematic-motion.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.134",
+      "type": "Script",
+      "timestamp": 253524.889535,
+      "url": "http://127.0.0.1:52033/js/motion-system.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.136",
+      "type": "Script",
+      "timestamp": 253524.889678,
+      "url": "http://127.0.0.1:52033/js/review-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.137",
+      "type": "Script",
+      "timestamp": 253524.889905,
+      "url": "http://127.0.0.1:52033/js/reading-state.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.135",
+      "type": "Script",
+      "timestamp": 253524.890028,
+      "url": "http://127.0.0.1:52033/js/render.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.138",
+      "type": "Script",
+      "timestamp": 253524.890154,
+      "url": "http://127.0.0.1:52033/js/search-controller.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.139",
+      "type": "Script",
+      "timestamp": 253524.890224,
+      "url": "http://127.0.0.1:52033/js/star-relations.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.141",
+      "type": "Script",
+      "timestamp": 253524.892706,
+      "url": "http://127.0.0.1:52033/js/svg-painter.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.160",
+      "type": "Script",
+      "timestamp": 253524.893052,
+      "url": "http://127.0.0.1:52033/js/achievement-catalog.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.161",
+      "type": "Script",
+      "timestamp": 253524.893174,
+      "url": "http://127.0.0.1:52033/js/storage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.164",
+      "type": "Script",
+      "timestamp": 253524.893264,
+      "url": "http://127.0.0.1:52033/js/evolution-state.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.142",
+      "type": "Script",
+      "timestamp": 253524.893347,
+      "url": "http://127.0.0.1:52033/js/ui-icons.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.140",
+      "type": "Script",
+      "timestamp": 253524.895859,
+      "url": "http://127.0.0.1:52033/js/star-map.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.173",
+      "type": "Script",
+      "timestamp": 253524.896067,
+      "url": "http://127.0.0.1:52033/js/content-provenance.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.165",
+      "type": "Script",
+      "timestamp": 253524.896125,
+      "url": "http://127.0.0.1:52033/js/evolution-semantics.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.166",
+      "type": "Script",
+      "timestamp": 253524.896178,
+      "url": "http://127.0.0.1:52033/js/hexagram-utils.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.172",
+      "type": "Script",
+      "timestamp": 253524.896421,
+      "url": "http://127.0.0.1:52033/js/relation-animation.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.169",
+      "type": "Script",
+      "timestamp": 253524.897166,
+      "url": "http://127.0.0.1:52033/js/guaxu-wheel.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.176",
+      "type": "Script",
+      "timestamp": 253524.904811,
+      "url": "http://127.0.0.1:52033/lib/d3-force.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.178",
+      "type": "Script",
+      "timestamp": 253524.904959,
+      "url": "http://127.0.0.1:52033/js/star-atmosphere.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.177",
+      "type": "Script",
+      "timestamp": 253524.905028,
+      "url": "http://127.0.0.1:52033/js/star-layouts.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.179",
+      "type": "Script",
+      "timestamp": 253524.905078,
+      "url": "http://127.0.0.1:52033/js/star-label-layout.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.184",
+      "type": "Fetch",
+      "timestamp": 253524.916534,
+      "url": "http://127.0.0.1:52033/data/hexagrams.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.185",
+      "type": "Fetch",
+      "timestamp": 253524.916653,
+      "url": "http://127.0.0.1:52033/data/trigrams.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.189",
+      "type": "Other",
+      "timestamp": 253524.921351,
+      "url": "http://127.0.0.1:52033/assets/favicon.svg",
+      "status": 200,
+      "mimeType": "image/svg+xml",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "requestId": "40532.188",
+      "type": "Fetch",
+      "timestamp": 253524.923268,
+      "url": "http://127.0.0.1:52033/data/commentaries/manifest.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.192",
+      "type": "Fetch",
+      "timestamp": 253525.038922,
+      "url": "http://127.0.0.1:52033/data/hexagram-keywords.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.194",
+      "type": "Script",
+      "timestamp": 253525.433025,
+      "url": "http://127.0.0.1:52033/js/celestial-stage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.199",
+      "type": "Fetch",
+      "timestamp": 253525.433393,
+      "url": "http://127.0.0.1:52033/data/theorems.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.198",
+      "type": "Fetch",
+      "timestamp": 253525.433532,
+      "url": "http://127.0.0.1:52033/data/wings.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.201",
+      "type": "Fetch",
+      "timestamp": 253525.433603,
+      "url": "http://127.0.0.1:52033/data/almanac-yiji.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.197",
+      "type": "Script",
+      "timestamp": 253525.433662,
+      "url": "http://127.0.0.1:52033/js/modes/learning-mode.js?v=51",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.200",
+      "type": "Fetch",
+      "timestamp": 253525.43381,
+      "url": "http://127.0.0.1:52033/data/almanac-terms.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.220",
+      "type": "Other",
+      "timestamp": 253525.457972,
+      "url": "http://127.0.0.1:52033/assets/favicon.svg",
+      "status": 200,
+      "mimeType": "image/svg+xml",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "requestId": "40532.209",
+      "type": "Script",
+      "timestamp": 253525.461182,
+      "url": "http://127.0.0.1:52033/js/almanac-knowledge.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.211",
+      "type": "Script",
+      "timestamp": 253525.461347,
+      "url": "http://127.0.0.1:52033/js/learning-assessment.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.210",
+      "type": "Script",
+      "timestamp": 253525.46493,
+      "url": "http://127.0.0.1:52033/js/learning-assessment-page.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.214",
+      "type": "Script",
+      "timestamp": 253525.465438,
+      "url": "http://127.0.0.1:52033/js/learning-review.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.212",
+      "type": "Script",
+      "timestamp": 253525.46571,
+      "url": "http://127.0.0.1:52033/js/learning-curriculum.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.213",
+      "type": "Script",
+      "timestamp": 253525.465888,
+      "url": "http://127.0.0.1:52033/js/learning-progress.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.215",
+      "type": "Script",
+      "timestamp": 253525.466022,
+      "url": "http://127.0.0.1:52033/js/quiz-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.207",
+      "type": "Script",
+      "timestamp": 253525.466395,
+      "url": "http://127.0.0.1:52033/lib/vendor/three.module.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.216",
+      "type": "Script",
+      "timestamp": 253525.468117,
+      "url": "http://127.0.0.1:52033/js/study-page.js?v=50",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.217",
+      "type": "Script",
+      "timestamp": 253525.468318,
+      "url": "http://127.0.0.1:52033/js/user-data.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.229",
+      "type": "Script",
+      "timestamp": 253525.476086,
+      "url": "http://127.0.0.1:52033/js/learning-feedback.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.233",
+      "type": "Script",
+      "timestamp": 253525.479371,
+      "url": "http://127.0.0.1:52033/js/divination-history.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.231",
+      "type": "Script",
+      "timestamp": 253525.4926,
+      "url": "http://127.0.0.1:52033/lib/vendor/three.core.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "40532.235",
+      "type": "Fetch",
+      "timestamp": 253526.866026,
+      "url": "http://127.0.0.1:52033/api/learning-review",
+      "status": 503,
+      "mimeType": "application/json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "40532.236",
+      "type": "Fetch",
+      "timestamp": 253527.033135,
+      "url": "http://127.0.0.1:52033/api/learning-review",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    }
+  ],
+  "networkFailures": [],
+  "networkFinished": [
+    {
+      "requestId": "81B1F553DE6CDB95923F563F773270B9",
+      "timestamp": 253524.285618,
+      "encodedDataLength": 5679
+    },
+    {
+      "requestId": "40532.2",
+      "timestamp": 253524.310679,
+      "encodedDataLength": 447
+    },
+    {
+      "requestId": "40532.4",
+      "timestamp": 253524.317401,
+      "encodedDataLength": 499
+    },
+    {
+      "requestId": "40532.3",
+      "timestamp": 253524.319001,
+      "encodedDataLength": 68911
+    },
+    {
+      "requestId": "40532.6",
+      "timestamp": 253524.324758,
+      "encodedDataLength": 10523
+    },
+    {
+      "requestId": "40532.5",
+      "timestamp": 253524.325126,
+      "encodedDataLength": 43245
+    },
+    {
+      "requestId": "40532.8",
+      "timestamp": 253524.324471,
+      "encodedDataLength": 5698
+    },
+    {
+      "requestId": "40532.10",
+      "timestamp": 253524.329204,
+      "encodedDataLength": 604
+    },
+    {
+      "requestId": "40532.9",
+      "timestamp": 253524.325183,
+      "encodedDataLength": 18431
+    },
+    {
+      "requestId": "40532.7",
+      "timestamp": 253524.324963,
+      "encodedDataLength": 28698
+    },
+    {
+      "requestId": "40532.13",
+      "timestamp": 253524.384961,
+      "encodedDataLength": 1327
+    },
+    {
+      "requestId": "40532.12",
+      "timestamp": 253524.385599,
+      "encodedDataLength": 4528
+    },
+    {
+      "requestId": "40532.11",
+      "timestamp": 253524.385716,
+      "encodedDataLength": 5311
+    },
+    {
+      "requestId": "40532.14",
+      "timestamp": 253524.387048,
+      "encodedDataLength": 2918
+    },
+    {
+      "requestId": "40532.16",
+      "timestamp": 253524.387181,
+      "encodedDataLength": 3257
+    },
+    {
+      "requestId": "40532.15",
+      "timestamp": 253524.388528,
+      "encodedDataLength": 5141
+    },
+    {
+      "requestId": "40532.17",
+      "timestamp": 253524.389056,
+      "encodedDataLength": 4078
+    },
+    {
+      "requestId": "40532.18",
+      "timestamp": 253524.389991,
+      "encodedDataLength": 4630
+    },
+    {
+      "requestId": "40532.19",
+      "timestamp": 253524.390092,
+      "encodedDataLength": 3075
+    },
+    {
+      "requestId": "40532.21",
+      "timestamp": 253524.391181,
+      "encodedDataLength": 2376
+    },
+    {
+      "requestId": "40532.20",
+      "timestamp": 253524.391291,
+      "encodedDataLength": 6055
+    },
+    {
+      "requestId": "40532.22",
+      "timestamp": 253524.392001,
+      "encodedDataLength": 946
+    },
+    {
+      "requestId": "40532.23",
+      "timestamp": 253524.392098,
+      "encodedDataLength": 1143
+    },
+    {
+      "requestId": "40532.24",
+      "timestamp": 253524.392767,
+      "encodedDataLength": 1630
+    },
+    {
+      "requestId": "40532.25",
+      "timestamp": 253524.394023,
+      "encodedDataLength": 22385
+    },
+    {
+      "requestId": "40532.26",
+      "timestamp": 253524.394097,
+      "encodedDataLength": 1202
+    },
+    {
+      "requestId": "40532.27",
+      "timestamp": 253524.396524,
+      "encodedDataLength": 2018
+    },
+    {
+      "requestId": "40532.28",
+      "timestamp": 253524.400052,
+      "encodedDataLength": 903
+    },
+    {
+      "requestId": "40532.30",
+      "timestamp": 253524.400168,
+      "encodedDataLength": 1408
+    },
+    {
+      "requestId": "40532.31",
+      "timestamp": 253524.40021,
+      "encodedDataLength": 1498
+    },
+    {
+      "requestId": "40532.29",
+      "timestamp": 253524.400121,
+      "encodedDataLength": 1957
+    },
+    {
+      "requestId": "40532.32",
+      "timestamp": 253524.40275,
+      "encodedDataLength": 1590
+    },
+    {
+      "requestId": "40532.33",
+      "timestamp": 253524.40284,
+      "encodedDataLength": 1085
+    },
+    {
+      "requestId": "40532.35",
+      "timestamp": 253524.404722,
+      "encodedDataLength": 1740
+    },
+    {
+      "requestId": "40532.34",
+      "timestamp": 253524.404889,
+      "encodedDataLength": 4686
+    },
+    {
+      "requestId": "40532.37",
+      "timestamp": 253524.40496,
+      "encodedDataLength": 3600
+    },
+    {
+      "requestId": "40532.36",
+      "timestamp": 253524.405029,
+      "encodedDataLength": 6224
+    },
+    {
+      "requestId": "40532.38",
+      "timestamp": 253524.407754,
+      "encodedDataLength": 1712
+    },
+    {
+      "requestId": "40532.39",
+      "timestamp": 253524.407851,
+      "encodedDataLength": 1196
+    },
+    {
+      "requestId": "40532.41",
+      "timestamp": 253524.421037,
+      "encodedDataLength": 592
+    },
+    {
+      "requestId": "40532.40",
+      "timestamp": 253524.425434,
+      "encodedDataLength": 42900
+    },
+    {
+      "requestId": "40532.42",
+      "timestamp": 253524.430245,
+      "encodedDataLength": 503
+    },
+    {
+      "requestId": "40532.43",
+      "timestamp": 253524.431022,
+      "encodedDataLength": 503
+    },
+    {
+      "requestId": "40532.44",
+      "timestamp": 253524.430387,
+      "encodedDataLength": 681
+    },
+    {
+      "requestId": "40532.45",
+      "timestamp": 253524.444194,
+      "encodedDataLength": 3381
+    },
+    {
+      "requestId": "40532.100",
+      "timestamp": 253524.673994,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.102",
+      "timestamp": 253524.834338,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "486646590524E94D1644D36D36EF1EB5",
+      "timestamp": 253524.843834,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.108",
+      "timestamp": 253524.858794,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.110",
+      "timestamp": 253524.860801,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.111",
+      "timestamp": 253524.863249,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.124",
+      "timestamp": 253524.866132,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.113",
+      "timestamp": 253524.866182,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.118",
+      "timestamp": 253524.870099,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.112",
+      "timestamp": 253524.873587,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.119",
+      "timestamp": 253524.873728,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.117",
+      "timestamp": 253524.873682,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.126",
+      "timestamp": 253524.881206,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.127",
+      "timestamp": 253524.881641,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.128",
+      "timestamp": 253524.884747,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.129",
+      "timestamp": 253524.884833,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.131",
+      "timestamp": 253524.884894,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.130",
+      "timestamp": 253524.88486,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.132",
+      "timestamp": 253524.885478,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.133",
+      "timestamp": 253524.885519,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.134",
+      "timestamp": 253524.889377,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.136",
+      "timestamp": 253524.889383,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.137",
+      "timestamp": 253524.889671,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.135",
+      "timestamp": 253524.88948,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.138",
+      "timestamp": 253524.88971,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.139",
+      "timestamp": 253524.889802,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.141",
+      "timestamp": 253524.892517,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.160",
+      "timestamp": 253524.892736,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.161",
+      "timestamp": 253524.892795,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.164",
+      "timestamp": 253524.892891,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.142",
+      "timestamp": 253524.892927,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.140",
+      "timestamp": 253524.895851,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.173",
+      "timestamp": 253524.895729,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.165",
+      "timestamp": 253524.895768,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.166",
+      "timestamp": 253524.895857,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.172",
+      "timestamp": 253524.895979,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.169",
+      "timestamp": 253524.896707,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.176",
+      "timestamp": 253524.904171,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.178",
+      "timestamp": 253524.904483,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.177",
+      "timestamp": 253524.904409,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.179",
+      "timestamp": 253524.904647,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.184",
+      "timestamp": 253524.914102,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.185",
+      "timestamp": 253524.914108,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.189",
+      "timestamp": 253524.92126,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.188",
+      "timestamp": 253524.922939,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.192",
+      "timestamp": 253524.93343,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.194",
+      "timestamp": 253525.325872,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.197",
+      "timestamp": 253525.419108,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.199",
+      "timestamp": 253525.416486,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.198",
+      "timestamp": 253525.416536,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.201",
+      "timestamp": 253525.419167,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.200",
+      "timestamp": 253525.422773,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.220",
+      "timestamp": 253525.455989,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.209",
+      "timestamp": 253525.456824,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.211",
+      "timestamp": 253525.456926,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.210",
+      "timestamp": 253525.461267,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.214",
+      "timestamp": 253525.461835,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.212",
+      "timestamp": 253525.461733,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.213",
+      "timestamp": 253525.462009,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.215",
+      "timestamp": 253525.464756,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.207",
+      "timestamp": 253525.464688,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.216",
+      "timestamp": 253525.46796,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.217",
+      "timestamp": 253525.467996,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.229",
+      "timestamp": 253525.475823,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.233",
+      "timestamp": 253525.47891,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.231",
+      "timestamp": 253525.4789,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "40532.235",
+      "timestamp": 253526.80498,
+      "encodedDataLength": 179
+    },
+    {
+      "requestId": "40532.236",
+      "timestamp": 253527.031121,
+      "encodedDataLength": 172
+    }
+  ],
+  "serviceWorker": {
+    "controller": {
+      "scriptURL": "http://127.0.0.1:52033/sw.js",
+      "state": "activated"
+    },
+    "registrations": [
+      {
+        "scope": "http://127.0.0.1:52033/",
+        "active": "activated"
+      }
+    ]
+  },
+  "cleanupStartedAt": "2026-10-24T23:50:24.263Z",
+  "exitCode": 0,
+  "profileRemoved": false,
+  "profileRetainedReason": "Synthetic profile retained for diagnosis. No user profile was touched or deleted."
+}

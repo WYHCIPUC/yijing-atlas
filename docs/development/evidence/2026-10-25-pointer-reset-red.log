@@ -1,0 +1,227 @@
+TAP version 13
+# Subtest: a second touch cancels the active drag and releases capture without selecting a star
+not ok 1 - a second touch cancels the active drag and releases capture without selecting a star
+  ---
+  duration_ms: 1.5807
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\star-pointer-lifecycle.test.mjs:46:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + {
+    +   moved: true,
+    +   node: {
+    +     id: '111111'
+    +   },
+    +   pitch: 0,
+    +   pointerId: 1,
+    +   viewX: 0,
+    +   viewY: 0,
+    +   x: 100,
+    +   y: 100,
+    +   yaw: 0
+    + }
+    - null
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual:
+    pointerId: 1
+    node:
+      id: '111111'
+    moved: true
+    x: 100
+    y: 100
+    yaw: 0
+    pitch: 0
+    viewX: 0
+    viewY: 0
+  operator: 'strictEqual'
+  stack: |-
+    file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:52:12
+    pointerHarness (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:42:28)
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:47:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: a second touch also cancels a pending tap before the drag threshold
+not ok 2 - a second touch also cancels a pending tap before the drag threshold
+  ---
+  duration_ms: 0.5504
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\star-pointer-lifecycle.test.mjs:67:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+    + [
+    +   '111111'
+    + ]
+    - []
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: '111111'
+  operator: 'deepStrictEqual'
+  stack: |-
+    file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:73:12
+    pointerHarness (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:42:28)
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:68:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: window blur cancels a pending gesture, so a later pointerup cannot select
+not ok 3 - window blur cancels a pending gesture, so a later pointerup cannot select
+  ---
+  duration_ms: 0.2219
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\star-pointer-lifecycle.test.mjs:77:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'undefined'
+    - 'function'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'function'
+  actual: 'undefined'
+  operator: 'strictEqual'
+  stack: |-
+    file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:80:12
+    pointerHarness (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:42:28)
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:78:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: backgrounding clears the drag before pausing the scene
+not ok 4 - backgrounding clears the drag before pausing the scene
+  ---
+  duration_ms: 0.285
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\star-pointer-lifecycle.test.mjs:90:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + {
+    +   moved: true,
+    +   node: {
+    +     id: '111111'
+    +   },
+    +   pitch: 0,
+    +   pointerId: 1,
+    +   viewX: 0,
+    +   viewY: 0,
+    +   x: 100,
+    +   y: 100,
+    +   yaw: 0
+    + }
+    - null
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual:
+    pointerId: 1
+    node:
+      id: '111111'
+    moved: true
+    x: 100
+    y: 100
+    yaw: 0
+    pitch: 0
+    viewX: 0
+    viewY: 0
+  operator: 'strictEqual'
+  stack: |-
+    file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:96:12
+    pointerHarness (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:42:28)
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:91:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: destroy cancels capture and removes its window blur listener
+not ok 5 - destroy cancels capture and removes its window blur listener
+  ---
+  duration_ms: 0.2166
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\star-pointer-lifecycle.test.mjs:104:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + {
+    +   moved: false,
+    +   node: {
+    +     id: '111111'
+    +   },
+    +   pitch: 0,
+    +   pointerId: 1,
+    +   viewX: 0,
+    +   viewY: 0,
+    +   x: 100,
+    +   y: 100,
+    +   yaw: 0
+    + }
+    - null
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual:
+    pointerId: 1
+    node:
+      id: '111111'
+    moved: false
+    x: 100
+    y: 100
+    yaw: 0
+    pitch: 0
+    viewX: 0
+    viewY: 0
+  operator: 'strictEqual'
+  stack: |-
+    file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:108:12
+    pointerHarness (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:42:28)
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:105:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 0
+# fail 5
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 249.2197

@@ -7,7 +7,7 @@ import {
   setSoundEnabled,
 } from './audio-engine.js';
 import { createProgressEvent } from './achievement-engine.js';
-import { processAchievementEvent } from './achievement-storage.js';
+import { loadAchievementState, processAchievementEvent } from './achievement-storage.js';
 import * as dataLoader from './data-loader.js';
 import { closeEvolutionLab, showEvolutionLab } from './evolution-lab.js';
 import { deliverShareImage, generateHexagramShareImage } from './share-card.js';
@@ -15,20 +15,22 @@ import { closeGuaxuWheel, showGuaxuWheel } from './modes/guaxu-mode.js';
 import { initCinematicMotion } from './cinematic-motion.js';
 import { initMotionSystem } from './motion-system.js';
 import { renderHexagramDetail } from './render.js';
-import { addReviewCard } from './review-engine.js';
-import { getHexCodeFromUrl, moveSelection, withHexCode } from './search-controller.js';
+import { addReviewCard, loadReviewCards } from './review-engine.js';
+import { createReadingState, shouldRecordDeepRead, transitionReading } from './reading-state.js';
+import { getHexCodeFromUrl, moveSelection, parseHexagramQuery, withHexCode } from './search-controller.js';
 import { buildRelationGraph } from './star-relations.js';
 import { describeStarView, resolveStarStage, StarMap } from './star-map.js';
 import { hexagramSvg } from './svg-painter.js';
+import { installUIIcons } from './ui-icons.js';
 
 const { buildHexagramIndex, searchHexagrams } = dataLoader;
 
 const modeLoaders = {
-  almanac: () => import('./almanac-page.js?v=50').then((module) => module.renderAlmanacPage),
-  divination: () => import('./modes/divination-mode.js?v=50').then((module) => module.renderDivinationMode),
-  learning: () => import('./modes/learning-mode.js?v=50').then((module) => module.renderLearningMode),
-  quiz: () => import('./modes/quiz-mode.js?v=50').then((module) => module.renderQuizMode),
-  review: () => import('./modes/review-mode.js?v=50').then((module) => module.renderReviewMode),
+  almanac: () => import('./almanac-page.js?v=51').then((module) => module.renderAlmanacPage),
+  divination: () => import('./modes/divination-mode.js?v=51').then((module) => module.renderDivinationMode),
+  learning: () => import('./modes/learning-mode.js?v=51').then((module) => module.renderLearningMode),
+  quiz: () => import('./modes/quiz-mode.js?v=51').then((module) => module.renderQuizMode),
+  review: () => import('./modes/review-mode.js?v=51').then((module) => module.renderReviewMode),
 };
 
 const state = {
@@ -43,6 +45,11 @@ const state = {
   celestialStage: null,
   celestialPauseReasons: new Set(),
   currentDetail: null,
+  reading: createReadingState(),
+  readingSnapshot: null,
+  renderedCode: null,
+  readingDrafts: new Map(),
+  readingSaves: new Map(),
   currentMode: 'explore',
   commentaryReleaseReady: false,
 };
@@ -56,6 +63,8 @@ const panelLayoutSelect = document.getElementById('detail-layout');
 const panelSizeButton = document.getElementById('detail-size');
 const searchInput = document.getElementById('search');
 const searchResultsEl = document.getElementById('search-results');
+const searchPopupEl = document.getElementById('search-popup');
+const searchStatusEl = document.getElementById('search-status');
 const dailyOverlay = document.getElementById('daily-overlay');
 const modeSwitcher = document.getElementById('mode-switcher');
 const exploreTools = document.getElementById('explore-tools');
@@ -76,17 +85,30 @@ const starLayoutSource = document.getElementById('star-layout-source');
 const starLayoutDescription = document.getElementById('star-layout-description');
 const autoRotateButton = document.getElementById('auto-rotate');
 const workspaceInsightBar = document.querySelector('.workspace-insight-bar');
+const focusSummary = document.getElementById('star-focus-summary');
+const readingToolbar = document.getElementById('reading-toolbar');
+const readingSaveFeedback = document.getElementById('reading-save-feedback');
+const readingSaveStatus = document.getElementById('reading-save-status');
+const readingSaveRetry = document.getElementById('reading-save-retry');
+const relationToggle = document.getElementById('relation-toggle');
+const relationOptions = document.getElementById('relation-options');
 const compactPanelQuery = window.matchMedia('(max-width: 900px)');
+const narrowReadingQuery = window.matchMedia('(max-width: 1100px)');
 const motionSystem = initMotionSystem();
 const cinematicMotion = initCinematicMotion({ panel, panelContent });
 let modeRequestId = 0;
+let modeCleanup = null;
 let panelReturnFocus = null;
 let dailyBackgroundInertState = null;
 let searchResults = [];
 let searchIndex = -1;
 let lastViewHudKey = '';
 let lastStarView = null;
+let lastStarStage = '';
 let celestialStageLoader = null;
+let readingBackgroundState = null;
+let toolsBackgroundState = null;
+let readingScroll = { panel: 0, content: 0 };
 
 function pauseCelestialStage(reason = 'manual') {
   state.celestialPauseReasons.add(reason);
@@ -138,6 +160,8 @@ function syncStarStage(view = lastStarView) {
     activeCode: view.activeCode || state.currentDetail,
     detailOpen: panel.classList.contains('open') && Boolean(state.currentDetail),
   });
+  if (stage === lastStarStage) return;
+  lastStarStage = stage;
   const [index, label] = STAR_STAGE_META[stage];
   document.body.dataset.starStage = stage;
   if (starStageIndexEl) starStageIndexEl.textContent = index;
@@ -346,10 +370,11 @@ function resetPanelViewport({ focusHeading = false } = {}) {
   cinematicMotion.resetScroll();
   panelContent.scrollTop = 0;
   if (!focusHeading) return;
+  const heading = panelContent.querySelector('[data-learning-focus]') ||
+    panelContent.querySelector('[data-page-heading], .mode-panel-title, h2, h3');
   window.requestAnimationFrame(() => {
-    const heading = panelContent.querySelector('[data-page-heading], .mode-panel-title, h2, h3');
-    if (!heading) return;
-    heading.tabIndex = -1;
+    if (!heading?.isConnected || !panelContent.contains(heading) || heading.closest?.('[inert], [hidden]')) return;
+    if (!(heading.tabIndex >= 0)) heading.tabIndex = -1;
     heading.focus({ preventScroll: true });
   });
 }
@@ -481,7 +506,8 @@ function showDailyHexagram() {
     dailyOverlay.classList.add('hidden');
     dailyOverlay.setAttribute('aria-hidden', 'true');
     setDailyBackgroundInert(false);
-    setMode(destination === 'beginner' ? 'learning' : 'explore');
+    setMode(destination === 'beginner' ? 'learning' : 'explore',
+      destination === 'beginner' ? { section: 'path', lessonId: 'l1-1' } : {});
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.setTimeout(() => {
       dailyOverlay.hidden = true;
@@ -505,43 +531,222 @@ function showDailyHexagram() {
 
 dailyOverlay.addEventListener('keydown', trapDailyFocus);
 
-function openPanel() {
+function openPanel({ preserveScroll = false } = {}) {
   if (!panel.classList.contains('open')) panelReturnFocus = document.activeElement;
   panel.inert = false;
   panel.classList.add('open');
   panel.setAttribute('aria-hidden', 'false');
-  panel.setAttribute('aria-modal', String(compactPanelQuery.matches));
+  syncReadingModality();
   document.body.classList.add('panel-open');
   state.starMap?.resize();
-  resetPanelViewport();
+  if (!preserveScroll) resetPanelViewport();
   syncStarStage();
 }
 
 function updateDetailUrl(code, mode = 'push') {
   const next = withHexCode(window.location.href, code);
-  if (next === window.location.href) return;
-  window.history[mode === 'replace' ? 'replaceState' : 'pushState']({ hex: code }, '', next);
+  const entry = { hex: code, reading: { ...state.reading } };
+  const previous = window.history.state?.reading;
+  if (next === window.location.href && previous?.stage === state.reading.stage
+    && previous?.focusedCode === state.reading.focusedCode && previous?.section === state.reading.section) return;
+  window.history[mode === 'replace' ? 'replaceState' : 'pushState'](entry, '', next);
+}
+
+function syncReadingModality() {
+  const open = panel.classList.contains('open');
+  const modal = open && (state.reading.stage === 'deep' || compactPanelQuery.matches);
+  panel.setAttribute('aria-modal', String(modal));
+  if (modal) {
+    state.starMap?.pause?.('panel');
+    pauseCelestialStage('panel');
+  } else {
+    state.starMap?.resume?.('panel');
+    resumeCelestialStage('panel');
+  }
+  if (modal && !readingBackgroundState) {
+    readingBackgroundState = new Map([...document.body.children]
+      .filter((child) => child !== panel && !child.contains(panel)
+        && !child.classList.contains('share-card-overlay'))
+      .map((child) => [child, child.inert]));
+    readingBackgroundState.forEach((_, child) => { child.inert = true; });
+  } else if (!modal && readingBackgroundState) {
+    readingBackgroundState.forEach((wasInert, child) => { child.inert = wasInert; });
+    readingBackgroundState = null;
+  }
+}
+
+function syncReadingPresentation() {
+  const { stage } = state.reading;
+  document.body.dataset.readingStage = stage;
+  panel.dataset.readingStage = stage;
+  if (readingToolbar) readingToolbar.hidden = stage === 'none';
+  const deepen = document.getElementById('reading-deepen');
+  const quicken = document.getElementById('reading-quicken');
+  if (deepen) deepen.hidden = stage !== 'quick';
+  if (quicken) quicken.hidden = stage !== 'deep';
+  syncReadingTabs();
+  syncReadingSaveFeedback();
+  if (stage === 'deep' || (stage === 'quick' && compactPanelQuery.matches)) {
+    state.starMap?.pause?.('reading');
+    pauseCelestialStage('reading');
+  } else {
+    state.starMap?.resume?.('reading');
+    resumeCelestialStage('reading');
+  }
+  syncFocusSummary();
+  syncReadingModality();
+  syncReservedRects();
+}
+
+function syncReadingTabs() {
+  readingToolbar?.querySelectorAll('[data-reading-tab]').forEach((button) => {
+    const current = button.dataset.readingTab === state.reading.section;
+    button.setAttribute('aria-pressed', String(current));
+    if (current) button.setAttribute('aria-current', 'true');
+    else button.removeAttribute('aria-current');
+  });
+}
+
+function syncFocusSummary() {
+  if (!focusSummary) return;
+  const hex = state.index?.byCode.get(state.reading.focusedCode);
+  focusSummary.hidden = !hex || state.currentMode !== 'explore' || state.reading.stage !== 'none';
+  if (!hex) return;
+  const trigramName = (code) => state.trigrams.find((item) => item.binaryCode === code)?.name || code;
+  const fields = {
+    number: String(hex.number).padStart(2, '0'), name: hex.name, full: hex.fullName,
+    trigrams: `上卦 ${trigramName(hex.binaryCode.slice(3))} · 下卦 ${trigramName(hex.binaryCode.slice(0, 3))}`,
+    description: hex.description || hex.judgement || '由卦象入手，循经文理解处境与变化。',
+  };
+  Object.entries(fields).forEach(([name, value]) => {
+    const target = focusSummary.querySelector(`[data-focus-${name}]`);
+    if (target) target.textContent = value;
+  });
+}
+
+function syncReservedRects() {
+  if (!state.starMap?.setReservedRects) return;
+  const origin = canvas.getBoundingClientRect();
+  const rects = [relationLayersEl, focusSummary, exploreTools, document.querySelector('.zoom-controls'), hintEl]
+    .filter((element) => element && !element.hidden && element.getClientRects().length)
+    .map((element) => {
+      const rect = element.getBoundingClientRect();
+      return { left: rect.left - origin.left, top: rect.top - origin.top, right: rect.right - origin.left, bottom: rect.bottom - origin.top };
+    });
+  state.starMap.setReservedRects(rects);
+}
+
+function setRelationOptions(open, { restoreFocus = false } = {}) {
+  if (!relationOptions || !relationToggle) return;
+  relationToggle.setAttribute('aria-expanded', String(open));
+  relationOptions.hidden = !open;
+  relationOptions.inert = !open;
+  relationLayersEl.classList.toggle('tools-expanded', open);
+  const modal = open && compactPanelQuery.matches;
+  if (modal) {
+    state.starMap?.pause?.('tools');
+    pauseCelestialStage('tools');
+  } else {
+    state.starMap?.resume?.('tools');
+    resumeCelestialStage('tools');
+  }
+  if (modal) {
+    relationLayersEl.setAttribute('role', 'dialog');
+    relationLayersEl.setAttribute('aria-modal', 'true');
+    if (!toolsBackgroundState) {
+      toolsBackgroundState = new Map([...document.body.children]
+        .filter((child) => child !== relationLayersEl && !child.contains(relationLayersEl))
+        .map((child) => [child, child.inert]));
+      toolsBackgroundState.forEach((_, child) => { child.inert = true; });
+    }
+  } else {
+    relationLayersEl.removeAttribute('role');
+    relationLayersEl.removeAttribute('aria-modal');
+    if (toolsBackgroundState) {
+      toolsBackgroundState.forEach((wasInert, child) => { child.inert = wasInert; });
+      toolsBackgroundState = null;
+    }
+  }
+  if (restoreFocus) relationToggle.focus({ preventScroll: true });
+  syncReservedRects();
+}
+
+function enterExplore() {
+  disposeMode();
+  setRelationOptions(false);
+  ++modeRequestId;
+  state.currentMode = 'explore';
+  setFocusMode('explore');
+  updateModeButtons('explore');
+  state.starMap?.setReviewDue(null);
+  state.starMap?.setMode('explore');
+  state.celestialStage?.setMode('explore');
+  resumeCelestialStage('mode');
+  document.body.classList.remove('mode-transitioning');
+  panel.removeAttribute('aria-busy');
+  updateExploreTools('star');
+}
+
+function focusHexagram(code, { historyMode = 'replace' } = {}) {
+  if (!state.index?.byCode.has(code)) return;
+  enterExplore();
+  if (panel.classList.contains('open')) closeDetail({ resetMode: false, updateUrl: false });
+  state.reading = transitionReading(state.reading, { type: 'focus', code });
+  state.starMap?.focusStar(code);
+  syncReadingPresentation();
+  if (historyMode !== 'none') updateDetailUrl(null, historyMode);
+}
+
+function changeStarLayout(mode) {
+  if (state.reading.stage !== 'none') closeDetail({ resetMode: false });
+  state.reading = createReadingState();
+  const layoutState = state.starMap?.setLayoutMode(mode);
+  updateLayoutInterface(layoutState);
+  updateRelationInterface(state.starMap?.getRelationState());
+  syncReadingPresentation();
+  updateDetailUrl(null, 'replace');
+  canvas.focus({ preventScroll: true });
 }
 
 function closeDetail({ restoreFocus = false, resetMode = true, updateUrl = true } = {}) {
+  disposeMode();
+  ++modeRequestId;
+  document.body.classList.remove('mode-transitioning');
+  panel.removeAttribute('aria-busy');
+  if (state.reading.stage === 'quick' && state.starMap?.captureView) {
+    state.readingSnapshot = state.starMap.captureView();
+  }
+  readingScroll = { panel: panel.scrollTop, content: panelContent.scrollTop };
   panel.classList.remove('open');
   panel.setAttribute('aria-hidden', 'true');
   panel.inert = true;
   document.body.classList.remove('panel-open');
   state.starMap?.resize();
   state.currentDetail = null;
+  state.reading = transitionReading(state.reading, { type: 'close' });
+  syncReadingPresentation();
+  if (state.readingSnapshot) {
+    state.starMap?.restoreView?.(state.readingSnapshot);
+    state.readingSnapshot = null;
+  }
   syncStarStage();
-  if (updateUrl) updateDetailUrl(null);
+  if (updateUrl) updateDetailUrl(null, 'replace');
   if (resetMode && state.currentMode !== 'explore') {
     state.currentMode = 'explore';
     setFocusMode('explore');
     updateModeButtons('explore');
     state.starMap?.setReviewDue(null);
     state.starMap?.setMode('explore');
+    state.celestialStage?.setMode('explore');
+    resumeCelestialStage('mode');
   }
+  syncFocusSummary();
   if (restoreFocus) {
-    const target = panelReturnFocus?.isConnected ? panelReturnFocus : canvas;
-    target.focus();
+    const available = panelReturnFocus?.isConnected && panelReturnFocus !== document.body
+      && panelReturnFocus !== document.documentElement && !panelReturnFocus.closest?.('[inert], [hidden]')
+      && panelReturnFocus.getClientRects?.().length;
+    const target = available ? panelReturnFocus : (!focusSummary?.hidden ? document.getElementById('focus-read') : canvas);
+    target?.focus({ preventScroll: true });
   }
 }
 
@@ -552,7 +757,7 @@ function showShareCardDialog(payload, hexagram) {
   overlay.className = 'share-card-overlay';
   overlay.innerHTML = `
     <section class="share-card-dialog" role="dialog" aria-modal="true" aria-labelledby="share-card-title">
-      <button type="button" class="share-card-close" aria-label="关闭分享图片预览">✕</button>
+      <button type="button" class="share-card-close" aria-label="关闭分享图片预览"><span data-icon="x" aria-hidden="true"></span></button>
       <div class="share-card-copy">
         <small>分享图片已生成</small>
         <h2 id="share-card-title" class="compound-title compound-title--hexagram" aria-label="${hexagram.name} · ${hexagram.fullName}"><span class="compound-title-primary">${hexagram.name}</span><span class="compound-title-separator" aria-hidden="true">·</span><span class="compound-title-secondary">${hexagram.fullName}</span></h2>
@@ -567,6 +772,7 @@ function showShareCardDialog(payload, hexagram) {
     </section>
   `;
   document.body.appendChild(overlay);
+  installUIIcons(overlay);
   state.starMap?.pause?.('share');
   pauseCelestialStage('share');
   motionSystem.reveal(overlay);
@@ -659,39 +865,141 @@ function bindShareAction(hexagram) {
   });
 }
 
-function openDetail(code, fromCode = null, { historyMode = 'push' } = {}) {
-  const hex = state.index.byCode.get(code);
+function syncReadingSaveFeedback() {
+  if (!readingSaveFeedback || !readingSaveStatus || !readingSaveRetry) return;
+  const entry = state.readingSaves.get(state.reading.readingCode);
+  const visible = state.reading.stage === 'deep' && entry?.hadFailure;
+  readingSaveFeedback.hidden = !visible;
+  if (!visible) return;
+  const missing = [];
+  if (!entry.achievementSaved) missing.push('阅读记录');
+  if (!entry.reviewSaved) missing.push('复习卡');
+  readingSaveStatus.textContent = missing.length
+    ? `${missing.join('与')}未保存，正文仍可阅读。可恢复浏览器存储后重试。`
+    : '阅读记录与复习卡已保存。';
+  readingSaveRetry.hidden = missing.length === 0;
+}
+
+function persistReadingSave(code) {
+  const entry = state.readingSaves.get(code);
+  if (!entry) return;
+  if (entry.hadFailure) {
+    // Import, deletion or another tab can replace a previously saved half.
+    if (entry.achievementSaved) entry.achievementSaved = loadAchievementState().processedKeys.includes(entry.event.idempotencyKey);
+    if (entry.reviewSaved) entry.reviewSaved = Boolean(loadReviewCards()[code]);
+  }
+  if (!entry.achievementSaved) entry.achievementSaved = processAchievementEvent(entry.event).saved === true;
+  if (!entry.reviewSaved) entry.reviewSaved = addReviewCard(code).saved === true;
+  entry.hadFailure ||= !entry.achievementSaved || !entry.reviewSaved;
+  syncReadingSaveFeedback();
+}
+
+function retryReadingSave() {
+  if (state.reading.stage !== 'deep' || readingSaveRetry?.disabled) return;
+  const restoreFocus = document.activeElement === readingSaveRetry;
+  if (readingSaveRetry) readingSaveRetry.disabled = true;
+  try {
+    persistReadingSave(state.reading.readingCode);
+  } finally {
+    if (readingSaveRetry) readingSaveRetry.disabled = false;
+  }
+  if (restoreFocus && readingSaveRetry?.hidden) readingSaveStatus?.focus({ preventScroll: true });
+}
+
+function openReading(code, stage, fromCode = null, { historyMode = 'push' } = {}) {
+  const hex = state.index?.byCode.get(code);
   if (!hex) return;
-  state.currentMode = 'explore';
-  setFocusMode('explore');
-  updateModeButtons('explore');
-  state.starMap?.setReviewDue(null);
-  state.starMap?.setMode('explore');
-  state.celestialStage?.setMode('explore');
-  cinematicMotion.beginMode('explore');
-  updateExploreTools('star');
-  renderHexagramDetail(hex, panelContent, state.hexagrams, (relatedCode) => openDetail(relatedCode, code));
-  processAchievementEvent(createProgressEvent({
-    type: 'hexagram.read',
-    subjectId: code,
-    outcome: 'completed',
-    idempotencyKey: `hexagram:read:${code}`,
-    metadata: { deep: true, hexagramCode: code },
-  }));
+  const previous = state.reading;
+  const reuse = state.renderedCode === code && Boolean(panelContent.querySelector('#hexagram-detail-title'));
+  if (previous.stage !== 'none') readingScroll = { panel: panel.scrollTop, content: panelContent.scrollTop };
+  enterExplore();
+  const needsFocus = previous.focusedCode !== code;
+  if (needsFocus) state.starMap?.focusStar(code);
+  if (fromCode) state.starMap?.addTrail(fromCode, code);
+  if (!state.readingSnapshot || needsFocus || (previous.stage === 'quick' && stage === 'deep')) {
+    state.readingSnapshot = state.starMap?.captureView?.() || null;
+  }
+  state.reading = transitionReading(previous, { type: stage, code });
+  state.currentDetail = code;
+  if (!reuse) {
+    rememberReadingDraft();
+    renderHexagramDetail(hex, panelContent, state.hexagrams, (relatedCode) => {
+      openReading(relatedCode, state.reading.stage === 'quick' ? 'quick' : 'deep', code);
+      selectReadingSection('relations');
+    });
+    state.renderedCode = code;
+    const note = panelContent.querySelector('#note-input');
+    if (note && state.readingDrafts.has(code)) note.value = state.readingDrafts.get(code);
+    bindShareAction(hex);
+    installUIIcons(panelContent);
+    readingScroll = { panel: 0, content: 0 };
+  }
+  if (shouldRecordDeepRead(previous, state.reading)) {
+    const pending = state.readingSaves.get(code);
+    if (!pending || (pending.achievementSaved && pending.reviewSaved)) {
+      state.readingSaves.set(code, {
+        event: createProgressEvent({
+          type: 'hexagram.read', subjectId: code, outcome: 'completed',
+          idempotencyKey: `hexagram:read:${code}`,
+          metadata: { deep: true, hexagramCode: code },
+        }),
+        achievementSaved: false, reviewSaved: false, hadFailure: false,
+      });
+    }
+    persistReadingSave(code);
+  }
   panel.setAttribute('aria-labelledby', 'hexagram-detail-title');
   panel.removeAttribute('aria-label');
-  if (historyMode !== 'none') updateDetailUrl(code, historyMode);
-  bindShareAction(hex);
-  addReviewCard(code);
-  openPanel();
-  motionSystem.reveal(panelContent);
-  cinematicMotion.enterSurface(panelContent, 'explore');
-  resetPanelViewport({ focusHeading: true });
-  try { playHexagramSound(code); } catch {}
-  if (fromCode) state.starMap?.addTrail(fromCode, code);
-  state.currentDetail = code;
-  state.starMap?.focusStar(code);
+  syncReadingPresentation();
+  if (historyMode !== 'none') updateDetailUrl(stage === 'deep' ? code : null, historyMode);
+  openPanel({ preserveScroll: reuse });
+  cinematicMotion.enterSurface(panelContent, 'explore', { animate: false });
+  if (!reuse) {
+    motionSystem.reveal(panelContent);
+    resetPanelViewport({ focusHeading: true });
+    try { playHexagramSound(code); } catch {}
+  } else {
+    window.requestAnimationFrame(() => {
+      panel.scrollTop = readingScroll.panel;
+      panelContent.scrollTop = readingScroll.content;
+      const target = document.getElementById(stage === 'deep' ? 'reading-quicken' : 'reading-deepen');
+      target?.focus({ preventScroll: true });
+    });
+  }
+  syncReadingModality();
+  window.requestAnimationFrame(syncReservedRects);
   syncStarStage();
+}
+
+function openDetail(code, fromCode = null, options = {}) {
+  openReading(code, 'deep', fromCode, options);
+}
+
+function rememberReadingDraft() {
+  const note = panelContent.querySelector('#note-input');
+  if (state.renderedCode && note && typeof note.value === 'string') state.readingDrafts.set(state.renderedCode, note.value);
+}
+
+function selectReadingSection(section, { updateHistory = true } = {}) {
+  state.reading = transitionReading(state.reading, { type: 'section', section });
+  syncReadingPresentation();
+  const target = panelContent.querySelector(`[data-reading-section="${state.reading.section}"]`);
+  target?.scrollIntoView({ block: 'start', behavior: 'auto' });
+  if (updateHistory) updateDetailUrl(state.reading.stage === 'deep' ? state.reading.readingCode : null, 'replace');
+}
+
+function stepBackReading() {
+  if (state.reading.stage === 'deep') {
+    openReading(state.reading.readingCode, 'quick', null, { historyMode: 'replace' });
+  } else if (state.reading.stage === 'quick' || panel.classList.contains('open')) {
+    closeDetail({ restoreFocus: true });
+  } else if (state.reading.focusedCode) {
+    state.reading = transitionReading(state.reading, { type: 'clear' });
+    state.starMap?.clearFocus();
+    syncReadingPresentation();
+    updateDetailUrl(null, 'replace');
+    canvas.focus({ preventScroll: true });
+  }
 }
 
 function updateModeButtons(mode) {
@@ -729,9 +1037,31 @@ async function loadModeResources(mode) {
   if ((mode === 'almanac' || mode === 'quiz') && dataLoader.loadAlmanacData) {
     Object.assign(state, await dataLoader.loadAlmanacData());
   }
+  if (mode === 'review' && dataLoader.loadAlmanacData) {
+    try {
+      Object.assign(state, await dataLoader.loadAlmanacData());
+    } catch (error) {
+      // Queue references remain usable; the destination loads and checks the original question.
+      console.warn('复习术语资料暂不可用', error);
+    }
+  }
 }
 
-async function setMode(mode) {
+function disposeMode() {
+  const cleanup = modeCleanup;
+  modeCleanup = null;
+  cleanup?.();
+}
+
+async function setMode(mode, entry = {}) {
+  disposeMode();
+  rememberReadingDraft();
+  if (state.reading.stage !== 'none') closeDetail({ resetMode: false });
+  setRelationOptions(false);
+  if (mode !== 'explore') {
+    state.reading = createReadingState();
+    state.renderedCode = null;
+  }
   const requestId = ++modeRequestId;
   if (!state.celestialStage) ensureCelestialStage().catch((error) => {
     console.warn('天象舞台按需加载失败', error);
@@ -751,6 +1081,7 @@ async function setMode(mode) {
     closeGuaxuWheel({ restoreFocus: false, immediate: true });
   }
   updateExploreTools('star');
+  syncReadingPresentation();
 
   if (mode === 'explore') {
     document.body.classList.remove('mode-transitioning');
@@ -781,16 +1112,17 @@ async function setMode(mode) {
   try {
     const [renderer] = await Promise.all([loadRenderer(), loadModeResources(mode)]);
     if (requestId !== modeRequestId || state.currentMode !== mode) return;
-    if (mode === 'learning') {
-      renderer(panelContent, state, (target = 'explore') => setMode(target));
-    } else if (mode === 'review') {
-      renderer(panelContent, state, () => setMode('learning'));
+    if (['learning', 'review', 'quiz'].includes(mode)) {
+      const cleanup = renderer(panelContent, state, (target = 'explore', nextEntry) => setMode(target, nextEntry), entry);
+      modeCleanup = typeof cleanup === 'function' ? cleanup : null;
     } else if (mode === 'divination') {
-      renderer(panelContent, state, (code) => openDetail(code));
+      const cleanup = renderer(panelContent, state, (code) => openDetail(code));
+      modeCleanup = typeof cleanup === 'function' ? cleanup : null;
     } else {
       renderer(panelContent, state);
     }
     motionSystem.reveal(panelContent);
+    installUIIcons(panelContent);
     cinematicMotion.enterSurface(panelContent, mode);
     resetPanelViewport({ focusHeading: true });
   } catch (error) {
@@ -809,6 +1141,59 @@ async function setMode(mode) {
 }
 
 function bindGlobalInteractions() {
+  installUIIcons(document);
+  syncReadingPresentation();
+  setRelationOptions(false);
+  relationToggle?.addEventListener('click', () => {
+    setRelationOptions(relationToggle.getAttribute('aria-expanded') !== 'true');
+  });
+  document.getElementById('focus-read')?.addEventListener('click', () => {
+    openReading(state.reading.focusedCode, 'quick');
+  });
+  document.getElementById('focus-clear')?.addEventListener('click', stepBackReading);
+  document.getElementById('reading-back')?.addEventListener('click', () => closeDetail({ restoreFocus: true }));
+  document.getElementById('reading-deepen')?.addEventListener('click', () => openDetail(state.reading.readingCode));
+  document.getElementById('reading-quicken')?.addEventListener('click', stepBackReading);
+  readingSaveRetry?.addEventListener('click', retryReadingSave);
+  readingToolbar?.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-reading-tab]');
+    if (button) selectReadingSection(button.dataset.readingTab);
+  });
+  panelContent.addEventListener('click', (event) => {
+    const link = event.target.closest('.reading-outline a[href^="#"]');
+    if (!link) return;
+    const target = panelContent.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    event.preventDefault();
+    const section = target.closest('[data-reading-section]')?.dataset.readingSection;
+    if (section) {
+      state.reading = transitionReading(state.reading, { type: 'section', section });
+      syncReadingPresentation();
+      updateDetailUrl(state.reading.stage === 'deep' ? state.reading.readingCode : null, 'replace');
+    }
+    target.scrollIntoView({ block: 'start', behavior: 'auto' });
+  });
+  let readingSectionFrame = null;
+  panel.addEventListener('scroll', () => {
+    if (readingSectionFrame !== null || state.reading.stage === 'none') return;
+    readingSectionFrame = window.requestAnimationFrame(() => {
+      readingSectionFrame = null;
+      if (state.reading.stage === 'none') return;
+      const sections = [...panelContent.querySelectorAll('[data-reading-section]')];
+      if (!sections.length) return;
+      const panelTop = panel.getBoundingClientRect().top + panel.clientTop;
+      const scrollMargin = Number.parseFloat(window.getComputedStyle(sections[0]).scrollMarginTop) || 0;
+      const focusLine = Math.max(
+        (readingToolbar?.getBoundingClientRect().bottom || panelTop) + 32,
+        panelTop + scrollMargin,
+      );
+      // scrollIntoView按像素取整；边框和移动工具栏不能让上一节抢回已定位章节。
+      const current = sections.find((element) => element.getBoundingClientRect().bottom > focusLine + 2);
+      if (!current || current.dataset.readingSection === state.reading.section) return;
+      state.reading = transitionReading(state.reading, { type: 'section', section: current.dataset.readingSection });
+      syncReadingTabs();
+    });
+  }, { passive: true });
   canvas.addEventListener('pointerdown', loadCelestialStageOnIntent, { once: true, passive: true });
   canvas.addEventListener('focus', loadCelestialStageOnIntent, { once: true });
   const updateAudioToggle = () => {
@@ -817,6 +1202,11 @@ function bindGlobalInteractions() {
     audioToggle.setAttribute('aria-pressed', String(enabled));
     audioToggle.setAttribute('aria-label', label);
     audioToggle.title = label;
+    const icon = audioToggle.querySelector('[data-icon]');
+    if (icon) {
+      icon.dataset.icon = enabled ? 'volume-2' : 'volume-x';
+      installUIIcons(icon);
+    }
   };
   updateAudioToggle();
   audioToggle.addEventListener('click', () => {
@@ -829,6 +1219,7 @@ function bindGlobalInteractions() {
     const layerButton = event.target.closest('[data-relation-layer]');
     if (layerButton) {
       state.starMap?.setRelationFilter(layerButton.dataset.relationLayer, null);
+      if (layerButton.dataset.relationLayer === 'changing') setRelationOptions(true);
       return;
     }
     const positionButton = event.target.closest('[data-changing-position]');
@@ -839,15 +1230,12 @@ function bindGlobalInteractions() {
     const relationButton = event.target.closest('#star-accessible-list [data-code]');
     if (relationButton) {
       state.starMap?.setAutoRotate(false);
-      state.starMap?.focusStar(relationButton.dataset.code);
+      focusHexagram(relationButton.dataset.code);
       canvas.focus({ preventScroll: true });
     }
   });
   starLayoutSelect?.addEventListener('change', () => {
-    const layoutState = state.starMap?.setLayoutMode(starLayoutSelect.value);
-    updateLayoutInterface(layoutState);
-    updateRelationInterface(state.starMap?.getRelationState());
-    canvas.focus({ preventScroll: true });
+    changeStarLayout(starLayoutSelect.value);
   });
   const modeButtons = [...document.querySelectorAll('.mode-btn')];
   modeButtons.forEach((button) => {
@@ -918,25 +1306,36 @@ function bindGlobalInteractions() {
     setDrawerSize(DRAWER_SIZES[(current + 1) % DRAWER_SIZES.length], { persist: true });
   });
   document.addEventListener('keydown', (event) => {
+    if (event.isComposing || event.keyCode === 229 || searchComposing) return;
     if (document.querySelector('.share-card-overlay')) return;
     if (event.key === 'Escape' && searchInput.getAttribute('aria-expanded') === 'true') {
       event.preventDefault();
-      closeSearch();
       searchInput.focus();
+      closeSearch();
       return;
     }
-    if (event.key === 'Escape' && panel.classList.contains('open')) {
-      closeDetail({ restoreFocus: true });
+    if (event.key === 'Escape' && relationToggle?.getAttribute('aria-expanded') === 'true') {
+      event.preventDefault();
+      setRelationOptions(false, { restoreFocus: true });
       return;
     }
-    if (event.key !== 'Tab' || (!compactPanelQuery.matches && panel.dataset.focus !== 'true') ||
-      !panel.classList.contains('open')) return;
-    const focusable = [...panel.querySelectorAll('button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')]
+    if (event.key === 'Escape' && (panel.classList.contains('open') || state.reading.focusedCode)) {
+      event.preventDefault();
+      stepBackReading();
+      return;
+    }
+    const modalRoot = panel.getAttribute('aria-modal') === 'true' && panel.classList.contains('open') ? panel
+      : relationLayersEl?.getAttribute('aria-modal') === 'true' ? relationLayersEl : null;
+    if (event.key !== 'Tab' || !modalRoot) return;
+    const focusable = [...modalRoot.querySelectorAll('button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')]
       .filter((element) => !element.hidden && element.getClientRects().length > 0);
     if (!focusable.length) return;
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
+    if (!modalRoot.contains(document.activeElement)) {
+      event.preventDefault();
+      first.focus();
+    } else if (event.shiftKey && document.activeElement === first) {
       event.preventDefault();
       last.focus();
     } else if (!event.shiftKey && document.activeElement === last) {
@@ -945,19 +1344,38 @@ function bindGlobalInteractions() {
     }
   });
   const syncPanelModality = () => {
-    panel.setAttribute('aria-modal', String(compactPanelQuery.matches));
+    const expanded = relationToggle?.getAttribute('aria-expanded') === 'true';
+    setRelationOptions(expanded && !(compactPanelQuery.matches && panel.classList.contains('open')));
+    syncReadingPresentation();
   };
   if (compactPanelQuery.addEventListener) compactPanelQuery.addEventListener('change', syncPanelModality);
   else compactPanelQuery.addListener?.(syncPanelModality);
   syncPanelModality();
+  const syncReadingDisclosures = () => {
+    panelContent.querySelectorAll('.reading-disclosure').forEach((details) => {
+      details.open = !narrowReadingQuery.matches;
+    });
+  };
+  if (narrowReadingQuery.addEventListener) narrowReadingQuery.addEventListener('change', syncReadingDisclosures);
+  else narrowReadingQuery.addListener?.(syncReadingDisclosures);
 
   const closeSearch = () => {
+    searchPopupEl.hidden = true;
     searchResultsEl.hidden = true;
+    searchResults = [];
     searchInput.setAttribute('aria-expanded', 'false');
     searchInput.removeAttribute('aria-activedescendant');
+    searchStatusEl.textContent = '';
     searchIndex = -1;
   };
+  let searchComposing = false;
+  let searchKeywords = null;
+  let searchKeywordsAttempted = false;
+  let searchKeywordsFailed = false;
+  const searchBox = document.querySelector('.search-box');
   document.addEventListener('keydown', (event) => {
+    if (event.isComposing || event.keyCode === 229 || searchComposing || searchInput.disabled ||
+        searchInput.closest('[inert]') || document.querySelector('.share-card-overlay')) return;
     const target = event.target;
     const isTyping = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target?.isContentEditable;
     const searchShortcut = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k';
@@ -967,33 +1385,59 @@ function bindGlobalInteractions() {
     searchInput.select();
   });
   const selectSearchResult = (index) => {
+    if (searchComposing || searchInput.getAttribute('aria-expanded') !== 'true') return;
     const result = searchResults[index];
     if (!result) return;
     searchInput.value = result.name;
     closeSearch();
-    openDetail(result.binaryCode);
+    focusHexagram(result.binaryCode);
   };
-  const renderSearch = () => {
+  const ensureSearchKeywords = () => {
+    if (searchKeywords || searchKeywordsAttempted) return;
+    searchKeywordsAttempted = true;
+    dataLoader.loadHexagramKeywords().then((keywords) => {
+      searchKeywords = keywords;
+      searchKeywordsFailed = false;
+    }).catch(() => {
+      searchKeywordsFailed = true;
+    }).finally(() => {
+      // Re-read the current query; a late optional response must not reopen a dismissed popup.
+      if (searchInput.getAttribute('aria-expanded') === 'true' && !searchComposing) {
+        renderSearch({ preserveSelection: true });
+      }
+    });
+  };
+  const renderSearch = ({ preserveSelection = false } = {}) => {
+    if (searchComposing) return;
     const keyword = searchInput.value.trim();
-    searchResults = keyword ? searchHexagrams(state.hexagrams, keyword).slice(0, 8) : [];
+    const previousCode = preserveSelection ? searchResults[searchIndex]?.binaryCode : null;
+    const coreReady = Boolean(state.index?.byCode?.size && state.hexagrams.length && state.trigrams.length);
+    const matches = keyword && coreReady ? searchHexagrams(state.hexagrams, keyword, {
+      trigrams: state.trigrams,
+      keywords: searchKeywords || state.starMap?.keywords || {},
+    }) : [];
+    searchResults = matches.slice(0, 8);
     searchIndex = -1;
+    searchInput.removeAttribute('aria-activedescendant');
     searchResultsEl.replaceChildren();
     if (!keyword) {
       closeSearch();
       return;
     }
-    if (!searchResults.length) {
-      const empty = document.createElement('p');
-      empty.className = 'search-empty';
-      empty.setAttribute('role', 'status');
-      empty.textContent = '没有找到相关卦象';
-      searchResultsEl.append(empty);
+    if (!coreReady) {
+      searchStatusEl.textContent = '搜索资料尚未就绪，请稍后重试。';
+    } else if (!searchResults.length) {
+      searchStatusEl.textContent = parseHexagramQuery(keyword).kind === 'invalid'
+        ? '没有找到相关卦象。卦序为1—64，卦码须为六位0或1。'
+        : '没有找到相关卦象';
     } else {
+      searchStatusEl.textContent = matches.length > 8 ? `找到${matches.length}卦，显示前8项。` : `找到${matches.length}卦。`;
       searchResults.forEach((hexagram, index) => {
         const option = document.createElement('button');
         option.type = 'button';
         option.id = `search-option-${index}`;
         option.className = 'search-option';
+        option.tabIndex = -1;
         option.setAttribute('role', 'option');
         option.setAttribute('aria-selected', 'false');
         option.setAttribute('aria-label', `第 ${hexagram.number} 卦，${hexagram.name}，${hexagram.fullName}`);
@@ -1013,10 +1457,18 @@ function bindGlobalInteractions() {
         option.append(number, identity, code);
         searchResultsEl.append(option);
       });
-      state.starMap?.focusStar(searchResults[0].binaryCode);
     }
+    if (coreReady && searchKeywordsFailed) {
+      searchStatusEl.textContent += ' 关键词暂不可用，卦名、卦序、编码、上下卦和经文仍可检索。';
+    }
+    searchPopupEl.hidden = false;
     searchResultsEl.hidden = false;
     searchInput.setAttribute('aria-expanded', 'true');
+    if (previousCode) {
+      searchIndex = searchResults.findIndex((hexagram) => hexagram.binaryCode === previousCode);
+      updateSearchSelection();
+    }
+    if (coreReady) ensureSearchKeywords();
   };
   const updateSearchSelection = () => {
     searchResultsEl.querySelectorAll('.search-option').forEach((option, index) => {
@@ -1026,13 +1478,30 @@ function bindGlobalInteractions() {
       if (selected) {
         searchInput.setAttribute('aria-activedescendant', option.id);
         option.scrollIntoView({ block: 'nearest' });
-        state.starMap?.focusStar(searchResults[index].binaryCode);
       }
     });
   };
-  searchInput.addEventListener('input', renderSearch);
-  searchInput.addEventListener('focus', renderSearch);
+  searchInput.addEventListener('compositionstart', () => {
+    searchComposing = true;
+    closeSearch();
+  });
+  searchInput.addEventListener('compositionend', () => {
+    searchComposing = false;
+    if (document.activeElement === searchInput) renderSearch();
+  });
+  searchInput.addEventListener('input', (event) => {
+    if (!event.isComposing) renderSearch();
+  });
+  searchInput.addEventListener('focus', () => {
+    if (searchKeywordsFailed) {
+      searchKeywordsAttempted = false;
+      searchKeywordsFailed = false;
+    }
+    renderSearch();
+  });
   searchInput.addEventListener('keydown', (event) => {
+    if (event.isComposing || event.keyCode === 229 || searchComposing ||
+        searchInput.getAttribute('aria-expanded') !== 'true') return;
     if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
       event.preventDefault();
       searchIndex = moveSelection(searchIndex, event.key, searchResults.length);
@@ -1041,6 +1510,8 @@ function bindGlobalInteractions() {
       event.preventDefault();
       selectSearchResult(searchIndex >= 0 ? searchIndex : 0);
     } else if (event.key === 'Escape') {
+      event.preventDefault();
+      event.stopPropagation();
       closeSearch();
     }
   });
@@ -1049,13 +1520,30 @@ function bindGlobalInteractions() {
     const option = event.target.closest('.search-option');
     if (option) selectSearchResult(Number.parseInt(option.dataset.index, 10));
   });
-  document.querySelector('.search-box').addEventListener('focusout', (event) => {
+  document.addEventListener('pointerdown', (event) => {
+    if (!searchBox.contains(event.target)) closeSearch();
+  });
+  searchBox.addEventListener('focusout', (event) => {
     if (!event.currentTarget.contains(event.relatedTarget)) closeSearch();
   });
-  window.addEventListener('popstate', () => {
+  window.addEventListener('popstate', (event) => {
     const code = getHexCodeFromUrl(window.location.href);
     if (code && state.index.byCode.has(code)) openDetail(code, null, { historyMode: 'none' });
-    else closeDetail({ updateUrl: false });
+    else if (event.state?.reading?.stage === 'quick' && state.index.byCode.has(event.state.reading.readingCode)) {
+      openReading(event.state.reading.readingCode, 'quick', null, { historyMode: 'none' });
+    } else {
+      closeDetail({ updateUrl: false });
+      const focusedCode = event.state?.reading?.focusedCode;
+      if (state.index.byCode.has(focusedCode)) focusHexagram(focusedCode, { historyMode: 'none' });
+      else {
+        state.reading = createReadingState();
+        state.starMap?.clearFocus();
+        syncReadingPresentation();
+      }
+    }
+    if (state.reading.stage !== 'none' && event.state?.reading?.section) {
+      window.requestAnimationFrame(() => selectReadingSection(event.state.reading.section, { updateHistory: false }));
+    }
   });
 
   let resizeFrame = null;
@@ -1064,6 +1552,7 @@ function bindGlobalInteractions() {
     resizeFrame = window.requestAnimationFrame(() => {
       resizeFrame = null;
       state.starMap?.resize();
+      syncReservedRects();
     });
   };
   window.addEventListener('resize', scheduleStarMapResize);
@@ -1081,7 +1570,9 @@ function bindGlobalInteractions() {
   autoRotateButton?.addEventListener('click', () => updateAutoRotateButton(state.starMap.toggleAutoRotate()));
   document.getElementById('trail-clear').addEventListener('click', () => {
     state.starMap.clearTrail();
+    state.reading = createReadingState();
     state.starMap.clearFocus();
+    syncReadingPresentation();
   });
   document.getElementById('trail-back').addEventListener('click', () => {
     const code = state.starMap.popTrail();
@@ -1113,9 +1604,10 @@ async function init() {
     }
     state.index = buildHexagramIndex(data.hexagrams);
     state.starMap = new StarMap(canvas, buildRelationGraph(data.hexagrams), {
+      onExitFocus: stepBackReading,
       onPick: (code) => {
         cinematicMotion.previewHexagram(null);
-        openDetail(code);
+        focusHexagram(code);
       },
       onFocus: (code, point) => {
         if (code) state.celestialStage?.selectHexagram(code, point);

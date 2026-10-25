@@ -56,7 +56,7 @@ test('详情、研读笺和辅助说明不再以裁切或横向滑动隐藏文�
 
 test('Canvas 经典图式标签和图式说明具有清晰的字号下限', () => {
   assert.match(starMap, /const MIN_VISIBLE_FONT_SIZE = 15/);
-  assert.match(starMap, /Math\.max\(MIN_VISIBLE_FONT_SIZE, scaledFontSize\)/);
+  assert.match(starMap, /Math\.max\(MIN_VISIBLE_FONT_SIZE, Math\.round\(scaledFontSize\)\)/);
   assert.doesNotMatch(starMap, /ctx\.font = '(?:1[0-4](?:\.\d+)?)px/);
 });
 

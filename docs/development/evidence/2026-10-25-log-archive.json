@@ -1,0 +1,41 @@
+{
+  "note": "Only trailing horizontal whitespace normalized in log text; lossless original bytes retained as raw.gz. Test assertions, failures and exit codes unchanged.",
+  "records": [
+    {
+      "file": "docs/development/evidence/2026-10-25-contract-input-validate.log",
+      "rawPath": "docs/development/evidence/2026-10-25-contract-input-validate.log.raw.gz",
+      "originalSha256": "77148d64e7acac73277ee6b9a6544d47081df3e350d1ccc572767117b89dfec3",
+      "normalizedSha256": "a8048dce049222eadbe0cb2d9ba119b2fa40fd40731a68a1ee68906af7f00153"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-integrated-contract-input-validate.log",
+      "rawPath": "docs/development/evidence/2026-10-25-integrated-contract-input-validate.log.raw.gz",
+      "originalSha256": "ae3a5bce5502871bbdbc6ebe2e7dffbe157e92d0dfa89c5202acdf3c3cf5d9a4",
+      "normalizedSha256": "3d6c0e078c75d1292b048daaf375ae1ca65bc3a060f8d95b608d4eb810a35faa"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-inventory-pointer-check.log",
+      "rawPath": "docs/development/evidence/2026-10-25-inventory-pointer-check.log.raw.gz",
+      "originalSha256": "8a129eccef3bb535267f6c78888312b597ffb84e6dc2318132b56b7082e17fb2",
+      "normalizedSha256": "5792ea1c8545c5a3699020e34b7e0aed10ff8316f5490cfdd767e3dc690cca30"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-pointer-cross-region-red.log",
+      "rawPath": "docs/development/evidence/2026-10-25-pointer-cross-region-red.log.raw.gz",
+      "originalSha256": "b10fb15b6bd8b2e74f66455a04851c37a90a9b1e14dcc11dd105c219f33dd2f4",
+      "normalizedSha256": "d40de96e13c312d50f25ceb81addbd5b44bdc79fdb046faa9764b255cf8357eb"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-pointer-reset-red.log",
+      "rawPath": "docs/development/evidence/2026-10-25-pointer-reset-red.log.raw.gz",
+      "originalSha256": "c6d42af0035bf1eef45639350f47c3bd611199f84e14e22be3de64cb0194db62",
+      "normalizedSha256": "a79fb88f96fca406700f3795f7a24c56cfd5aa341b1cf0981ccf60722172d313"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-reading-state-red.log",
+      "rawPath": "docs/development/evidence/2026-10-25-reading-state-red.log.raw.gz",
+      "originalSha256": "faefdfcff1eda3a21547f261d15a191b25a541310f47e0472b3ea20e58165805",
+      "normalizedSha256": "505088a89935d67f9881f9f588a83fc51649f6eb3feca640deaaa0b38afb2960"
+    }
+  ]
+}

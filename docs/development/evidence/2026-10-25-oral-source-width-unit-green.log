@@ -1,0 +1,562 @@
+TAP version 13
+# Subtest: 复讲lesson后旧success不写记录、不覆盖当前界面或finally状态
+ok 1 - 复讲lesson后旧success不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 7.2911
+  type: 'test'
+  ...
+# Subtest: 复讲lesson后旧failure不写记录、不覆盖当前界面或finally状态
+ok 2 - 复讲lesson后旧failure不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 0.7174
+  type: 'test'
+  ...
+# Subtest: 复讲response后旧success不写记录、不覆盖当前界面或finally状态
+ok 3 - 复讲response后旧success不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 0.6336
+  type: 'test'
+  ...
+# Subtest: 复讲response后旧failure不写记录、不覆盖当前界面或finally状态
+ok 4 - 复讲response后旧failure不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 0.69
+  type: 'test'
+  ...
+# Subtest: 复讲self后旧success不写记录、不覆盖当前界面或finally状态
+ok 5 - 复讲self后旧success不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 0.7225
+  type: 'test'
+  ...
+# Subtest: 复讲self后旧failure不写记录、不覆盖当前界面或finally状态
+ok 6 - 复讲self后旧failure不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 0.7615
+  type: 'test'
+  ...
+# Subtest: 复讲quiz后旧success不写记录、不覆盖当前界面或finally状态
+ok 7 - 复讲quiz后旧success不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 2.3134
+  type: 'test'
+  ...
+# Subtest: 复讲quiz后旧failure不写记录、不覆盖当前界面或finally状态
+ok 8 - 复讲quiz后旧failure不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 0.7391
+  type: 'test'
+  ...
+# Subtest: 复讲hub后旧success不写记录、不覆盖当前界面或finally状态
+ok 9 - 复讲hub后旧success不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 1.588
+  type: 'test'
+  ...
+# Subtest: 复讲hub后旧failure不写记录、不覆盖当前界面或finally状态
+ok 10 - 复讲hub后旧failure不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 0.8198
+  type: 'test'
+  ...
+# Subtest: 复讲cleanup后旧success不写记录、不覆盖当前界面或finally状态
+ok 11 - 复讲cleanup后旧success不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 0.5525
+  type: 'test'
+  ...
+# Subtest: 复讲cleanup后旧failure不写记录、不覆盖当前界面或finally状态
+ok 12 - 复讲cleanup后旧failure不写记录、不覆盖当前界面或finally状态
+  ---
+  duration_ms: 0.5547
+  type: 'test'
+  ...
+# Subtest: 旧复讲finally不能解锁后继请求；双提交只发送一次当前请求
+ok 13 - 旧复讲finally不能解锁后继请求；双提交只发送一次当前请求
+  ---
+  duration_ms: 3.1534
+  type: 'test'
+  ...
+# Subtest: ai复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩
+ok 14 - ai复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩
+  ---
+  duration_ms: 1.9699
+  type: 'test'
+  ...
+# Subtest: ai复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩
+ok 15 - ai复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩
+  ---
+  duration_ms: 1.3198
+  type: 'test'
+  ...
+# Subtest: ai复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩
+ok 16 - ai复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩
+  ---
+  duration_ms: 0.8135
+  type: 'test'
+  ...
+# Subtest: self复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩
+ok 17 - self复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩
+  ---
+  duration_ms: 1.3869
+  type: 'test'
+  ...
+# Subtest: self复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩
+ok 18 - self复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩
+  ---
+  duration_ms: 0.7508
+  type: 'test'
+  ...
+# Subtest: self复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩
+ok 19 - self复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩
+  ---
+  duration_ms: 0.6463
+  type: 'test'
+  ...
+# Subtest: 复讲原文不足20字就地说明并聚焦，不POST、不保存
+ok 20 - 复讲原文不足20字就地说明并聚焦，不POST、不保存
+  ---
+  duration_ms: 0.5959
+  type: 'test'
+  ...
+# Subtest: 复讲自评结果由页面主动显示并获得焦点
+ok 21 - 复讲自评结果由页面主动显示并获得焦点
+  ---
+  duration_ms: 0.6879
+  type: 'test'
+  ...
+# Subtest: 复讲自评保存失败说明由页面主动显示并获得焦点
+ok 22 - 复讲自评保存失败说明由页面主动显示并获得焦点
+  ---
+  duration_ms: 0.6593
+  type: 'test'
+  ...
+# Subtest: 复讲结果定位帧在离页后失效，不抢回焦点
+ok 23 - 复讲结果定位帧在离页后失效，不抢回焦点
+  ---
+  duration_ms: 0.6706
+  type: 'test'
+  ...
+# Subtest: 复讲失败可本地自评；四段反馈依据可读，模型文本转义且不存正文
+ok 24 - 复讲失败可本地自评；四段反馈依据可读，模型文本转义且不存正文
+  ---
+  duration_ms: 1.7188
+  type: 'test'
+  ...
+# Subtest: ai复讲成功结果指向本轮原课，离开不补写或新增评阅
+ok 25 - ai复讲成功结果指向本轮原课，离开不补写或新增评阅
+  ---
+  duration_ms: 1.7348
+  type: 'test'
+  ...
+# Subtest: ai复讲保存失败结果指向本轮原课，离开不补写或新增评阅
+ok 26 - ai复讲保存失败结果指向本轮原课，离开不补写或新增评阅
+  ---
+  duration_ms: 0.9978
+  type: 'test'
+  ...
+# Subtest: self复讲成功结果指向本轮原课，离开不补写或新增评阅
+ok 27 - self复讲成功结果指向本轮原课，离开不补写或新增评阅
+  ---
+  duration_ms: 0.7543
+  type: 'test'
+  ...
+# Subtest: self复讲保存失败结果指向本轮原课，离开不补写或新增评阅
+ok 28 - self复讲保存失败结果指向本轮原课，离开不补写或新增评阅
+  ---
+  duration_ms: 0.6864
+  type: 'test'
+  ...
+# Subtest: 复讲lesson后旧来源按钮不导航或保存
+ok 29 - 复讲lesson后旧来源按钮不导航或保存
+  ---
+  duration_ms: 0.7962
+  type: 'test'
+  ...
+# Subtest: 复讲response后旧来源按钮不导航或保存
+ok 30 - 复讲response后旧来源按钮不导航或保存
+  ---
+  duration_ms: 0.6485
+  type: 'test'
+  ...
+# Subtest: 复讲self后旧来源按钮不导航或保存
+ok 31 - 复讲self后旧来源按钮不导航或保存
+  ---
+  duration_ms: 0.6104
+  type: 'test'
+  ...
+# Subtest: 复讲new后旧来源按钮不导航或保存
+ok 32 - 复讲new后旧来源按钮不导航或保存
+  ---
+  duration_ms: 0.5708
+  type: 'test'
+  ...
+# Subtest: 复讲quiz后旧来源按钮不导航或保存
+ok 33 - 复讲quiz后旧来源按钮不导航或保存
+  ---
+  duration_ms: 1.1052
+  type: 'test'
+  ...
+# Subtest: 复讲hub后旧来源按钮不导航或保存
+ok 34 - 复讲hub后旧来源按钮不导航或保存
+  ---
+  duration_ms: 1.611
+  type: 'test'
+  ...
+# Subtest: 复讲cleanup后旧来源按钮不导航或保存
+ok 35 - 复讲cleanup后旧来源按钮不导航或保存
+  ---
+  duration_ms: 1.1788
+  type: 'test'
+  ...
+# Subtest: 复讲retry后旧来源按钮不导航或保存
+ok 36 - 复讲retry后旧来源按钮不导航或保存
+  ---
+  duration_ms: 0.9501
+  type: 'test'
+  ...
+# Subtest: 课程考评沿用四段反馈，既有依据、保存重试及返回行动仍可达
+ok 37 - 课程考评沿用四段反馈，既有依据、保存重试及返回行动仍可达
+  ---
+  duration_ms: 2.4343
+  type: 'test'
+  ...
+# Subtest: 复讲入口选定具体课程并聚焦复讲，不误开小试或写学习成绩
+ok 38 - 复讲入口选定具体课程并聚焦复讲，不误开小试或写学习成绩
+  ---
+  duration_ms: 0.7149
+  type: 'test'
+  ...
+# Subtest: 明确复讲入口在外层标题RAF之后获得焦点，并声明本次焦点目标
+ok 39 - 明确复讲入口在外层标题RAF之后获得焦点，并声明本次焦点目标
+  ---
+  duration_ms: 0.6743
+  type: 'test'
+  ...
+# Subtest: 复讲入口退出后旧RAF不聚焦已脱离的输入或新页面标题
+ok 40 - 复讲入口退出后旧RAF不聚焦已脱离的输入或新页面标题
+  ---
+  duration_ms: 0.482
+  type: 'test'
+  ...
+# Subtest: 容器整体移除后复讲RAF不再聚焦旧内容
+ok 41 - 容器整体移除后复讲RAF不再聚焦旧内容
+  ---
+  duration_ms: 0.5005
+  type: 'test'
+  ...
+# Subtest: 清理保留DOM后初始题卷标题RAF不再滚动或聚焦
+ok 42 - 清理保留DOM后初始题卷标题RAF不再滚动或聚焦
+  ---
+  duration_ms: 0.6225
+  type: 'test'
+  ...
+# Subtest: 清理保留DOM后初始复讲入口RAF不再滚动或聚焦
+ok 43 - 清理保留DOM后初始复讲入口RAF不再滚动或聚焦
+  ---
+  duration_ms: 0.9853
+  type: 'test'
+  ...
+# Subtest: 重绘后旧表单change不读取新控件或改写仍保留的本轮草稿
+ok 44 - 重绘后旧表单change不读取新控件或改写仍保留的本轮草稿
+  ---
+  duration_ms: 0.8475
+  type: 'test'
+  ...
+# Subtest: 旧未交卷表单submit不得改写新卷状态或移动新卷焦点
+ok 45 - 旧未交卷表单submit不得改写新卷状态或移动新卷焦点
+  ---
+  duration_ms: 0.6043
+  type: 'test'
+  ...
+# Subtest: 十题全错长卷保存失败定位保存状态，重试成功返回结果焦点
+ok 46 - 十题全错长卷保存失败定位保存状态，重试成功返回结果焦点
+  ---
+  duration_ms: 3.6312
+  type: 'test'
+  ...
+# Subtest: 结果定位排队后清理页面不滚动或聚焦旧保存状态
+ok 47 - 结果定位排队后清理页面不滚动或聚焦旧保存状态
+  ---
+  duration_ms: 0.7987
+  type: 'test'
+  ...
+# Subtest: 原题回练保留默认三题，重绘沿用会话而不同原题开启新卷
+ok 48 - 原题回练保留默认三题，重绘沿用会话而不同原题开启新卷
+  ---
+  duration_ms: 0.5767
+  type: 'test'
+  ...
+# Subtest: 失效原题或版本不随机替题，保留回原课和温故的真实回调
+ok 49 - 失效原题或版本不随机替题，保留回原课和温故的真实回调
+  ---
+  duration_ms: 0.7857
+  type: 'test'
+  ...
+# Subtest: 错题保存失败不显示已加入，原会话重试成功后按持久化记录显示
+ok 50 - 错题保存失败不显示已加入，原会话重试成功后按持久化记录显示
+  ---
+  duration_ms: 1.9719
+  type: 'test'
+  ...
+# Subtest: 结果原课携带原题，原题回练新会话答对后才显示本轮已纠正
+ok 51 - 结果原课携带原题，原题回练新会话答对后才显示本轮已纠正
+  ---
+  duration_ms: 1.8404
+  type: 'test'
+  ...
+# Subtest: 结果内新开原题回练后，父页面同入口重绘仍保留该新卷及答案
+ok 52 - 结果内新开原题回练后，父页面同入口重绘仍保留该新卷及答案
+  ---
+  duration_ms: 1.0201
+  type: 'test'
+  ...
+# Subtest: 结果重绘从持久化读取状态，不把已移除的旧记录仍说成已加入
+ok 53 - 结果重绘从持久化读取状态，不把已移除的旧记录仍说成已加入
+  ---
+  duration_ms: 0.9928
+  type: 'test'
+  ...
+# Subtest: 结果不把 questionType 不同的 due 旧温习记录归于当前题
+ok 54 - 结果不把 questionType 不同的 due 旧温习记录归于当前题
+  ---
+  duration_ms: 1.3303
+  type: 'test'
+  ...
+# Subtest: 结果不把 questionType 不同的 resolved 旧温习记录归于当前题
+ok 55 - 结果不把 questionType 不同的 resolved 旧温习记录归于当前题
+  ---
+  duration_ms: 1.2097
+  type: 'test'
+  ...
+# Subtest: 结果不把 targetCode 不同的 due 旧温习记录归于当前题
+ok 56 - 结果不把 targetCode 不同的 due 旧温习记录归于当前题
+  ---
+  duration_ms: 1.8516
+  type: 'test'
+  ...
+# Subtest: 结果不把 targetCode 不同的 resolved 旧温习记录归于当前题
+ok 57 - 结果不把 targetCode 不同的 resolved 旧温习记录归于当前题
+  ---
+  duration_ms: 1.0599
+  type: 'test'
+  ...
+# Subtest: 结果不把 termId 不同的 due 旧温习记录归于当前题
+ok 58 - 结果不把 termId 不同的 due 旧温习记录归于当前题
+  ---
+  duration_ms: 1.2521
+  type: 'test'
+  ...
+# Subtest: 结果不把 termId 不同的 resolved 旧温习记录归于当前题
+ok 59 - 结果不把 termId 不同的 resolved 旧温习记录归于当前题
+  ---
+  duration_ms: 1.2103
+  type: 'test'
+  ...
+# Subtest: 结果不把 sourceKind 不同的 due 旧温习记录归于当前题
+ok 60 - 结果不把 sourceKind 不同的 due 旧温习记录归于当前题
+  ---
+  duration_ms: 1.1219
+  type: 'test'
+  ...
+# Subtest: 结果不把 sourceKind 不同的 resolved 旧温习记录归于当前题
+ok 61 - 结果不把 sourceKind 不同的 resolved 旧温习记录归于当前题
+  ---
+  duration_ms: 1.0554
+  type: 'test'
+  ...
+# Subtest: 温故发起的原题回练取消返回温故且不保存答卷
+ok 62 - 温故发起的原题回练取消返回温故且不保存答卷
+  ---
+  duration_ms: 0.6265
+  type: 'test'
+  ...
+# Subtest: 真实交卷处理函数重复触发和结果重绘只计一次，新一轮独立
+ok 63 - 真实交卷处理函数重复触发和结果重绘只计一次，新一轮独立
+  ---
+  duration_ms: 1.2647
+  type: 'test'
+  ...
+# Subtest: 本轮重绘保留题序与已选答案，离开后不恢复未提交卷
+ok 64 - 本轮重绘保留题序与已选答案，离开后不恢复未提交卷
+  ---
+  duration_ms: 0.5904
+  type: 'test'
+  ...
+# Subtest: 重绘前已脱离页面的取消处理不能撤销已交卷结果
+ok 65 - 重绘前已脱离页面的取消处理不能撤销已交卷结果
+  ---
+  duration_ms: 0.8483
+  type: 'test'
+  ...
+# Subtest: 未答和篡改选项定位首个未答题，取消不保存
+ok 66 - 未答和篡改选项定位首个未答题，取消不保存
+  ---
+  duration_ms: 1.4648
+  type: 'test'
+  ...
+# Subtest: 成绩保存失败可读且可重试，重试与重绘复用本轮
+ok 67 - 成绩保存失败可读且可重试，重试与重绘复用本轮
+  ---
+  duration_ms: 1.056
+  type: 'test'
+  ...
+# Subtest: 新用户抽查空态说明先学一课并可返回
+ok 68 - 新用户抽查空态说明先学一课并可返回
+  ---
+  duration_ms: 1.845
+  type: 'test'
+  ...
+# Subtest: 仅成就保存失败时重试不重写成绩，沿用原session证据
+ok 69 - 仅成就保存失败时重试不重写成绩，沿用原session证据
+  ---
+  duration_ms: 0.9508
+  type: 'test'
+  ...
+# Subtest: 小试交卷后进入修习谱不以旧时间戳再计同轮证据
+ok 70 - 小试交卷后进入修习谱不以旧时间戳再计同轮证据
+  ---
+  duration_ms: 0.9644
+  type: 'test'
+  ...
+# Subtest: 修习谱回补采用本轮实际成绩，旧无session证据保持兼容
+ok 71 - 修习谱回补采用本轮实际成绩，旧无session证据保持兼容
+  ---
+  duration_ms: 1.0489
+  type: 'test'
+  ...
+# Subtest: 已处理ID缺少成绩凭据时显示缺证据，不重计分或生成成就
+ok 72 - 已处理ID缺少成绩凭据时显示缺证据，不重计分或生成成就
+  ---
+  duration_ms: 0.7307
+  type: 'test'
+  ...
+# Subtest: 已有正式ID全部带真实凭据时，其他旧课程仍按旧汇总回补
+ok 73 - 已有正式ID全部带真实凭据时，其他旧课程仍按旧汇总回补
+  ---
+  duration_ms: 0.4979
+  type: 'test'
+  ...
+# Subtest: 已有真实低分凭据重交高分不改变成绩，也不据当前答案回补高分成就
+ok 74 - 已有真实低分凭据重交高分不改变成绩，也不据当前答案回补高分成就
+  ---
+  duration_ms: 0.7475
+  type: 'test'
+  ...
+# Subtest: 正式ID存在但没有凭据时修习谱不拿聚合最高分补造该轮成就
+ok 75 - 正式ID存在但没有凭据时修习谱不拿聚合最高分补造该轮成就
+  ---
+  duration_ms: 0.3934
+  type: 'test'
+  ...
+# Subtest: 反馈按结果、依据、实际记录、下一步的原生章节顺序呈现
+ok 76 - 反馈按结果、依据、实际记录、下一步的原生章节顺序呈现
+  ---
+  duration_ms: 3.2554
+  type: 'test'
+  ...
+# Subtest: 保留一个主行动与最多两个次行动的原按钮属性及来源链接
+ok 77 - 保留一个主行动与最多两个次行动的原按钮属性及来源链接
+  ---
+  duration_ms: 1.1065
+  type: 'test'
+  ...
+# Subtest: 省略次行动时只有主行动，不生成空按钮或占位链接
+ok 78 - 省略次行动时只有主行动，不生成空按钮或占位链接
+  ---
+  duration_ms: 0.2365
+  type: 'test'
+  ...
+# Subtest: 缺失或非法必填片段明确报出字段，不用空反馈掩盖调用错误
+ok 79 - 缺失或非法必填片段明确报出字段，不用空反馈掩盖调用错误
+  ---
+  duration_ms: 0.4991
+  type: 'test'
+  ...
+# Subtest: 次行动超量或非法数组成员报错，不静默截断或跳过
+ok 80 - 次行动超量或非法数组成员报错，不静默截断或跳过
+  ---
+  duration_ms: 0.1639
+  type: 'test'
+  ...
+# Subtest: 每个行动片段只接受一个原生按钮或链接，不能藏入多个行动
+ok 81 - 每个行动片段只接受一个原生按钮或链接，不能藏入多个行动
+  ---
+  duration_ms: 0.1404
+  type: 'test'
+  ...
+# Subtest: 可信片段只呈现一次，已转义正文不被重新转义或改写
+ok 82 - 可信片段只呈现一次，已转义正文不被重新转义或改写
+  ---
+  duration_ms: 0.1375
+  type: 'test'
+  ...
+# Subtest: 重复渲染不访问DOM、存储或计时器，不修改冻结输入或制造全局身份
+ok 83 - 重复渲染不访问DOM、存储或计时器，不修改冻结输入或制造全局身份
+  ---
+  duration_ms: 0.2478
+  type: 'test'
+  ...
+# Subtest: 评阅配置只接受同源相对地址
+ok 84 - 评阅配置只接受同源相对地址
+  ---
+  duration_ms: 1.0055
+  type: 'test'
+  ...
+# Subtest: 智能评阅按固定协议提交并校验返回结果
+ok 85 - 智能评阅按固定协议提交并校验返回结果
+  ---
+  duration_ms: 0.3564
+  type: 'test'
+  ...
+# Subtest: 智能评阅拒绝短文本、错误状态与异常数据
+ok 86 - 智能评阅拒绝短文本、错误状态与异常数据
+  ---
+  duration_ms: 1.02
+  type: 'test'
+  ...
+# Subtest: 具体测验、术语和旧摘要各自可见，唯一到期卦卡不绕过温习列表
+ok 87 - 具体测验、术语和旧摘要各自可见，唯一到期卦卡不绕过温习列表
+  ---
+  duration_ms: 11.0734
+  type: 'test'
+  ...
+# Subtest: 术语来源携带真实termId和返回温故，不把打开来源写成纠正
+ok 88 - 术语来源携带真实termId和返回温故，不把打开来源写成纠正
+  ---
+  duration_ms: 2.4821
+  type: 'test'
+  ...
+# Subtest: 新旧队列全部完成后显示可理解空态，销毁后的按钮不能导航
+ok 89 - 新旧队列全部完成后显示可理解空态，销毁后的按钮不能导航
+  ---
+  duration_ms: 3.2019
+  type: 'test'
+  ...
+# Subtest: 术语资料尚未加载时显示待核对，来源仍保留真实引用
+ok 90 - 术语资料尚未加载时显示待核对，来源仍保留真实引用
+  ---
+  duration_ms: 3.0613
+  type: 'test'
+  ...
+# Subtest: 具体卦题来源进入原卦卡并可返回同一队列，打开来源不更改弱项
+ok 91 - 具体卦题来源进入原卦卡并可返回同一队列，打开来源不更改弱项
+  ---
+  duration_ms: 5.1153
+  type: 'test'
+  ...
+# Subtest: 尚未引入间隔卡的卦题来源只读，翻面不出现评分，返回恢复原来源焦点
+ok 92 - 尚未引入间隔卡的卦题来源只读，翻面不出现评分，返回恢复原来源焦点
+  ---
+  duration_ms: 5.319
+  type: 'test'
+  ...
+1..92
+# tests 92
+# suites 0
+# pass 92
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 247.7125

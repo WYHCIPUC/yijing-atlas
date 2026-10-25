@@ -1,0 +1,148 @@
+{
+  "capturedAt": "2026-10-24T19:26:18.677Z",
+  "codeCommit": "25fa12a24b3b21b39f1bf269b70ad0e77fbc1ca2",
+  "tree": "dd381da345a120c22878a08aa16ccb88deb47c54",
+  "files": [
+    {
+      "path": "scripts/browser-smoke.mjs",
+      "sha256": "994aa24f107a73452eb7c8a915749d99a26cc53103f205d5abfcea9f0f13f66e"
+    },
+    {
+      "path": "scripts/test-assessment-session.mjs",
+      "sha256": "f00f3d8e697392e230d29514d7f1d9dda5a67c5be4e6ae80b54de2a9fad5091e"
+    },
+    {
+      "path": "scripts/test-entry-input.mjs",
+      "sha256": "288d2f108fbedb9a26aa9ace4474f9c39786258586793e42b369ba2a5394cc9e"
+    },
+    {
+      "path": "scripts/test-reading-resize.mjs",
+      "sha256": "81966146ce5dbbb42689f2ac93e8a501a2547f53bb2735dfba7b3b915947d328"
+    },
+    {
+      "path": "scripts/test-reading-save.mjs",
+      "sha256": "8a290b870a03055eb4117a79269e7912e7dcae863d2fca7e3982e26cf38f77aa"
+    },
+    {
+      "path": "web/js/learning-assessment-page.js",
+      "sha256": "5975e61c27053bb2100b2f318a8bb21b1e58a0872b55737acdb681dacd832153"
+    },
+    {
+      "path": "web/js/learning-progress.js",
+      "sha256": "ba1cca8296bac7e421892858f81e2b6e9cbdc7e96e75f395a38ff605ca222a0d"
+    },
+    {
+      "path": "web/js/modes/learning-mode.js",
+      "sha256": "c5ed203a60edb8d682550655db3083579e950391ef908c11ebf788ae59d95d4f"
+    },
+    {
+      "path": "web/js/star-map.js",
+      "sha256": "e80d81873dbefea45977c8036ab921e71337a0f5e581ecf87df13129d9fff72b"
+    },
+    {
+      "path": "web/js/user-data.js",
+      "sha256": "8a47ceb0e8dea555a17d10ac253b32f0dfc84cead620ddcf13193def6e1435b1"
+    },
+    {
+      "path": "web/test/browser-smoke-reading-state.test.mjs",
+      "sha256": "a3d5491f139d11f7575a03c623339adce09f10ca80d275dbd04f08d39d244c39"
+    },
+    {
+      "path": "web/test/learning-assessment-page.test.mjs",
+      "sha256": "e854184358ea203b0884f0db0be4f56c3db3c567d63d0efd699e9626c647793d"
+    },
+    {
+      "path": "web/test/learning-progress.test.mjs",
+      "sha256": "fe0acd69eff354d865b059f1c0ee8e2009fa4f843a2827d7fdd61fb7836d7885"
+    },
+    {
+      "path": "web/test/star-pointer-lifecycle.test.mjs",
+      "sha256": "bca816ce3888545dffd56f49096ad6cff13872290deb1d5a6f4c3d10bbda516f"
+    },
+    {
+      "path": "web/test/user-data.test.mjs",
+      "sha256": "0173ba20915bebc32c20b40d2e4a890d28e8432a82003ccafce92e8f29ee9dde"
+    }
+  ],
+  "completedCards": [
+    "T-DIV-01",
+    "T-SAVE-01",
+    "T-LEARN-05"
+  ],
+  "openCards": [
+    "T-QA-01",
+    "T-GROW-01",
+    "T-STAR-01",
+    "T-STAR-02",
+    "T-STAR-03",
+    "T-SEARCH-01",
+    "T-READ-01",
+    "T-READ-02",
+    "T-READ-03",
+    "T-READ-04",
+    "T-LEARN-01",
+    "T-LEARN-02",
+    "T-LEARN-03",
+    "T-QUIZ-01",
+    "T-LEARN-04",
+    "T-DIV-02",
+    "T-DIV-03",
+    "T-GROW-02",
+    "T-PRIV-01",
+    "T-CAL-01",
+    "T-CAL-02",
+    "T-CAL-03",
+    "T-SOUND-01",
+    "T-SOUND-02",
+    "T-MODAL-01",
+    "T-ICON-01",
+    "T-ASSET-02",
+    "T-BACKUP-01",
+    "T-BACKUP-02",
+    "T-API-01",
+    "T-CACHE-01",
+    "T-CACHE-02",
+    "T-CAPACITY-01",
+    "T-SHARE-01",
+    "T-ASSET-01",
+    "T-DEP-01",
+    "T-CONTENT-01",
+    "T-CONTENT-02",
+    "T-QA-02",
+    "T-QA-03",
+    "T-A11Y-01",
+    "T-PERF-01",
+    "T-WIN-01",
+    "T-RELEASE-01",
+    "T-COPY-01"
+  ],
+  "natureCounts": {
+    "已确认": 34,
+    "建议改进": 10,
+    "未来独立方案": 1
+  },
+  "issues": [],
+  "validation": {
+    "validate": {
+      "exitCode": 0,
+      "scripts": 61,
+      "coverageTests": 287,
+      "line": 99.77,
+      "branch": 91.77,
+      "functions": 98.93
+    },
+    "e2eNode22": {
+      "exitCode": -1073740791,
+      "result": "native libuv abort"
+    },
+    "e2eNode24": {
+      "exitCode": 0,
+      "result": "passed"
+    },
+    "finalCheck": {
+      "exitCode": 0,
+      "jsFiles": 74,
+      "jsonFiles": 11
+    }
+  }
+}

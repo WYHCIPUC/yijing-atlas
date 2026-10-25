@@ -43,7 +43,7 @@ assert.match(learningMode, /\{ id: 'library', label: '典籍书库' \}/);
 assert.match(learningMode, /\{ id: 'profile', label: '修习谱' \}/);
 assert.equal((learningMode.match(/\{ id: '[^']+', label: '[^']+' \}/g) || []).length, 4);
 assert.match(learningMode, /class="today-practice"/);
-assert.match(learningMode, /recommendLesson\(record\)/);
+assert.match(learningMode, /recommendLearningTask\(record,/);
 assert.match(learningMode, /class="library-grid"/);
 assert.match(learningMode, /summarizeAchievements\(loadAchievementState\(\)\)/);
 assert.match(learningMode, /yijing:workspace-insight/);
@@ -55,7 +55,12 @@ assert.match(assessmentPage, /closest\?\.\('\.detail-content'\)/);
 assert.match(assessmentPage, /id="assessment-sheet-title" data-page-heading/);
 assert.match(assessmentPage, /id="assessment-result-title" data-page-heading/);
 assert.match(assessmentPage, /<h3 data-page-heading>/);
-assert.match(assessmentPage, /heading\.focus\?\.\(\{ preventScroll: true \}\)/);
+const assessmentViewport = assessmentPage.match(/^function resetAssessmentViewport\([\s\S]*?^}/m)?.[0];
+assert.ok(assessmentViewport, '考评视口复位函数必须存在');
+// Focus the node selected for this state; its local variable name is not a UI contract.
+assert.match(assessmentViewport, /selector = '\[data-page-heading\]'/);
+assert.match(assessmentViewport, /const (\w+) = container\.querySelector\(selector\);[\s\S]*?\1\.tabIndex = -1;[\s\S]*?\1\.focus\?\.\(\{ preventScroll: true \}\)/);
+assert.match(assessmentPage, /resetAssessmentViewport\(container, actions\.isCurrent,\s*pending\.length \|\| missingEvidence \? '\.assessment-save-status' : '\[data-feedback-section="result"\]'\)/);
 assert.equal((assessmentPage.match(/resetAssessmentViewport\(/g) || []).length, 4);
 
 console.log('✓ 学习首课、典籍依据与滚动复位契约通过');

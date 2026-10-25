@@ -1,0 +1,226 @@
+TAP version 13
+# Subtest: 两帧之间模拟推进时，星点命中与悬浮位置仍跟随最后绘制坐标
+ok 1 - 两帧之间模拟推进时，星点命中与悬浮位置仍跟随最后绘制坐标
+  ---
+  duration_ms: 1.0805
+  type: 'test'
+  ...
+# Subtest: Canvas尺寸改变清屏时失效旧星点投影，避免在旧位置命中
+ok 2 - Canvas尺寸改变清屏时失效旧星点投影，避免在旧位置命中
+  ---
+  duration_ms: 0.6383
+  type: 'test'
+  ...
+# Subtest: 星空背景在镜头转动和减少动态效果时始终使用有效绘制坐标
+ok 3 - 星空背景在镜头转动和减少动态效果时始终使用有效绘制坐标
+  ---
+  duration_ms: 1.0773
+  type: 'test'
+  ...
+# Subtest: 星图空闲时降到 30 FPS，交互或相机移动时恢复 60 FPS
+ok 4 - 星图空闲时降到 30 FPS，交互或相机移动时恢复 60 FPS
+  ---
+  duration_ms: 0.0881
+  type: 'test'
+  ...
+# Subtest: 功能工作区把背景星图降到 15 FPS
+ok 5 - 功能工作区把背景星图降到 15 FPS
+  ---
+  duration_ms: 0.105
+  type: 'test'
+  ...
+# Subtest: 减少动态效果偏好固定使用低帧率
+ok 6 - 减少动态效果偏好固定使用低帧率
+  ---
+  duration_ms: 0.0506
+  type: 'test'
+  ...
+# Subtest: 关系能量包循环前进并保持三段错峰
+ok 7 - 关系能量包循环前进并保持三段错峰
+  ---
+  duration_ms: 0.1325
+  type: 'test'
+  ...
+# Subtest: 关键词按焦点、关系和纯卦语义逐层展开
+ok 8 - 关键词按焦点、关系和纯卦语义逐层展开
+  ---
+  duration_ms: 0.0812
+  type: 'test'
+  ...
+# Subtest: 视角读数把缩放层级和球面姿态转换为稳定的五度刻度
+ok 9 - 视角读数把缩放层级和球面姿态转换为稳定的五度刻度
+  ---
+  duration_ms: 0.3155
+  type: 'test'
+  ...
+# Subtest: 四态观察层级由缩放、焦点和详情阅读状态共同决定
+ok 10 - 四态观察层级由缩放、焦点和详情阅读状态共同决定
+  ---
+  duration_ms: 0.232
+  type: 'test'
+  ...
+# Subtest: 页面可见性恢复不会覆盖业务层暂停
+ok 11 - 页面可见性恢复不会覆盖业务层暂停
+  ---
+  duration_ms: 0.2026
+  type: 'test'
+  ...
+# Subtest: 减少动态时初始 D3 布局直接落在目标位置并停止模拟
+ok 12 - 减少动态时初始 D3 布局直接落在目标位置并停止模拟
+  ---
+  duration_ms: 69.143
+  type: 'test'
+  ...
+# Subtest: 减少动态时切图、resize 与 resume 不重启 D3，焦点相机随新目标同步
+ok 13 - 减少动态时切图、resize 与 resume 不重启 D3，焦点相机随新目标同步
+  ---
+  duration_ms: 0.6821
+  type: 'test'
+  ...
+# Subtest: 动态偏好切换立即稳定节点，业务暂停期间取消减少动态也不重启
+ok 14 - 动态偏好切换立即稳定节点，业务暂停期间取消减少动态也不重启
+  ---
+  duration_ms: 0.3158
+  type: 'test'
+  ...
+# Subtest: 星图把可见星群的中心、包围半径和镜头姿态同步给 WebGL 外轨
+ok 15 - 星图把可见星群的中心、包围半径和镜头姿态同步给 WebGL 外轨
+  ---
+  duration_ms: 0.2195
+  type: 'test'
+  ...
+# Subtest: 星图尺寸变化时同步缩放当前焦点相机，避免面板开合后坐标漂移
+ok 16 - 星图尺寸变化时同步缩放当前焦点相机，避免面板开合后坐标漂移
+  ---
+  duration_ms: 0.2204
+  type: 'test'
+  ...
+# Subtest: 关系漫游只保留最近 5 段轨迹
+ok 17 - 关系漫游只保留最近 5 段轨迹
+  ---
+  duration_ms: 0.1148
+  type: 'test'
+  ...
+# Subtest: 星图关系层只显示当前有向关系，变卦必须指定动爻
+ok 18 - 星图关系层只显示当前有向关系，变卦必须指定动爻
+  ---
+  duration_ms: 0.2099
+  type: 'test'
+  ...
+# Subtest: 普通卦名使用实测宽度防碰撞，并优先保留重要标签
+ok 19 - 普通卦名使用实测宽度防碰撞，并优先保留重要标签
+  ---
+  duration_ms: 0.3637
+  type: 'test'
+  ...
+# Subtest: 悬停、焦点和八纯卦标签通过换位避免强制叠字
+ok 20 - 悬停、焦点和八纯卦标签通过换位避免强制叠字
+  ---
+  duration_ms: 0.2521
+  type: 'test'
+  ...
+# Subtest: 入场每会话一次且减少动态时直接呈现
+ok 21 - 入场每会话一次且减少动态时直接呈现
+  ---
+  duration_ms: 0.0884
+  type: 'test'
+  ...
+# Subtest: 星核上按下不选卦，抬起才确认，拖动超过 6px 或取消不误选
+ok 22 - 星核上按下不选卦，抬起才确认，拖动超过 6px 或取消不误选
+  ---
+  duration_ms: 0.3738
+  type: 'test'
+  ...
+# Subtest: 视角快照深复制镜头、焦点、关系、图式与自动巡天
+ok 23 - 视角快照深复制镜头、焦点、关系、图式与自动巡天
+  ---
+  duration_ms: 0.2598
+  type: 'test'
+  ...
+# Subtest: 快读与全景尺寸变化后恢复镜头按空间半径换算
+ok 24 - 快读与全景尺寸变化后恢复镜头按空间半径换算
+  ---
+  duration_ms: 0.1217
+  type: 'test'
+  ...
+# Subtest: 聚焦镜头在 450ms 完成，减少动态立即完成
+ok 25 - 聚焦镜头在 450ms 完成，减少动态立即完成
+  ---
+  duration_ms: 0.0992
+  type: 'test'
+  ...
+# Subtest: 卦名和关键词共用布局，当前最多三词、关系最多一词
+ok 26 - 卦名和关键词共用布局，当前最多三词、关系最多一词
+  ---
+  duration_ms: 0.3173
+  type: 'test'
+  ...
+# Subtest: 标签布局在 100ms 内复用，焦点或视口显著变化时立即更新
+ok 27 - 标签布局在 100ms 内复用，焦点或视口显著变化时立即更新
+  ---
+  duration_ms: 0.2912
+  type: 'test'
+  ...
+# Subtest: 焦点标签不受入场标签延迟影响
+ok 28 - 焦点标签不受入场标签延迟影响
+  ---
+  duration_ms: 0.0918
+  type: 'test'
+  ...
+# Subtest: 经典图式总览只常驻结构地标，选卦后展开当前关系节点
+ok 29 - 经典图式总览只常驻结构地标，选卦后展开当前关系节点
+  ---
+  duration_ms: 0.1394
+  type: 'test'
+  ...
+# Subtest: 普通卦名碰撞框保持 7px 屏幕间距
+ok 30 - 普通卦名碰撞框保持 7px 屏幕间距
+  ---
+  duration_ms: 5.4943
+  type: 'test'
+  ...
+# Subtest: 相同重要度的碰撞标签优先保留前景卦名
+ok 31 - 相同重要度的碰撞标签优先保留前景卦名
+  ---
+  duration_ms: 0.1162
+  type: 'test'
+  ...
+# Subtest: a second touch cancels the active drag and releases capture without selecting a star
+ok 32 - a second touch cancels the active drag and releases capture without selecting a star
+  ---
+  duration_ms: 1.2258
+  type: 'test'
+  ...
+# Subtest: a second touch also cancels a pending tap before the drag threshold
+ok 33 - a second touch also cancels a pending tap before the drag threshold
+  ---
+  duration_ms: 0.1276
+  type: 'test'
+  ...
+# Subtest: window blur cancels a pending gesture, so a later pointerup cannot select
+ok 34 - window blur cancels a pending gesture, so a later pointerup cannot select
+  ---
+  duration_ms: 0.1071
+  type: 'test'
+  ...
+# Subtest: backgrounding clears the drag before pausing the scene
+ok 35 - backgrounding clears the drag before pausing the scene
+  ---
+  duration_ms: 0.1562
+  type: 'test'
+  ...
+# Subtest: destroy cancels capture and removes its window blur listener
+ok 36 - destroy cancels capture and removes its window blur listener
+  ---
+  duration_ms: 0.1443
+  type: 'test'
+  ...
+1..36
+# tests 36
+# suites 0
+# pass 36
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 199.3354

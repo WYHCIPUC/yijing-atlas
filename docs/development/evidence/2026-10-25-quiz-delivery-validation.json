@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-24T22:03:54.672Z",
+  "sourceHead": "a056573df7f971bb842fbcf9ffa668241e58443a",
+  "command": "npm run validate",
+  "invocation": "node W:/Node.js/node_modules/npm/bin/npm-cli.js run validate",
+  "runtime": "Node v24.19.0; current child PATH only",
+  "executionSession": 68488,
+  "exitCode": 0,
+  "testScripts": 72,
+  "coverageTests": {
+    "passed": 515,
+    "failed": 0
+  },
+  "configuredModules": 21,
+  "coverage": {
+    "lines": 99.76,
+    "branches": 93.81,
+    "functions": 98.96
+  },
+  "sourceSnapshot": "2026-10-25-quiz-delivery-source.json",
+  "sourceFiles": 173,
+  "changedSourceFiles": [],
+  "rawLog": "2026-10-25-quiz-delivery-validate.log",
+  "archive": "2026-10-25-quiz-delivery-validate.log.gz",
+  "archiveByteIdentical": true,
+  "scope": "Full validate after the final source-button CSS changes. Browser acceptance and full E2E remain separate."
+}

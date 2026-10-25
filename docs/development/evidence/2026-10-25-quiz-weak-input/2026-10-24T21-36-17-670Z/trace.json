@@ -1,0 +1,3069 @@
+{
+  "startedAt": "2026-10-24T21:36:17.673Z",
+  "command": "node scripts/test-quiz-weak-questions.mjs",
+  "node": "v22.23.1",
+  "uv": "1.51.0",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-ieP4CD",
+  "scope": "1440-original-cycle",
+  "head": "80f8f2070a95101ea6fc04ce5b4b92523dad34ec",
+  "sourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "7b3ad942f4d51293035daa81b7c7cc3fe13ee456b1fd1f342f1ffa4f51edcb8d",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/user-data.js": "3afccc2472dbab027089a7686ec1e43249a3f889b55be8610eebacef7bca1f6d",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/modes/quiz-mode.js": "d63a0fe1ce0f231fa67c71d9b4903484c387c1b9ffb4dfdec08803e3e046600e",
+    "web/js/modes/review-mode.js": "8adbee1de930ede4f35bc471587081f606d293370313a924ad22cd1483ae4adc",
+    "web/js/modes/learning-mode.js": "f2d1a600294cf3bd2f73d5e884aecb18945d31fbde83776fd93a4d0026e68675",
+    "web/js/almanac-knowledge.js": "ba1b1ce69a46de1832dc62e9959d1ae439f10c7435bd19b5e94c57bf40eeeccd",
+    "web/js/storage.js": "13d7b5b1288991582a4102dbb48b64d0b98593d1fab1502169dce7e52be78f28",
+    "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "2e2841a10a2bc2e7fe9526b747717851e2c7f2194a0798a5b1ff593c35dd8931",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/data/almanac-yiji.json": "791c99f67bac66f7d1259d08aaeec3c53a540b3bdc8ae5403aaa107666ad6649",
+    "scripts/test-quiz-weak-questions.mjs": "bdcd33326dac9b3fd77a207019d89290e9f09e20e6f816044d0e47d4492fb1dc"
+  },
+  "status": "passed",
+  "scenarios": [
+    {
+      "name": "1440-original-cycle",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "status": "passed",
+      "rounds": [
+        {
+          "question": {
+            "type": "reversed",
+            "question": "「中孚」的综卦（上下倒转）是？",
+            "answer": "110011",
+            "candidates": [
+              "101011",
+              "110011",
+              "111010",
+              "100110"
+            ],
+            "targetCode": "110011",
+            "explanation": "综卦要把「中孚」的六爻上下倒置，因此得到「中孚」。",
+            "reference": {
+              "sourceKind": "quiz",
+              "questionId": "quiz:reversed:110011",
+              "questionVersion": "quiz-v1",
+              "questionType": "reversed",
+              "targetCode": "110011",
+              "termId": null,
+              "lessonId": null
+            }
+          },
+          "mode": "random",
+          "attemptId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024"
+        },
+        {
+          "question": {
+            "type": "reversed",
+            "question": "「中孚」的综卦（上下倒转）是？",
+            "answer": "110011",
+            "candidates": [
+              "110011",
+              "001100",
+              "010010",
+              "111101"
+            ],
+            "targetCode": "110011",
+            "explanation": "综卦要把「中孚」的六爻上下倒置，因此得到「中孚」。",
+            "reference": {
+              "sourceKind": "quiz",
+              "questionId": "quiz:reversed:110011",
+              "questionVersion": "quiz-v1",
+              "questionType": "reversed",
+              "targetCode": "110011",
+              "termId": null,
+              "lessonId": null
+            }
+          },
+          "mode": "review",
+          "attemptId": "quiz:mvmx54lr:2:07eb5432-6dc8-4680-b31e-a98433d94174"
+        },
+        {
+          "question": {
+            "type": "name",
+            "question": "哪个卦是「雷水解」？",
+            "answer": "010100",
+            "candidates": [
+              "010100",
+              "001111",
+              "010111",
+              "111110"
+            ],
+            "targetCode": "010100",
+            "explanation": "「雷水解」的六爻编码是 010100，对应「解」卦。",
+            "reference": {
+              "sourceKind": "quiz",
+              "questionId": "quiz:name:010100",
+              "questionVersion": "quiz-v1",
+              "questionType": "name",
+              "targetCode": "010100",
+              "termId": null,
+              "lessonId": null
+            }
+          },
+          "mode": "random",
+          "attemptId": "quiz:mvmx55o2:3:5ae19298-215b-4237-b917-a22a8facb684"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "mouse",
+          "label": "[data-entry=\"explore\"]",
+          "x": 642.9296875,
+          "y": 668.671875
+        },
+        {
+          "kind": "mouse",
+          "label": ".mode-btn[data-mode=\"quiz\"]",
+          "x": 795.046875,
+          "y": 34.716525077819824
+        },
+        {
+          "kind": "keyboard",
+          "key": "Tab"
+        },
+        {
+          "kind": "keyboard",
+          "key": "Enter"
+        },
+        {
+          "kind": "mouse",
+          "label": "[data-action=\"quiz-review\"]",
+          "x": 715,
+          "y": 926.53125
+        },
+        {
+          "kind": "mouse",
+          "label": "[data-action=\"quiz-source-0\"]",
+          "x": 1109,
+          "y": 600.78125
+        },
+        {
+          "kind": "mouse",
+          "label": ".flip-card",
+          "x": 715,
+          "y": 405.796875
+        },
+        {
+          "kind": "mouse",
+          "label": ".review-back",
+          "x": 393.3671875,
+          "y": 206.796875
+        },
+        {
+          "kind": "mouse",
+          "label": "[data-action=\"quiz-practice-0\"]",
+          "x": 1228,
+          "y": 606.78125
+        },
+        {
+          "kind": "keyboard",
+          "key": "Tab"
+        },
+        {
+          "kind": "keyboard",
+          "key": "Tab"
+        },
+        {
+          "kind": "keyboard",
+          "key": "Tab"
+        },
+        {
+          "kind": "keyboard",
+          "key": "Enter"
+        },
+        {
+          "kind": "mouse",
+          "label": ".quiz-next",
+          "x": 715,
+          "y": 881.53125
+        }
+      ],
+      "checks": [
+        {
+          "label": "wrong-answer",
+          "state": {
+            "data": {
+              "stats": {
+                "total": 1,
+                "correct": 0,
+                "attempts": {
+                  "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                    "questionId": "quiz:reversed:110011",
+                    "correct": false
+                  }
+                }
+              },
+              "weak": {
+                "version": 2,
+                "lessons": {},
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "weakQuestions": {
+                  "quiz:reversed:110011": {
+                    "sourceKind": "quiz",
+                    "questionId": "quiz:reversed:110011",
+                    "questionVersion": "quiz-v1",
+                    "questionType": "reversed",
+                    "targetCode": "110011",
+                    "termId": null,
+                    "lessonId": null,
+                    "firstWrongAt": "2026-10-24T21:36:19.719Z",
+                    "lastWrongAt": "2026-10-24T21:36:19.719Z",
+                    "lastSessionId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                    "wrongCount": 1,
+                    "status": "due",
+                    "lastReviewedAt": null,
+                    "resolvedAt": null
+                  }
+                },
+                "quizAttempts": {
+                  "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                    "attemptId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                    "reference": {
+                      "sourceKind": "quiz",
+                      "questionId": "quiz:reversed:110011",
+                      "questionVersion": "quiz-v1",
+                      "questionType": "reversed",
+                      "targetCode": "110011",
+                      "termId": null,
+                      "lessonId": null
+                    },
+                    "correct": false,
+                    "mode": "random",
+                    "at": "2026-10-24T21:36:19.719Z",
+                    "weakOutcome": "added",
+                    "recoveredFrom": null
+                  }
+                }
+              },
+              "review": {
+                "110011": {
+                  "code": "110011",
+                  "stage": 0,
+                  "due": 1792877779871,
+                  "introducedAt": 1792877779871,
+                  "lapses": 0,
+                  "reps": 0,
+                  "lastReview": 0
+                }
+              },
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": null,
+              "legacy": null
+            },
+            "writes": [
+              {
+                "key": "yijing-quiz-stats",
+                "saved": true,
+                "operation": "set",
+                "at": 847.4000000059605,
+                "value": {
+                  "total": 1,
+                  "correct": 0,
+                  "attempts": {
+                    "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                      "questionId": "quiz:reversed:110011",
+                      "correct": false
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "operation": "set",
+                "at": 847.7000000178814,
+                "value": {
+                  "version": 2,
+                  "lessons": {},
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "weakQuestions": {
+                    "quiz:reversed:110011": {
+                      "sourceKind": "quiz",
+                      "questionId": "quiz:reversed:110011",
+                      "questionVersion": "quiz-v1",
+                      "questionType": "reversed",
+                      "targetCode": "110011",
+                      "termId": null,
+                      "lessonId": null,
+                      "firstWrongAt": "2026-10-24T21:36:19.719Z",
+                      "lastWrongAt": "2026-10-24T21:36:19.719Z",
+                      "lastSessionId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                      "wrongCount": 1,
+                      "status": "due",
+                      "lastReviewedAt": null,
+                      "resolvedAt": null
+                    }
+                  },
+                  "quizAttempts": {
+                    "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                      "attemptId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                      "reference": {
+                        "sourceKind": "quiz",
+                        "questionId": "quiz:reversed:110011",
+                        "questionVersion": "quiz-v1",
+                        "questionType": "reversed",
+                        "targetCode": "110011",
+                        "termId": null,
+                        "lessonId": null
+                      },
+                      "correct": false,
+                      "mode": "random",
+                      "at": "2026-10-24T21:36:19.719Z",
+                      "weakOutcome": "added",
+                      "recoveredFrom": null
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "operation": "set",
+                "at": 847.9000000059605,
+                "value": {
+                  "110011": {
+                    "code": "110011",
+                    "stage": 0,
+                    "due": 1792877779871,
+                    "introducedAt": 1792877779871,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "operation": "set",
+                "at": 848,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 795,
+                "y": 34,
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Tab",
+                "target": "mode-panel-title"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "code": "101011",
+                "target": "quiz-option motion-item motion-surface motion-item-enter"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "x": 0,
+                "y": 0,
+                "code": "101011",
+                "target": "quiz-option motion-item motion-surface motion-item-enter"
+              }
+            ],
+            "message": "累计统计已保存。 具体错题记录已保存。 卦象复习卡已保存。 学习活动已保存。",
+            "feedback": "正确答案是「中孚」\n\n为什么\n\n综卦要把「中孚」的六爻上下倒置，因此得到「中孚」。\n\n累计统计已保存。 具体错题记录已保存。 卦象复习卡已保存。 学习活动已保存。\n\n下一题 →\n查看温故队列",
+            "retry": false,
+            "mode": "quiz",
+            "options": 4,
+            "question": "「中孚」的综卦（上下倒转）是？",
+            "focus": {
+              "id": "",
+              "tag": "BUTTON"
+            }
+          }
+        },
+        {
+          "label": "wrong-save-feedback-visible",
+          "geometry": {
+            "rect": {
+              "x": 145.9296875,
+              "y": 843.6822509765625,
+              "width": 1137.423828125,
+              "height": 29.5789794921875,
+              "top": 843.6822509765625,
+              "right": 1283.353515625,
+              "bottom": 873.26123046875,
+              "left": 145.9296875
+            },
+            "clip": {
+              "left": 27.641542434692383,
+              "top": 96,
+              "right": 1411.6415424346924,
+              "bottom": 1000
+            },
+            "ancestors": [
+              {
+                "tag": "ASIDE",
+                "id": "detail-panel",
+                "className": "detail-panel open lenis lenis-scrolling",
+                "rect": {
+                  "x": 27.641542434692383,
+                  "y": 96,
+                  "width": 1384,
+                  "height": 904,
+                  "top": 96,
+                  "right": 1411.6415424346924,
+                  "bottom": 1000,
+                  "left": 27.641542434692383
+                },
+                "overflowX": "hidden",
+                "overflowY": "auto",
+                "viewport": false
+              },
+              {
+                "tag": "BODY",
+                "id": "",
+                "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 0,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "viewport": true
+              }
+            ],
+            "text": "累计统计已保存。 具体错题记录已保存。 卦象复习卡已保存。 学习活动已保存。",
+            "fullyVisible": true,
+            "centerUnobscured": true
+          }
+        },
+        {
+          "label": "source-return-does-not-correct",
+          "state": {
+            "data": {
+              "stats": {
+                "total": 1,
+                "correct": 0,
+                "attempts": {
+                  "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                    "questionId": "quiz:reversed:110011",
+                    "correct": false
+                  }
+                }
+              },
+              "weak": {
+                "version": 2,
+                "lessons": {},
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "weakQuestions": {
+                  "quiz:reversed:110011": {
+                    "sourceKind": "quiz",
+                    "questionId": "quiz:reversed:110011",
+                    "questionVersion": "quiz-v1",
+                    "questionType": "reversed",
+                    "targetCode": "110011",
+                    "termId": null,
+                    "lessonId": null,
+                    "firstWrongAt": "2026-10-24T21:36:19.719Z",
+                    "lastWrongAt": "2026-10-24T21:36:19.719Z",
+                    "lastSessionId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                    "wrongCount": 1,
+                    "status": "due",
+                    "lastReviewedAt": null,
+                    "resolvedAt": null
+                  }
+                },
+                "quizAttempts": {
+                  "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                    "attemptId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                    "reference": {
+                      "sourceKind": "quiz",
+                      "questionId": "quiz:reversed:110011",
+                      "questionVersion": "quiz-v1",
+                      "questionType": "reversed",
+                      "targetCode": "110011",
+                      "termId": null,
+                      "lessonId": null
+                    },
+                    "correct": false,
+                    "mode": "random",
+                    "at": "2026-10-24T21:36:19.719Z",
+                    "weakOutcome": "added",
+                    "recoveredFrom": null
+                  }
+                }
+              },
+              "review": {
+                "110011": {
+                  "code": "110011",
+                  "stage": 0,
+                  "due": 1792877779871,
+                  "introducedAt": 1792877779871,
+                  "lapses": 0,
+                  "reps": 0,
+                  "lastReview": 0
+                }
+              },
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": null,
+              "legacy": null
+            },
+            "writes": [
+              {
+                "key": "yijing-quiz-stats",
+                "saved": true,
+                "operation": "set",
+                "at": 847.4000000059605,
+                "value": {
+                  "total": 1,
+                  "correct": 0,
+                  "attempts": {
+                    "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                      "questionId": "quiz:reversed:110011",
+                      "correct": false
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "operation": "set",
+                "at": 847.7000000178814,
+                "value": {
+                  "version": 2,
+                  "lessons": {},
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "weakQuestions": {
+                    "quiz:reversed:110011": {
+                      "sourceKind": "quiz",
+                      "questionId": "quiz:reversed:110011",
+                      "questionVersion": "quiz-v1",
+                      "questionType": "reversed",
+                      "targetCode": "110011",
+                      "termId": null,
+                      "lessonId": null,
+                      "firstWrongAt": "2026-10-24T21:36:19.719Z",
+                      "lastWrongAt": "2026-10-24T21:36:19.719Z",
+                      "lastSessionId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                      "wrongCount": 1,
+                      "status": "due",
+                      "lastReviewedAt": null,
+                      "resolvedAt": null
+                    }
+                  },
+                  "quizAttempts": {
+                    "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                      "attemptId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                      "reference": {
+                        "sourceKind": "quiz",
+                        "questionId": "quiz:reversed:110011",
+                        "questionVersion": "quiz-v1",
+                        "questionType": "reversed",
+                        "targetCode": "110011",
+                        "termId": null,
+                        "lessonId": null
+                      },
+                      "correct": false,
+                      "mode": "random",
+                      "at": "2026-10-24T21:36:19.719Z",
+                      "weakOutcome": "added",
+                      "recoveredFrom": null
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "operation": "set",
+                "at": 847.9000000059605,
+                "value": {
+                  "110011": {
+                    "code": "110011",
+                    "stage": 0,
+                    "due": 1792877779871,
+                    "introducedAt": 1792877779871,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "operation": "set",
+                "at": 848,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 795,
+                "y": 34,
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Tab",
+                "target": "mode-panel-title"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "code": "101011",
+                "target": "quiz-option motion-item motion-surface motion-item-enter"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "x": 0,
+                "y": 0,
+                "code": "101011",
+                "target": "quiz-option motion-item motion-surface motion-item-enter"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 715,
+                "y": 926,
+                "action": "quiz-review",
+                "target": "text-button motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 1109,
+                "y": 600,
+                "action": "quiz-source-0",
+                "target": "text-button motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 715,
+                "y": 405,
+                "target": {}
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 393,
+                "y": 206,
+                "target": "text-button review-back motion-pressed"
+              }
+            ],
+            "message": "",
+            "feedback": "",
+            "retry": false,
+            "mode": "review",
+            "options": 0,
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            }
+          }
+        },
+        {
+          "label": "correct-answer",
+          "state": {
+            "data": {
+              "stats": {
+                "total": 2,
+                "correct": 1,
+                "attempts": {
+                  "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                    "questionId": "quiz:reversed:110011",
+                    "correct": false
+                  },
+                  "quiz:mvmx54lr:2:07eb5432-6dc8-4680-b31e-a98433d94174": {
+                    "questionId": "quiz:reversed:110011",
+                    "correct": true
+                  }
+                }
+              },
+              "weak": {
+                "version": 2,
+                "lessons": {},
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "weakQuestions": {
+                  "quiz:reversed:110011": {
+                    "sourceKind": "quiz",
+                    "questionId": "quiz:reversed:110011",
+                    "questionVersion": "quiz-v1",
+                    "questionType": "reversed",
+                    "targetCode": "110011",
+                    "termId": null,
+                    "lessonId": null,
+                    "firstWrongAt": "2026-10-24T21:36:19.719Z",
+                    "lastWrongAt": "2026-10-24T21:36:19.719Z",
+                    "lastSessionId": "quiz:mvmx54lr:2:07eb5432-6dc8-4680-b31e-a98433d94174",
+                    "wrongCount": 1,
+                    "status": "resolved",
+                    "lastReviewedAt": "2026-10-24T21:36:24.975Z",
+                    "resolvedAt": "2026-10-24T21:36:24.975Z"
+                  }
+                },
+                "quizAttempts": {
+                  "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                    "attemptId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                    "reference": {
+                      "sourceKind": "quiz",
+                      "questionId": "quiz:reversed:110011",
+                      "questionVersion": "quiz-v1",
+                      "questionType": "reversed",
+                      "targetCode": "110011",
+                      "termId": null,
+                      "lessonId": null
+                    },
+                    "correct": false,
+                    "mode": "random",
+                    "at": "2026-10-24T21:36:19.719Z",
+                    "weakOutcome": "added",
+                    "recoveredFrom": null
+                  },
+                  "quiz:mvmx54lr:2:07eb5432-6dc8-4680-b31e-a98433d94174": {
+                    "attemptId": "quiz:mvmx54lr:2:07eb5432-6dc8-4680-b31e-a98433d94174",
+                    "reference": {
+                      "sourceKind": "quiz",
+                      "questionId": "quiz:reversed:110011",
+                      "questionVersion": "quiz-v1",
+                      "questionType": "reversed",
+                      "targetCode": "110011",
+                      "termId": null,
+                      "lessonId": null
+                    },
+                    "correct": true,
+                    "mode": "review",
+                    "at": "2026-10-24T21:36:24.975Z",
+                    "weakOutcome": "resolved",
+                    "recoveredFrom": {
+                      "attemptId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                      "at": "2026-10-24T21:36:19.719Z"
+                    }
+                  }
+                }
+              },
+              "review": {
+                "110011": {
+                  "code": "110011",
+                  "stage": 0,
+                  "due": 1792877779871,
+                  "introducedAt": 1792877779871,
+                  "lapses": 0,
+                  "reps": 0,
+                  "lastReview": 0
+                }
+              },
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": {
+                "version": 1,
+                "processedKeys": [
+                  "quiz:recovered:quiz:mvmx54lr:2:07eb5432-6dc8-4680-b31e-a98433d94174"
+                ],
+                "metrics": {
+                  "completedLessons": [],
+                  "lessonScores": {},
+                  "topicScores": {},
+                  "trigramRounds": [],
+                  "hexagramsRead": [],
+                  "relationsExamined": [],
+                  "reviewDays": [],
+                  "reviewedHexagrams": [],
+                  "quizRecoveries": [
+                    "quiz:reversed:110011"
+                  ],
+                  "sequenceExams": [],
+                  "analyses": {},
+                  "boundedSubjects": [],
+                  "comprehensivePassed": false
+                },
+                "achievements": {}
+              },
+              "legacy": null
+            },
+            "writes": [
+              {
+                "key": "yijing-quiz-stats",
+                "saved": true,
+                "operation": "set",
+                "at": 847.4000000059605,
+                "value": {
+                  "total": 1,
+                  "correct": 0,
+                  "attempts": {
+                    "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                      "questionId": "quiz:reversed:110011",
+                      "correct": false
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "operation": "set",
+                "at": 847.7000000178814,
+                "value": {
+                  "version": 2,
+                  "lessons": {},
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "weakQuestions": {
+                    "quiz:reversed:110011": {
+                      "sourceKind": "quiz",
+                      "questionId": "quiz:reversed:110011",
+                      "questionVersion": "quiz-v1",
+                      "questionType": "reversed",
+                      "targetCode": "110011",
+                      "termId": null,
+                      "lessonId": null,
+                      "firstWrongAt": "2026-10-24T21:36:19.719Z",
+                      "lastWrongAt": "2026-10-24T21:36:19.719Z",
+                      "lastSessionId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                      "wrongCount": 1,
+                      "status": "due",
+                      "lastReviewedAt": null,
+                      "resolvedAt": null
+                    }
+                  },
+                  "quizAttempts": {
+                    "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                      "attemptId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                      "reference": {
+                        "sourceKind": "quiz",
+                        "questionId": "quiz:reversed:110011",
+                        "questionVersion": "quiz-v1",
+                        "questionType": "reversed",
+                        "targetCode": "110011",
+                        "termId": null,
+                        "lessonId": null
+                      },
+                      "correct": false,
+                      "mode": "random",
+                      "at": "2026-10-24T21:36:19.719Z",
+                      "weakOutcome": "added",
+                      "recoveredFrom": null
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-review-cards",
+                "saved": true,
+                "operation": "set",
+                "at": 847.9000000059605,
+                "value": {
+                  "110011": {
+                    "code": "110011",
+                    "stage": 0,
+                    "due": 1792877779871,
+                    "introducedAt": 1792877779871,
+                    "lapses": 0,
+                    "reps": 0,
+                    "lastReview": 0
+                  }
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "operation": "set",
+                "at": 848,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-quiz-stats",
+                "saved": true,
+                "operation": "set",
+                "at": 6000.9000000059605,
+                "value": {
+                  "total": 2,
+                  "correct": 1,
+                  "attempts": {
+                    "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                      "questionId": "quiz:reversed:110011",
+                      "correct": false
+                    },
+                    "quiz:mvmx54lr:2:07eb5432-6dc8-4680-b31e-a98433d94174": {
+                      "questionId": "quiz:reversed:110011",
+                      "correct": true
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "operation": "set",
+                "at": 6001.0999999940395,
+                "value": {
+                  "version": 2,
+                  "lessons": {},
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "weakQuestions": {
+                    "quiz:reversed:110011": {
+                      "sourceKind": "quiz",
+                      "questionId": "quiz:reversed:110011",
+                      "questionVersion": "quiz-v1",
+                      "questionType": "reversed",
+                      "targetCode": "110011",
+                      "termId": null,
+                      "lessonId": null,
+                      "firstWrongAt": "2026-10-24T21:36:19.719Z",
+                      "lastWrongAt": "2026-10-24T21:36:19.719Z",
+                      "lastSessionId": "quiz:mvmx54lr:2:07eb5432-6dc8-4680-b31e-a98433d94174",
+                      "wrongCount": 1,
+                      "status": "resolved",
+                      "lastReviewedAt": "2026-10-24T21:36:24.975Z",
+                      "resolvedAt": "2026-10-24T21:36:24.975Z"
+                    }
+                  },
+                  "quizAttempts": {
+                    "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024": {
+                      "attemptId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                      "reference": {
+                        "sourceKind": "quiz",
+                        "questionId": "quiz:reversed:110011",
+                        "questionVersion": "quiz-v1",
+                        "questionType": "reversed",
+                        "targetCode": "110011",
+                        "termId": null,
+                        "lessonId": null
+                      },
+                      "correct": false,
+                      "mode": "random",
+                      "at": "2026-10-24T21:36:19.719Z",
+                      "weakOutcome": "added",
+                      "recoveredFrom": null
+                    },
+                    "quiz:mvmx54lr:2:07eb5432-6dc8-4680-b31e-a98433d94174": {
+                      "attemptId": "quiz:mvmx54lr:2:07eb5432-6dc8-4680-b31e-a98433d94174",
+                      "reference": {
+                        "sourceKind": "quiz",
+                        "questionId": "quiz:reversed:110011",
+                        "questionVersion": "quiz-v1",
+                        "questionType": "reversed",
+                        "targetCode": "110011",
+                        "termId": null,
+                        "lessonId": null
+                      },
+                      "correct": true,
+                      "mode": "review",
+                      "at": "2026-10-24T21:36:24.975Z",
+                      "weakOutcome": "resolved",
+                      "recoveredFrom": {
+                        "attemptId": "quiz:mvmx50jr:1:eb9eccae-72f0-4646-8714-0c0d31a61024",
+                        "at": "2026-10-24T21:36:19.719Z"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "operation": "set",
+                "at": 6001.700000017881,
+                "value": {
+                  "version": 1,
+                  "processedKeys": [
+                    "quiz:recovered:quiz:mvmx54lr:2:07eb5432-6dc8-4680-b31e-a98433d94174"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [
+                      "quiz:reversed:110011"
+                    ],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 795,
+                "y": 34,
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Tab",
+                "target": "mode-panel-title"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "code": "101011",
+                "target": "quiz-option motion-item motion-surface motion-item-enter"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "x": 0,
+                "y": 0,
+                "code": "101011",
+                "target": "quiz-option motion-item motion-surface motion-item-enter"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 715,
+                "y": 926,
+                "action": "quiz-review",
+                "target": "text-button motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 1109,
+                "y": 600,
+                "action": "quiz-source-0",
+                "target": "text-button motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 715,
+                "y": 405,
+                "target": {}
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 393,
+                "y": 206,
+                "target": "text-button review-back motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "x": 1228,
+                "y": 606,
+                "action": "quiz-practice-0",
+                "target": "quick-btn magnetic-control is-magnetic motion-pressed"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Tab",
+                "target": "mode-panel-title"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Tab",
+                "target": "text-button quiz-mode-toggle"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Tab",
+                "action": "quiz-return",
+                "target": "text-button"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "code": "110011",
+                "target": "quiz-option motion-item motion-surface motion-item-enter"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "",
+                "x": 0,
+                "y": 0,
+                "code": "110011",
+                "target": "quiz-option motion-item motion-surface motion-item-enter"
+              }
+            ],
+            "message": "累计统计已保存。 原规则已有效答对，该项已纠正。 学习活动已保存。 成就记录已保存。",
+            "feedback": "回答正确\n\n为什么\n\n综卦要把「中孚」的六爻上下倒置，因此得到「中孚」。\n\n累计统计已保存。 原规则已有效答对，该项已纠正。 学习活动已保存。 成就记录已保存。\n\n返回随机测验\n查看温故队列",
+            "retry": false,
+            "mode": "quiz",
+            "options": 4,
+            "question": "「中孚」的综卦（上下倒转）是？",
+            "focus": {
+              "id": "",
+              "tag": "BUTTON"
+            }
+          }
+        },
+        {
+          "label": "correct-save-feedback-visible",
+          "geometry": {
+            "rect": {
+              "x": 146.28631591796875,
+              "y": 843.6795043945312,
+              "width": 1137.42724609375,
+              "height": 29.57904052734375,
+              "top": 843.6795043945312,
+              "right": 1283.7135620117188,
+              "bottom": 873.258544921875,
+              "left": 146.28631591796875
+            },
+            "clip": {
+              "left": 28,
+              "top": 96,
+              "right": 1412,
+              "bottom": 1000
+            },
+            "ancestors": [
+              {
+                "tag": "ASIDE",
+                "id": "detail-panel",
+                "className": "detail-panel open lenis lenis-scrolling",
+                "rect": {
+                  "x": 28,
+                  "y": 96,
+                  "width": 1384,
+                  "height": 904,
+                  "top": 96,
+                  "right": 1412,
+                  "bottom": 1000,
+                  "left": 28
+                },
+                "overflowX": "hidden",
+                "overflowY": "auto",
+                "viewport": false
+              },
+              {
+                "tag": "BODY",
+                "id": "",
+                "className": "motion-system-ready drawer-medium panel-left focus-mode workspace-mode panel-open",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 0,
+                  "top": 0,
+                  "right": 1440,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "viewport": true
+              }
+            ],
+            "text": "累计统计已保存。 原规则已有效答对，该项已纠正。 学习活动已保存。 成就记录已保存。",
+            "fullyVisible": true,
+            "centerUnobscured": true
+          }
+        }
+      ],
+      "fixtures": [
+        {
+          "at": "2026-10-24T21:36:19.010Z",
+          "values": {}
+        }
+      ],
+      "faults": [],
+      "screenshots": [
+        "1440-original-cycle-wrong.png",
+        "1440-original-cycle-queue.png",
+        "1440-original-cycle-hexagram-source.png",
+        "1440-original-cycle-corrected.png",
+        "1440-original-cycle-last-item-random.png"
+      ],
+      "trustedInputEvidence": [
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 795,
+          "y": 34,
+          "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Tab",
+          "target": "mode-panel-title"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "code": "101011",
+          "target": "quiz-option motion-item motion-surface motion-item-enter"
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "",
+          "x": 0,
+          "y": 0,
+          "code": "101011",
+          "target": "quiz-option motion-item motion-surface motion-item-enter"
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 715,
+          "y": 926,
+          "action": "quiz-review",
+          "target": "text-button motion-pressed"
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 1109,
+          "y": 600,
+          "action": "quiz-source-0",
+          "target": "text-button motion-pressed"
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 715,
+          "y": 405,
+          "target": {}
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 393,
+          "y": 206,
+          "target": "text-button review-back motion-pressed"
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 1228,
+          "y": 606,
+          "action": "quiz-practice-0",
+          "target": "quick-btn magnetic-control is-magnetic motion-pressed"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Tab",
+          "target": "mode-panel-title"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Tab",
+          "target": "text-button quiz-mode-toggle"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Tab",
+          "action": "quiz-return",
+          "target": "text-button"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "code": "110011",
+          "target": "quiz-option motion-item motion-surface motion-item-enter"
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "",
+          "x": 0,
+          "y": 0,
+          "code": "110011",
+          "target": "quiz-option motion-item motion-surface motion-item-enter"
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "pointerType": "mouse",
+          "x": 715,
+          "y": 881,
+          "target": "quiz-next motion-pressed"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Headless Chromium desktop and CDP emulated touch. This is not physical-mobile, screen-reader, or real browser 200% zoom evidence.",
+    "A new random-port origin and isolated profile are used. No user profile, learning data, or private text is read.",
+    "Fixtures and quota failures are explicitly recorded. Fixture wrong histories are synthetic, not earned learning or achievement evidence.",
+    "Debugger only reads generated public question and attempt identity. No application function or DOM.click is called in the browser.",
+    "DOM geometry and scrollIntoView locate controls. Navigation, answers, retries, source opening and return use trusted CDP Input.",
+    "Offline covers already-visited modules in the same page, not first installation or a fresh offline reload."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "finishedAt": "2026-10-24T21:36:26.806Z",
+  "finalSourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "7b3ad942f4d51293035daa81b7c7cc3fe13ee456b1fd1f342f1ffa4f51edcb8d",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/user-data.js": "3afccc2472dbab027089a7686ec1e43249a3f889b55be8610eebacef7bca1f6d",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/modes/quiz-mode.js": "d63a0fe1ce0f231fa67c71d9b4903484c387c1b9ffb4dfdec08803e3e046600e",
+    "web/js/modes/review-mode.js": "8adbee1de930ede4f35bc471587081f606d293370313a924ad22cd1483ae4adc",
+    "web/js/modes/learning-mode.js": "f2d1a600294cf3bd2f73d5e884aecb18945d31fbde83776fd93a4d0026e68675",
+    "web/js/almanac-knowledge.js": "ba1b1ce69a46de1832dc62e9959d1ae439f10c7435bd19b5e94c57bf40eeeccd",
+    "web/js/storage.js": "13d7b5b1288991582a4102dbb48b64d0b98593d1fab1502169dce7e52be78f28",
+    "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "2e2841a10a2bc2e7fe9526b747717851e2c7f2194a0798a5b1ff593c35dd8931",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/data/almanac-yiji.json": "791c99f67bac66f7d1259d08aaeec3c53a540b3bdc8ae5403aaa107666ad6649",
+    "scripts/test-quiz-weak-questions.mjs": "bdcd33326dac9b3fd77a207019d89290e9f09e20e6f816044d0e47d4492fb1dc"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "networkRequests": [
+    {
+      "url": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+      "method": "GET",
+      "headers": {
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/protocol-guard.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/assets/academy-astrolabe-bg.webp",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isLinkPreload": true,
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/vendor/lenis.css",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/styles/main.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/styles/immersive.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/vendor/gsap.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/vendor/lenis.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/main.js?v=51",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/manifest.webmanifest",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Medium",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/audio-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/achievement-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/achievement-storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/data-loader.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/evolution-lab.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/share-card.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/modes/guaxu-mode.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/cinematic-motion.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/motion-system.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/render.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/review-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/reading-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/search-controller.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/star-relations.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/star-map.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/svg-painter.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/ui-icons.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/achievement-catalog.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/achievement-engine.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/achievement-engine.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/evolution-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/evolution-semantics.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/hexagram-utils.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/guaxu-wheel.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/modes/guaxu-mode.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/relation-animation.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/content-provenance.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/d3-force.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/star-layouts.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/star-atmosphere.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/star-label-layout.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/data/hexagrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/data/trigrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/data/commentaries/manifest.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/data/hexagram-keywords.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/celestial-stage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/vendor/three.module.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/celestial-stage.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+      "method": "GET",
+      "headers": {
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/vendor/three.core.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/lib/vendor/three.module.min.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/protocol-guard.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/assets/academy-astrolabe-bg.webp",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isLinkPreload": true,
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/vendor/lenis.css",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/styles/main.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/styles/immersive.css?v=51",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "VeryHigh",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/vendor/gsap.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/vendor/lenis.min.js",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Low",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/main.js?v=51",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/manifest.webmanifest",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "Medium",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/audio-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/achievement-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/achievement-storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/data-loader.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/evolution-lab.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/share-card.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/modes/guaxu-mode.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/cinematic-motion.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/motion-system.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/render.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/review-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/reading-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/search-controller.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/star-relations.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/star-map.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/svg-painter.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/ui-icons.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/storage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/achievement-storage.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/achievement-catalog.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/achievement-engine.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/evolution-state.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/evolution-semantics.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/hexagram-utils.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/evolution-lab.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/guaxu-wheel.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/modes/guaxu-mode.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/relation-animation.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/content-provenance.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/render.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/d3-force.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/star-layouts.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/star-atmosphere.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/star-label-layout.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/star-map.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/data/hexagrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/data/trigrams.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/data/commentaries/manifest.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/data/hexagram-keywords.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/celestial-stage.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/modes/quiz-mode.js?v=51",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/data/almanac-terms.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/data/almanac-yiji.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/vendor/three.module.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/celestial-stage.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/quiz-engine.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/modes/quiz-mode.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/learning-progress.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/modes/quiz-mode.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/quiz-session.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/modes/quiz-mode.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/assets/favicon.svg",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/?quiz-weak-probe=1440-original-cycle",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/learning-curriculum.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/learning-progress.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/lib/vendor/three.core.min.js",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/lib/vendor/three.module.min.js",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    },
+    {
+      "url": "http://127.0.0.1:60853/js/modes/review-mode.js?v=51",
+      "method": "GET",
+      "headers": {
+        "Origin": "http://127.0.0.1:60853",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "http://127.0.0.1:60853/js/main.js?v=51",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "sec-ch-ua": "\"Microsoft Edge\";v=\"155\", \"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "mixedContentType": "none",
+      "initialPriority": "High",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "isSameSite": true
+    }
+  ],
+  "profileRemoved": false,
+  "profileRetainedReason": "Isolated synthetic profile retained for diagnosis; no deletion attempted and no user profile touched."
+}

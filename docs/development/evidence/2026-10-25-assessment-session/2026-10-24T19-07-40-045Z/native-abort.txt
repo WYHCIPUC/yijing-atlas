@@ -1,0 +1,6 @@
+Command: & 'C:\Users\1\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' scripts/test-assessment-session.mjs
+Runtime: Node v24.19.0
+Observed exit code: 1
+stderr: Assertion failed: new_time >= loop->time, file src\win\core.c, line 327
+
+This attempt added trusted keydown capture to the probe only. The business sources were unchanged. The process aborted before any scenario completed; trace.json is the last running snapshot, not a live job or successful run. The previous 19:06 run completed 9/9 on Node v24.19.0. This failure shows that the host native timing assertion is not exclusive to Node v22. No profile deletion is attempted.

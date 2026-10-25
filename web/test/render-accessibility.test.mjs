@@ -67,7 +67,8 @@ test('卦象详情提供稳定页面标题与可同步的六爻折叠按钮', ()
   assert.match(mount.innerHTML, /<button[^>]+id="yao-toggle"[^>]+aria-expanded="true"[^>]+aria-controls="yao-body"/);
   assert.match(mount.innerHTML, /id="yao-body" role="region" aria-labelledby="yao-toggle"/);
   assert.match(mount.innerHTML, /class="seven-step-slip"/);
-  assert.match(mount.innerHTML, /本经原文 · 待校验/);
+  assert.match(mount.innerHTML, /data-layer="本经原文"[^>]+>原典 · 待校验/);
+  assert.match(mount.innerHTML, /data-layer="易传"[^>]+>原典 · 待校验/);
   assert.match(mount.innerHTML, /项目导读 · 项目自撰/);
   assert.ok(mount.innerHTML.indexOf('id="detail-lines"') < mount.innerHTML.indexOf('id="detail-relations"'));
 

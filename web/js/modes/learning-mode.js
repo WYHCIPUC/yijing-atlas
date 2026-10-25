@@ -3,10 +3,14 @@ import { ABILITY_DIMENSIONS } from '../achievement-catalog.js';
 import { createProgressEvent, summarizeAchievements } from '../achievement-engine.js';
 import { loadAchievementState, processAchievementEvent } from '../achievement-storage.js';
 import { renderLearningAssessmentPage } from '../learning-assessment-page.js';
-import { recommendLesson } from '../learning-assessment.js';
+import { recommendLearningTask } from '../learning-assessment.js';
 import { LEARNING_LESSONS } from '../learning-curriculum.js';
 import {
   calculateStreak,
+  getCourseWeakQuestions,
+  getQuizWeakQuestions,
+  getLearningResumeError,
+  getWeakQuestionsError,
   loadActivity,
   loadLearningRecord,
   markLessonViewed,
@@ -16,6 +20,7 @@ import {
 import { loadReviewConfig, saveReviewConfig } from '../learning-review.js';
 import { renderTrigrams } from '../render.js';
 import { getDueCount, loadReviewCards } from '../review-engine.js';
+import { loadWrongBook } from '../quiz-engine.js';
 import { renderLearningLessonPage, renderStudyPathPage, renderTheoremsPage, renderWingsPage } from '../study-page.js?v=50';
 import { downloadUserData, importUserData, parseUserData } from '../user-data.js';
 
@@ -40,14 +45,34 @@ function dispatchInsight(items) {
   document.dispatchEvent(new CustomEvent('yijing:workspace-insight', { detail: items }));
 }
 
-function renderTodaySection(content, onNavigate) {
+function escapeLearningText(value) {
+  return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderTodaySection(content, onNavigate, notice = '') {
   const record = loadLearningRecord();
   const summary = summarizeLearning(record, LEARNING_LESSONS);
-  const recommended = recommendLesson(record);
-  const dueCount = getDueCount(loadReviewCards());
+  const reviewCards = loadReviewCards();
+  const task = recommendLearningTask(record, { reviewCards, wrongCodes: loadWrongBook(), now: Date.now() });
+  const lessonId = task.type === 'course-weak' ? task.question?.lessonId : task.subject;
+  const lesson = LEARNING_LESSONS.find(item => item.id === lessonId);
+  const taskViews = {
+    resume: ['继续阅读', lesson?.title, '继续研习', '阅读当前课程，并完成本轮小试。'],
+    review: ['到期复习', `${task.count || 0} 项卦象间隔卡`, '开始到期复习', '先回忆、再核对，并按真实记忆完成自评。'],
+    'course-weak': ['课程温习', lesson?.title, '回练原题', '完成包含原题的小试，以有效答对纠正该项。'],
+    'quiz-question': ['测验与术语温习', `课程、测验与术语共 ${task.count || 0} 项待温习`, '回练原规则', '核对原规则与目标，以有效答对纠正该项。'],
+    'quiz-weak': ['旧卦码摘要', `${task.count || 0} 卦待温习`, '开始卦象练习', '原题型未保留；完成本次练习，不冒称原具体错误已纠正。'],
+    lesson: ['下一课', lesson?.title, '开始研习', '阅读课程并完成一次课后小试。'],
+    oral: ['复讲温习', lesson?.title, '开始复讲', '用自己的话复述，再对照要点自评。'],
+    empty: ['自由温习', '从五阶学程选择内容', '浏览全部课程', '按自己的需要选择温习内容。'],
+  };
+  const [typeLabel, title, actionLabel, completion] = taskViews[task.type] || taskViews.empty;
+  const dueCount = getDueCount(reviewCards);
+  const weakError = getWeakQuestionsError(record.weakQuestions);
+  const courseCount = getCourseWeakQuestions(record).length;
+  const quizCount = getQuizWeakQuestions(record).length;
+  const legacyCount = loadWrongBook().length;
   const streak = calculateStreak(loadActivity().days);
-  const recommendedProgress = summary.masteryByLesson[recommended?.id] || 0;
-  const lessonAction = recommended ? `data-lesson-id="${recommended.id}"` : 'disabled';
   content.innerHTML = `
     <section class="today-practice" aria-labelledby="today-practice-title">
       <header class="today-practice-head">
@@ -55,17 +80,20 @@ function renderTodaySection(content, onNavigate) {
         <div class="today-practice-rank"><small>当前学阶</small><strong>${summary.rank.label}</strong></div>
       </header>
       <article class="today-primary-card">
-        <div class="today-primary-index" aria-hidden="true">${String(LEARNING_LESSONS.indexOf(recommended) + 1).padStart(2, '0')}</div>
+        <div class="today-primary-index" aria-hidden="true">${lesson ? String(LEARNING_LESSONS.indexOf(lesson) + 1).padStart(2, '0') : '·'}</div>
         <div class="today-primary-copy">
-          <span>${recommended?.levelName || '蒙学'} · 推荐日课</span>
-          <h4>${recommended?.title || '从五阶学程选择一课'}</h4>
-          <p>${recommendedProgress ? `当前掌握度 ${recommendedProgress}%，继续巩固薄弱环节。` : '先建立清晰印象，再用小试检验是否真正看懂。'}</p>
+          <span>${escapeLearningText(typeLabel)}</span>
+          <h4>${escapeLearningText(title || '自由温习')}</h4>
+          <p>${escapeLearningText(task.reason)}</p>
+          <small>完成标准：${escapeLearningText(completion)}</small>
         </div>
-        <button type="button" class="quick-btn today-primary-action" ${lessonAction}>继续研习</button>
+        <button type="button" class="quick-btn today-primary-action">${escapeLearningText(actionLabel)}</button>
       </article>
+      ${notice || task.notice ? `<p class="assessment-warning" role="status">${escapeLearningText(notice || task.notice)}</p>` : ''}
       <div class="today-support-grid">
         <button type="button" class="today-support-card" data-mode-target="review">
-          <span>温故队列</span><strong>${dueCount}</strong><small>${dueCount ? '项已到期，建议先主动回忆' : '今日暂无到期内容'}</small>
+          <span>温故队列</span><strong>${weakError ? '待核对' : dueCount + courseCount + quizCount + legacyCount}</strong>
+          <small>卦象间隔卡 ${dueCount} 项 · ${weakError ? '温习记录异常，请先备份核对' : `课程温习 ${courseCount} 项 · 测验与术语 ${quizCount} 项`} · 旧卦码摘要 ${legacyCount} 项</small>
         </button>
         <button type="button" class="today-support-card" data-section-target="assessment">
           <span>即时小试</span><strong>${summary.checked}/${summary.total}</strong><small>用判断发现真正的薄弱点</small>
@@ -78,8 +106,16 @@ function renderTodaySection(content, onNavigate) {
         <span>今日建议</span><p>一课研读 → 一次小试 → 一项温故，约 25 分钟。</p>
       </footer>
     </section>`;
-  content.querySelector('[data-lesson-id]')?.addEventListener('click', (event) => {
-    onNavigate('path', { lessonId: event.currentTarget.dataset.lessonId });
+  content.querySelector('.today-primary-action')?.addEventListener('click', () => {
+    if (task.type === 'resume' || task.type === 'lesson') onNavigate('path', { lessonId: task.subject,
+      ...(task.type === 'resume' ? { resume: task.resume } : {}) });
+    else if (task.type === 'review') onNavigate('review-mode');
+    else if (task.type === 'quiz-question') onNavigate('quiz-mode', { wrongOnly: true, reference: task.question, returnTo: { mode: 'review' } });
+    else if (task.type === 'quiz-weak') onNavigate('quiz-mode', { wrongOnly: true, legacyCode: task.subject, returnTo: { mode: 'review' } });
+    else if (task.type === 'course-weak') onNavigate('assessment', { lessonId: task.question.lessonId,
+      requiredQuestionId: task.question.questionId, requiredQuestionVersion: task.question.questionVersion, returnTo: 'review' });
+    else if (task.type === 'oral') onNavigate('assessment', { initialOralLessonId: task.subject });
+    else onNavigate('path');
   });
   content.querySelectorAll('[data-section-target]').forEach((button) => {
     button.addEventListener('click', () => onNavigate(button.dataset.sectionTarget));
@@ -112,8 +148,20 @@ function renderLibrarySection(content, onNavigate) {
 
 function syncAchievementEvidence(record) {
   const topicByLesson = { 'l1-1': 'yin-yang', 'l1-4': 'eight-trigrams' };
+  const ids = record.processedAssessmentIds;
+  const hasMissingEvidence = ids !== undefined && (!Array.isArray(ids) ||
+    ids.some((id) => !record.assessmentSessions?.some((item) => item.sessionId === id)));
   Object.entries(record.lessons || {}).forEach(([lessonId, lesson]) => {
     if (!lesson?.viewedAt || !(lesson.attempts > 0)) return;
+    const sessions = (record.assessmentSessions || []).filter((item) => item.kind === 'lesson' && item.lessonId === lessonId);
+    const legacy = lesson.legacyAssessment || (!sessions.length && !hasMissingEvidence ? {
+      score: lesson.bestScore, at: lesson.lastStudiedAt || lesson.viewedAt,
+    } : null);
+    const evidence = [
+      ...(legacy ? [legacy] : []),
+      ...sessions.map((item) => ({ sessionId: item.sessionId, score: item.correct / item.total, at: item.at })),
+    ];
+    if (!evidence.length) return;
     processAchievementEvent(createProgressEvent({
       type: 'lesson.completed',
       subjectId: lessonId,
@@ -121,16 +169,18 @@ function syncAchievementEvidence(record) {
       occurredAt: lesson.lastStudiedAt || lesson.viewedAt,
       idempotencyKey: `learning-record:completed:${lessonId}`,
     }));
-    if (!Number.isFinite(lesson.bestScore)) return;
-    processAchievementEvent(createProgressEvent({
-      type: 'lesson.assessed',
-      subjectId: lessonId,
-      score: lesson.bestScore,
-      outcome: lesson.bestScore >= 0.6 ? 'passed' : 'failed',
-      occurredAt: lesson.lastStudiedAt || lesson.viewedAt,
-      idempotencyKey: `learning-record:assessed:${lessonId}:${lesson.lastStudiedAt || lesson.viewedAt}`,
-      metadata: topicByLesson[lessonId] ? { topic: topicByLesson[lessonId] } : {},
-    }));
+    evidence.forEach((item) => {
+      if (!Number.isFinite(item.score)) return;
+      processAchievementEvent(createProgressEvent({
+        type: 'lesson.assessed',
+        subjectId: lessonId,
+        score: item.score,
+        outcome: item.score >= 0.6 ? 'passed' : 'failed',
+        occurredAt: item.at,
+        idempotencyKey: `learning-record:assessed:${lessonId}:${item.sessionId || item.at}`,
+        metadata: topicByLesson[lessonId] ? { topic: topicByLesson[lessonId] } : {},
+      }));
+    });
   });
 }
 
@@ -263,7 +313,7 @@ function renderDataSection(content) {
   });
 }
 
-export function renderLearningMode(mountEl, appState, onNavigateMode) {
+export function renderLearningMode(mountEl, appState, onNavigateMode, entry = {}) {
   mountEl.innerHTML = `
     <div class="mode-panel learning-panel">
       <h2 class="mode-panel-title" data-page-heading>循序学易</h2>
@@ -280,9 +330,25 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
   `;
 
   const content = mountEl.querySelector('.learning-content');
+  let sectionFocusRequest = 0;
+  let lessonCleanup = null;
+  let disposed = false;
+  const cleanupLesson = () => { lessonCleanup?.(); lessonCleanup = null; };
   const showSection = (sectionId, options = {}) => {
+    if (disposed) return;
+    cleanupLesson();
+    if (sectionId === 'path' && options.resume && (getLearningResumeError(options.resume) || options.resume.lessonId !== options.lessonId)) {
+      sectionId = 'today';
+      options = { notice: '上次阅读位置已失效，已返回今日修习；原有学习成绩仍保留。' };
+    }
+    const focusRequest = ++sectionFocusRequest;
+    const isActiveSection = () => !disposed && focusRequest === sectionFocusRequest;
     if (sectionId === 'review-mode') {
       onNavigateMode?.('review');
+      return;
+    }
+    if (sectionId === 'quiz-mode') {
+      onNavigateMode?.('quiz', { ...options, wrongOnly: true });
       return;
     }
     document.body.classList.remove('lesson-overview-open');
@@ -296,7 +362,7 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
       if (selected) content.setAttribute('aria-labelledby', tab.id);
     });
     if (sectionId === 'today') {
-      renderTodaySection(content, showSection);
+      renderTodaySection(content, showSection, options.notice);
       dispatchInsight([
         ['今日次序', '一课 · 一试 · 一温故'],
         ['推荐原则', '继续未完成，再补薄弱项'],
@@ -320,9 +386,16 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
         ['比较方式', '只与自己的过去比较'],
       ]);
     } else if (options.lessonId && sectionId === 'path') {
-      renderLearningLessonPage(content, appState, options.lessonId, {
-        onBack() { showSection('path'); },
-        onAssess(lessonId) { showSection('assessment', { lessonId }); },
+      lessonCleanup = renderLearningLessonPage(content, appState, options.lessonId, {
+        returnTo: options.returnTo,
+        resume: options.resume,
+        onInvalidResume() { if (isActiveSection()) showSection('today', { notice: '上次阅读位置已失效，原有学习成绩仍保留。' }); },
+        onBack() {
+          if (!isActiveSection()) return;
+          if (options.returnTo === 'review') onNavigateMode?.('review');
+          else showSection('path');
+        },
+        onAssess(lessonId) { if (isActiveSection()) showSection('assessment', { ...options, lessonId }); },
       });
       const lesson = LEARNING_LESSONS.find((item) => item.id === options.lessonId);
       dispatchInsight([
@@ -332,11 +405,16 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
         ['推荐专注', '25 分钟'],
       ]);
     } else if (sectionId === 'assessment') {
-      renderLearningAssessmentPage(content, appState, {
+      lessonCleanup = renderLearningAssessmentPage(content, appState, {
         initialLessonId: options.lessonId,
-        onNavigate(target, lessonId) {
+        initialOralLessonId: options.initialOralLessonId,
+        requiredQuestionId: options.requiredQuestionId,
+        requiredQuestionVersion: options.requiredQuestionVersion,
+        returnTo: options.returnTo,
+        onNavigate(target, lessonId, questionEntry = {}) {
+          if (!isActiveSection()) return;
           if (target === 'explore') onNavigateMode?.('explore');
-          else showSection(target.replace('/', ''), { lessonId });
+          else showSection(target.replace('/', ''), { ...questionEntry, lessonId });
         },
       });
       dispatchInsight([
@@ -348,7 +426,22 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
     } else if (sectionId === 'trigrams') renderTrigrams(appState.trigrams, content);
     else if (sectionId === 'wings') renderWingsPage(content, appState);
     else if (sectionId === 'theorems') renderTheoremsPage(content, appState);
-    else if (sectionId === 'almanac') renderAlmanacKnowledgePage(content, appState, { showBackLink: false });
+    else if (sectionId === 'almanac') {
+      lessonCleanup = renderAlmanacKnowledgePage(content, appState, {
+        showBackLink: false, termId: options.termId,
+        ...(options.returnTo ? {
+          backLabel: options.returnTo.mode === 'quiz' ? '返回错题回练' : '返回温故队列',
+          onBack() {
+            if (!isActiveSection()) return;
+            if (options.returnTo.mode === 'quiz') onNavigateMode?.('quiz', {
+              ...options.returnTo.entry, wrongOnly: true, reference: options.quizReference,
+            });
+            else if (options.returnTo.mode === 'review') onNavigateMode?.('review');
+            else showSection('library');
+          },
+        } : {}),
+      });
+    }
     else if (sectionId === 'data') renderDataSection(content);
     else {
       renderStudyPathPage(content, appState, {
@@ -371,7 +464,7 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
         ['学习节律', '一次只推进一课'],
       ]);
     }
-    if (!options.lessonId && ['trigrams', 'wings', 'theorems', 'almanac'].includes(sectionId)) {
+    if (!options.lessonId && !options.quizReference && ['trigrams', 'wings', 'theorems', 'almanac'].includes(sectionId)) {
       bindSectionLearning(content, sectionId, (lessonId) => showSection('assessment', { lessonId }));
       const labels = {
         trigrams: ['当前书库', '八卦 · 象 · 性 · 德'],
@@ -389,10 +482,13 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
     const panel = mountEl.closest?.('.detail-panel');
     if (panel) panel.scrollTop = 0;
     content.scrollTop = 0;
+    if (options.focusContent === false) return;
     const schedule = window.requestAnimationFrame || ((callback) => callback());
+    const heading = content.querySelector('[data-page-heading], h3');
     schedule(() => {
-      const heading = content.querySelector('[data-page-heading], h3');
-      if (!heading) return;
+      if (disposed || focusRequest !== sectionFocusRequest) return;
+      if (content.querySelector('[data-learning-focus="oral"]') || content.querySelector('[data-learning-focus="term"]')) return;
+      if (!heading || heading.isConnected === false || content.querySelector('[data-page-heading], h3') !== heading) return;
       heading.tabIndex = -1;
       heading.focus?.({ preventScroll: true });
     });
@@ -403,13 +499,23 @@ export function renderLearningMode(mountEl, appState, onNavigateMode) {
     tab.addEventListener('click', () => showSection(tab.dataset.section));
   });
   mountEl.querySelector('.learning-tabs').addEventListener('keydown', (event) => {
+    if (disposed) return;
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
     const current = tabs.indexOf(document.activeElement);
     const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 :
       (current + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
     tabs[next].focus();
-    showSection(tabs[next].dataset.section);
+    showSection(tabs[next].dataset.section, { focusContent: false });
   });
-  showSection('today');
+  const initialSection = ['path', 'assessment', 'data'].includes(entry?.section) ||
+    (entry?.section === 'almanac' && typeof entry.termId === 'string' && entry.termId.trim()) ? entry.section : 'today';
+  showSection(initialSection, entry || {});
+  return () => {
+    if (disposed) return;
+    cleanupLesson();
+    disposed = true;
+    sectionFocusRequest++;
+    document.body.classList.remove('lesson-overview-open');
+  };
 }

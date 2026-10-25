@@ -1,0 +1,19 @@
+START 2026-10-24T23-42-06-327Z v22.23.1 C:\Users\1\AppData\Local\Temp\yijing-learning-feedback-rWJ6re
+RUN 1440-oral-self-record-retry
+FAIL 1440-oral-self-record-retry: Error: Cannot reach input [data-section-target="assessment"]
+    at waitFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:99:9)
+    at async pointFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:207:3)
+    at async click (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:230:71)
+    at async openAssessment (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:323:29)
+    at async oralSelf (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:373:3)
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:694:102)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:741:77
+Error: Cannot reach input [data-section-target="assessment"]
+    at waitFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:99:9)
+    at async pointFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:207:3)
+    at async click (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:230:71)
+    at async openAssessment (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:323:29)
+    at async oralSelf (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:373:3)
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:694:102)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:741:77
+{"status":"failed","exitCode":1,"passed":0,"total":1,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-42-06-327Z\\trace.json"}

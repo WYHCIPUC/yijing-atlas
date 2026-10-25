@@ -1,0 +1,18 @@
+validate	Browser smoke test	﻿2026-10-24T18:46:29.5181429Z ##[group]Run npm run test:e2e
+validate	Browser smoke test	2026-10-24T18:46:29.5181772Z ^[[36;1mnpm run test:e2e^[[0m
+validate	Browser smoke test	2026-10-24T18:46:29.5248385Z shell: /usr/bin/bash -e {0}
+validate	Browser smoke test	2026-10-24T18:46:29.5248654Z ##[endgroup]
+validate	Browser smoke test	2026-10-24T18:46:29.6309611Z
+validate	Browser smoke test	2026-10-24T18:46:29.6310177Z > yijing-atlas@1.1.1-rc.2 test:e2e
+validate	Browser smoke test	2026-10-24T18:46:29.6310871Z > node scripts/browser-smoke.mjs
+validate	Browser smoke test	2026-10-24T18:46:29.6311208Z
+validate	Browser smoke test	2026-10-24T18:47:01.4283073Z file:///home/runner/work/yijing-atlas/yijing-atlas/scripts/browser-smoke.mjs:274
+validate	Browser smoke test	2026-10-24T18:47:01.4284592Z   if (modal !== null && status.modal !== String(modal)) throw new Error(`阅读模态状态异常：${JSON.stringify({ stage, ...status })}`);
+validate	Browser smoke test	2026-10-24T18:47:01.4285454Z                                                               ^
+validate	Browser smoke test	2026-10-24T18:47:01.4285854Z
+validate	Browser smoke test	2026-10-24T18:47:01.4286773Z Error: 阅读模态状态异常：{"stage":"quick","open":true,"modal":"false","deepLink":false}
+validate	Browser smoke test	2026-10-24T18:47:01.4287696Z     at assertReadingStage (file:///home/runner/work/yijing-atlas/yijing-atlas/scripts/browser-smoke.mjs:274:63)
+validate	Browser smoke test	2026-10-24T18:47:01.4289336Z     at async file:///home/runner/work/yijing-atlas/yijing-atlas/scripts/browser-smoke.mjs:1015:3
+validate	Browser smoke test	2026-10-24T18:47:01.4290074Z
+validate	Browser smoke test	2026-10-24T18:47:01.4290288Z Node.js v22.23.3
+validate	Browser smoke test	2026-10-24T18:47:01.4424564Z ##[error]Process completed with exit code 1.

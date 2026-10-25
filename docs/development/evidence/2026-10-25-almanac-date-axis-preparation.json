@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-25T00:18:37.6875256Z",
+  "script": "scripts/test-almanac-date-axis.mjs",
+  "sha256": "461a5eda1257569952c25ed60046d80d4d5dc8643d1cdef2771644af6364f5cf",
+  "state": "Prepared; browser execution pending source freeze",
+  "actualChecks": [
+    {
+      "command": "node --check scripts/test-almanac-date-axis.mjs",
+      "exitCode": 0
+    },
+    {
+      "scopes": 8,
+      "exitCode": 0,
+      "command": "node scripts/test-almanac-date-axis.mjs --list"
+    },
+    {
+      "command": "node scripts/test-almanac-date-axis.mjs --help",
+      "exitCode": 0
+    }
+  ],
+  "scopes": [
+    "1440-full",
+    "390-full",
+    "1280-layout",
+    "768-layout",
+    "320-layout",
+    "1440-timezone-midnight",
+    "390-timezone-midnight",
+    "390-reduced-motion"
+  ],
+  "browserRunPerformed": false,
+  "originalPageRedCaptured": false,
+  "originalPageRedBoundary": "The implementation had already changed before the probe was ready; no old-page browser red is claimed.",
+  "outstanding": [
+    "Actual native date keyboard accessibility-tree and segmented-entry behavior",
+    "Actual interaction matrix and screenshots",
+    "Final before/after observed source hashes"
+  ],
+  "limitations": [
+    "No device/readscreen/native200/software-keyboard claim",
+    "Only isolated CDP browser input; injected clock/timezone explicitly synthetic",
+    "Representative 1280/768/320 layouts are not full-flow matrix"
+  ]
+}

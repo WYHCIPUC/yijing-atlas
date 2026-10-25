@@ -28,9 +28,17 @@ globalThis.document = {
   body: makeEl(),
   addEventListener: () => {},
 };
+const animationFrames = new Map();
+let frameSequence = 0;
 globalThis.window = {
   addEventListener: () => {},
   scrollTo: () => {},
+  requestAnimationFrame(callback) {
+    const id = ++frameSequence;
+    animationFrames.set(id, callback);
+    return id;
+  },
+  cancelAnimationFrame: id => animationFrames.delete(id),
 };
 globalThis.localStorage = { getItem: () => null, setItem: () => {}, removeItem: () => {} };
 globalThis.location = { hash: '#/library', pathname: '/' };
@@ -60,6 +68,9 @@ const results = [];
 async function tryRender(name, fn) {
   try {
     await fn();
+    for (const [id, callback] of [...animationFrames]) {
+      if (animationFrames.delete(id)) callback(0);
+    }
     results.push({ name, ok: true });
     console.log(`✓ ${name}`);
   } catch (e) {

@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: viewport acknowledgement before media change waits for coherent quick-reading modality
+not ok 1 - viewport acknowledgement before media change waits for coherent quick-reading modality
+  ---
+  duration_ms: 2.9837
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\browser-smoke-reading-state.test.mjs:48:1'
+  failureType: 'testCodeFailure'
+  error: '阅读模态状态异常：{"stage":"quick","open":true,"modal":"false","deepLink":false}'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    assertReadingStage (evalmachine.<anonymous>:8:63)
+    async TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/browser-smoke-reading-state.test.mjs:52:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: deep reading waits for its panel and URL to agree with the stage
+not ok 2 - deep reading waits for its panel and URL to agree with the stage
+  ---
+  duration_ms: 1.0045
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\browser-smoke-reading-state.test.mjs:56:1'
+  failureType: 'testCodeFailure'
+  error: '阅读层级或链接异常：{"stage":"deep","open":false,"modal":"true","deepLink":false}'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    assertReadingStage (evalmachine.<anonymous>:7:91)
+    async TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/browser-smoke-reading-state.test.mjs:60:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a permanently incorrect modal still fails with actual viewport and expected state
+not ok 3 - a permanently incorrect modal still fails with actual viewport and expected state
+  ---
+  duration_ms: 1.4787
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\browser-smoke-reading-state.test.mjs:63:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /768/. Input:
+
+    '阅读模态状态异常：{"stage":"quick","open":true,"modal":"false","deepLink":false}'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: '阅读模态状态异常：{"stage":"quick","open":true,"modal":"false","deepLink":false}'
+  operator: 'match'
+  stack: |-
+    Object.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/browser-smoke-reading-state.test.mjs:66:12)
+    expectedException (node:assert:576:17)
+    expectsError (node:assert:701:21)
+    Function.rejects (node:assert:767:3)
+    async TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/browser-smoke-reading-state.test.mjs:64:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an inconsistent open panel or deep link cannot pass a quick-reading assertion
+ok 4 - an inconsistent open panel or deep link cannot pass a quick-reading assertion
+  ---
+  duration_ms: 1.5686
+  type: 'test'
+  ...
+# Subtest: closed reading requires both the panel and deep link to be cleared
+not ok 5 - closed reading requires both the panel and deep link to be cleared
+  ---
+  duration_ms: 0.8912
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\browser-smoke-reading-state.test.mjs:77:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'rejects'
+  stack: |-
+    async TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/browser-smoke-reading-state.test.mjs:78:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: visible-state convergence does not skip the existing readable-content assertion
+ok 6 - visible-state convergence does not skip the existing readable-content assertion
+  ---
+  duration_ms: 2.5664
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 2
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 462.0708

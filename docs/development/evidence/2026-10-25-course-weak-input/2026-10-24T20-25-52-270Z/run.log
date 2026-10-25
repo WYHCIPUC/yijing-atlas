@@ -1,0 +1,9 @@
+FAILED 1440-l1-1-course-cycle: AssertionError [ERR_ASSERTION]: Real ArrowRight input must collapse incidental text selection before evidence capture
+
+'\n' !== ''
+
+    at screenshot (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:189:14)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:490:7
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:313:5)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:483:5
+{"status":"failed","browser":"Edg/155.0.4283.62","passed":0,"total":1,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-course-weak-input\\2026-10-24T20-25-52-270Z\\trace.json","profileRemoved":false}

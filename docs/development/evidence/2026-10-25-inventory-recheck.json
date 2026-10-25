@@ -1,0 +1,488 @@
+{
+  "checkedAt": "2026-10-24T18:56:06.961Z",
+  "head": "30796f755424949af9575bfbb674f4278994102f",
+  "branch": "codex/immersive-astrolabe-progress",
+  "scope": "Documentation inventory consistency and named committed CI runs only; parallel uncommitted changes are not accepted by this audit.",
+  "sourceDocuments": [
+    {
+      "path": "docs/development/12-ai-execution-tasks.md",
+      "sha256": "e8b5967549c0698604985e186b644bcf6651c8e973cd30363b175b3ad2f1d539"
+    },
+    {
+      "path": "docs/development/REMAINING-WORK-AND-GOAL.md",
+      "sha256": "3236b30adc4eed26a29c33595b8cab59306537d5e01b842094702a76886c9e25"
+    }
+  ],
+  "originalCards": 48,
+  "completedCards": [
+    "T-DIV-01"
+  ],
+  "openCards": 47,
+  "natureCounts": {
+    "已确认": 36,
+    "建议改进": 10,
+    "未来独立方案": 1
+  },
+  "rows": [
+    {
+      "id": "T-QA-01",
+      "priority": "P0",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-GROW-01",
+      "priority": "P0",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-SAVE-01",
+      "priority": "P0",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-STAR-01",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-STAR-02",
+      "priority": "P2",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-STAR-03",
+      "priority": "P2",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-SEARCH-01",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-READ-01",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-READ-02",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-READ-03",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-READ-04",
+      "priority": "P2",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-LEARN-01",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-LEARN-02",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-LEARN-03",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-QUIZ-01",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-LEARN-04",
+      "priority": "P2",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-LEARN-05",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-DIV-02",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-DIV-03",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-GROW-02",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-PRIV-01",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-CAL-01",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-CAL-02",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-CAL-03",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-SOUND-01",
+      "priority": "P1",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-SOUND-02",
+      "priority": "P2",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-MODAL-01",
+      "priority": "P2",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-ICON-01",
+      "priority": "P2",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-ASSET-02",
+      "priority": "P2",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-BACKUP-01",
+      "priority": "P2",
+      "nature": "建议改进",
+      "complete": false
+    },
+    {
+      "id": "T-BACKUP-02",
+      "priority": "P2",
+      "nature": "建议改进",
+      "complete": false
+    },
+    {
+      "id": "T-API-01",
+      "priority": "P2",
+      "nature": "建议改进",
+      "complete": false
+    },
+    {
+      "id": "T-CACHE-01",
+      "priority": "P2",
+      "nature": "建议改进",
+      "complete": false
+    },
+    {
+      "id": "T-CACHE-02",
+      "priority": "P2",
+      "nature": "建议改进",
+      "complete": false
+    },
+    {
+      "id": "T-CAPACITY-01",
+      "priority": "P2",
+      "nature": "建议改进",
+      "complete": false
+    },
+    {
+      "id": "T-SHARE-01",
+      "priority": "P2",
+      "nature": "建议改进",
+      "complete": false
+    },
+    {
+      "id": "T-ASSET-01",
+      "priority": "P2",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-DEP-01",
+      "priority": "P2",
+      "nature": "建议改进",
+      "complete": false
+    },
+    {
+      "id": "T-CONTENT-01",
+      "priority": "持续内容",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-CONTENT-02",
+      "priority": "持续内容",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-QA-02",
+      "priority": "P2",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-QA-03",
+      "priority": "P2",
+      "nature": "建议改进",
+      "complete": false
+    },
+    {
+      "id": "T-A11Y-01",
+      "priority": "外部验收",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-PERF-01",
+      "priority": "外部验收",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-WIN-01",
+      "priority": "本地收尾",
+      "nature": "已确认",
+      "complete": false
+    },
+    {
+      "id": "T-RELEASE-01",
+      "priority": "独立发布",
+      "nature": "未来独立方案",
+      "complete": false
+    },
+    {
+      "id": "T-COPY-01",
+      "priority": "P2",
+      "nature": "建议改进",
+      "complete": false
+    }
+  ],
+  "existingUnmappedRequirements": [
+    "间隔复习同轮幂等和保存重试",
+    "复讲旧响应与保存重试隔离",
+    "梅花时间法的当次时区/时间来源提示"
+  ],
+  "githubRuns": [
+    {
+      "conclusion": "success",
+      "headSha": "30796f755424949af9575bfbb674f4278994102f",
+      "jobs": [
+        {
+          "completedAt": "2026-10-24T18:51:42Z",
+          "conclusion": "success",
+          "databaseId": 120956971238,
+          "name": "validate",
+          "startedAt": "2026-10-24T18:50:15Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-24T18:50:17Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-24T18:50:16Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:50:20Z",
+              "conclusion": "success",
+              "name": "Checkout repository",
+              "number": 2,
+              "startedAt": "2026-10-24T18:50:17Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:50:24Z",
+              "conclusion": "success",
+              "name": "Set up Node.js",
+              "number": 3,
+              "startedAt": "2026-10-24T18:50:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:50:34Z",
+              "conclusion": "success",
+              "name": "Validate repository",
+              "number": 4,
+              "startedAt": "2026-10-24T18:50:24Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:51:39Z",
+              "conclusion": "success",
+              "name": "Browser smoke test",
+              "number": 5,
+              "startedAt": "2026-10-24T18:50:34Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:51:39Z",
+              "conclusion": "success",
+              "name": "Post Set up Node.js",
+              "number": 9,
+              "startedAt": "2026-10-24T18:51:39Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:51:39Z",
+              "conclusion": "success",
+              "name": "Post Checkout repository",
+              "number": 10,
+              "startedAt": "2026-10-24T18:51:39Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:51:39Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-24T18:51:39Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40122525878/job/120956971238"
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40122525878"
+    },
+    {
+      "conclusion": "success",
+      "headSha": "30796f755424949af9575bfbb674f4278994102f",
+      "jobs": [
+        {
+          "completedAt": "2026-10-24T18:51:36Z",
+          "conclusion": "success",
+          "databaseId": 120956987996,
+          "name": "validate",
+          "startedAt": "2026-10-24T18:50:19Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-24T18:50:20Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-24T18:50:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:50:23Z",
+              "conclusion": "success",
+              "name": "Checkout repository",
+              "number": 2,
+              "startedAt": "2026-10-24T18:50:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:50:24Z",
+              "conclusion": "success",
+              "name": "Set up Node.js",
+              "number": 3,
+              "startedAt": "2026-10-24T18:50:23Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:50:32Z",
+              "conclusion": "success",
+              "name": "Validate repository",
+              "number": 4,
+              "startedAt": "2026-10-24T18:50:24Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:51:34Z",
+              "conclusion": "success",
+              "name": "Browser smoke test",
+              "number": 5,
+              "startedAt": "2026-10-24T18:50:32Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:51:34Z",
+              "conclusion": "success",
+              "name": "Post Set up Node.js",
+              "number": 9,
+              "startedAt": "2026-10-24T18:51:34Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:51:34Z",
+              "conclusion": "success",
+              "name": "Post Checkout repository",
+              "number": 10,
+              "startedAt": "2026-10-24T18:51:34Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-24T18:51:34Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-24T18:51:34Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40122531469/job/120956987996"
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40122531469"
+    }
+  ],
+  "limitations": [
+    "Not a new full product acceptance",
+    "Earlier intermittent resize assertion failure remains unexplained",
+    "Device, screen-reader, actual 200% zoom, content and asset evidence remain open"
+  ]
+}

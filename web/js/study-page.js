@@ -2,10 +2,12 @@
 import { CURRICULUM_TRACKS, LEARNING_LEVELS, LEARNING_LESSONS } from './learning-curriculum.js';
 import {
   calculateStreak,
+  getLearningResumeError,
   loadActivity,
   loadLearningRecord,
   markLessonViewed,
   recordActivity,
+  saveLearningResume,
   summarizeLearning,
 } from './learning-progress.js';
 import { loadStats, loadWrongBook } from './quiz-engine.js';
@@ -117,11 +119,15 @@ function getLessonReading(lesson, appState) {
   return { entries, source: '传统历法与民俗术语资料', quote: entries[0]?.meaning || lesson.title, layer: '历法计算 · 民俗资料' };
 }
 
-export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, onAssess } = {}) {
+export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, onAssess, returnTo, resume, onInvalidResume } = {}) {
+  if (resume && (getLearningResumeError(resume) || resume.lessonId !== lessonId)) {
+    (onInvalidResume || onBack)?.();
+    return () => {};
+  }
   const lesson = LEARNING_LESSONS.find((item) => item.id === lessonId);
   if (!lesson) {
     onBack?.();
-    return;
+    return () => {};
   }
   const level = LEARNING_LEVELS.find((item) => item.id === lesson.levelId);
   const reading = getLessonReading(lesson, appState);
@@ -157,23 +163,141 @@ export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, 
       <article>${hexagramSvg('000000', { size: 88 })}<div><small>阴 · 坤</small><strong>顺、静、藏、降</strong><p>阴爻以两短横表示，重在柔顺与承载。</p></div></article>
     </section>` : '';
 
+  const sectionIds = { intro: 'lesson-lead', observe: 'lesson-observe', read: 'lesson-read',
+    explain: 'lesson-explain', apply: 'lesson-apply', practice: 'lesson-test' };
+  const panel = mountEl.closest?.('.detail-panel') || mountEl;
+  const schedule = window.requestAnimationFrame || ((callback) => callback());
+  let activeRoot;
+  let disposed = false;
+  let ready = false;
+  let restoreFrame = null;
+  let scrollFrame = null;
+  let saveTimer = null;
+  let message = '';
+  let messageState = '';
+  let restoringSavedPosition = Boolean(resume);
+  let latestPosition = resume ? { lessonId, section: resume.section, scrollTop: resume.scrollTop }
+    : { lessonId, section: 'intro', scrollTop: 0 };
+  let pending = resume ? null : latestPosition;
+  let lastSaved = resume ? JSON.stringify(latestPosition) : null;
+  const current = () => !disposed && activeRoot && activeRoot.isConnected !== false &&
+    mountEl.querySelector('.lesson-workspace') === activeRoot;
+  const showSaveMessage = () => {
+    const status = mountEl.querySelector('.lesson-resume-status');
+    if (status) status.dataset.state = messageState;
+    if (status && status.textContent !== message) status.textContent = message;
+  };
+  const capturePosition = (section) => {
+    if (!ready || !current()) return;
+    // The first-course overview is not a seventh persisted reading section.
+    if (!mountEl.querySelector('.lesson-reader-workspace')) return;
+    const panelTop = (panel.getBoundingClientRect?.().top || 0) + (panel.clientTop || 0);
+    const controls = mountEl.querySelector('.lesson-reading-controls')?.getBoundingClientRect();
+    const controlsBottom = controls && controls.top >= panelTop && controls.bottom <= panelTop + panel.clientHeight
+      ? controls.bottom + 8 : 0;
+    const focusLine = Math.max(panelTop + 48, controlsBottom);
+    const visible = [...mountEl.querySelectorAll('.lesson-method-section')]
+      .find(element => element.getBoundingClientRect().bottom > focusLine);
+    const inferred = Object.keys(sectionIds).find(key => sectionIds[key] === visible?.id) || 'practice';
+    latestPosition = { lessonId, section: section || inferred,
+      scrollTop: Math.max(0, Math.min(10000000, Number(panel.scrollTop) || 0)) };
+    pending = JSON.stringify(latestPosition) !== lastSaved ? latestPosition : null;
+  };
+  const flushPending = () => {
+    if (saveTimer !== null) window.clearTimeout?.(saveTimer);
+    saveTimer = null;
+    if (!pending || !current()) return;
+    const value = pending;
+    pending = null;
+    const result = saveLearningResume(value);
+    if (result.saved) lastSaved = JSON.stringify(value);
+    messageState = result.saved ? 'saved' : 'error';
+    message = result.saved ? '已记住阅读位置。' : '阅读位置未能保存；仍可继续学习。';
+    showSaveMessage();
+  };
+  const scheduleSave = () => {
+    if (!pending) return;
+    if (saveTimer !== null) window.clearTimeout?.(saveTimer);
+    saveTimer = window.setTimeout(flushPending, 200);
+  };
+  const onScroll = () => {
+    if (!ready || !current() || scrollFrame !== null) return;
+    scrollFrame = schedule(() => {
+      scrollFrame = null;
+      capturePosition();
+      scheduleSave();
+    });
+  };
+  const onPageHide = () => { capturePosition(); flushPending(); };
+  const cleanup = (section) => {
+    if (disposed) return;
+    capturePosition(section);
+    flushPending();
+    disposed = true;
+    if (restoreFrame !== null) window.cancelAnimationFrame?.(restoreFrame);
+    if (scrollFrame !== null) window.cancelAnimationFrame?.(scrollFrame);
+    panel.removeEventListener?.('scroll', onScroll);
+    window.removeEventListener?.('pagehide', onPageHide);
+  };
+  const takeReadingControl = () => {
+    if (restoreFrame !== null) window.cancelAnimationFrame?.(restoreFrame);
+    restoreFrame = null;
+    restoringSavedPosition = false;
+    ready = true;
+  };
+  const activateSurface = (restore = false) => {
+    if (restoreFrame !== null) window.cancelAnimationFrame?.(restoreFrame);
+    ready = false;
+    activeRoot = mountEl.querySelector('.lesson-workspace');
+    showSaveMessage();
+    const root = activeRoot;
+    restoreFrame = schedule(() => {
+      restoreFrame = null;
+      if (!current() || root !== activeRoot) return;
+      if (restore) {
+        const maximum = Math.max(0, panel.scrollHeight - panel.clientHeight);
+        panel.scrollTop = Math.min(latestPosition.scrollTop, Number.isFinite(maximum) ? maximum : latestPosition.scrollTop);
+        if (restoringSavedPosition) {
+          messageState = 'restored';
+          message = '已恢复上次阅读位置。';
+          restoringSavedPosition = false;
+          showSaveMessage();
+        }
+      }
+      ready = true;
+      flushPending();
+    });
+  };
+  panel.addEventListener?.('scroll', onScroll, { passive: true });
+  window.addEventListener?.('pagehide', onPageHide);
+
   function leaveLesson() {
+    if (!current()) return;
+    cleanup();
     document.body.classList.remove('lesson-overview-open');
     onBack?.();
   }
 
   function beginAssessment() {
+    if (!current()) return;
+    takeReadingControl();
+    mountEl.querySelector('#lesson-test')?.scrollIntoView({ block: 'start', behavior: 'auto' });
+    cleanup('practice');
     document.body.classList.remove('lesson-overview-open');
     onAssess?.(lesson.id);
   }
 
   function showOverview() {
+    if (disposed || (activeRoot && !current())) return;
+    capturePosition();
+    flushPending();
     document.body.classList.add('lesson-overview-open');
     mountEl.innerHTML = `
       <article class="lesson-workspace lesson-overview-workspace">
+        <p class="lesson-resume-status" role="status" aria-live="polite"></p>
         <header class="lesson-overview-heading">
           <div><span class="academy-kicker">${esc(level.name)} · 入门启蒙</span><h3 data-page-heading>${esc(level.name)} · ${esc(lesson.title)}</h3></div>
-          <button type="button" class="text-button lesson-back">切换课程</button>
+          <button type="button" class="text-button lesson-back">${returnTo === 'review' ? '返回温故队列' : '切换课程'}</button>
         </header>
         ${stageRail}
         <section class="lesson-concept-card">
@@ -204,14 +328,16 @@ export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, 
 
     mountEl.querySelector('.lesson-back').addEventListener('click', leaveLesson);
     mountEl.querySelector('.lesson-continue').addEventListener('click', showReader);
+    activateSurface();
   }
 
   function showReader() {
+    if (disposed || (activeRoot && !current())) return;
     document.body.classList.remove('lesson-overview-open');
     mountEl.innerHTML = `
       <article class="lesson-workspace lesson-reader-workspace">
         <div class="lesson-toolbar">
-          <button type="button" class="text-button lesson-back">${lesson.id === 'l1-1' ? '返回课程概览' : '返回学程'}</button>
+          <button type="button" class="text-button lesson-back">${lesson.id === 'l1-1' ? '返回课程概览' : returnTo === 'review' ? '返回温故队列' : '返回学程'}</button>
           <div><span>${esc(level.name)} · 第 ${lessonIndex + 1} 课</span><button type="button" class="quick-btn lesson-assess lesson-assess-top">完成阅读 · 小试</button></div>
         </div>
         ${stageRail}
@@ -220,7 +346,10 @@ export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, 
             <p class="academy-kicker">${esc(level.name)} · ${esc(level.title)}</p>
             <h3 data-page-heading>${esc(lesson.title)}</h3>
             <p class="lesson-lede">${esc(primary?.desc || level.desc)}</p>
-            ${methodRail}
+            <div class="lesson-reading-controls">
+              ${methodRail}
+              <p class="lesson-resume-status" role="status" aria-live="polite" aria-atomic="true"></p>
+            </div>
             ${polarity}
             <section class="lesson-method-section" id="lesson-lead"><span>引</span><h4>先明确本课要解决什么</h4><p>${esc(primary?.desc || level.desc)}</p></section>
             <section class="lesson-method-section" id="lesson-observe"><span>观</span><h4>先看结构，不急着下结论</h4><p>${esc(observation)}</p></section>
@@ -239,7 +368,7 @@ export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, 
           </aside>
         </div>
         <footer class="lesson-actions">
-          <button type="button" class="text-button lesson-back-secondary">${lesson.id === 'l1-1' ? '暂存并返回概览' : '暂存并返回'}</button>
+          <button type="button" class="text-button lesson-back-secondary">${lesson.id === 'l1-1' ? '返回课程概览' : returnTo === 'review' ? '返回温故队列' : '返回学程'}</button>
           <button type="button" class="quick-btn lesson-assess">完成阅读 · 开始小试</button>
         </footer>
       </article>`;
@@ -247,10 +376,23 @@ export function renderLearningLessonPage(mountEl, appState, lessonId, { onBack, 
     mountEl.querySelector('.lesson-back').addEventListener('click', lesson.id === 'l1-1' ? showOverview : leaveLesson);
     mountEl.querySelector('.lesson-back-secondary').addEventListener('click', lesson.id === 'l1-1' ? showOverview : leaveLesson);
     mountEl.querySelectorAll('.lesson-assess').forEach((button) => button.addEventListener('click', beginAssessment));
+    mountEl.querySelectorAll('.lesson-method-rail a').forEach(link => link.addEventListener('click', (event) => {
+      if (!current()) return;
+      const target = mountEl.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      takeReadingControl();
+      target.scrollIntoView({ block: 'start', behavior: 'auto' });
+      capturePosition(Object.keys(sectionIds).find(key => sectionIds[key] === target.id));
+      scheduleSave();
+    }));
+    activateSurface(true);
+    resume = null;
   }
 
-  if (lesson.id === 'l1-1') showOverview();
+  if (lesson.id === 'l1-1' && !resume) showOverview();
   else showReader();
+  return cleanup;
 }
 
 export function renderStudyPathPage(mountEl, appState, { onNavigate, onAssess } = {}) {

@@ -1,0 +1,8 @@
+{
+  "scope": "390-same-term-other-direction",
+  "exitCode": 0,
+  "sessions": [],
+  "nodePath": "C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "command": "$env:YIJING_QUIZ_WEAK_SCOPE = '390-same-term-other-direction'\n& 'C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe' scripts/test-quiz-weak-questions.mjs",
+  "output": "START 2026-10-24T21-50-17-580Z v24.19.0 profile=C:\\Users\\1\\AppData\\Local\\Temp\\yijing-quiz-weak-vtq76M\nRUN 390-same-term-other-direction\nPASS 390-same-term-other-direction\n{\"status\":\"passed\",\"passed\":1,\"total\":1,\"trace\":\"Y:\\\\易经学习项目\\\\docs\\\\development\\\\evidence\\\\2026-10-25-quiz-weak-input\\\\2026-10-24T21-50-17-580Z\\\\trace.json\",\"profile\":\"C:\\\\Users\\\\1\\\\AppData\\\\Local\\\\Temp\\\\yijing-quiz-weak-vtq76M\"}\n"
+}

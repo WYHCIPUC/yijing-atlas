@@ -1,0 +1,118 @@
+{
+  "task": "T-LEARN-03",
+  "scope": "review data layer only",
+  "status": "in-progress-not-accepted",
+  "frozenFor": "user requested remaining-work inventory; no further implementation or tests",
+  "command": "W:\\Node.js\\node.exe --test web/test/review-engine.test.mjs web/test/review-session.test.mjs",
+  "runtime": {
+    "path": "W:\\Node.js\\node.exe",
+    "node": "v22.23.1",
+    "libuv": "1.51.0",
+    "basis": "runtime used for the recorded completed test executions"
+  },
+  "runs": [
+    {
+      "stage": "initial-red",
+      "raw": "docs/development/evidence/2026-10-25-review-session-red.log",
+      "archive": "docs/development/evidence/2026-10-25-review-session-red.log.gz",
+      "exitCode": 1,
+      "tests": 24,
+      "passed": 8,
+      "failed": 16,
+      "rawSha256": "c2aa5fb4797fc4b4db75f94c3d72ec2303dddf78f80fe11e99b9ad37356a06b5",
+      "archiveSha256": "abd1b306c30ae8a98041d6d4b52c7970ad31eb54a813b4b9ec436162f2538cc7",
+      "originalBytesPreserved": true
+    },
+    {
+      "stage": "red-after-test-contract-correction",
+      "raw": "docs/development/evidence/2026-10-25-review-session-red-contract.log",
+      "archive": "docs/development/evidence/2026-10-25-review-session-red-contract.log.gz",
+      "exitCode": 1,
+      "tests": 24,
+      "passed": 8,
+      "failed": 16,
+      "rawSha256": "35f8f8f70d9a59c98d8d254ccad97b4e05ade65e82e73355ce7d93a7340a25fa",
+      "archiveSha256": "c7d3a4ce3b2bcd7fd19b2349f964e8ff0bc533ae399badc71fe44fe5e517c074",
+      "originalBytesPreserved": true
+    },
+    {
+      "stage": "minimal-implementation-green",
+      "raw": "docs/development/evidence/2026-10-25-review-session-green-first.log",
+      "archive": "docs/development/evidence/2026-10-25-review-session-green-first.log.gz",
+      "exitCode": 0,
+      "tests": 24,
+      "passed": 24,
+      "failed": 0,
+      "rawSha256": "1f6be660c2f45d3c164fd9b07aa8f4a3e21d1bf30316dd71f8ebff63d653b0f6",
+      "archiveSha256": "b4d3ece63d01b7c7b6a3cc5859cd0a94fcdab85cd68bdc5476438333ef58e626",
+      "originalBytesPreserved": true
+    },
+    {
+      "stage": "additional-boundaries-green",
+      "raw": "docs/development/evidence/2026-10-25-review-session-green-boundaries.log",
+      "archive": "docs/development/evidence/2026-10-25-review-session-green-boundaries.log.gz",
+      "exitCode": 0,
+      "tests": 31,
+      "passed": 31,
+      "failed": 0,
+      "rawSha256": "33210a2000f373e4b5b56c67e9a45f7055481659603f251f1a2d7e0d897abec3",
+      "archiveSha256": "fea5ab57274f170775966fce2bb71b7faf1b3bcc187779b025289823b23f5d92",
+      "originalBytesPreserved": true
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": "web/js/review-engine.js",
+      "sha256": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43"
+    },
+    {
+      "path": "web/js/review-session.js",
+      "sha256": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54"
+    },
+    {
+      "path": "web/test/review-engine.test.mjs",
+      "sha256": "fb16ea12cc959562d231ce1e0fb7b6e4623772f476f231a67db5f808a3c3ee98"
+    },
+    {
+      "path": "web/test/review-session.test.mjs",
+      "sha256": "a0299123567297f114a2a65eec65db07ffeaf51e98434ec483ca20ff4ef418f7"
+    }
+  ],
+  "implemented": [
+    "Strict ratings 0/1/2 and unchanged interval algorithm",
+    "Failed card writes do not advance caller memory",
+    "Fresh collection merge with current-card snapshot conflict protection",
+    "Opaque in-memory attempt token; first valid rating and time fixed across retries",
+    "Card persisted before activity/achievement; retry only unsuccessful parts",
+    "Corrupt or unreadable relevant stores are not replaced with empty fallback"
+  ],
+  "testAuthoringCorrection": "Initial red retained. Before implementation, assertions were corrected from nonexistent metrics.reviewSessions to existing processedKeys review-event keys. Corrected-contract red also failed 16 of 24.",
+  "remaining": [
+    "Review page integration and its tests are owned by root; this data-layer run does not establish their status",
+    "Real mouse/keyboard/touch verification of scoring, visible save failures, retries, navigation and same-round locking",
+    "Full validate, coverage inclusion if applicable, full E2E and independent integration review",
+    "T-LEARN-03 oral-review stale-request and save-feedback work is outside this data-layer ownership",
+    "Task documentation, evidence integration and final task acceptance"
+  ],
+  "notRunByThisDataGroup": [
+    "browser acceptance",
+    "full npm run validate",
+    "full npm run test:e2e",
+    "separate node --check",
+    "final git diff check",
+    "Git commit or push"
+  ],
+  "storageContract": {
+    "newKeys": false,
+    "backupVersionChanged": false,
+    "persistentReceipt": false,
+    "crossRefreshPendingRetry": false
+  },
+  "processState": {
+    "activeExecSession": null,
+    "activeFunctionsCell": null,
+    "browserStartedByThisTask": false,
+    "allRecordedTestsTerminal": true
+  },
+  "evidenceArchiveCheck": "All four gzip archives were decompressed and compared byte-for-byte with retained raw logs; no test rerun or source edit during this archive step"
+}

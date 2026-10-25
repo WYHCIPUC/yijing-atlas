@@ -43,6 +43,14 @@ export function galaxyBandY(x) {
   return 0.72 - x * 0.52 + Math.sin(x * 5.4) * 0.035;
 }
 
+export function sampleSkyDensity(nx, ny, aspect = 16 / 9) {
+  const cloud = noise(nx * aspect * 5.8 + 31, ny * 5.8 + 19);
+  const distance = ny - galaxyBandY(nx);
+  const band = Math.exp(-Math.pow(distance / 0.15, 2));
+  const dust = Math.exp(-Math.pow((distance + (cloud - 0.48) * 0.13) / 0.029, 2));
+  return Math.max(0.1, Math.min(1, (0.25 + cloud * 0.38 + band * 0.45) * (1 - dust * 0.7)));
+}
+
 // 只在初始化/尺寸改变时计算，最大约 2 MB；每帧复用 Canvas 纹理。
 export function createGalaxyTexture(viewWidth, viewHeight) {
   if (!Number.isFinite(viewWidth) || !Number.isFinite(viewHeight)

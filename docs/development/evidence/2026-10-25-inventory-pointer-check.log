@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: a second touch cancels the active drag and releases capture without selecting a star
+ok 1 - a second touch cancels the active drag and releases capture without selecting a star
+  ---
+  duration_ms: 1.4191
+  type: 'test'
+  ...
+# Subtest: a second touch also cancels a pending tap before the drag threshold
+ok 2 - a second touch also cancels a pending tap before the drag threshold
+  ---
+  duration_ms: 0.1485
+  type: 'test'
+  ...
+# Subtest: a second pointer outside the canvas also cancels the captured canvas gesture
+not ok 3 - a second pointer outside the canvas also cancels the captured canvas gesture
+  ---
+  duration_ms: 1.7351
+  type: 'test'
+  location: 'Y:\\易经学习项目\\web\\test\\star-pointer-lifecycle.test.mjs:77:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'undefined'
+    - 'function'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'function'
+  actual: 'undefined'
+  operator: 'strictEqual'
+  stack: |-
+    file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:81:12
+    pointerHarness (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:42:28)
+    TestContext.<anonymous> (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/star-pointer-lifecycle.test.mjs:78:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: window blur cancels a pending gesture, so a later pointerup cannot select
+ok 4 - window blur cancels a pending gesture, so a later pointerup cannot select
+  ---
+  duration_ms: 0.4772
+  type: 'test'
+  ...
+# Subtest: backgrounding clears the drag before pausing the scene
+ok 5 - backgrounding clears the drag before pausing the scene
+  ---
+  duration_ms: 0.2179
+  type: 'test'
+  ...
+# Subtest: destroy cancels capture and removes its window blur listener
+ok 6 - destroy cancels capture and removes its window blur listener
+  ---
+  duration_ms: 0.172
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 122.1027

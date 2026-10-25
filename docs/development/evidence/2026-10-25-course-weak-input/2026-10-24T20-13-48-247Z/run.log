@@ -1,0 +1,9 @@
+FAILED 1440-l1-1-course-cycle: AssertionError [ERR_ASSERTION]: The input did not match the regular expression /纠正/. Input:
+
+'本题未产生待温习记录。'
+
+    at correctFromQueue (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:376:10)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:425:7
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:287:5)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-course-weak-questions.mjs:413:5
+{"status":"failed","browser":"Edg/155.0.4283.62","passed":0,"total":1,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-course-weak-input\\2026-10-24T20-13-48-247Z\\trace.json","profileRemoved":false}

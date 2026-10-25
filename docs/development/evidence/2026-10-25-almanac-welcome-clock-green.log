@@ -1,0 +1,155 @@
+TAP version 13
+# ✓ 欢迎三入口保留名称与模态交互，今日卦引文在窄屏可换行
+# Subtest: web\\test\\daily-overlay-layout.test.mjs
+ok 1 - web\\test\\daily-overlay-layout.test.mjs
+  ---
+  duration_ms: 107.2778
+  type: 'test'
+  ...
+# Subtest: 黄历离页调用返回的清理函数，移除日期和术语会话后再绘制新页
+ok 2 - 黄历离页调用返回的清理函数，移除日期和术语会话后再绘制新页
+  ---
+  duration_ms: 2.0492
+  type: 'test'
+  ...
+# Subtest: 黄历面板关闭和重复清理只释放本轮一次，不遗留旧日期监听
+ok 3 - 黄历面板关闭和重复清理只释放本轮一次，不遗留旧日期监听
+  ---
+  duration_ms: 0.7762
+  type: 'test'
+  ...
+# Subtest: 温故入口把课程与原题上下文传给加载完成后的学习页
+ok 4 - 温故入口把课程与原题上下文传给加载完成后的学习页
+  ---
+  duration_ms: 0.6311
+  type: 'test'
+  ...
+# Subtest: 学习页导航转发可选上下文，普通导航不沿用上一张原题
+ok 5 - 学习页导航转发可选上下文，普通导航不沿用上一张原题
+  ---
+  duration_ms: 0.6117
+  type: 'test'
+  ...
+# Subtest: 较旧的学习加载即使最后完成也不能覆盖新原题入口
+ok 6 - 较旧的学习加载即使最后完成也不能覆盖新原题入口
+  ---
+  duration_ms: 1.176
+  type: 'test'
+  ...
+# Subtest: 课程加载失败不显示原题试卷，重试仍可使用同一入口上下文
+ok 7 - 课程加载失败不显示原题试卷，重试仍可使用同一入口上下文
+  ---
+  duration_ms: 0.6984
+  type: 'test'
+  ...
+# Subtest: 关闭仍在加载的学习页立即清除忙碌状态，迟到resolve不重开页面
+ok 8 - 关闭仍在加载的学习页立即清除忙碌状态，迟到resolve不重开页面
+  ---
+  duration_ms: 0.558
+  type: 'test'
+  ...
+# Subtest: 关闭仍在加载的学习页立即清除忙碌状态，迟到reject不重开页面
+ok 9 - 关闭仍在加载的学习页立即清除忙碌状态，迟到reject不重开页面
+  ---
+  duration_ms: 0.5023
+  type: 'test'
+  ...
+# Subtest: 关闭后再次打开学习时，旧加载结束不清除新请求的忙碌状态
+ok 10 - 关闭后再次打开学习时，旧加载结束不清除新请求的忙碌状态
+  ---
+  duration_ms: 0.6892
+  type: 'test'
+  ...
+# Subtest: 离开学习时在替换正文之前收尾，回星图重复清理仍只执行一次
+ok 11 - 离开学习时在替换正文之前收尾，回星图重复清理仍只执行一次
+  ---
+  duration_ms: 0.6989
+  type: 'test'
+  ...
+# Subtest: 较旧加载不会安装清理函数或销毁当前学习实例
+ok 12 - 较旧加载不会安装清理函数或销毁当前学习实例
+  ---
+  duration_ms: 0.6869
+  type: 'test'
+  ...
+# Subtest: 占筮重新进入及切换模块前清理旧结果，重复离开不再次执行
+ok 13 - 占筮重新进入及切换模块前清理旧结果，重复离开不再次执行
+  ---
+  duration_ms: 0.5601
+  type: 'test'
+  ...
+# Subtest: 推荐的旧错题入口明确传wrongOnly，普通测验不沿用
+ok 14 - 推荐的旧错题入口明确传wrongOnly，普通测验不沿用
+  ---
+  duration_ms: 0.6058
+  type: 'test'
+  ...
+# Subtest: 温故与测验转发完整原题和术语返回上下文，离开前执行各自cleanup
+ok 15 - 温故与测验转发完整原题和术语返回上下文，离开前执行各自cleanup
+  ---
+  duration_ms: 0.5782
+  type: 'test'
+  ...
+# Subtest: 旧卦码入口不补造原题引用，下一次普通测验不继承legacyCode
+ok 16 - 旧卦码入口不补造原题引用，下一次普通测验不继承legacyCode
+  ---
+  duration_ms: 0.4636
+  type: 'test'
+  ...
+# Subtest: 迟到review加载不覆盖新入口、焦点或清理函数
+ok 17 - 迟到review加载不覆盖新入口、焦点或清理函数
+  ---
+  duration_ms: 1.1094
+  type: 'test'
+  ...
+# Subtest: 迟到quiz加载不覆盖新入口、焦点或清理函数
+ok 18 - 迟到quiz加载不覆盖新入口、焦点或清理函数
+  ---
+  duration_ms: 0.5341
+  type: 'test'
+  ...
+# Subtest: 原题必需资料加载失败不渲染随机题，重试仍携同一reference
+ok 19 - 原题必需资料加载失败不渲染随机题，重试仍携同一reference
+  ---
+  duration_ms: 0.7674
+  type: 'test'
+  ...
+# Subtest: 温故可选加载术语资料，失败不阻断队列；正式术语入口保留加载失败
+ok 20 - 温故可选加载术语资料，失败不阻断队列；正式术语入口保留加载失败
+  ---
+  duration_ms: 1.1312
+  type: 'test'
+  ...
+# Subtest: 欢迎的零基础路径直接进入首课，其他两条路径保持原含义
+ok 21 - 欢迎的零基础路径直接进入首课，其他两条路径保持原含义
+  ---
+  duration_ms: 0.751
+  type: 'test'
+  ...
+# Subtest: 欢迎日卦选择与显示日期使用同一次设备本地取时
+ok 22 - 欢迎日卦选择与显示日期使用同一次设备本地取时
+  ---
+  duration_ms: 1.5953
+  type: 'test'
+  ...
+# Subtest: 模式通用聚焦尊重复讲入口，旧帧不聚焦新页或已移除控件
+ok 23 - 模式通用聚焦尊重复讲入口，旧帧不聚焦新页或已移除控件
+  ---
+  duration_ms: 0.6722
+  type: 'test'
+  ...
+# Subtest: 术语summary目标优先于标题并保留原生Tab顺序
+ok 24 - 术语summary目标优先于标题并保留原生Tab顺序
+  ---
+  duration_ms: 0.4378
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 188.0154

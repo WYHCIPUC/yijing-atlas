@@ -1,0 +1,1247 @@
+{
+  "schemaVersion": 1,
+  "taskId": "T-QUIZ-01",
+  "generatedAt": "2026-10-24T21:53:28.7842387Z",
+  "purpose": "Inventory-only evidence summary; no browser or product test launched while creating this file.",
+  "taskStatus": "open-partially-implemented-acceptance-incomplete",
+  "head": "08a3c9f23819820deead93d4c2e1222e7b2112b1",
+  "currentSource": {
+    "hashAlgorithm": "SHA256",
+    "fileCount": 23,
+    "hashes": {
+      "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+      "web/js/main.js": "7b3ad942f4d51293035daa81b7c7cc3fe13ee456b1fd1f342f1ffa4f51edcb8d",
+      "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+      "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+      "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+      "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+      "web/js/user-data.js": "3afccc2472dbab027089a7686ec1e43249a3f889b55be8610eebacef7bca1f6d",
+      "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+      "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+      "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+      "web/js/modes/quiz-mode.js": "d63a0fe1ce0f231fa67c71d9b4903484c387c1b9ffb4dfdec08803e3e046600e",
+      "web/js/modes/review-mode.js": "8adbee1de930ede4f35bc471587081f606d293370313a924ad22cd1483ae4adc",
+      "web/js/modes/learning-mode.js": "f2d1a600294cf3bd2f73d5e884aecb18945d31fbde83776fd93a4d0026e68675",
+      "web/js/almanac-knowledge.js": "ba1b1ce69a46de1832dc62e9959d1ae439f10c7435bd19b5e94c57bf40eeeccd",
+      "web/js/storage.js": "13d7b5b1288991582a4102dbb48b64d0b98593d1fab1502169dce7e52be78f28",
+      "web/js/data-loader.js": "1272ab4b6d80131c984d25d904447045a7bf004e9320ae445eb9006cd7eeb0b5",
+      "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+      "web/styles/immersive.css": "4d6b8421b6522999287dac7b651e05259e44b930d9d956f8bb7614ba72f79c5b",
+      "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+      "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+      "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+      "web/data/almanac-yiji.json": "791c99f67bac66f7d1259d08aaeec3c53a540b3bdc8ae5403aaa107666ad6649",
+      "scripts/test-quiz-weak-questions.mjs": "4ce6703addf56605570efd2c18f29afd44b99cfd4bc0d8d9098735b1f6f20841"
+    },
+    "includesProbe": true,
+    "workingTreeChanges": "T-QUIZ-01 implementation and probe remain uncommitted; HEAD alone does not identify these bytes."
+  },
+  "counts": {
+    "plannedScopes": 18,
+    "passedCurrentSource": 9,
+    "unverified": 9,
+    "unverifiedHostNativeAbort": 2,
+    "unverifiedNotRun": 7,
+    "acceptedTrustedInputEvents": 74,
+    "acceptedScreenshots": 22,
+    "preservedHistoricalRuns": 20,
+    "historicalNativeAborts": 6,
+    "historicalProductContrastFailures": 3
+  },
+  "acceptancePolicy": "Only terminal exit 0 with passed scenario, stable source and 23 current matching start/end hashes is accepted. Independent scopes are not one full-matrix run. Historical partial output/native aborts are never merged into green.",
+  "scopes": [
+    {
+      "scope": "1440-question-readability",
+      "status": "passed-current-source",
+      "accepted": true,
+      "adoptedDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-36-722Z",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "exitCode": 0,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 1,
+      "screenshotCount": 1,
+      "pageErrors": [],
+      "fixtures": {
+        "at": "2026-10-24T21:49:38.126Z",
+        "values": {}
+      },
+      "faults": null,
+      "reason": "Terminal exit 0; this independent scope passed with all 23 start/end hashes equal to the current snapshot."
+    },
+    {
+      "scope": "1440-term-source-readability",
+      "status": "passed-current-source",
+      "accepted": true,
+      "adoptedDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-12-538Z",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "exitCode": 0,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 26,
+      "screenshotCount": 4,
+      "pageErrors": [],
+      "fixtures": {
+        "at": "2026-10-24T21:48:14.023Z",
+        "values": {
+          "yijing-learning-record-v2": {
+            "version": 2,
+            "lessons": {},
+            "spotChecks": [],
+            "exams": [],
+            "oralReviews": [],
+            "weakQuestions": {
+              "almanac:jianshe-jian:name-to-meaning": {
+                "sourceKind": "almanac",
+                "questionId": "almanac:jianshe-jian:name-to-meaning",
+                "questionVersion": "almanac-v1",
+                "questionType": "name-to-meaning",
+                "targetCode": null,
+                "termId": "jianshe-jian",
+                "lessonId": null,
+                "firstWrongAt": "2026-10-24T08:00:00Z",
+                "lastWrongAt": "2026-10-24T08:00:00Z",
+                "lastSessionId": "synthetic-wrong-0-almanac:jianshe-jian:name-to-meaning",
+                "wrongCount": 1,
+                "status": "due",
+                "lastReviewedAt": null,
+                "resolvedAt": null
+              }
+            }
+          }
+        }
+      },
+      "faults": null,
+      "reason": "Terminal exit 0; this independent scope passed with all 23 start/end hashes equal to the current snapshot."
+    },
+    {
+      "scope": "390-term-source-readability",
+      "status": "passed-current-source",
+      "accepted": true,
+      "adoptedDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-03-241Z",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "exitCode": 0,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 4,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": {
+        "at": "2026-10-24T21:49:04.317Z",
+        "values": {
+          "yijing-learning-record-v2": {
+            "version": 2,
+            "lessons": {},
+            "spotChecks": [],
+            "exams": [],
+            "oralReviews": [],
+            "weakQuestions": {
+              "almanac:jianshe-jian:name-to-meaning": {
+                "sourceKind": "almanac",
+                "questionId": "almanac:jianshe-jian:name-to-meaning",
+                "questionVersion": "almanac-v1",
+                "questionType": "name-to-meaning",
+                "targetCode": null,
+                "termId": "jianshe-jian",
+                "lessonId": null,
+                "firstWrongAt": "2026-10-24T08:00:00Z",
+                "lastWrongAt": "2026-10-24T08:00:00Z",
+                "lastSessionId": "synthetic-wrong-0-almanac:jianshe-jian:name-to-meaning",
+                "wrongCount": 1,
+                "status": "due",
+                "lastReviewedAt": null,
+                "resolvedAt": null
+              }
+            }
+          }
+        }
+      },
+      "faults": null,
+      "reason": "Terminal exit 0; this independent scope passed with all 23 start/end hashes equal to the current snapshot."
+    },
+    {
+      "scope": "1440-original-cycle",
+      "status": "passed-current-source",
+      "accepted": true,
+      "adoptedDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-43-937Z",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "exitCode": 0,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 15,
+      "screenshotCount": 5,
+      "pageErrors": [],
+      "fixtures": {
+        "at": "2026-10-24T21:49:45.17Z",
+        "values": {}
+      },
+      "faults": null,
+      "reason": "Terminal exit 0; this independent scope passed with all 23 start/end hashes equal to the current snapshot."
+    },
+    {
+      "scope": "390-original-cycle",
+      "status": "unverified-host-native-abort",
+      "accepted": false,
+      "adoptedDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-56-129Z",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "exitCode": 1,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "trustedInputCount": null,
+      "screenshotCount": 0,
+      "pageErrors": null,
+      "fixtures": null,
+      "faults": null,
+      "reason": "Runtime aborted before finally; no completed verdict or final hashes/pageErrors. Historical partial passes do not satisfy current acceptance."
+    },
+    {
+      "scope": "1440-same-hex-other-rule",
+      "status": "passed-current-source",
+      "accepted": true,
+      "adoptedDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-07-837Z",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "exitCode": 0,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 7,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": {
+        "at": "2026-10-24T21:50:09.008Z",
+        "values": {
+          "yijing-learning-record-v2": {
+            "version": 2,
+            "lessons": {},
+            "spotChecks": [],
+            "exams": [],
+            "oralReviews": [],
+            "weakQuestions": {
+              "quiz:opposite:111111": {
+                "sourceKind": "quiz",
+                "questionId": "quiz:opposite:111111",
+                "questionVersion": "quiz-v1",
+                "questionType": "opposite",
+                "targetCode": "111111",
+                "termId": null,
+                "lessonId": null,
+                "firstWrongAt": "2026-10-24T08:00:00Z",
+                "lastWrongAt": "2026-10-24T08:00:00Z",
+                "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                "wrongCount": 1,
+                "status": "due",
+                "lastReviewedAt": null,
+                "resolvedAt": null
+              },
+              "quiz:name:111111": {
+                "sourceKind": "quiz",
+                "questionId": "quiz:name:111111",
+                "questionVersion": "quiz-v1",
+                "questionType": "name",
+                "targetCode": "111111",
+                "termId": null,
+                "lessonId": null,
+                "firstWrongAt": "2026-10-24T08:00:00.001Z",
+                "lastWrongAt": "2026-10-24T08:00:00.001Z",
+                "lastSessionId": "synthetic-wrong-1-quiz:name:111111",
+                "wrongCount": 1,
+                "status": "due",
+                "lastReviewedAt": null,
+                "resolvedAt": null
+              }
+            }
+          }
+        }
+      },
+      "faults": null,
+      "reason": "Terminal exit 0; this independent scope passed with all 23 start/end hashes equal to the current snapshot."
+    },
+    {
+      "scope": "390-same-term-other-direction",
+      "status": "passed-current-source",
+      "accepted": true,
+      "adoptedDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-17-580Z",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "exitCode": 0,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 6,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": {
+        "at": "2026-10-24T21:50:18.846Z",
+        "values": {
+          "yijing-learning-record-v2": {
+            "version": 2,
+            "lessons": {},
+            "spotChecks": [],
+            "exams": [],
+            "oralReviews": [],
+            "weakQuestions": {
+              "almanac:jianshe-jian:name-to-meaning": {
+                "sourceKind": "almanac",
+                "questionId": "almanac:jianshe-jian:name-to-meaning",
+                "questionVersion": "almanac-v1",
+                "questionType": "name-to-meaning",
+                "targetCode": null,
+                "termId": "jianshe-jian",
+                "lessonId": null,
+                "firstWrongAt": "2026-10-24T08:00:00Z",
+                "lastWrongAt": "2026-10-24T08:00:00Z",
+                "lastSessionId": "synthetic-wrong-0-almanac:jianshe-jian:name-to-meaning",
+                "wrongCount": 1,
+                "status": "due",
+                "lastReviewedAt": null,
+                "resolvedAt": null
+              },
+              "almanac:jianshe-jian:meaning-to-name": {
+                "sourceKind": "almanac",
+                "questionId": "almanac:jianshe-jian:meaning-to-name",
+                "questionVersion": "almanac-v1",
+                "questionType": "meaning-to-name",
+                "targetCode": null,
+                "termId": "jianshe-jian",
+                "lessonId": null,
+                "firstWrongAt": "2026-10-24T08:00:00.001Z",
+                "lastWrongAt": "2026-10-24T08:00:00.001Z",
+                "lastSessionId": "synthetic-wrong-1-almanac:jianshe-jian:meaning-to-name",
+                "wrongCount": 1,
+                "status": "due",
+                "lastReviewedAt": null,
+                "resolvedAt": null
+              }
+            }
+          }
+        }
+      },
+      "faults": null,
+      "reason": "Terminal exit 0; this independent scope passed with all 23 start/end hashes equal to the current snapshot."
+    },
+    {
+      "scope": "1440-retry-stats",
+      "status": "unverified-host-native-abort",
+      "accepted": false,
+      "adoptedDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-25-466Z",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "exitCode": 1,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "trustedInputCount": null,
+      "screenshotCount": 0,
+      "pageErrors": null,
+      "fixtures": null,
+      "faults": null,
+      "reason": "Runtime aborted before finally; no completed verdict or final hashes/pageErrors. Historical partial passes do not satisfy current acceptance."
+    },
+    {
+      "scope": "1440-retry-weak",
+      "status": "passed-current-source",
+      "accepted": true,
+      "adoptedDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-43-331Z",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "exitCode": 0,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": {
+        "at": "2026-10-24T21:50:45.433Z",
+        "values": {
+          "yijing-learning-record-v2": {
+            "version": 2,
+            "lessons": {},
+            "spotChecks": [],
+            "exams": [],
+            "oralReviews": [],
+            "weakQuestions": {
+              "quiz:opposite:111111": {
+                "sourceKind": "quiz",
+                "questionId": "quiz:opposite:111111",
+                "questionVersion": "quiz-v1",
+                "questionType": "opposite",
+                "targetCode": "111111",
+                "termId": null,
+                "lessonId": null,
+                "firstWrongAt": "2026-10-24T08:00:00Z",
+                "lastWrongAt": "2026-10-24T08:00:00Z",
+                "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                "wrongCount": 1,
+                "status": "due",
+                "lastReviewedAt": null,
+                "resolvedAt": null
+              }
+            }
+          }
+        }
+      },
+      "faults": {
+        "key": "yijing-learning-record-v2",
+        "kind": "QuotaExceededError",
+        "phase": "answer-and-first-retry"
+      },
+      "reason": "Terminal exit 0; this independent scope passed with all 23 start/end hashes equal to the current snapshot."
+    },
+    {
+      "scope": "1440-retry-review",
+      "status": "passed-current-source",
+      "accepted": true,
+      "adoptedDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-53-870Z",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "exitCode": 0,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": {
+        "at": "2026-10-24T21:50:55.298Z",
+        "values": {
+          "yijing-learning-record-v2": {
+            "version": 2,
+            "lessons": {},
+            "spotChecks": [],
+            "exams": [],
+            "oralReviews": [],
+            "weakQuestions": {
+              "quiz:opposite:111111": {
+                "sourceKind": "quiz",
+                "questionId": "quiz:opposite:111111",
+                "questionVersion": "quiz-v1",
+                "questionType": "opposite",
+                "targetCode": "111111",
+                "termId": null,
+                "lessonId": null,
+                "firstWrongAt": "2026-10-24T08:00:00Z",
+                "lastWrongAt": "2026-10-24T08:00:00Z",
+                "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                "wrongCount": 1,
+                "status": "due",
+                "lastReviewedAt": null,
+                "resolvedAt": null
+              }
+            }
+          }
+        }
+      },
+      "faults": {
+        "key": "yijing-review-cards",
+        "kind": "QuotaExceededError",
+        "phase": "answer-and-first-retry"
+      },
+      "reason": "Terminal exit 0; this independent scope passed with all 23 start/end hashes equal to the current snapshot."
+    },
+    {
+      "scope": "1440-retry-activity",
+      "status": "passed-current-source",
+      "accepted": true,
+      "adoptedDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-51-03-712Z",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "exitCode": 0,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "trustedInputCount": 5,
+      "screenshotCount": 2,
+      "pageErrors": [],
+      "fixtures": {
+        "at": "2026-10-24T21:51:05.15Z",
+        "values": {
+          "yijing-learning-record-v2": {
+            "version": 2,
+            "lessons": {},
+            "spotChecks": [],
+            "exams": [],
+            "oralReviews": [],
+            "weakQuestions": {
+              "quiz:opposite:111111": {
+                "sourceKind": "quiz",
+                "questionId": "quiz:opposite:111111",
+                "questionVersion": "quiz-v1",
+                "questionType": "opposite",
+                "targetCode": "111111",
+                "termId": null,
+                "lessonId": null,
+                "firstWrongAt": "2026-10-24T08:00:00Z",
+                "lastWrongAt": "2026-10-24T08:00:00Z",
+                "lastSessionId": "synthetic-wrong-0-quiz:opposite:111111",
+                "wrongCount": 1,
+                "status": "due",
+                "lastReviewedAt": null,
+                "resolvedAt": null
+              }
+            }
+          }
+        }
+      },
+      "faults": {
+        "key": "yijing-activity-v1",
+        "kind": "QuotaExceededError",
+        "phase": "answer-and-first-retry"
+      },
+      "reason": "Terminal exit 0; this independent scope passed with all 23 start/end hashes equal to the current snapshot."
+    },
+    {
+      "scope": "1440-retry-achievement",
+      "status": "unverified-not-run",
+      "accepted": false,
+      "adoptedDirectory": null,
+      "runtime": null,
+      "exitCode": null,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": null,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "trustedInputCount": null,
+      "screenshotCount": null,
+      "pageErrors": null,
+      "fixtures": null,
+      "faults": null,
+      "reason": "No execution evidence for this scope; stopped on latest inventory-only instruction."
+    },
+    {
+      "scope": "1440-retry-legacy",
+      "status": "unverified-not-run",
+      "accepted": false,
+      "adoptedDirectory": null,
+      "runtime": null,
+      "exitCode": null,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": null,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "trustedInputCount": null,
+      "screenshotCount": null,
+      "pageErrors": null,
+      "fixtures": null,
+      "faults": null,
+      "reason": "No execution evidence for this scope; stopped on latest inventory-only instruction."
+    },
+    {
+      "scope": "390-retry-weak",
+      "status": "unverified-not-run",
+      "accepted": false,
+      "adoptedDirectory": null,
+      "runtime": null,
+      "exitCode": null,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": null,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "trustedInputCount": null,
+      "screenshotCount": null,
+      "pageErrors": null,
+      "fixtures": null,
+      "faults": null,
+      "reason": "No execution evidence for this scope; stopped on latest inventory-only instruction."
+    },
+    {
+      "scope": "390-retry-achievement",
+      "status": "unverified-not-run",
+      "accepted": false,
+      "adoptedDirectory": null,
+      "runtime": null,
+      "exitCode": null,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": null,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "trustedInputCount": null,
+      "screenshotCount": null,
+      "pageErrors": null,
+      "fixtures": null,
+      "faults": null,
+      "reason": "No execution evidence for this scope; stopped on latest inventory-only instruction."
+    },
+    {
+      "scope": "1440-legacy-unavailable",
+      "status": "unverified-not-run",
+      "accepted": false,
+      "adoptedDirectory": null,
+      "runtime": null,
+      "exitCode": null,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": null,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "trustedInputCount": null,
+      "screenshotCount": null,
+      "pageErrors": null,
+      "fixtures": null,
+      "faults": null,
+      "reason": "No execution evidence for this scope; stopped on latest inventory-only instruction."
+    },
+    {
+      "scope": "390-stale-offline",
+      "status": "unverified-not-run",
+      "accepted": false,
+      "adoptedDirectory": null,
+      "runtime": null,
+      "exitCode": null,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": null,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "trustedInputCount": null,
+      "screenshotCount": null,
+      "pageErrors": null,
+      "fixtures": null,
+      "faults": null,
+      "reason": "No execution evidence for this scope; stopped on latest inventory-only instruction."
+    },
+    {
+      "scope": "320-queue-term-geometry",
+      "status": "unverified-not-run",
+      "accepted": false,
+      "adoptedDirectory": null,
+      "runtime": null,
+      "exitCode": null,
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": null,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "trustedInputCount": null,
+      "screenshotCount": null,
+      "pageErrors": null,
+      "fixtures": null,
+      "faults": null,
+      "reason": "No execution evidence for this scope; stopped on latest inventory-only instruction."
+    }
+  ],
+  "history": [
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-35-42-693Z",
+      "scope": "1440-original-cycle",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "classification": "host-native-abort",
+      "rawTraceStatus": "running",
+      "terminalExitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-35-42-693Z/host-interruption.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": false,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-original-cycle",
+          "rawStatus": "running"
+        }
+      ],
+      "screenshotCount": 0,
+      "interruption": {
+        "nativeAssertion": "Assertion failed: new_time >= loop->time, src/win/core.c line 327",
+        "productVerdict": "not obtained",
+        "endHashesAndPageErrors": "not obtained",
+        "originalTracePreserved": true
+      },
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-35-42-693Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-35-42-693Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-36-17-670Z",
+      "scope": "1440-original-cycle",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "classification": "passed-historical-source",
+      "rawTraceStatus": "passed",
+      "terminalExitCode": 0,
+      "exitEvidence": "terminal tool result and run.log retained; exit code also reported to parent",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": false,
+      "finalHashesMatchCurrent": false,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-original-cycle",
+          "rawStatus": "passed"
+        }
+      ],
+      "screenshotCount": 5,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-36-17-670Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-36-17-670Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-43-22-054Z",
+      "scope": "1440-question-readability",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "classification": "product-contrast-failure",
+      "rawTraceStatus": "failed",
+      "terminalExitCode": 1,
+      "exitEvidence": "terminal tool result and run.log retained; exit code also reported to parent",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": false,
+      "finalHashesMatchCurrent": false,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-question-readability",
+          "rawStatus": "failed"
+        }
+      ],
+      "screenshotCount": 2,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-43-22-054Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-43-22-054Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-12-782Z",
+      "scope": "1440-question-readability",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "classification": "passed-historical-source",
+      "rawTraceStatus": "passed",
+      "terminalExitCode": 0,
+      "exitEvidence": "terminal tool result and run.log retained; exit code also reported to parent",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": false,
+      "finalHashesMatchCurrent": false,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-question-readability",
+          "rawStatus": "passed"
+        }
+      ],
+      "screenshotCount": 1,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-12-782Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-12-782Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-51-298Z",
+      "scope": null,
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "classification": "host-native-abort",
+      "rawTraceStatus": "running",
+      "terminalExitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-51-298Z/host-interruption.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": false,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-question-readability",
+          "rawStatus": "passed"
+        },
+        {
+          "name": "1440-original-cycle",
+          "rawStatus": "running"
+        }
+      ],
+      "screenshotCount": 1,
+      "interruption": {
+        "nativeAssertion": "Assertion failed: new_time >= loop->time, src/win/core.c line 327",
+        "productVerdict": "not obtained",
+        "endHashesAndPageErrors": "not obtained",
+        "originalTracePreserved": true
+      },
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-51-298Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-44-51-298Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-45-20-566Z",
+      "scope": null,
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "classification": "host-native-abort",
+      "rawTraceStatus": "running",
+      "terminalExitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-45-20-566Z/host-interruption.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": false,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-question-readability",
+          "rawStatus": "passed"
+        },
+        {
+          "name": "1440-original-cycle",
+          "rawStatus": "passed"
+        },
+        {
+          "name": "390-original-cycle",
+          "rawStatus": "passed"
+        },
+        {
+          "name": "1440-same-hex-other-rule",
+          "rawStatus": "passed"
+        },
+        {
+          "name": "390-same-term-other-direction",
+          "rawStatus": "passed"
+        },
+        {
+          "name": "1440-retry-stats",
+          "rawStatus": "passed"
+        },
+        {
+          "name": "1440-retry-weak",
+          "rawStatus": "running"
+        }
+      ],
+      "screenshotCount": 17,
+      "interruption": {
+        "nativeAssertion": "Assertion failed: new_time >= loop->time, src/win/core.c line 327",
+        "productVerdict": "not obtained",
+        "endHashesAndPageErrors": "not obtained",
+        "originalTracePreserved": true
+      },
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-45-20-566Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-45-20-566Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-46-38-029Z",
+      "scope": "390-term-source-readability",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "classification": "product-contrast-failure",
+      "rawTraceStatus": "failed",
+      "terminalExitCode": 1,
+      "exitEvidence": "terminal tool result and run.log retained; exit code also reported to parent",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": false,
+      "finalHashesMatchCurrent": false,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "390-term-source-readability",
+          "rawStatus": "failed"
+        }
+      ],
+      "screenshotCount": 2,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-46-38-029Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-46-38-029Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-47-25-594Z",
+      "scope": "1440-term-source-readability",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "classification": "product-contrast-failure",
+      "rawTraceStatus": "failed",
+      "terminalExitCode": 1,
+      "exitEvidence": "terminal tool result and run.log retained; exit code also reported to parent",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": false,
+      "finalHashesMatchCurrent": false,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-term-source-readability",
+          "rawStatus": "failed"
+        }
+      ],
+      "screenshotCount": 5,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-47-25-594Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-47-25-594Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-12-538Z",
+      "scope": "1440-term-source-readability",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "classification": "passed-current-source",
+      "rawTraceStatus": "passed",
+      "terminalExitCode": 0,
+      "exitEvidence": "terminal tool result and run.log retained; exit code also reported to parent",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-term-source-readability",
+          "rawStatus": "passed"
+        }
+      ],
+      "screenshotCount": 4,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-12-538Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-12-538Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-41-926Z",
+      "scope": "390-term-source-readability",
+      "runtime": "v22.23.1",
+      "libuv": "1.51.0",
+      "classification": "host-native-abort",
+      "rawTraceStatus": "running",
+      "terminalExitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-41-926Z/host-interruption.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "390-term-source-readability",
+          "rawStatus": "running"
+        }
+      ],
+      "screenshotCount": 0,
+      "interruption": {
+        "nativeAssertion": "Assertion failed: new_time >= loop->time, src/win/core.c line 327",
+        "productVerdict": "not obtained",
+        "endHashesAndPageErrors": "not obtained",
+        "originalTracePreserved": true
+      },
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-41-926Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-48-41-926Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-03-241Z",
+      "scope": "390-term-source-readability",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "classification": "passed-current-source",
+      "rawTraceStatus": "passed",
+      "terminalExitCode": 0,
+      "exitEvidence": "terminal tool result and run.log retained; exit code also reported to parent",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "390-term-source-readability",
+          "rawStatus": "passed"
+        }
+      ],
+      "screenshotCount": 2,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-03-241Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-03-241Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-36-722Z",
+      "scope": "1440-question-readability",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "classification": "passed-current-source",
+      "rawTraceStatus": "passed",
+      "terminalExitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-36-722Z/execution.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-question-readability",
+          "rawStatus": "passed"
+        }
+      ],
+      "screenshotCount": 1,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-36-722Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-36-722Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-43-937Z",
+      "scope": "1440-original-cycle",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "classification": "passed-current-source",
+      "rawTraceStatus": "passed",
+      "terminalExitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-43-937Z/execution.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-original-cycle",
+          "rawStatus": "passed"
+        }
+      ],
+      "screenshotCount": 5,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-43-937Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-43-937Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-56-129Z",
+      "scope": "390-original-cycle",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "classification": "host-native-abort",
+      "rawTraceStatus": "running",
+      "terminalExitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-56-129Z/execution.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "390-original-cycle",
+          "rawStatus": "running"
+        }
+      ],
+      "screenshotCount": 0,
+      "interruption": {
+        "nativeAssertion": "Assertion failed: new_time >= loop->time, src/win/core.c line 327",
+        "productVerdict": "not obtained",
+        "endHashesAndPageErrors": "not obtained",
+        "originalTracePreserved": true
+      },
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-56-129Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-49-56-129Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-07-837Z",
+      "scope": "1440-same-hex-other-rule",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "classification": "passed-current-source",
+      "rawTraceStatus": "passed",
+      "terminalExitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-07-837Z/execution.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-same-hex-other-rule",
+          "rawStatus": "passed"
+        }
+      ],
+      "screenshotCount": 2,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-07-837Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-07-837Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-17-580Z",
+      "scope": "390-same-term-other-direction",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "classification": "passed-current-source",
+      "rawTraceStatus": "passed",
+      "terminalExitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-17-580Z/execution.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "390-same-term-other-direction",
+          "rawStatus": "passed"
+        }
+      ],
+      "screenshotCount": 2,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-17-580Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-17-580Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-25-466Z",
+      "scope": "1440-retry-stats",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "classification": "host-native-abort",
+      "rawTraceStatus": "running",
+      "terminalExitCode": 1,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-25-466Z/execution.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": null,
+      "sourceStableDuringRun": null,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-retry-stats",
+          "rawStatus": "running"
+        }
+      ],
+      "screenshotCount": 0,
+      "interruption": {
+        "nativeAssertion": "Assertion failed: new_time >= loop->time, src/win/core.c line 327",
+        "productVerdict": "not obtained",
+        "endHashesAndPageErrors": "not obtained",
+        "originalTracePreserved": true
+      },
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-25-466Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-25-466Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-43-331Z",
+      "scope": "1440-retry-weak",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "classification": "passed-current-source",
+      "rawTraceStatus": "passed",
+      "terminalExitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-43-331Z/execution.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-retry-weak",
+          "rawStatus": "passed"
+        }
+      ],
+      "screenshotCount": 2,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-43-331Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-43-331Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-53-870Z",
+      "scope": "1440-retry-review",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "classification": "passed-current-source",
+      "rawTraceStatus": "passed",
+      "terminalExitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-53-870Z/execution.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-retry-review",
+          "rawStatus": "passed"
+        }
+      ],
+      "screenshotCount": 2,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-53-870Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-50-53-870Z/run.log"
+    },
+    {
+      "directory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-51-03-712Z",
+      "scope": "1440-retry-activity",
+      "runtime": "v24.19.0",
+      "libuv": "1.52.1",
+      "classification": "passed-current-source",
+      "rawTraceStatus": "passed",
+      "terminalExitCode": 0,
+      "exitEvidence": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-51-03-712Z/execution.json",
+      "sourceHashCount": 23,
+      "startHashesMatchCurrent": true,
+      "finalHashesMatchCurrent": true,
+      "sourceStableDuringRun": true,
+      "pageErrors": null,
+      "scenarios": [
+        {
+          "name": "1440-retry-activity",
+          "rawStatus": "passed"
+        }
+      ],
+      "screenshotCount": 2,
+      "interruption": null,
+      "trace": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-51-03-712Z/trace.json",
+      "log": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-51-03-712Z/run.log"
+    }
+  ],
+  "processState": {
+    "checkedAt": "2026-10-24T21:53:28.8443951Z",
+    "query": "Win32_Process CommandLine matches test-quiz-weak-questions.mjs, yijing-quiz-weak-, or scripts/serve.mjs; excludes PowerShell query process",
+    "matchingProcesses": [],
+    "matchingCount": 0,
+    "lastExecutionSession": 69602,
+    "lastExecutionExitCode": 0,
+    "lastFunctionsCell": 222,
+    "lastFunctionsCellState": "completed",
+    "allKnownInvocationsTerminal": true,
+    "profilesRetained": true
+  },
+  "fixedProductFindings": [
+    {
+      "finding": "Paper question background lost to a higher-specificity generic card selector; text contrast was about 1.38.",
+      "redDirectory": "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-43-22-054Z",
+      "currentGreenScope": "1440-question-readability",
+      "boundary": "Root fixed CSS; current paper contrast 11.05 is covered only in the listed desktop scope."
+    },
+    {
+      "finding": "Source button silver normal/focus and gold hover text/outline had insufficient contrast on paper (about 1.18 / 1.31).",
+      "redDirectories": [
+        "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-46-38-029Z",
+        "docs/development/evidence/2026-10-25-quiz-weak-input/2026-10-24T21-47-25-594Z"
+      ],
+      "currentGreenScopes": [
+        "1440-term-source-readability",
+        "390-term-source-readability"
+      ],
+      "boundary": "Root fixed only source-button text/hover/focus CSS; desktop real Tab/Enter and emulated mobile input are covered."
+    }
+  ],
+  "remainingClosure": [
+    "Complete the nine unverified scopes without relaxing assertions or conflating host abort with product result.",
+    "Run the standard full npm run test:e2e on final source after browser ownership handoff.",
+    "Complete task documentation/handoff, final diff review, commit/push and new CI verification; keep T-QUIZ-01 open until required evidence is complete."
+  ],
+  "limitations": [
+    "Headless Chromium desktop and CDP emulated touch. This is not physical-mobile, screen-reader, or real browser 200% zoom evidence.",
+    "A new random-port origin and isolated profile are used. No user profile, learning data, or private text is read.",
+    "Fixtures and quota failures are explicitly recorded. Fixture wrong histories are synthetic, not earned learning or achievement evidence.",
+    "Debugger only reads generated public question and attempt identity. No application function or DOM.click is called in the browser.",
+    "DOM geometry and scrollIntoView locate controls. Navigation, answers, retries, source opening and return use trusted CDP Input.",
+    "Offline covers already-visited modules in the same page, not first installation or a fresh offline reload."
+  ]
+}

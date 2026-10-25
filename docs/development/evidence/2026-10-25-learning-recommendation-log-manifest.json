@@ -1,0 +1,42 @@
+{
+  "capturedAt": "2026-10-24T21:04:10.532Z",
+  "logs": [
+    {
+      "file": "docs/development/evidence/2026-10-25-learning-recommendation-validate.log",
+      "archive": "docs/development/evidence/2026-10-25-learning-recommendation-validate.log.gz",
+      "bytes": 88427,
+      "sha256": "0dd74fbfb12697191e01a778f74aa1a71bafca9606230a8c0e3c59edf15f4a2d"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-learning-recommendation-final-validate.log",
+      "archive": "docs/development/evidence/2026-10-25-learning-recommendation-final-validate.log.gz",
+      "bytes": 89699,
+      "sha256": "930a666ff8d2b6b0229c9f29123ed9a306ffa52fa472f44c9b79447f87371017"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-learning-close-loading-red.log",
+      "archive": "docs/development/evidence/2026-10-25-learning-close-loading-red.log.gz",
+      "bytes": 3183,
+      "sha256": "3e3ffeec769e1b9fa5a6d89105589a58cf5f7e7bb489d188a7adc60d74f545aa"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-learning-close-loading-green.log",
+      "archive": "docs/development/evidence/2026-10-25-learning-close-loading-green.log.gz",
+      "bytes": 3058,
+      "sha256": "aff2a2065ae509af90bede4b86153ab14044475a17acc63ae0780af36b940a96"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-learning-recommendation-final-e2e.log",
+      "archive": "docs/development/evidence/2026-10-25-learning-recommendation-final-e2e.log.gz",
+      "bytes": 147,
+      "sha256": "18ae32d1e1ff33291523f5caf390bd805c706755f3c5fc227378706bfcc07ade"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-learning-recommendation-final-e2e-retry.log",
+      "archive": "docs/development/evidence/2026-10-25-learning-recommendation-final-e2e-retry.log.gz",
+      "bytes": 218,
+      "sha256": "7707449e41ba456e22e1430766e042a8bf2a974efef779f030fb4b08a50b164a"
+    }
+  ],
+  "updatedAt": "2026-10-24T21:10:36.072Z"
+}

@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: 搜索查询更换清除旧 aria-activedescendant 与选项选择状态
+ok 1 - 搜索查询更换清除旧 aria-activedescendant 与选项选择状态
+  ---
+  duration_ms: 3.2712
+  type: 'test'
+  ...
+# Subtest: 搜索关闭后 Enter 不确认旧结果，方向键不操作隐藏选项
+ok 2 - 搜索关闭后 Enter 不确认旧结果，方向键不操作隐藏选项
+  ---
+  duration_ms: 1.3889
+  type: 'test'
+  ...
+# Subtest: 输入法组合期间 Enter 保留原生输入，不触发搜索动作
+ok 3 - 输入法组合期间 Enter 保留原生输入，不触发搜索动作
+  ---
+  duration_ms: 2.1414
+  type: 'test'
+  ...
+# Subtest: 输入法组合期间 Escape 保留原生输入，不触发搜索动作
+ok 4 - 输入法组合期间 Escape 保留原生输入，不触发搜索动作
+  ---
+  duration_ms: 2.4357
+  type: 'test'
+  ...
+# Subtest: 展开搜索的 Escape 只关建议，第二次 Escape 可冒泡给阅读返回
+ok 5 - 展开搜索的 Escape 只关建议，第二次 Escape 可冒泡给阅读返回
+  ---
+  duration_ms: 1.842
+  type: 'test'
+  ...
+# Subtest: 核心索引未就绪只显示局部不可用，不确认看似可用的卦
+ok 6 - 核心索引未就绪只显示局部不可用，不确认看似可用的卦
+  ---
+  duration_ms: 1.0622
+  type: 'test'
+  ...
+# Subtest: 可选关键词迟到不会重新打开已取消的搜索建议
+ok 7 - 可选关键词迟到不会重新打开已取消的搜索建议
+  ---
+  duration_ms: 4.0225
+  type: 'test'
+  ...
+# Subtest: 可选关键词迟到只能更新当前查询，不能覆盖已经输入的新查询
+ok 8 - 可选关键词迟到只能更新当前查询，不能覆盖已经输入的新查询
+  ---
+  duration_ms: 3.0954
+  type: 'test'
+  ...
+# Subtest: 点击外侧非聚焦区域也关闭建议，不改变当前聚焦卦
+ok 9 - 点击外侧非聚焦区域也关闭建议，不改变当前聚焦卦
+  ---
+  duration_ms: 1.179
+  type: 'test'
+  ...
+# Subtest: 搜索快捷键不穿透 inert 背景或输入法组合
+ok 10 - 搜索快捷键不穿透 inert 背景或输入法组合
+  ---
+  duration_ms: 1.1942
+  type: 'test'
+  ...
+# Subtest: 正常键盘和结果按钮确认只提交一次聚焦，不调用阅读入口
+ok 11 - 正常键盘和结果按钮确认只提交一次聚焦，不调用阅读入口
+  ---
+  duration_ms: 1.4315
+  type: 'test'
+  ...
+# Subtest: 组合结束后按最终文本检索，但只有后续正常确认才聚焦
+ok 12 - 组合结束后按最终文本检索，但只有后续正常确认才聚焦
+  ---
+  duration_ms: 0.8298
+  type: 'test'
+  ...
+# Subtest: 输入框已经失焦时组合结束不重新打开建议
+ok 13 - 输入框已经失焦时组合结束不重新打开建议
+  ---
+  duration_ms: 0.975
+  type: 'test'
+  ...
+# Subtest: 关键词失败保留核心搜索，重新聚焦可重试且成功后移除降级提示
+ok 14 - 关键词失败保留核心搜索，重新聚焦可重试且成功后移除降级提示
+  ---
+  duration_ms: 2.2447
+  type: 'test'
+  ...
+# Subtest: 关键词迟到改变排序后仍按卦码保留键盘选项
+ok 15 - 关键词迟到改变排序后仍按卦码保留键盘选项
+  ---
+  duration_ms: 1.2784
+  type: 'test'
+  ...
+# Subtest: 入口搜索实际接入序号、六位编码和上下卦结构查询
+ok 16 - 入口搜索实际接入序号、六位编码和上下卦结构查询
+  ---
+  duration_ms: 5.0623
+  type: 'test'
+  ...
+# Subtest: 非法结构查询清除旧结果并明确提示，空查询关闭建议
+ok 17 - 非法结构查询清除旧结果并明确提示，空查询关闭建议
+  ---
+  duration_ms: 1.3602
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 125.4232

@@ -1,0 +1,945 @@
+
+> yijing-atlas@1.1.1-rc.2 validate
+> node scripts/quality-check.mjs --include-smoke && npm run test:coverage
+
+✓ JavaScript 语法与格式检查：81 个文件
+✓ JSON 可解析：11 个文件
+✓ 六家注疏目录有效，发布门禁保持关闭
+✓ 当前版本树不含 PDF、证书或私钥文件
+✔ 首发目录包含十二枚可解释成就且标识唯一 (0.5056ms)
+✔ 能力维度和五阶三状态形成完整成长契约 (0.4102ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.6147
+✔ 事件工厂使用可注入时间与随机源并拒绝危险字段 (2.3353ms)
+✔ 完成首课与小试后解锁且重复事件保持幂等 (0.9217ms)
+✔ 十二枚成就均可由真实学习证据达成 (10.847ms)
+✔ 修改重交按同一案例保留较高成绩且独立边界确认按主题去重 (0.4348ms)
+✔ 无效状态安全降级、批处理忽略坏事件并支持旧版事件迁移 (0.2779ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18.2283
+✔ 损坏、缺失和旧版状态均安全加载 (2.4727ms)
+✔ localStorage getter 被拒绝时成就状态仍安全回退 (0.2038ms)
+✔ 事件处理可持久化且重复提交不重复写入 (0.2571ms)
+✔ 写入失败与非法状态返回明确结果 (0.2109ms)
+✔ 成就数据可导出、解析并导入另一存储 (1.0369ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8.9439
+✔ 原术语按稳定ID展开并在外层归零后定位，保留上下文返回 (6.1578ms)
+✔ 术语已失效有真实原因与返回，不展开其他术语冒充原来源 (1.0333ms)
+✔ 销毁或替换DOM后来源定位不再滚动/抢焦点，返回也失效 (1.0538ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13.1546
+✔ 黄历术语使用按钮，并提供完整的模态弹层键盘交互 (18.5312ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 21.6407
+✔ 黄历默认日期按 Asia/Shanghai 历日而非设备时区确定 (10.4884ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13.2973
+✔ 机械转盘节奏先加速再减速并在落卦前停止 (0.6511ms)
+✔ 机械转盘节奏拒绝无效和过短时长 (0.2948ms)
+✔ 各功能区域映射到对应声景且跳过禁用与转盘按钮 (0.7552ms)
+✔ 铜钱声由三枚铜钱的初次碰撞与逐级衰减反弹组成 (0.204ms)
+✔ 机械转盘合成轮毂与棘轮声并以多层锁止音收尾 (2.1812ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8.4997
+✔ viewport acknowledgement before media change waits for coherent quick-reading modality (1.9914ms)
+✔ deep reading waits for its panel and URL to agree with the stage (0.8549ms)
+✔ a permanently incorrect modal still fails with actual viewport and expected state (1.2143ms)
+✔ an inconsistent open panel or deep link cannot pass a quick-reading assertion (1.5333ms)
+✔ closed reading requires both the panel and deep link to be cleared (1.9489ms)
+✔ visible-state convergence does not skip the existing readable-content assertion (1.3512ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12.3412
+✔ WebGL 超大屏严格遵守五百万 backing-store 像素预算 (0.5028ms)
+✔ 天象舞台按模式与设备能力限制帧率 (0.1065ms)
+✔ 不可见或减少动态时停止连续渲染 (0.0626ms)
+✔ 空间系带保持端点准确并在中段抬升 (0.4953ms)
+✔ WebGL 舞台具备上下文恢复与资源释放保护 (0.6969ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.5544
+✔ 未完成内容保持发布门禁关闭，但来源目录可独立校验 (0.5628ms)
+✔ 发布状态要求底本已登记且六十四卦全部双人校对 (0.8668ms)
+✔ 缺项、空原文与单人校对会阻断发布 (0.1649ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.6195
+✔ 六十四卦原文、易传与项目导读均有明确且不混并的出处层级 (1.4624ms)
+✔ 象数条目明确标为传统资料并保留流派边界 (0.1632ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.9305
+✓ 欢迎三入口保留名称与模态交互，今日卦引文在窄屏可换行
+✔ 浏览器启动只取核心数据，功能数据首次进入时加载并复用 (6.0484ms)
+✔ HTTP 错误包含资源路径和状态码 (0.4214ms)
+✔ 核心数据自检覆盖数量、唯一性、卦序和爻码一致性 (3.1757ms)
+✔ 功能数据失败后可重试，索引和全文搜索可用 (3.5341ms)
+✔ 搜索与星图并发复用同一关键词加载，成功缓存可显式重置 (0.776ms)
+✔ 关键词HTTP和JSON失败清理缓存，后续调用可重试 (0.2028ms)
+✔ 坏关键词结构拒绝并可重试，核心卦数据与正文搜索不受阻断 (11.7968ms)
+✔ 星图关键词结构失败保留无关键词降级，之后能复用修复资料 (0.2678ms)
+✔ 搜索六位码与卦序明确匹配，不把编码转成数字 (0.2466ms)
+✔ 上下卦搜索使用真实八卦数据和结构字段，保留自下而上编码 (0.5643ms)
+✔ 卦名和全称精确命中优先，普通文本结果按文王卦序稳定排序 (0.5034ms)
+✔ 多字段和重复数据命中去重，名称包含优先于关键词及正文 (0.1595ms)
+✔ 关键词是可选增强，缺失或损坏不阻断核心搜索 (1.3442ms)
+✔ 空串及非法序号编码返回空结果，即使正文包含该字符串 (0.0975ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33.1058
+✔ 铜钱和数正确映射四种爻象 (0.9181ms)
+✔ 六次老阴得到坤卦并全变为乾卦 (0.702ms)
+✔ 无变爻取本卦卦辞，一变爻取对应爻辞 (0.3443ms)
+✔ 乾卦六爻全变取本卦用九，不误取之卦用六 (0.0935ms)
+✔ 坤卦六爻全变取本卦用六，不误取之卦用九 (0.0911ms)
+✔ 二爻变保留两条爻辞并以上爻为主，三爻变合看两卦 (0.1186ms)
+✔ 四爻变保留变卦两条不变爻并以下爻为主，五爻变取唯一不变爻 (0.1113ms)
+✔ 六爻全变且无用辞时回退到变卦卦辞 (0.078ms)
+✔ 非变爻起卦保持本卦不变 (0.1223ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6.2096
+✔ 占筮记录按新到旧保存并可清空 (9.2682ms)
+✔ 旧版记录保留并明确标记为仅有卦象摘要 (0.1552ms)
+✔ 历史满50条后同一毫秒新增的案例仍有独立且持久的标识 (7.1227ms)
+✔ 非法历史、非法卦码和写入失败安全处理 (0.2262ms)
+✔ 生成案例标识失败时保留旧历史并返回保存失败 (0.3692ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20.3309
+✔ 金钱卦解释为每一卦提供原文出处、通俗释义和现实边界 (1.7125ms)
+✔ 无变爻解释当前结构并说明不会形成之卦 (0.1121ms)
+✔ 乾坤全变引用用九、用六并给出对应通俗解释 (0.1852ms)
+✔ 梅花易数解释交代起卦公式、体用术语与简化边界 (0.233ms)
+✔ 梅花易数五种体用关系都有通俗解释 (0.1599ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6.1161
+✔ 金钱V2同一历史重放重复提交沿用同一subject，导出导入后仍幂等 (20.992ms)
+✔ 梅花完整历史重放保持既有稳定subject且不新增历史 (3.2197ms)
+✔ 旧摘要不生成分析证据或补造六爻；仅保留研读入口 (1.6401ms)
+✔ 主动新掷相同卦码仍产生独立案例并保留正常自动历史 (3.8601ms)
+✔ coin首次结果与首次历史回看提交属于同一案例 (2.6071ms)
+✔ coin历史保存失败时本次分析身份稳定，下一次起卦仍独立 (3.0549ms)
+✔ meihua首次结果与首次历史回看提交属于同一案例 (2.2095ms)
+✔ meihua历史保存失败时本次分析身份稳定，下一次起卦仍独立 (2.7071ms)
+✔ coin解卦结果为四段勾选自评反馈，不冒称结构化检验或添加后置入口 (1.4358ms)
+✔ coin自评保存失败锁定原事件，仅保存重试且成功部分不重写 (1.8157ms)
+✔ coin首次失败、重试失败与恢复后原状态节点只位于学习记录段 (2.1525ms)
+✔ meihua解卦结果为四段勾选自评反馈，不冒称结构化检验或添加后置入口 (0.9293ms)
+✔ meihua自评保存失败锁定原事件，仅保存重试且成功部分不重写 (1.7636ms)
+✔ meihua首次失败、重试失败与恢复后原状态节点只位于学习记录段 (1.7634ms)
+✔ 历史案例已有成绩时反馈说明保存的旧分，不声称本次不同自评分已入库 (1.939ms)
+✔ 旧已处理标识缺研读明细时不补造或展示未定义分数 (1.0045ms)
+✔ 解卦保存失败及成功重试由产品滚动实际主行动再聚焦 (1.3292ms)
+✔ 解卦first-submit遇到read-failed不写成就，恢复后保留原事件与旧证据 (1.725ms)
+✔ 解卦first-submit遇到invalid-json不写成就，恢复后保留原事件与旧证据 (1.3835ms)
+✔ 解卦first-submit遇到invalid-legacy不写成就，恢复后保留原事件与旧证据 (1.6814ms)
+✔ 解卦retry遇到read-failed不写成就，恢复后保留原事件与旧证据 (1.7443ms)
+✔ 解卦retry遇到invalid-json不写成就，恢复后保留原事件与旧证据 (1.6915ms)
+✔ 解卦retry遇到invalid-legacy不写成就，恢复后保留原事件与旧证据 (1.5245ms)
+✔ 解卦严格读取仍兼容有效V0成就事件，并只使用一次校验过的原始快照 (1.347ms)
+✔ cleanup后旧解卦提交和重试不写入当前状态 (1.4067ms)
+✔ tab后旧解卦提交和重试不写入当前状态 (1.4141ms)
+✔ recast后旧解卦提交和重试不写入当前状态 (1.6058ms)
+✔ history后旧解卦提交和重试不写入当前状态 (1.8718ms)
+✔ rerender后旧解卦提交和重试不写入当前状态 (1.1322ms)
+✔ tab后尚未提交的旧勾选控件不能补写旧案例 (1ms)
+✔ recast后尚未提交的旧勾选控件不能补写旧案例 (1.0197ms)
+✔ history后尚未提交的旧勾选控件不能补写旧案例 (1.2285ms)
+✔ rerender后尚未提交的旧勾选控件不能补写旧案例 (0.8013ms)
+✔ 离页或换方式后旧起卦控件和排队RAF不写数据或抢焦点 (1.9076ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 87.7847
+✔ 逐爻变化保持自下而上的位序并记录历史 (0.9939ms)
+✔ 撤销、重做和新分支会正确维护历史 (0.5494ms)
+✔ 错综互预设始终从原卦计算 (0.1509ms)
+✔ 重置可撤销，快照解析结果卦和控制状态 (0.1021ms)
+✔ 历史边界操作保持状态稳定，未知结果安全回退 (0.0763ms)
+✔ 演示帧按初爻到上爻依次生成且包含起止卦 (0.0873ms)
+✔ 无效卦码、爻位、预设和状态会被拒绝 (0.312ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.4991
+✔ 当前卦义随帧解析并带有经传定位 (0.94ms)
+✔ 单帧变化同时解析前后爻辞、小象和项目释义 (0.1518ms)
+✔ 无效分区、卦象和爻位会被拒绝 (0.2662ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.0368
+✔ 角度归一化并从顶部指针反推卦序索引 (0.4954ms)
+✔ 随机边界可抽中首卦与末卦并精确停在指针下 (0.158ms)
+✔ 连续抽取从当前角度向前旋转且保持映射稳定 (0.1219ms)
+✔ 全部六十四个索引都能映射到固定指针 (0.0784ms)
+✔ 非法角度、数量、随机值和圈数会被拒绝 (0.3532ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.4328
+✔ orderRemark 说明当前卦承接前序的理由，且覆盖完整文王卦序 (1.4537ms)
+✔ 序卦上下经边界及末卦文本保持可靠链条 (0.1955ms)
+✔ fill-all 生成链不会回写旧版错位序卦说明 (89.844ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 94.4469
+✓ 互卦(泰111000)=归妹110100
+✓ 互卦(乾111111)=乾111111
+✓ 变卦(乾111111, pos1)=姤011111
+✓ 变卦(乾111111, pos2)=同人101111
+✓ 变卦(坤000000, pos1)=复100000
+✓ 泰错=否000111
+✓ 泰综=否000111
+✓ 泰互=归妹110100
+✓ 泰变是数组(6个)
+✓ 泰变[0]=升011000
+✓ 下卦/上卦拆分
+✓ 上下卦组合
+✓ 初九/六五/上六爻题
+✓ 阴阳当位判断
+✓ 非法卦码会拒绝
+✓ 非法爻位会拒绝
+
+全部通过
+✔ 紧凑星仪常驻图式和关系，辅助内容由语义按钮控制并默认隐藏 (0.6015ms)
+✔ 聚焦与阅读层提供独立入口，保留现有六导航及三种开始路径 (0.6205ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.7039
+✓ 布局响应式契约测试通过
+✔ 复讲lesson后旧success不写记录、不覆盖当前界面或finally状态 (4.0478ms)
+✔ 复讲lesson后旧failure不写记录、不覆盖当前界面或finally状态 (0.7619ms)
+✔ 复讲response后旧success不写记录、不覆盖当前界面或finally状态 (0.5905ms)
+✔ 复讲response后旧failure不写记录、不覆盖当前界面或finally状态 (0.5245ms)
+✔ 复讲self后旧success不写记录、不覆盖当前界面或finally状态 (0.7867ms)
+✔ 复讲self后旧failure不写记录、不覆盖当前界面或finally状态 (0.6115ms)
+✔ 复讲quiz后旧success不写记录、不覆盖当前界面或finally状态 (3.111ms)
+✔ 复讲quiz后旧failure不写记录、不覆盖当前界面或finally状态 (0.8575ms)
+✔ 复讲hub后旧success不写记录、不覆盖当前界面或finally状态 (0.6713ms)
+✔ 复讲hub后旧failure不写记录、不覆盖当前界面或finally状态 (0.8386ms)
+✔ 复讲cleanup后旧success不写记录、不覆盖当前界面或finally状态 (0.6679ms)
+✔ 复讲cleanup后旧failure不写记录、不覆盖当前界面或finally状态 (0.5507ms)
+✔ 旧复讲finally不能解锁后继请求；双提交只发送一次当前请求 (2.4312ms)
+✔ ai复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩 (1.9302ms)
+✔ ai复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.9403ms)
+✔ ai复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.7922ms)
+✔ self复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.8201ms)
+✔ self复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.668ms)
+✔ self复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.5895ms)
+✔ 复讲原文不足20字就地说明并聚焦，不POST、不保存 (0.6882ms)
+✔ 复讲自评结果由页面主动显示并获得焦点 (0.7778ms)
+✔ 复讲自评保存失败说明由页面主动显示并获得焦点 (0.6618ms)
+✔ 复讲结果定位帧在离页后失效，不抢回焦点 (0.8174ms)
+✔ 复讲失败可本地自评；四段反馈依据可读，模型文本转义且不存正文 (1.8721ms)
+✔ ai复讲成功结果指向本轮原课，离开不补写或新增评阅 (0.9595ms)
+✔ ai复讲保存失败结果指向本轮原课，离开不补写或新增评阅 (0.6893ms)
+✔ self复讲成功结果指向本轮原课，离开不补写或新增评阅 (0.6726ms)
+✔ self复讲保存失败结果指向本轮原课，离开不补写或新增评阅 (0.5969ms)
+✔ 复讲lesson后旧来源按钮不导航或保存 (0.6497ms)
+✔ 复讲response后旧来源按钮不导航或保存 (0.5635ms)
+✔ 复讲self后旧来源按钮不导航或保存 (0.6294ms)
+✔ 复讲new后旧来源按钮不导航或保存 (0.6641ms)
+✔ 复讲quiz后旧来源按钮不导航或保存 (1.2936ms)
+✔ 复讲hub后旧来源按钮不导航或保存 (0.5537ms)
+✔ 复讲cleanup后旧来源按钮不导航或保存 (0.534ms)
+✔ 复讲retry后旧来源按钮不导航或保存 (0.5395ms)
+✔ 课程考评沿用四段反馈，既有依据、保存重试及返回行动仍可达 (1.6085ms)
+✔ 复讲入口选定具体课程并聚焦复讲，不误开小试或写学习成绩 (0.6248ms)
+✔ 明确复讲入口在外层标题RAF之后获得焦点，并声明本次焦点目标 (0.5103ms)
+✔ 复讲入口退出后旧RAF不聚焦已脱离的输入或新页面标题 (0.457ms)
+✔ 容器整体移除后复讲RAF不再聚焦旧内容 (0.5004ms)
+✔ 清理保留DOM后初始题卷标题RAF不再滚动或聚焦 (0.4101ms)
+✔ 清理保留DOM后初始复讲入口RAF不再滚动或聚焦 (0.3996ms)
+✔ 重绘后旧表单change不读取新控件或改写仍保留的本轮草稿 (0.5353ms)
+✔ 旧未交卷表单submit不得改写新卷状态或移动新卷焦点 (0.4735ms)
+✔ 十题全错长卷保存失败定位保存状态，重试成功返回结果焦点 (1.6354ms)
+✔ 结果定位排队后清理页面不滚动或聚焦旧保存状态 (0.6548ms)
+✔ 原题回练保留默认三题，重绘沿用会话而不同原题开启新卷 (0.5322ms)
+✔ 失效原题或版本不随机替题，保留回原课和温故的真实回调 (0.7373ms)
+✔ 错题保存失败不显示已加入，原会话重试成功后按持久化记录显示 (3.5946ms)
+✔ 结果原课携带原题，原题回练新会话答对后才显示本轮已纠正 (1.363ms)
+✔ 结果内新开原题回练后，父页面同入口重绘仍保留该新卷及答案 (0.7151ms)
+✔ 结果重绘从持久化读取状态，不把已移除的旧记录仍说成已加入 (0.7508ms)
+✔ 结果不把 questionType 不同的 due 旧温习记录归于当前题 (1.1404ms)
+✔ 结果不把 questionType 不同的 resolved 旧温习记录归于当前题 (0.9822ms)
+✔ 结果不把 targetCode 不同的 due 旧温习记录归于当前题 (0.9806ms)
+✔ 结果不把 targetCode 不同的 resolved 旧温习记录归于当前题 (0.9073ms)
+✔ 结果不把 termId 不同的 due 旧温习记录归于当前题 (2.0975ms)
+✔ 结果不把 termId 不同的 resolved 旧温习记录归于当前题 (1.0397ms)
+✔ 结果不把 sourceKind 不同的 due 旧温习记录归于当前题 (0.9629ms)
+✔ 结果不把 sourceKind 不同的 resolved 旧温习记录归于当前题 (0.9211ms)
+✔ 温故发起的原题回练取消返回温故且不保存答卷 (0.5205ms)
+✔ 真实交卷处理函数重复触发和结果重绘只计一次，新一轮独立 (0.9635ms)
+✔ 本轮重绘保留题序与已选答案，离开后不恢复未提交卷 (0.5011ms)
+✔ 重绘前已脱离页面的取消处理不能撤销已交卷结果 (0.6475ms)
+✔ 未答和篡改选项定位首个未答题，取消不保存 (0.6698ms)
+✔ 成绩保存失败可读且可重试，重试与重绘复用本轮 (0.7248ms)
+✔ 新用户抽查空态说明先学一课并可返回 (0.5119ms)
+✔ 仅成就保存失败时重试不重写成绩，沿用原session证据 (0.8982ms)
+✔ 小试交卷后进入修习谱不以旧时间戳再计同轮证据 (0.9189ms)
+✔ 修习谱回补采用本轮实际成绩，旧无session证据保持兼容 (0.9404ms)
+✔ 已处理ID缺少成绩凭据时显示缺证据，不重计分或生成成就 (0.6493ms)
+✔ 已有正式ID全部带真实凭据时，其他旧课程仍按旧汇总回补 (0.5056ms)
+✔ 已有真实低分凭据重交高分不改变成绩，也不据当前答案回补高分成就 (0.7301ms)
+✔ 正式ID存在但没有凭据时修习谱不拿聚合最高分补造该轮成就 (0.4175ms)
+ℹ tests 75
+ℹ suites 0
+ℹ pass 75
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 80.5787
+✔ 小试、抽查和阶段考评按范围组卷 (2.7607ms)
+✔ 交卷会逐题记录课程归属并统计成绩 (0.214ms)
+✔ 同样的随机题序也为新一轮生成独立标识，结果保留本轮标识 (0.4821ms)
+✔ 只评定本卷完整且来自本题选项的答案 (0.1211ms)
+✔ 抽查没有已浏览课时不回退全库，题目不足按实际数量组卷 (0.1164ms)
+✔ 日课先推荐未浏览课程，再推荐小试成绩较低者 (0.1189ms)
+✔ 原题回练仍是新普通三题小试，指定题必入且不重复或改变题义 (0.3705ms)
+✔ 缺失、跨课或版本失效的原题引用明确拒绝，不随机替换题目 (0.1367ms)
+✔ 原题回练的可用题不足仍用实际题量，显式题数保持原规则 (0.2326ms)
+✔ 判分结果传递公开引用和真实题型，不复制题干或私文 (0.2412ms)
+✔ 旧题对象没有引用元数据时仍按旧形状判分，不补造当前版本 (0.1197ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9.671
+✔ 全部学习小节均有至少三道可判分题目 (8.3687ms)
+✔ 课程覆盖五阶与所有资料栏目，并能生成复讲要点 (0.6355ms)
+✔ 题库公开引用保留真实题型，六爻卦与术语分别使用原始实体标识 (10.3122ms)
+✔ 术语定位来自实体ID，不从显示名称猜测；三爻题不补造六位码 (5.2876ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 28.1079
+✔ 反馈按结果、依据、实际记录、下一步的原生章节顺序呈现 (2.4457ms)
+✔ 保留一个主行动与最多两个次行动的原按钮属性及来源链接 (0.8374ms)
+✔ 省略次行动时只有主行动，不生成空按钮或占位链接 (0.1896ms)
+✔ 缺失或非法必填片段明确报出字段，不用空反馈掩盖调用错误 (0.3587ms)
+✔ 次行动超量或非法数组成员报错，不静默截断或跳过 (0.1407ms)
+✔ 每个行动片段只接受一个原生按钮或链接，不能藏入多个行动 (0.1179ms)
+✔ 可信片段只呈现一次，已转义正文不被重新转义或改写 (0.0717ms)
+✔ 重复渲染不访问DOM、存储或计时器，不修改冻结输入或制造全局身份 (0.17ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7.6315
+✔ 记录学习日并计算包含今天的连续天数 (1.6338ms)
+✔ 活动记录去重、损坏回退和失败写入可感知 (0.9454ms)
+✔ 旧版学习进度迁移为已浏览，并写入新版课程记录 (0.5091ms)
+✔ 小试、抽查、复讲和阶段考评共同形成掌握度 (0.5558ms)
+✔ 学习记录拒绝无效评定，学阶覆盖全部阈值 (0.1215ms)
+✔ 同一session重复保存只计一次，下一轮相同成绩仍独立计入 (0.5365ms)
+✔ 保存失败后原session重试只增加一次，旧记录读取不补造session (0.2305ms)
+✔ 正式考评ID与成绩原子保存，历史截断后仍能判重 (4.5949ms)
+✔ 只有已处理ID而没有成绩凭据时不重新计分或补造凭据 (0.2347ms)
+✔ 旧真实session凭据只迁移ID，不重计成绩；无字段旧记录保持兼容 (0.2496ms)
+✔ 损坏的正式ID字段保留有效旧成绩且不允许后续写入覆盖 (0.3058ms)
+✔ 新考评拒绝非法ID，写失败不先消费ID (0.1651ms)
+✔ 另一课程的真实旧成绩不因已迁移session而丢失兼容凭据 (0.1447ms)
+✔ 已处理ID对应其他范围的凭据时不能当作当前卷成绩 (0.0791ms)
+✔ 三类正式交卷将成绩、ID、凭据和课程弱项一次写入，只保存公开引用 (0.6548ms)
+✔ 同题错误按新会话归并，只有同题同版本答对纠正，再错重新待练 (0.3944ms)
+✔ 不同版本、来源或定位不覆盖旧弱项；历史不存在题号仍可读 (0.4697ms)
+✔ 旧结果、无凭据ID和旧凭据不按当前题卷补造弱项 (0.1086ms)
+✔ 弱项和成绩写入失败一起保留旧状态，同轮重试只入队或纠正一次 (0.2173ms)
+✔ 新逐题引用残缺或非法不消费会话，也不保存部分成绩 (0.1444ms)
+✔ 损坏弱项不把有效旧成绩读取为空，所有写入口拒绝覆盖 (0.2064ms)
+✔ 弱项查询返回稳定的完整条目副本，默认待练并可包含纠正历史 (0.1984ms)
+✔ 八十条成绩截断不丢弱项与去重证据，特殊题号不写入原型 (6.1354ms)
+✔ 同一会话同题只增加一次，错误计数达到安全整数边界时拒绝整次保存 (0.3122ms)
+✔ 历史来源只校验非空类型，不擅自限制旧课程或术语标识长度 (0.0885ms)
+✔ 新题引用必须属于存在的课程，小试不接受另一课结果，旧无元数据仍兼容 (0.1341ms)
+✔ 同题的新引用或正确值冲突时拒绝整次写入，不依赖逐题数组顺序 (0.1881ms)
+✔ 课程续读位置兼容旧缺字段和 null，逐字段校验课程、章节、位置和 ISO 时间 (0.3281ms)
+✔ 保存课程续读仅在既有学习键写最小位置，保留成绩、弱项和去重凭据 (0.1978ms)
+✔ 损坏续读不清旧成绩且阻止普通写入，显式保存合法位置只修复续读 (0.2824ms)
+✔ 非法续读输入、无效时间及配额失败不覆盖上次位置，恢复存储后可重试 (0.2952ms)
+✔ 同课新小试不论分数都原子清除续读，配额失败保留盘上原位置且同轮可重试 (0.2277ms)
+✔ 重复旧会话、跨课小试、抽查和考评不清除当前续读 (0.1953ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 27.1904
+✔ 新用户主行动是首课，课程对象推荐API仍供原下拉框使用 (0.7429ms)
+✔ 明确未完课程优先于到期卦卡、弱项和下一未浏览课 (0.5355ms)
+✔ 无续读时先处理到期卦卡，按到期时间再编码稳定排序 (4.8602ms)
+✔ 未引入、损坏和未来卦卡不会抢占下一课 (0.1063ms)
+✔ 课程弱项按最近错误与稳定课序选择，due状态不冒充到期卦卡 (0.3966ms)
+✔ 课程薄弱项已纠正后不再推荐；旧测验卦码只进入错题模式 (0.6365ms)
+✔ 具体测验与黄历原题按最近错误参与课程弱项层级，旧卦码不能抢先 (0.3115ms)
+✔ 同时间跨来源弱项排序稳定，保留原课程课序且不依赖存储插入顺序 (0.2324ms)
+✔ 具体弱项不抢占续读和到期卡；已纠正项退回旧卦码且不重造引用 (0.1393ms)
+✔ 合法旧版具体弱项保留原引用供界面说明，坏集合不构造待练题 (0.1215ms)
+✔ 旧弱项课程已移除时不构造无效课程入口 (0.0632ms)
+✔ 没有续读与薄弱证据时进入稳定顺序的下一未浏览课 (0.062ms)
+✔ 全部浏览后低分不伪造本轮未完成，进入既有复讲 (0.1078ms)
+✔ 同级复讲时间相同时保持课程序，反复渲染不改输入 (0.0635ms)
+✔ 坏恢复位置给明确提示并正常推荐，不清除成绩 (0.0862ms)
+✔ 空课程集合有真实空态，不生成00课或虚假入口 (0.071ms)
+✔ 注入Date时间与毫秒时间得到相同到期判断 (0.1003ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13.082
+✔ 评阅配置只接受同源相对地址 (0.9697ms)
+✔ 智能评阅按固定协议提交并校验返回结果 (0.2993ms)
+✔ 智能评阅拒绝短文本、错误状态与异常数据 (0.9562ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.2887
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /heading\.focus\?\.\(\{ preventScroll: true \}\)/. Input:
+
+"import { createProgressEvent } from './achievement-engine.js';\n" +
+  "import { processAchievementEvent } from './achievement-storage.js';\n" +
+  "import { createAssessmentSession, gradeAssessment, recommendLesson } from './learning-assessment.js';\n" +
+  'import {\n' +
+  '  buildLearningQuestionBank,\n' +
+  '  getLesson,\n' +
+  '  getLessonRubric,\n' +
+  '  LEARNING_LESSONS,\n' +
+  '  LEARNING_LEVELS,\n' +
+  "} from './learning-curriculum.js';\n" +
+  'import {\n' +
+  '  getWeakQuestionsError,\n' +
+  '  loadLearningRecord,\n' +
+  '  recordLearningAssessment,\n' +
+  '  recordOralReview,\n' +
+  "} from './learning-progress.js';\n" +
+  "import { recordActivity } from './learning-progress.js';\n" +
+  "import { evaluateRecitation, loadReviewConfig } from './learning-review.js';\n" +
+  "import { renderLearningFeedback } from './learning-feedback.js';\n" +
+  '\n' +
+  "const TOPIC_BY_LESSON = { 'l1-1': 'yin-yang', 'l1-4': 'eight-trigrams' };\n" +
+  'const assessmentViews = new WeakMap();\n' +
+  'const assessmentPageCleanups = new WeakMap();\n' +
+  '\n' +
+  'function esc(value) {\n' +
+  "  return String(value || '')\n" +
+  "    .replace(/&/g, '&amp;')\n" +
+  "    .replace(/</g, '&lt;')\n" +
+  "    .replace(/>/g, '&gt;')\n" +
+  `    .replace(/"/g, '&quot;');\n` +
+  '}\n' +
+  '\n' +
+  'function sessionTitle(session) {\n' +
+  "  if (session.kind === 'spot') return '随机抽查 · 温故';\n" +
+  "  if (session.kind === 'exam') return `${LEARNING_LEVELS.find((level) => level.id === session.levelId)?.name || ''}阶段考评`;\n" +
+  "  return `${getLesson(session.lessonId)?.title || '课程'} · 课后小试`;\n" +
+  '}\n' +
+  '\n' +
+  "function resetAssessmentViewport(container, isCurrent, selector = '[data-page-heading]') {\n" +
+  '  if (!isCurrent()) return;\n' +
+  "  if (selector === '[data-page-heading]') {\n" +
+  "    const detailPanel = container.closest?.('.detail-panel');\n" +
+  "    const detailContent = container.closest?.('.detail-content');\n" +
+  '    if (detailPanel) detailPanel.scrollTop = 0;\n' +
+  '    if (detailContent) detailContent.scrollTop = 0;\n' +
+  '    container.scrollTop = 0;\n' +
+  '  }\n' +
+  '  const schedule = window.requestAnimationFrame || ((callback) => callback());\n' +
+  '  const target = container.querySelector(selector);\n' +
+  '  schedule(() => {\n' +
+  '    if (!isCurrent() || !target || target.isConnected === false || container.querySelector(selector) !== target) return;\n' +
+  '    target.tabIndex = -1;\n' +
+  "    if (selector !== '[data-page-heading]') target.scrollIntoView?.({ block: 'center', behavior: 'instant' });\n" +
+  '    target.focus?.({ preventScroll: true });\n' +
+  '  });\n' +
+  '}\n' +
+  '\n' +
+  'function renderQuestionForm(container, session, onComplete, draft, backLabel, isCurrent) {\n' +
+  '  let submitted = false;\n' +
+  '  container.innerHTML = `\n' +
+  '    <section class="assessment-sheet" aria-labelledby="assessment-sheet-title" data-assessment-session="${esc(session.id)}">\n' +
+  '      <div class="assessment-sheet-head">\n' +
+  '        <div><span class="academy-kicker">明辨</span><h3 id="assessment-sheet-title" data-page-heading>${esc(sessionTitle(session))}</h3></div>\n' +
+  '        <span>${session.questions.length} 题</span>\n' +
+  '      </div>\n' +
+  '      <form class="assessment-form">\n' +
+  '        ${session.questions.map((item, questionIndex) => `\n' +
+  '          <fieldset class="assessment-question">\n' +
+  '            <legend><span>${questionIndex + 1}</span>${esc(item.prompt)}</legend>\n' +
+  '            <div class="assessment-options">\n' +
+  '              ${item.options.map((option, optionIndex) => `\n' +
+  '                <label><input type="radio" name="question-${questionIndex}" value="${optionIndex}" ${draft[item.id] === option.value ? \'checked\' : \'\'} />\n' +
+  '                  <span>${esc(option.label)}</span></label>\n' +
+  "              `).join('')}\n" +
+  '            </div>\n' +
+  '          </fieldset>\n' +
+  "        `).join('')}\n" +
+  '        <p class="assessment-status" role="status" aria-live="polite"></p>\n' +
+  '        <div class="assessment-actions">\n' +
+  '          <button type="button" class="text-button" data-action="cancel">${backLabel}</button>\n' +
+  '          <button type="submit" class="quick-btn">交卷评定</button>\n' +
+  '        </div>\n' +
+  '      </form>\n' +
+  '    </section>`;\n' +
+  '\n' +
+  '  const readOption = (selected, question) => {\n' +
+  '    const index = Number(selected?.value);\n' +
+  '    return selected && Number.isInteger(index) && String(index) === selected.value ? question.options[index] : null;\n' +
+  '  };\n' +
+  "  const form = container.querySelector('.assessment-form');\n" +
+  '  const isCurrentForm = () => !submitted && isCurrent() && form.isConnected !== false &&\n' +
+  "    container.querySelector('.assessment-form') === form;\n" +
+  `  container.querySelector('[data-action="cancel"]').addEventListener('click', () => {\n` +
+  '    if (!isCurrentForm()) return;\n' +
+  '    submitted = true;\n' +
+  '    onComplete(null);\n' +
+  '  });\n' +
+  "  form.addEventListener('change', () => {\n" +
+  '    if (!isCurrentForm()) return;\n' +
+  '    session.questions.forEach((question, index) => {\n' +
+  '      const option = readOption(container.querySelector(`input[name="question-${index}"]:checked`), question);\n' +
+  '      if (option) draft[question.id] = option.value;\n' +
+  '      else delete draft[question.id];\n' +
+  '    });\n' +
+  '  });\n' +
+  "  form.addEventListener('submit', (event) => {\n" +
+  '    event.preventDefault();\n' +
+  '    if (!isCurrentForm()) return;\n' +
+  '    const answers = {};\n' +
+  '    for (let index = 0; index < session.questions.length; index += 1) {\n' +
+  '      const question = session.questions[index];\n' +
+  '      const selected = container.querySelector(`input[name="question-${index}"]:checked`);\n' +
+  '      const option = readOption(selected, question);\n' +
+  '      if (!option) {\n' +
+  "        container.querySelector('.assessment-status').textContent = `请先完成第 ${index + 1} 题。`;\n" +
+  '        container.querySelector(`input[name="question-${index}"]`)?.focus();\n' +
+  '        return;\n' +
+  '      }\n' +
+  '      answers[question.id] = option.value;\n' +
+  '    }\n' +
+  '    const result = gradeAssessment(session, answers);\n' +
+  '    if (!result) return;\n' +
+  '    submitted = true;\n' +
+  '    onComplete(result);\n' +
+  '  });\n' +
+  '  resetAssessmentViewport(container, isCurrentForm);\n' +
+  '}\n' +
+  '\n' +
+  'function courseQuestionStatus(item, answer, session, assessment, weakQuestions, error) {\n' +
+  "  if (!assessment?.saved) return '本轮成绩与课程温习记录未保存，恢复存储后可重试。';\n" +
+  "  if (assessment.evidenceMissing) return '旧记录缺少本轮逐题证据，未补记课程温习。';\n" +
+  "  if (error) return '课程温习记录异常，请先导出备份并检查数据。';\n" +
+  '  const weak = weakQuestions.find(entry => entry.questionId === item.id);\n' +
+  "  if (!weak) return answer.correct ? '本题未产生待温习记录。' : '未读取到本题已保存的课程温习记录。';\n" +
+  "  if (weak.sourceKind !== 'course' || weak.questionVersion !== item.questionVersion ||\n" +
+  '      weak.lessonId !== item.lessonId || weak.questionType !== item.kind ||\n' +
+  '      weak.targetCode !== item.targetCode || weak.termId !== item.termId) {\n' +
+  "    return '原有温习记录与本题引用不同，未改动旧记录。';\n" +
+  '  }\n' +
+  "  if (weak.status === 'resolved') return weak.lastSessionId === session.id && answer.correct\n" +
+  "    ? '本轮已纠正；保留此前错误记录。' : '本题已有纠正记录。';\n" +
+  "  return weak.lastSessionId === session.id && !answer.correct ? '已加入课程温习。' : '本题仍在课程温习队列中。';\n" +
+  '}\n' +
+  '\n' +
+  'function renderResult(container, session, result, onBack, saveState, onRetry, actions = {}) {\n' +
+  '  const storedRecord = loadLearningRecord();\n' +
+  '  const weakError = getWeakQuestionsError(storedRecord.weakQuestions);\n' +
+  '  const weakQuestions = weakError ? [] : Object.values(storedRecord.weakQuestions || {});\n' +
+  '  const percent = Math.round(result.correct / result.total * 100);\n' +
+  '  const pending = [];\n' +
+  "  if (!saveState.assessment?.saved) pending.push('本轮成绩');\n" +
+  '  else if (!saveState.assessment.evidenceMissing) {\n' +
+  "    if (!saveState.activitySaved) pending.push('学习日记录');\n" +
+  "    if (!saveState.achievementsSaved) pending.push('成就证据');\n" +
+  '  }\n' +
+  '  const missingEvidence = saveState.assessment?.evidenceMissing;\n' +
+  '  const receipt = saveState.assessment?.entry;\n' +
+  '  const saveMessage = missingEvidence\n' +
+  "    ? '本轮标识已处理，未重复计分；旧记录未保留本轮成绩明细，无法补记成就证据。当前答案仅供核对。'\n" +
+  "    : pending.length ? `${pending.join('、')}未能保存；答案和分数仍可查看。`\n" +
+  '      : saveState.assessment?.duplicate\n' +
+  '        ? `本轮已记录，未重复计分；已保存成绩为 ${receipt.correct}/${receipt.total} 题正确，当前答案仅供核对。`\n' +
+  "        : '本轮成绩与学习记录已保存。';\n" +
+  `  const backAction = '<button type="button" class="quick-btn" data-action="back">返回考评中心</button>';\n` +
+  `  const reviewAction = '<button type="button" class="text-button" data-action="return-review">前往温故队列</button>';\n` +
+  '  container.innerHTML = `\n' +
+  '    <section class="assessment-result" aria-labelledby="assessment-result-title" data-assessment-session="${esc(session.id)}">\n' +
+  '      <span class="academy-kicker">考校</span>\n' +
+  '      <h3 id="assessment-result-title" data-page-heading>${esc(sessionTitle(session))}</h3>\n' +
+  '      ${renderLearningFeedback({\n' +
+  '        result: `<div class="assessment-score"><strong>${percent}</strong><span>分</span></div>\n' +
+  "          <p>${result.correct}/${result.total} 题正确。${percent >= 80 ? '本轮掌握稳定，可继续温习或进入下一课。' : '建议查看辨析后回到原课温习，再进行一次小试。'}</p>`,\n" +
+  '        basis: `<div class="assessment-review-list">\n' +
+  '        ${session.questions.map((item, index) => {\n' +
+  '          const answer = result.results[index];\n' +
+  "          return `<details ${answer.correct ? '' : 'open'}>\n" +
+  '            <summary class="${answer.correct ? \'answer-correct\' : \'answer-wrong\'}">${index + 1}. ${answer.correct ? \'答对\' : \'待温习\'} · ${esc(item.prompt)}</summary>\n' +
+  '            <p>正答：${esc(item.answer)}</p>\n' +
+  '            <p>${esc(item.explanation)}</p>\n' +
+  '            <small>依据：${esc(item.source)}</small>\n' +
+  '            <p class="course-weak-status">${esc(courseQuestionStatus(item, answer, session, saveState.assessment, weakQuestions, weakError))}</p>\n' +
+  '            <div class="course-weak-actions">\n' +
+  '              <button type="button" class="text-button" data-action="weak-source-${index}">回原课温习</button>\n' +
+  '              ${item.questionVersion ? `<button type="button" class="text-button" data-action="weak-practice-${index}">回练此题</button>` : \'\'}\n' +
+  '            </div>\n' +
+  '          </details>`;\n' +
+  "        }).join('')}\n" +
+  '        </div>`,\n' +
+  '        changes: `<p class="assessment-save-status ${pending.length || missingEvidence ? \'assessment-warning\' : \'assessment-success\'}" role="status" aria-live="polite">${esc(saveMessage)}</p>`,\n' +
+  `        primaryAction: pending.length ? '<button type="button" class="text-button" data-action="retry-save">重试保存本轮记录</button>' : backAction,\n` +
+  '        secondaryActions: pending.length ? [backAction, reviewAction] : [reviewAction],\n' +
+  '      })}\n' +
+  '    </section>`;\n' +
+  `  container.querySelector('[data-action="back"]').addEventListener('click', onBack);\n` +
+  `  container.querySelector('[data-action="retry-save"]')?.addEventListener('click', onRetry);\n` +
+  `  container.querySelector('[data-action="return-review"]')?.addEventListener('click', actions.onReview);\n` +
+  '  session.questions.forEach((item, index) => {\n' +
+  '    container.querySelector(`[data-'... 19054 more characters
+
+    at file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/learning-ui-contract.test.mjs:58:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: "import { createProgressEvent } from './achievement-engine.js';\n" +
+    "import { processAchievementEvent } from './achievement-storage.js';\n" +
+    "import { createAssessmentSession, gradeAssessment, recommendLesson } from './learning-assessment.js';\n" +
+    'import {\n' +
+    '  buildLearningQuestionBank,\n' +
+    '  getLesson,\n' +
+    '  getLessonRubric,\n' +
+    '  LEARNING_LESSONS,\n' +
+    '  LEARNING_LEVELS,\n' +
+    "} from './learning-curriculum.js';\n" +
+    'import {\n' +
+    '  getWeakQuestionsError,\n' +
+    '  loadLearningRecord,\n' +
+    '  recordLearningAssessment,\n' +
+    '  recordOralReview,\n' +
+    "} from './learning-progress.js';\n" +
+    "import { recordActivity } from './learning-progress.js';\n" +
+    "import { evaluateRecitation, loadReviewConfig } from './learning-review.js';\n" +
+    "import { renderLearningFeedback } from './learning-feedback.js';\n" +
+    '\n' +
+    "const TOPIC_BY_LESSON = { 'l1-1': 'yin-yang', 'l1-4': 'eight-trigrams' };\n" +
+    'const assessmentViews = new WeakMap();\n' +
+    'const assessmentPageCleanups = new WeakMap();\n' +
+    '\n' +
+    'function esc(value) {\n' +
+    "  return String(value || '')\n" +
+    "    .replace(/&/g, '&amp;')\n" +
+    "    .replace(/</g, '&lt;')\n" +
+    "    .replace(/>/g, '&gt;')\n" +
+    `    .replace(/"/g, '&quot;');\n` +
+    '}\n' +
+    '\n' +
+    'function sessionTitle(session) {\n' +
+    "  if (session.kind === 'spot') return '随机抽查 · 温故';\n" +
+    "  if (session.kind === 'exam') return `${LEARNING_LEVELS.find((level) => level.id === session.levelId)?.name || ''}阶段考评`;\n" +
+    "  return `${getLesson(session.lessonId)?.title || '课程'} · 课后小试`;\n" +
+    '}\n' +
+    '\n' +
+    "function resetAssessmentViewport(container, isCurrent, selector = '[data-page-heading]') {\n" +
+    '  if (!isCurrent()) return;\n' +
+    "  if (selector === '[data-page-heading]') {\n" +
+    "    const detailPanel = container.closest?.('.detail-panel');\n" +
+    "    const detailContent = container.closest?.('.detail-content');\n" +
+    '    if (detailPanel) detailPanel.scrollTop = 0;\n' +
+    '    if (detailContent) detailContent.scrollTop = 0;\n' +
+    '    container.scrollTop = 0;\n' +
+    '  }\n' +
+    '  const schedule = window.requestAnimationFrame || ((callback) => callback());\n' +
+    '  const target = container.querySelector(selector);\n' +
+    '  schedule(() => {\n' +
+    '    if (!isCurrent() || !target || target.isConnected === false || container.querySelector(selector) !== target) return;\n' +
+    '    target.tabIndex = -1;\n' +
+    "    if (selector !== '[data-page-heading]') target.scrollIntoView?.({ block: 'center', behavior: 'instant' });\n" +
+    '    target.focus?.({ preventScroll: true });\n' +
+    '  });\n' +
+    '}\n' +
+    '\n' +
+    'function renderQuestionForm(container, session, onComplete, draft, backLabel, isCurrent) {\n' +
+    '  let submitted = false;\n' +
+    '  container.innerHTML = `\n' +
+    '    <section class="assessment-sheet" aria-labelledby="assessment-sheet-title" data-assessment-session="${esc(session.id)}">\n' +
+    '      <div class="assessment-sheet-head">\n' +
+    '        <div><span class="academy-kicker">明辨</span><h3 id="assessment-sheet-title" data-page-heading>${esc(sessionTitle(session))}</h3></div>\n' +
+    '        <span>${session.questions.length} 题</span>\n' +
+    '      </div>\n' +
+    '      <form class="assessment-form">\n' +
+    '        ${session.questions.map((item, questionIndex) => `\n' +
+    '          <fieldset class="assessment-question">\n' +
+    '            <legend><span>${questionIndex + 1}</span>${esc(item.prompt)}</legend>\n' +
+    '            <div class="assessment-options">\n' +
+    '              ${item.options.map((option, optionIndex) => `\n' +
+    '                <label><input type="radio" name="question-${questionIndex}" value="${optionIndex}" ${draft[item.id] === option.value ? \'checked\' : \'\'} />\n' +
+    '                  <span>${esc(option.label)}</span></label>\n' +
+    "              `).join('')}\n" +
+    '            </div>\n' +
+    '          </fieldset>\n' +
+    "        `).join('')}\n" +
+    '        <p class="assessment-status" role="status" aria-live="polite"></p>\n' +
+    '        <div class="assessment-actions">\n' +
+    '          <button type="button" class="text-button" data-action="cancel">${backLabel}</button>\n' +
+    '          <button type="submit" class="quick-btn">交卷评定</button>\n' +
+    '        </div>\n' +
+    '      </form>\n' +
+    '    </section>`;\n' +
+    '\n' +
+    '  const readOption = (selected, question) => {\n' +
+    '    const index = Number(selected?.value);\n' +
+    '    return selected && Number.isInteger(index) && String(index) === selected.value ? question.options[index] : null;\n' +
+    '  };\n' +
+    "  const form = container.querySelector('.assessment-form');\n" +
+    '  const isCurrentForm = () => !submitted && isCurrent() && form.isConnected !== false &&\n' +
+    "    container.querySelector('.assessment-form') === form;\n" +
+    `  container.querySelector('[data-action="cancel"]').addEventListener('click', () => {\n` +
+    '    if (!isCurrentForm()) return;\n' +
+    '    submitted = true;\n' +
+    '    onComplete(null);\n' +
+    '  });\n' +
+    "  form.addEventListener('change', () => {\n" +
+    '    if (!isCurrentForm()) return;\n' +
+    '    session.questions.forEach((question, index) => {\n' +
+    '      const option = readOption(container.querySelector(`input[name="question-${index}"]:checked`), question);\n' +
+    '      if (option) draft[question.id] = option.value;\n' +
+    '      else delete draft[question.id];\n' +
+    '    });\n' +
+    '  });\n' +
+    "  form.addEventListener('submit', (event) => {\n" +
+    '    event.preventDefault();\n' +
+    '    if (!isCurrentForm()) return;\n' +
+    '    const answers = {};\n' +
+    '    for (let index = 0; index < session.questions.length; index += 1) {\n' +
+    '      const question = session.questions[index];\n' +
+    '      const selected = container.querySelector(`input[name="question-${index}"]:checked`);\n' +
+    '      const option = readOption(selected, question);\n' +
+    '      if (!option) {\n' +
+    "        container.querySelector('.assessment-status').textContent = `请先完成第 ${index + 1} 题。`;\n" +
+    '        container.querySelector(`input[name="question-${index}"]`)?.focus();\n' +
+    '        return;\n' +
+    '      }\n' +
+    '      answers[question.id] = option.value;\n' +
+    '    }\n' +
+    '    const result = gradeAssessment(session, answers);\n' +
+    '    if (!result) return;\n' +
+    '    submitted = true;\n' +
+    '    onComplete(result);\n' +
+    '  });\n' +
+    '  resetAssessmentViewport(container, isCurrentForm);\n' +
+    '}\n' +
+    '\n' +
+    'function courseQuestionStatus(item, answer, session, assessment, weakQuestions, error) {\n' +
+    "  if (!assessment?.saved) return '本轮成绩与课程温习记录未保存，恢复存储后可重试。';\n" +
+    "  if (assessment.evidenceMissing) return '旧记录缺少本轮逐题证据，未补记课程温习。';\n" +
+    "  if (error) return '课程温习记录异常，请先导出备份并检查数据。';\n" +
+    '  const weak = weakQuestions.find(entry => entry.questionId === item.id);\n' +
+    "  if (!weak) return answer.correct ? '本题未产生待温习记录。' : '未读取到本题已保存的课程温习记录。';\n" +
+    "  if (weak.sourceKind !== 'course' || weak.questionVersion !== item.questionVersion ||\n" +
+    '      weak.lessonId !== item.lessonId || weak.questionType !== item.kind ||\n' +
+    '      weak.targetCode !== item.targetCode || weak.termId !== item.termId) {\n' +
+    "    return '原有温习记录与本题引用不同，未改动旧记录。';\n" +
+    '  }\n' +
+    "  if (weak.status === 'resolved') return weak.lastSessionId === session.id && answer.correct\n" +
+    "    ? '本轮已纠正；保留此前错误记录。' : '本题已有纠正记录。';\n" +
+    "  return weak.lastSessionId === session.id && !answer.correct ? '已加入课程温习。' : '本题仍在课程温习队列中。';\n" +
+    '}\n' +
+    '\n' +
+    'function renderResult(container, session, result, onBack, saveState, onRetry, actions = {}) {\n' +
+    '  const storedRecord = loadLearningRecord();\n' +
+    '  const weakError = getWeakQuestionsError(storedRecord.weakQuestions);\n' +
+    '  const weakQuestions = weakError ? [] : Object.values(storedRecord.weakQuestions || {});\n' +
+    '  const percent = Math.round(result.correct / result.total * 100);\n' +
+    '  const pending = [];\n' +
+    "  if (!saveState.assessment?.saved) pending.push('本轮成绩');\n" +
+    '  else if (!saveState.assessment.evidenceMissing) {\n' +
+    "    if (!saveState.activitySaved) pending.push('学习日记录');\n" +
+    "    if (!saveState.achievementsSaved) pending.push('成就证据');\n" +
+    '  }\n' +
+    '  const missingEvidence = saveState.assessment?.evidenceMissing;\n' +
+    '  const receipt = saveState.assessment?.entry;\n' +
+    '  const saveMessage = missingEvidence\n' +
+    "    ? '本轮标识已处理，未重复计分；旧记录未保留本轮成绩明细，无法补记成就证据。当前答案仅供核对。'\n" +
+    "    : pending.length ? `${pending.join('、')}未能保存；答案和分数仍可查看。`\n" +
+    '      : saveState.assessment?.duplicate\n' +
+    '        ? `本轮已记录，未重复计分；已保存成绩为 ${receipt.correct}/${receipt.total} 题正确，当前答案仅供核对。`\n' +
+    "        : '本轮成绩与学习记录已保存。';\n" +
+    `  const backAction = '<button type="button" class="quick-btn" data-action="back">返回考评中心</button>';\n` +
+    `  const reviewAction = '<button type="button" class="text-button" data-action="return-review">前往温故队列</button>';\n` +
+    '  container.innerHTML = `\n' +
+    '    <section class="assessment-result" aria-labelledby="assessment-result-title" data-assessment-session="${esc(session.id)}">\n' +
+    '      <span class="academy-kicker">考校</span>\n' +
+    '      <h3 id="assessment-result-title" data-page-heading>${esc(sessionTitle(session))}</h3>\n' +
+    '      ${renderLearningFeedback({\n' +
+    '        result: `<div class="assessment-score"><strong>${percent}</strong><span>分</span></div>\n' +
+    "          <p>${result.correct}/${result.total} 题正确。${percent >= 80 ? '本轮掌握稳定，可继续温习或进入下一课。' : '建议查看辨析后回到原课温习，再进行一次小试。'}</p>`,\n" +
+    '        basis: `<div class="assessment-review-list">\n' +
+    '        ${session.questions.map((item, index) => {\n' +
+    '          const answer = result.results[index];\n' +
+    "          return `<details ${answer.correct ? '' : 'open'}>\n" +
+    '            <summary class="${answer.correct ? \'answer-correct\' : \'answer-wrong\'}">${index + 1}. ${answer.correct ? \'答对\' : \'待温习\'} · ${esc(item.prompt)}</summary>\n' +
+    '            <p>正答：${esc(item.answer)}</p>\n' +
+    '            <p>${esc(item.explanation)}</p>\n' +
+    '            <small>依据：${esc(item.source)}</small>\n' +
+    '            <p class="course-weak-status">${esc(courseQuestionStatus(item, answer, session, saveState.assessment, weakQuestions, weakError))}</p>\n' +
+    '            <div class="course-weak-actions">\n' +
+    '              <button type="button" class="text-button" data-action="weak-source-${index}">回原课温习</button>\n' +
+    '              ${item.questionVersion ? `<button type="button" class="text-button" data-action="weak-practice-${index}">回练此题</button>` : \'\'}\n' +
+    '            </div>\n' +
+    '          </details>`;\n' +
+    "        }).join('')}\n" +
+    '        </div>`,\n' +
+    '        changes: `<p class="assessment-save-status ${pending.length || missingEvidence ? \'assessment-warning\' : \'assessment-success\'}" role="status" aria-live="polite">${esc(saveMessage)}</p>`,\n' +
+    `        primaryAction: pending.length ? '<button type="button" class="text-button" data-action="retry-save">重试保存本轮记录</button>' : backAction,\n` +
+    '        secondaryActions: pending.length ? [backAction, reviewAction] : [reviewAction],\n' +
+    '      })}\n' +
+    '    </section>`;\n' +
+    `  container.querySelector('[data-action="back"]').addEventListener('click', onBack);\n` +
+    `  container.querySelector('[data-action="retry-save"]')?.addEventListener('click', onRetry);\n` +
+    `  container.querySelector('[data-action="return-review"]')?.addEventListener('click', actions.onReview);\n` +
+    '  session.questions.forEach((item, index) => {\n' +
+    '    container.querySelector(`[data-'... 19054 more characters,
+  expected: /heading\.focus\?\.\(\{ preventScroll: true \}\)/,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+
+质量检查失败：Y:\易经学习项目\web\test\learning-ui-contract.test.mjs 失败（退出码 1）

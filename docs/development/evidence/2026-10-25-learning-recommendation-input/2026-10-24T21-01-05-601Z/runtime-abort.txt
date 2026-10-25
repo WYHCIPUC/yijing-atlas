@@ -1,0 +1,16 @@
+Observed command exit: 1 (2026-10-25 Asia/Shanghai)
+Command: node docs/development/tools/check-learning-recommendation-input.mjs
+Executable: C:\Users\1\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe
+Scope: full default six scenarios (YIJING_LEARNING_INPUT_SCOPE unset)
+Runtime: Node v24.19.0 / libuv 1.52.1
+
+Exact captured terminal output:
+START 2026-10-24T21-01-05-601Z v24.19.0 profile=C:\Users\1\AppData\Local\Temp\yijing-learning-recommendation-RBNCoB
+RUN 1440-welcome-resume
+Assertion failed: new_time >= loop->time, file src\win\core.c, line 327
+
+The process exited before any scenario finished. No browser-product assertion failed.
+The original trace.json remains status=running because native process termination skipped JavaScript finally.
+No final-source snapshot, completed screenshot, or full-matrix result was produced by this run.
+A read-only Win32_Process check after exit found no matching probe, this isolated profile, or scripts/serve.mjs process.
+The isolated synthetic profile is retained. No deletion attempted.

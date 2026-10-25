@@ -1,9 +1,9 @@
 import { isAchievementState } from './achievement-engine.js';
 import { isHistory, isLegacyHistory } from './divination-history.js';
-import { isActivity, isLearningRecord } from './learning-progress.js';
+import { getAssessmentIdsError, getLearningResumeError, getQuizAttemptsError, getWeakQuestionsError, isActivity, isLearningRecord } from './learning-progress.js';
 import { isReviewConfig } from './learning-review.js';
 import { isReviewCards } from './review-engine.js';
-import { isQuizStats, isWrongBook } from './quiz-engine.js';
+import { getQuizStatsError, isQuizStats, isWrongBook } from './quiz-engine.js';
 
 const FORMAT = 'yijing-atlas-user-data';
 const VERSION = 1;
@@ -56,6 +56,20 @@ function validateSnapshot(snapshot) {
   };
   for (const [key, check] of Object.entries(expected)) {
     if (!Object.hasOwn(snapshot.data, key) || snapshot.data[key] === null) continue;
+    if (key === 'yijing-quiz-stats') {
+      const path = getQuizStatsError(snapshot.data[key]);
+      if (path) throw new Error(`备份中的 ${key}.${path} 数据类型无效`);
+    }
+    if (key === 'yijing-learning-record-v2') {
+      const path = getAssessmentIdsError(snapshot.data[key]?.processedAssessmentIds);
+      if (path) throw new Error(`备份中的 ${key}.${path} 数据类型无效：应为唯一非空且不超过 120 字符的考评 ID`);
+      const weakPath = getWeakQuestionsError(snapshot.data[key]?.weakQuestions);
+      if (weakPath) throw new Error(`备份中的 ${key}.${weakPath} 数据类型无效`);
+      const resumePath = getLearningResumeError(snapshot.data[key]?.resume);
+      if (resumePath) throw new Error(`备份中的 ${key}.${resumePath} 数据类型无效`);
+      const quizPath = getQuizAttemptsError(snapshot.data[key]?.quizAttempts);
+      if (quizPath) throw new Error(`备份中的 ${key}.${quizPath} 数据类型无效`);
+    }
     if (!check(snapshot.data[key])) throw new Error(`备份中的 ${key} 数据类型无效`);
   }
   return snapshot;

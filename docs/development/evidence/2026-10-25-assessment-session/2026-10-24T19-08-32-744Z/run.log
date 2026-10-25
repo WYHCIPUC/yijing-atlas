@@ -1,0 +1,10 @@
+PASSED 1440-normal-unanswered-double-new-round
+PASSED 1440-empty-and-insufficient-real-pool
+PASSED 1440-grade-retry
+PASSED 1440-achievement-retry
+PASSED 390-grade-retry
+PASSED 390-achievement-retry
+PASSED 390-normal-touch
+PASSED 1440-known-id-without-receipt
+PASSED 1440-tampered-option-fixture
+{"status":"passed","browser":"Edg/155.0.4283.62","passed":9,"total":9,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-assessment-session\\2026-10-24T19-08-32-744Z\\trace.json","profileRemoved":false}

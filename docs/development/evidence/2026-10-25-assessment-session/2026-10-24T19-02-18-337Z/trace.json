@@ -1,0 +1,47 @@
+{
+  "startedAt": "2026-10-24T19:02:18.339Z",
+  "command": "node scripts/test-assessment-session.mjs",
+  "node": "v22.23.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "head": "1bee1c210d675d8aa49df23c0724ba577ad8cf6d",
+  "sourceHashes": {
+    "web/js/learning-progress.js": "ba1cca8296bac7e421892858f81e2b6e9cbdc7e96e75f395a38ff605ca222a0d",
+    "web/js/learning-assessment.js": "2f27c1b4b3f713ab04789347a42325bf7aef2af5b2f9c2ca984cdb1849590abf",
+    "web/js/learning-assessment-page.js": "5975e61c27053bb2100b2f318a8bb21b1e58a0872b55737acdb681dacd832153",
+    "web/js/modes/learning-mode.js": "c5ed203a60edb8d682550655db3083579e950391ef908c11ebf788ae59d95d4f",
+    "web/js/user-data.js": "8a47ceb0e8dea555a17d10ac253b32f0dfc84cead620ddcf13193def6e1435b1",
+    "web/js/study-page.js": "7f99d3e5db2429daa6710735f9ff3ac8a05106bc33268c16ca00faaa418997c6",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "scripts/test-assessment-session.mjs": "e4f04fb236951c583e08bbaf3c3c4cdc06103ae744e14f5306370a117c91909b"
+  },
+  "scenarios": [
+    {
+      "name": "1440-normal-unanswered-double-new-round",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fixture": "none",
+      "status": "running",
+      "sessions": [],
+      "inputs": [],
+      "checks": [],
+      "screenshots": []
+    }
+  ],
+  "status": "running",
+  "limitations": [
+    "Headless Chromium desktop and emulated mobile; not physical mobile, screen-reader or real 200% zoom evidence.",
+    "Read-only Debugger breakpoint captures generated public questions. No business function or DOM click is invoked. Storage and tampered-option fixtures are explicitly marked."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  }
+}

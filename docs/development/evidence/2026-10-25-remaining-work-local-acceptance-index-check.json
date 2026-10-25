@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-25T00:11:10.095Z",
+  "stagedDocumentationFiles": 170,
+  "exactEvidenceBytesVerified": 136,
+  "sourceGuardFiles": 171,
+  "sourceUnchanged": true,
+  "repositoryDocCheck": {
+    "documents": 15,
+    "lines": 6963,
+    "localLinks": 808,
+    "tasks": 48,
+    "requirements": 86,
+    "sourceGuard": null,
+    "issues": []
+  },
+  "cachedDiffCheckExitCode": 0,
+  "workingDiffCheckExitCode": 0,
+  "applicationFilesStaged": 0,
+  "issues": []
+}

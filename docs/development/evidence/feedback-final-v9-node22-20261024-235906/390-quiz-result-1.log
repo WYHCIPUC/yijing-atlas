@@ -1,0 +1,3 @@
+START 2026-10-25T00-02-06-016Z v22.23.1 C:\Users\1\AppData\Local\Temp\yijing-learning-feedback-QGzlUs
+RUN 390-quiz-result
+Assertion failed: new_time >= loop->time, file c:\ws\deps\uv\src\win\core.c, line 327

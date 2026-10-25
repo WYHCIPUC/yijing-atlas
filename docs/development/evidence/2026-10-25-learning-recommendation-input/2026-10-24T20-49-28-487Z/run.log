@@ -1,0 +1,4 @@
+START 2026-10-24T20-49-28-487Z v24.19.0 profile=C:\Users\1\AppData\Local\Temp\yijing-learning-recommendation-cj2E59
+RUN 1440-welcome-resume
+PASS 1440-welcome-resume
+{"status":"passed","passed":1,"total":1,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-recommendation-input\\2026-10-24T20-49-28-487Z\\trace.json","profile":"C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-recommendation-cj2E59"}

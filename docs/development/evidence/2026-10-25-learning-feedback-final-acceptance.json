@@ -1,0 +1,573 @@
+{
+  "checkedAt": "2026-10-25T00:05:55.787Z",
+  "headBeforeBusinessCommit": "20b2e47e973f85db13a4206c09d50475e7d06a7e",
+  "task": "T-LEARN-03",
+  "status": "local acceptance passed; commit and remote CI recorded separately",
+  "sourceGuard": {
+    "files": 171,
+    "changed": [],
+    "snapshot": "docs/development/evidence/2026-10-25-learning-feedback-final-source-v9.json"
+  },
+  "validate": {
+    "command": "npm run validate",
+    "exitCode": 0,
+    "qualityScripts": 75,
+    "coverageTests": 629,
+    "passed": 629,
+    "failed": 0,
+    "coverageModules": 23,
+    "line": 99.72,
+    "branch": 93.9,
+    "function": 99.01,
+    "log": "docs/development/evidence/2026-10-25-learning-feedback-v9-final-validate.log",
+    "sha256": "3d4bc3093cdea402a420dd5b434dec0434cbb82569fc161b2ca4ae7221237f34"
+  },
+  "e2e": {
+    "command": "YIJING_SMOKE_SCREENSHOTS=1 npm run test:e2e",
+    "exitCode": 0,
+    "log": "docs/development/evidence/2026-10-25-learning-feedback-v9-final-e2e.log",
+    "sha256": "7707449e41ba456e22e1430766e042a8bf2a974efef779f030fb4b08a50b164a",
+    "screenshots": [
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1280x720-deep.png",
+        "sha256": "bd4d9e3afcd5955826993d461e8afa4248b87d1457bde3ff510dcaa88a9a7f5b"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1280x720-focus.png",
+        "sha256": "acef794ab5f8450d37844fba49098e1359a88add3fdf342e7102928a960cbd5b"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1280x720-overview.png",
+        "sha256": "b62e3a751df6a8b3daeea77958c1cdc8c5f3ebfa1a7f8018bf9b2c20e681b2c0"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1280x720-quick.png",
+        "sha256": "db0cd2d353b6040092c433bdf90f8df6cd47b41b1164ca9fc65523df61b9c0b2"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1440x1024-deep.png",
+        "sha256": "03bef35e88da8a7c05f9bdd4f261caee7aaa79e48fb8ff6c70cdc874bdf91b26"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1440x1024-jian-100.png",
+        "sha256": "ad7205375b14cfdbdcce67aba8cc147eab63271db038b69ef1164ace7ca090c9"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1440x1024-jian-195.png",
+        "sha256": "9a01f1ea44b3d7c74fae53bae5acacf9501c96745e705904436218cecf97779c"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1440x1024-jian-244.png",
+        "sha256": "49676e35d99d2005409d4d7284bea0efe398fc990b0fad729b211eedd82f4878"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1440x1024-kun-100.png",
+        "sha256": "518cce252bcb8efe0b5df5a7d4d573523a5098b11cd548a0e5b99f5c69262868"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1440x1024-kun-195.png",
+        "sha256": "5a2c51d157aa2fc5128bd5f47413c36ba015255892d4faf8eff0fb5c083f3954"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1440x1024-kun-244.png",
+        "sha256": "fe4e6de7adf7d0872922100ee3176476afff5dba20eb9ad8cff34dbcb7dfb5e2"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1440x1024-qian-100.png",
+        "sha256": "28dceea7ad6a6a745fd9b444103fd9cd1dbb4521968c91761b2fbed115ee6e10"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1440x1024-qian-195.png",
+        "sha256": "56bc475361a3000a692bcff38f058daedce0880fde1902dc0fabeb71b1be4ec0"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1440x1024-qian-244.png",
+        "sha256": "484edd044b8a1815370bc2027ec1555565f109c9a270adbb1420dbb1f267bfed"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/1440x1024-quick.png",
+        "sha256": "2c65fe683d9e98b3e3f48c64af2939bb006116697ea932fe9a32f94a4082d4a9"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/320x844-learning.png",
+        "sha256": "81d95dc028c8f8869dc905ea972b711022145379d8230b0c2bd3ff7bd99dd1a7"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/320x844-reduced-motion-deep.png",
+        "sha256": "51efe4c927a424503311942aba9a35bfc6bb8a94ed248ebfa0d3e431d92d9b43"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/320x844-reduced-motion-quick.png",
+        "sha256": "8f677ba8d8c60ec55688bec4316e1071acf13cd726dc2f63e1ed92704b121622"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/390x844-deep.png",
+        "sha256": "f3adf5ccd83a918ff2f6903cbd4d9106b63140183c3538217f74cff9889f79a3"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/390x844-focus.png",
+        "sha256": "2d0fe51fd8d13c27ae1362c1d57d081622570c1a1e3e901463a1baa2cbd20fb6"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/390x844-no-webgl-deep.png",
+        "sha256": "b73c0436531ae0b630209002c15ca343e266423b180aa6c82ff130dc2e2d3136"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/390x844-overview.png",
+        "sha256": "e4993c5cf4965c6bb46e3694697a056f78314efe0e8670768033d4be631d2790"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/390x844-quick.png",
+        "sha256": "571b4602984f8fc34f7aa71b0029c25b3a9f0a362cde1fddf2fcc99b09b88667"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/768x1024-deep.png",
+        "sha256": "53a56905b1746abb2b4327240d5a3ec36335e6b984f66b67a903ad19d2cb2685"
+      },
+      {
+        "path": "docs/screenshots/smoke-2026-10-24T23-57-41-417Z/768x1024-quick.png",
+        "sha256": "0ea92dea950930839080e9f00663cb6a6b0c5230c5e421a8f5ec9dddff08747f"
+      }
+    ]
+  },
+  "browser": {
+    "scopeCount": 51,
+    "observedFiles": 31,
+    "allCurrentHashMatched": true,
+    "allFinalInputsTrusted": true,
+    "allInterceptedRequestsCompleted": true,
+    "pageErrors": 0,
+    "lastBatchRows": 57,
+    "reused": 12,
+    "newPasses": 39,
+    "nativeAborts": 6,
+    "terminalExitCode": 0,
+    "results": [
+      {
+        "scope": "1440-review-card-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 10,
+        "screenshots": 3,
+        "archiveEntry": "scopes/1440-review-card-retry/trace.json"
+      },
+      {
+        "scope": "1440-review-activity-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 10,
+        "screenshots": 3,
+        "archiveEntry": "scopes/1440-review-activity-retry/trace.json"
+      },
+      {
+        "scope": "1440-review-achievement-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 10,
+        "screenshots": 3,
+        "archiveEntry": "scopes/1440-review-achievement-retry/trace.json"
+      },
+      {
+        "scope": "1440-review-leave",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 6,
+        "screenshots": 2,
+        "archiveEntry": "scopes/1440-review-leave/trace.json"
+      },
+      {
+        "scope": "1440-oral-self-record-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 19,
+        "screenshots": 5,
+        "archiveEntry": "scopes/1440-oral-self-record-retry/trace.json"
+      },
+      {
+        "scope": "1440-oral-self-activity-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 19,
+        "screenshots": 5,
+        "archiveEntry": "scopes/1440-oral-self-activity-retry/trace.json"
+      },
+      {
+        "scope": "1440-oral-ai-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 35,
+        "screenshots": 5,
+        "archiveEntry": "scopes/1440-oral-ai-save-retry/trace.json"
+      },
+      {
+        "scope": "1440-oral-ai-stale-course",
+        "node": "v24.19.0",
+        "uv": "1.52.1",
+        "trustedFinalInputEvents": 13,
+        "screenshots": 1,
+        "archiveEntry": "scopes/1440-oral-ai-stale-course/trace.json"
+      },
+      {
+        "scope": "1440-oral-ai-stale-edit",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 15,
+        "screenshots": 1,
+        "archiveEntry": "scopes/1440-oral-ai-stale-edit/trace.json"
+      },
+      {
+        "scope": "1440-oral-ai-stale-leave",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 10,
+        "screenshots": 1,
+        "archiveEntry": "scopes/1440-oral-ai-stale-leave/trace.json"
+      },
+      {
+        "scope": "1440-assessment-result",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 25,
+        "screenshots": 1,
+        "archiveEntry": "scopes/1440-assessment-result/trace.json"
+      },
+      {
+        "scope": "1440-assessment-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 79,
+        "screenshots": 2,
+        "archiveEntry": "scopes/1440-assessment-save-retry/trace.json"
+      },
+      {
+        "scope": "1440-quiz-result",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 6,
+        "screenshots": 1,
+        "archiveEntry": "scopes/1440-quiz-result/trace.json"
+      },
+      {
+        "scope": "1440-quiz-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 7,
+        "screenshots": 2,
+        "archiveEntry": "scopes/1440-quiz-save-retry/trace.json"
+      },
+      {
+        "scope": "1440-divination-result",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 10,
+        "screenshots": 1,
+        "archiveEntry": "scopes/1440-divination-result/trace.json"
+      },
+      {
+        "scope": "1440-divination-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 17,
+        "screenshots": 3,
+        "archiveEntry": "scopes/1440-divination-save-retry/trace.json"
+      },
+      {
+        "scope": "1440-meihua-number-result",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 29,
+        "screenshots": 2,
+        "archiveEntry": "scopes/1440-meihua-number-result/trace.json"
+      },
+      {
+        "scope": "1440-meihua-number-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 39,
+        "screenshots": 4,
+        "archiveEntry": "scopes/1440-meihua-number-save-retry/trace.json"
+      },
+      {
+        "scope": "1440-meihua-time-result",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 11,
+        "screenshots": 2,
+        "archiveEntry": "scopes/1440-meihua-time-result/trace.json"
+      },
+      {
+        "scope": "1440-meihua-time-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 21,
+        "screenshots": 4,
+        "archiveEntry": "scopes/1440-meihua-time-save-retry/trace.json"
+      },
+      {
+        "scope": "390-review-card-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 26,
+        "screenshots": 3,
+        "archiveEntry": "scopes/390-review-card-retry/trace.json"
+      },
+      {
+        "scope": "390-review-activity-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 24,
+        "screenshots": 3,
+        "archiveEntry": "scopes/390-review-activity-retry/trace.json"
+      },
+      {
+        "scope": "390-review-achievement-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 26,
+        "screenshots": 3,
+        "archiveEntry": "scopes/390-review-achievement-retry/trace.json"
+      },
+      {
+        "scope": "390-review-leave",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 19,
+        "screenshots": 2,
+        "archiveEntry": "scopes/390-review-leave/trace.json"
+      },
+      {
+        "scope": "390-oral-self-record-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 45,
+        "screenshots": 5,
+        "archiveEntry": "scopes/390-oral-self-record-retry/trace.json"
+      },
+      {
+        "scope": "390-oral-self-activity-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 45,
+        "screenshots": 5,
+        "archiveEntry": "scopes/390-oral-self-activity-retry/trace.json"
+      },
+      {
+        "scope": "390-oral-ai-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 63,
+        "screenshots": 5,
+        "archiveEntry": "scopes/390-oral-ai-save-retry/trace.json"
+      },
+      {
+        "scope": "390-oral-ai-stale-course",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 25,
+        "screenshots": 1,
+        "archiveEntry": "scopes/390-oral-ai-stale-course/trace.json"
+      },
+      {
+        "scope": "390-oral-ai-stale-edit",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 27,
+        "screenshots": 1,
+        "archiveEntry": "scopes/390-oral-ai-stale-edit/trace.json"
+      },
+      {
+        "scope": "390-oral-ai-stale-leave",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 20,
+        "screenshots": 1,
+        "archiveEntry": "scopes/390-oral-ai-stale-leave/trace.json"
+      },
+      {
+        "scope": "390-assessment-result",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 41,
+        "screenshots": 1,
+        "archiveEntry": "scopes/390-assessment-result/trace.json"
+      },
+      {
+        "scope": "390-assessment-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 109,
+        "screenshots": 2,
+        "archiveEntry": "scopes/390-assessment-save-retry/trace.json"
+      },
+      {
+        "scope": "390-quiz-result",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 17,
+        "screenshots": 2,
+        "archiveEntry": "scopes/390-quiz-result/trace.json"
+      },
+      {
+        "scope": "390-quiz-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 20,
+        "screenshots": 3,
+        "archiveEntry": "scopes/390-quiz-save-retry/trace.json"
+      },
+      {
+        "scope": "390-divination-result",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 22,
+        "screenshots": 1,
+        "archiveEntry": "scopes/390-divination-result/trace.json"
+      },
+      {
+        "scope": "390-divination-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 33,
+        "screenshots": 3,
+        "archiveEntry": "scopes/390-divination-save-retry/trace.json"
+      },
+      {
+        "scope": "390-meihua-number-result",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 47,
+        "screenshots": 2,
+        "archiveEntry": "scopes/390-meihua-number-result/trace.json"
+      },
+      {
+        "scope": "390-meihua-number-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 61,
+        "screenshots": 4,
+        "archiveEntry": "scopes/390-meihua-number-save-retry/trace.json"
+      },
+      {
+        "scope": "390-meihua-time-result",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 25,
+        "screenshots": 2,
+        "archiveEntry": "scopes/390-meihua-time-result/trace.json"
+      },
+      {
+        "scope": "390-meihua-time-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 39,
+        "screenshots": 4,
+        "archiveEntry": "scopes/390-meihua-time-save-retry/trace.json"
+      },
+      {
+        "scope": "320-quiz-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 15,
+        "screenshots": 2,
+        "archiveEntry": "scopes/320-quiz-save-retry/trace.json"
+      },
+      {
+        "scope": "1280-quiz-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 7,
+        "screenshots": 2,
+        "archiveEntry": "scopes/1280-quiz-save-retry/trace.json"
+      },
+      {
+        "scope": "1280-assessment-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 79,
+        "screenshots": 2,
+        "archiveEntry": "scopes/1280-assessment-save-retry/trace.json"
+      },
+      {
+        "scope": "1280-oral-self-record-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 19,
+        "screenshots": 5,
+        "archiveEntry": "scopes/1280-oral-self-record-retry/trace.json"
+      },
+      {
+        "scope": "1280-review-card-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 10,
+        "screenshots": 3,
+        "archiveEntry": "scopes/1280-review-card-retry/trace.json"
+      },
+      {
+        "scope": "1280-meihua-number-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 39,
+        "screenshots": 4,
+        "archiveEntry": "scopes/1280-meihua-number-save-retry/trace.json"
+      },
+      {
+        "scope": "768-quiz-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 15,
+        "screenshots": 2,
+        "archiveEntry": "scopes/768-quiz-save-retry/trace.json"
+      },
+      {
+        "scope": "768-assessment-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 109,
+        "screenshots": 2,
+        "archiveEntry": "scopes/768-assessment-save-retry/trace.json"
+      },
+      {
+        "scope": "768-oral-self-record-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 45,
+        "screenshots": 5,
+        "archiveEntry": "scopes/768-oral-self-record-retry/trace.json"
+      },
+      {
+        "scope": "768-review-card-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 26,
+        "screenshots": 3,
+        "archiveEntry": "scopes/768-review-card-retry/trace.json"
+      },
+      {
+        "scope": "768-meihua-number-save-retry",
+        "node": "v22.23.1",
+        "uv": "1.51.0",
+        "trustedFinalInputEvents": 61,
+        "screenshots": 4,
+        "archiveEntry": "scopes/768-meihua-number-save-retry/trace.json"
+      }
+    ],
+    "archive": {
+      "path": "docs/development/evidence/2026-10-25-learning-feedback-final-browser.zip",
+      "sha256": "bfbbd8a95a02e74a049c2349592c0bdcc41e3f0891f22e1de99b87f5714424b0",
+      "bytes": 15669342,
+      "manifest": "docs/development/evidence/2026-10-25-learning-feedback-final-browser.manifest.json",
+      "independentDecompressionCheck": "docs/development/evidence/2026-10-25-learning-feedback-archive-check.json"
+    }
+  },
+  "independentReview": "No blocking findings in data, lifecycle, oral source navigation and updated static contracts; external environments remain unverified",
+  "limitations": [
+    "Real Android/iOS, NVDA/VoiceOver and native browser 200% zoom remain unverified.",
+    "51 scopes are not the full product/device matrix; 1280/768 cover five representative flows each and 320 covers quiz retry.",
+    "Node22 and Node24 native timer assertions remain intermittent; terminated attempts are retained, not marked passed.",
+    "Historical dynamic module loading failure root cause is not confirmed.",
+    "Optional oral AI replies are synthetic and intercepted before network; no deployed backend is claimed.",
+    "No new storage keys, backup version, cloud service or refreshed-draft recovery.",
+    "T-DIV-02/03, sound, capacity, first-offline coverage and content gates remain separate."
+  ]
+}

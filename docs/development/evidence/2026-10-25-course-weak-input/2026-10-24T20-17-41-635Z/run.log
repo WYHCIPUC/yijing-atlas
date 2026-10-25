@@ -1,0 +1,7 @@
+PASSED 1440-l1-1-course-cycle
+PASSED 390-l5-1-course-cycle
+PASSED 1440-storage-retry
+PASSED 390-storage-retry
+PASSED 1440-obsolete-question
+PASSED 1440-obsolete-version
+{"status":"passed","browser":"Edg/155.0.4283.62","passed":6,"total":6,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-course-weak-input\\2026-10-24T20-17-41-635Z\\trace.json","profileRemoved":false}

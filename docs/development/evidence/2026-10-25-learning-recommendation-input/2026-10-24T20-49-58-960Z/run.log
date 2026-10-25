@@ -1,0 +1,4 @@
+START 2026-10-24T20-49-58-960Z v24.19.0 profile=C:\Users\1\AppData\Local\Temp\yijing-learning-recommendation-vg7h75
+RUN 1440-priority-routing
+PASS 1440-priority-routing
+{"status":"passed","passed":1,"total":1,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-recommendation-input\\2026-10-24T20-49-58-960Z\\trace.json","profile":"C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-recommendation-vg7h75"}

@@ -1,0 +1,1883 @@
+{
+  "startedAt": "2026-10-24T20:49:58.973Z",
+  "command": "node docs/development/tools/check-learning-recommendation-input.mjs",
+  "node": "v24.19.0",
+  "uv": "1.52.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-recommendation-vg7h75",
+  "scope": "1440-priority-routing",
+  "head": "ccd9961a76f3c2a27bdb1acaf805f8969551df63",
+  "sourceHashes": {
+    "web/js/main.js": "1556c793ef4492f32ec7cd7e14b8cd291921048743838c6b258db254a2edf82f",
+    "web/js/learning-assessment.js": "cd8ab9272d3ca1e9f0585486f8e79dca00dc2fded4d9301709270a2e630de165",
+    "web/js/learning-progress.js": "41389087183f1054035e62b4d0f03a5edca0f72124d16aa24b7be1f242b08f81",
+    "web/js/learning-assessment-page.js": "d896c82e026da67bd57a1edc94cc34a6151aae41f992563eacf973a83c884095",
+    "web/js/modes/learning-mode.js": "74838284cc1b0a5a241d676dfa0bd2850796a81ab5d8bd9755e7623cec7bdc5c",
+    "web/js/modes/review-mode.js": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+    "web/js/modes/quiz-mode.js": "7a60bcd0b713a6b43bac4a0ca6761f77877419f16f01901bfbc67e0c3f9734a1",
+    "web/js/study-page.js": "0967444da28f07dcb8306740299b4c529129fd79bbb4386cfccb40c113c7d5a7",
+    "web/js/user-data.js": "52ae1c42d07747413a5da56d7e683e8f67534a80fffa6395048ab76c1250c530",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/quiz-engine.js": "4b9e087b6c080b9e6a05cd69d15887634e8cb6cfe0b921e559bc48b7cbda1fba",
+    "web/styles/immersive.css": "b3568ce4e89ff48b8c908d81bba79b343a806df947910479c0bc1c88f5ffd701",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "docs/development/tools/check-learning-recommendation-input.mjs": "73b415fd0b3159ec55e733b74523081179c9c52fb07d252c834ec17e13615496"
+  },
+  "status": "passed",
+  "scenarios": [
+    {
+      "name": "1440-priority-routing",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "status": "passed",
+      "inputs": [
+        {
+          "kind": "mouse",
+          "selector": "[data-entry=\"explore\"]",
+          "x": 642.9296875,
+          "y": 668.671875
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"learning\"]",
+          "x": 619.359375,
+          "y": 34.5744104385376
+        },
+        {
+          "kind": "mouse",
+          "selector": ".today-primary-action",
+          "x": 1196,
+          "y": 502.203125
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"explore\"]",
+          "x": 531.515625,
+          "y": 35.5
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"learning\"]",
+          "x": 619.359375,
+          "y": 34.574198722839355
+        },
+        {
+          "kind": "mouse",
+          "selector": ".today-primary-action",
+          "x": 1195,
+          "y": 502.203125
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"explore\"]",
+          "x": 531.515625,
+          "y": 35.5
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"learning\"]",
+          "x": 619.359375,
+          "y": 34.7161865234375
+        },
+        {
+          "kind": "mouse",
+          "selector": ".today-primary-action",
+          "x": 1196,
+          "y": 502.203125
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"explore\"]",
+          "x": 531.515625,
+          "y": 35.5
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"learning\"]",
+          "x": 619.359375,
+          "y": 34.574317932128906
+        },
+        {
+          "kind": "mouse",
+          "selector": ".today-primary-action",
+          "x": 1195,
+          "y": 502.203125
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"explore\"]",
+          "x": 531.515625,
+          "y": 35.5
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"learning\"]",
+          "x": 619.359375,
+          "y": 34.57460308074951
+        },
+        {
+          "kind": "mouse",
+          "selector": ".today-primary-action",
+          "x": 1196,
+          "y": 502.203125
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"explore\"]",
+          "x": 531.515625,
+          "y": 35.5
+        },
+        {
+          "kind": "mouse",
+          "selector": ".mode-btn[data-mode=\"learning\"]",
+          "x": 619.359375,
+          "y": 34.40835952758789
+        },
+        {
+          "kind": "mouse",
+          "selector": ".today-primary-action",
+          "x": 1196,
+          "y": 502.203125
+        }
+      ],
+      "checks": [
+        {
+          "label": "priority-resume",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "theory-yinyang-name": {
+                  "questionId": "theory-yinyang-name",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "recall",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastSessionId": "synthetic-priority-source",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              },
+              "resume": {
+                "lessonId": "l1-2",
+                "section": "explain",
+                "scrollTop": 400,
+                "updatedAt": "2026-10-24T20:49:59.027Z"
+              }
+            },
+            "cards": {
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792874939944,
+                "introducedAt": 1792874879944,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "wrong": [
+              "000000"
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 480.90000000596046
+              }
+            ],
+            "writes": [],
+            "primary": "02\n继续阅读\n八卦生成\n\n这门课程已开始，尚未完成本轮小试；继续上次阅读位置。\n\n完成标准：阅读当前课程，并完成本轮小试。\n继续研习",
+            "primaryType": "继续阅读",
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "H2"
+            }
+          }
+        },
+        {
+          "label": "route-resume",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-2": {
+                  "viewedAt": "2026-10-24T20:50:02.947Z",
+                  "lastStudiedAt": "2026-10-24T20:50:02.947Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "theory-yinyang-name": {
+                  "questionId": "theory-yinyang-name",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "recall",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastSessionId": "synthetic-priority-source",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              },
+              "resume": {
+                "lessonId": "l1-2",
+                "section": "explain",
+                "scrollTop": 400,
+                "updatedAt": "2026-10-24T20:49:59.027Z"
+              }
+            },
+            "cards": {
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792874939944,
+                "introducedAt": 1792874879944,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "wrong": [
+              "000000"
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 480.90000000596046
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+                "at": 2492.199999988079
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2492.7999999821186,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-2": {
+                      "viewedAt": "2026-10-24T20:50:02.947Z",
+                      "lastStudiedAt": "2026-10-24T20:50:02.947Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "weakQuestions": {
+                    "theory-yinyang-name": {
+                      "questionId": "theory-yinyang-name",
+                      "questionVersion": "curriculum-v1",
+                      "sourceKind": "course",
+                      "lessonId": "l1-1",
+                      "questionType": "recall",
+                      "targetCode": null,
+                      "termId": null,
+                      "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                      "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                      "lastSessionId": "synthetic-priority-source",
+                      "wrongCount": 1,
+                      "status": "due",
+                      "lastReviewedAt": null,
+                      "resolvedAt": null
+                    }
+                  },
+                  "resume": {
+                    "lessonId": "l1-2",
+                    "section": "explain",
+                    "scrollTop": 400,
+                    "updatedAt": "2026-10-24T20:49:59.027Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 2492.9000000059605,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              }
+            ],
+            "heading": "八卦生成",
+            "scrollTop": 0,
+            "scrollHeight": 2056,
+            "clientHeight": 902,
+            "status": "",
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            }
+          }
+        },
+        {
+          "label": "priority-review",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "theory-yinyang-name": {
+                  "questionId": "theory-yinyang-name",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "recall",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastSessionId": "synthetic-priority-source",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            },
+            "cards": {
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792874939944,
+                "introducedAt": 1792874879944,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "wrong": [
+              "000000"
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 569.0999999940395
+              }
+            ],
+            "writes": [],
+            "primary": "·\n到期复习\n1 项卦象间隔卡\n\n有1项卦卡已到复习时间，先温故再学新课。\n\n完成标准：先回忆、再核对，并按真实记忆完成自评。\n开始到期复习",
+            "primaryType": "到期复习",
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "H2"
+            }
+          }
+        },
+        {
+          "label": "route-review",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "theory-yinyang-name": {
+                  "questionId": "theory-yinyang-name",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "recall",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastSessionId": "synthetic-priority-source",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            },
+            "cards": {
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792874939944,
+                "introducedAt": 1792874879944,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "wrong": [
+              "000000"
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 569.0999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+                "at": 2530.800000011921
+              }
+            ],
+            "writes": [],
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "H2"
+            }
+          }
+        },
+        {
+          "label": "priority-course",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "theory-yinyang-name": {
+                  "questionId": "theory-yinyang-name",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "recall",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastSessionId": "synthetic-priority-source",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            },
+            "cards": null,
+            "wrong": [
+              "000000"
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 554.6000000238419
+              }
+            ],
+            "writes": [],
+            "primary": "01\n课程温习\n阴阳之道\n\n有1项课程薄弱题待回练，先检验最近答错的知识点。\n\n完成标准：完成包含原题的小试，以有效答对纠正该项。\n回练原题",
+            "primaryType": "课程温习",
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "H2"
+            }
+          }
+        },
+        {
+          "label": "route-course",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "theory-yinyang-name": {
+                  "questionId": "theory-yinyang-name",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "recall",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastSessionId": "synthetic-priority-source",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            },
+            "cards": null,
+            "wrong": [
+              "000000"
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 554.6000000238419
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+                "at": 2448.9000000059605
+              }
+            ],
+            "writes": [],
+            "scrollTop": 0,
+            "scrollHeight": 948,
+            "clientHeight": 902,
+            "sessionId": "1853f475-f721-4239-ad86-af55a1731fa6",
+            "questionCount": 3,
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            }
+          }
+        },
+        {
+          "label": "priority-quiz",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            },
+            "cards": null,
+            "wrong": [
+              "000000"
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 652.0999999940395
+              }
+            ],
+            "writes": [],
+            "primary": "·\n测验错题\n1 项错题待回练\n\n有1卦的测验错题待温习；进入错题模式重新练习。\n\n完成标准：完成错题判断，核对答案与依据。\n开始错题回练",
+            "primaryType": "测验错题",
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "H2"
+            }
+          }
+        },
+        {
+          "label": "route-quiz",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            },
+            "cards": null,
+            "wrong": [
+              "000000"
+            ],
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 652.0999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+                "at": 2566.7999999821186
+              }
+            ],
+            "writes": [],
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            }
+          }
+        },
+        {
+          "label": "priority-lesson",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 554.5
+              }
+            ],
+            "writes": [],
+            "primary": "01\n下一课\n阴阳之道\n\n目前没有待续课程或待练任务，按课程序学习下一课。\n\n完成标准：阅读课程并完成一次课后小试。\n开始研习",
+            "primaryType": "下一课",
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "H2"
+            }
+          }
+        },
+        {
+          "label": "route-lesson",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:50:19.238Z",
+                  "lastStudiedAt": "2026-10-24T20:50:19.238Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 554.5
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+                "at": 2356.300000011921
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2356.9000000059605,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T20:50:19.238Z",
+                      "lastStudiedAt": "2026-10-24T20:50:19.238Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 2357,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              }
+            ],
+            "heading": "蒙学 · 阴阳之道",
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "status": "",
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            }
+          }
+        },
+        {
+          "label": "priority-oral",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l1-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l1-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l1-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-5": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-5": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-6": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-7": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-5": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 569.5
+              }
+            ],
+            "writes": [],
+            "primary": "01\n复讲温习\n阴阳之道\n\n已浏览全部课程，试着复讲最近学习的一课，检验能否说清依据。\n\n完成标准：用自己的话复述，再对照要点自评。\n开始复讲",
+            "primaryType": "复讲温习",
+            "scrollTop": 0,
+            "scrollHeight": 902,
+            "clientHeight": 902,
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "H2"
+            }
+          }
+        },
+        {
+          "label": "route-oral",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l1-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l1-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l1-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-5": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-5": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-6": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-7": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-5": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+                "at": 569.5
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "mouse",
+                "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+                "at": 2429.300000011921
+              }
+            ],
+            "writes": [],
+            "scrollTop": 0,
+            "scrollHeight": 1351,
+            "clientHeight": 902,
+            "questionCount": 0,
+            "oralLesson": "l1-1",
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            }
+          }
+        }
+      ],
+      "sessions": [
+        {
+          "id": "1853f475-f721-4239-ad86-af55a1731fa6",
+          "kind": "lesson",
+          "lessonId": "l1-1",
+          "levelId": "L1",
+          "questions": [
+            {
+              "id": "theory-yinyang-point",
+              "lessonId": "l1-1",
+              "levelId": "L1",
+              "prompt": "以下哪一要点属于“阴阳之道”？",
+              "answer": "阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。",
+              "options": [
+                {
+                  "value": "方位：震东、巽东南、离南、坤西南、兑西、乾西北、坎北、艮东北。",
+                  "label": "方位：震东、巽东南、离南、坤西南、兑西、乾西北、坎北、艮东北。"
+                },
+                {
+                  "value": "太极生两仪：阳仪、阴仪。",
+                  "label": "太极生两仪：阳仪、阴仪。"
+                },
+                {
+                  "value": "阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。",
+                  "label": "阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。"
+                },
+                {
+                  "value": "方位：乾南、坤北、离东、坎西、震东北、兑东南、巽西南、艮西北。",
+                  "label": "方位：乾南、坤北、离东、坎西、震东北、兑东南、巽西南、艮西北。"
+                }
+              ],
+              "explanation": "阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。",
+              "source": "阴阳之道",
+              "kind": "recall",
+              "evidenceType": null,
+              "questionVersion": "curriculum-v1",
+              "targetCode": null,
+              "termId": null
+            },
+            {
+              "id": "theory-yinyang-name",
+              "lessonId": "l1-1",
+              "levelId": "L1",
+              "prompt": "“《易》以阴阳为本。一阴一阳之谓道。”对应哪一项？",
+              "answer": "阴阳之道",
+              "options": [
+                {
+                  "value": "先天八卦（伏羲八卦）",
+                  "label": "先天八卦（伏羲八卦）"
+                },
+                {
+                  "value": "阴阳之道",
+                  "label": "阴阳之道"
+                },
+                {
+                  "value": "八卦生成",
+                  "label": "八卦生成"
+                },
+                {
+                  "value": "后天八卦（文王八卦）",
+                  "label": "后天八卦（文王八卦）"
+                }
+              ],
+              "explanation": "阴阳之道：《易》以阴阳为本。一阴一阳之谓道。",
+              "source": "阴阳之道",
+              "kind": "recall",
+              "evidenceType": null,
+              "questionVersion": "curriculum-v1",
+              "targetCode": null,
+              "termId": null
+            },
+            {
+              "id": "theory-yinyang-evidence",
+              "lessonId": "l1-1",
+              "levelId": "L1",
+              "prompt": "只凭项目中的一句白话，能否把“阴阳之道”判作现实中的确定结论？",
+              "answer": "证据不足",
+              "options": [
+                {
+                  "value": "卦体",
+                  "label": "卦体"
+                },
+                {
+                  "value": "证据不足",
+                  "label": "证据不足"
+                },
+                {
+                  "value": "爻位",
+                  "label": "爻位"
+                },
+                {
+                  "value": "经传原文",
+                  "label": "经传原文"
+                }
+              ],
+              "explanation": "项目白话用于辅助理解；若要形成判断，仍须说明原文、结构、流派与现实事实。",
+              "source": "阴阳之道",
+              "kind": "evidence",
+              "evidenceType": "证据不足",
+              "questionVersion": "curriculum-v1",
+              "targetCode": null,
+              "termId": null
+            }
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "label": "before-review-fixture",
+          "inputs": [
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+              "at": 480.90000000596046
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+              "at": 2492.199999988079
+            }
+          ],
+          "writes": [
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 2492.7999999821186,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-2": {
+                    "viewedAt": "2026-10-24T20:50:02.947Z",
+                    "lastStudiedAt": "2026-10-24T20:50:02.947Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "weakQuestions": {
+                  "theory-yinyang-name": {
+                    "questionId": "theory-yinyang-name",
+                    "questionVersion": "curriculum-v1",
+                    "sourceKind": "course",
+                    "lessonId": "l1-1",
+                    "questionType": "recall",
+                    "targetCode": null,
+                    "termId": null,
+                    "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                    "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                    "lastSessionId": "synthetic-priority-source",
+                    "wrongCount": 1,
+                    "status": "due",
+                    "lastReviewedAt": null,
+                    "resolvedAt": null
+                  }
+                },
+                "resume": {
+                  "lessonId": "l1-2",
+                  "section": "explain",
+                  "scrollTop": 400,
+                  "updatedAt": "2026-10-24T20:49:59.027Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-activity-v1",
+              "saved": true,
+              "at": 2492.9000000059605,
+              "value": {
+                "days": [
+                  "2026-10-25"
+                ]
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 2802.2999999821186,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-2": {
+                    "viewedAt": "2026-10-24T20:50:02.947Z",
+                    "lastStudiedAt": "2026-10-24T20:50:02.947Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "weakQuestions": {
+                  "theory-yinyang-name": {
+                    "questionId": "theory-yinyang-name",
+                    "questionVersion": "curriculum-v1",
+                    "sourceKind": "course",
+                    "lessonId": "l1-1",
+                    "questionType": "recall",
+                    "targetCode": null,
+                    "termId": null,
+                    "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                    "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                    "lastSessionId": "synthetic-priority-source",
+                    "wrongCount": 1,
+                    "status": "due",
+                    "lastReviewedAt": null,
+                    "resolvedAt": null
+                  }
+                },
+                "resume": {
+                  "lessonId": "l1-2",
+                  "section": "intro",
+                  "scrollTop": 400,
+                  "updatedAt": "2026-10-24T20:50:03.257Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 3025.7999999821186,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-2": {
+                    "viewedAt": "2026-10-24T20:50:02.947Z",
+                    "lastStudiedAt": "2026-10-24T20:50:02.947Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "weakQuestions": {
+                  "theory-yinyang-name": {
+                    "questionId": "theory-yinyang-name",
+                    "questionVersion": "curriculum-v1",
+                    "sourceKind": "course",
+                    "lessonId": "l1-1",
+                    "questionType": "recall",
+                    "targetCode": null,
+                    "termId": null,
+                    "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                    "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                    "lastSessionId": "synthetic-priority-source",
+                    "wrongCount": 1,
+                    "status": "due",
+                    "lastReviewedAt": null,
+                    "resolvedAt": null
+                  }
+                },
+                "resume": {
+                  "lessonId": "l1-2",
+                  "section": "intro",
+                  "scrollTop": 430,
+                  "updatedAt": "2026-10-24T20:50:03.480Z"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "label": "before-course-fixture",
+          "inputs": [
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+              "at": 569.0999999940395
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+              "at": 2530.800000011921
+            }
+          ],
+          "writes": []
+        },
+        {
+          "label": "before-quiz-fixture",
+          "inputs": [
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+              "at": 554.6000000238419
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+              "at": 2448.9000000059605
+            }
+          ],
+          "writes": []
+        },
+        {
+          "label": "before-lesson-fixture",
+          "inputs": [
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+              "at": 652.0999999940395
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+              "at": 2566.7999999821186
+            }
+          ],
+          "writes": []
+        },
+        {
+          "label": "before-oral-fixture",
+          "inputs": [
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+              "at": 554.5
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+              "at": 2356.300000011921
+            }
+          ],
+          "writes": [
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 2356.9000000059605,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T20:50:19.238Z",
+                    "lastStudiedAt": "2026-10-24T20:50:19.238Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": []
+              }
+            },
+            {
+              "key": "yijing-activity-v1",
+              "saved": true,
+              "at": 2357,
+              "value": {
+                "days": [
+                  "2026-10-25"
+                ]
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 2404.4000000059605,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T20:50:19.238Z",
+                    "lastStudiedAt": "2026-10-24T20:50:19.238Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "intro",
+                  "scrollTop": 0,
+                  "updatedAt": "2026-10-24T20:50:19.286Z"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "label": "final",
+          "inputs": [
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "mode-btn magnetic-control is-magnetic motion-pressed",
+              "at": 569.5
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "mouse",
+              "target": "quick-btn today-primary-action motion-item magnetic-control is-magnetic motion-pressed",
+              "at": 2429.300000011921
+            }
+          ],
+          "writes": []
+        }
+      ],
+      "fixtures": [
+        {
+          "at": "2026-10-24T20:50:00.445Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "theory-yinyang-name": {
+                  "questionId": "theory-yinyang-name",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "recall",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastSessionId": "synthetic-priority-source",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              },
+              "resume": {
+                "lessonId": "l1-2",
+                "section": "explain",
+                "scrollTop": 400,
+                "updatedAt": "2026-10-24T20:49:59.027Z"
+              }
+            },
+            "yijing-review-cards": {
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792874939944,
+                "introducedAt": 1792874879944,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "yijing-quiz-wrong": [
+              "000000"
+            ]
+          },
+          "welcome": false
+        },
+        {
+          "at": "2026-10-24T20:50:04.821Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "theory-yinyang-name": {
+                  "questionId": "theory-yinyang-name",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "recall",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastSessionId": "synthetic-priority-source",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            },
+            "yijing-review-cards": {
+              "111111": {
+                "code": "111111",
+                "stage": 0,
+                "due": 1792874939944,
+                "introducedAt": 1792874879944,
+                "lapses": 0,
+                "reps": 0,
+                "lastReview": 0
+              }
+            },
+            "yijing-quiz-wrong": [
+              "000000"
+            ]
+          },
+          "welcome": false
+        },
+        {
+          "at": "2026-10-24T20:50:08.867Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "weakQuestions": {
+                "theory-yinyang-name": {
+                  "questionId": "theory-yinyang-name",
+                  "questionVersion": "curriculum-v1",
+                  "sourceKind": "course",
+                  "lessonId": "l1-1",
+                  "questionType": "recall",
+                  "targetCode": null,
+                  "termId": null,
+                  "firstWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastWrongAt": "2026-10-24T20:49:59.027Z",
+                  "lastSessionId": "synthetic-priority-source",
+                  "wrongCount": 1,
+                  "status": "due",
+                  "lastReviewedAt": null,
+                  "resolvedAt": null
+                }
+              }
+            },
+            "yijing-quiz-wrong": [
+              "000000"
+            ]
+          },
+          "welcome": false
+        },
+        {
+          "at": "2026-10-24T20:50:12.672Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            },
+            "yijing-quiz-wrong": [
+              "000000"
+            ]
+          },
+          "welcome": false
+        },
+        {
+          "at": "2026-10-24T20:50:16.870Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            }
+          },
+          "welcome": false
+        },
+        {
+          "at": "2026-10-24T20:50:20.061Z",
+          "values": {
+            "yijing-learning-record-v2": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l1-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l1-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l1-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l2-5": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l3-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-5": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-6": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l4-7": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-1": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-2": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-3": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-4": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                },
+                "l5-5": {
+                  "viewedAt": "2026-10-24T20:49:59.027Z",
+                  "lastStudiedAt": "2026-10-24T20:49:59.027Z",
+                  "bestScore": 0.1
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            }
+          },
+          "welcome": false
+        }
+      ],
+      "screenshots": [
+        "1440-priority-routing-priority-resume.png",
+        "1440-priority-routing-destination-resume.png",
+        "1440-priority-routing-priority-review.png",
+        "1440-priority-routing-destination-review.png",
+        "1440-priority-routing-priority-course.png",
+        "1440-priority-routing-destination-course.png",
+        "1440-priority-routing-priority-quiz.png",
+        "1440-priority-routing-destination-quiz.png",
+        "1440-priority-routing-priority-lesson.png",
+        "1440-priority-routing-destination-lesson.png",
+        "1440-priority-routing-priority-oral.png",
+        "1440-priority-routing-destination-oral.png"
+      ]
+    }
+  ],
+  "limitations": [
+    "Headless Chromium at 1440x1024 and 390x844 emulated touch; not physical mobile, a screen reader or true browser 200% zoom.",
+    "Priority records are explicit localStorage fixtures using public question references, not earned user evidence. No private user profile or records are accessed.",
+    "Only the synthetic learning storage key is fault-injected. Debugger reads generated sessions without changing them; all course, navigation and submission actions use trusted CDP Input.",
+    "DOM reads and scrollIntoView locate reachable controls; reading-position evidence is generated by a real anchor activation and trusted wheel/touch scrolling."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "finishedAt": "2026-10-24T20:50:23.461Z",
+  "finalSourceHashes": {
+    "web/js/main.js": "1556c793ef4492f32ec7cd7e14b8cd291921048743838c6b258db254a2edf82f",
+    "web/js/learning-assessment.js": "cd8ab9272d3ca1e9f0585486f8e79dca00dc2fded4d9301709270a2e630de165",
+    "web/js/learning-progress.js": "41389087183f1054035e62b4d0f03a5edca0f72124d16aa24b7be1f242b08f81",
+    "web/js/learning-assessment-page.js": "d896c82e026da67bd57a1edc94cc34a6151aae41f992563eacf973a83c884095",
+    "web/js/modes/learning-mode.js": "74838284cc1b0a5a241d676dfa0bd2850796a81ab5d8bd9755e7623cec7bdc5c",
+    "web/js/modes/review-mode.js": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+    "web/js/modes/quiz-mode.js": "7a60bcd0b713a6b43bac4a0ca6761f77877419f16f01901bfbc67e0c3f9734a1",
+    "web/js/study-page.js": "0967444da28f07dcb8306740299b4c529129fd79bbb4386cfccb40c113c7d5a7",
+    "web/js/user-data.js": "52ae1c42d07747413a5da56d7e683e8f67534a80fffa6395048ab76c1250c530",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/quiz-engine.js": "4b9e087b6c080b9e6a05cd69d15887634e8cb6cfe0b921e559bc48b7cbda1fba",
+    "web/styles/immersive.css": "b3568ce4e89ff48b8c908d81bba79b343a806df947910479c0bc1c88f5ffd701",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "docs/development/tools/check-learning-recommendation-input.mjs": "73b415fd0b3159ec55e733b74523081179c9c52fb07d252c834ec17e13615496"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "profileRemoved": false,
+  "profileRetainedReason": "Isolated synthetic profile retained for diagnosis; no deletion attempted and no user profile touched."
+}

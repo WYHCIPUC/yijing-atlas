@@ -1,0 +1,2712 @@
+{
+  "startedAt": "2026-10-24T21:05:40.999Z",
+  "command": "node docs/development/tools/check-learning-recommendation-input.mjs",
+  "node": "v24.19.0",
+  "uv": "1.52.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-recommendation-dzsu2u",
+  "scope": "320-reading-geometry",
+  "head": "49de1059e556d3841ef29a9d5a0db7ae5256ecf0",
+  "sourceHashes": {
+    "web/js/main.js": "4678ff60c750a43375c345b4136c9b1d9df10372602a43dd9a2417ed5f1ce786",
+    "web/js/learning-assessment.js": "cd8ab9272d3ca1e9f0585486f8e79dca00dc2fded4d9301709270a2e630de165",
+    "web/js/learning-progress.js": "41389087183f1054035e62b4d0f03a5edca0f72124d16aa24b7be1f242b08f81",
+    "web/js/learning-assessment-page.js": "d896c82e026da67bd57a1edc94cc34a6151aae41f992563eacf973a83c884095",
+    "web/js/modes/learning-mode.js": "74838284cc1b0a5a241d676dfa0bd2850796a81ab5d8bd9755e7623cec7bdc5c",
+    "web/js/modes/review-mode.js": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+    "web/js/modes/quiz-mode.js": "7a60bcd0b713a6b43bac4a0ca6761f77877419f16f01901bfbc67e0c3f9734a1",
+    "web/js/study-page.js": "d8a62656eb50f95649aa74bd5231153739d9db0c7002c0f7d5ba95df4bfed11f",
+    "web/js/user-data.js": "52ae1c42d07747413a5da56d7e683e8f67534a80fffa6395048ab76c1250c530",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/quiz-engine.js": "4b9e087b6c080b9e6a05cd69d15887634e8cb6cfe0b921e559bc48b7cbda1fba",
+    "web/styles/immersive.css": "2e2841a10a2bc2e7fe9526b747717851e2c7f2194a0798a5b1ff593c35dd8931",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "docs/development/tools/check-learning-recommendation-input.mjs": "2aa2ba26aea6472c61f36375b80666dabcc4d674eae512203657e0497fb17a80"
+  },
+  "status": "passed",
+  "scenarios": [
+    {
+      "name": "320-reading-geometry",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "status": "passed",
+      "inputs": [
+        {
+          "kind": "touch",
+          "selector": "[data-entry=\"explore\"]",
+          "x": 160,
+          "y": 524.625
+        },
+        {
+          "kind": "touch",
+          "selector": "[data-entry=\"beginner\"]",
+          "x": 160,
+          "y": 462.625
+        },
+        {
+          "kind": "touch",
+          "selector": ".lesson-continue",
+          "x": 160,
+          "y": 766.6907348632812
+        },
+        {
+          "kind": "touch",
+          "selector": ".lesson-method-rail a[href=\"#lesson-explain\"]",
+          "x": 180.328125,
+          "y": 814.296875
+        },
+        {
+          "kind": "touch-scroll",
+          "x": 160,
+          "y": 536,
+          "distance": 60
+        },
+        {
+          "kind": "touch",
+          "selector": ".lesson-method-rail a[href=\"#lesson-lead\"]",
+          "x": 58.328125,
+          "y": 203
+        },
+        {
+          "kind": "touch",
+          "selector": ".lesson-method-rail a[href=\"#lesson-observe\"]",
+          "x": 98.9921875,
+          "y": 203
+        },
+        {
+          "kind": "touch",
+          "selector": ".lesson-method-rail a[href=\"#lesson-read\"]",
+          "x": 139.6640625,
+          "y": 203
+        },
+        {
+          "kind": "touch",
+          "selector": ".lesson-method-rail a[href=\"#lesson-explain\"]",
+          "x": 180.328125,
+          "y": 203
+        },
+        {
+          "kind": "touch",
+          "selector": ".lesson-method-rail a[href=\"#lesson-apply\"]",
+          "x": 220.9921875,
+          "y": 203
+        },
+        {
+          "kind": "touch",
+          "selector": ".lesson-method-rail a[href=\"#lesson-test\"]",
+          "x": 261.6640625,
+          "y": 203
+        },
+        {
+          "kind": "touch",
+          "selector": ".lesson-method-rail a[href=\"#lesson-apply\"]",
+          "x": 220.9921875,
+          "y": 203
+        },
+        {
+          "kind": "touch",
+          "selector": ".lesson-method-rail a[href=\"#lesson-read\"]",
+          "x": 139.6640625,
+          "y": 203
+        }
+      ],
+      "checks": [
+        {
+          "label": "welcome-opens-first-course",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T21:05:42.394Z",
+                  "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "intro",
+                "scrollTop": 0,
+                "updatedAt": "2026-10-24T21:05:42.412Z"
+              }
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 176.7999999821186
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 208.19999998807907
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 209.7999999821186
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 278.59999999403954,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 278.69999998807907,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 296.39999997615814,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 0,
+                    "updatedAt": "2026-10-24T21:05:42.412Z"
+                  }
+                }
+              }
+            ],
+            "heading": "蒙学 · 阴阳之道",
+            "scrollTop": 0,
+            "scrollHeight": 2481,
+            "clientHeight": 815,
+            "status": "已记住阅读位置。",
+            "statusGeometry": {
+              "rect": {
+                "x": 16.20159912109375,
+                "y": 706.4683837890625,
+                "width": 287.5968017578125,
+                "height": 29.7083740234375,
+                "top": 706.4683837890625,
+                "right": 303.79840087890625,
+                "bottom": 736.1767578125,
+                "left": 16.20159912109375
+              },
+              "clip": {
+                "left": 0,
+                "top": 423.8712158203125,
+                "right": 320,
+                "bottom": 844
+              },
+              "ancestors": [
+                {
+                  "tag": "ASIDE",
+                  "id": "detail-panel",
+                  "className": "detail-panel lenis open",
+                  "overflowX": "auto",
+                  "overflowY": "auto",
+                  "rect": {
+                    "x": 0,
+                    "y": 423.8712158203125,
+                    "width": 320,
+                    "height": 815.328125,
+                    "top": 423.8712158203125,
+                    "right": 320,
+                    "bottom": 1239.1993408203125,
+                    "left": 0
+                  },
+                  "viewportOverflow": false
+                },
+                {
+                  "tag": "BODY",
+                  "id": "",
+                  "className": "motion-system-ready drawer-medium panel-bottom focus-mode workspace-mode panel-open lesson-overview-open",
+                  "overflowX": "hidden",
+                  "overflowY": "hidden",
+                  "rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 320,
+                    "height": 0,
+                    "top": 0,
+                    "right": 320,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "viewportOverflow": true
+                }
+              ],
+              "fullyVisible": true,
+              "centerUnobscured": true,
+              "hit": "lesson-resume-status"
+            },
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "H2"
+            }
+          }
+        },
+        {
+          "label": "saved-explain-nonzero-position",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T21:05:42.394Z",
+                  "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "explain",
+                "scrollTop": 1910,
+                "updatedAt": "2026-10-24T21:05:43.540Z"
+              }
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 176.7999999821186
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 208.19999998807907
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 209.7999999821186
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+                "at": 709.0999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+                "at": 774.5999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+                "at": 790.8999999761581
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 890.5999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 941.0999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 941.5999999940395
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "LI",
+                "at": 991.0999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "LI",
+                "at": 1246.0999999940395
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 278.59999999403954,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 278.69999998807907,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 296.39999997615814,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 0,
+                    "updatedAt": "2026-10-24T21:05:42.412Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 1159.199999988079,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1865,
+                    "updatedAt": "2026-10-24T21:05:43.275Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 1424.2999999821186,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1910,
+                    "updatedAt": "2026-10-24T21:05:43.540Z"
+                  }
+                }
+              }
+            ],
+            "heading": "阴阳之道",
+            "scrollTop": 1910,
+            "scrollHeight": 4168,
+            "clientHeight": 728,
+            "status": "已记住阅读位置。",
+            "statusGeometry": {
+              "rect": {
+                "x": 38,
+                "y": 225,
+                "width": 244,
+                "height": 64,
+                "top": 225,
+                "right": 282,
+                "bottom": 289,
+                "left": 38
+              },
+              "clip": {
+                "left": 0,
+                "top": 116,
+                "right": 320,
+                "bottom": 844
+              },
+              "ancestors": [
+                {
+                  "tag": "ASIDE",
+                  "id": "detail-panel",
+                  "className": "detail-panel open lenis lenis-scrolling",
+                  "overflowX": "auto",
+                  "overflowY": "auto",
+                  "rect": {
+                    "x": 0,
+                    "y": 116,
+                    "width": 320,
+                    "height": 728,
+                    "top": 116,
+                    "right": 320,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "viewportOverflow": false
+                },
+                {
+                  "tag": "BODY",
+                  "id": "",
+                  "className": "motion-system-ready drawer-medium panel-bottom focus-mode workspace-mode panel-open",
+                  "overflowX": "hidden",
+                  "overflowY": "hidden",
+                  "rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 320,
+                    "height": 0,
+                    "top": 0,
+                    "right": 320,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "viewportOverflow": true
+                }
+              ],
+              "fullyVisible": true,
+              "centerUnobscured": true,
+              "hit": "lesson-resume-status"
+            },
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "A"
+            }
+          }
+        },
+        {
+          "label": "320-lead-geometry",
+          "geometry": {
+            "viewport": {
+              "width": 320,
+              "height": 844
+            },
+            "panel": {
+              "x": 0,
+              "y": 116,
+              "width": 320,
+              "height": 728,
+              "top": 116,
+              "right": 320,
+              "bottom": 844,
+              "left": 0
+            },
+            "panelClientWidth": 320,
+            "panelScrollWidth": 320,
+            "documentClientWidth": 320,
+            "documentScrollWidth": 320,
+            "controls": {
+              "x": 37,
+              "y": 180,
+              "width": 246,
+              "height": 110,
+              "top": 180,
+              "right": 283,
+              "bottom": 290,
+              "left": 37
+            },
+            "heading": {
+              "x": 84,
+              "y": 325.046875,
+              "width": 184,
+              "height": 58,
+              "top": 325.046875,
+              "right": 268,
+              "bottom": 383.046875,
+              "left": 84
+            },
+            "links": [
+              {
+                "text": "引",
+                "rect": {
+                  "x": 38,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 78.65625,
+                  "bottom": 225,
+                  "left": 38
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "观",
+                "rect": {
+                  "x": 78.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 119.328125,
+                  "bottom": 225,
+                  "left": 78.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "读",
+                "rect": {
+                  "x": 119.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 160,
+                  "bottom": 225,
+                  "left": 119.328125
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "解",
+                "rect": {
+                  "x": 160,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 200.65625,
+                  "bottom": 225,
+                  "left": 160
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "用",
+                "rect": {
+                  "x": 200.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 241.328125,
+                  "bottom": 225,
+                  "left": 200.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "试",
+                "rect": {
+                  "x": 241.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 282,
+                  "bottom": 225,
+                  "left": 241.328125
+                },
+                "centerUnobscured": true
+              }
+            ]
+          }
+        },
+        {
+          "label": "320-observe-geometry",
+          "geometry": {
+            "viewport": {
+              "width": 320,
+              "height": 844
+            },
+            "panel": {
+              "x": 0,
+              "y": 116,
+              "width": 320,
+              "height": 728,
+              "top": 116,
+              "right": 320,
+              "bottom": 844,
+              "left": 0
+            },
+            "panelClientWidth": 320,
+            "panelScrollWidth": 320,
+            "documentClientWidth": 320,
+            "documentScrollWidth": 320,
+            "controls": {
+              "x": 37,
+              "y": 180,
+              "width": 246,
+              "height": 110,
+              "top": 180,
+              "right": 283,
+              "bottom": 290,
+              "left": 37
+            },
+            "heading": {
+              "x": 84,
+              "y": 325.421875,
+              "width": 184,
+              "height": 58,
+              "top": 325.421875,
+              "right": 268,
+              "bottom": 383.421875,
+              "left": 84
+            },
+            "links": [
+              {
+                "text": "引",
+                "rect": {
+                  "x": 38,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 78.65625,
+                  "bottom": 225,
+                  "left": 38
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "观",
+                "rect": {
+                  "x": 78.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 119.328125,
+                  "bottom": 225,
+                  "left": 78.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "读",
+                "rect": {
+                  "x": 119.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 160,
+                  "bottom": 225,
+                  "left": 119.328125
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "解",
+                "rect": {
+                  "x": 160,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 200.65625,
+                  "bottom": 225,
+                  "left": 160
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "用",
+                "rect": {
+                  "x": 200.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 241.328125,
+                  "bottom": 225,
+                  "left": 200.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "试",
+                "rect": {
+                  "x": 241.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 282,
+                  "bottom": 225,
+                  "left": 241.328125
+                },
+                "centerUnobscured": true
+              }
+            ]
+          }
+        },
+        {
+          "label": "320-read-geometry",
+          "geometry": {
+            "viewport": {
+              "width": 320,
+              "height": 844
+            },
+            "panel": {
+              "x": 0,
+              "y": 116,
+              "width": 320,
+              "height": 728,
+              "top": 116,
+              "right": 320,
+              "bottom": 844,
+              "left": 0
+            },
+            "panelClientWidth": 320,
+            "panelScrollWidth": 320,
+            "documentClientWidth": 320,
+            "documentScrollWidth": 320,
+            "controls": {
+              "x": 37,
+              "y": 180,
+              "width": 246,
+              "height": 110,
+              "top": 180,
+              "right": 283,
+              "bottom": 290,
+              "left": 37
+            },
+            "heading": {
+              "x": 84,
+              "y": 324.984375,
+              "width": 184,
+              "height": 58,
+              "top": 324.984375,
+              "right": 268,
+              "bottom": 382.984375,
+              "left": 84
+            },
+            "links": [
+              {
+                "text": "引",
+                "rect": {
+                  "x": 38,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 78.65625,
+                  "bottom": 225,
+                  "left": 38
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "观",
+                "rect": {
+                  "x": 78.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 119.328125,
+                  "bottom": 225,
+                  "left": 78.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "读",
+                "rect": {
+                  "x": 119.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 160,
+                  "bottom": 225,
+                  "left": 119.328125
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "解",
+                "rect": {
+                  "x": 160,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 200.65625,
+                  "bottom": 225,
+                  "left": 160
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "用",
+                "rect": {
+                  "x": 200.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 241.328125,
+                  "bottom": 225,
+                  "left": 200.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "试",
+                "rect": {
+                  "x": 241.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 282,
+                  "bottom": 225,
+                  "left": 241.328125
+                },
+                "centerUnobscured": true
+              }
+            ]
+          }
+        },
+        {
+          "label": "320-explain-geometry",
+          "geometry": {
+            "viewport": {
+              "width": 320,
+              "height": 844
+            },
+            "panel": {
+              "x": 0,
+              "y": 116,
+              "width": 320,
+              "height": 728,
+              "top": 116,
+              "right": 320,
+              "bottom": 844,
+              "left": 0
+            },
+            "panelClientWidth": 320,
+            "panelScrollWidth": 320,
+            "documentClientWidth": 320,
+            "documentScrollWidth": 320,
+            "controls": {
+              "x": 37,
+              "y": 180,
+              "width": 246,
+              "height": 110,
+              "top": 180,
+              "right": 283,
+              "bottom": 290,
+              "left": 37
+            },
+            "heading": {
+              "x": 84,
+              "y": 325.109375,
+              "width": 184,
+              "height": 58,
+              "top": 325.109375,
+              "right": 268,
+              "bottom": 383.109375,
+              "left": 84
+            },
+            "links": [
+              {
+                "text": "引",
+                "rect": {
+                  "x": 38,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 78.65625,
+                  "bottom": 225,
+                  "left": 38
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "观",
+                "rect": {
+                  "x": 78.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 119.328125,
+                  "bottom": 225,
+                  "left": 78.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "读",
+                "rect": {
+                  "x": 119.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 160,
+                  "bottom": 225,
+                  "left": 119.328125
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "解",
+                "rect": {
+                  "x": 160,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 200.65625,
+                  "bottom": 225,
+                  "left": 160
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "用",
+                "rect": {
+                  "x": 200.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 241.328125,
+                  "bottom": 225,
+                  "left": 200.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "试",
+                "rect": {
+                  "x": 241.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 282,
+                  "bottom": 225,
+                  "left": 241.328125
+                },
+                "centerUnobscured": true
+              }
+            ]
+          }
+        },
+        {
+          "label": "320-apply-geometry",
+          "geometry": {
+            "viewport": {
+              "width": 320,
+              "height": 844
+            },
+            "panel": {
+              "x": 0,
+              "y": 116,
+              "width": 320,
+              "height": 728,
+              "top": 116,
+              "right": 320,
+              "bottom": 844,
+              "left": 0
+            },
+            "panelClientWidth": 320,
+            "panelScrollWidth": 320,
+            "documentClientWidth": 320,
+            "documentScrollWidth": 320,
+            "controls": {
+              "x": 37,
+              "y": 180,
+              "width": 246,
+              "height": 110,
+              "top": 180,
+              "right": 283,
+              "bottom": 290,
+              "left": 37
+            },
+            "heading": {
+              "x": 84,
+              "y": 324.859375,
+              "width": 184,
+              "height": 58,
+              "top": 324.859375,
+              "right": 268,
+              "bottom": 382.859375,
+              "left": 84
+            },
+            "links": [
+              {
+                "text": "引",
+                "rect": {
+                  "x": 38,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 78.65625,
+                  "bottom": 225,
+                  "left": 38
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "观",
+                "rect": {
+                  "x": 78.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 119.328125,
+                  "bottom": 225,
+                  "left": 78.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "读",
+                "rect": {
+                  "x": 119.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 160,
+                  "bottom": 225,
+                  "left": 119.328125
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "解",
+                "rect": {
+                  "x": 160,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 200.65625,
+                  "bottom": 225,
+                  "left": 160
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "用",
+                "rect": {
+                  "x": 200.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 241.328125,
+                  "bottom": 225,
+                  "left": 200.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "试",
+                "rect": {
+                  "x": 241.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 282,
+                  "bottom": 225,
+                  "left": 241.328125
+                },
+                "centerUnobscured": true
+              }
+            ]
+          }
+        },
+        {
+          "label": "320-test-geometry",
+          "geometry": {
+            "viewport": {
+              "width": 320,
+              "height": 844
+            },
+            "panel": {
+              "x": 0,
+              "y": 116,
+              "width": 320,
+              "height": 728,
+              "top": 116,
+              "right": 320,
+              "bottom": 844,
+              "left": 0
+            },
+            "panelClientWidth": 320,
+            "panelScrollWidth": 320,
+            "documentClientWidth": 320,
+            "documentScrollWidth": 320,
+            "controls": {
+              "x": 37,
+              "y": 180,
+              "width": 246,
+              "height": 110,
+              "top": 180,
+              "right": 283,
+              "bottom": 290,
+              "left": 37
+            },
+            "heading": {
+              "x": 84,
+              "y": 324.609375,
+              "width": 184,
+              "height": 58,
+              "top": 324.609375,
+              "right": 268,
+              "bottom": 382.609375,
+              "left": 84
+            },
+            "links": [
+              {
+                "text": "引",
+                "rect": {
+                  "x": 38,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 78.65625,
+                  "bottom": 225,
+                  "left": 38
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "观",
+                "rect": {
+                  "x": 78.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 119.328125,
+                  "bottom": 225,
+                  "left": 78.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "读",
+                "rect": {
+                  "x": 119.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 160,
+                  "bottom": 225,
+                  "left": 119.328125
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "解",
+                "rect": {
+                  "x": 160,
+                  "y": 181,
+                  "width": 40.65625,
+                  "height": 44,
+                  "top": 181,
+                  "right": 200.65625,
+                  "bottom": 225,
+                  "left": 160
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "用",
+                "rect": {
+                  "x": 200.65625,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 241.328125,
+                  "bottom": 225,
+                  "left": 200.65625
+                },
+                "centerUnobscured": true
+              },
+              {
+                "text": "试",
+                "rect": {
+                  "x": 241.328125,
+                  "y": 181,
+                  "width": 40.671875,
+                  "height": 44,
+                  "top": 181,
+                  "right": 282,
+                  "bottom": 225,
+                  "left": 241.328125
+                },
+                "centerUnobscured": true
+              }
+            ]
+          }
+        },
+        {
+          "label": "320-save-failure-visible",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T21:05:42.394Z",
+                  "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "intro",
+                "scrollTop": 1030,
+                "updatedAt": "2026-10-24T21:05:43.840Z"
+              }
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 176.7999999821186
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 208.19999998807907
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 209.7999999821186
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+                "at": 709.0999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+                "at": 774.5999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+                "at": 790.8999999761581
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 890.5999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 941.0999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 941.5999999940395
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "LI",
+                "at": 991.0999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "LI",
+                "at": 1246.0999999940395
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 1490.199999988079
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 1507.5999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 1508.199999988079
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 1758.3999999761581
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 1773.2999999821186
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 1773.8999999761581
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 1907.0999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 1925.2999999821186
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 1925.8999999761581
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 2057.5
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 2073.2999999821186
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 2073.699999988079
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 2207.0999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 2224.0999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 2224.5999999940395
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 2357.7999999821186
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 2374.2999999821186
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 2375
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 2531.7999999821186
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 2555.699999988079
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 2556.5
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 278.59999999403954,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 278.69999998807907,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 296.39999997615814,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 0,
+                    "updatedAt": "2026-10-24T21:05:42.412Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 1159.199999988079,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1865,
+                    "updatedAt": "2026-10-24T21:05:43.275Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 1424.2999999821186,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1910,
+                    "updatedAt": "2026-10-24T21:05:43.540Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 1724.0999999940395,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 1030,
+                    "updatedAt": "2026-10-24T21:05:43.840Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": false,
+                "at": 2757.199999988079,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "apply",
+                    "scrollTop": 2693,
+                    "updatedAt": "2026-10-24T21:05:44.873Z"
+                  }
+                }
+              }
+            ],
+            "heading": "阴阳之道",
+            "scrollTop": 2693,
+            "scrollHeight": 4168,
+            "clientHeight": 728,
+            "status": "阅读位置未能保存；仍可继续学习。",
+            "statusGeometry": {
+              "rect": {
+                "x": 38,
+                "y": 225,
+                "width": 244,
+                "height": 64,
+                "top": 225,
+                "right": 282,
+                "bottom": 289,
+                "left": 38
+              },
+              "clip": {
+                "left": 0,
+                "top": 116,
+                "right": 320,
+                "bottom": 844
+              },
+              "ancestors": [
+                {
+                  "tag": "ASIDE",
+                  "id": "detail-panel",
+                  "className": "detail-panel open lenis lenis-scrolling",
+                  "overflowX": "auto",
+                  "overflowY": "auto",
+                  "rect": {
+                    "x": 0,
+                    "y": 116,
+                    "width": 320,
+                    "height": 728,
+                    "top": 116,
+                    "right": 320,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "viewportOverflow": false
+                },
+                {
+                  "tag": "BODY",
+                  "id": "",
+                  "className": "motion-system-ready drawer-medium panel-bottom focus-mode workspace-mode panel-open",
+                  "overflowX": "hidden",
+                  "overflowY": "hidden",
+                  "rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 320,
+                    "height": 0,
+                    "top": 0,
+                    "right": 320,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "viewportOverflow": true
+                }
+              ],
+              "fullyVisible": true,
+              "centerUnobscured": true,
+              "hit": "lesson-resume-status"
+            },
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "A"
+            }
+          }
+        },
+        {
+          "label": "320-save-recovery-visible",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T21:05:42.394Z",
+                  "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "resume": {
+                "lessonId": "l1-1",
+                "section": "read",
+                "scrollTop": 1489,
+                "updatedAt": "2026-10-24T21:05:45.283Z"
+              }
+            },
+            "cards": null,
+            "wrong": null,
+            "inputs": [
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 176.7999999821186
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 208.19999998807907
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+                "at": 209.7999999821186
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+                "at": 709.0999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+                "at": 774.5999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+                "at": 790.8999999761581
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 890.5999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 941.0999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 941.5999999940395
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "LI",
+                "at": 991.0999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "LI",
+                "at": 1246.0999999940395
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 1490.199999988079
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 1507.5999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 1508.199999988079
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 1758.3999999761581
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 1773.2999999821186
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 1773.8999999761581
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 1907.0999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 1925.2999999821186
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 1925.8999999761581
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 2057.5
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 2073.2999999821186
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 2073.699999988079
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 2207.0999999940395
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 2224.0999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 2224.5999999940395
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 2357.7999999821186
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 2374.2999999821186
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 2375
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 2531.7999999821186
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 2555.699999988079
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 2556.5
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "target": "A",
+                "at": 2924.2999999821186
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "target": "A",
+                "at": 2940.0999999940395
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "pointerType": "touch",
+                "target": "A",
+                "at": 2941
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 278.59999999403954,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": []
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 278.69999998807907,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 296.39999997615814,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 0,
+                    "updatedAt": "2026-10-24T21:05:42.412Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 1159.199999988079,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1865,
+                    "updatedAt": "2026-10-24T21:05:43.275Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 1424.2999999821186,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "explain",
+                    "scrollTop": 1910,
+                    "updatedAt": "2026-10-24T21:05:43.540Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 1724.0999999940395,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "intro",
+                    "scrollTop": 1030,
+                    "updatedAt": "2026-10-24T21:05:43.840Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": false,
+                "at": 2757.199999988079,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "apply",
+                    "scrollTop": 2693,
+                    "updatedAt": "2026-10-24T21:05:44.873Z"
+                  }
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 3167.5999999940395,
+                "value": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-1": {
+                      "viewedAt": "2026-10-24T21:05:42.394Z",
+                      "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "resume": {
+                    "lessonId": "l1-1",
+                    "section": "read",
+                    "scrollTop": 1489,
+                    "updatedAt": "2026-10-24T21:05:45.283Z"
+                  }
+                }
+              }
+            ],
+            "heading": "阴阳之道",
+            "scrollTop": 1489,
+            "scrollHeight": 4168,
+            "clientHeight": 728,
+            "status": "已记住阅读位置。",
+            "statusGeometry": {
+              "rect": {
+                "x": 38,
+                "y": 225,
+                "width": 244,
+                "height": 64,
+                "top": 225,
+                "right": 282,
+                "bottom": 289,
+                "left": 38
+              },
+              "clip": {
+                "left": 0,
+                "top": 116,
+                "right": 320,
+                "bottom": 844
+              },
+              "ancestors": [
+                {
+                  "tag": "ASIDE",
+                  "id": "detail-panel",
+                  "className": "detail-panel open lenis lenis-scrolling",
+                  "overflowX": "auto",
+                  "overflowY": "auto",
+                  "rect": {
+                    "x": 0,
+                    "y": 116,
+                    "width": 320,
+                    "height": 728,
+                    "top": 116,
+                    "right": 320,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "viewportOverflow": false
+                },
+                {
+                  "tag": "BODY",
+                  "id": "",
+                  "className": "motion-system-ready drawer-medium panel-bottom focus-mode workspace-mode panel-open",
+                  "overflowX": "hidden",
+                  "overflowY": "hidden",
+                  "rect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 320,
+                    "height": 0,
+                    "top": 0,
+                    "right": 320,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "viewportOverflow": true
+                }
+              ],
+              "fullyVisible": true,
+              "centerUnobscured": true,
+              "hit": "lesson-resume-status"
+            },
+            "questionCount": 0,
+            "focus": {
+              "id": "",
+              "tag": "A"
+            }
+          }
+        }
+      ],
+      "sessions": [],
+      "documents": [
+        {
+          "label": "final",
+          "inputs": [
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+              "at": 176.7999999821186
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+              "at": 208.19999998807907
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch",
+              "target": "daily-enter daily-enter-primary motion-item magnetic-control motion-pressed",
+              "at": 209.7999999821186
+            },
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+              "at": 709.0999999940395
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+              "at": 774.5999999940395
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch",
+              "target": "quick-btn lesson-continue motion-item magnetic-control motion-pressed",
+              "at": 790.8999999761581
+            },
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "A",
+              "at": 890.5999999940395
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "A",
+              "at": 941.0999999940395
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch",
+              "target": "A",
+              "at": 941.5999999940395
+            },
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "LI",
+              "at": 991.0999999940395
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "LI",
+              "at": 1246.0999999940395
+            },
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "A",
+              "at": 1490.199999988079
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "A",
+              "at": 1507.5999999940395
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch",
+              "target": "A",
+              "at": 1508.199999988079
+            },
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "A",
+              "at": 1758.3999999761581
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "A",
+              "at": 1773.2999999821186
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch",
+              "target": "A",
+              "at": 1773.8999999761581
+            },
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "A",
+              "at": 1907.0999999940395
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "A",
+              "at": 1925.2999999821186
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch",
+              "target": "A",
+              "at": 1925.8999999761581
+            },
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "A",
+              "at": 2057.5
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "A",
+              "at": 2073.2999999821186
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch",
+              "target": "A",
+              "at": 2073.699999988079
+            },
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "A",
+              "at": 2207.0999999940395
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "A",
+              "at": 2224.0999999940395
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch",
+              "target": "A",
+              "at": 2224.5999999940395
+            },
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "A",
+              "at": 2357.7999999821186
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "A",
+              "at": 2374.2999999821186
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch",
+              "target": "A",
+              "at": 2375
+            },
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "A",
+              "at": 2531.7999999821186
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "A",
+              "at": 2555.699999988079
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch",
+              "target": "A",
+              "at": 2556.5
+            },
+            {
+              "type": "touchstart",
+              "trusted": true,
+              "target": "A",
+              "at": 2924.2999999821186
+            },
+            {
+              "type": "touchend",
+              "trusted": true,
+              "target": "A",
+              "at": 2940.0999999940395
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch",
+              "target": "A",
+              "at": 2941
+            }
+          ],
+          "writes": [
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 278.59999999403954,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T21:05:42.394Z",
+                    "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": []
+              }
+            },
+            {
+              "key": "yijing-activity-v1",
+              "saved": true,
+              "at": 278.69999998807907,
+              "value": {
+                "days": [
+                  "2026-10-25"
+                ]
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 296.39999997615814,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T21:05:42.394Z",
+                    "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "intro",
+                  "scrollTop": 0,
+                  "updatedAt": "2026-10-24T21:05:42.412Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 1159.199999988079,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T21:05:42.394Z",
+                    "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "explain",
+                  "scrollTop": 1865,
+                  "updatedAt": "2026-10-24T21:05:43.275Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 1424.2999999821186,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T21:05:42.394Z",
+                    "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "explain",
+                  "scrollTop": 1910,
+                  "updatedAt": "2026-10-24T21:05:43.540Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 1724.0999999940395,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T21:05:42.394Z",
+                    "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "intro",
+                  "scrollTop": 1030,
+                  "updatedAt": "2026-10-24T21:05:43.840Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": false,
+              "at": 2757.199999988079,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T21:05:42.394Z",
+                    "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "apply",
+                  "scrollTop": 2693,
+                  "updatedAt": "2026-10-24T21:05:44.873Z"
+                }
+              }
+            },
+            {
+              "key": "yijing-learning-record-v2",
+              "saved": true,
+              "at": 3167.5999999940395,
+              "value": {
+                "version": 2,
+                "lessons": {
+                  "l1-1": {
+                    "viewedAt": "2026-10-24T21:05:42.394Z",
+                    "lastStudiedAt": "2026-10-24T21:05:42.394Z"
+                  }
+                },
+                "spotChecks": [],
+                "exams": [],
+                "oralReviews": [],
+                "resume": {
+                  "lessonId": "l1-1",
+                  "section": "read",
+                  "scrollTop": 1489,
+                  "updatedAt": "2026-10-24T21:05:45.283Z"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "fixtures": [
+        {
+          "at": "2026-10-24T21:05:42.108Z",
+          "values": {},
+          "welcome": true
+        },
+        {
+          "kind": "QuotaExceededError",
+          "key": "yijing-learning-record-v2",
+          "purpose": "320 CSS px feedback geometry"
+        }
+      ],
+      "screenshots": [
+        "320-reading-geometry-320-lead-geometry.png",
+        "320-reading-geometry-320-observe-geometry.png",
+        "320-reading-geometry-320-read-geometry.png",
+        "320-reading-geometry-320-explain-geometry.png",
+        "320-reading-geometry-320-apply-geometry.png",
+        "320-reading-geometry-320-test-geometry.png",
+        "320-reading-geometry-320-save-failure.png",
+        "320-reading-geometry-320-save-recovery.png"
+      ]
+    }
+  ],
+  "limitations": [
+    "Headless Chromium at 1440x1024 and 390x844 emulated touch; not physical mobile, a screen reader or true browser 200% zoom.",
+    "Priority records are explicit localStorage fixtures using public question references, not earned user evidence. No private user profile or records are accessed.",
+    "Only the synthetic learning storage key is fault-injected. Debugger reads generated sessions without changing them; all course, navigation and submission actions use trusted CDP Input.",
+    "DOM reads and scrollIntoView locate reachable controls; reading-position evidence is generated by a real anchor activation and trusted wheel/touch scrolling."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "finishedAt": "2026-10-24T21:05:45.380Z",
+  "finalSourceHashes": {
+    "web/js/main.js": "4678ff60c750a43375c345b4136c9b1d9df10372602a43dd9a2417ed5f1ce786",
+    "web/js/learning-assessment.js": "cd8ab9272d3ca1e9f0585486f8e79dca00dc2fded4d9301709270a2e630de165",
+    "web/js/learning-progress.js": "41389087183f1054035e62b4d0f03a5edca0f72124d16aa24b7be1f242b08f81",
+    "web/js/learning-assessment-page.js": "d896c82e026da67bd57a1edc94cc34a6151aae41f992563eacf973a83c884095",
+    "web/js/modes/learning-mode.js": "74838284cc1b0a5a241d676dfa0bd2850796a81ab5d8bd9755e7623cec7bdc5c",
+    "web/js/modes/review-mode.js": "d3ea94efcb435e256bdd2a4366dce67d39db8b459eee7749bff1e6b7eea02af9",
+    "web/js/modes/quiz-mode.js": "7a60bcd0b713a6b43bac4a0ca6761f77877419f16f01901bfbc67e0c3f9734a1",
+    "web/js/study-page.js": "d8a62656eb50f95649aa74bd5231153739d9db0c7002c0f7d5ba95df4bfed11f",
+    "web/js/user-data.js": "52ae1c42d07747413a5da56d7e683e8f67534a80fffa6395048ab76c1250c530",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/js/review-engine.js": "ab7f5f96dad3ad735d547dea519b6c786f4c25c11cb3a0211a04dded076221d7",
+    "web/js/quiz-engine.js": "4b9e087b6c080b9e6a05cd69d15887634e8cb6cfe0b921e559bc48b7cbda1fba",
+    "web/styles/immersive.css": "2e2841a10a2bc2e7fe9526b747717851e2c7f2194a0798a5b1ff593c35dd8931",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "docs/development/tools/check-learning-recommendation-input.mjs": "2aa2ba26aea6472c61f36375b80666dabcc4d674eae512203657e0497fb17a80"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "profileRemoved": false,
+  "profileRetainedReason": "Isolated synthetic profile retained for diagnosis; no deletion attempted and no user profile touched."
+}

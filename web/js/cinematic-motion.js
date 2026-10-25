@@ -227,7 +227,7 @@ export function initCinematicMotion(options = {}) {
       }
       return;
     }
-    gsap.to(modeIndicator, { ...properties, duration: 0.52, ease: 'power3.out', overwrite: true });
+    gsap.to(modeIndicator, { ...properties, duration: 0.22, ease: 'power3.out', overwrite: true });
   }
 
   function onWindowResize() {
@@ -317,15 +317,15 @@ export function initCinematicMotion(options = {}) {
         autoAlpha: 0.86,
         scale: 1,
         rotation: 0,
-        duration: 0.32,
+        duration: 0.18,
         ease: 'power3.out',
       }).to(portal, {
         autoAlpha: 0,
         scale: 1.52,
         rotation: 18,
-        duration: 0.58,
+        duration: 0.18,
         ease: 'power2.in',
-      }, 0.2);
+      }, 0.06);
     }
     gsap.killTweensOf(panelContent);
     gsap.to(panelContent, {
@@ -338,19 +338,21 @@ export function initCinematicMotion(options = {}) {
     gsap.fromTo('.workspace-insight-bar', { opacity: 0.45, y: 9 }, {
       opacity: 1,
       y: 0,
-      duration: 0.72,
+      duration: 0.22,
       ease: 'power3.out',
       overwrite: true,
     });
   }
 
-  function enterSurface(scope = panelContent, mode = 'explore') {
+  function enterSurface(scope = panelContent, mode = 'explore', { animate = true } = {}) {
     lenis?.resize();
     decorateControls(scope);
     syncReadingProgress();
     if (!scope) return;
     const targets = getRevealTargets(scope);
-    if (!gsap || motionPreference.matches) {
+    if (!animate || !gsap || motionPreference.matches) {
+      gsap?.killTweensOf?.(scope);
+      gsap?.killTweensOf?.(targets);
       targets.forEach((target) => target.removeAttribute('style'));
       scope.style.opacity = '';
       scope.style.transform = '';
@@ -369,8 +371,8 @@ export function initCinematicMotion(options = {}) {
       y: 0,
       scale: 1,
       filter: 'blur(0px)',
-      duration: 0.78,
-      stagger: 0.055,
+      duration: 0.22,
+      stagger: 0,
       ease: 'power3.out',
       clearProps: 'opacity,transform,filter',
       overwrite: true,

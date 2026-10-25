@@ -1,0 +1,4 @@
+# Preserve the exact bytes used by evidence SHA-256 records across checkouts.
+*.log -text -diff
+*.json -text whitespace=cr-at-eol
+*.sha256 -text

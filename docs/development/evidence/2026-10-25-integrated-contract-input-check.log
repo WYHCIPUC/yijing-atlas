@@ -1,0 +1,10 @@
+
+> yijing-atlas@1.1.1-rc.2 check
+> node scripts/quality-check.mjs --checks-only
+
+✓ JavaScript 语法与格式检查：74 个文件
+✓ JSON 可解析：11 个文件
+✓ 六家注疏目录有效，发布门禁保持关闭
+✓ 当前版本树不含 PDF、证书或私钥文件
+
+质量检查全部通过

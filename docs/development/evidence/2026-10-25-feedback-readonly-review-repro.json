@@ -1,0 +1,21 @@
+{
+  "observedAt": "2026-10-24T22:56:20.286Z",
+  "method": "isolated native Node DOM fixture; no browser, no business source edits",
+  "command": "node --input-type=module (isolated source-fixture read-failure reproduction)",
+  "sources": {
+    "web/js/modes/divination-mode.js": "6ce754b8d1b1e4c0d3d862fb01bf70771bf0cf720192385890a6c20ee43caaa6",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/test/divination-replay.test.mjs": "cbbc789ddb5403849427c8954563611cdb217824c6343b00b2bf9a1515048557"
+  },
+  "failed": {
+    "text": "本轮勾选自评未能保存到成就记录；可仅重试保存。",
+    "oldStorePreserved": true
+  },
+  "retry": {
+    "text": "已保存本轮勾选自评记录（40 分）；这不代表客观理解或现实判断已获验证。",
+    "oldReadingPreserved": false,
+    "oldEventPreserved": false,
+    "newAnalysisCount": 1,
+    "hasRetry": false
+  }
+}

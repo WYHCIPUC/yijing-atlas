@@ -1,0 +1,98 @@
+[
+  {
+    "scope": "390-oral-self-activity-retry",
+    "attempt": 0,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "trace": "Y:/易经学习项目/docs/development/evidence/2026-10-25-learning-feedback-input/2026-10-24T23-46-09-038Z/trace.json",
+    "seed": true
+  },
+  {
+    "scope": "1440-oral-ai-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v7-20261024-234638/1440-oral-ai-save-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-46-39-613Z\\trace.json"
+  },
+  {
+    "scope": "390-oral-ai-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v7-20261024-234638/390-oral-ai-save-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-46-57-274Z\\trace.json"
+  },
+  {
+    "scope": "390-oral-ai-stale-leave",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v7-20261024-234638/390-oral-ai-stale-leave-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-47-07-740Z\\trace.json"
+  },
+  {
+    "scope": "1440-review-card-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v7-20261024-234638/1440-review-card-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-47-14-162Z\\trace.json"
+  },
+  {
+    "scope": "1440-review-activity-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v7-20261024-234638/1440-review-activity-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-47-24-621Z\\trace.json"
+  },
+  {
+    "scope": "1440-review-achievement-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v7-20261024-234638/1440-review-achievement-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-47-34-939Z\\trace.json"
+  },
+  {
+    "scope": "1440-review-leave",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v7-20261024-234638/1440-review-leave-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-47-45-575Z\\trace.json"
+  },
+  {
+    "scope": "1440-oral-self-record-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v7-20261024-234638/1440-oral-self-record-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-47-55-383Z\\trace.json"
+  },
+  {
+    "scope": "1440-oral-self-activity-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs/development/evidence/feedback-final-v7-20261024-234638/1440-oral-self-activity-retry-1.log",
+    "trace": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-48-08-211Z\\trace.json"
+  },
+  {
+    "scope": "1440-oral-ai-stale-course",
+    "attempt": 1,
+    "exitCode": -1073740791,
+    "nativeAbort": true,
+    "log": "docs/development/evidence/feedback-final-v7-20261024-234638/1440-oral-ai-stale-course-1.log",
+    "trace": null
+  },
+  {
+    "scope": "1440-oral-ai-stale-course",
+    "attempt": 2,
+    "exitCode": -1073740791,
+    "nativeAbort": true,
+    "log": "docs/development/evidence/feedback-final-v7-20261024-234638/1440-oral-ai-stale-course-2.log",
+    "trace": null
+  }
+]

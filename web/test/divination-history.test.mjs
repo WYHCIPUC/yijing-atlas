@@ -54,10 +54,50 @@ test('旧版记录保留并明确标记为仅有卦象摘要', () => {
   assert.deepEqual(item.changingPositions, []);
 });
 
+test('历史满50条后同一毫秒新增的案例仍有独立且持久的标识', () => {
+  const storage = createStorage();
+  const now = new Date('2026-10-24T01:00:00.000Z');
+  const entry = {
+    type: 'coin', primaryCode: '111111', changedCode: null,
+    yaos: Array.from({ length: 6 }, () => ({
+      value: 1, isYang: true, changing: false, name: '少阳', coins: [3, 2, 2],
+    })),
+  };
+  const identities = [];
+  for (let index = 0; index < 52; index += 1) {
+    const result = addDivinationHistory(entry, storage, now);
+    assert.equal(result.saved, true);
+    identities.push(result.items[0].id);
+  }
+  assert.equal(new Set(identities).size, 52, '新增案例不能因历史容量固定而共用身份');
+  const items = loadDivinationHistory(storage);
+  assert.equal(items.length, 50);
+  assert.deepEqual(new Set(items.map(item => item.id)), new Set(identities.slice(2)));
+  const restored = createStorage({ [getDivinationHistoryKey()]: storage.getItem(getDivinationHistoryKey()) });
+  assert.deepEqual(loadDivinationHistory(restored), items, '重新加载不能重新生成历史身份');
+});
+
 test('非法历史、非法卦码和写入失败安全处理', () => {
   const storage = createStorage({ [getDivinationHistoryKey()]: '[{"bad":true}]' });
   assert.deepEqual(loadDivinationHistory(storage), []);
   assert.equal(addDivinationHistory({ primaryCode: 'bad' }, storage).saved, false);
   const failing = { getItem: () => null, setItem: () => { throw new Error('quota'); } };
   assert.equal(addDivinationHistory({ type: 'coin', primaryCode: '111111' }, failing).saved, false);
+});
+
+test('生成案例标识失败时保留旧历史并返回保存失败', (t) => {
+  const storage = createStorage();
+  const entry = {
+    type: 'coin', primaryCode: '111111', changedCode: null,
+    yaos: Array.from({ length: 6 }, () => ({
+      value: 1, isYang: true, changing: false, name: '少阳', coins: [3, 2, 2],
+    })),
+  };
+  assert.equal(addDivinationHistory(entry, storage).saved, true);
+  const before = storage.getItem(getDivinationHistoryKey());
+  t.mock.method(globalThis.crypto, 'getRandomValues', () => { throw new Error('unavailable'); });
+  const result = addDivinationHistory(entry, storage);
+  assert.equal(result.saved, false);
+  assert.equal(result.items.length, 1);
+  assert.equal(storage.getItem(getDivinationHistoryKey()), before);
 });

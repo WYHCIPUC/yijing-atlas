@@ -1,0 +1,1696 @@
+{
+  "startedAt": "2026-10-24T19:03:09.235Z",
+  "command": "node scripts/test-assessment-session.mjs",
+  "node": "v22.23.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "head": "1bee1c210d675d8aa49df23c0724ba577ad8cf6d",
+  "sourceHashes": {
+    "web/js/learning-progress.js": "ba1cca8296bac7e421892858f81e2b6e9cbdc7e96e75f395a38ff605ca222a0d",
+    "web/js/learning-assessment.js": "2f27c1b4b3f713ab04789347a42325bf7aef2af5b2f9c2ca984cdb1849590abf",
+    "web/js/learning-assessment-page.js": "5975e61c27053bb2100b2f318a8bb21b1e58a0872b55737acdb681dacd832153",
+    "web/js/modes/learning-mode.js": "c5ed203a60edb8d682550655db3083579e950391ef908c11ebf788ae59d95d4f",
+    "web/js/user-data.js": "8a47ceb0e8dea555a17d10ac253b32f0dfc84cead620ddcf13193def6e1435b1",
+    "web/js/study-page.js": "7f99d3e5db2429daa6710735f9ff3ac8a05106bc33268c16ca00faaa418997c6",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "scripts/test-assessment-session.mjs": "e4f04fb236951c583e08bbaf3c3c4cdc06103ae744e14f5306370a117c91909b"
+  },
+  "scenarios": [
+    {
+      "name": "1440-normal-unanswered-double-new-round",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fixture": "none",
+      "status": "passed",
+      "sessions": [
+        {
+          "id": "9abac41f-d08e-425e-917c-326666c3a193",
+          "kind": "lesson",
+          "lessonId": "l1-4",
+          "levelId": "L1",
+          "questions": [
+            {
+              "id": "trigram-111-nature",
+              "lessonId": "l1-4",
+              "levelId": "L1",
+              "prompt": "自然之象为“天”的是哪一卦？",
+              "answer": "乾",
+              "options": [
+                {
+                  "value": "震",
+                  "label": "震"
+                },
+                {
+                  "value": "兑",
+                  "label": "兑"
+                },
+                {
+                  "value": "乾",
+                  "label": "乾"
+                },
+                {
+                  "value": "离",
+                  "label": "离"
+                }
+              ],
+              "explanation": "乾为天，德性为健。",
+              "source": "《说卦传》",
+              "kind": "recall",
+              "evidenceType": null
+            },
+            {
+              "id": "trigram-110-code",
+              "lessonId": "l1-4",
+              "levelId": "L1",
+              "prompt": "三爻编码“110”（自下而上）是哪一卦？",
+              "answer": "兑",
+              "options": [
+                {
+                  "value": "乾",
+                  "label": "乾"
+                },
+                {
+                  "value": "震",
+                  "label": "震"
+                },
+                {
+                  "value": "兑",
+                  "label": "兑"
+                },
+                {
+                  "value": "离",
+                  "label": "离"
+                }
+              ],
+              "explanation": "兑的三爻编码为 110。",
+              "source": "八卦基础数据",
+              "kind": "recall",
+              "evidenceType": null
+            },
+            {
+              "id": "trigram-010-code",
+              "lessonId": "l1-4",
+              "levelId": "L1",
+              "prompt": "三爻编码“010”（自下而上）是哪一卦？",
+              "answer": "坎",
+              "options": [
+                {
+                  "value": "离",
+                  "label": "离"
+                },
+                {
+                  "value": "坎",
+                  "label": "坎"
+                },
+                {
+                  "value": "乾",
+                  "label": "乾"
+                },
+                {
+                  "value": "兑",
+                  "label": "兑"
+                }
+              ],
+              "explanation": "坎的三爻编码为 010。",
+              "source": "八卦基础数据",
+              "kind": "recall",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "id": "e4f089de-734f-4839-ae0c-ff8162f8239b",
+          "kind": "lesson",
+          "lessonId": "l1-4",
+          "levelId": "L1",
+          "questions": [
+            {
+              "id": "trigram-110-nature",
+              "lessonId": "l1-4",
+              "levelId": "L1",
+              "prompt": "自然之象为“泽”的是哪一卦？",
+              "answer": "兑",
+              "options": [
+                {
+                  "value": "震",
+                  "label": "震"
+                },
+                {
+                  "value": "兑",
+                  "label": "兑"
+                },
+                {
+                  "value": "乾",
+                  "label": "乾"
+                },
+                {
+                  "value": "离",
+                  "label": "离"
+                }
+              ],
+              "explanation": "兑为泽，德性为悦。",
+              "source": "《说卦传》",
+              "kind": "recall",
+              "evidenceType": null
+            },
+            {
+              "id": "trigram-011-nature",
+              "lessonId": "l1-4",
+              "levelId": "L1",
+              "prompt": "自然之象为“风”的是哪一卦？",
+              "answer": "巽",
+              "options": [
+                {
+                  "value": "兑",
+                  "label": "兑"
+                },
+                {
+                  "value": "乾",
+                  "label": "乾"
+                },
+                {
+                  "value": "巽",
+                  "label": "巽"
+                },
+                {
+                  "value": "离",
+                  "label": "离"
+                }
+              ],
+              "explanation": "巽为风，德性为入。",
+              "source": "《说卦传》",
+              "kind": "recall",
+              "evidenceType": null
+            },
+            {
+              "id": "trigram-111-evidence",
+              "lessonId": "l1-4",
+              "levelId": "L1",
+              "prompt": "判断“111 是乾卦”直接依据哪一层？",
+              "answer": "卦体",
+              "options": [
+                {
+                  "value": "卦体",
+                  "label": "卦体"
+                },
+                {
+                  "value": "经传原文",
+                  "label": "经传原文"
+                },
+                {
+                  "value": "爻位",
+                  "label": "爻位"
+                },
+                {
+                  "value": "项目类比",
+                  "label": "项目类比"
+                }
+              ],
+              "explanation": "三条阴阳爻的组合属于卦体证据。",
+              "source": "八卦卦体",
+              "kind": "evidence",
+              "evidenceType": "卦体"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "selector": "[data-entry=\"explore\"]",
+          "kind": "mouse",
+          "x": 642.9296875,
+          "y": 668.671875
+        },
+        {
+          "selector": ".mode-btn[data-mode=\"learning\"]",
+          "kind": "mouse",
+          "x": 619.359375,
+          "y": 35.42507839202881
+        },
+        {
+          "selector": "#learning-tab-path",
+          "kind": "mouse",
+          "x": 378.2734375,
+          "y": 252.59375
+        },
+        {
+          "selector": "[data-step=\"l1-4\"] [data-action=\"assess\"]",
+          "kind": "mouse",
+          "x": 1239,
+          "y": 547.75
+        },
+        {
+          "selector": ".assessment-form button[type=\"submit\"]",
+          "kind": "mouse",
+          "x": 1218,
+          "y": 917.09375
+        },
+        {
+          "selector": "#learning-tab-profile",
+          "kind": "mouse",
+          "x": 695.9921875,
+          "y": 252.59375
+        },
+        {
+          "selector": "#learning-tab-profile",
+          "kind": "mouse",
+          "x": 695.9921875,
+          "y": 250.599853515625
+        },
+        {
+          "selector": "[data-section-target=\"assessment\"]",
+          "kind": "mouse",
+          "x": 1218,
+          "y": 871.9375
+        },
+        {
+          "selector": "#learning-tab-path",
+          "kind": "mouse",
+          "x": 378.2734375,
+          "y": 252.59375
+        },
+        {
+          "selector": "[data-step=\"l1-4\"] [data-action=\"assess\"]",
+          "kind": "mouse",
+          "x": 1239,
+          "y": 547.75
+        },
+        {
+          "selector": "input[name=\"question-0\"][value=\"1\"]",
+          "kind": "mouse",
+          "x": 735,
+          "y": 473.59375
+        },
+        {
+          "selector": "input[name=\"question-1\"][value=\"2\"]",
+          "kind": "mouse",
+          "x": 192.5,
+          "y": 683.09375
+        },
+        {
+          "selector": "input[name=\"question-2\"][value=\"0\"]",
+          "kind": "mouse",
+          "x": 192.5,
+          "y": 797.59375
+        },
+        {
+          "selector": ".assessment-form button[type=\"submit\"]",
+          "kind": "mouse",
+          "x": 1218,
+          "y": 917.09375
+        }
+      ],
+      "checks": [
+        {
+          "label": "unanswered-first-focus-no-save",
+          "state": {
+            "record": null,
+            "achievement": null,
+            "activity": null,
+            "writes": [],
+            "inputs": [
+              {
+                "selector": "[data-entry=\"explore\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 642,
+                "clientY": 668
+              },
+              {
+                "selector": ".mode-btn[data-mode=\"learning\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 619,
+                "clientY": 35
+              },
+              {
+                "selector": "#learning-tab-path",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 378,
+                "clientY": 252
+              },
+              {
+                "selector": "[data-step=\"l1-4\"] [data-action=\"assess\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1239,
+                "clientY": 547
+              },
+              {
+                "selector": ".assessment-form button[type=\"submit\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1218,
+                "clientY": 917
+              }
+            ],
+            "submits": [
+              {
+                "at": 2256.7999999821186,
+                "trusted": true,
+                "sessionId": "9abac41f-d08e-425e-917c-326666c3a193"
+              }
+            ],
+            "sessionId": "9abac41f-d08e-425e-917c-326666c3a193",
+            "questions": 3,
+            "status": "请先完成第 1 题。",
+            "focus": {
+              "id": "",
+              "name": "question-0",
+              "value": "0",
+              "tag": "INPUT"
+            },
+            "retry": false,
+            "width": 1440,
+            "content": "\n    \n      \n        明辨认识八卦符号 · 课后小试\n        3 题\n      \n      \n        \n          \n            1自然之象为“天”的是哪一卦？\n            \n              \n                \n                  震\n              \n                \n                  兑\n              \n                \n                  乾\n              \n                \n                  离\n              \n            \n          \n        \n          \n            2三爻编码“110”（自下而上）是哪一卦？\n            \n              \n                \n                  乾\n              \n                \n                  震\n              \n                \n                  兑\n              \n                \n                  离\n              \n            \n          \n        \n          \n            3三爻编码“010”（自下而上）是哪一卦？\n            \n              \n                \n                  离\n              \n                \n                  坎\n              \n                \n                  乾\n              \n                \n                  兑\n              \n            \n          \n "
+          }
+        },
+        {
+          "label": "rapid-double-input-single-round",
+          "inputElapsedMs": 276,
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-4": {
+                  "viewedAt": "2026-10-24T19:03:12.413Z",
+                  "lastStudiedAt": "2026-10-24T19:03:12.413Z",
+                  "attempts": 1,
+                  "bestScore": 1
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "processedAssessmentIds": [
+                "9abac41f-d08e-425e-917c-326666c3a193"
+              ],
+              "assessmentSessions": [
+                {
+                  "sessionId": "9abac41f-d08e-425e-917c-326666c3a193",
+                  "kind": "lesson",
+                  "at": "2026-10-24T19:03:12.413Z",
+                  "correct": 3,
+                  "total": 3,
+                  "lessonId": "l1-4"
+                }
+              ]
+            },
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "learning-record:completed:l1-4",
+                "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193"
+              ],
+              "metrics": {
+                "completedLessons": [
+                  "l1-4"
+                ],
+                "lessonScores": {
+                  "l1-4": 1
+                },
+                "topicScores": {
+                  "eight-trigrams": 1
+                },
+                "trigramRounds": [
+                  "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193"
+                ],
+                "hexagramsRead": [],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "activity": {
+              "days": [
+                "2026-10-25"
+              ]
+            },
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2477,
+                "payload": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-4": {
+                      "viewedAt": "2026-10-24T19:03:12.413Z",
+                      "lastStudiedAt": "2026-10-24T19:03:12.413Z",
+                      "attempts": 1,
+                      "bestScore": 1
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "processedAssessmentIds": [
+                    "9abac41f-d08e-425e-917c-326666c3a193"
+                  ],
+                  "assessmentSessions": [
+                    {
+                      "sessionId": "9abac41f-d08e-425e-917c-326666c3a193",
+                      "kind": "lesson",
+                      "at": "2026-10-24T19:03:12.413Z",
+                      "correct": 3,
+                      "total": 3,
+                      "lessonId": "l1-4"
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 2477,
+                "payload": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2477.5999999940395,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-4"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-4"
+                    ],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2477.699999988079,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-4",
+                    "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-4"
+                    ],
+                    "lessonScores": {
+                      "l1-4": 1
+                    },
+                    "topicScores": {
+                      "eight-trigrams": 1
+                    },
+                    "trigramRounds": [
+                      "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193"
+                    ],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "selector": "[data-entry=\"explore\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 642,
+                "clientY": 668
+              },
+              {
+                "selector": ".mode-btn[data-mode=\"learning\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 619,
+                "clientY": 35
+              },
+              {
+                "selector": "#learning-tab-path",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 378,
+                "clientY": 252
+              },
+              {
+                "selector": "[data-step=\"l1-4\"] [data-action=\"assess\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1239,
+                "clientY": 547
+              },
+              {
+                "selector": ".assessment-form button[type=\"submit\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1218,
+                "clientY": 917
+              }
+            ],
+            "submits": [
+              {
+                "at": 2256.7999999821186,
+                "trusted": true,
+                "sessionId": "9abac41f-d08e-425e-917c-326666c3a193"
+              },
+              {
+                "at": 2476.5,
+                "trusted": true,
+                "sessionId": "9abac41f-d08e-425e-917c-326666c3a193"
+              }
+            ],
+            "sessionId": "9abac41f-d08e-425e-917c-326666c3a193",
+            "questions": 0,
+            "score": "100分",
+            "message": "本轮成绩与学习记录已保存。",
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            },
+            "retry": false,
+            "width": 1440,
+            "content": "\n    \n      考校\n      认识八卦符号 · 课后小试\n      100分\n      3/3 题正确。本轮掌握稳定，可继续温习或进入下一课。\n      本轮成绩与学习记录已保存。\n      \n      \n        \n            1. 答对 · 自然之象为“天”的是哪一卦？\n            正答：乾\n            乾为天，德性为健。\n            依据：《说卦传》\n          \n            2. 答对 · 三爻编码“110”（自下而上）是哪一卦？\n            正答：兑\n            兑的三爻编码为 110。\n            依据：八卦基础数据\n          \n            3. 答对 · 三爻编码“010”（自下而上）是哪一卦？\n            正答：坎\n            坎的三爻编码为 010。\n            依据：八卦基础数据\n          \n      \n      返回考评中心\n    "
+          }
+        },
+        {
+          "label": "result-resize-and-profile-return-no-recount",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-4": {
+                  "viewedAt": "2026-10-24T19:03:12.413Z",
+                  "lastStudiedAt": "2026-10-24T19:03:12.413Z",
+                  "attempts": 1,
+                  "bestScore": 1
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "processedAssessmentIds": [
+                "9abac41f-d08e-425e-917c-326666c3a193"
+              ],
+              "assessmentSessions": [
+                {
+                  "sessionId": "9abac41f-d08e-425e-917c-326666c3a193",
+                  "kind": "lesson",
+                  "at": "2026-10-24T19:03:12.413Z",
+                  "correct": 3,
+                  "total": 3,
+                  "lessonId": "l1-4"
+                }
+              ]
+            },
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "learning-record:completed:l1-4",
+                "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193"
+              ],
+              "metrics": {
+                "completedLessons": [
+                  "l1-4"
+                ],
+                "lessonScores": {
+                  "l1-4": 1
+                },
+                "topicScores": {
+                  "eight-trigrams": 1
+                },
+                "trigramRounds": [
+                  "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193"
+                ],
+                "hexagramsRead": [],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            },
+            "activity": {
+              "days": [
+                "2026-10-25"
+              ]
+            },
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2477,
+                "payload": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-4": {
+                      "viewedAt": "2026-10-24T19:03:12.413Z",
+                      "lastStudiedAt": "2026-10-24T19:03:12.413Z",
+                      "attempts": 1,
+                      "bestScore": 1
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "processedAssessmentIds": [
+                    "9abac41f-d08e-425e-917c-326666c3a193"
+                  ],
+                  "assessmentSessions": [
+                    {
+                      "sessionId": "9abac41f-d08e-425e-917c-326666c3a193",
+                      "kind": "lesson",
+                      "at": "2026-10-24T19:03:12.413Z",
+                      "correct": 3,
+                      "total": 3,
+                      "lessonId": "l1-4"
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 2477,
+                "payload": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2477.5999999940395,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-4"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-4"
+                    ],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2477.699999988079,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-4",
+                    "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-4"
+                    ],
+                    "lessonScores": {
+                      "l1-4": 1
+                    },
+                    "topicScores": {
+                      "eight-trigrams": 1
+                    },
+                    "trigramRounds": [
+                      "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193"
+                    ],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "selector": "[data-entry=\"explore\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 642,
+                "clientY": 668
+              },
+              {
+                "selector": ".mode-btn[data-mode=\"learning\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 619,
+                "clientY": 35
+              },
+              {
+                "selector": "#learning-tab-path",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 378,
+                "clientY": 252
+              },
+              {
+                "selector": "[data-step=\"l1-4\"] [data-action=\"assess\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1239,
+                "clientY": 547
+              },
+              {
+                "selector": ".assessment-form button[type=\"submit\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1218,
+                "clientY": 917
+              },
+              {
+                "selector": "#learning-tab-profile",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 695,
+                "clientY": 252
+              },
+              {
+                "selector": "#learning-tab-profile",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 695,
+                "clientY": 250
+              },
+              {
+                "selector": "[data-section-target=\"assessment\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1218,
+                "clientY": 871
+              }
+            ],
+            "submits": [
+              {
+                "at": 2256.7999999821186,
+                "trusted": true,
+                "sessionId": "9abac41f-d08e-425e-917c-326666c3a193"
+              },
+              {
+                "at": 2476.5,
+                "trusted": true,
+                "sessionId": "9abac41f-d08e-425e-917c-326666c3a193"
+              }
+            ],
+            "questions": 0,
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            },
+            "retry": false,
+            "width": 1440,
+            "content": "\n      \n        书院考校日课与考评\n        学而时习，考而知缺。成绩用于提示温习方向，不限制课程浏览。\n      \n      \n        日课\n        今日建议阴阳之道蒙学 · L1\n        前往学习\n      \n      \n        \n          每课一试课后小试\n          从当前小节抽取 3 题，立即辨明概念。\n          \n            \n              阴阳之道八卦生成爻位与当位认识八卦符号\n            \n              上经前八卦（乾至比）上经中段上经后段下经前段下经后段\n            \n              系辞传文言与说卦序卦与杂卦彖传与大小象\n            \n              五行生克河图洛书先天与后天八卦错综互变纳甲基础十二消息与卦气八宫卦序\n            \n              建除十二神二十八宿彭祖百忌二十四节气神煞基础\n            \n          \n          开始小试\n        \n        \n          温故随机抽查\n          从已浏览课程跨课抽取 5 题，检验记忆保持。\n          开始抽查\n        \n        \n          考校阶段考评\n          每阶段抽取 10 题，形成综合掌握记录。\n          \n            L1 蒙学 · 阴阳八卦L2 习经 · 六十四卦L3 研传 · 经传与注疏L4 明辨 · 象数传统L5 通用 · 术数与民俗\n          \n          开始考评\n        \n      \n      \n        复讲以讲促学智能可选\n        不用背标准答案。用自己的话说明一课，再由智能服务或典籍要点清单帮助校准。\n        复讲课程L1 · 阴阳之道L1 · 八卦生成L1 · 爻位与当位L1 · 认识八卦符号L2 · 上经前八卦（乾至比）L2 · 上经中段L2 · 上经后段L2 · 下经前段L2 · 下经后段L3 · 系辞传L3 · 文言与说卦L3 · 序卦与杂卦L3 · 彖传与大小象L4 "
+          }
+        },
+        {
+          "label": "new-round-independent",
+          "state": {
+            "record": {
+              "version": 2,
+              "lessons": {
+                "l1-4": {
+                  "viewedAt": "2026-10-24T19:03:12.413Z",
+                  "lastStudiedAt": "2026-10-24T19:03:14.756Z",
+                  "attempts": 2,
+                  "bestScore": 1
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [],
+              "processedAssessmentIds": [
+                "9abac41f-d08e-425e-917c-326666c3a193",
+                "e4f089de-734f-4839-ae0c-ff8162f8239b"
+              ],
+              "assessmentSessions": [
+                {
+                  "sessionId": "9abac41f-d08e-425e-917c-326666c3a193",
+                  "kind": "lesson",
+                  "at": "2026-10-24T19:03:12.413Z",
+                  "correct": 3,
+                  "total": 3,
+                  "lessonId": "l1-4"
+                },
+                {
+                  "sessionId": "e4f089de-734f-4839-ae0c-ff8162f8239b",
+                  "kind": "lesson",
+                  "at": "2026-10-24T19:03:14.756Z",
+                  "correct": 3,
+                  "total": 3,
+                  "lessonId": "l1-4"
+                }
+              ]
+            },
+            "achievement": {
+              "version": 1,
+              "processedKeys": [
+                "learning-record:completed:l1-4",
+                "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193",
+                "learning-record:assessed:l1-4:e4f089de-734f-4839-ae0c-ff8162f8239b"
+              ],
+              "metrics": {
+                "completedLessons": [
+                  "l1-4"
+                ],
+                "lessonScores": {
+                  "l1-4": 1
+                },
+                "topicScores": {
+                  "eight-trigrams": 1
+                },
+                "trigramRounds": [
+                  "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193",
+                  "learning-record:assessed:l1-4:e4f089de-734f-4839-ae0c-ff8162f8239b"
+                ],
+                "hexagramsRead": [],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {},
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {
+                "eight-trigrams": {
+                  "unlockedAt": "2026-10-24T19:03:14.756Z",
+                  "evidence": {
+                    "current": 2,
+                    "target": 2
+                  }
+                }
+              }
+            },
+            "activity": {
+              "days": [
+                "2026-10-25"
+              ]
+            },
+            "writes": [
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 2477,
+                "payload": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-4": {
+                      "viewedAt": "2026-10-24T19:03:12.413Z",
+                      "lastStudiedAt": "2026-10-24T19:03:12.413Z",
+                      "attempts": 1,
+                      "bestScore": 1
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "processedAssessmentIds": [
+                    "9abac41f-d08e-425e-917c-326666c3a193"
+                  ],
+                  "assessmentSessions": [
+                    {
+                      "sessionId": "9abac41f-d08e-425e-917c-326666c3a193",
+                      "kind": "lesson",
+                      "at": "2026-10-24T19:03:12.413Z",
+                      "correct": 3,
+                      "total": 3,
+                      "lessonId": "l1-4"
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 2477,
+                "payload": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2477.5999999940395,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-4"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-4"
+                    ],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2477.699999988079,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-4",
+                    "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-4"
+                    ],
+                    "lessonScores": {
+                      "l1-4": 1
+                    },
+                    "topicScores": {
+                      "eight-trigrams": 1
+                    },
+                    "trigramRounds": [
+                      "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193"
+                    ],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing-learning-record-v2",
+                "saved": true,
+                "at": 4820.5,
+                "payload": {
+                  "version": 2,
+                  "lessons": {
+                    "l1-4": {
+                      "viewedAt": "2026-10-24T19:03:12.413Z",
+                      "lastStudiedAt": "2026-10-24T19:03:14.756Z",
+                      "attempts": 2,
+                      "bestScore": 1
+                    }
+                  },
+                  "spotChecks": [],
+                  "exams": [],
+                  "oralReviews": [],
+                  "processedAssessmentIds": [
+                    "9abac41f-d08e-425e-917c-326666c3a193",
+                    "e4f089de-734f-4839-ae0c-ff8162f8239b"
+                  ],
+                  "assessmentSessions": [
+                    {
+                      "sessionId": "9abac41f-d08e-425e-917c-326666c3a193",
+                      "kind": "lesson",
+                      "at": "2026-10-24T19:03:12.413Z",
+                      "correct": 3,
+                      "total": 3,
+                      "lessonId": "l1-4"
+                    },
+                    {
+                      "sessionId": "e4f089de-734f-4839-ae0c-ff8162f8239b",
+                      "kind": "lesson",
+                      "at": "2026-10-24T19:03:14.756Z",
+                      "correct": 3,
+                      "total": 3,
+                      "lessonId": "l1-4"
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 4820.5999999940395,
+                "payload": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 4820.699999988079,
+                "payload": {
+                  "version": 1,
+                  "processedKeys": [
+                    "learning-record:completed:l1-4",
+                    "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193",
+                    "learning-record:assessed:l1-4:e4f089de-734f-4839-ae0c-ff8162f8239b"
+                  ],
+                  "metrics": {
+                    "completedLessons": [
+                      "l1-4"
+                    ],
+                    "lessonScores": {
+                      "l1-4": 1
+                    },
+                    "topicScores": {
+                      "eight-trigrams": 1
+                    },
+                    "trigramRounds": [
+                      "learning-record:assessed:l1-4:9abac41f-d08e-425e-917c-326666c3a193",
+                      "learning-record:assessed:l1-4:e4f089de-734f-4839-ae0c-ff8162f8239b"
+                    ],
+                    "hexagramsRead": [],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {},
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {
+                    "eight-trigrams": {
+                      "unlockedAt": "2026-10-24T19:03:14.756Z",
+                      "evidence": {
+                        "current": 2,
+                        "target": 2
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "selector": "[data-entry=\"explore\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 642,
+                "clientY": 668
+              },
+              {
+                "selector": ".mode-btn[data-mode=\"learning\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 619,
+                "clientY": 35
+              },
+              {
+                "selector": "#learning-tab-path",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 378,
+                "clientY": 252
+              },
+              {
+                "selector": "[data-step=\"l1-4\"] [data-action=\"assess\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1239,
+                "clientY": 547
+              },
+              {
+                "selector": ".assessment-form button[type=\"submit\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1218,
+                "clientY": 917
+              },
+              {
+                "selector": "#learning-tab-profile",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 695,
+                "clientY": 252
+              },
+              {
+                "selector": "#learning-tab-profile",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 695,
+                "clientY": 250
+              },
+              {
+                "selector": "[data-section-target=\"assessment\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1218,
+                "clientY": 871
+              },
+              {
+                "selector": "#learning-tab-path",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 378,
+                "clientY": 252
+              },
+              {
+                "selector": "[data-step=\"l1-4\"] [data-action=\"assess\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1239,
+                "clientY": 547
+              },
+              {
+                "selector": "input[name=\"question-0\"][value=\"1\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 735,
+                "clientY": 473
+              },
+              {
+                "selector": "input[name=\"question-1\"][value=\"2\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 192,
+                "clientY": 683
+              },
+              {
+                "selector": "input[name=\"question-2\"][value=\"0\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 192,
+                "clientY": 797
+              },
+              {
+                "selector": ".assessment-form button[type=\"submit\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1218,
+                "clientY": 917
+              }
+            ],
+            "submits": [
+              {
+                "at": 2256.7999999821186,
+                "trusted": true,
+                "sessionId": "9abac41f-d08e-425e-917c-326666c3a193"
+              },
+              {
+                "at": 2476.5,
+                "trusted": true,
+                "sessionId": "9abac41f-d08e-425e-917c-326666c3a193"
+              },
+              {
+                "at": 4820.299999982119,
+                "trusted": true,
+                "sessionId": "e4f089de-734f-4839-ae0c-ff8162f8239b"
+              }
+            ],
+            "sessionId": "e4f089de-734f-4839-ae0c-ff8162f8239b",
+            "questions": 0,
+            "score": "100分",
+            "message": "本轮成绩与学习记录已保存。",
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            },
+            "retry": false,
+            "width": 1440,
+            "content": "\n    \n      考校\n      认识八卦符号 · 课后小试\n      100分\n      3/3 题正确。本轮掌握稳定，可继续温习或进入下一课。\n      本轮成绩与学习记录已保存。\n      \n      \n        \n            1. 答对 · 自然之象为“泽”的是哪一卦？\n            正答：兑\n            兑为泽，德性为悦。\n            依据：《说卦传》\n          \n            2. 答对 · 自然之象为“风”的是哪一卦？\n            正答：巽\n            巽为风，德性为入。\n            依据：《说卦传》\n          \n            3. 答对 · 判断“111 是乾卦”直接依据哪一层？\n            正答：卦体\n            三条阴阳爻的组合属于卦体证据。\n            依据：八卦卦体\n          \n      \n      返回考评中心\n    "
+          }
+        }
+      ],
+      "screenshots": [
+        "1440-normal-unanswered-double-new-round-result.png"
+      ],
+      "trustedInputEvidence": {
+        "clicks": [
+          {
+            "selector": "[data-entry=\"explore\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 642,
+            "clientY": 668
+          },
+          {
+            "selector": ".mode-btn[data-mode=\"learning\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 619,
+            "clientY": 35
+          },
+          {
+            "selector": "#learning-tab-path",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 378,
+            "clientY": 252
+          },
+          {
+            "selector": "[data-step=\"l1-4\"] [data-action=\"assess\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 1239,
+            "clientY": 547
+          },
+          {
+            "selector": ".assessment-form button[type=\"submit\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 1218,
+            "clientY": 917
+          },
+          {
+            "selector": "#learning-tab-profile",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 695,
+            "clientY": 252
+          },
+          {
+            "selector": "#learning-tab-profile",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 695,
+            "clientY": 250
+          },
+          {
+            "selector": "[data-section-target=\"assessment\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 1218,
+            "clientY": 871
+          },
+          {
+            "selector": "#learning-tab-path",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 378,
+            "clientY": 252
+          },
+          {
+            "selector": "[data-step=\"l1-4\"] [data-action=\"assess\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 1239,
+            "clientY": 547
+          },
+          {
+            "selector": "input[name=\"question-0\"][value=\"1\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 735,
+            "clientY": 473
+          },
+          {
+            "selector": "input[name=\"question-1\"][value=\"2\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 192,
+            "clientY": 683
+          },
+          {
+            "selector": "input[name=\"question-2\"][value=\"0\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 192,
+            "clientY": 797
+          },
+          {
+            "selector": ".assessment-form button[type=\"submit\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 1218,
+            "clientY": 917
+          }
+        ],
+        "submits": [
+          {
+            "at": 2256.7999999821186,
+            "trusted": true,
+            "sessionId": "9abac41f-d08e-425e-917c-326666c3a193"
+          },
+          {
+            "at": 2476.5,
+            "trusted": true,
+            "sessionId": "9abac41f-d08e-425e-917c-326666c3a193"
+          },
+          {
+            "at": 4820.299999982119,
+            "trusted": true,
+            "sessionId": "e4f089de-734f-4839-ae0c-ff8162f8239b"
+          }
+        ]
+      }
+    },
+    {
+      "name": "1440-empty-and-insufficient-real-pool",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fixture": "none; one course is browsed through its real UI",
+      "status": "failed",
+      "sessions": [
+        null
+      ],
+      "inputs": [
+        {
+          "selector": ".mode-btn[data-mode=\"learning\"]",
+          "kind": "mouse",
+          "x": 619.359375,
+          "y": 34.57422637939453
+        },
+        {
+          "selector": "#learning-tab-profile",
+          "kind": "mouse",
+          "x": 695.9921875,
+          "y": 252.59375
+        },
+        {
+          "selector": "[data-section-target=\"assessment\"]",
+          "kind": "mouse",
+          "x": 1218,
+          "y": 871.9375
+        },
+        {
+          "selector": "[data-action=\"spot-check\"]",
+          "kind": "mouse",
+          "x": 714.9921875,
+          "y": 751.484375
+        },
+        {
+          "selector": "[data-action=\"back\"]",
+          "kind": "mouse",
+          "x": 210,
+          "y": 356.34375
+        },
+        {
+          "selector": "#learning-tab-path",
+          "kind": "mouse",
+          "x": 378.2734375,
+          "y": 252.59375
+        },
+        {
+          "selector": "[data-step=\"l1-1\"] [data-action=\"learn\"]",
+          "kind": "mouse",
+          "x": 1195,
+          "y": 548
+        }
+      ],
+      "checks": [
+        {
+          "label": "unviewed-empty",
+          "state": {
+            "record": null,
+            "achievement": null,
+            "activity": null,
+            "writes": [],
+            "inputs": [
+              {
+                "selector": ".mode-btn[data-mode=\"learning\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 619,
+                "clientY": 34
+              },
+              {
+                "selector": "#learning-tab-profile",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 695,
+                "clientY": 252
+              },
+              {
+                "selector": "[data-section-target=\"assessment\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 1218,
+                "clientY": 871
+              },
+              {
+                "selector": "[data-action=\"spot-check\"]",
+                "trusted": true,
+                "pointerType": "mouse",
+                "clientX": 714,
+                "clientY": 751
+              }
+            ],
+            "submits": [],
+            "questions": 0,
+            "focus": {
+              "id": "",
+              "tag": "BODY"
+            },
+            "retry": false,
+            "width": 1440,
+            "content": "请先浏览一课，再进行随机抽查。返回考评中心"
+          }
+        }
+      ],
+      "screenshots": [
+        "1440-empty-and-insufficient-real-pool-empty.png",
+        "1440-empty-and-insufficient-real-pool-failure.png"
+      ],
+      "failure": {
+        "message": "Cannot hit #learning-tab-profile: {\"rect\":{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0},\"hit\":\"<header class=\\\"topbar\\\">\\n    <div class=\\\"brand-lockup\\\" aria-label=\\\"易象图谱\\\">\\n      <div class=\\\"logo\\\">易象图谱</div>\\n      <div class=\\\"brand-subtitle\\\">观象 · 读经 · 知变</div>\\n    </div>\\n    <nav class=\\\"mode-switcher\\\" id=\\\"mode-switcher\\\" aria-label=\\\"主要功能\\\">\\n      <span class=\\\"mode-indicator\\\" aria-hidden=\\\"true\\\" style=\\\"translate: none; rotate: none; scale: none; opac\",\"stage\":\"none\"}",
+        "stack": "Error: Cannot hit #learning-tab-profile: {\"rect\":{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0},\"hit\":\"<header class=\\\"topbar\\\">\\n    <div class=\\\"brand-lockup\\\" aria-label=\\\"易象图谱\\\">\\n      <div class=\\\"logo\\\">易象图谱</div>\\n      <div class=\\\"brand-subtitle\\\">观象 · 读经 · 知变</div>\\n    </div>\\n    <nav class=\\\"mode-switcher\\\" id=\\\"mode-switcher\\\" aria-label=\\\"主要功能\\\">\\n      <span class=\\\"mode-indicator\\\" aria-hidden=\\\"true\\\" style=\\\"translate: none; rotate: none; scale: none; opac\",\"stage\":\"none\"}\n    at pointFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:137:11)\n    at async click (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:142:17)\n    at async hub (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:224:3)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:341:5\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:272:5)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:337:3"
+      },
+      "failureState": {
+        "record": {
+          "version": 2,
+          "lessons": {
+            "l1-1": {
+              "viewedAt": "2026-10-24T19:03:17.250Z",
+              "lastStudiedAt": "2026-10-24T19:03:17.251Z"
+            }
+          },
+          "spotChecks": [],
+          "exams": [],
+          "oralReviews": []
+        },
+        "achievement": null,
+        "activity": {
+          "days": [
+            "2026-10-25"
+          ]
+        },
+        "writes": [
+          {
+            "key": "yijing-learning-record-v2",
+            "saved": true,
+            "at": 2480.2999999821186,
+            "payload": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T19:03:17.250Z",
+                  "lastStudiedAt": "2026-10-24T19:03:17.250Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            }
+          },
+          {
+            "key": "yijing-activity-v1",
+            "saved": true,
+            "at": 2480.4000000059605,
+            "payload": {
+              "days": [
+                "2026-10-25"
+              ]
+            }
+          },
+          {
+            "key": "yijing-learning-record-v2",
+            "saved": true,
+            "at": 2480.7999999821186,
+            "payload": {
+              "version": 2,
+              "lessons": {
+                "l1-1": {
+                  "viewedAt": "2026-10-24T19:03:17.250Z",
+                  "lastStudiedAt": "2026-10-24T19:03:17.251Z"
+                }
+              },
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": []
+            }
+          },
+          {
+            "key": "yijing-activity-v1",
+            "saved": true,
+            "at": 2480.7999999821186,
+            "payload": {
+              "days": [
+                "2026-10-25"
+              ]
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "selector": ".mode-btn[data-mode=\"learning\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 619,
+            "clientY": 34
+          },
+          {
+            "selector": "#learning-tab-profile",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 695,
+            "clientY": 252
+          },
+          {
+            "selector": "[data-section-target=\"assessment\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 1218,
+            "clientY": 871
+          },
+          {
+            "selector": "[data-action=\"spot-check\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 714,
+            "clientY": 751
+          },
+          {
+            "selector": "[data-action=\"back\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 210,
+            "clientY": 356
+          },
+          {
+            "selector": "#learning-tab-path",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 378,
+            "clientY": 252
+          },
+          {
+            "selector": "[data-step=\"l1-1\"] [data-action=\"learn\"]",
+            "trusted": true,
+            "pointerType": "mouse",
+            "clientX": 1195,
+            "clientY": 548
+          }
+        ],
+        "submits": [],
+        "questions": 0,
+        "focus": {
+          "id": "",
+          "tag": "H3"
+        },
+        "retry": false,
+        "width": 1440,
+        "content": "\n      \n        \n          蒙学 · 入门启蒙蒙学 · 阴阳之道\n          切换课程\n        \n        \n    \n      1蒙学阴阳八卦2习经六十四卦3研传经传与注疏4明辨象数传统5通用术数与民俗\n    \n        \n          \n            本节要义\n            阴阳者，易之根本也\n            《易》以阴阳为本。一阴一阳之谓道。\n            一阴一阳之谓道。继之者善也，成之者性也。\n            要旨阴阳互根：阴中有阳，阳中有阴，相互依存、相互转化。\n          \n          \n            阴阳关系图示\n            \n              阳动 · 健 · 明 · 升\n              \n              阴静 · 顺 · 藏 · 降\n            \n            相互依存 · 彼此转化 · 消长不息\n          \n        \n        \n          0%当前掌握度\n          当前阶段蒙学 · 共 4 课\n          已浏览 1 / 25 小节连续学习 1 天\n          继续研习\n        \n      "
+      }
+    }
+  ],
+  "status": "failed",
+  "limitations": [
+    "Headless Chromium desktop and emulated mobile; not physical mobile, screen-reader or real 200% zoom evidence.",
+    "Read-only Debugger breakpoint captures generated public questions. No business function or DOM click is invoked. Storage and tampered-option fixtures are explicitly marked."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "failure": {
+    "message": "Cannot hit #learning-tab-profile: {\"rect\":{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0},\"hit\":\"<header class=\\\"topbar\\\">\\n    <div class=\\\"brand-lockup\\\" aria-label=\\\"易象图谱\\\">\\n      <div class=\\\"logo\\\">易象图谱</div>\\n      <div class=\\\"brand-subtitle\\\">观象 · 读经 · 知变</div>\\n    </div>\\n    <nav class=\\\"mode-switcher\\\" id=\\\"mode-switcher\\\" aria-label=\\\"主要功能\\\">\\n      <span class=\\\"mode-indicator\\\" aria-hidden=\\\"true\\\" style=\\\"translate: none; rotate: none; scale: none; opac\",\"stage\":\"none\"}",
+    "stack": "Error: Cannot hit #learning-tab-profile: {\"rect\":{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0},\"hit\":\"<header class=\\\"topbar\\\">\\n    <div class=\\\"brand-lockup\\\" aria-label=\\\"易象图谱\\\">\\n      <div class=\\\"logo\\\">易象图谱</div>\\n      <div class=\\\"brand-subtitle\\\">观象 · 读经 · 知变</div>\\n    </div>\\n    <nav class=\\\"mode-switcher\\\" id=\\\"mode-switcher\\\" aria-label=\\\"主要功能\\\">\\n      <span class=\\\"mode-indicator\\\" aria-hidden=\\\"true\\\" style=\\\"translate: none; rotate: none; scale: none; opac\",\"stage\":\"none\"}\n    at pointFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:137:11)\n    at async click (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:142:17)\n    at async hub (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:224:3)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:341:5\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:272:5)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-assessment-session.mjs:337:3"
+  },
+  "finishedAt": "2026-10-24T19:03:32.610Z",
+  "finalSourceHashes": {
+    "web/js/learning-progress.js": "ba1cca8296bac7e421892858f81e2b6e9cbdc7e96e75f395a38ff605ca222a0d",
+    "web/js/learning-assessment.js": "2f27c1b4b3f713ab04789347a42325bf7aef2af5b2f9c2ca984cdb1849590abf",
+    "web/js/learning-assessment-page.js": "5975e61c27053bb2100b2f318a8bb21b1e58a0872b55737acdb681dacd832153",
+    "web/js/modes/learning-mode.js": "c5ed203a60edb8d682550655db3083579e950391ef908c11ebf788ae59d95d4f",
+    "web/js/user-data.js": "8a47ceb0e8dea555a17d10ac253b32f0dfc84cead620ddcf13193def6e1435b1",
+    "web/js/study-page.js": "7f99d3e5db2429daa6710735f9ff3ac8a05106bc33268c16ca00faaa418997c6",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "scripts/test-assessment-session.mjs": "e4f04fb236951c583e08bbaf3c3c4cdc06103ae744e14f5306370a117c91909b"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "profileRemoved": true
+}

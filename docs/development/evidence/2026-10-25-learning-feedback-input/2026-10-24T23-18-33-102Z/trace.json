@@ -1,0 +1,4256 @@
+{
+  "startedAt": "2026-10-24T23:18:33.155Z",
+  "command": [
+    "node",
+    "scripts/test-learning-feedback.mjs",
+    "--scope",
+    "390-divination-save-retry"
+  ],
+  "head": "75fde34006eaee0889db71f590a88712ea6623b8",
+  "node": "v24.19.0",
+  "uv": "1.52.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-feedback-uWWSav",
+  "output": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-18-33-102Z",
+  "scope": "390-divination-save-retry",
+  "sourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "a403744525846aad387912a8f48b174251d5ea563189ef546851a09faba22bcd",
+    "web/js/learning-feedback.js": "297b8116a05c6c2543e31dc2fdf0915f82f49d9d61f8d7af016ec6ad0ce93c28",
+    "web/js/review-session.js": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54",
+    "web/js/review-engine.js": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-review.js": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/learning-assessment-page.js": "909fc2ff41712cae790414d70b94486bab65cda686a95163c9c4a8200028a0c4",
+    "web/js/modes/learning-mode.js": "5a6009b61e2a846b5ab0a9b92e9a7fc6711d0c81bcdfd6431b2e764f42962bef",
+    "web/js/modes/review-mode.js": "082b67ab4b38a63979024b7d5a6ca61c111d0c7c168f76227a7d756e4b39bc55",
+    "web/js/modes/quiz-mode.js": "9a4e0828ddcf2788efc6d84eb49c0e937a9420edb7ada494ecb0ddf848ee3090",
+    "web/js/modes/divination-mode.js": "de316cb98d507712af99b63947bff6f9b666c8c57e11a2d2680e7193e25445cb",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/divination-history.js": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660",
+    "web/js/meihua-engine.js": "3310a0ede88f2f05ad1663aed48efed99c64828bcb4fced4a51e4733fdd45074",
+    "web/js/divination-interpretation.js": "1fa8bf21fea4c8856e98fa139c1b4fdf551eeedcead8e63e6b048804a28238cf",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "03d697b4e5f7b129c96615176915b43df9d93920c06a4b28a0f9713b89ddcc7a",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "scripts/test-learning-feedback.mjs": "73985000a38fc5cb98b27930adae8e8796ff17db5f851af6074dd9d2951d646c"
+  },
+  "status": "passed",
+  "scenarios": [
+    {
+      "name": "390-divination-save-retry",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inputMode": "touch",
+      "emulatedMobile": true,
+      "status": "passed",
+      "inputs": [
+        {
+          "kind": "touch",
+          "label": "[data-entry=\"explore\"]",
+          "x": 195,
+          "y": 447.75,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "touch",
+          "label": ".mode-btn[data-mode=\"divination\"]",
+          "x": 347.5,
+          "y": 82.71500968933105,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "touch",
+          "label": ".coin-cast",
+          "x": 195,
+          "y": 590.0000610351562,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "touch",
+          "label": "[data-analysis-dimension=\"identification\"]",
+          "x": 53.5,
+          "y": 479.578125,
+          "hit": {
+            "tag": "INPUT",
+            "id": ""
+          }
+        },
+        {
+          "kind": "touch",
+          "label": "[data-analysis-dimension=\"citation\"]",
+          "x": 53.5,
+          "y": 538.578125,
+          "hit": {
+            "tag": "INPUT",
+            "id": ""
+          }
+        },
+        {
+          "kind": "touch",
+          "label": ".divine-analysis-submit",
+          "x": 95,
+          "y": 643.578125,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "touch",
+          "label": ".divine-analysis-retry",
+          "x": 195,
+          "y": 820.46875,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "touch",
+          "label": ".divine-analysis-retry",
+          "x": 195,
+          "y": 820.46875,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "touch",
+          "label": ".divine-analysis-submit",
+          "x": 95,
+          "y": 479.578125,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "keyboard",
+          "key": "Tab",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "Tab",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "Tab",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "Enter",
+          "modifiers": 0
+        },
+        {
+          "kind": "keyboard",
+          "key": "Escape",
+          "modifiers": 0
+        }
+      ],
+      "checks": [
+        {
+          "label": "divination-prior-record-before-submit",
+          "state": {
+            "data": {
+              "card": null,
+              "record": null,
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": {
+                "version": 1,
+                "processedKeys": [
+                  "prior:reading:111111",
+                  "prior:analysis:synthetic"
+                ],
+                "metrics": {
+                  "completedLessons": [],
+                  "lessonScores": {},
+                  "topicScores": {},
+                  "trigramRounds": [],
+                  "hexagramsRead": [
+                    "111111"
+                  ],
+                  "relationsExamined": [],
+                  "reviewDays": [],
+                  "reviewedHexagrams": [],
+                  "quizRecoveries": [],
+                  "sequenceExams": [],
+                  "analyses": {
+                    "synthetic-prior-analysis": {
+                      "subjectId": "synthetic-prior-analysis",
+                      "occurredAt": "2026-10-24T01:00:00.000Z",
+                      "totalScore": 60,
+                      "changingLinesCorrect": false,
+                      "cited": true,
+                      "bounded": false,
+                      "dimensions": {
+                        "identification": 20,
+                        "imagery": 20,
+                        "citation": 20,
+                        "reasoning": 0,
+                        "boundary": 0
+                      }
+                    }
+                  },
+                  "boundedSubjects": [],
+                  "comprehensivePassed": false
+                },
+                "achievements": {}
+              },
+              "stats": null,
+              "legacy": null,
+              "config": null,
+              "history": [
+                {
+                  "version": 2,
+                  "id": "2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                  "createdAt": "2026-10-24T23:18:35.742Z",
+                  "type": "coin",
+                  "method": "three-coins",
+                  "primaryCode": "001011",
+                  "changedCode": "000111",
+                  "yaos": [
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": false,
+                      "name": "少阴",
+                      "coins": [
+                        3,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": false,
+                      "name": "少阴",
+                      "coins": [
+                        3,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": true,
+                      "name": "老阳",
+                      "coins": [
+                        3,
+                        3,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": true,
+                      "name": "老阴",
+                      "coins": [
+                        2,
+                        2,
+                        2
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": false,
+                      "name": "少阳",
+                      "coins": [
+                        2,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": false,
+                      "name": "少阳",
+                      "coins": [
+                        2,
+                        3,
+                        2
+                      ]
+                    }
+                  ],
+                  "cast": null,
+                  "changingPositions": [
+                    3,
+                    4
+                  ],
+                  "readingPolicyId": "zhu-xi-qimeng-v1",
+                  "interpretationVersion": "reading-explanation-v1",
+                  "interpretation": {
+                    "method": "金钱卦",
+                    "basis": "二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。",
+                    "terminology": "本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。",
+                    "situation": "处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。",
+                    "keyPoint": "鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                    "transition": "之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。",
+                    "classic": {
+                      "source": "《周易·渐卦·象传》",
+                      "quote": "山上有木，渐；君子以居贤德善俗。",
+                      "plain": "山上有木，渐渐长成，君子当居于贤德、改善风俗。",
+                      "xiang": "",
+                      "xiangSource": "",
+                      "priority": "primary"
+                    },
+                    "analogy": "把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。",
+                    "prompts": [
+                      "哪些是已经发生、可以核实的事实？",
+                      "哪一个条件正在变化，最小可验证的一步是什么？",
+                      "如果判断错了，怎样保留回旋余地？"
+                    ],
+                    "focus": [
+                      {
+                        "source": "《周易·渐卦·六四》",
+                        "quote": "六四：鸿渐于木，或得其桷，无咎。",
+                        "plain": "鸿雁渐进于树上，或得平柯可栖，无咎。",
+                        "xiang": "或得其桷，顺以巽也。",
+                        "xiangSource": "《周易·渐卦·象传》",
+                        "priority": "primary"
+                      },
+                      {
+                        "source": "《周易·渐卦·九三》",
+                        "quote": "九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。",
+                        "plain": "鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                        "xiang": "夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。",
+                        "xiangSource": "《周易·渐卦·象传》",
+                        "priority": "secondary"
+                      }
+                    ],
+                    "caveat": "朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。"
+                  },
+                  "privacy": {
+                    "questionStored": false,
+                    "noteStored": false
+                  },
+                  "summary": "渐 → 否"
+                }
+              ]
+            },
+            "raw": {
+              "card": null,
+              "record": null,
+              "activity": "{\"days\":[\"2026-10-25\"]}",
+              "achievement": "{\"version\":1,\"processedKeys\":[\"prior:reading:111111\",\"prior:analysis:synthetic\"],\"metrics\":{\"completedLessons\":[],\"lessonScores\":{},\"topicScores\":{},\"trigramRounds\":[],\"hexagramsRead\":[\"111111\"],\"relationsExamined\":[],\"reviewDays\":[],\"reviewedHexagrams\":[],\"quizRecoveries\":[],\"sequenceExams\":[],\"analyses\":{\"synthetic-prior-analysis\":{\"subjectId\":\"synthetic-prior-analysis\",\"occurredAt\":\"2026-10-24T01:00:00.000Z\",\"totalScore\":60,\"changingLinesCorrect\":false,\"cited\":true,\"bounded\":false,\"dimensions\":{\"identification\":20,\"imagery\":20,\"citation\":20,\"reasoning\":0,\"boundary\":0}}},\"boundedSubjects\":[],\"comprehensivePassed\":false},\"achievements\":{}}",
+              "stats": null,
+              "legacy": null,
+              "config": null,
+              "history": "[{\"version\":2,\"id\":\"2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9\",\"createdAt\":\"2026-10-24T23:18:35.742Z\",\"type\":\"coin\",\"method\":\"three-coins\",\"primaryCode\":\"001011\",\"changedCode\":\"000111\",\"yaos\":[{\"value\":0,\"isYang\":false,\"changing\":false,\"name\":\"少阴\",\"coins\":[3,2,3]},{\"value\":0,\"isYang\":false,\"changing\":false,\"name\":\"少阴\",\"coins\":[3,2,3]},{\"value\":1,\"isYang\":true,\"changing\":true,\"name\":\"老阳\",\"coins\":[3,3,3]},{\"value\":0,\"isYang\":false,\"changing\":true,\"name\":\"老阴\",\"coins\":[2,2,2]},{\"value\":1,\"isYang\":true,\"changing\":false,\"name\":\"少阳\",\"coins\":[2,2,3]},{\"value\":1,\"isYang\":true,\"changing\":false,\"name\":\"少阳\",\"coins\":[2,3,2]}],\"cast\":null,\"changingPositions\":[3,4],\"readingPolicyId\":\"zhu-xi-qimeng-v1\",\"interpretationVersion\":\"reading-explanation-v1\",\"interpretation\":{\"method\":\"金钱卦\",\"basis\":\"二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。\",\"terminology\":\"本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。\",\"situation\":\"处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。\",\"keyPoint\":\"鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。\",\"transition\":\"之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。\",\"classic\":{\"source\":\"《周易·渐卦·象传》\",\"quote\":\"山上有木，渐；君子以居贤德善俗。\",\"plain\":\"山上有木，渐渐长成，君子当居于贤德、改善风俗。\",\"xiang\":\"\",\"xiangSource\":\"\",\"priority\":\"primary\"},\"analogy\":\"把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。\",\"prompts\":[\"哪些是已经发生、可以核实的事实？\",\"哪一个条件正在变化，最小可验证的一步是什么？\",\"如果判断错了，怎样保留回旋余地？\"],\"focus\":[{\"source\":\"《周易·渐卦·六四》\",\"quote\":\"六四：鸿渐于木，或得其桷，无咎。\",\"plain\":\"鸿雁渐进于树上，或得平柯可栖，无咎。\",\"xiang\":\"或得其桷，顺以巽也。\",\"xiangSource\":\"《周易·渐卦·象传》\",\"priority\":\"primary\"},{\"source\":\"《周易·渐卦·九三》\",\"quote\":\"九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。\",\"plain\":\"鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。\",\"xiang\":\"夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。\",\"xiangSource\":\"《周易·渐卦·象传》\",\"priority\":\"secondary\"}],\"caveat\":\"朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。\"},\"privacy\":{\"questionStored\":false,\"noteStored\":false},\"summary\":\"渐 → 否\"}]"
+            },
+            "reads": [
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 496.69999998807907
+              },
+              {
+                "key": "yijing-divination-history-v1",
+                "readable": true,
+                "at": 496.7999999821186
+              },
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 959.8999999761581
+              },
+              {
+                "key": "yijing-activity-v1",
+                "readable": true,
+                "at": 960.6999999880791
+              },
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 960.6999999880791
+              },
+              {
+                "key": "yijing-divination-history-v1",
+                "readable": true,
+                "at": 960.7999999821186
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-divination-history-v2",
+                "saved": true,
+                "at": 960.5,
+                "value": [
+                  {
+                    "version": 2,
+                    "id": "2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                    "createdAt": "2026-10-24T23:18:35.742Z",
+                    "type": "coin",
+                    "method": "three-coins",
+                    "primaryCode": "001011",
+                    "changedCode": "000111",
+                    "yaos": [
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": false,
+                        "name": "少阴",
+                        "coins": [
+                          3,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": false,
+                        "name": "少阴",
+                        "coins": [
+                          3,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": true,
+                        "name": "老阳",
+                        "coins": [
+                          3,
+                          3,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": true,
+                        "name": "老阴",
+                        "coins": [
+                          2,
+                          2,
+                          2
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": false,
+                        "name": "少阳",
+                        "coins": [
+                          2,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": false,
+                        "name": "少阳",
+                        "coins": [
+                          2,
+                          3,
+                          2
+                        ]
+                      }
+                    ],
+                    "cast": null,
+                    "changingPositions": [
+                      3,
+                      4
+                    ],
+                    "readingPolicyId": "zhu-xi-qimeng-v1",
+                    "interpretationVersion": "reading-explanation-v1",
+                    "interpretation": {
+                      "method": "金钱卦",
+                      "basis": "二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。",
+                      "terminology": "本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。",
+                      "situation": "处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。",
+                      "keyPoint": "鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                      "transition": "之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。",
+                      "classic": {
+                        "source": "《周易·渐卦·象传》",
+                        "quote": "山上有木，渐；君子以居贤德善俗。",
+                        "plain": "山上有木，渐渐长成，君子当居于贤德、改善风俗。",
+                        "xiang": "",
+                        "xiangSource": "",
+                        "priority": "primary"
+                      },
+                      "analogy": "把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。",
+                      "prompts": [
+                        "哪些是已经发生、可以核实的事实？",
+                        "哪一个条件正在变化，最小可验证的一步是什么？",
+                        "如果判断错了，怎样保留回旋余地？"
+                      ],
+                      "focus": [
+                        {
+                          "source": "《周易·渐卦·六四》",
+                          "quote": "六四：鸿渐于木，或得其桷，无咎。",
+                          "plain": "鸿雁渐进于树上，或得平柯可栖，无咎。",
+                          "xiang": "或得其桷，顺以巽也。",
+                          "xiangSource": "《周易·渐卦·象传》",
+                          "priority": "primary"
+                        },
+                        {
+                          "source": "《周易·渐卦·九三》",
+                          "quote": "九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。",
+                          "plain": "鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                          "xiang": "夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。",
+                          "xiangSource": "《周易·渐卦·象传》",
+                          "priority": "secondary"
+                        }
+                      ],
+                      "caveat": "朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。"
+                    },
+                    "privacy": {
+                      "questionStored": false,
+                      "noteStored": false
+                    },
+                    "summary": "渐 → 否"
+                  }
+                ]
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 960.6999999880791,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 410.39999997615814,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 423.19999998807907,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 423.69999998807907,
+                "x": 348,
+                "y": 83,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 922.0999999940395,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 955.2999999821186,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 956.5,
+                "x": 195,
+                "y": 590,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1120.699999988079,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1170.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1171.199999988079,
+                "x": 54,
+                "y": 480,
+                "target": "INPUT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1171.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1171.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1254.7999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1303.5999999940395,
+                "target": "INPUT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "x": 54,
+                "y": 539,
+                "target": "INPUT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "target": "INPUT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "target": "INPUT"
+              }
+            ],
+            "mode": "divination",
+            "focus": {
+              "tag": "INPUT",
+              "id": ""
+            },
+            "feedback": []
+          }
+        },
+        {
+          "label": "divination-write-failed",
+          "state": {
+            "data": {
+              "card": null,
+              "record": null,
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": {
+                "version": 1,
+                "processedKeys": [
+                  "prior:reading:111111",
+                  "prior:analysis:synthetic"
+                ],
+                "metrics": {
+                  "completedLessons": [],
+                  "lessonScores": {},
+                  "topicScores": {},
+                  "trigramRounds": [],
+                  "hexagramsRead": [
+                    "111111"
+                  ],
+                  "relationsExamined": [],
+                  "reviewDays": [],
+                  "reviewedHexagrams": [],
+                  "quizRecoveries": [],
+                  "sequenceExams": [],
+                  "analyses": {
+                    "synthetic-prior-analysis": {
+                      "subjectId": "synthetic-prior-analysis",
+                      "occurredAt": "2026-10-24T01:00:00.000Z",
+                      "totalScore": 60,
+                      "changingLinesCorrect": false,
+                      "cited": true,
+                      "bounded": false,
+                      "dimensions": {
+                        "identification": 20,
+                        "imagery": 20,
+                        "citation": 20,
+                        "reasoning": 0,
+                        "boundary": 0
+                      }
+                    }
+                  },
+                  "boundedSubjects": [],
+                  "comprehensivePassed": false
+                },
+                "achievements": {}
+              },
+              "stats": null,
+              "legacy": null,
+              "config": null,
+              "history": [
+                {
+                  "version": 2,
+                  "id": "2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                  "createdAt": "2026-10-24T23:18:35.742Z",
+                  "type": "coin",
+                  "method": "three-coins",
+                  "primaryCode": "001011",
+                  "changedCode": "000111",
+                  "yaos": [
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": false,
+                      "name": "少阴",
+                      "coins": [
+                        3,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": false,
+                      "name": "少阴",
+                      "coins": [
+                        3,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": true,
+                      "name": "老阳",
+                      "coins": [
+                        3,
+                        3,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": true,
+                      "name": "老阴",
+                      "coins": [
+                        2,
+                        2,
+                        2
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": false,
+                      "name": "少阳",
+                      "coins": [
+                        2,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": false,
+                      "name": "少阳",
+                      "coins": [
+                        2,
+                        3,
+                        2
+                      ]
+                    }
+                  ],
+                  "cast": null,
+                  "changingPositions": [
+                    3,
+                    4
+                  ],
+                  "readingPolicyId": "zhu-xi-qimeng-v1",
+                  "interpretationVersion": "reading-explanation-v1",
+                  "interpretation": {
+                    "method": "金钱卦",
+                    "basis": "二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。",
+                    "terminology": "本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。",
+                    "situation": "处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。",
+                    "keyPoint": "鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                    "transition": "之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。",
+                    "classic": {
+                      "source": "《周易·渐卦·象传》",
+                      "quote": "山上有木，渐；君子以居贤德善俗。",
+                      "plain": "山上有木，渐渐长成，君子当居于贤德、改善风俗。",
+                      "xiang": "",
+                      "xiangSource": "",
+                      "priority": "primary"
+                    },
+                    "analogy": "把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。",
+                    "prompts": [
+                      "哪些是已经发生、可以核实的事实？",
+                      "哪一个条件正在变化，最小可验证的一步是什么？",
+                      "如果判断错了，怎样保留回旋余地？"
+                    ],
+                    "focus": [
+                      {
+                        "source": "《周易·渐卦·六四》",
+                        "quote": "六四：鸿渐于木，或得其桷，无咎。",
+                        "plain": "鸿雁渐进于树上，或得平柯可栖，无咎。",
+                        "xiang": "或得其桷，顺以巽也。",
+                        "xiangSource": "《周易·渐卦·象传》",
+                        "priority": "primary"
+                      },
+                      {
+                        "source": "《周易·渐卦·九三》",
+                        "quote": "九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。",
+                        "plain": "鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                        "xiang": "夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。",
+                        "xiangSource": "《周易·渐卦·象传》",
+                        "priority": "secondary"
+                      }
+                    ],
+                    "caveat": "朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。"
+                  },
+                  "privacy": {
+                    "questionStored": false,
+                    "noteStored": false
+                  },
+                  "summary": "渐 → 否"
+                }
+              ]
+            },
+            "raw": {
+              "card": null,
+              "record": null,
+              "activity": "{\"days\":[\"2026-10-25\"]}",
+              "achievement": "{\"version\":1,\"processedKeys\":[\"prior:reading:111111\",\"prior:analysis:synthetic\"],\"metrics\":{\"completedLessons\":[],\"lessonScores\":{},\"topicScores\":{},\"trigramRounds\":[],\"hexagramsRead\":[\"111111\"],\"relationsExamined\":[],\"reviewDays\":[],\"reviewedHexagrams\":[],\"quizRecoveries\":[],\"sequenceExams\":[],\"analyses\":{\"synthetic-prior-analysis\":{\"subjectId\":\"synthetic-prior-analysis\",\"occurredAt\":\"2026-10-24T01:00:00.000Z\",\"totalScore\":60,\"changingLinesCorrect\":false,\"cited\":true,\"bounded\":false,\"dimensions\":{\"identification\":20,\"imagery\":20,\"citation\":20,\"reasoning\":0,\"boundary\":0}}},\"boundedSubjects\":[],\"comprehensivePassed\":false},\"achievements\":{}}",
+              "stats": null,
+              "legacy": null,
+              "config": null,
+              "history": "[{\"version\":2,\"id\":\"2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9\",\"createdAt\":\"2026-10-24T23:18:35.742Z\",\"type\":\"coin\",\"method\":\"three-coins\",\"primaryCode\":\"001011\",\"changedCode\":\"000111\",\"yaos\":[{\"value\":0,\"isYang\":false,\"changing\":false,\"name\":\"少阴\",\"coins\":[3,2,3]},{\"value\":0,\"isYang\":false,\"changing\":false,\"name\":\"少阴\",\"coins\":[3,2,3]},{\"value\":1,\"isYang\":true,\"changing\":true,\"name\":\"老阳\",\"coins\":[3,3,3]},{\"value\":0,\"isYang\":false,\"changing\":true,\"name\":\"老阴\",\"coins\":[2,2,2]},{\"value\":1,\"isYang\":true,\"changing\":false,\"name\":\"少阳\",\"coins\":[2,2,3]},{\"value\":1,\"isYang\":true,\"changing\":false,\"name\":\"少阳\",\"coins\":[2,3,2]}],\"cast\":null,\"changingPositions\":[3,4],\"readingPolicyId\":\"zhu-xi-qimeng-v1\",\"interpretationVersion\":\"reading-explanation-v1\",\"interpretation\":{\"method\":\"金钱卦\",\"basis\":\"二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。\",\"terminology\":\"本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。\",\"situation\":\"处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。\",\"keyPoint\":\"鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。\",\"transition\":\"之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。\",\"classic\":{\"source\":\"《周易·渐卦·象传》\",\"quote\":\"山上有木，渐；君子以居贤德善俗。\",\"plain\":\"山上有木，渐渐长成，君子当居于贤德、改善风俗。\",\"xiang\":\"\",\"xiangSource\":\"\",\"priority\":\"primary\"},\"analogy\":\"把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。\",\"prompts\":[\"哪些是已经发生、可以核实的事实？\",\"哪一个条件正在变化，最小可验证的一步是什么？\",\"如果判断错了，怎样保留回旋余地？\"],\"focus\":[{\"source\":\"《周易·渐卦·六四》\",\"quote\":\"六四：鸿渐于木，或得其桷，无咎。\",\"plain\":\"鸿雁渐进于树上，或得平柯可栖，无咎。\",\"xiang\":\"或得其桷，顺以巽也。\",\"xiangSource\":\"《周易·渐卦·象传》\",\"priority\":\"primary\"},{\"source\":\"《周易·渐卦·九三》\",\"quote\":\"九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。\",\"plain\":\"鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。\",\"xiang\":\"夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。\",\"xiangSource\":\"《周易·渐卦·象传》\",\"priority\":\"secondary\"}],\"caveat\":\"朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。\"},\"privacy\":{\"questionStored\":false,\"noteStored\":false},\"summary\":\"渐 → 否\"}]"
+            },
+            "reads": [
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 496.69999998807907
+              },
+              {
+                "key": "yijing-divination-history-v1",
+                "readable": true,
+                "at": 496.7999999821186
+              },
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 959.8999999761581
+              },
+              {
+                "key": "yijing-activity-v1",
+                "readable": true,
+                "at": 960.6999999880791
+              },
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 960.6999999880791
+              },
+              {
+                "key": "yijing-divination-history-v1",
+                "readable": true,
+                "at": 960.7999999821186
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "readable": true,
+                "at": 1438.7999999821186
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-divination-history-v2",
+                "saved": true,
+                "at": 960.5,
+                "value": [
+                  {
+                    "version": 2,
+                    "id": "2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                    "createdAt": "2026-10-24T23:18:35.742Z",
+                    "type": "coin",
+                    "method": "three-coins",
+                    "primaryCode": "001011",
+                    "changedCode": "000111",
+                    "yaos": [
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": false,
+                        "name": "少阴",
+                        "coins": [
+                          3,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": false,
+                        "name": "少阴",
+                        "coins": [
+                          3,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": true,
+                        "name": "老阳",
+                        "coins": [
+                          3,
+                          3,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": true,
+                        "name": "老阴",
+                        "coins": [
+                          2,
+                          2,
+                          2
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": false,
+                        "name": "少阳",
+                        "coins": [
+                          2,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": false,
+                        "name": "少阳",
+                        "coins": [
+                          2,
+                          3,
+                          2
+                        ]
+                      }
+                    ],
+                    "cast": null,
+                    "changingPositions": [
+                      3,
+                      4
+                    ],
+                    "readingPolicyId": "zhu-xi-qimeng-v1",
+                    "interpretationVersion": "reading-explanation-v1",
+                    "interpretation": {
+                      "method": "金钱卦",
+                      "basis": "二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。",
+                      "terminology": "本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。",
+                      "situation": "处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。",
+                      "keyPoint": "鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                      "transition": "之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。",
+                      "classic": {
+                        "source": "《周易·渐卦·象传》",
+                        "quote": "山上有木，渐；君子以居贤德善俗。",
+                        "plain": "山上有木，渐渐长成，君子当居于贤德、改善风俗。",
+                        "xiang": "",
+                        "xiangSource": "",
+                        "priority": "primary"
+                      },
+                      "analogy": "把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。",
+                      "prompts": [
+                        "哪些是已经发生、可以核实的事实？",
+                        "哪一个条件正在变化，最小可验证的一步是什么？",
+                        "如果判断错了，怎样保留回旋余地？"
+                      ],
+                      "focus": [
+                        {
+                          "source": "《周易·渐卦·六四》",
+                          "quote": "六四：鸿渐于木，或得其桷，无咎。",
+                          "plain": "鸿雁渐进于树上，或得平柯可栖，无咎。",
+                          "xiang": "或得其桷，顺以巽也。",
+                          "xiangSource": "《周易·渐卦·象传》",
+                          "priority": "primary"
+                        },
+                        {
+                          "source": "《周易·渐卦·九三》",
+                          "quote": "九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。",
+                          "plain": "鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                          "xiang": "夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。",
+                          "xiangSource": "《周易·渐卦·象传》",
+                          "priority": "secondary"
+                        }
+                      ],
+                      "caveat": "朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。"
+                    },
+                    "privacy": {
+                      "questionStored": false,
+                      "noteStored": false
+                    },
+                    "summary": "渐 → 否"
+                  }
+                ]
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 960.6999999880791,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "at": 1439.2999999821186,
+                "value": {
+                  "version": 1,
+                  "processedKeys": [
+                    "prior:reading:111111",
+                    "prior:analysis:synthetic",
+                    "divination-analysis:history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {
+                      "synthetic-prior-analysis": {
+                        "subjectId": "synthetic-prior-analysis",
+                        "occurredAt": "2026-10-24T01:00:00.000Z",
+                        "totalScore": 60,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 20,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      },
+                      "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9": {
+                        "subjectId": "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                        "occurredAt": "2026-10-24T23:18:36.222Z",
+                        "totalScore": 40,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 0,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      }
+                    },
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 410.39999997615814,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 423.19999998807907,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 423.69999998807907,
+                "x": 348,
+                "y": 83,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 922.0999999940395,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 955.2999999821186,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 956.5,
+                "x": 195,
+                "y": 590,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1120.699999988079,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1170.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1171.199999988079,
+                "x": 54,
+                "y": 480,
+                "target": "INPUT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1171.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1171.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1254.7999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1303.5999999940395,
+                "target": "INPUT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "x": 54,
+                "y": 539,
+                "target": "INPUT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "target": "INPUT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1388,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1437.3999999761581,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1438.199999988079,
+                "x": 95,
+                "y": 644,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              }
+            ],
+            "mode": "divination",
+            "focus": {
+              "tag": "BUTTON",
+              "id": ""
+            },
+            "feedback": [
+              "本次结果\n\n本次勾选自评：40 分\n\n分数来自五项自我勾选，每项20分；这不是客观结构检验，也不评价自由说明或现实应验。\n\n判断依据\n\n取辞方法：金钱卦\n\n二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。\n\n来源：《周易·渐卦·六四》\n来源：《周易·渐卦·九三》\n\n方法边界：朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。\n\n学习记录\n\n本轮勾选自评未能保存到成就记录；可仅重试保存。\n\n下一步\n仅重试保存本轮记录\n回看本页取辞依据"
+            ]
+          }
+        },
+        {
+          "label": "automatic-feedback-before-locator-scroll",
+          "container": ".divine-analysis-feedback",
+          "failed": true,
+          "structure": {
+            "sections": [
+              "result",
+              "basis",
+              "changes",
+              "actions"
+            ],
+            "primary": 1,
+            "secondary": 1,
+            "wholeLive": null,
+            "focus": {
+              "tag": "BUTTON",
+              "inside": true,
+              "visible": true,
+              "hit": true,
+              "rect": {
+                "x": 47,
+                "y": 796.671875,
+                "width": 296,
+                "height": 47.59375,
+                "top": 796.671875,
+                "right": 343,
+                "bottom": 844.265625,
+                "left": 47
+              }
+            },
+            "selection": ""
+          },
+          "result": {
+            "rect": {
+              "x": 47,
+              "y": -80.421875,
+              "width": 296,
+              "height": 208.875,
+              "top": -80.421875,
+              "right": 343,
+              "bottom": 128.453125,
+              "left": 47
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "本次结果\n\n本次勾选自评：40 分\n\n分数来自五项自我勾选，每项20分；这不是客观结构检验，也不评价自由说明或现实应验。",
+            "visible": true,
+            "full": false,
+            "hit": true
+          },
+          "status": {
+            "rect": {
+              "x": 47,
+              "y": 647.984375,
+              "width": 296,
+              "height": 61.1875,
+              "top": 647.984375,
+              "right": 343,
+              "bottom": 709.171875,
+              "left": 47
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "本轮勾选自评未能保存到成就记录；可仅重试保存。",
+            "visible": true,
+            "full": true,
+            "hit": true
+          },
+          "primary": {
+            "rect": {
+              "x": 47,
+              "y": 796.671875,
+              "width": 296,
+              "height": 47.59375,
+              "top": 796.671875,
+              "right": 343,
+              "bottom": 844.265625,
+              "left": 47
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "仅重试保存本轮记录",
+            "visible": true,
+            "full": true,
+            "hit": true,
+            "disabled": false
+          },
+          "retry": {
+            "rect": {
+              "x": 47,
+              "y": 796.671875,
+              "width": 296,
+              "height": 47.59375,
+              "top": 796.671875,
+              "right": 343,
+              "bottom": 844.265625,
+              "left": 47
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "仅重试保存本轮记录",
+            "visible": true,
+            "full": true,
+            "hit": true,
+            "disabled": false
+          }
+        },
+        {
+          "label": "original-divination-submission-locked",
+          "subject": "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+          "processedKey": "divination-analysis:history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+          "analysis": {
+            "subjectId": "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+            "occurredAt": "2026-10-24T23:18:36.222Z",
+            "totalScore": 40,
+            "changingLinesCorrect": false,
+            "cited": true,
+            "bounded": false,
+            "dimensions": {
+              "identification": 20,
+              "imagery": 0,
+              "citation": 20,
+              "reasoning": 0,
+              "boundary": 0
+            }
+          }
+        },
+        {
+          "label": "divination-read-denied-write-restored",
+          "state": {
+            "data": {
+              "card": null,
+              "record": null,
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": {
+                "version": 1,
+                "processedKeys": [
+                  "prior:reading:111111",
+                  "prior:analysis:synthetic"
+                ],
+                "metrics": {
+                  "completedLessons": [],
+                  "lessonScores": {},
+                  "topicScores": {},
+                  "trigramRounds": [],
+                  "hexagramsRead": [
+                    "111111"
+                  ],
+                  "relationsExamined": [],
+                  "reviewDays": [],
+                  "reviewedHexagrams": [],
+                  "quizRecoveries": [],
+                  "sequenceExams": [],
+                  "analyses": {
+                    "synthetic-prior-analysis": {
+                      "subjectId": "synthetic-prior-analysis",
+                      "occurredAt": "2026-10-24T01:00:00.000Z",
+                      "totalScore": 60,
+                      "changingLinesCorrect": false,
+                      "cited": true,
+                      "bounded": false,
+                      "dimensions": {
+                        "identification": 20,
+                        "imagery": 20,
+                        "citation": 20,
+                        "reasoning": 0,
+                        "boundary": 0
+                      }
+                    }
+                  },
+                  "boundedSubjects": [],
+                  "comprehensivePassed": false
+                },
+                "achievements": {}
+              },
+              "stats": null,
+              "legacy": null,
+              "config": null,
+              "history": [
+                {
+                  "version": 2,
+                  "id": "2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                  "createdAt": "2026-10-24T23:18:35.742Z",
+                  "type": "coin",
+                  "method": "three-coins",
+                  "primaryCode": "001011",
+                  "changedCode": "000111",
+                  "yaos": [
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": false,
+                      "name": "少阴",
+                      "coins": [
+                        3,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": false,
+                      "name": "少阴",
+                      "coins": [
+                        3,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": true,
+                      "name": "老阳",
+                      "coins": [
+                        3,
+                        3,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": true,
+                      "name": "老阴",
+                      "coins": [
+                        2,
+                        2,
+                        2
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": false,
+                      "name": "少阳",
+                      "coins": [
+                        2,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": false,
+                      "name": "少阳",
+                      "coins": [
+                        2,
+                        3,
+                        2
+                      ]
+                    }
+                  ],
+                  "cast": null,
+                  "changingPositions": [
+                    3,
+                    4
+                  ],
+                  "readingPolicyId": "zhu-xi-qimeng-v1",
+                  "interpretationVersion": "reading-explanation-v1",
+                  "interpretation": {
+                    "method": "金钱卦",
+                    "basis": "二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。",
+                    "terminology": "本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。",
+                    "situation": "处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。",
+                    "keyPoint": "鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                    "transition": "之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。",
+                    "classic": {
+                      "source": "《周易·渐卦·象传》",
+                      "quote": "山上有木，渐；君子以居贤德善俗。",
+                      "plain": "山上有木，渐渐长成，君子当居于贤德、改善风俗。",
+                      "xiang": "",
+                      "xiangSource": "",
+                      "priority": "primary"
+                    },
+                    "analogy": "把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。",
+                    "prompts": [
+                      "哪些是已经发生、可以核实的事实？",
+                      "哪一个条件正在变化，最小可验证的一步是什么？",
+                      "如果判断错了，怎样保留回旋余地？"
+                    ],
+                    "focus": [
+                      {
+                        "source": "《周易·渐卦·六四》",
+                        "quote": "六四：鸿渐于木，或得其桷，无咎。",
+                        "plain": "鸿雁渐进于树上，或得平柯可栖，无咎。",
+                        "xiang": "或得其桷，顺以巽也。",
+                        "xiangSource": "《周易·渐卦·象传》",
+                        "priority": "primary"
+                      },
+                      {
+                        "source": "《周易·渐卦·九三》",
+                        "quote": "九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。",
+                        "plain": "鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                        "xiang": "夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。",
+                        "xiangSource": "《周易·渐卦·象传》",
+                        "priority": "secondary"
+                      }
+                    ],
+                    "caveat": "朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。"
+                  },
+                  "privacy": {
+                    "questionStored": false,
+                    "noteStored": false
+                  },
+                  "summary": "渐 → 否"
+                }
+              ]
+            },
+            "raw": {
+              "card": null,
+              "record": null,
+              "activity": "{\"days\":[\"2026-10-25\"]}",
+              "achievement": "{\"version\":1,\"processedKeys\":[\"prior:reading:111111\",\"prior:analysis:synthetic\"],\"metrics\":{\"completedLessons\":[],\"lessonScores\":{},\"topicScores\":{},\"trigramRounds\":[],\"hexagramsRead\":[\"111111\"],\"relationsExamined\":[],\"reviewDays\":[],\"reviewedHexagrams\":[],\"quizRecoveries\":[],\"sequenceExams\":[],\"analyses\":{\"synthetic-prior-analysis\":{\"subjectId\":\"synthetic-prior-analysis\",\"occurredAt\":\"2026-10-24T01:00:00.000Z\",\"totalScore\":60,\"changingLinesCorrect\":false,\"cited\":true,\"bounded\":false,\"dimensions\":{\"identification\":20,\"imagery\":20,\"citation\":20,\"reasoning\":0,\"boundary\":0}}},\"boundedSubjects\":[],\"comprehensivePassed\":false},\"achievements\":{}}",
+              "stats": null,
+              "legacy": null,
+              "config": null,
+              "history": "[{\"version\":2,\"id\":\"2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9\",\"createdAt\":\"2026-10-24T23:18:35.742Z\",\"type\":\"coin\",\"method\":\"three-coins\",\"primaryCode\":\"001011\",\"changedCode\":\"000111\",\"yaos\":[{\"value\":0,\"isYang\":false,\"changing\":false,\"name\":\"少阴\",\"coins\":[3,2,3]},{\"value\":0,\"isYang\":false,\"changing\":false,\"name\":\"少阴\",\"coins\":[3,2,3]},{\"value\":1,\"isYang\":true,\"changing\":true,\"name\":\"老阳\",\"coins\":[3,3,3]},{\"value\":0,\"isYang\":false,\"changing\":true,\"name\":\"老阴\",\"coins\":[2,2,2]},{\"value\":1,\"isYang\":true,\"changing\":false,\"name\":\"少阳\",\"coins\":[2,2,3]},{\"value\":1,\"isYang\":true,\"changing\":false,\"name\":\"少阳\",\"coins\":[2,3,2]}],\"cast\":null,\"changingPositions\":[3,4],\"readingPolicyId\":\"zhu-xi-qimeng-v1\",\"interpretationVersion\":\"reading-explanation-v1\",\"interpretation\":{\"method\":\"金钱卦\",\"basis\":\"二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。\",\"terminology\":\"本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。\",\"situation\":\"处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。\",\"keyPoint\":\"鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。\",\"transition\":\"之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。\",\"classic\":{\"source\":\"《周易·渐卦·象传》\",\"quote\":\"山上有木，渐；君子以居贤德善俗。\",\"plain\":\"山上有木，渐渐长成，君子当居于贤德、改善风俗。\",\"xiang\":\"\",\"xiangSource\":\"\",\"priority\":\"primary\"},\"analogy\":\"把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。\",\"prompts\":[\"哪些是已经发生、可以核实的事实？\",\"哪一个条件正在变化，最小可验证的一步是什么？\",\"如果判断错了，怎样保留回旋余地？\"],\"focus\":[{\"source\":\"《周易·渐卦·六四》\",\"quote\":\"六四：鸿渐于木，或得其桷，无咎。\",\"plain\":\"鸿雁渐进于树上，或得平柯可栖，无咎。\",\"xiang\":\"或得其桷，顺以巽也。\",\"xiangSource\":\"《周易·渐卦·象传》\",\"priority\":\"primary\"},{\"source\":\"《周易·渐卦·九三》\",\"quote\":\"九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。\",\"plain\":\"鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。\",\"xiang\":\"夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。\",\"xiangSource\":\"《周易·渐卦·象传》\",\"priority\":\"secondary\"}],\"caveat\":\"朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。\"},\"privacy\":{\"questionStored\":false,\"noteStored\":false},\"summary\":\"渐 → 否\"}]"
+            },
+            "reads": [
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 496.69999998807907
+              },
+              {
+                "key": "yijing-divination-history-v1",
+                "readable": true,
+                "at": 496.7999999821186
+              },
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 959.8999999761581
+              },
+              {
+                "key": "yijing-activity-v1",
+                "readable": true,
+                "at": 960.6999999880791
+              },
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 960.6999999880791
+              },
+              {
+                "key": "yijing-divination-history-v1",
+                "readable": true,
+                "at": 960.7999999821186
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "readable": true,
+                "at": 1438.7999999821186
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "readable": false,
+                "at": 2291
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-divination-history-v2",
+                "saved": true,
+                "at": 960.5,
+                "value": [
+                  {
+                    "version": 2,
+                    "id": "2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                    "createdAt": "2026-10-24T23:18:35.742Z",
+                    "type": "coin",
+                    "method": "three-coins",
+                    "primaryCode": "001011",
+                    "changedCode": "000111",
+                    "yaos": [
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": false,
+                        "name": "少阴",
+                        "coins": [
+                          3,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": false,
+                        "name": "少阴",
+                        "coins": [
+                          3,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": true,
+                        "name": "老阳",
+                        "coins": [
+                          3,
+                          3,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": true,
+                        "name": "老阴",
+                        "coins": [
+                          2,
+                          2,
+                          2
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": false,
+                        "name": "少阳",
+                        "coins": [
+                          2,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": false,
+                        "name": "少阳",
+                        "coins": [
+                          2,
+                          3,
+                          2
+                        ]
+                      }
+                    ],
+                    "cast": null,
+                    "changingPositions": [
+                      3,
+                      4
+                    ],
+                    "readingPolicyId": "zhu-xi-qimeng-v1",
+                    "interpretationVersion": "reading-explanation-v1",
+                    "interpretation": {
+                      "method": "金钱卦",
+                      "basis": "二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。",
+                      "terminology": "本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。",
+                      "situation": "处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。",
+                      "keyPoint": "鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                      "transition": "之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。",
+                      "classic": {
+                        "source": "《周易·渐卦·象传》",
+                        "quote": "山上有木，渐；君子以居贤德善俗。",
+                        "plain": "山上有木，渐渐长成，君子当居于贤德、改善风俗。",
+                        "xiang": "",
+                        "xiangSource": "",
+                        "priority": "primary"
+                      },
+                      "analogy": "把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。",
+                      "prompts": [
+                        "哪些是已经发生、可以核实的事实？",
+                        "哪一个条件正在变化，最小可验证的一步是什么？",
+                        "如果判断错了，怎样保留回旋余地？"
+                      ],
+                      "focus": [
+                        {
+                          "source": "《周易·渐卦·六四》",
+                          "quote": "六四：鸿渐于木，或得其桷，无咎。",
+                          "plain": "鸿雁渐进于树上，或得平柯可栖，无咎。",
+                          "xiang": "或得其桷，顺以巽也。",
+                          "xiangSource": "《周易·渐卦·象传》",
+                          "priority": "primary"
+                        },
+                        {
+                          "source": "《周易·渐卦·九三》",
+                          "quote": "九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。",
+                          "plain": "鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                          "xiang": "夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。",
+                          "xiangSource": "《周易·渐卦·象传》",
+                          "priority": "secondary"
+                        }
+                      ],
+                      "caveat": "朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。"
+                    },
+                    "privacy": {
+                      "questionStored": false,
+                      "noteStored": false
+                    },
+                    "summary": "渐 → 否"
+                  }
+                ]
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 960.6999999880791,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "at": 1439.2999999821186,
+                "value": {
+                  "version": 1,
+                  "processedKeys": [
+                    "prior:reading:111111",
+                    "prior:analysis:synthetic",
+                    "divination-analysis:history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {
+                      "synthetic-prior-analysis": {
+                        "subjectId": "synthetic-prior-analysis",
+                        "occurredAt": "2026-10-24T01:00:00.000Z",
+                        "totalScore": 60,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 20,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      },
+                      "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9": {
+                        "subjectId": "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                        "occurredAt": "2026-10-24T23:18:36.222Z",
+                        "totalScore": 40,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 0,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      }
+                    },
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 410.39999997615814,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 423.19999998807907,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 423.69999998807907,
+                "x": 348,
+                "y": 83,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 922.0999999940395,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 955.2999999821186,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 956.5,
+                "x": 195,
+                "y": 590,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1120.699999988079,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1170.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1171.199999988079,
+                "x": 54,
+                "y": 480,
+                "target": "INPUT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1171.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1171.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1254.7999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1303.5999999940395,
+                "target": "INPUT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "x": 54,
+                "y": 539,
+                "target": "INPUT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "target": "INPUT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1388,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1437.3999999761581,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1438.199999988079,
+                "x": 95,
+                "y": 644,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 2270.699999988079,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 2289,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 2290.7999999821186,
+                "x": 195,
+                "y": 820,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              }
+            ],
+            "mode": "divination",
+            "focus": {
+              "tag": "BODY",
+              "id": ""
+            },
+            "feedback": [
+              "本次结果\n\n本次勾选自评：40 分\n\n分数来自五项自我勾选，每项20分；这不是客观结构检验，也不评价自由说明或现实应验。\n\n判断依据\n\n取辞方法：金钱卦\n\n二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。\n\n来源：《周易·渐卦·六四》\n来源：《周易·渐卦·九三》\n\n方法边界：朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。\n\n学习记录\n\n本轮勾选自评未能保存到成就记录；可仅重试保存。\n\n下一步\n仅重试保存本轮记录\n回看本页取辞依据"
+            ]
+          }
+        },
+        {
+          "label": "automatic-feedback-before-locator-scroll",
+          "container": ".divine-analysis-feedback",
+          "failed": true,
+          "structure": {
+            "sections": [
+              "result",
+              "basis",
+              "changes",
+              "actions"
+            ],
+            "primary": 1,
+            "secondary": 1,
+            "wholeLive": null,
+            "focus": {
+              "tag": "BUTTON",
+              "inside": true,
+              "visible": true,
+              "hit": true,
+              "rect": {
+                "x": 47,
+                "y": 796.671875,
+                "width": 296,
+                "height": 47.59375,
+                "top": 796.671875,
+                "right": 343,
+                "bottom": 844.265625,
+                "left": 47
+              }
+            },
+            "selection": ""
+          },
+          "result": {
+            "rect": {
+              "x": 47,
+              "y": -80.421875,
+              "width": 296,
+              "height": 208.875,
+              "top": -80.421875,
+              "right": 343,
+              "bottom": 128.453125,
+              "left": 47
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "本次结果\n\n本次勾选自评：40 分\n\n分数来自五项自我勾选，每项20分；这不是客观结构检验，也不评价自由说明或现实应验。",
+            "visible": true,
+            "full": false,
+            "hit": true
+          },
+          "status": {
+            "rect": {
+              "x": 47,
+              "y": 647.984375,
+              "width": 296,
+              "height": 61.1875,
+              "top": 647.984375,
+              "right": 343,
+              "bottom": 709.171875,
+              "left": 47
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "本轮勾选自评未能保存到成就记录；可仅重试保存。",
+            "visible": true,
+            "full": true,
+            "hit": true
+          },
+          "primary": {
+            "rect": {
+              "x": 47,
+              "y": 796.671875,
+              "width": 296,
+              "height": 47.59375,
+              "top": 796.671875,
+              "right": 343,
+              "bottom": 844.265625,
+              "left": 47
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "仅重试保存本轮记录",
+            "visible": true,
+            "full": true,
+            "hit": true,
+            "disabled": false
+          },
+          "retry": {
+            "rect": {
+              "x": 47,
+              "y": 796.671875,
+              "width": 296,
+              "height": 47.59375,
+              "top": 796.671875,
+              "right": 343,
+              "bottom": 844.265625,
+              "left": 47
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "仅重试保存本轮记录",
+            "visible": true,
+            "full": true,
+            "hit": true,
+            "disabled": false
+          }
+        },
+        {
+          "label": "divination-read-restored-original-submission-saved",
+          "state": {
+            "data": {
+              "card": null,
+              "record": null,
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": {
+                "version": 1,
+                "processedKeys": [
+                  "prior:reading:111111",
+                  "prior:analysis:synthetic",
+                  "divination-analysis:history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9"
+                ],
+                "metrics": {
+                  "completedLessons": [],
+                  "lessonScores": {},
+                  "topicScores": {},
+                  "trigramRounds": [],
+                  "hexagramsRead": [
+                    "111111"
+                  ],
+                  "relationsExamined": [],
+                  "reviewDays": [],
+                  "reviewedHexagrams": [],
+                  "quizRecoveries": [],
+                  "sequenceExams": [],
+                  "analyses": {
+                    "synthetic-prior-analysis": {
+                      "subjectId": "synthetic-prior-analysis",
+                      "occurredAt": "2026-10-24T01:00:00.000Z",
+                      "totalScore": 60,
+                      "changingLinesCorrect": false,
+                      "cited": true,
+                      "bounded": false,
+                      "dimensions": {
+                        "identification": 20,
+                        "imagery": 20,
+                        "citation": 20,
+                        "reasoning": 0,
+                        "boundary": 0
+                      }
+                    },
+                    "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9": {
+                      "subjectId": "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                      "occurredAt": "2026-10-24T23:18:36.222Z",
+                      "totalScore": 40,
+                      "changingLinesCorrect": false,
+                      "cited": true,
+                      "bounded": false,
+                      "dimensions": {
+                        "identification": 20,
+                        "imagery": 0,
+                        "citation": 20,
+                        "reasoning": 0,
+                        "boundary": 0
+                      }
+                    }
+                  },
+                  "boundedSubjects": [],
+                  "comprehensivePassed": false
+                },
+                "achievements": {}
+              },
+              "stats": null,
+              "legacy": null,
+              "config": null,
+              "history": [
+                {
+                  "version": 2,
+                  "id": "2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                  "createdAt": "2026-10-24T23:18:35.742Z",
+                  "type": "coin",
+                  "method": "three-coins",
+                  "primaryCode": "001011",
+                  "changedCode": "000111",
+                  "yaos": [
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": false,
+                      "name": "少阴",
+                      "coins": [
+                        3,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": false,
+                      "name": "少阴",
+                      "coins": [
+                        3,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": true,
+                      "name": "老阳",
+                      "coins": [
+                        3,
+                        3,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": true,
+                      "name": "老阴",
+                      "coins": [
+                        2,
+                        2,
+                        2
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": false,
+                      "name": "少阳",
+                      "coins": [
+                        2,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": false,
+                      "name": "少阳",
+                      "coins": [
+                        2,
+                        3,
+                        2
+                      ]
+                    }
+                  ],
+                  "cast": null,
+                  "changingPositions": [
+                    3,
+                    4
+                  ],
+                  "readingPolicyId": "zhu-xi-qimeng-v1",
+                  "interpretationVersion": "reading-explanation-v1",
+                  "interpretation": {
+                    "method": "金钱卦",
+                    "basis": "二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。",
+                    "terminology": "本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。",
+                    "situation": "处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。",
+                    "keyPoint": "鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                    "transition": "之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。",
+                    "classic": {
+                      "source": "《周易·渐卦·象传》",
+                      "quote": "山上有木，渐；君子以居贤德善俗。",
+                      "plain": "山上有木，渐渐长成，君子当居于贤德、改善风俗。",
+                      "xiang": "",
+                      "xiangSource": "",
+                      "priority": "primary"
+                    },
+                    "analogy": "把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。",
+                    "prompts": [
+                      "哪些是已经发生、可以核实的事实？",
+                      "哪一个条件正在变化，最小可验证的一步是什么？",
+                      "如果判断错了，怎样保留回旋余地？"
+                    ],
+                    "focus": [
+                      {
+                        "source": "《周易·渐卦·六四》",
+                        "quote": "六四：鸿渐于木，或得其桷，无咎。",
+                        "plain": "鸿雁渐进于树上，或得平柯可栖，无咎。",
+                        "xiang": "或得其桷，顺以巽也。",
+                        "xiangSource": "《周易·渐卦·象传》",
+                        "priority": "primary"
+                      },
+                      {
+                        "source": "《周易·渐卦·九三》",
+                        "quote": "九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。",
+                        "plain": "鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                        "xiang": "夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。",
+                        "xiangSource": "《周易·渐卦·象传》",
+                        "priority": "secondary"
+                      }
+                    ],
+                    "caveat": "朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。"
+                  },
+                  "privacy": {
+                    "questionStored": false,
+                    "noteStored": false
+                  },
+                  "summary": "渐 → 否"
+                }
+              ]
+            },
+            "raw": {
+              "card": null,
+              "record": null,
+              "activity": "{\"days\":[\"2026-10-25\"]}",
+              "achievement": "{\"version\":1,\"processedKeys\":[\"prior:reading:111111\",\"prior:analysis:synthetic\",\"divination-analysis:history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9\"],\"metrics\":{\"completedLessons\":[],\"lessonScores\":{},\"topicScores\":{},\"trigramRounds\":[],\"hexagramsRead\":[\"111111\"],\"relationsExamined\":[],\"reviewDays\":[],\"reviewedHexagrams\":[],\"quizRecoveries\":[],\"sequenceExams\":[],\"analyses\":{\"synthetic-prior-analysis\":{\"subjectId\":\"synthetic-prior-analysis\",\"occurredAt\":\"2026-10-24T01:00:00.000Z\",\"totalScore\":60,\"changingLinesCorrect\":false,\"cited\":true,\"bounded\":false,\"dimensions\":{\"identification\":20,\"imagery\":20,\"citation\":20,\"reasoning\":0,\"boundary\":0}},\"history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9\":{\"subjectId\":\"history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9\",\"occurredAt\":\"2026-10-24T23:18:36.222Z\",\"totalScore\":40,\"changingLinesCorrect\":false,\"cited\":true,\"bounded\":false,\"dimensions\":{\"identification\":20,\"imagery\":0,\"citation\":20,\"reasoning\":0,\"boundary\":0}}},\"boundedSubjects\":[],\"comprehensivePassed\":false},\"achievements\":{}}",
+              "stats": null,
+              "legacy": null,
+              "config": null,
+              "history": "[{\"version\":2,\"id\":\"2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9\",\"createdAt\":\"2026-10-24T23:18:35.742Z\",\"type\":\"coin\",\"method\":\"three-coins\",\"primaryCode\":\"001011\",\"changedCode\":\"000111\",\"yaos\":[{\"value\":0,\"isYang\":false,\"changing\":false,\"name\":\"少阴\",\"coins\":[3,2,3]},{\"value\":0,\"isYang\":false,\"changing\":false,\"name\":\"少阴\",\"coins\":[3,2,3]},{\"value\":1,\"isYang\":true,\"changing\":true,\"name\":\"老阳\",\"coins\":[3,3,3]},{\"value\":0,\"isYang\":false,\"changing\":true,\"name\":\"老阴\",\"coins\":[2,2,2]},{\"value\":1,\"isYang\":true,\"changing\":false,\"name\":\"少阳\",\"coins\":[2,2,3]},{\"value\":1,\"isYang\":true,\"changing\":false,\"name\":\"少阳\",\"coins\":[2,3,2]}],\"cast\":null,\"changingPositions\":[3,4],\"readingPolicyId\":\"zhu-xi-qimeng-v1\",\"interpretationVersion\":\"reading-explanation-v1\",\"interpretation\":{\"method\":\"金钱卦\",\"basis\":\"二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。\",\"terminology\":\"本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。\",\"situation\":\"处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。\",\"keyPoint\":\"鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。\",\"transition\":\"之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。\",\"classic\":{\"source\":\"《周易·渐卦·象传》\",\"quote\":\"山上有木，渐；君子以居贤德善俗。\",\"plain\":\"山上有木，渐渐长成，君子当居于贤德、改善风俗。\",\"xiang\":\"\",\"xiangSource\":\"\",\"priority\":\"primary\"},\"analogy\":\"把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。\",\"prompts\":[\"哪些是已经发生、可以核实的事实？\",\"哪一个条件正在变化，最小可验证的一步是什么？\",\"如果判断错了，怎样保留回旋余地？\"],\"focus\":[{\"source\":\"《周易·渐卦·六四》\",\"quote\":\"六四：鸿渐于木，或得其桷，无咎。\",\"plain\":\"鸿雁渐进于树上，或得平柯可栖，无咎。\",\"xiang\":\"或得其桷，顺以巽也。\",\"xiangSource\":\"《周易·渐卦·象传》\",\"priority\":\"primary\"},{\"source\":\"《周易·渐卦·九三》\",\"quote\":\"九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。\",\"plain\":\"鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。\",\"xiang\":\"夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。\",\"xiangSource\":\"《周易·渐卦·象传》\",\"priority\":\"secondary\"}],\"caveat\":\"朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。\"},\"privacy\":{\"questionStored\":false,\"noteStored\":false},\"summary\":\"渐 → 否\"}]"
+            },
+            "reads": [
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 496.69999998807907
+              },
+              {
+                "key": "yijing-divination-history-v1",
+                "readable": true,
+                "at": 496.7999999821186
+              },
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 959.8999999761581
+              },
+              {
+                "key": "yijing-activity-v1",
+                "readable": true,
+                "at": 960.6999999880791
+              },
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 960.6999999880791
+              },
+              {
+                "key": "yijing-divination-history-v1",
+                "readable": true,
+                "at": 960.7999999821186
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "readable": true,
+                "at": 1438.7999999821186
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "readable": false,
+                "at": 2291
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "readable": true,
+                "at": 2456.199999988079
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-divination-history-v2",
+                "saved": true,
+                "at": 960.5,
+                "value": [
+                  {
+                    "version": 2,
+                    "id": "2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                    "createdAt": "2026-10-24T23:18:35.742Z",
+                    "type": "coin",
+                    "method": "three-coins",
+                    "primaryCode": "001011",
+                    "changedCode": "000111",
+                    "yaos": [
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": false,
+                        "name": "少阴",
+                        "coins": [
+                          3,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": false,
+                        "name": "少阴",
+                        "coins": [
+                          3,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": true,
+                        "name": "老阳",
+                        "coins": [
+                          3,
+                          3,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": true,
+                        "name": "老阴",
+                        "coins": [
+                          2,
+                          2,
+                          2
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": false,
+                        "name": "少阳",
+                        "coins": [
+                          2,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": false,
+                        "name": "少阳",
+                        "coins": [
+                          2,
+                          3,
+                          2
+                        ]
+                      }
+                    ],
+                    "cast": null,
+                    "changingPositions": [
+                      3,
+                      4
+                    ],
+                    "readingPolicyId": "zhu-xi-qimeng-v1",
+                    "interpretationVersion": "reading-explanation-v1",
+                    "interpretation": {
+                      "method": "金钱卦",
+                      "basis": "二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。",
+                      "terminology": "本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。",
+                      "situation": "处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。",
+                      "keyPoint": "鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                      "transition": "之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。",
+                      "classic": {
+                        "source": "《周易·渐卦·象传》",
+                        "quote": "山上有木，渐；君子以居贤德善俗。",
+                        "plain": "山上有木，渐渐长成，君子当居于贤德、改善风俗。",
+                        "xiang": "",
+                        "xiangSource": "",
+                        "priority": "primary"
+                      },
+                      "analogy": "把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。",
+                      "prompts": [
+                        "哪些是已经发生、可以核实的事实？",
+                        "哪一个条件正在变化，最小可验证的一步是什么？",
+                        "如果判断错了，怎样保留回旋余地？"
+                      ],
+                      "focus": [
+                        {
+                          "source": "《周易·渐卦·六四》",
+                          "quote": "六四：鸿渐于木，或得其桷，无咎。",
+                          "plain": "鸿雁渐进于树上，或得平柯可栖，无咎。",
+                          "xiang": "或得其桷，顺以巽也。",
+                          "xiangSource": "《周易·渐卦·象传》",
+                          "priority": "primary"
+                        },
+                        {
+                          "source": "《周易·渐卦·九三》",
+                          "quote": "九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。",
+                          "plain": "鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                          "xiang": "夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。",
+                          "xiangSource": "《周易·渐卦·象传》",
+                          "priority": "secondary"
+                        }
+                      ],
+                      "caveat": "朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。"
+                    },
+                    "privacy": {
+                      "questionStored": false,
+                      "noteStored": false
+                    },
+                    "summary": "渐 → 否"
+                  }
+                ]
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 960.6999999880791,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "at": 1439.2999999821186,
+                "value": {
+                  "version": 1,
+                  "processedKeys": [
+                    "prior:reading:111111",
+                    "prior:analysis:synthetic",
+                    "divination-analysis:history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {
+                      "synthetic-prior-analysis": {
+                        "subjectId": "synthetic-prior-analysis",
+                        "occurredAt": "2026-10-24T01:00:00.000Z",
+                        "totalScore": 60,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 20,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      },
+                      "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9": {
+                        "subjectId": "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                        "occurredAt": "2026-10-24T23:18:36.222Z",
+                        "totalScore": 40,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 0,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      }
+                    },
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2456.2999999821186,
+                "value": {
+                  "version": 1,
+                  "processedKeys": [
+                    "prior:reading:111111",
+                    "prior:analysis:synthetic",
+                    "divination-analysis:history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {
+                      "synthetic-prior-analysis": {
+                        "subjectId": "synthetic-prior-analysis",
+                        "occurredAt": "2026-10-24T01:00:00.000Z",
+                        "totalScore": 60,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 20,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      },
+                      "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9": {
+                        "subjectId": "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                        "occurredAt": "2026-10-24T23:18:36.222Z",
+                        "totalScore": 40,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 0,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      }
+                    },
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 410.39999997615814,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 423.19999998807907,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 423.69999998807907,
+                "x": 348,
+                "y": 83,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 922.0999999940395,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 955.2999999821186,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 956.5,
+                "x": 195,
+                "y": 590,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1120.699999988079,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1170.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1171.199999988079,
+                "x": 54,
+                "y": 480,
+                "target": "INPUT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1171.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1171.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1254.7999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1303.5999999940395,
+                "target": "INPUT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "x": 54,
+                "y": 539,
+                "target": "INPUT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "target": "INPUT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1388,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1437.3999999761581,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1438.199999988079,
+                "x": 95,
+                "y": 644,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 2270.699999988079,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 2289,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 2290.7999999821186,
+                "x": 195,
+                "y": 820,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 2438.0999999940395,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 2455.399999976158,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 2456.199999988079,
+                "x": 195,
+                "y": 820,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              }
+            ],
+            "mode": "divination",
+            "focus": {
+              "tag": "BODY",
+              "id": ""
+            },
+            "feedback": [
+              "本次结果\n\n本次勾选自评：40 分\n\n分数来自五项自我勾选，每项20分；这不是客观结构检验，也不评价自由说明或现实应验。\n\n判断依据\n\n取辞方法：金钱卦\n\n二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。\n\n来源：《周易·渐卦·六四》\n来源：《周易·渐卦·九三》\n\n方法边界：朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。\n\n学习记录\n\n已保存本轮勾选自评记录（40 分）；这不代表客观理解或现实判断已获验证。\n\n下一步\n回看本页取辞依据"
+            ]
+          }
+        },
+        {
+          "label": "automatic-feedback-before-locator-scroll",
+          "container": ".divine-analysis-feedback",
+          "failed": false,
+          "structure": {
+            "sections": [
+              "result",
+              "basis",
+              "changes",
+              "actions"
+            ],
+            "primary": 1,
+            "secondary": 0,
+            "wholeLive": null,
+            "focus": {
+              "tag": "BUTTON",
+              "inside": true,
+              "visible": true,
+              "hit": true,
+              "rect": {
+                "x": 47,
+                "y": 796.265625,
+                "width": 296,
+                "height": 47.59375,
+                "top": 796.265625,
+                "right": 343,
+                "bottom": 843.859375,
+                "left": 47
+              }
+            },
+            "selection": ""
+          },
+          "result": {
+            "rect": {
+              "x": 47,
+              "y": -111.421875,
+              "width": 296,
+              "height": 208.875,
+              "top": -111.421875,
+              "right": 343,
+              "bottom": 97.453125,
+              "left": 47
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "本次结果\n\n本次勾选自评：40 分\n\n分数来自五项自我勾选，每项20分；这不是客观结构检验，也不评价自由说明或现实应验。",
+            "visible": false,
+            "full": false,
+            "hit": false
+          },
+          "status": {
+            "rect": {
+              "x": 47,
+              "y": 616.984375,
+              "width": 296,
+              "height": 91.78125,
+              "top": 616.984375,
+              "right": 343,
+              "bottom": 708.765625,
+              "left": 47
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "已保存本轮勾选自评记录（40 分）；这不代表客观理解或现实判断已获验证。",
+            "visible": true,
+            "full": true,
+            "hit": true
+          },
+          "primary": {
+            "rect": {
+              "x": 47,
+              "y": 796.265625,
+              "width": 296,
+              "height": 47.59375,
+              "top": 796.265625,
+              "right": 343,
+              "bottom": 843.859375,
+              "left": 47
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "回看本页取辞依据",
+            "visible": true,
+            "full": true,
+            "hit": true,
+            "disabled": false
+          },
+          "retry": null
+        },
+        {
+          "label": "final",
+          "state": {
+            "data": {
+              "card": null,
+              "record": null,
+              "activity": {
+                "days": [
+                  "2026-10-25"
+                ]
+              },
+              "achievement": {
+                "version": 1,
+                "processedKeys": [
+                  "prior:reading:111111",
+                  "prior:analysis:synthetic",
+                  "divination-analysis:history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9"
+                ],
+                "metrics": {
+                  "completedLessons": [],
+                  "lessonScores": {},
+                  "topicScores": {},
+                  "trigramRounds": [],
+                  "hexagramsRead": [
+                    "111111"
+                  ],
+                  "relationsExamined": [],
+                  "reviewDays": [],
+                  "reviewedHexagrams": [],
+                  "quizRecoveries": [],
+                  "sequenceExams": [],
+                  "analyses": {
+                    "synthetic-prior-analysis": {
+                      "subjectId": "synthetic-prior-analysis",
+                      "occurredAt": "2026-10-24T01:00:00.000Z",
+                      "totalScore": 60,
+                      "changingLinesCorrect": false,
+                      "cited": true,
+                      "bounded": false,
+                      "dimensions": {
+                        "identification": 20,
+                        "imagery": 20,
+                        "citation": 20,
+                        "reasoning": 0,
+                        "boundary": 0
+                      }
+                    },
+                    "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9": {
+                      "subjectId": "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                      "occurredAt": "2026-10-24T23:18:36.222Z",
+                      "totalScore": 40,
+                      "changingLinesCorrect": false,
+                      "cited": true,
+                      "bounded": false,
+                      "dimensions": {
+                        "identification": 20,
+                        "imagery": 0,
+                        "citation": 20,
+                        "reasoning": 0,
+                        "boundary": 0
+                      }
+                    }
+                  },
+                  "boundedSubjects": [],
+                  "comprehensivePassed": false
+                },
+                "achievements": {}
+              },
+              "stats": null,
+              "legacy": null,
+              "config": null,
+              "history": [
+                {
+                  "version": 2,
+                  "id": "2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                  "createdAt": "2026-10-24T23:18:35.742Z",
+                  "type": "coin",
+                  "method": "three-coins",
+                  "primaryCode": "001011",
+                  "changedCode": "000111",
+                  "yaos": [
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": false,
+                      "name": "少阴",
+                      "coins": [
+                        3,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": false,
+                      "name": "少阴",
+                      "coins": [
+                        3,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": true,
+                      "name": "老阳",
+                      "coins": [
+                        3,
+                        3,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 0,
+                      "isYang": false,
+                      "changing": true,
+                      "name": "老阴",
+                      "coins": [
+                        2,
+                        2,
+                        2
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": false,
+                      "name": "少阳",
+                      "coins": [
+                        2,
+                        2,
+                        3
+                      ]
+                    },
+                    {
+                      "value": 1,
+                      "isYang": true,
+                      "changing": false,
+                      "name": "少阳",
+                      "coins": [
+                        2,
+                        3,
+                        2
+                      ]
+                    }
+                  ],
+                  "cast": null,
+                  "changingPositions": [
+                    3,
+                    4
+                  ],
+                  "readingPolicyId": "zhu-xi-qimeng-v1",
+                  "interpretationVersion": "reading-explanation-v1",
+                  "interpretation": {
+                    "method": "金钱卦",
+                    "basis": "二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。",
+                    "terminology": "本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。",
+                    "situation": "处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。",
+                    "keyPoint": "鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                    "transition": "之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。",
+                    "classic": {
+                      "source": "《周易·渐卦·象传》",
+                      "quote": "山上有木，渐；君子以居贤德善俗。",
+                      "plain": "山上有木，渐渐长成，君子当居于贤德、改善风俗。",
+                      "xiang": "",
+                      "xiangSource": "",
+                      "priority": "primary"
+                    },
+                    "analogy": "把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。",
+                    "prompts": [
+                      "哪些是已经发生、可以核实的事实？",
+                      "哪一个条件正在变化，最小可验证的一步是什么？",
+                      "如果判断错了，怎样保留回旋余地？"
+                    ],
+                    "focus": [
+                      {
+                        "source": "《周易·渐卦·六四》",
+                        "quote": "六四：鸿渐于木，或得其桷，无咎。",
+                        "plain": "鸿雁渐进于树上，或得平柯可栖，无咎。",
+                        "xiang": "或得其桷，顺以巽也。",
+                        "xiangSource": "《周易·渐卦·象传》",
+                        "priority": "primary"
+                      },
+                      {
+                        "source": "《周易·渐卦·九三》",
+                        "quote": "九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。",
+                        "plain": "鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                        "xiang": "夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。",
+                        "xiangSource": "《周易·渐卦·象传》",
+                        "priority": "secondary"
+                      }
+                    ],
+                    "caveat": "朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。"
+                  },
+                  "privacy": {
+                    "questionStored": false,
+                    "noteStored": false
+                  },
+                  "summary": "渐 → 否"
+                }
+              ]
+            },
+            "raw": {
+              "card": null,
+              "record": null,
+              "activity": "{\"days\":[\"2026-10-25\"]}",
+              "achievement": "{\"version\":1,\"processedKeys\":[\"prior:reading:111111\",\"prior:analysis:synthetic\",\"divination-analysis:history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9\"],\"metrics\":{\"completedLessons\":[],\"lessonScores\":{},\"topicScores\":{},\"trigramRounds\":[],\"hexagramsRead\":[\"111111\"],\"relationsExamined\":[],\"reviewDays\":[],\"reviewedHexagrams\":[],\"quizRecoveries\":[],\"sequenceExams\":[],\"analyses\":{\"synthetic-prior-analysis\":{\"subjectId\":\"synthetic-prior-analysis\",\"occurredAt\":\"2026-10-24T01:00:00.000Z\",\"totalScore\":60,\"changingLinesCorrect\":false,\"cited\":true,\"bounded\":false,\"dimensions\":{\"identification\":20,\"imagery\":20,\"citation\":20,\"reasoning\":0,\"boundary\":0}},\"history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9\":{\"subjectId\":\"history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9\",\"occurredAt\":\"2026-10-24T23:18:36.222Z\",\"totalScore\":40,\"changingLinesCorrect\":false,\"cited\":true,\"bounded\":false,\"dimensions\":{\"identification\":20,\"imagery\":0,\"citation\":20,\"reasoning\":0,\"boundary\":0}}},\"boundedSubjects\":[],\"comprehensivePassed\":false},\"achievements\":{}}",
+              "stats": null,
+              "legacy": null,
+              "config": null,
+              "history": "[{\"version\":2,\"id\":\"2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9\",\"createdAt\":\"2026-10-24T23:18:35.742Z\",\"type\":\"coin\",\"method\":\"three-coins\",\"primaryCode\":\"001011\",\"changedCode\":\"000111\",\"yaos\":[{\"value\":0,\"isYang\":false,\"changing\":false,\"name\":\"少阴\",\"coins\":[3,2,3]},{\"value\":0,\"isYang\":false,\"changing\":false,\"name\":\"少阴\",\"coins\":[3,2,3]},{\"value\":1,\"isYang\":true,\"changing\":true,\"name\":\"老阳\",\"coins\":[3,3,3]},{\"value\":0,\"isYang\":false,\"changing\":true,\"name\":\"老阴\",\"coins\":[2,2,2]},{\"value\":1,\"isYang\":true,\"changing\":false,\"name\":\"少阳\",\"coins\":[2,2,3]},{\"value\":1,\"isYang\":true,\"changing\":false,\"name\":\"少阳\",\"coins\":[2,3,2]}],\"cast\":null,\"changingPositions\":[3,4],\"readingPolicyId\":\"zhu-xi-qimeng-v1\",\"interpretationVersion\":\"reading-explanation-v1\",\"interpretation\":{\"method\":\"金钱卦\",\"basis\":\"二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。\",\"terminology\":\"本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。\",\"situation\":\"处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。\",\"keyPoint\":\"鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。\",\"transition\":\"之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。\",\"classic\":{\"source\":\"《周易·渐卦·象传》\",\"quote\":\"山上有木，渐；君子以居贤德善俗。\",\"plain\":\"山上有木，渐渐长成，君子当居于贤德、改善风俗。\",\"xiang\":\"\",\"xiangSource\":\"\",\"priority\":\"primary\"},\"analogy\":\"把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。\",\"prompts\":[\"哪些是已经发生、可以核实的事实？\",\"哪一个条件正在变化，最小可验证的一步是什么？\",\"如果判断错了，怎样保留回旋余地？\"],\"focus\":[{\"source\":\"《周易·渐卦·六四》\",\"quote\":\"六四：鸿渐于木，或得其桷，无咎。\",\"plain\":\"鸿雁渐进于树上，或得平柯可栖，无咎。\",\"xiang\":\"或得其桷，顺以巽也。\",\"xiangSource\":\"《周易·渐卦·象传》\",\"priority\":\"primary\"},{\"source\":\"《周易·渐卦·九三》\",\"quote\":\"九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。\",\"plain\":\"鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。\",\"xiang\":\"夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。\",\"xiangSource\":\"《周易·渐卦·象传》\",\"priority\":\"secondary\"}],\"caveat\":\"朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。\"},\"privacy\":{\"questionStored\":false,\"noteStored\":false},\"summary\":\"渐 → 否\"}]"
+            },
+            "reads": [
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 496.69999998807907
+              },
+              {
+                "key": "yijing-divination-history-v1",
+                "readable": true,
+                "at": 496.7999999821186
+              },
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 959.8999999761581
+              },
+              {
+                "key": "yijing-activity-v1",
+                "readable": true,
+                "at": 960.6999999880791
+              },
+              {
+                "key": "yijing-divination-history-v2",
+                "readable": true,
+                "at": 960.6999999880791
+              },
+              {
+                "key": "yijing-divination-history-v1",
+                "readable": true,
+                "at": 960.7999999821186
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "readable": true,
+                "at": 1438.7999999821186
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "readable": false,
+                "at": 2291
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "readable": true,
+                "at": 2456.199999988079
+              }
+            ],
+            "writes": [
+              {
+                "key": "yijing-divination-history-v2",
+                "saved": true,
+                "at": 960.5,
+                "value": [
+                  {
+                    "version": 2,
+                    "id": "2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                    "createdAt": "2026-10-24T23:18:35.742Z",
+                    "type": "coin",
+                    "method": "three-coins",
+                    "primaryCode": "001011",
+                    "changedCode": "000111",
+                    "yaos": [
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": false,
+                        "name": "少阴",
+                        "coins": [
+                          3,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": false,
+                        "name": "少阴",
+                        "coins": [
+                          3,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": true,
+                        "name": "老阳",
+                        "coins": [
+                          3,
+                          3,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 0,
+                        "isYang": false,
+                        "changing": true,
+                        "name": "老阴",
+                        "coins": [
+                          2,
+                          2,
+                          2
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": false,
+                        "name": "少阳",
+                        "coins": [
+                          2,
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "value": 1,
+                        "isYang": true,
+                        "changing": false,
+                        "name": "少阳",
+                        "coins": [
+                          2,
+                          3,
+                          2
+                        ]
+                      }
+                    ],
+                    "cast": null,
+                    "changingPositions": [
+                      3,
+                      4
+                    ],
+                    "readingPolicyId": "zhu-xi-qimeng-v1",
+                    "interpretationVersion": "reading-explanation-v1",
+                    "interpretation": {
+                      "method": "金钱卦",
+                      "basis": "二爻变，兼看本卦两条变爻爻辞，以上爻为主、下爻为参。 本卦“渐”用来观察当前结构，之卦“否”用来参照变爻展开后的可能走向。",
+                      "terminology": "本卦是六次投掷所得的初始卦象；变爻是老阴、老阳所在的位置；之卦是把 2 个变爻阴阳翻转后的结果。",
+                      "situation": "处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。",
+                      "keyPoint": "鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                      "transition": "之卦“否”提示条件变化后的另一种结构：处于闭塞不顺、小人当道之时，宜低调退守、保存实力。 它是趋势参照，不是注定发生的结局。",
+                      "classic": {
+                        "source": "《周易·渐卦·象传》",
+                        "quote": "山上有木，渐；君子以居贤德善俗。",
+                        "plain": "山上有木，渐渐长成，君子当居于贤德、改善风俗。",
+                        "xiang": "",
+                        "xiangSource": "",
+                        "priority": "primary"
+                      },
+                      "analogy": "把所问之事类比为一项正在推进的计划：先核对现实是否符合“处于循序渐进、按部就班之时，宜稳扎稳打、不急不躁。”这一描述，再用“鸿雁渐进于树上，或得平柯可栖，无咎。；鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。”检查下一步；若关键条件继续变化，再参考之卦，而不是把卦名直接当成吉凶结论。",
+                      "prompts": [
+                        "哪些是已经发生、可以核实的事实？",
+                        "哪一个条件正在变化，最小可验证的一步是什么？",
+                        "如果判断错了，怎样保留回旋余地？"
+                      ],
+                      "focus": [
+                        {
+                          "source": "《周易·渐卦·六四》",
+                          "quote": "六四：鸿渐于木，或得其桷，无咎。",
+                          "plain": "鸿雁渐进于树上，或得平柯可栖，无咎。",
+                          "xiang": "或得其桷，顺以巽也。",
+                          "xiangSource": "《周易·渐卦·象传》",
+                          "priority": "primary"
+                        },
+                        {
+                          "source": "《周易·渐卦·九三》",
+                          "quote": "九三：鸿渐于陆，夫征不复，妇孕不育，凶。利御寇。",
+                          "plain": "鸿雁渐进于陆地，夫征不返、妇孕不育，凶，宜防御寇害。",
+                          "xiang": "夫征不复，离群丑也；妇孕不育，失其道也；利用御寇，顺相保也。",
+                          "xiangSource": "《周易·渐卦·象传》",
+                          "priority": "secondary"
+                        }
+                      ],
+                      "caveat": "朱熹系常见变占规则：此为后世常见取辞方法之一，不是《周易》经文规定的唯一占法；不同学派可能另有取法。"
+                    },
+                    "privacy": {
+                      "questionStored": false,
+                      "noteStored": false
+                    },
+                    "summary": "渐 → 否"
+                  }
+                ]
+              },
+              {
+                "key": "yijing-activity-v1",
+                "saved": true,
+                "at": 960.6999999880791,
+                "value": {
+                  "days": [
+                    "2026-10-25"
+                  ]
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": false,
+                "at": 1439.2999999821186,
+                "value": {
+                  "version": 1,
+                  "processedKeys": [
+                    "prior:reading:111111",
+                    "prior:analysis:synthetic",
+                    "divination-analysis:history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {
+                      "synthetic-prior-analysis": {
+                        "subjectId": "synthetic-prior-analysis",
+                        "occurredAt": "2026-10-24T01:00:00.000Z",
+                        "totalScore": 60,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 20,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      },
+                      "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9": {
+                        "subjectId": "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                        "occurredAt": "2026-10-24T23:18:36.222Z",
+                        "totalScore": 40,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 0,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      }
+                    },
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              },
+              {
+                "key": "yijing.achievements.v1",
+                "saved": true,
+                "at": 2456.2999999821186,
+                "value": {
+                  "version": 1,
+                  "processedKeys": [
+                    "prior:reading:111111",
+                    "prior:analysis:synthetic",
+                    "divination-analysis:history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9"
+                  ],
+                  "metrics": {
+                    "completedLessons": [],
+                    "lessonScores": {},
+                    "topicScores": {},
+                    "trigramRounds": [],
+                    "hexagramsRead": [
+                      "111111"
+                    ],
+                    "relationsExamined": [],
+                    "reviewDays": [],
+                    "reviewedHexagrams": [],
+                    "quizRecoveries": [],
+                    "sequenceExams": [],
+                    "analyses": {
+                      "synthetic-prior-analysis": {
+                        "subjectId": "synthetic-prior-analysis",
+                        "occurredAt": "2026-10-24T01:00:00.000Z",
+                        "totalScore": 60,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 20,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      },
+                      "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9": {
+                        "subjectId": "history:2026-10-24T23:18:35.742Z-1871b80bf311800266dfc42a18a907b9",
+                        "occurredAt": "2026-10-24T23:18:36.222Z",
+                        "totalScore": 40,
+                        "changingLinesCorrect": false,
+                        "cited": true,
+                        "bounded": false,
+                        "dimensions": {
+                          "identification": 20,
+                          "imagery": 0,
+                          "citation": 20,
+                          "reasoning": 0,
+                          "boundary": 0
+                        }
+                      }
+                    },
+                    "boundedSubjects": [],
+                    "comprehensivePassed": false
+                  },
+                  "achievements": {}
+                }
+              }
+            ],
+            "inputs": [
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 410.39999997615814,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 423.19999998807907,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 423.69999998807907,
+                "x": 348,
+                "y": 83,
+                "target": "mode-btn magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 922.0999999940395,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 955.2999999821186,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 956.5,
+                "x": 195,
+                "y": 590,
+                "target": "divine-btn coin-cast magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1120.699999988079,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1170.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1171.199999988079,
+                "x": 54,
+                "y": 480,
+                "target": "INPUT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1171.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1171.2999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1254.7999999821186,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1303.5999999940395,
+                "target": "INPUT"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "x": 54,
+                "y": 539,
+                "target": "INPUT"
+              },
+              {
+                "type": "input",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "target": "INPUT"
+              },
+              {
+                "type": "change",
+                "trusted": true,
+                "at": 1304.3999999761581,
+                "target": "INPUT"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 1388,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 1437.3999999761581,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 1438.199999988079,
+                "x": 95,
+                "y": 644,
+                "target": "text-button divine-analysis-submit motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 2270.699999988079,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 2289,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 2290.7999999821186,
+                "x": 195,
+                "y": 820,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 2438.0999999940395,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 2455.399999976158,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 2456.199999988079,
+                "x": 195,
+                "y": 820,
+                "target": "quick-btn divine-analysis-retry magnetic-control motion-pressed"
+              },
+              {
+                "type": "touchstart",
+                "trusted": true,
+                "at": 2753.5,
+                "target": "text-button divine-analysis-submit"
+              },
+              {
+                "type": "touchend",
+                "trusted": true,
+                "at": 2769.7999999821186,
+                "target": "text-button divine-analysis-submit"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Tab",
+                "at": 2773.7999999821186,
+                "target": "divine-body"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Tab",
+                "at": 2775.2999999821186,
+                "target": "divine-btn coin-cast magnetic-control"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Tab",
+                "at": 2776.5,
+                "target": "SUMMARY"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Enter",
+                "at": 2777.699999988079,
+                "target": "text-button divine-analysis-view-basis"
+              },
+              {
+                "type": "click",
+                "trusted": true,
+                "at": 2777.7999999821186,
+                "x": 0,
+                "y": 0,
+                "target": "text-button divine-analysis-view-basis"
+              },
+              {
+                "type": "keydown",
+                "trusted": true,
+                "key": "Escape",
+                "at": 2810.399999976158,
+                "target": "SUMMARY"
+              }
+            ],
+            "mode": "explore",
+            "focus": {
+              "tag": "BUTTON",
+              "id": ""
+            },
+            "feedback": [
+              ""
+            ]
+          }
+        }
+      ],
+      "requests": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T23:18:34.776Z",
+          "values": {
+            "yijing.achievements.v1": {
+              "version": 1,
+              "processedKeys": [
+                "prior:reading:111111",
+                "prior:analysis:synthetic"
+              ],
+              "metrics": {
+                "completedLessons": [],
+                "lessonScores": {},
+                "topicScores": {},
+                "trigramRounds": [],
+                "hexagramsRead": [
+                  "111111"
+                ],
+                "relationsExamined": [],
+                "reviewDays": [],
+                "reviewedHexagrams": [],
+                "quizRecoveries": [],
+                "sequenceExams": [],
+                "analyses": {
+                  "synthetic-prior-analysis": {
+                    "subjectId": "synthetic-prior-analysis",
+                    "occurredAt": "2026-10-24T01:00:00.000Z",
+                    "totalScore": 60,
+                    "changingLinesCorrect": false,
+                    "cited": true,
+                    "bounded": false,
+                    "dimensions": {
+                      "identification": 20,
+                      "imagery": 20,
+                      "citation": 20,
+                      "reasoning": 0,
+                      "boundary": 0
+                    }
+                  }
+                },
+                "boundedSubjects": [],
+                "comprehensivePassed": false
+              },
+              "achievements": {}
+            }
+          }
+        }
+      ],
+      "faults": [
+        {
+          "operation": "setItem",
+          "storageKeys": [
+            "yijing.achievements.v1"
+          ],
+          "at": "2026-10-24T23:18:36.091Z",
+          "synthetic": true
+        },
+        {
+          "operation": "setItem",
+          "storageKeys": [],
+          "at": "2026-10-24T23:18:37.006Z",
+          "synthetic": true
+        },
+        {
+          "operation": "getItem",
+          "storageKeys": [
+            "yijing.achievements.v1"
+          ],
+          "at": "2026-10-24T23:18:37.007Z",
+          "synthetic": true
+        },
+        {
+          "operation": "getItem",
+          "storageKeys": [],
+          "at": "2026-10-24T23:18:37.173Z",
+          "synthetic": true
+        }
+      ],
+      "screenshots": [
+        "390-divination-save-retry-automatic-0.png",
+        "390-divination-save-retry-automatic-1.png",
+        "390-divination-save-retry-automatic-2.png"
+      ]
+    }
+  ],
+  "limitations": [
+    "Synthetic isolated profile and origin; no existing user data, private text or authenticated service is accessed.",
+    "Desktop headless Chromium / CDP touch and CSS viewport checks only; no physical device, screen reader or native browser zoom proof.",
+    "Storage fixtures/read/quota faults and Fetch replies are deliberate test injections. No DOM.click or browser application function is invoked.",
+    "Evidence snapshots bypass injected reads through saved native getItem; application reads use the patched prototype and can throw.",
+    "Input actions use actual hit coordinates or keyboard focus. Locator scrollIntoView is allowed only after automatic result visibility capture.",
+    "AI replies are synthetic and intercepted before network dispatch. This does not validate a deployed backend or real model quality.",
+    "Oral drafts and pending retries are page-memory only. Leaving a page does not promise persistence of an unsaved submission.",
+    "1280x720 and 768x1024 cover five representative feedback/retry flows only. Meihua time has the same result renderer; its distinct time-button entry is covered at 1440/390, not additionally claimed at these two representative viewports."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "finishedAt": "2026-10-24T23:18:37.691Z",
+  "finalSourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "a403744525846aad387912a8f48b174251d5ea563189ef546851a09faba22bcd",
+    "web/js/learning-feedback.js": "297b8116a05c6c2543e31dc2fdf0915f82f49d9d61f8d7af016ec6ad0ce93c28",
+    "web/js/review-session.js": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54",
+    "web/js/review-engine.js": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-review.js": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/learning-assessment-page.js": "909fc2ff41712cae790414d70b94486bab65cda686a95163c9c4a8200028a0c4",
+    "web/js/modes/learning-mode.js": "5a6009b61e2a846b5ab0a9b92e9a7fc6711d0c81bcdfd6431b2e764f42962bef",
+    "web/js/modes/review-mode.js": "082b67ab4b38a63979024b7d5a6ca61c111d0c7c168f76227a7d756e4b39bc55",
+    "web/js/modes/quiz-mode.js": "9a4e0828ddcf2788efc6d84eb49c0e937a9420edb7ada494ecb0ddf848ee3090",
+    "web/js/modes/divination-mode.js": "de316cb98d507712af99b63947bff6f9b666c8c57e11a2d2680e7193e25445cb",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/divination-history.js": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660",
+    "web/js/meihua-engine.js": "3310a0ede88f2f05ad1663aed48efed99c64828bcb4fced4a51e4733fdd45074",
+    "web/js/divination-interpretation.js": "1fa8bf21fea4c8856e98fa139c1b4fdf551eeedcead8e63e6b048804a28238cf",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "03d697b4e5f7b129c96615176915b43df9d93920c06a4b28a0f9713b89ddcc7a",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "scripts/test-learning-feedback.mjs": "73985000a38fc5cb98b27930adae8e8796ff17db5f851af6074dd9d2951d646c"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "networkRequests": [
+    {
+      "url": "http://127.0.0.1:55084/?feedback-probe=390-divination-save-retry",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/protocol-guard.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/assets/academy-astrolabe-bg.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/lib/vendor/lenis.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/styles/main.css?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/styles/immersive.css?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/lib/vendor/gsap.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/lib/vendor/lenis.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/main.js?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/manifest.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/audio-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/achievement-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/achievement-storage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/data-loader.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/evolution-lab.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/share-card.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/modes/guaxu-mode.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/cinematic-motion.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/motion-system.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/render.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/review-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/reading-state.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/search-controller.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/star-relations.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/star-map.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/svg-painter.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/ui-icons.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/storage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/evolution-state.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/evolution-semantics.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/hexagram-utils.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/achievement-catalog.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/guaxu-wheel.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/relation-animation.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/content-provenance.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/lib/d3-force.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/star-layouts.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/star-atmosphere.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/star-label-layout.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/data/hexagrams.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/data/trigrams.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/assets/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/assets/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/data/commentaries/manifest.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/data/hexagram-keywords.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/celestial-stage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/lib/vendor/three.module.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/?feedback-probe=390-divination-save-retry",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/protocol-guard.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/assets/academy-astrolabe-bg.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/lib/vendor/lenis.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/styles/main.css?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/styles/immersive.css?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/lib/vendor/gsap.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/lib/vendor/lenis.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/main.js?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/manifest.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/audio-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/achievement-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/achievement-storage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/data-loader.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/evolution-lab.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/share-card.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/modes/guaxu-mode.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/cinematic-motion.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/motion-system.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/render.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/review-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/reading-state.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/search-controller.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/star-relations.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/star-map.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/svg-painter.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/ui-icons.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/storage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/achievement-catalog.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/evolution-state.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/evolution-semantics.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/hexagram-utils.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/guaxu-wheel.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/relation-animation.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/content-provenance.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/lib/d3-force.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/star-layouts.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/star-atmosphere.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/star-label-layout.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/data/hexagrams.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/data/trigrams.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/assets/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/data/commentaries/manifest.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/data/hexagram-keywords.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/celestial-stage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/modes/divination-mode.js?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/lib/vendor/three.module.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/divination-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/divination-history.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/divination-interpretation.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/learning-progress.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/learning-feedback.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/meihua-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/assets/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/js/learning-curriculum.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:55084/lib/vendor/three.core.min.js",
+      "method": "GET"
+    }
+  ],
+  "exitCode": 0,
+  "profileRemoved": false,
+  "profileRetainedReason": "Synthetic profile retained for diagnosis. No user profile was touched or deleted."
+}

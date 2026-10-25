@@ -1,0 +1,29 @@
+{
+  "note": "Only trailing horizontal whitespace normalized in text; original bytes retained losslessly as raw.gz. Test results unchanged.",
+  "records": [
+    {
+      "file": "docs/development/evidence/2026-10-25-search-final-validate.log",
+      "rawPath": "docs/development/evidence/2026-10-25-search-final-validate.log.raw.gz",
+      "originalSha256": "b56d98df1cc4fa02a63c0043a9abfdcd465ea6dca48c605d24c0da6bb21aaca6",
+      "normalizedSha256": "a5e747c8e982855d61ff2db39c2b4669055e387d9f3cb15ac43cc933a156b775"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-search-release-validate.log",
+      "rawPath": "docs/development/evidence/2026-10-25-search-release-validate.log.raw.gz",
+      "originalSha256": "7f4dd67861ee9045c3b40e8679ee8a26e4764065f9052fe16f9f58acca84aed9",
+      "normalizedSha256": "f9818dd10e901b6265ec02deee88fe2789a055c59ce27a6ddaa9222d5bcc88e5"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-search-ui-red.log",
+      "rawPath": "docs/development/evidence/2026-10-25-search-ui-red.log.raw.gz",
+      "originalSha256": "c999edf47549d7d67d797f4b9a86c44f10c6cd99927ada134301220a516ccf68",
+      "normalizedSha256": "0dac2b8b39a5d978c8b47f688223026229030280fb4904d5f56a8add42c2a6b5"
+    },
+    {
+      "file": "docs/development/evidence/2026-10-25-search-validate.log",
+      "rawPath": "docs/development/evidence/2026-10-25-search-validate.log.raw.gz",
+      "originalSha256": "660e2f0df14dc2156a98b6023b94082957555c7542376152db365b374f867786",
+      "normalizedSha256": "aaad8ed789625c4b01200c00dcf4890d1bbdd90c30d7695b2b7e79a24fb5ebbd"
+    }
+  ]
+}
