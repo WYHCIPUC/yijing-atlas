@@ -1,0 +1,3 @@
+START 2026-10-24T23-59-52-746Z v22.23.1 C:\Users\1\AppData\Local\Temp\yijing-learning-feedback-wG9ndj
+RUN 1440-divination-result
+Assertion failed: new_time >= loop->time, file c:\ws\deps\uv\src\win\core.c, line 327

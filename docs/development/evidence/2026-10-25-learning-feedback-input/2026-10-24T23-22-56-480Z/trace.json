@@ -1,0 +1,616 @@
+{
+  "startedAt": "2026-10-24T23:22:56.532Z",
+  "command": [
+    "node",
+    "scripts/test-learning-feedback.mjs",
+    "--scope",
+    "1440-meihua-time-result"
+  ],
+  "head": "75fde34006eaee0889db71f590a88712ea6623b8",
+  "node": "v24.19.0",
+  "uv": "1.52.1",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-feedback-I2mtAc",
+  "output": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-22-56-480Z",
+  "scope": "1440-meihua-time-result",
+  "sourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "a403744525846aad387912a8f48b174251d5ea563189ef546851a09faba22bcd",
+    "web/js/learning-feedback.js": "297b8116a05c6c2543e31dc2fdf0915f82f49d9d61f8d7af016ec6ad0ce93c28",
+    "web/js/review-session.js": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54",
+    "web/js/review-engine.js": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-review.js": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/learning-assessment-page.js": "909fc2ff41712cae790414d70b94486bab65cda686a95163c9c4a8200028a0c4",
+    "web/js/modes/learning-mode.js": "5a6009b61e2a846b5ab0a9b92e9a7fc6711d0c81bcdfd6431b2e764f42962bef",
+    "web/js/modes/review-mode.js": "082b67ab4b38a63979024b7d5a6ca61c111d0c7c168f76227a7d756e4b39bc55",
+    "web/js/modes/quiz-mode.js": "9a4e0828ddcf2788efc6d84eb49c0e937a9420edb7ada494ecb0ddf848ee3090",
+    "web/js/modes/divination-mode.js": "de316cb98d507712af99b63947bff6f9b666c8c57e11a2d2680e7193e25445cb",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/divination-history.js": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660",
+    "web/js/meihua-engine.js": "3310a0ede88f2f05ad1663aed48efed99c64828bcb4fced4a51e4733fdd45074",
+    "web/js/divination-interpretation.js": "1fa8bf21fea4c8856e98fa139c1b4fdf551eeedcead8e63e6b048804a28238cf",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "03d697b4e5f7b129c96615176915b43df9d93920c06a4b28a0f9713b89ddcc7a",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "scripts/test-learning-feedback.mjs": "73985000a38fc5cb98b27930adae8e8796ff17db5f851af6074dd9d2951d646c"
+  },
+  "status": "failed",
+  "scenarios": [
+    {
+      "name": "1440-meihua-time-result",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "inputMode": "mouse",
+      "emulatedMobile": false,
+      "status": "failed",
+      "inputs": [
+        {
+          "kind": "mouse",
+          "label": "[data-entry=\"explore\"]",
+          "x": 642.9296875,
+          "y": 668.671875,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "mouse",
+          "label": ".mode-btn[data-mode=\"divination\"]",
+          "x": 882.890625,
+          "y": 34.57437324523926,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        }
+      ],
+      "checks": [],
+      "requests": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T23:22:57.889Z",
+          "values": {}
+        }
+      ],
+      "faults": [],
+      "screenshots": [
+        "1440-meihua-time-result-failure.png"
+      ],
+      "failure": {
+        "message": "divination did not open",
+        "stack": "Error: divination did not open\n    at waitFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:96:9)\n    at async goMode (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:267:3)\n    at async castDivination (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:525:3)\n    at async divinationResult (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:556:20)\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:639:102)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:674:77"
+      },
+      "failureState": {
+        "data": {
+          "card": null,
+          "record": null,
+          "activity": null,
+          "achievement": null,
+          "stats": null,
+          "legacy": null,
+          "config": null,
+          "history": null
+        },
+        "raw": {
+          "card": null,
+          "record": null,
+          "activity": null,
+          "achievement": null,
+          "stats": null,
+          "legacy": null,
+          "config": null,
+          "history": null
+        },
+        "reads": [],
+        "writes": [],
+        "inputs": [
+          {
+            "type": "click",
+            "trusted": true,
+            "at": 830.8000000119209,
+            "x": 882,
+            "y": 34,
+            "target": "mode-btn magnetic-control is-magnetic motion-pressed"
+          }
+        ],
+        "mode": "divination",
+        "focus": {
+          "tag": "BUTTON",
+          "id": ""
+        },
+        "feedback": []
+      }
+    }
+  ],
+  "limitations": [
+    "Synthetic isolated profile and origin; no existing user data, private text or authenticated service is accessed.",
+    "Desktop headless Chromium / CDP touch and CSS viewport checks only; no physical device, screen reader or native browser zoom proof.",
+    "Storage fixtures/read/quota faults and Fetch replies are deliberate test injections. No DOM.click or browser application function is invoked.",
+    "Evidence snapshots bypass injected reads through saved native getItem; application reads use the patched prototype and can throw.",
+    "Input actions use actual hit coordinates or keyboard focus. Locator scrollIntoView is allowed only after automatic result visibility capture.",
+    "AI replies are synthetic and intercepted before network dispatch. This does not validate a deployed backend or real model quality.",
+    "Oral drafts and pending retries are page-memory only. Leaving a page does not promise persistence of an unsaved submission.",
+    "1280x720 and 768x1024 cover five representative feedback/retry flows only. Meihua time has the same result renderer; its distinct time-button entry is covered at 1440/390, not additionally claimed at these two representative viewports."
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "failure": {
+    "message": "divination did not open",
+    "stack": "Error: divination did not open\n    at waitFor (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:96:9)\n    at async goMode (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:267:3)\n    at async castDivination (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:525:3)\n    at async divinationResult (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:556:20)\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:639:102)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:674:77"
+  },
+  "finishedAt": "2026-10-24T23:23:14.209Z",
+  "finalSourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "a403744525846aad387912a8f48b174251d5ea563189ef546851a09faba22bcd",
+    "web/js/learning-feedback.js": "297b8116a05c6c2543e31dc2fdf0915f82f49d9d61f8d7af016ec6ad0ce93c28",
+    "web/js/review-session.js": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54",
+    "web/js/review-engine.js": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-review.js": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/learning-assessment-page.js": "909fc2ff41712cae790414d70b94486bab65cda686a95163c9c4a8200028a0c4",
+    "web/js/modes/learning-mode.js": "5a6009b61e2a846b5ab0a9b92e9a7fc6711d0c81bcdfd6431b2e764f42962bef",
+    "web/js/modes/review-mode.js": "082b67ab4b38a63979024b7d5a6ca61c111d0c7c168f76227a7d756e4b39bc55",
+    "web/js/modes/quiz-mode.js": "9a4e0828ddcf2788efc6d84eb49c0e937a9420edb7ada494ecb0ddf848ee3090",
+    "web/js/modes/divination-mode.js": "de316cb98d507712af99b63947bff6f9b666c8c57e11a2d2680e7193e25445cb",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/divination-history.js": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660",
+    "web/js/meihua-engine.js": "3310a0ede88f2f05ad1663aed48efed99c64828bcb4fced4a51e4733fdd45074",
+    "web/js/divination-interpretation.js": "1fa8bf21fea4c8856e98fa139c1b4fdf551eeedcead8e63e6b048804a28238cf",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "03d697b4e5f7b129c96615176915b43df9d93920c06a4b28a0f9713b89ddcc7a",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "scripts/test-learning-feedback.mjs": "73985000a38fc5cb98b27930adae8e8796ff17db5f851af6074dd9d2951d646c"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [
+    {
+      "source": "network",
+      "level": "error",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "timestamp": 1792884178207.557,
+      "url": "http://127.0.0.1:63723/data/commentaries/manifest.json",
+      "networkRequestId": "12320.190"
+    },
+    {
+      "source": "network",
+      "level": "error",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "timestamp": 1792884178347.59,
+      "url": "http://127.0.0.1:63723/data/hexagram-keywords.json",
+      "networkRequestId": "12320.194"
+    },
+    {
+      "source": "network",
+      "level": "error",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "timestamp": 1792884178827.917,
+      "url": "http://127.0.0.1:63723/js/modes/divination-mode.js?v=51",
+      "networkRequestId": "12320.199"
+    }
+  ],
+  "networkRequests": [
+    {
+      "url": "http://127.0.0.1:63723/?feedback-probe=1440-meihua-time-result",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/protocol-guard.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/assets/academy-astrolabe-bg.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/vendor/lenis.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/styles/main.css?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/styles/immersive.css?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/vendor/gsap.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/vendor/lenis.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/main.js?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/manifest.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/audio-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/achievement-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/achievement-storage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/data-loader.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/evolution-lab.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/share-card.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/modes/guaxu-mode.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/cinematic-motion.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/motion-system.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/render.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/review-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/reading-state.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/search-controller.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/star-relations.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/star-map.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/svg-painter.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/ui-icons.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/storage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/achievement-catalog.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/evolution-state.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/evolution-semantics.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/hexagram-utils.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/guaxu-wheel.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/relation-animation.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/content-provenance.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/d3-force.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/star-layouts.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/star-atmosphere.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/star-label-layout.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/data/hexagrams.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/data/trigrams.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/assets/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/assets/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/data/commentaries/manifest.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/data/hexagram-keywords.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/celestial-stage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/vendor/three.module.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/?feedback-probe=1440-meihua-time-result",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/vendor/three.core.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/assets/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/protocol-guard.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/assets/academy-astrolabe-bg.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/vendor/lenis.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/styles/main.css?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/styles/immersive.css?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/vendor/gsap.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/vendor/lenis.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/main.js?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/manifest.webmanifest",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/audio-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/achievement-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/achievement-storage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/data-loader.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/evolution-lab.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/share-card.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/modes/guaxu-mode.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/cinematic-motion.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/motion-system.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/render.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/review-engine.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/reading-state.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/search-controller.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/star-relations.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/star-map.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/svg-painter.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/ui-icons.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/achievement-catalog.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/storage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/guaxu-wheel.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/evolution-state.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/evolution-semantics.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/hexagram-utils.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/relation-animation.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/content-provenance.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/d3-force.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/star-layouts.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/star-atmosphere.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/star-label-layout.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/data/hexagrams.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/data/trigrams.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/data/commentaries/manifest.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/assets/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/data/hexagram-keywords.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/celestial-stage.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/js/modes/divination-mode.js?v=51",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/vendor/three.module.min.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/assets/favicon.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63723/lib/vendor/three.core.min.js",
+      "method": "GET"
+    }
+  ],
+  "exitCode": 1,
+  "profileRemoved": false,
+  "profileRetainedReason": "Synthetic profile retained for diagnosis. No user profile was touched or deleted."
+}

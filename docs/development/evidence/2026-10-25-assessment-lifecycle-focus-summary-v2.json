@@ -1,0 +1,79 @@
+{
+  "task": "T-LEARN-03",
+  "recordedAt": "2026-10-24T22:57:15.806Z",
+  "runtime": "v22.23.1",
+  "scope": "Assessment-page lifecycle identity guards and failed-save focus only; preserve existing uncommitted integration.",
+  "sourceFiles": [
+    {
+      "path": "web/js/learning-assessment-page.js",
+      "sha256": "909fc2ff41712cae790414d70b94486bab65cda686a95163c9c4a8200028a0c4"
+    },
+    {
+      "path": "web/test/learning-assessment-page.test.mjs",
+      "sha256": "f1ff20a0bb6c6664fb9d801164248c3ec31af0fa1fd66829b06237de2802d7e2"
+    }
+  ],
+  "runs": [
+    {
+      "name": "2026-10-25-assessment-lifecycle-focus-red-v2.log",
+      "command": "node --test web/test/learning-assessment-page.test.mjs",
+      "exitCode": 1,
+      "tests": 63,
+      "passed": 57,
+      "failed": 6,
+      "rawSha256": "7707c801878af81328bd622535a6ca434d36c52cd978486faf4150acc96e7520",
+      "gzip": "2026-10-25-assessment-lifecycle-focus-red-v2.log.gz",
+      "gzipSha256": "53c8a147ac1dfd6ae188b5a5744d18fe308289684fc98ac567f0bd12f9c42374",
+      "byteIdenticalRoundTrip": true
+    },
+    {
+      "name": "2026-10-25-assessment-lifecycle-focus-green-v2.log",
+      "command": "node --test web/test/learning-assessment-page.test.mjs",
+      "exitCode": 0,
+      "tests": 63,
+      "passed": 63,
+      "failed": 0,
+      "rawSha256": "0625d8929af73cd41366b7892309edaff9f22f23a21c312826883e0f6414b56c",
+      "gzip": "2026-10-25-assessment-lifecycle-focus-green-v2.log.gz",
+      "gzipSha256": "1abae48aa8e1404cfbc26c6448d0882ecad40b740bea23749646fa49a5443d12",
+      "byteIdenticalRoundTrip": true
+    },
+    {
+      "name": "2026-10-25-assessment-lifecycle-focus-integration-v2.log",
+      "command": "node --test web/test/learning-assessment-page.test.mjs web/test/learning-weak-questions-page.test.mjs web/test/mode-result-visibility.test.mjs web/test/learning-review.test.mjs",
+      "exitCode": 0,
+      "tests": 87,
+      "passed": 87,
+      "failed": 0,
+      "rawSha256": "e1b4902641cbf37fbd2b7c9061eec75a2b12e8a28f3e75e7489b57d9b9008695",
+      "gzip": "2026-10-25-assessment-lifecycle-focus-integration-v2.log.gz",
+      "gzipSha256": "25ea09a5c08fe95cf2b51592fc6f3d5d5143e9fe2666ccf88b99c4deebfd51f1",
+      "byteIdenticalRoundTrip": true
+    }
+  ],
+  "checks": [
+    {
+      "command": "node --check web/js/learning-assessment-page.js",
+      "exitCode": 0
+    },
+    {
+      "command": "node --check web/test/learning-assessment-page.test.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check -- web/js/learning-assessment-page.js web/test/learning-assessment-page.test.mjs",
+      "exitCode": 0,
+      "warning": "Git reports future LF to CRLF normalization only."
+    }
+  ],
+  "boundaries": [
+    "The six new regressions use an in-memory DOM harness, not a browser visibility result.",
+    "A synthetic ten-question all-wrong exam verifies application scroll/focus intent for failed persistence and success after retry.",
+    "No browser run, full validate, commit, remote action, scoring/storage/privacy algorithm change was performed by this agent.",
+    "Parent owns browser acceptance; original browser red trace was reported separately and is not counted as this agent test execution.",
+    "Source frozen after limited tests; no active tool process."
+  ],
+  "remaining": [
+    "Real browser failed-save status and retry visibility, input/focus acceptance and full integration gates remain with root; T-LEARN-03 stays open."
+  ]
+}

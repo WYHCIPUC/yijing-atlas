@@ -1,0 +1,641 @@
+
+> yijing-atlas@1.1.1-rc.2 validate
+> node scripts/quality-check.mjs --include-smoke && npm run test:coverage
+
+✓ JavaScript 语法与格式检查：81 个文件
+✓ JSON 可解析：11 个文件
+✓ 六家注疏目录有效，发布门禁保持关闭
+✓ 当前版本树不含 PDF、证书或私钥文件
+✔ 首发目录包含十二枚可解释成就且标识唯一 (0.7284ms)
+✔ 能力维度和五阶三状态形成完整成长契约 (0.8238ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6.5682
+✔ 事件工厂使用可注入时间与随机源并拒绝危险字段 (3.047ms)
+✔ 完成首课与小试后解锁且重复事件保持幂等 (1.0278ms)
+✔ 十二枚成就均可由真实学习证据达成 (12.5546ms)
+✔ 修改重交按同一案例保留较高成绩且独立边界确认按主题去重 (0.2814ms)
+✔ 无效状态安全降级、批处理忽略坏事件并支持旧版事件迁移 (0.2961ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20.7573
+✔ 损坏、缺失和旧版状态均安全加载 (2.8156ms)
+✔ localStorage getter 被拒绝时成就状态仍安全回退 (0.1841ms)
+✔ 事件处理可持久化且重复提交不重复写入 (0.242ms)
+✔ 写入失败与非法状态返回明确结果 (0.216ms)
+✔ 成就数据可导出、解析并导入另一存储 (1.0673ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9.3998
+✔ 原术语按稳定ID展开并在外层归零后定位，保留上下文返回 (4.4018ms)
+✔ 术语已失效有真实原因与返回，不展开其他术语冒充原来源 (0.9038ms)
+✔ 销毁或替换DOM后来源定位不再滚动/抢焦点，返回也失效 (1.3571ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10.4078
+✔ 黄历术语使用按钮，并提供完整的模态弹层键盘交互 (21.3627ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24.5305
+✔ 黄历默认日期按 Asia/Shanghai 历日而非设备时区确定 (10.3868ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13.1199
+✔ 机械转盘节奏先加速再减速并在落卦前停止 (0.5545ms)
+✔ 机械转盘节奏拒绝无效和过短时长 (0.2496ms)
+✔ 各功能区域映射到对应声景且跳过禁用与转盘按钮 (0.588ms)
+✔ 铜钱声由三枚铜钱的初次碰撞与逐级衰减反弹组成 (0.2027ms)
+✔ 机械转盘合成轮毂与棘轮声并以多层锁止音收尾 (2.52ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7.4841
+✔ viewport acknowledgement before media change waits for coherent quick-reading modality (1.9687ms)
+✔ deep reading waits for its panel and URL to agree with the stage (0.8335ms)
+✔ a permanently incorrect modal still fails with actual viewport and expected state (1.8851ms)
+✔ an inconsistent open panel or deep link cannot pass a quick-reading assertion (1.4509ms)
+✔ closed reading requires both the panel and deep link to be cleared (2.036ms)
+✔ visible-state convergence does not skip the existing readable-content assertion (1.2279ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12.7635
+✔ WebGL 超大屏严格遵守五百万 backing-store 像素预算 (0.5322ms)
+✔ 天象舞台按模式与设备能力限制帧率 (0.0961ms)
+✔ 不可见或减少动态时停止连续渲染 (0.0588ms)
+✔ 空间系带保持端点准确并在中段抬升 (0.4504ms)
+✔ WebGL 舞台具备上下文恢复与资源释放保护 (0.6543ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6.8434
+✔ 未完成内容保持发布门禁关闭，但来源目录可独立校验 (0.6153ms)
+✔ 发布状态要求底本已登记且六十四卦全部双人校对 (0.8747ms)
+✔ 缺项、空原文与单人校对会阻断发布 (0.1902ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.7483
+✔ 六十四卦原文、易传与项目导读均有明确且不混并的出处层级 (1.4686ms)
+✔ 象数条目明确标为传统资料并保留流派边界 (0.159ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.9353
+✓ 欢迎三入口保留名称与模态交互，今日卦引文在窄屏可换行
+✔ 浏览器启动只取核心数据，功能数据首次进入时加载并复用 (6.7768ms)
+✔ HTTP 错误包含资源路径和状态码 (0.3352ms)
+✔ 核心数据自检覆盖数量、唯一性、卦序和爻码一致性 (3.5041ms)
+✔ 功能数据失败后可重试，索引和全文搜索可用 (3.4365ms)
+✔ 搜索与星图并发复用同一关键词加载，成功缓存可显式重置 (0.8972ms)
+✔ 关键词HTTP和JSON失败清理缓存，后续调用可重试 (0.2116ms)
+✔ 坏关键词结构拒绝并可重试，核心卦数据与正文搜索不受阻断 (9.7883ms)
+✔ 星图关键词结构失败保留无关键词降级，之后能复用修复资料 (0.2546ms)
+✔ 搜索六位码与卦序明确匹配，不把编码转成数字 (0.2518ms)
+✔ 上下卦搜索使用真实八卦数据和结构字段，保留自下而上编码 (0.6243ms)
+✔ 卦名和全称精确命中优先，普通文本结果按文王卦序稳定排序 (0.54ms)
+✔ 多字段和重复数据命中去重，名称包含优先于关键词及正文 (0.1721ms)
+✔ 关键词是可选增强，缺失或损坏不阻断核心搜索 (1.4771ms)
+✔ 空串及非法序号编码返回空结果，即使正文包含该字符串 (0.0907ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32.2488
+✔ 铜钱和数正确映射四种爻象 (0.8298ms)
+✔ 六次老阴得到坤卦并全变为乾卦 (0.5989ms)
+✔ 无变爻取本卦卦辞，一变爻取对应爻辞 (0.3062ms)
+✔ 乾卦六爻全变取本卦用九，不误取之卦用六 (0.0994ms)
+✔ 坤卦六爻全变取本卦用六，不误取之卦用九 (0.0923ms)
+✔ 二爻变保留两条爻辞并以上爻为主，三爻变合看两卦 (0.1147ms)
+✔ 四爻变保留变卦两条不变爻并以下爻为主，五爻变取唯一不变爻 (0.1127ms)
+✔ 六爻全变且无用辞时回退到变卦卦辞 (0.0691ms)
+✔ 非变爻起卦保持本卦不变 (0.1083ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.9219
+✔ 占筮记录按新到旧保存并可清空 (11.6838ms)
+✔ 旧版记录保留并明确标记为仅有卦象摘要 (0.1687ms)
+✔ 历史满50条后同一毫秒新增的案例仍有独立且持久的标识 (7.5643ms)
+✔ 非法历史、非法卦码和写入失败安全处理 (0.1944ms)
+✔ 生成案例标识失败时保留旧历史并返回保存失败 (1.001ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24.0269
+✔ 金钱卦解释为每一卦提供原文出处、通俗释义和现实边界 (2.6809ms)
+✔ 无变爻解释当前结构并说明不会形成之卦 (0.2225ms)
+✔ 乾坤全变引用用九、用六并给出对应通俗解释 (0.2354ms)
+✔ 梅花易数解释交代起卦公式、体用术语与简化边界 (0.2534ms)
+✔ 梅花易数五种体用关系都有通俗解释 (0.3644ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7.7509
+✔ 金钱V2同一历史重放重复提交沿用同一subject，导出导入后仍幂等 (21.5513ms)
+✔ 梅花完整历史重放保持既有稳定subject且不新增历史 (3.2213ms)
+✔ 旧摘要不生成分析证据或补造六爻；仅保留研读入口 (1.4677ms)
+✔ 主动新掷相同卦码仍产生独立案例并保留正常自动历史 (3.8974ms)
+✔ coin首次结果与首次历史回看提交属于同一案例 (2.1746ms)
+✔ coin历史保存失败时本次分析身份稳定，下一次起卦仍独立 (2.7403ms)
+✔ meihua首次结果与首次历史回看提交属于同一案例 (2.3782ms)
+✔ meihua历史保存失败时本次分析身份稳定，下一次起卦仍独立 (2.0789ms)
+✔ coin解卦结果为四段勾选自评反馈，不冒称结构化检验或添加后置入口 (1.4087ms)
+✔ coin自评保存失败锁定原事件，仅保存重试且成功部分不重写 (1.9411ms)
+✔ coin首次失败、重试失败与恢复后原状态节点只位于学习记录段 (2.483ms)
+✔ meihua解卦结果为四段勾选自评反馈，不冒称结构化检验或添加后置入口 (1.4819ms)
+✔ meihua自评保存失败锁定原事件，仅保存重试且成功部分不重写 (1.2535ms)
+✔ meihua首次失败、重试失败与恢复后原状态节点只位于学习记录段 (1.5239ms)
+✔ 历史案例已有成绩时反馈说明保存的旧分，不声称本次不同自评分已入库 (1.9817ms)
+✔ 旧已处理标识缺研读明细时不补造或展示未定义分数 (1.2617ms)
+✔ 解卦保存失败及成功重试由产品滚动实际主行动再聚焦 (1.0197ms)
+✔ 解卦first-submit遇到read-failed不写成就，恢复后保留原事件与旧证据 (1.7122ms)
+✔ 解卦first-submit遇到invalid-json不写成就，恢复后保留原事件与旧证据 (1.6034ms)
+✔ 解卦first-submit遇到invalid-legacy不写成就，恢复后保留原事件与旧证据 (1.1623ms)
+✔ 解卦retry遇到read-failed不写成就，恢复后保留原事件与旧证据 (1.9318ms)
+✔ 解卦retry遇到invalid-json不写成就，恢复后保留原事件与旧证据 (1.6367ms)
+✔ 解卦retry遇到invalid-legacy不写成就，恢复后保留原事件与旧证据 (1.4975ms)
+✔ 解卦严格读取仍兼容有效V0成就事件，并只使用一次校验过的原始快照 (1.3774ms)
+✔ cleanup后旧解卦提交和重试不写入当前状态 (1.2641ms)
+✔ tab后旧解卦提交和重试不写入当前状态 (0.885ms)
+✔ recast后旧解卦提交和重试不写入当前状态 (1.5906ms)
+✔ history后旧解卦提交和重试不写入当前状态 (2.1055ms)
+✔ rerender后旧解卦提交和重试不写入当前状态 (0.9424ms)
+✔ tab后尚未提交的旧勾选控件不能补写旧案例 (0.734ms)
+✔ recast后尚未提交的旧勾选控件不能补写旧案例 (1.1804ms)
+✔ history后尚未提交的旧勾选控件不能补写旧案例 (1.2216ms)
+✔ rerender后尚未提交的旧勾选控件不能补写旧案例 (0.6907ms)
+✔ 离页或换方式后旧起卦控件和排队RAF不写数据或抢焦点 (2.113ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 86.3747
+✔ 逐爻变化保持自下而上的位序并记录历史 (0.9582ms)
+✔ 撤销、重做和新分支会正确维护历史 (0.5508ms)
+✔ 错综互预设始终从原卦计算 (0.1532ms)
+✔ 重置可撤销，快照解析结果卦和控制状态 (0.1033ms)
+✔ 历史边界操作保持状态稳定，未知结果安全回退 (0.0771ms)
+✔ 演示帧按初爻到上爻依次生成且包含起止卦 (0.0858ms)
+✔ 无效卦码、爻位、预设和状态会被拒绝 (0.3368ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.5622
+✔ 当前卦义随帧解析并带有经传定位 (0.8695ms)
+✔ 单帧变化同时解析前后爻辞、小象和项目释义 (0.1548ms)
+✔ 无效分区、卦象和爻位会被拒绝 (0.2806ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.8286
+✔ 角度归一化并从顶部指针反推卦序索引 (0.4652ms)
+✔ 随机边界可抽中首卦与末卦并精确停在指针下 (0.1586ms)
+✔ 连续抽取从当前角度向前旋转且保持映射稳定 (0.1082ms)
+✔ 全部六十四个索引都能映射到固定指针 (0.0854ms)
+✔ 非法角度、数量、随机值和圈数会被拒绝 (0.3335ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.6561
+✔ orderRemark 说明当前卦承接前序的理由，且覆盖完整文王卦序 (1.2274ms)
+✔ 序卦上下经边界及末卦文本保持可靠链条 (0.1751ms)
+✔ fill-all 生成链不会回写旧版错位序卦说明 (84.0419ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 88.2656
+✓ 互卦(泰111000)=归妹110100
+✓ 互卦(乾111111)=乾111111
+✓ 变卦(乾111111, pos1)=姤011111
+✓ 变卦(乾111111, pos2)=同人101111
+✓ 变卦(坤000000, pos1)=复100000
+✓ 泰错=否000111
+✓ 泰综=否000111
+✓ 泰互=归妹110100
+✓ 泰变是数组(6个)
+✓ 泰变[0]=升011000
+✓ 下卦/上卦拆分
+✓ 上下卦组合
+✓ 初九/六五/上六爻题
+✓ 阴阳当位判断
+✓ 非法卦码会拒绝
+✓ 非法爻位会拒绝
+
+全部通过
+✔ 紧凑星仪常驻图式和关系，辅助内容由语义按钮控制并默认隐藏 (0.5551ms)
+✔ 聚焦与阅读层提供独立入口，保留现有六导航及三种开始路径 (0.5914ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.4373
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /feedback\.scrollIntoView\?\.\(\{[\s\S]*?block:\s*'nearest'/. Input:
+
+"import { generateAlmanacQuestion, generateQuestion, loadStats, loadWrongBook, resolveQuizQuestion } from '../quiz-engine.js';\n" +
+  "import { getQuizWeakQuestions, getWeakQuestionsError, loadLearningRecord } from '../learning-progress.js';\n" +
+  "import { createQuizAttempt, submitQuizAttempt } from '../quiz-session.js';\n" +
+  "import { renderLearningFeedback } from '../learning-feedback.js';\n" +
+  '\n' +
+  'function esc(value) {\n' +
+  `  return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');\n` +
+  '}\n' +
+  '\n' +
+  'function revealQuizFeedback(feedback, current, schedule, failed = false) {\n' +
+  '  schedule(() => {\n' +
+  '    if (!current() || feedback.isConnected === false) return;\n' +
+  "    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;\n" +
+  `    const action = feedback.querySelector(failed ? '[data-action="quiz-retry"]' : '.quiz-next');\n` +
+  '    const scrollTarget = failed && action ? action : feedback;\n' +
+  "    scrollTarget.scrollIntoView?.({ behavior: reducedMotion ? 'auto' : 'smooth', block: failed ? 'center' : 'nearest', inline: 'nearest' });\n" +
+  '    action?.focus({ preventScroll: true });\n' +
+  '  });\n' +
+  '}\n' +
+  '\n' +
+  'export function renderQuizMode(mountEl, appState, onNavigateMode, entry = {}) {\n' +
+  '  let disposed = false;\n' +
+  '  let activeRoot = null;\n' +
+  '  const frames = new Set();\n' +
+  '  const schedule = callback => {\n' +
+  '    const frame = window.requestAnimationFrame(() => { frames.delete(frame); callback(); });\n' +
+  '    frames.add(frame);\n' +
+  '  };\n' +
+  '  const cancelFrames = () => { frames.forEach(frame => window.cancelAnimationFrame?.(frame)); frames.clear(); };\n' +
+  '  const pendingQuestions = () => getQuizWeakQuestions(loadLearningRecord());\n' +
+  '  const legacyCodes = () => loadWrongBook().filter(code => appState.index?.byCode?.has(code));\n' +
+  '\n' +
+  '  function show(roundEntry = {}) {\n' +
+  '    if (disposed) return;\n' +
+  '    cancelFrames();\n' +
+  '    const record = loadLearningRecord();\n' +
+  '    const weakError = getWeakQuestionsError(record.weakQuestions);\n' +
+  '    const weakItems = getQuizWeakQuestions(record);\n' +
+  '    const legacy = legacyCodes();\n' +
+  '    const exact = roundEntry.reference;\n' +
+  '    const wrongOnly = roundEntry.wrongOnly === true || Boolean(exact) || Boolean(roundEntry.legacyCode);\n' +
+  '    let reference = exact;\n' +
+  '    let legacyCode = roundEntry.legacyCode;\n' +
+  '    let question = null;\n' +
+  "    let reason = '';\n" +
+  '    if (wrongOnly && !reference && !legacyCode) {\n' +
+  '      reference = weakItems[0];\n' +
+  '      if (!reference) legacyCode = legacy[0];\n' +
+  '    }\n' +
+  "    if (reference && legacyCode) reason = '回练来源冲突，请返回温故重新选择。';\n" +
+  '    else if (reference) {\n' +
+  '      const resolved = resolveQuizQuestion(appState, reference);\n' +
+  '      if (resolved.ok) question = resolved.question;\n' +
+  '      else reason = resolved.reason;\n' +
+  '    } else if (legacyCode) {\n' +
+  '      if (legacy.includes(legacyCode)) question = generateQuestion(appState.hexagrams, null, legacyCode);\n' +
+  "      else reason = '该旧卦码摘要已不存在或暂不可用，请返回温故核对。';\n" +
+  '    } else if (wrongOnly) reason = weakError\n' +
+  "      ? '温习记录异常，请先导出备份再核对；原有学习记录仍保留。'\n" +
+  "      : '暂无待回练的测验题，可以返回随机测验。';\n" +
+  '    else {\n' +
+  '      if (appState.almanacTerms?.length >= 4 && Math.random() < 0.2) question = generateAlmanacQuestion(appState.almanacTerms);\n' +
+  '      if (!question) question = generateQuestion(appState.hexagrams);\n' +
+  '    }\n' +
+  "    const isAlmanac = question?.type === 'almanac';\n" +
+  '    const candidates = question?.candidates;\n' +
+  '    const validQuestion = question && Array.isArray(candidates) && candidates.length >= 2 &&\n' +
+  '      candidates.some(candidate => (isAlmanac ? candidate.code : candidate) === question.answer) &&\n' +
+  '      (isAlmanac || candidates.every(code => appState.index?.byCode?.has(code)));\n' +
+  "    if (!validQuestion) { question = null; reason ||= '暂无可用题，请返回学习页检查资料。'; }\n" +
+  "    const attempt = question ? createQuizAttempt(question, { mode: legacyCode ? 'legacy' : wrongOnly ? 'review' : 'random' }) : null;\n" +
+  "    if (question && !attempt) { question = null; reason = '题目暂时不可用，无法建立有效作答；请返回温故核对资料。'; }\n" +
+  '    const stats = loadStats();\n' +
+  '    const totalPending = weakItems.length + legacy.length;\n' +
+  '    const options = question ? candidates.map((candidate, index) => {\n' +
+  '      const code = isAlmanac ? candidate.code : candidate;\n' +
+  '      const hex = isAlmanac ? null : appState.index.byCode.get(code);\n' +
+  '      return `<button type="button" class="quiz-option" data-code="${esc(code)}"><span class="quiz-option-index">${String.fromCharCode(65 + index)}</span><span>${isAlmanac\n' +
+  '        ? esc(candidate.text) : `<strong>${esc(hex.name)}</strong><small>${esc(hex.fullName)}</small>`}</span></button>`;\n' +
+  "    }).join('') : '';\n" +
+  '    mountEl.innerHTML = `\n' +
+  '      <div class="mode-panel quiz-panel">\n' +
+  '        <header class="mode-hero quiz-hero"><div><span class="academy-kicker">即时考校</span><h2 class="mode-panel-title" data-page-heading>辨象小试</h2>\n' +
+  '          <p class="mode-panel-sub">每次一题，即答即释；具体错题按原规则温习，黄历术语独立记录。</p></div>\n' +
+  '          <div class="mode-hero-stat"><strong data-quiz-rate>${stats.total ? Math.round(stats.correct / stats.total * 100) : 0}%</strong><span>累计正确率</span></div></header>\n' +
+  '        <div class="quiz-toolbar"><span class="quiz-stats">累计答对 <strong data-quiz-correct>${stats.correct}</strong> / <span data-quiz-total>${stats.total}</span></span>\n' +
+  '          <button type="button" class="text-button quiz-mode-toggle" ${!wrongOnly && !totalPending ? \'disabled\' : \'\'}>${wrongOnly ? \'返回随机测验\' : `错题回练（${totalPending}）`}</button>\n' +
+  '          ${roundEntry.returnTo ? \'<button type="button" class="text-button" data-action="quiz-return">返回温故队列</button>\' : \'\'}</div>\n' +
+  '        ${legacyCode ? \'<p class="assessment-warning">旧卦码摘要：原题型未保留。本次练习不代表原具体错误已纠正。</p>\' : \'\'}\n' +
+  '        ${weakError ? \'<p class="assessment-warning" role="status">具体温习记录异常，请先备份核对；不会清空原有成绩。</p>\' : \'\'}\n' +
+  '        ${question ? `<div class="mode-card quiz-question"><span>${isAlmanac ? \'历法辨识\' : wrongOnly ? \'原规则回练\' : \'卦象辨识\'}</span><p>${esc(question.question)}</p></div>\n' +
+  '          <p class="quiz-instruction">选择你的答案</p><div class="quiz-options">${options}</div><div class="quiz-feedback"></div>` :\n' +
+  '          `<section class="mode-empty"><p role="status">${esc(reason)}</p><button type="button" class="quick-btn" data-action="quiz-learning">返回学习</button>\n' +
+  '            <button type="button" class="text-button" data-action="quiz-review">查看温故队列</button></section>`}\n' +
+  '      </div>`;\n' +
+  "    activeRoot = mountEl.querySelector('.quiz-panel');\n" +
+  '    const root = activeRoot;\n' +
+  "    const current = () => !disposed && root.isConnected !== false && root === activeRoot && mountEl.querySelector('.quiz-panel') === root;\n" +
+  '    const navigate = (mode, nextEntry) => { if (current()) onNavigateMode?.(mode, nextEntry); };\n' +
+  "    mountEl.querySelector('.quiz-mode-toggle')?.addEventListener('click', () => {\n" +
+  '      if (current()) show(wrongOnly ? {} : { wrongOnly: true });\n' +
+  '    });\n' +
+  `    mountEl.querySelector('[data-action="quiz-return"]')?.addEventListener('click', () => {\n` +
+  "      if (roundEntry.returnTo?.mode === 'quiz') navigate('quiz', roundEntry.returnTo.entry || {});\n" +
+  "      else navigate('review');\n" +
+  '    });\n' +
+  `    mountEl.querySelector('[data-action="quiz-learning"]')?.addEventListener('click', () => navigate('learning'));\n` +
+  `    mountEl.querySelector('[data-action="quiz-review"]')?.addEventListener('click', () => navigate('review'));\n` +
+  "    const panel = mountEl.closest?.('.detail-panel');\n" +
+  '    if (panel) panel.scrollTop = 0;\n' +
+  '    mountEl.scrollTop = 0;\n' +
+  "    const heading = mountEl.querySelector('[data-page-heading]');\n" +
+  '    schedule(() => { if (current() && heading?.isConnected !== false) { heading.tabIndex = -1; heading.focus?.({ preventScroll: true }); } });\n' +
+  '    if (!question) return;\n' +
+  '\n' +
+  '    let submitted = false;\n' +
+  '    let picked = null;\n' +
+  '    let feedbackReady = false;\n' +
+  '    let lastResult = null;\n' +
+  "    const feedback = mountEl.querySelector('.quiz-feedback');\n" +
+  '    const save = () => {\n' +
+  '      if (!current()) return;\n' +
+  '      lastResult = submitQuizAttempt(attempt, picked);\n' +
+  '      const savedStats = lastResult.changes?.stats?.saved ? lastResult.stats : loadStats();\n' +
+  "      mountEl.querySelector('[data-quiz-correct]').textContent = String(savedStats.correct);\n" +
+  "      mountEl.querySelector('[data-quiz-total]').textContent = String(savedStats.total);\n" +
+  "      mountEl.querySelector('[data-quiz-rate]').textContent = `${savedStats.total ? Math.round(savedStats.correct / savedStats.total * 100) : 0}%`;\n" +
+  '      if (!feedbackReady) {\n' +
+  '        const answerName = isAlmanac ? question.answerText : appState.index.byCode.get(question.answer)?.name;\n' +
+  '        feedback.innerHTML = renderLearningFeedback({\n' +
+  '          result: `<p class="${lastResult.correct ? \'feedback-correct\' : \'feedback-wrong\'}">${lastResult.correct ? \'回答正确\' : `正确答案是「${esc(answerName || \'—\')}」`}</p>\n' +
+  "            <p>${lastResult.correct ? '单次答对不代表已经掌握，仍需结合依据和后续温习。' : '可先核对依据，再按原规则温习。'}</p>`,\n" +
+  '          basis: `<div class="quiz-explanation"><p>${esc(question.explanation)}</p>\n' +
+  '            ${isAlmanac ? \'<button type="button" class="text-button" data-action="quiz-source">查看原术语</button>\' : \'\'}</div>`,\n' +
+  `          changes: '<p class="quiz-storage-status"></p><p class="quiz-feedback-status" role="status" aria-live="polite"></p>',\n` +
+  `          primaryAction: '<button type="button" class="quiz-next">下一题 →</button>',\n` +
+  '          secondaryActions: [\n' +
+  `            '<button type="button" class="text-button" data-action="quiz-retry">重试保存未完成的记录</button>',\n` +
+  `            '<button type="button" class="text-button" data-action="quiz-review">查看温故队列</button>',\n` +
+  '          ],\n' +
+  '        });\n' +
+  '        feedbackReady = true;\n' +
+  `        feedback.querySelector('[data-action="quiz-retry"]')?.addEventListener('click', () => { if (current() && !lastResult.saved) save(); });\n` +
+  `        feedback.querySelector('[data-action="quiz-review"]')?.addEventListener('click', () => navigate('review'));\n` +
+  `        feedback.querySelector('[data-action="quiz-source"]')?.addEventListener('click', () => navigate('learning', {\n` +
+  "          section: 'almanac', termId: question.reference.termId, quizReference: question.reference,\n" +
+  "          returnTo: { mode: 'quiz', entry: { wrongOnly: true, reference: question.reference, returnTo: { mode: 'review' } } },\n" +
+  '        }));\n' +
+  "        feedback.querySelector('.quiz-next')?.addEventListener('click', () => {\n" +
+  '          if (!curr'... 2411 more characters
+
+    at file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/web/test/layout-contract.test.mjs:126:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: "import { generateAlmanacQuestion, generateQuestion, loadStats, loadWrongBook, resolveQuizQuestion } from '../quiz-engine.js';\n" +
+    "import { getQuizWeakQuestions, getWeakQuestionsError, loadLearningRecord } from '../learning-progress.js';\n" +
+    "import { createQuizAttempt, submitQuizAttempt } from '../quiz-session.js';\n" +
+    "import { renderLearningFeedback } from '../learning-feedback.js';\n" +
+    '\n' +
+    'function esc(value) {\n' +
+    `  return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');\n` +
+    '}\n' +
+    '\n' +
+    'function revealQuizFeedback(feedback, current, schedule, failed = false) {\n' +
+    '  schedule(() => {\n' +
+    '    if (!current() || feedback.isConnected === false) return;\n' +
+    "    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;\n" +
+    `    const action = feedback.querySelector(failed ? '[data-action="quiz-retry"]' : '.quiz-next');\n` +
+    '    const scrollTarget = failed && action ? action : feedback;\n' +
+    "    scrollTarget.scrollIntoView?.({ behavior: reducedMotion ? 'auto' : 'smooth', block: failed ? 'center' : 'nearest', inline: 'nearest' });\n" +
+    '    action?.focus({ preventScroll: true });\n' +
+    '  });\n' +
+    '}\n' +
+    '\n' +
+    'export function renderQuizMode(mountEl, appState, onNavigateMode, entry = {}) {\n' +
+    '  let disposed = false;\n' +
+    '  let activeRoot = null;\n' +
+    '  const frames = new Set();\n' +
+    '  const schedule = callback => {\n' +
+    '    const frame = window.requestAnimationFrame(() => { frames.delete(frame); callback(); });\n' +
+    '    frames.add(frame);\n' +
+    '  };\n' +
+    '  const cancelFrames = () => { frames.forEach(frame => window.cancelAnimationFrame?.(frame)); frames.clear(); };\n' +
+    '  const pendingQuestions = () => getQuizWeakQuestions(loadLearningRecord());\n' +
+    '  const legacyCodes = () => loadWrongBook().filter(code => appState.index?.byCode?.has(code));\n' +
+    '\n' +
+    '  function show(roundEntry = {}) {\n' +
+    '    if (disposed) return;\n' +
+    '    cancelFrames();\n' +
+    '    const record = loadLearningRecord();\n' +
+    '    const weakError = getWeakQuestionsError(record.weakQuestions);\n' +
+    '    const weakItems = getQuizWeakQuestions(record);\n' +
+    '    const legacy = legacyCodes();\n' +
+    '    const exact = roundEntry.reference;\n' +
+    '    const wrongOnly = roundEntry.wrongOnly === true || Boolean(exact) || Boolean(roundEntry.legacyCode);\n' +
+    '    let reference = exact;\n' +
+    '    let legacyCode = roundEntry.legacyCode;\n' +
+    '    let question = null;\n' +
+    "    let reason = '';\n" +
+    '    if (wrongOnly && !reference && !legacyCode) {\n' +
+    '      reference = weakItems[0];\n' +
+    '      if (!reference) legacyCode = legacy[0];\n' +
+    '    }\n' +
+    "    if (reference && legacyCode) reason = '回练来源冲突，请返回温故重新选择。';\n" +
+    '    else if (reference) {\n' +
+    '      const resolved = resolveQuizQuestion(appState, reference);\n' +
+    '      if (resolved.ok) question = resolved.question;\n' +
+    '      else reason = resolved.reason;\n' +
+    '    } else if (legacyCode) {\n' +
+    '      if (legacy.includes(legacyCode)) question = generateQuestion(appState.hexagrams, null, legacyCode);\n' +
+    "      else reason = '该旧卦码摘要已不存在或暂不可用，请返回温故核对。';\n" +
+    '    } else if (wrongOnly) reason = weakError\n' +
+    "      ? '温习记录异常，请先导出备份再核对；原有学习记录仍保留。'\n" +
+    "      : '暂无待回练的测验题，可以返回随机测验。';\n" +
+    '    else {\n' +
+    '      if (appState.almanacTerms?.length >= 4 && Math.random() < 0.2) question = generateAlmanacQuestion(appState.almanacTerms);\n' +
+    '      if (!question) question = generateQuestion(appState.hexagrams);\n' +
+    '    }\n' +
+    "    const isAlmanac = question?.type === 'almanac';\n" +
+    '    const candidates = question?.candidates;\n' +
+    '    const validQuestion = question && Array.isArray(candidates) && candidates.length >= 2 &&\n' +
+    '      candidates.some(candidate => (isAlmanac ? candidate.code : candidate) === question.answer) &&\n' +
+    '      (isAlmanac || candidates.every(code => appState.index?.byCode?.has(code)));\n' +
+    "    if (!validQuestion) { question = null; reason ||= '暂无可用题，请返回学习页检查资料。'; }\n" +
+    "    const attempt = question ? createQuizAttempt(question, { mode: legacyCode ? 'legacy' : wrongOnly ? 'review' : 'random' }) : null;\n" +
+    "    if (question && !attempt) { question = null; reason = '题目暂时不可用，无法建立有效作答；请返回温故核对资料。'; }\n" +
+    '    const stats = loadStats();\n' +
+    '    const totalPending = weakItems.length + legacy.length;\n' +
+    '    const options = question ? candidates.map((candidate, index) => {\n' +
+    '      const code = isAlmanac ? candidate.code : candidate;\n' +
+    '      const hex = isAlmanac ? null : appState.index.byCode.get(code);\n' +
+    '      return `<button type="button" class="quiz-option" data-code="${esc(code)}"><span class="quiz-option-index">${String.fromCharCode(65 + index)}</span><span>${isAlmanac\n' +
+    '        ? esc(candidate.text) : `<strong>${esc(hex.name)}</strong><small>${esc(hex.fullName)}</small>`}</span></button>`;\n' +
+    "    }).join('') : '';\n" +
+    '    mountEl.innerHTML = `\n' +
+    '      <div class="mode-panel quiz-panel">\n' +
+    '        <header class="mode-hero quiz-hero"><div><span class="academy-kicker">即时考校</span><h2 class="mode-panel-title" data-page-heading>辨象小试</h2>\n' +
+    '          <p class="mode-panel-sub">每次一题，即答即释；具体错题按原规则温习，黄历术语独立记录。</p></div>\n' +
+    '          <div class="mode-hero-stat"><strong data-quiz-rate>${stats.total ? Math.round(stats.correct / stats.total * 100) : 0}%</strong><span>累计正确率</span></div></header>\n' +
+    '        <div class="quiz-toolbar"><span class="quiz-stats">累计答对 <strong data-quiz-correct>${stats.correct}</strong> / <span data-quiz-total>${stats.total}</span></span>\n' +
+    '          <button type="button" class="text-button quiz-mode-toggle" ${!wrongOnly && !totalPending ? \'disabled\' : \'\'}>${wrongOnly ? \'返回随机测验\' : `错题回练（${totalPending}）`}</button>\n' +
+    '          ${roundEntry.returnTo ? \'<button type="button" class="text-button" data-action="quiz-return">返回温故队列</button>\' : \'\'}</div>\n' +
+    '        ${legacyCode ? \'<p class="assessment-warning">旧卦码摘要：原题型未保留。本次练习不代表原具体错误已纠正。</p>\' : \'\'}\n' +
+    '        ${weakError ? \'<p class="assessment-warning" role="status">具体温习记录异常，请先备份核对；不会清空原有成绩。</p>\' : \'\'}\n' +
+    '        ${question ? `<div class="mode-card quiz-question"><span>${isAlmanac ? \'历法辨识\' : wrongOnly ? \'原规则回练\' : \'卦象辨识\'}</span><p>${esc(question.question)}</p></div>\n' +
+    '          <p class="quiz-instruction">选择你的答案</p><div class="quiz-options">${options}</div><div class="quiz-feedback"></div>` :\n' +
+    '          `<section class="mode-empty"><p role="status">${esc(reason)}</p><button type="button" class="quick-btn" data-action="quiz-learning">返回学习</button>\n' +
+    '            <button type="button" class="text-button" data-action="quiz-review">查看温故队列</button></section>`}\n' +
+    '      </div>`;\n' +
+    "    activeRoot = mountEl.querySelector('.quiz-panel');\n" +
+    '    const root = activeRoot;\n' +
+    "    const current = () => !disposed && root.isConnected !== false && root === activeRoot && mountEl.querySelector('.quiz-panel') === root;\n" +
+    '    const navigate = (mode, nextEntry) => { if (current()) onNavigateMode?.(mode, nextEntry); };\n' +
+    "    mountEl.querySelector('.quiz-mode-toggle')?.addEventListener('click', () => {\n" +
+    '      if (current()) show(wrongOnly ? {} : { wrongOnly: true });\n' +
+    '    });\n' +
+    `    mountEl.querySelector('[data-action="quiz-return"]')?.addEventListener('click', () => {\n` +
+    "      if (roundEntry.returnTo?.mode === 'quiz') navigate('quiz', roundEntry.returnTo.entry || {});\n" +
+    "      else navigate('review');\n" +
+    '    });\n' +
+    `    mountEl.querySelector('[data-action="quiz-learning"]')?.addEventListener('click', () => navigate('learning'));\n` +
+    `    mountEl.querySelector('[data-action="quiz-review"]')?.addEventListener('click', () => navigate('review'));\n` +
+    "    const panel = mountEl.closest?.('.detail-panel');\n" +
+    '    if (panel) panel.scrollTop = 0;\n' +
+    '    mountEl.scrollTop = 0;\n' +
+    "    const heading = mountEl.querySelector('[data-page-heading]');\n" +
+    '    schedule(() => { if (current() && heading?.isConnected !== false) { heading.tabIndex = -1; heading.focus?.({ preventScroll: true }); } });\n' +
+    '    if (!question) return;\n' +
+    '\n' +
+    '    let submitted = false;\n' +
+    '    let picked = null;\n' +
+    '    let feedbackReady = false;\n' +
+    '    let lastResult = null;\n' +
+    "    const feedback = mountEl.querySelector('.quiz-feedback');\n" +
+    '    const save = () => {\n' +
+    '      if (!current()) return;\n' +
+    '      lastResult = submitQuizAttempt(attempt, picked);\n' +
+    '      const savedStats = lastResult.changes?.stats?.saved ? lastResult.stats : loadStats();\n' +
+    "      mountEl.querySelector('[data-quiz-correct]').textContent = String(savedStats.correct);\n" +
+    "      mountEl.querySelector('[data-quiz-total]').textContent = String(savedStats.total);\n" +
+    "      mountEl.querySelector('[data-quiz-rate]').textContent = `${savedStats.total ? Math.round(savedStats.correct / savedStats.total * 100) : 0}%`;\n" +
+    '      if (!feedbackReady) {\n' +
+    '        const answerName = isAlmanac ? question.answerText : appState.index.byCode.get(question.answer)?.name;\n' +
+    '        feedback.innerHTML = renderLearningFeedback({\n' +
+    '          result: `<p class="${lastResult.correct ? \'feedback-correct\' : \'feedback-wrong\'}">${lastResult.correct ? \'回答正确\' : `正确答案是「${esc(answerName || \'—\')}」`}</p>\n' +
+    "            <p>${lastResult.correct ? '单次答对不代表已经掌握，仍需结合依据和后续温习。' : '可先核对依据，再按原规则温习。'}</p>`,\n" +
+    '          basis: `<div class="quiz-explanation"><p>${esc(question.explanation)}</p>\n' +
+    '            ${isAlmanac ? \'<button type="button" class="text-button" data-action="quiz-source">查看原术语</button>\' : \'\'}</div>`,\n' +
+    `          changes: '<p class="quiz-storage-status"></p><p class="quiz-feedback-status" role="status" aria-live="polite"></p>',\n` +
+    `          primaryAction: '<button type="button" class="quiz-next">下一题 →</button>',\n` +
+    '          secondaryActions: [\n' +
+    `            '<button type="button" class="text-button" data-action="quiz-retry">重试保存未完成的记录</button>',\n` +
+    `            '<button type="button" class="text-button" data-action="quiz-review">查看温故队列</button>',\n` +
+    '          ],\n' +
+    '        });\n' +
+    '        feedbackReady = true;\n' +
+    `        feedback.querySelector('[data-action="quiz-retry"]')?.addEventListener('click', () => { if (current() && !lastResult.saved) save(); });\n` +
+    `        feedback.querySelector('[data-action="quiz-review"]')?.addEventListener('click', () => navigate('review'));\n` +
+    `        feedback.querySelector('[data-action="quiz-source"]')?.addEventListener('click', () => navigate('learning', {\n` +
+    "          section: 'almanac', termId: question.reference.termId, quizReference: question.reference,\n" +
+    "          returnTo: { mode: 'quiz', entry: { wrongOnly: true, reference: question.reference, returnTo: { mode: 'review' } } },\n" +
+    '        }));\n' +
+    "        feedback.querySelector('.quiz-next')?.addEventListener('click', () => {\n" +
+    '          if (!curr'... 2411 more characters,
+  expected: /feedback\.scrollIntoView\?\.\(\{[\s\S]*?block:\s*'nearest'/,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+
+质量检查失败：Y:\易经学习项目\web\test\layout-contract.test.mjs 失败（退出码 1）

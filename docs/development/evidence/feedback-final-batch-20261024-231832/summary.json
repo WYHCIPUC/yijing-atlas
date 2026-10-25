@@ -1,0 +1,219 @@
+[
+  {
+    "scope": "390-divination-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\390-divination-save-retry-1.log"
+  },
+  {
+    "scope": "1280-quiz-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1280-quiz-save-retry-1.log"
+  },
+  {
+    "scope": "1280-assessment-save-retry",
+    "attempt": 1,
+    "exitCode": -1073740791,
+    "nativeAbort": true,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1280-assessment-save-retry-1.log"
+  },
+  {
+    "scope": "1280-assessment-save-retry",
+    "attempt": 2,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1280-assessment-save-retry-2.log"
+  },
+  {
+    "scope": "768-meihua-number-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\768-meihua-number-save-retry-1.log"
+  },
+  {
+    "scope": "390-meihua-number-save-retry",
+    "attempt": 1,
+    "exitCode": -1073740791,
+    "nativeAbort": true,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\390-meihua-number-save-retry-1.log"
+  },
+  {
+    "scope": "390-meihua-number-save-retry",
+    "attempt": 2,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\390-meihua-number-save-retry-2.log"
+  },
+  {
+    "scope": "390-meihua-time-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\390-meihua-time-save-retry-1.log"
+  },
+  {
+    "scope": "390-quiz-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\390-quiz-save-retry-1.log"
+  },
+  {
+    "scope": "320-quiz-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\320-quiz-save-retry-1.log"
+  },
+  {
+    "scope": "1440-review-card-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-review-card-retry-1.log"
+  },
+  {
+    "scope": "1440-review-activity-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-review-activity-retry-1.log"
+  },
+  {
+    "scope": "1440-review-achievement-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-review-achievement-retry-1.log"
+  },
+  {
+    "scope": "1440-review-leave",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-review-leave-1.log"
+  },
+  {
+    "scope": "1440-oral-self-record-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-oral-self-record-retry-1.log"
+  },
+  {
+    "scope": "1440-oral-self-activity-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-oral-self-activity-retry-1.log"
+  },
+  {
+    "scope": "1440-oral-ai-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-oral-ai-save-retry-1.log"
+  },
+  {
+    "scope": "1440-oral-ai-stale-course",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-oral-ai-stale-course-1.log"
+  },
+  {
+    "scope": "1440-oral-ai-stale-edit",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-oral-ai-stale-edit-1.log"
+  },
+  {
+    "scope": "1440-oral-ai-stale-leave",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-oral-ai-stale-leave-1.log"
+  },
+  {
+    "scope": "1440-assessment-result",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-assessment-result-1.log"
+  },
+  {
+    "scope": "1440-assessment-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-assessment-save-retry-1.log"
+  },
+  {
+    "scope": "1440-quiz-result",
+    "attempt": 1,
+    "exitCode": -1073740791,
+    "nativeAbort": true,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-quiz-result-1.log"
+  },
+  {
+    "scope": "1440-quiz-result",
+    "attempt": 2,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-quiz-result-2.log"
+  },
+  {
+    "scope": "1440-quiz-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-quiz-save-retry-1.log"
+  },
+  {
+    "scope": "1440-divination-result",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-divination-result-1.log"
+  },
+  {
+    "scope": "1440-divination-save-retry",
+    "attempt": 1,
+    "exitCode": -1073740791,
+    "nativeAbort": true,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-divination-save-retry-1.log"
+  },
+  {
+    "scope": "1440-divination-save-retry",
+    "attempt": 2,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-divination-save-retry-2.log"
+  },
+  {
+    "scope": "1440-meihua-number-result",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-meihua-number-result-1.log"
+  },
+  {
+    "scope": "1440-meihua-number-save-retry",
+    "attempt": 1,
+    "exitCode": 0,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-meihua-number-save-retry-1.log"
+  },
+  {
+    "scope": "1440-meihua-time-result",
+    "attempt": 1,
+    "exitCode": 1,
+    "nativeAbort": false,
+    "log": "docs\\development\\evidence\\feedback-final-batch-20261024-231832\\1440-meihua-time-result-1.log"
+  }
+]

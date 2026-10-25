@@ -1,0 +1,13 @@
+START 2026-10-24T23-45-41-912Z v22.23.1 C:\Users\1\AppData\Local\Temp\yijing-learning-feedback-h27cD4
+RUN 390-oral-self-activity-retry
+FAIL 390-oral-self-activity-retry: AssertionError [ERR_ASSERTION]: The oral source notice overflows its reading column
+    at inspectFeedback (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:322:12)
+    at async oralSelf (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:373:37)
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:709:102)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:756:77
+AssertionError [ERR_ASSERTION]: The oral source notice overflows its reading column
+    at inspectFeedback (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:322:12)
+    at async oralSelf (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:373:37)
+    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:709:102)
+    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:756:77
+{"status":"failed","exitCode":1,"passed":0,"total":1,"trace":"Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-45-41-912Z\\trace.json"}

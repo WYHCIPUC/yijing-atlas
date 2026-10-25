@@ -1,0 +1,2044 @@
+
+> yijing-atlas@1.1.1-rc.2 validate
+> node scripts/quality-check.mjs --include-smoke && npm run test:coverage
+
+✓ JavaScript 语法与格式检查：81 个文件
+✓ JSON 可解析：11 个文件
+✓ 六家注疏目录有效，发布门禁保持关闭
+✓ 当前版本树不含 PDF、证书或私钥文件
+✔ 首发目录包含十二枚可解释成就且标识唯一 (0.487ms)
+✔ 能力维度和五阶三状态形成完整成长契约 (1.1931ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.6265
+✔ 事件工厂使用可注入时间与随机源并拒绝危险字段 (2.1624ms)
+✔ 完成首课与小试后解锁且重复事件保持幂等 (0.9555ms)
+✔ 十二枚成就均可由真实学习证据达成 (13.4917ms)
+✔ 修改重交按同一案例保留较高成绩且独立边界确认按主题去重 (0.2725ms)
+✔ 无效状态安全降级、批处理忽略坏事件并支持旧版事件迁移 (0.2319ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20.322
+✔ 损坏、缺失和旧版状态均安全加载 (2.6969ms)
+✔ localStorage getter 被拒绝时成就状态仍安全回退 (0.1429ms)
+✔ 事件处理可持久化且重复提交不重复写入 (0.2198ms)
+✔ 写入失败与非法状态返回明确结果 (0.2089ms)
+✔ 成就数据可导出、解析并导入另一存储 (0.874ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8.4054
+✔ 原术语按稳定ID展开并在外层归零后定位，保留上下文返回 (4.4089ms)
+✔ 术语已失效有真实原因与返回，不展开其他术语冒充原来源 (0.9358ms)
+✔ 销毁或替换DOM后来源定位不再滚动/抢焦点，返回也失效 (1.1331ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9.5213
+✔ 黄历术语使用按钮，并提供完整的模态弹层键盘交互 (26.0837ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 29.0593
+✔ 黄历默认日期按 Asia/Shanghai 历日而非设备时区确定 (10.371ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13.097
+✔ 机械转盘节奏先加速再减速并在落卦前停止 (1.533ms)
+✔ 机械转盘节奏拒绝无效和过短时长 (0.4722ms)
+✔ 各功能区域映射到对应声景且跳过禁用与转盘按钮 (0.6127ms)
+✔ 铜钱声由三枚铜钱的初次碰撞与逐级衰减反弹组成 (0.1935ms)
+✔ 机械转盘合成轮毂与棘轮声并以多层锁止音收尾 (1.9797ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8.1654
+✔ viewport acknowledgement before media change waits for coherent quick-reading modality (1.9881ms)
+✔ deep reading waits for its panel and URL to agree with the stage (0.8249ms)
+✔ a permanently incorrect modal still fails with actual viewport and expected state (1.0965ms)
+✔ an inconsistent open panel or deep link cannot pass a quick-reading assertion (1.3862ms)
+✔ closed reading requires both the panel and deep link to be cleared (2.5906ms)
+✔ visible-state convergence does not skip the existing readable-content assertion (1.9424ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13.2217
+✔ WebGL 超大屏严格遵守五百万 backing-store 像素预算 (0.4895ms)
+✔ 天象舞台按模式与设备能力限制帧率 (0.0971ms)
+✔ 不可见或减少动态时停止连续渲染 (0.0559ms)
+✔ 空间系带保持端点准确并在中段抬升 (0.443ms)
+✔ WebGL 舞台具备上下文恢复与资源释放保护 (0.6338ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.2061
+✔ 未完成内容保持发布门禁关闭，但来源目录可独立校验 (0.5817ms)
+✔ 发布状态要求底本已登记且六十四卦全部双人校对 (1.0916ms)
+✔ 缺项、空原文与单人校对会阻断发布 (0.5052ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6.0743
+✔ 六十四卦原文、易传与项目导读均有明确且不混并的出处层级 (1.4675ms)
+✔ 象数条目明确标为传统资料并保留流派边界 (0.1568ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.9824
+✓ 欢迎三入口保留名称与模态交互，今日卦引文在窄屏可换行
+✔ 浏览器启动只取核心数据，功能数据首次进入时加载并复用 (5.728ms)
+✔ HTTP 错误包含资源路径和状态码 (0.3053ms)
+✔ 核心数据自检覆盖数量、唯一性、卦序和爻码一致性 (3.3959ms)
+✔ 功能数据失败后可重试，索引和全文搜索可用 (2.8109ms)
+✔ 搜索与星图并发复用同一关键词加载，成功缓存可显式重置 (0.7507ms)
+✔ 关键词HTTP和JSON失败清理缓存，后续调用可重试 (0.1906ms)
+✔ 坏关键词结构拒绝并可重试，核心卦数据与正文搜索不受阻断 (10.9661ms)
+✔ 星图关键词结构失败保留无关键词降级，之后能复用修复资料 (0.2313ms)
+✔ 搜索六位码与卦序明确匹配，不把编码转成数字 (0.2412ms)
+✔ 上下卦搜索使用真实八卦数据和结构字段，保留自下而上编码 (0.5511ms)
+✔ 卦名和全称精确命中优先，普通文本结果按文王卦序稳定排序 (0.5156ms)
+✔ 多字段和重复数据命中去重，名称包含优先于关键词及正文 (0.161ms)
+✔ 关键词是可选增强，缺失或损坏不阻断核心搜索 (1.5955ms)
+✔ 空串及非法序号编码返回空结果，即使正文包含该字符串 (0.0898ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 31.2248
+✔ 铜钱和数正确映射四种爻象 (0.8643ms)
+✔ 六次老阴得到坤卦并全变为乾卦 (0.5684ms)
+✔ 无变爻取本卦卦辞，一变爻取对应爻辞 (0.2653ms)
+✔ 乾卦六爻全变取本卦用九，不误取之卦用六 (0.0914ms)
+✔ 坤卦六爻全变取本卦用六，不误取之卦用九 (0.0894ms)
+✔ 二爻变保留两条爻辞并以上爻为主，三爻变合看两卦 (0.1241ms)
+✔ 四爻变保留变卦两条不变爻并以下爻为主，五爻变取唯一不变爻 (0.1321ms)
+✔ 六爻全变且无用辞时回退到变卦卦辞 (0.0829ms)
+✔ 非变爻起卦保持本卦不变 (0.0999ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.8835
+✔ 占筮记录按新到旧保存并可清空 (10.351ms)
+✔ 旧版记录保留并明确标记为仅有卦象摘要 (0.16ms)
+✔ 历史满50条后同一毫秒新增的案例仍有独立且持久的标识 (8.8562ms)
+✔ 非法历史、非法卦码和写入失败安全处理 (0.2948ms)
+✔ 生成案例标识失败时保留旧历史并返回保存失败 (0.9864ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24.0656
+✔ 金钱卦解释为每一卦提供原文出处、通俗释义和现实边界 (1.6702ms)
+✔ 无变爻解释当前结构并说明不会形成之卦 (0.1161ms)
+✔ 乾坤全变引用用九、用六并给出对应通俗解释 (0.1888ms)
+✔ 梅花易数解释交代起卦公式、体用术语与简化边界 (0.2184ms)
+✔ 梅花易数五种体用关系都有通俗解释 (0.1719ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.4865
+✔ 金钱V2同一历史重放重复提交沿用同一subject，导出导入后仍幂等 (23.8639ms)
+✔ 梅花完整历史重放保持既有稳定subject且不新增历史 (3.0405ms)
+✔ 旧摘要不生成分析证据或补造六爻；仅保留研读入口 (1.3078ms)
+✔ 主动新掷相同卦码仍产生独立案例并保留正常自动历史 (3.7294ms)
+✔ coin首次结果与首次历史回看提交属于同一案例 (2.4137ms)
+✔ coin历史保存失败时本次分析身份稳定，下一次起卦仍独立 (2.381ms)
+✔ meihua首次结果与首次历史回看提交属于同一案例 (2.0617ms)
+✔ meihua历史保存失败时本次分析身份稳定，下一次起卦仍独立 (1.9456ms)
+✔ coin解卦结果为四段勾选自评反馈，不冒称结构化检验或添加后置入口 (1.3176ms)
+✔ coin自评保存失败锁定原事件，仅保存重试且成功部分不重写 (1.8627ms)
+✔ coin首次失败、重试失败与恢复后原状态节点只位于学习记录段 (2.036ms)
+✔ meihua解卦结果为四段勾选自评反馈，不冒称结构化检验或添加后置入口 (1.7365ms)
+✔ meihua自评保存失败锁定原事件，仅保存重试且成功部分不重写 (2.068ms)
+✔ meihua首次失败、重试失败与恢复后原状态节点只位于学习记录段 (1.567ms)
+✔ 历史案例已有成绩时反馈说明保存的旧分，不声称本次不同自评分已入库 (1.9257ms)
+✔ 旧已处理标识缺研读明细时不补造或展示未定义分数 (1.4323ms)
+✔ 解卦保存失败及成功重试由产品滚动实际主行动再聚焦 (1.0102ms)
+✔ 解卦first-submit遇到read-failed不写成就，恢复后保留原事件与旧证据 (2.4366ms)
+✔ 解卦first-submit遇到invalid-json不写成就，恢复后保留原事件与旧证据 (1.4434ms)
+✔ 解卦first-submit遇到invalid-legacy不写成就，恢复后保留原事件与旧证据 (1.1499ms)
+✔ 解卦retry遇到read-failed不写成就，恢复后保留原事件与旧证据 (1.5699ms)
+✔ 解卦retry遇到invalid-json不写成就，恢复后保留原事件与旧证据 (1.4459ms)
+✔ 解卦retry遇到invalid-legacy不写成就，恢复后保留原事件与旧证据 (1.6933ms)
+✔ 解卦严格读取仍兼容有效V0成就事件，并只使用一次校验过的原始快照 (0.9858ms)
+✔ cleanup后旧解卦提交和重试不写入当前状态 (0.9536ms)
+✔ tab后旧解卦提交和重试不写入当前状态 (1.1191ms)
+✔ recast后旧解卦提交和重试不写入当前状态 (1.5913ms)
+✔ history后旧解卦提交和重试不写入当前状态 (1.3091ms)
+✔ rerender后旧解卦提交和重试不写入当前状态 (1.3431ms)
+✔ tab后尚未提交的旧勾选控件不能补写旧案例 (1.2458ms)
+✔ recast后尚未提交的旧勾选控件不能补写旧案例 (0.9516ms)
+✔ history后尚未提交的旧勾选控件不能补写旧案例 (0.8297ms)
+✔ rerender后尚未提交的旧勾选控件不能补写旧案例 (0.7267ms)
+✔ 离页或换方式后旧起卦控件和排队RAF不写数据或抢焦点 (2.1961ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 86.4573
+✔ 逐爻变化保持自下而上的位序并记录历史 (1.0464ms)
+✔ 撤销、重做和新分支会正确维护历史 (0.6549ms)
+✔ 错综互预设始终从原卦计算 (0.1906ms)
+✔ 重置可撤销，快照解析结果卦和控制状态 (0.112ms)
+✔ 历史边界操作保持状态稳定，未知结果安全回退 (0.0812ms)
+✔ 演示帧按初爻到上爻依次生成且包含起止卦 (0.106ms)
+✔ 无效卦码、爻位、预设和状态会被拒绝 (0.3591ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.9032
+✔ 当前卦义随帧解析并带有经传定位 (0.8782ms)
+✔ 单帧变化同时解析前后爻辞、小象和项目释义 (0.1602ms)
+✔ 无效分区、卦象和爻位会被拒绝 (0.2578ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.2092
+✔ 角度归一化并从顶部指针反推卦序索引 (0.4654ms)
+✔ 随机边界可抽中首卦与末卦并精确停在指针下 (0.1562ms)
+✔ 连续抽取从当前角度向前旋转且保持映射稳定 (0.1088ms)
+✔ 全部六十四个索引都能映射到固定指针 (0.0797ms)
+✔ 非法角度、数量、随机值和圈数会被拒绝 (0.5175ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.7757
+✔ orderRemark 说明当前卦承接前序的理由，且覆盖完整文王卦序 (1.3253ms)
+✔ 序卦上下经边界及末卦文本保持可靠链条 (0.1818ms)
+✔ fill-all 生成链不会回写旧版错位序卦说明 (86.0338ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 89.9132
+✓ 互卦(泰111000)=归妹110100
+✓ 互卦(乾111111)=乾111111
+✓ 变卦(乾111111, pos1)=姤011111
+✓ 变卦(乾111111, pos2)=同人101111
+✓ 变卦(坤000000, pos1)=复100000
+✓ 泰错=否000111
+✓ 泰综=否000111
+✓ 泰互=归妹110100
+✓ 泰变是数组(6个)
+✓ 泰变[0]=升011000
+✓ 下卦/上卦拆分
+✓ 上下卦组合
+✓ 初九/六五/上六爻题
+✓ 阴阳当位判断
+✓ 非法卦码会拒绝
+✓ 非法爻位会拒绝
+
+全部通过
+✔ 紧凑星仪常驻图式和关系，辅助内容由语义按钮控制并默认隐藏 (0.5771ms)
+✔ 聚焦与阅读层提供独立入口，保留现有六导航及三种开始路径 (0.6107ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.8469
+✓ 布局响应式契约测试通过
+✔ 复讲lesson后旧success不写记录、不覆盖当前界面或finally状态 (4.618ms)
+✔ 复讲lesson后旧failure不写记录、不覆盖当前界面或finally状态 (0.7756ms)
+✔ 复讲response后旧success不写记录、不覆盖当前界面或finally状态 (0.5694ms)
+✔ 复讲response后旧failure不写记录、不覆盖当前界面或finally状态 (0.5227ms)
+✔ 复讲self后旧success不写记录、不覆盖当前界面或finally状态 (0.9549ms)
+✔ 复讲self后旧failure不写记录、不覆盖当前界面或finally状态 (0.6498ms)
+✔ 复讲quiz后旧success不写记录、不覆盖当前界面或finally状态 (3.3581ms)
+✔ 复讲quiz后旧failure不写记录、不覆盖当前界面或finally状态 (0.6531ms)
+✔ 复讲hub后旧success不写记录、不覆盖当前界面或finally状态 (0.6818ms)
+✔ 复讲hub后旧failure不写记录、不覆盖当前界面或finally状态 (0.6669ms)
+✔ 复讲cleanup后旧success不写记录、不覆盖当前界面或finally状态 (0.5085ms)
+✔ 复讲cleanup后旧failure不写记录、不覆盖当前界面或finally状态 (0.9058ms)
+✔ 旧复讲finally不能解锁后继请求；双提交只发送一次当前请求 (1.3554ms)
+✔ ai复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩 (1.4001ms)
+✔ ai复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.7923ms)
+✔ ai复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.615ms)
+✔ self复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.6291ms)
+✔ self复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.6146ms)
+✔ self复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.5898ms)
+✔ 复讲原文不足20字就地说明并聚焦，不POST、不保存 (0.4953ms)
+✔ 复讲自评结果由页面主动显示并获得焦点 (1.1254ms)
+✔ 复讲自评保存失败说明由页面主动显示并获得焦点 (0.5024ms)
+✔ 复讲结果定位帧在离页后失效，不抢回焦点 (0.6092ms)
+✔ 复讲失败可本地自评；四段反馈依据可读，模型文本转义且不存正文 (1.3457ms)
+✔ ai复讲成功结果指向本轮原课，离开不补写或新增评阅 (0.7003ms)
+✔ ai复讲保存失败结果指向本轮原课，离开不补写或新增评阅 (0.5602ms)
+✔ self复讲成功结果指向本轮原课，离开不补写或新增评阅 (0.5411ms)
+✔ self复讲保存失败结果指向本轮原课，离开不补写或新增评阅 (0.5297ms)
+✔ 复讲lesson后旧来源按钮不导航或保存 (0.6114ms)
+✔ 复讲response后旧来源按钮不导航或保存 (0.5555ms)
+✔ 复讲self后旧来源按钮不导航或保存 (0.5907ms)
+✔ 复讲new后旧来源按钮不导航或保存 (0.6155ms)
+✔ 复讲quiz后旧来源按钮不导航或保存 (0.6112ms)
+✔ 复讲hub后旧来源按钮不导航或保存 (0.56ms)
+✔ 复讲cleanup后旧来源按钮不导航或保存 (0.594ms)
+✔ 复讲retry后旧来源按钮不导航或保存 (0.5421ms)
+✔ 课程考评沿用四段反馈，既有依据、保存重试及返回行动仍可达 (1.4951ms)
+✔ 复讲入口选定具体课程并聚焦复讲，不误开小试或写学习成绩 (0.5255ms)
+✔ 明确复讲入口在外层标题RAF之后获得焦点，并声明本次焦点目标 (0.5169ms)
+✔ 复讲入口退出后旧RAF不聚焦已脱离的输入或新页面标题 (0.4678ms)
+✔ 容器整体移除后复讲RAF不再聚焦旧内容 (0.5156ms)
+✔ 清理保留DOM后初始题卷标题RAF不再滚动或聚焦 (0.4014ms)
+✔ 清理保留DOM后初始复讲入口RAF不再滚动或聚焦 (1.253ms)
+✔ 重绘后旧表单change不读取新控件或改写仍保留的本轮草稿 (0.6324ms)
+✔ 旧未交卷表单submit不得改写新卷状态或移动新卷焦点 (0.4988ms)
+✔ 十题全错长卷保存失败定位保存状态，重试成功返回结果焦点 (1.6232ms)
+✔ 结果定位排队后清理页面不滚动或聚焦旧保存状态 (0.7153ms)
+✔ 原题回练保留默认三题，重绘沿用会话而不同原题开启新卷 (0.5823ms)
+✔ 失效原题或版本不随机替题，保留回原课和温故的真实回调 (0.8073ms)
+✔ 错题保存失败不显示已加入，原会话重试成功后按持久化记录显示 (1.5077ms)
+✔ 结果原课携带原题，原题回练新会话答对后才显示本轮已纠正 (1.4255ms)
+✔ 结果内新开原题回练后，父页面同入口重绘仍保留该新卷及答案 (0.8229ms)
+✔ 结果重绘从持久化读取状态，不把已移除的旧记录仍说成已加入 (0.9927ms)
+✔ 结果不把 questionType 不同的 due 旧温习记录归于当前题 (2.1447ms)
+✔ 结果不把 questionType 不同的 resolved 旧温习记录归于当前题 (1.0217ms)
+✔ 结果不把 targetCode 不同的 due 旧温习记录归于当前题 (0.9967ms)
+✔ 结果不把 targetCode 不同的 resolved 旧温习记录归于当前题 (0.9086ms)
+✔ 结果不把 termId 不同的 due 旧温习记录归于当前题 (0.9397ms)
+✔ 结果不把 termId 不同的 resolved 旧温习记录归于当前题 (1.1775ms)
+✔ 结果不把 sourceKind 不同的 due 旧温习记录归于当前题 (0.9279ms)
+✔ 结果不把 sourceKind 不同的 resolved 旧温习记录归于当前题 (0.9823ms)
+✔ 温故发起的原题回练取消返回温故且不保存答卷 (0.4992ms)
+✔ 真实交卷处理函数重复触发和结果重绘只计一次，新一轮独立 (1.9233ms)
+✔ 本轮重绘保留题序与已选答案，离开后不恢复未提交卷 (0.5277ms)
+✔ 重绘前已脱离页面的取消处理不能撤销已交卷结果 (0.6679ms)
+✔ 未答和篡改选项定位首个未答题，取消不保存 (0.6975ms)
+✔ 成绩保存失败可读且可重试，重试与重绘复用本轮 (0.7325ms)
+✔ 新用户抽查空态说明先学一课并可返回 (0.4895ms)
+✔ 仅成就保存失败时重试不重写成绩，沿用原session证据 (0.9112ms)
+✔ 小试交卷后进入修习谱不以旧时间戳再计同轮证据 (0.8874ms)
+✔ 修习谱回补采用本轮实际成绩，旧无session证据保持兼容 (0.834ms)
+✔ 已处理ID缺少成绩凭据时显示缺证据，不重计分或生成成就 (0.6087ms)
+✔ 已有正式ID全部带真实凭据时，其他旧课程仍按旧汇总回补 (0.4493ms)
+✔ 已有真实低分凭据重交高分不改变成绩，也不据当前答案回补高分成就 (1.09ms)
+✔ 正式ID存在但没有凭据时修习谱不拿聚合最高分补造该轮成就 (0.7985ms)
+ℹ tests 75
+ℹ suites 0
+ℹ pass 75
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 80.7305
+✔ 小试、抽查和阶段考评按范围组卷 (2.8418ms)
+✔ 交卷会逐题记录课程归属并统计成绩 (0.2004ms)
+✔ 同样的随机题序也为新一轮生成独立标识，结果保留本轮标识 (0.4688ms)
+✔ 只评定本卷完整且来自本题选项的答案 (0.1153ms)
+✔ 抽查没有已浏览课时不回退全库，题目不足按实际数量组卷 (0.1153ms)
+✔ 日课先推荐未浏览课程，再推荐小试成绩较低者 (0.1039ms)
+✔ 原题回练仍是新普通三题小试，指定题必入且不重复或改变题义 (0.3551ms)
+✔ 缺失、跨课或版本失效的原题引用明确拒绝，不随机替换题目 (0.1167ms)
+✔ 原题回练的可用题不足仍用实际题量，显式题数保持原规则 (0.1817ms)
+✔ 判分结果传递公开引用和真实题型，不复制题干或私文 (0.2453ms)
+✔ 旧题对象没有引用元数据时仍按旧形状判分，不补造当前版本 (0.0966ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8.4882
+✔ 全部学习小节均有至少三道可判分题目 (10.6061ms)
+✔ 课程覆盖五阶与所有资料栏目，并能生成复讲要点 (0.6362ms)
+✔ 题库公开引用保留真实题型，六爻卦与术语分别使用原始实体标识 (11.5125ms)
+✔ 术语定位来自实体ID，不从显示名称猜测；三爻题不补造六位码 (4.8818ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 30.7642
+✔ 反馈按结果、依据、实际记录、下一步的原生章节顺序呈现 (2.4708ms)
+✔ 保留一个主行动与最多两个次行动的原按钮属性及来源链接 (0.805ms)
+✔ 省略次行动时只有主行动，不生成空按钮或占位链接 (0.193ms)
+✔ 缺失或非法必填片段明确报出字段，不用空反馈掩盖调用错误 (0.3676ms)
+✔ 次行动超量或非法数组成员报错，不静默截断或跳过 (0.1492ms)
+✔ 每个行动片段只接受一个原生按钮或链接，不能藏入多个行动 (0.1198ms)
+✔ 可信片段只呈现一次，已转义正文不被重新转义或改写 (0.0695ms)
+✔ 重复渲染不访问DOM、存储或计时器，不修改冻结输入或制造全局身份 (0.1641ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7.6485
+✔ 记录学习日并计算包含今天的连续天数 (2.0216ms)
+✔ 活动记录去重、损坏回退和失败写入可感知 (0.5141ms)
+✔ 旧版学习进度迁移为已浏览，并写入新版课程记录 (0.5172ms)
+✔ 小试、抽查、复讲和阶段考评共同形成掌握度 (0.5875ms)
+✔ 学习记录拒绝无效评定，学阶覆盖全部阈值 (0.1204ms)
+✔ 同一session重复保存只计一次，下一轮相同成绩仍独立计入 (0.542ms)
+✔ 保存失败后原session重试只增加一次，旧记录读取不补造session (0.2339ms)
+✔ 正式考评ID与成绩原子保存，历史截断后仍能判重 (4.629ms)
+✔ 只有已处理ID而没有成绩凭据时不重新计分或补造凭据 (0.2026ms)
+✔ 旧真实session凭据只迁移ID，不重计成绩；无字段旧记录保持兼容 (0.2493ms)
+✔ 损坏的正式ID字段保留有效旧成绩且不允许后续写入覆盖 (0.3312ms)
+✔ 新考评拒绝非法ID，写失败不先消费ID (0.165ms)
+✔ 另一课程的真实旧成绩不因已迁移session而丢失兼容凭据 (0.1382ms)
+✔ 已处理ID对应其他范围的凭据时不能当作当前卷成绩 (0.0816ms)
+✔ 三类正式交卷将成绩、ID、凭据和课程弱项一次写入，只保存公开引用 (0.6679ms)
+✔ 同题错误按新会话归并，只有同题同版本答对纠正，再错重新待练 (0.4107ms)
+✔ 不同版本、来源或定位不覆盖旧弱项；历史不存在题号仍可读 (0.4511ms)
+✔ 旧结果、无凭据ID和旧凭据不按当前题卷补造弱项 (0.1051ms)
+✔ 弱项和成绩写入失败一起保留旧状态，同轮重试只入队或纠正一次 (0.2126ms)
+✔ 新逐题引用残缺或非法不消费会话，也不保存部分成绩 (0.1461ms)
+✔ 损坏弱项不把有效旧成绩读取为空，所有写入口拒绝覆盖 (0.2126ms)
+✔ 弱项查询返回稳定的完整条目副本，默认待练并可包含纠正历史 (0.1931ms)
+✔ 八十条成绩截断不丢弱项与去重证据，特殊题号不写入原型 (9.1793ms)
+✔ 同一会话同题只增加一次，错误计数达到安全整数边界时拒绝整次保存 (0.3342ms)
+✔ 历史来源只校验非空类型，不擅自限制旧课程或术语标识长度 (0.2511ms)
+✔ 新题引用必须属于存在的课程，小试不接受另一课结果，旧无元数据仍兼容 (0.1799ms)
+✔ 同题的新引用或正确值冲突时拒绝整次写入，不依赖逐题数组顺序 (0.125ms)
+✔ 课程续读位置兼容旧缺字段和 null，逐字段校验课程、章节、位置和 ISO 时间 (0.2295ms)
+✔ 保存课程续读仅在既有学习键写最小位置，保留成绩、弱项和去重凭据 (0.2004ms)
+✔ 损坏续读不清旧成绩且阻止普通写入，显式保存合法位置只修复续读 (0.346ms)
+✔ 非法续读输入、无效时间及配额失败不覆盖上次位置，恢复存储后可重试 (0.2311ms)
+✔ 同课新小试不论分数都原子清除续读，配额失败保留盘上原位置且同轮可重试 (0.2588ms)
+✔ 重复旧会话、跨课小试、抽查和考评不清除当前续读 (0.2135ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 29.6414
+✔ 新用户主行动是首课，课程对象推荐API仍供原下拉框使用 (0.7529ms)
+✔ 明确未完课程优先于到期卦卡、弱项和下一未浏览课 (0.5545ms)
+✔ 无续读时先处理到期卦卡，按到期时间再编码稳定排序 (5.0157ms)
+✔ 未引入、损坏和未来卦卡不会抢占下一课 (0.1457ms)
+✔ 课程弱项按最近错误与稳定课序选择，due状态不冒充到期卦卡 (0.4412ms)
+✔ 课程薄弱项已纠正后不再推荐；旧测验卦码只进入错题模式 (0.108ms)
+✔ 具体测验与黄历原题按最近错误参与课程弱项层级，旧卦码不能抢先 (0.7229ms)
+✔ 同时间跨来源弱项排序稳定，保留原课程课序且不依赖存储插入顺序 (0.2286ms)
+✔ 具体弱项不抢占续读和到期卡；已纠正项退回旧卦码且不重造引用 (0.1313ms)
+✔ 合法旧版具体弱项保留原引用供界面说明，坏集合不构造待练题 (0.1241ms)
+✔ 旧弱项课程已移除时不构造无效课程入口 (0.0676ms)
+✔ 没有续读与薄弱证据时进入稳定顺序的下一未浏览课 (0.0594ms)
+✔ 全部浏览后低分不伪造本轮未完成，进入既有复讲 (0.1053ms)
+✔ 同级复讲时间相同时保持课程序，反复渲染不改输入 (0.0632ms)
+✔ 坏恢复位置给明确提示并正常推荐，不清除成绩 (0.0826ms)
+✔ 空课程集合有真实空态，不生成00课或虚假入口 (0.0773ms)
+✔ 注入Date时间与毫秒时间得到相同到期判断 (0.1408ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12.7451
+✔ 评阅配置只接受同源相对地址 (0.9312ms)
+✔ 智能评阅按固定协议提交并校验返回结果 (0.4097ms)
+✔ 智能评阅拒绝短文本、错误状态与异常数据 (0.8751ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.5093
+✓ 学习首课、典籍依据与滚动复位契约通过
+✔ 今日温故次入口仍区分课程与卦卡，不改变主行动目标 (2.1982ms)
+✔ 今日主行动展示真实推荐原因与完成标准，按任务类型进入目标而非泛首页 (3.8475ms)
+✔ 今日具体测验推荐透传原引用，总数说明覆盖课程与术语且支持区分别计数 (0.8991ms)
+✔ 单卦卡不遮课程队列，资料未加载仍按原引用进入回课和回练 (1.5485ms)
+✔ 温故使用已加载真实题库的题干，不持久化题干或显示技术编号 (1.3359ms)
+✔ 旧版本或失效引用不冒用当前题干，保留中性文案和进入后核对入口 (2.0318ms)
+✔ 坏薄弱项显示局部异常，不自动开唯一卦卡或伪称完成 (0.687ms)
+✔ 全部纠正后保留空队列返回，旧单卦卡捷径仍可用 (1.0723ms)
+✔ 学习入口回原课后试章节保留原题，返回回到温故 (1.2321ms)
+✔ 术语来源初始入口、明确返回和cleanup保留测验引用，不误进今日或课程小试 (2.1902ms)
+✔ 学习模块切换先清理课程，外层cleanup幂等且旧回调不能重新导航 (1.1688ms)
+✔ 复讲子页在切页与离开学习模式时清理一次，旧导航回调失效 (1.0811ms)
+✔ 学习模块切页后旧课程聚焦失效，复讲目标不被通用标题抢焦点 (1.2278ms)
+✔ 已销毁学习模块的旧页签键盘处理不抢焦点 (0.6251ms)
+✔ 损坏的课程位置回今日并说明，保留原记录且不开替代课 (0.7101ms)
+✔ 温故进入首课概览的退出标签与回温故行为一致 (1.4545ms)
+✔ 温故进入普通课的两个退出入口都说明回温故，未承诺暂存 (2.2061ms)
+✔ 首课正文仍先回概览，默认课程入口保持原退出层级 (3.8668ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34.4363
+✔ 续读首课直接进入正文，外层归零后恢复原位置且不先覆盖为零 (2.0734ms)
+✔ 新课保留首课概览，明确开始生成最小指针；锚点保存真实章节与滚动 (1.6048ms)
+✔ 实际面板滚动保存章节，清理后旧监听与待执行帧不能写新页面 (0.6061ms)
+✔ 进入小试先收尾课程监听，成功交卷后旧cleanup不复活resume (0.5254ms)
+✔ 位置保存失败不阻断课程或覆盖最后有效位置，提供真实反馈 (0.4678ms)
+✔ 失效位置走安全回调，不展示或标记替代课程 (0.3829ms)
+✔ practice只定位试段阅读，不自动开启试卷 (0.4563ms)
+✔ 顶部进入小试也保存试段的阅读位置，清理不能将章节改回引 (0.5337ms)
+✔ 恢复帧执行前退出不覆盖原位置，也不留下后台保存监听 (0.5059ms)
+✔ 页面被替换后迟到的恢复帧不滚动新内容 (0.5257ms)
+✔ 已清理课程的旧按钮不导航、不打开正文或开始小试 (0.9375ms)
+✔ 首课回概览先保存真实正文位置，不丢失尚未执行的滚动帧 (0.5815ms)
+✔ 滚回已保存位置时取消较早待写位置，不把旧滚动覆盖到磁盘 (0.5006ms)
+✔ 恢复帧之前点击章节以本次明确操作为准，不再跳回旧位置 (0.4869ms)
+✔ 正文只在六步阅读控件内显示一份保存反馈，恢复完成后给真实位置反馈 (0.4775ms)
+✔ 保存失败只在状态变化时播报，后续成功可见且不重复播报每次滚动 (1.1161ms)
+✔ 滚动章节采集从粘附阅读控件下方判断，位置本身仍保存实际scrollTop (0.4918ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16.9587
+✔ 温故入口把课程与原题上下文传给加载完成后的学习页 (3.1002ms)
+✔ 学习页导航转发可选上下文，普通导航不沿用上一张原题 (0.8868ms)
+✔ 较旧的学习加载即使最后完成也不能覆盖新原题入口 (0.875ms)
+✔ 课程加载失败不显示原题试卷，重试仍可使用同一入口上下文 (1.0543ms)
+✔ 关闭仍在加载的学习页立即清除忙碌状态，迟到resolve不重开页面 (1.2247ms)
+✔ 关闭仍在加载的学习页立即清除忙碌状态，迟到reject不重开页面 (1.6308ms)
+✔ 关闭后再次打开学习时，旧加载结束不清除新请求的忙碌状态 (1.0431ms)
+✔ 离开学习时在替换正文之前收尾，回星图重复清理仍只执行一次 (0.7752ms)
+✔ 较旧加载不会安装清理函数或销毁当前学习实例 (0.7728ms)
+✔ 占筮重新进入及切换模块前清理旧结果，重复离开不再次执行 (0.79ms)
+✔ 推荐的旧错题入口明确传wrongOnly，普通测验不沿用 (0.561ms)
+✔ 温故与测验转发完整原题和术语返回上下文，离开前执行各自cleanup (0.7238ms)
+✔ 旧卦码入口不补造原题引用，下一次普通测验不继承legacyCode (0.6234ms)
+✔ 迟到review加载不覆盖新入口、焦点或清理函数 (0.8074ms)
+✔ 迟到quiz加载不覆盖新入口、焦点或清理函数 (0.5304ms)
+✔ 原题必需资料加载失败不渲染随机题，重试仍携同一reference (0.5942ms)
+✔ 温故可选加载术语资料，失败不阻断队列；正式术语入口保留加载失败 (1.1003ms)
+✔ 欢迎的零基础路径直接进入首课，其他两条路径保持原含义 (0.5751ms)
+✔ 模式通用聚焦尊重复讲入口，旧帧不聚焦新页或已移除控件 (0.7023ms)
+✔ 术语summary目标优先于标题并保留原生Tab顺序 (0.5654ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26.031
+✔ 搜索查询更换清除旧 aria-activedescendant 与选项选择状态 (3.4212ms)
+✔ 搜索关闭后 Enter 不确认旧结果，方向键不操作隐藏选项 (1.128ms)
+✔ 输入法组合期间 Enter 保留原生输入，不触发搜索动作 (1.7176ms)
+✔ 输入法组合期间 Escape 保留原生输入，不触发搜索动作 (1.5923ms)
+✔ 展开搜索的 Escape 只关建议，第二次 Escape 可冒泡给阅读返回 (0.9067ms)
+✔ 核心索引未就绪只显示局部不可用，不确认看似可用的卦 (0.6795ms)
+✔ 可选关键词迟到不会重新打开已取消的搜索建议 (2.1758ms)
+✔ 可选关键词迟到只能更新当前查询，不能覆盖已经输入的新查询 (1.2369ms)
+✔ 点击外侧非聚焦区域也关闭建议，不改变当前聚焦卦 (0.7027ms)
+✔ 搜索快捷键不穿透 inert 背景或输入法组合 (0.8758ms)
+✔ 正常键盘和结果按钮确认只提交一次聚焦，不调用阅读入口 (1.3355ms)
+✔ 组合结束后按最终文本检索，但只有后续正常确认才聚焦 (0.8722ms)
+✔ 输入框已经失焦时组合结束不重新打开建议 (0.9964ms)
+✔ 关键词失败保留核心搜索，重新聚焦可重试且成功后移除降级提示 (1.4514ms)
+✔ 关键词迟到改变排序后仍按卦码保留键盘选项 (0.6878ms)
+✔ 入口搜索实际接入序号、六位编码和上下卦结构查询 (3.7326ms)
+✔ 非法结构查询清除旧结果并明确提示，空查询关闭建议 (1.2117ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 28.5159
+✔ 真实滚动监听不因边框与亚像素舍入把已定位章节退回上一节 (4.2885ms)
+✔ 用户滚回上一节正文时仍按可见内容更新当前章节 (0.4254ms)
+✔ 关闭学习面板或直接进入读卦前收尾课程，重复退出不再次写位置 (1.2063ms)
+✔ 深读的两项保存失败可见，恢复后只补失败项且不重复奖励或卡片 (4.0011ms)
+✔ 拒绝localStorage getter仍可深读和关闭，恢复后重新进入只补未保存记录 (0.7234ms)
+✔ 失败等待期间的其他学习记录与已复习卡不被补保存覆盖，快读也不能重试 (0.768ms)
+✔ 部分保存后导入旧备份移除成功项，再次深读重新核对持久化证据 (1.1414ms)
+✔ 关闭工作台回到探索时恢复天象舞台及其场景 (0.4318ms)
+✔ 工作台搜索只聚焦并恢复天象舞台 (0.5175ms)
+✔ 快读与深读复用正文草稿，只有深读触发正式阅读和复习 (0.5521ms)
+✔ 切换图式同步退出快读和聚焦，不保留失效摘要 (0.5961ms)
+✔ 退出阅读恢复复制的星图快照且不修改旧布局偏好 (0.555ms)
+✔ 桌面快读期间的新镜头与关系在关闭时保留 (0.4433ms)
+✔ 快读调整后深入研读，退出恢复深入前的镜头 (0.4729ms)
+✔ 直接深链退出后摘要与星图使用同一个聚焦卦 (0.5014ms)
+✔ 直接深链关闭时不把焦点还给 body，改回聚焦摘要入口 (0.6326ms)
+✔ 深读关系跳转后直接关闭仍保留新漫游轨迹 (0.8127ms)
+✔ 天象舞台尚未加载时返回探索不会保留过期暂停原因 (0.8796ms)
+✔ 返回探索只解除工作台暂停，保留仍打开的分享弹窗暂停 (0.8063ms)
+✔ 非模式关闭和无效卦码不提前恢复工作台背景 (0.4344ms)
+✔ 观察层级未变化时不重复改写 HUD DOM (0.5461ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26.1773
+✔ 数字起卦按八取卦、按六取动爻 (0.5506ms)
+✔ 整除时余数取除数本身 (0.0787ms)
+✔ 数字起卦拒绝非正安全整数 (0.728ms)
+✔ 数字起卦拒绝上数与下数溢出安全整数范围 (0.0814ms)
+✔ 时间起卦在同一输入下确定且标记来源 (0.8946ms)
+✔ 时间起卦拒绝无效日期 (0.1039ms)
+✔ 体用分析返回完整五行关系 (0.1209ms)
+✔ 体用五行覆盖生、克与反向关系 (0.1455ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6.133
+✔ 复习队列保留标题状态，单卡保存结果位于四段反馈的学习记录区 (0.6001ms)
+✔ 测验按实际保存结果先显示反馈或重试行动，再聚焦当前行动 (2.5206ms)
+✔ 占筮阶段与结果滚动尊重 reduced-motion (0.1539ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7.3301
+✔ 动效错峰有界，避免长列表拖慢交互 (0.4173ms)
+✔ 动效协调器集中管理可见性、动态节点与清理 (2.1796ms)
+✔ 入口、离线缓存与样式都接入同一代动效系统 (1.2069ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6.0713
+✔ 文件协议入口在加载样式和模块前转向本地 HTTP 服务 (0.8139ms)
+✔ HTTP 页面不会发生额外跳转 (0.8091ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.4868
+✔ 预缓存条目全部指向现有静态资源 (2.2042ms)
+✔ 预缓存只包含首屏核心模块，功能数据按访问缓存 (0.1673ms)
+✔ 缓存资源不再维护重复查询版本号 (0.4617ms)
+✔ 预缓存模块的静态本地依赖可在首次离线时加载 (5.1145ms)
+✔ 页面结构与脚本样式采用同代更新策略 (0.1786ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11.2179
+✔ 生成 opposite 题时答案和候选项完整 (0.9343ms)
+✔ 生成 reversed 题时答案和候选项完整 (0.1378ms)
+✔ 生成 interlocking 题时答案和候选项完整 (0.1278ms)
+✔ 生成 name 题时答案和候选项完整 (0.1228ms)
+✔ 黄历题生成四个带稳定 id 的候选项 (0.4014ms)
+✔ 黄历题不足四项时拒绝出题 (0.1099ms)
+✔ 黄历正向与反向题均使用同一稳定答案 id (0.1891ms)
+✔ 统计与错题本可持久化且忽略空 id (0.7562ms)
+✔ 损坏的本地统计和错题数据会安全回退 (1.0894ms)
+✔ 错题回练可指定目标卦，非法结构和写入失败安全回退 (0.6077ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9.9039
+✔ 精确回练使用完整引用，同一题重复输入只交给协调器一次 (4.3896ms)
+✔ 原题失效显示原因并可返回温故，不随机换题 (1.2829ms)
+✔ 无可用题显示空态和返回学习，未创建作答 (0.7758ms)
+✔ 保存失败逐项说明，重试保留原题原答案，不重新判第二次作答 (2.4154ms)
+✔ 末项以实际保存队列决定返回随机，失败不提前宣称清空 (2.4584ms)
+✔ 销毁后旧按钮与排队焦点回调不会写入或影响下一页面 (1.3228ms)
+✔ 旧摘要单独标明未知题型并按legacy身份回练 (0.8706ms)
+✔ 题目不能建立有效作答身份时显示不可用，不留可提交选项 (0.8041ms)
+✔ 旧版本冲突保留原项，显示保留而不是已保存具体错题或已纠正 (1.8333ms)
+✔ 术语题仍按almanac呈现，来源带真实方向引用并可回原规则 (2.0905ms)
+✔ 失败的原弱项仍在队列，重复重试成功后旧按钮不能改下一轮 (2.3917ms)
+✔ 真实协调器与页面联通：错误保存失败只重试未存部分，再按原规则纠正 (9.8264ms)
+✔ 精确引用与旧摘要同时传入时明确冲突，不生成或选择任一题 (1.0222ms)
+✔ 测验结果按四段呈现，单次正确不宣称掌握且不整块播报 (2.1883ms)
+✔ 四段反馈呈现真实部分保存变化，重试不重建结果或重复提交成功部分 (3.0548ms)
+✔ 术语来源位于依据段，保留完整来路且不占下一步行动数量 (1.8946ms)
+✔ 四段反馈销毁后旧重试、下一题、温故及排队焦点都不影响新页面 (1.4434ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46.3635
+✔ opposite generated reference identifies the actual rule and target (1.2115ms)
+✔ reversed generated reference identifies the actual rule and target (0.1667ms)
+✔ interlocking generated reference identifies the actual rule and target (0.1268ms)
+✔ name generated reference identifies the actual rule and target (0.2099ms)
+✔ almanac name-to-meaning returns a stable independent reference (0.4157ms)
+✔ almanac meaning-to-name returns a stable independent reference (0.0861ms)
+✔ exact replay rejects changed versions, IDs, types and absent sources instead of random fallback (0.1314ms)
+✔ unavailable inputs and insufficient choices produce a safe empty question (0.0898ms)
+✔ statistics use a stable attempt receipt and reject identity reuse with a different result (0.7172ms)
+✔ a failed statistics write retries only once and preserves receipts through legacy calls (0.252ms)
+✔ damaged optional receipts preserve readable totals but block writes and expose field errors (0.1024ms)
+✔ statistics read errors and invalid attempt metadata cannot overwrite existing records (0.1242ms)
+✔ invalid optional arguments are rejected without a throw or statistics write (0.0752ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7.9117
+✔ 具体测验、术语和旧摘要各自可见，唯一到期卦卡不绕过温习列表 (5.5702ms)
+✔ 术语来源携带真实termId和返回温故，不把打开来源写成纠正 (1.3308ms)
+✔ 新旧队列全部完成后显示可理解空态，销毁后的按钮不能导航 (1.404ms)
+✔ 术语资料尚未加载时显示待核对，来源仍保留真实引用 (0.9118ms)
+✔ 具体卦题来源进入原卦卡并可返回同一队列，打开来源不更改弱项 (3.0519ms)
+✔ 尚未引入间隔卡的卦题来源只读，翻面不出现评分，返回恢复原来源焦点 (2.5198ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19.1516
+✔ one wrong round stores a concrete rule, one card and activity without a legacy summary (3.2573ms)
+✔ correct answer to another rule or random repetition does not clear the original weakness (0.7448ms)
+✔ matching almanac direction resolves with stored wrong/review evidence and no hexagram card (1.0273ms)
+✔ stats failure retries that part without re-saving successful effects (0.3769ms)
+✔ weak failure retries that part without re-saving successful effects (0.3349ms)
+✔ review failure retries that part without re-saving successful effects (0.2259ms)
+✔ activity failure retries that part without re-saving successful effects (0.2175ms)
+✔ achievement failure retries that part without re-saving successful effects (0.3817ms)
+✔ legacy failure retries that part without re-saving successful effects (0.2379ms)
+✔ failed weakness persistence cannot emit recovery; retry emits only after the receipt is saved (0.3578ms)
+✔ legacy answer only clears its summary and never fabricates concrete recovery (0.1346ms)
+✔ unreadable and malformed supporting stores are not overwritten (0.6874ms)
+✔ invalid options and answers do not write; a round locks the first valid answer and copies its question (0.2282ms)
+✔ stored duplicate recovery uses its original receipt after a new mistake (0.8115ms)
+✔ an ID bound to a different stored question rejects all new effects (0.1756ms)
+✔ malformed question options return a safe invalid attempt (0.1349ms)
+✔ old same-ID weakness without a receipt does not fabricate statistics or other effects (0.3017ms)
+✔ inherited object names are not treated as existing attempt receipts (0.4571ms)
+✔ accepted long term IDs can save both directions of recovery without exceeding event limits (0.5567ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14.9291
+✔ 自由测验错误与独立回执同键保存，保留课程、位置和旧码摘要 (2.8048ms)
+✔ 只有原规则明确回练才纠正，随机正确和同卦其他题不清原错误 (0.5529ms)
+✔ 重复成功回执零写并保留原恢复证据，后续再次答错也不重推旧恢复 (0.8108ms)
+✔ 同attempt改变答案、模式或任何公开引用均拒绝，不返回恢复证据 (0.2334ms)
+✔ 旧弱项含相同attempt但无回执时保留缺证据状态，不重复累计或补造恢复 (0.2073ms)
+✔ 测验写入口读取异常或基础记录损坏时拒写，不用空回退覆盖旧数据 (0.1925ms)
+✔ 仅新学习键确实缺失才迁移旧浏览，旧源读取失败或损坏也拒写 (0.2864ms)
+✔ 不可用的localStorage getter不会抛出或伪报成功 (0.1146ms)
+✔ 配额失败不保存候选或恢复证据，同attempt恢复后仅保存一次 (0.3145ms)
+✔ 黄历两种提问方向独立回练且不生成卦码 (0.3179ms)
+✔ 旧同ID不同版本或引用保留，回执说明引用冲突且不冒充纠正 (0.4603ms)
+✔ 待回练查询只读排序，按来源过滤并保留明确resolved开关 (0.3343ms)
+✔ 旧缺回执兼容，损坏回执加载保留旧成绩但所有写入口拒绝覆盖 (0.4053ms)
+✔ 新引用严格检查规范ID与版本，不存未知字段、题干、答案或私文 (0.3894ms)
+✔ 回执校验定位字段，恢复事实必须与正确回练和原错误标识一致 (0.2228ms)
+✔ reviewed可纠正但已resolved不重复造新恢复，首次正确不创建弱项 (0.1655ms)
+✔ 课程历史80条截断不裁自由测验回执，任意旧attempt重复仍零写 (5.5334ms)
+✔ 安全整数溢出拒写，特殊attempt键不污染原型且可稳定判重 (0.2584ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18.4607
+✔ 研读正文提供同一份目录、暖纸主体和出处边注 (1.2439ms)
+✔ 快读的五个入口对应可见章节，目录保留所有原有锚点 (0.3108ms)
+✔ 六爻正文按初爻至上爻阅读且保留卦象原始画法 (0.5495ms)
+✔ 窄屏目录与出处默认折叠，宽屏默认展开 (0.3487ms)
+✔ 正文新增的爻位属性不接受注入标记 (0.1739ms)
+✔ 阅读正文继续加载与保存原有笔记，并保留关系回调 (0.5563ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6.3597
+✔ 聚焦和快读不产生正式深读，深读只在有效进入时记录 (0.5061ms)
+✔ 逐层返回保留卦码和章节，最后返回全景 (0.0872ms)
+✔ 无效编码和章节不污染状态；不同卦重新从概览开始 (0.2305ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.1591
+✔ 错卦逐爻变化并准确到达目标卦 (1.3746ms)
+✔ 综卦只交换三对爻，不会在后续帧撤销翻转 (0.1087ms)
+✔ 互卦依次组成下卦与上卦 (0.0765ms)
+✔ 变卦只生成实际变化的爻，未知关系按变卦处理 (0.1042ms)
+✔ 无变化与非法卦码得到明确结果 (0.2487ms)
+✔ 浮层支持减少动态效果、焦点管理、Esc 与计时器清理 (1.5704ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6.6065
+✔ 卦象关系入口使用原生按钮并保留演示按钮 (1.1206ms)
+✔ 卦象详情提供稳定页面标题与可同步的六爻折叠按钮 (0.398ms)
+✔ 卦象与八卦 SVG 爻线继承当前文字颜色 (0.1616ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.6992
+✔ 新卡片立即到期并可持久化 (1.3034ms)
+✔ 只有明确加入的卦象才进入新手复习池 (0.183ms)
+✔ 旧版本批量生成但从未复习的卡片不会继续制造 64 项待办 (0.1206ms)
+✔ 记得会提升阶段，忘记会记录失误并回到一天间隔 (0.2376ms)
+✔ 模糊不会把已学习卡片降为未学习 (0.1757ms)
+✔ saveReview 创建并保存卡片 (0.2749ms)
+✔ 阶段达到上限后保持封顶 (0.088ms)
+✔ 损坏存储读取兼容空列表，保存失败不推进原内存卡 (0.2579ms)
+✔ 非法自评不按记得处理且不修改卡 (0.379ms)
+✔ 一次调度复用显式时间并保留原间隔序列 (0.1565ms)
+✔ 保存失败不修改已有卡或凭空加入内存新卡 (0.2502ms)
+✔ 保存当前卡合并最新其他卡，冲突不覆盖 (0.1662ms)
+✔ 结构不完整的复习数据会回退为空 (0.0728ms)
+✔ 异常时间或计数溢出不会部分推进卡 (0.1527ms)
+✔ 存储损坏时即使写入可用也不从空集合覆盖 (0.0944ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8.6736
+✔ 评分只能在翻面后提交，明确自评并按结果、依据、记录、行动顺序呈现 (9.6202ms)
+✔ card 写失败保留答案与原评分，重试仅补失败项且快速重复不重复排期 (3.3965ms)
+✔ activity 写失败保留答案与原评分，重试仅补失败项且快速重复不重复排期 (2.7302ms)
+✔ achievement 写失败保留答案与原评分，重试仅补失败项且快速重复不重复排期 (2.9819ms)
+✔ 成功反馈重显不增加证据，核对卦辞可返回反馈，再继续才离开本卡 (2.8123ms)
+✔ 同卡快照被其他页面更新时不覆盖，反馈给返回队列而非成功排期 (2.3115ms)
+✔ 非法评分与未翻面评分不写记录；cleanup阻止旧按钮、重试和迟到焦点 (1.9803ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35.0954
+✔ same token saves one card/activity/event, returns independent snapshots and new round can advance (6.4143ms)
+✔ card failure retries only unsaved effects with original rating and time (0.3597ms)
+✔ activity failure retries only unsaved effects with original rating and time (0.235ms)
+✔ achievement failure retries only unsaved effects with original rating and time (0.2369ms)
+✔ rating and time validate before locking; changed rating after first valid submit cannot write (0.2641ms)
+✔ forged tokens, invalid snapshots and storage changes are rejected (0.2481ms)
+✔ unreadable or malformed card collection never replaces existing data or emits evidence (0.3327ms)
+✔ missing current card and same-card snapshot conflicts reject without adding evidence (0.1554ms)
+✔ retry merges latest other cards but never overwrites a changed current card (0.3466ms)
+✔ corrupt activity and achievement are preserved, then only their failed part is retried (0.342ms)
+✔ already recorded activity day does not need a new write; legacy card without introducedAt remains usable (0.221ms)
+✔ two supporting failures can recover independently without resaving the card or the recovered part (0.2457ms)
+✔ late supporting retry preserves a newer completed review card (0.4158ms)
+✔ a single validated raw read protects supporting writers from a later fallback read (0.2281ms)
+✔ supporting read failures preserve data and can retry without repeating successful writes (0.2466ms)
+✔ unavailable default storage keeps the original submitted time for an explicit retry (0.5848ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14.6904
+✔ 搜索解析先识别六位码，再识别卦序与第N卦 (0.9038ms)
+✔ 上下卦解析保留方向，不猜测无方向卦名 (0.2416ms)
+✔ 空串及非法数字查询不伪装为文本搜索 (0.1325ms)
+✔ 搜索选择支持循环方向键与首尾跳转 (0.1043ms)
+✔ 深链接只接受六位阴阳码并保留其他参数 (0.2593ms)
+✔ 卦象详情与课程锚点不会残留在彼此的阅读场景 (0.1106ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.2578
+✔ 分享卡片模型保持卦爻自上而下的视觉顺序 (1.0447ms)
+✔ 长文按画布宽度换行并在超出行数时省略 (0.1684ms)
+✔ 支持文件分享时发送 PNG 文件 (0.1728ms)
+✔ 不支持文件分享时下载 PNG (1.5644ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.2573
+✔ 背景星点密度可复现且随银河云尘变化，暗尘中保留疏空 (1.2688ms)
+✔ 银河纹理可重复生成，调整窗口不会随机更换星空 (19.3892ms)
+✔ 大屏和长屏的背景纹理有固定像素预算并保持比例 (71.8443ms)
+✔ 银河保留暗部与亮尘带，所有像素不透明且亮度低于卦星 (10.8878ms)
+✔ 尚未完成布局或非法尺寸不生成无效画布 (0.1505ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 107.2158
+✔ 卦名与关键词共享 7px 间距，当前卦优先并尝试候选位置 (0.577ms)
+✔ 长词与强制地标没有可用空间时隐藏，避免边缘裁切和强制叠字 (0.354ms)
+✔ 同优先级按稳定标识排序，文字尺寸按字体与文本缓存 (5.3145ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9.9718
+✔ 易象银河按下卦形成八个星团，并以八纯卦作为团内锚点 (0.7758ms)
+✔ 每卦生成六颗自下而上且阴阳可辨的爻星 (0.4366ms)
+✔ 八宫每宫八卦且完整覆盖六十四卦 (0.242ms)
+✔ 十二消息卦保持复至乾、姤至坤的消长次序与常见月令 (0.0812ms)
+✔ 先天视图仅显示八纯卦并采用南上东左的传统图式方向 (0.1474ms)
+✔ 文王卦序与八宫布局覆盖六十四卦并保留可解释分组 (1.222ms)
+✔ 十二消息视图只显示十二卦，未知布局安全回退易象银河 (0.53ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8.4582
+✔ Canvas 提供等价文字关系列表和实时状态，不误报浏览器不支持 (0.5422ms)
+✔ 星图提供五种明确标注来源的阅读图式 (0.1764ms)
+✔ 移动端六个导航入口采用紧凑单行并保留触控高度 (0.1872ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.3848
+✔ 两帧之间模拟推进时，星点命中与悬浮位置仍跟随最后绘制坐标 (1.556ms)
+✔ Canvas尺寸改变清屏时失效旧星点投影，避免在旧位置命中 (0.1614ms)
+✔ 星空背景在镜头转动和减少动态效果时始终使用有效绘制坐标 (0.9935ms)
+✔ 星图空闲时降到 30 FPS，交互或相机移动时恢复 60 FPS (0.0819ms)
+✔ 功能工作区把背景星图降到 15 FPS (0.0754ms)
+✔ 减少动态效果偏好固定使用低帧率 (0.0486ms)
+✔ 关系能量包循环前进并保持三段错峰 (0.0848ms)
+✔ 关键词按焦点、关系和纯卦语义逐层展开 (0.0913ms)
+✔ 视角读数把缩放层级和球面姿态转换为稳定的五度刻度 (0.1732ms)
+✔ 四态观察层级由缩放、焦点和详情阅读状态共同决定 (0.1124ms)
+✔ 页面可见性恢复不会覆盖业务层暂停 (0.1892ms)
+✔ 减少动态时初始 D3 布局直接落在目标位置并停止模拟 (64.4232ms)
+✔ 减少动态时切图、resize 与 resume 不重启 D3，焦点相机随新目标同步 (1.1599ms)
+✔ 动态偏好切换立即稳定节点，业务暂停期间取消减少动态也不重启 (0.3541ms)
+✔ 星图把可见星群的中心、包围半径和镜头姿态同步给 WebGL 外轨 (0.2052ms)
+✔ 星图尺寸变化时同步缩放当前焦点相机，避免面板开合后坐标漂移 (0.1573ms)
+✔ 关系漫游只保留最近 5 段轨迹 (0.0993ms)
+✔ 星图关系层只显示当前有向关系，变卦必须指定动爻 (0.1863ms)
+✔ 普通卦名使用实测宽度防碰撞，并优先保留重要标签 (0.265ms)
+✔ 悬停、焦点和八纯卦标签通过换位避免强制叠字 (0.2058ms)
+✔ 入场每会话一次且减少动态时直接呈现 (0.0748ms)
+✔ 星核上按下不选卦，抬起才确认，拖动超过 6px 或取消不误选 (0.3503ms)
+✔ 视角快照深复制镜头、焦点、关系、图式与自动巡天 (0.2334ms)
+✔ 快读与全景尺寸变化后恢复镜头按空间半径换算 (0.1133ms)
+✔ 聚焦镜头在 450ms 完成，减少动态立即完成 (0.0893ms)
+✔ 卦名和关键词共用布局，当前最多三词、关系最多一词 (0.3005ms)
+✔ 标签布局在 100ms 内复用，焦点或视口显著变化时立即更新 (0.2274ms)
+✔ 焦点标签不受入场标签延迟影响 (0.0783ms)
+✔ 经典图式总览只常驻结构地标，选卦后展开当前关系节点 (0.1296ms)
+✔ 普通卦名碰撞框保持 7px 屏幕间距 (5.001ms)
+✔ 相同重要度的碰撞标签优先保留前景卦名 (0.1316ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 81.0614
+✔ a second touch cancels the active drag and releases capture without selecting a star (1.2301ms)
+✔ a second touch also cancels a pending tap before the drag threshold (0.1358ms)
+✔ a second pointer outside the canvas also cancels the captured canvas gesture (0.1208ms)
+✔ window blur cancels a pending gesture, so a later pointerup cannot select (0.1ms)
+✔ backgrounding clears the drag before pausing the scene (0.129ms)
+✔ destroy cancels capture and removes its window blur listener (0.1307ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.5984
+✓ 节点数=4
+✓ 边数>=1
+✓ 乾→坤存在错卦边
+✓ 乾→坤边含 opposite 类型
+✓ 泰→否至少1条边
+✓ 节点含 degree
+✓ 111000—000111 保留多重关系
+✓ 111000→000111 保留有向关系
+✓ 011001—100110 保留多重关系
+✓ 011001→100110 保留有向关系
+✓ 001011—110100 保留多重关系
+✓ 001011→110100 保留有向关系
+✓ 101010—010101 保留多重关系
+✓ 101010→010101 保留有向关系
+✓ 变卦关系保存具体动爻条件
+✓ 互卦作为有向发生记录保留起点和终点
+
+全部通过
+✔ 安全 JSON 读写、删除和结构判断 (0.879ms)
+✔ 损坏、类型不符、无存储和异常均安全回退 (0.1702ms)
+✔ localStorage getter 被浏览器拒绝时也安全降级 (0.1102ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4.8857
+✔ 界面、阅读与标题使用分工明确的中文字体栈 (0.6786ms)
+✔ 全站字号建立 15px 硬底线并按层级递增 (0.3691ms)
+✔ 中文短语按控件原子、均衡标题和正文三层处理换行 (0.7166ms)
+✔ 卦名复合标题在详情、分享、占筮和复习中使用同一不可拆分结构 (0.396ms)
+✔ 详情、研读笺和辅助说明不再以裁切或横向滑动隐藏文本 (0.3774ms)
+✔ Canvas 经典图式标签和图式说明具有清晰的字号下限 (0.1265ms)
+✔ 卦序轮盘仅显示当前扇区，避免 64 个放大标签互相覆盖 (0.2192ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6.8661
+✔ 本地 Lucide 图标只创建白名单 SVG，默认从辅助技术中隐藏 (1.4044ms)
+✔ 图标安装可重复调用，切换图标时只更新图形而保留宿主及按钮语义 (0.2335ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5.0486
+✔ 导出仅包含项目数据并可重新导入 (2.118ms)
+✔ 解析会拒绝损坏、超限或未知版本的备份 (1.0547ms)
+✔ 导入忽略未知键并按 null 删除已知键 (0.0941ms)
+✔ 坏复习卡在写入前被拒绝且不会覆盖旧数据 (0.1542ms)
+✔ 通用备份包含成就状态并可完整往返 (0.2419ms)
+✔ 正式考评ID随备份往返，旧备份缺字段仍合法 (0.2104ms)
+✔ 导入拒绝损坏考评ID并定位具体字段或元素，拒绝前不写其他键 (0.3579ms)
+✔ 课程弱项按原十一键备份往返，合法历史版本与来源定位不被重写 (0.6692ms)
+✔ 非法弱项逐字段定位，导入校验完成前不写任何其他键 (1.0738ms)
+✔ 旧备份缺弱项合法，学习键按缺失保留、null删除和整键替换恢复 (0.2069ms)
+✔ 导入写失败回滚旧成绩和弱项，其他键也恢复 (0.599ms)
+✔ 续读位置沿原十一键备份往返，旧缺字段和 null 位置兼容 (0.5727ms)
+✔ 非法续读在导入前报告具体路径，不覆盖成绩、旧位置或其他键 (0.6914ms)
+✔ 含续读的备份写入失败尝试回滚原位置、成绩、弱项和其他键 (0.1589ms)
+✔ 自由测验回执与统计按原十一键往返，旧缺字段保持兼容 (0.4ms)
+✔ 坏自由回执导入报告字段位置，验证前不写其他键 (0.4169ms)
+✔ 坏测验统计attempts导入使用引擎字段路径且保持旧值 (0.2354ms)
+✔ 导入回执后续键写失败仍尝试回滚学习与统计两套原证据 (0.1859ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14.3191
+✓ JD 2000/1/1 12:00 值: 2451545.0000 (期望≈2451545, 容差0.0001)
+✓ JD往返-年: 2000.0000 (期望≈2000, 容差0)
+✓ JD往返-月: 1.0000 (期望≈1, 容差0)
+✓ JD往返-日: 1.0000 (期望≈1, 容差0)
+✓ JD往返-时: 12.0000 (期望≈12, 容差0)
+✓ JD往返-分: 0.0000 (期望≈0, 容差0)
+✓ JD往返2-年: 2026.0000 (期望≈2026, 容差0)
+✓ JD往返2-月: 7.0000 (期望≈7, 容差0)
+✓ JD往返2-日: 1.0000 (期望≈1, 容差0)
+✓ JD往返2-时: 8.0000 (期望≈8, 容差0)
+✓ JD往返2-分: 30.0000 (期望≈30, 容差0)
+✓ 2024/7/1 太阳黄经: 99.6657 (期望≈99.6, 容差3)
+✓ 2026夏至(90°): 北京 2026/6/21 16:18 (期望 6/21 16.4h, 容差1h)
+✓ 2026小暑(105°): 北京 2026/7/7 09:47 (期望 7/7 9.95h, 容差1h)
+✓ 2026大暑(120°): 北京 2026/7/23 03:11 (期望 7/23 3.22h, 容差1h)
+✓ 2026立秋(135°): 北京 2026/8/7 19:38 (期望 8/7 19.7h, 容差1h)
+✓ 2025冬至(270°): 北京 2025/12/21 22:59 (期望 12/21 23.03h, 容差1h)
+✓ 定朔-2026春节: 北京 2026/2/17 (期望 2026/2/17)
+✓ 月亮黄经范围: 290.22 (应 0-360)
+
+全部通过
+✓ 天干10项
+✓ 地支12项
+✓ 生肖12项
+✓ 六十甲子60项
+✓ 纳音60项
+✓ 六十甲子序=干[k%10]+支[k%12]
+✓ 2026年=丙午年(马)  → 丙午/马
+✓ 2024年=甲辰年(龙)  → 甲辰/龙
+✓ 2024/2/3立春前=癸卯年  → 癸卯/兔
+✓ 2024/2/4立春后=甲辰年  → 甲辰/龙
+✓ 1984年=甲子年(idx0)  → idx0 甲子
+✓ 2000/1/1=戊午日(idx54)  → idx54 戊午
+✓ 2026/7/1=丙子日(idx12)  → idx12 丙子
+✓ 2024/2/10春节=甲辰日  → 甲辰
+✓ 2025/1/29春节=戊戌日  → 戊戌
+✓ 日干支JD输入与Date一致  → JD:丙子 Date:丙子
+✓ 2024/2/10=丙寅月  → 丙寅
+✓ 2025/1/29=丁丑月  → 丁丑
+✓ 2026/7/1=甲午月  → 甲午
+✓ 甲年正月丙寅(甲己丙作首)  → 丙寅
+✓ 乙年正月戊寅(乙庚戊为头)  → 戊寅
+✓ 2026/7/1午时=甲午  → 甲午
+✓ 2026/7/1子时=戊子  → 戊子
+✓ 2026/7/1早子时=戊子  → 戊子
+✓ 甲日子时=甲子(甲己还加甲)  → 甲子
+✓ baZi四柱一致  → 丙午年 甲午月 丙子日 甲午时
+
+全部通过
+✓ hexagrams 是数组
+✓ trigrams 是数组
+✓ wings 是数组
+✓ theorems 是数组
+✓ almanacTerms 是数组
+✓ almanacYiji 是对象
+✓ hexagrams 64 卦
+✓ trigrams 8 卦
+✓ wings >= 4 篇
+✓ theorems >= 5 条
+✓ almanacTerms >= 50 条
+✓ almanacYiji >= 20 项
+✓ hexagrams 非 undefined
+✓ trigrams 非 undefined
+✓ wings 非 undefined
+✓ theorems 非 undefined
+✓ almanacTerms 非 undefined
+✓ almanacYiji 非 undefined
+✓ 全部数据可序列化
+✓ state.almanacTerms 已赋值
+✓ state.almanacYiji 已赋值
+
+全部通过
+✓ 2026/7/1             → 丙午年 5月 17日 (期望 丙午年 5月 17日)
+✓ 2026春节               → 丙午年 1月 1日 (期望 丙午年 1月 1日)
+✓ 2025春节               → 乙巳年 1月 1日 (期望 乙巳年 1月 1日)
+✓ 2023闰二月初一(关键)        → 癸卯年 闰2月 1日 (期望 癸卯年 闰2月 1日)
+✓ 2025冬至次日             → 乙巳年 11月 2日 (期望 乙巳年 11月 2日)
+✓ 2024春节               → 甲辰年 1月 1日 (期望 甲辰年 1月 1日)
+✓ 朔月天数均为29/30: 通过
+✓ 非闰月月序按中气递增: 通过 (11,12,1,2,3,4,5,6,7,8,9,10,11,12,1)
+✓ 2026/2/16(春节前) → 乙巳年 12月 29日 (期望 乙巳年 腊月)
+✓ 2023/3/28(闰二月内) → 闰2月 7日
+✓ 2026/2/17 00/12/23 → 2026-1-1 / 2026-1-1 / 2026-1-1
+✓ 2033/12/22 00/12/23 → 2033-闰11-1 / 2033-闰11-1 / 2033-闰11-1
+✓ 2034/1/20→2/19 → 2033年12月1日 / 2034年1月1日
+
+全部通过
+✓ 查阅-64卦列表
+✓ 查阅-卦象详情(乾)
+✓ 查阅-卦象详情(未填经文的卦也测)
+✓ 八卦基础页
+✓ 学习-十翼
+✓ 学习-象数
+✓ 学习-学习路径
+✓ 学习-统一入口
+✓ 复习模式
+✓ 测验模式
+✓ 占筮模式
+✓ 黄历主页
+✓ 黄历知识页
+
+全部页面渲染通过
+✔ 建除值位：2026/7/1（丙子日，月支午）= 破 (4.5188ms)
+✔ 建除值位：2025/1/1（庚午日，月支子，大雪节气内）= 破 (0.262ms)
+✔ 建除值位：建日（月支与日支相同）offset=0 (0.5761ms)
+✔ 建除值位连续性：相邻日值位差 1 (0.6043ms)
+✔ 建除值位：覆盖全部 12 值位可遍历（取不跨节气的连续段） (1.3043ms)
+✔ 二十八宿值日：2026/7/1 = 箕水豹 (0.1101ms)
+✔ 二十八宿值日：2025/1/1 = 参水猿 (0.0606ms)
+✔ 二十八宿值日：2026/6/30 = 尾火虎 (0.0502ms)
+✔ 二十八宿连续性：逐日轮转，每相邻日 idx 差为 1（mod 28） (0.0982ms)
+✔ 二十八宿：XIU_NAMES 共28个且无重复 (0.108ms)
+✔ 彭祖百忌：2026/7/1（丙子日）→ 丙不修灶 + 子不问卜 (0.1587ms)
+✔ 彭祖百忌：癸亥日 → 癸不词讼 + 亥不嫁娶 (0.0881ms)
+✔ 彭祖百忌：十干忌表与十二支忌表完整 (0.1071ms)
+✔ 宜忌综合：2026/7/1（破日）输出非空，且破日大忌 (0.1513ms)
+✔ 宜忌综合：成日宜嫁娶开市 (0.098ms)
+✔ 宜忌综合：yi 与 ji 不重叠（同一事项不应同时宜又忌） (0.0959ms)
+✔ dailySelection：返回完整择日信息 (0.1806ms)
+✔ getTermReading：按 id 查建除术语 (0.0678ms)
+✔ getTermReading：按 name 查二十八宿 (0.0449ms)
+✔ getTermReading：查不到返回 null (0.026ms)
+✔ termsByCategory：分类筛选正确 (0.0412ms)
+✔ buildDailyReading：2026/7/1 生成完整解读段落 (0.3909ms)
+✔ 术语库结构完整：每条有 name/meaning，yi/ji 为数组 (0.0876ms)
+✔ 宜忌映射结构完整：每项有 yi/ji 数组且值位合法 (0.1455ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13.5716
+✓ 2026夏至: 北京 2026/6/21 16:18 (期望 6/21 16.40h, 容差1h)
+✓ 2026小暑: 北京 2026/7/7 09:47 (期望 7/7 9.95h, 容差1h)
+✓ 2026大暑: 北京 2026/7/23 03:11 (期望 7/23 3.22h, 容差1h)
+✓ 2026立秋: 北京 2026/8/7 19:37 (期望 8/7 19.70h, 容差1h)
+✓ 2025冬至: 北京 2025/12/21 22:59 (期望 12/21 23.03h, 容差1h)
+✓ 2024立春: 2/4 (期望 2/3-5)
+✓ 2024春分: 3/20 (期望 3/19-21)
+✓ 2024清明: 4/4 (期望 4/4-6)
+✓ 2024冬至: 12/21 (期望 12/21-23)
+✓ 2026大寒: 1/20 (期望 1/19-21)
+✓ 2026惊蛰: 3/5 (期望 3/5-7)
+✓ 节气常量数量: 24
+✓ 春分起点: 春分 0°
+✓ 惊蛰末点: 惊蛰 345°
+✓ currentSolarTerm 2026/7/1: current=夏至 next=小暑 (期望 夏至→小暑)
+✓ currentSolarTerm 天数: since=9 toNext=6 (期望 9/6)
+✓ currentSolarTerm 2026/1/3: current=冬至 next=小寒 (期望 冬至→小寒)
+
+全部通过
+✓ 测试脚本通过：75 个
+
+质量检查全部通过
+
+> yijing-atlas@1.1.1-rc.2 test:coverage
+> node --test --experimental-test-coverage --test-coverage-lines=90 --test-coverage-branches=90 --test-coverage-functions=90 --test-coverage-include=web/js/achievement-catalog.js --test-coverage-include=web/js/achievement-engine.js --test-coverage-include=web/js/achievement-storage.js --test-coverage-include=web/js/data-loader.js --test-coverage-include=web/js/guaxu-wheel.js --test-coverage-include=web/js/divination-engine.js --test-coverage-include=web/js/divination-interpretation.js --test-coverage-include=web/js/divination-history.js --test-coverage-include=web/js/evolution-state.js --test-coverage-include=web/js/hexagram-utils.js --test-coverage-include=web/js/learning-assessment.js --test-coverage-include=web/js/learning-curriculum.js --test-coverage-include=web/js/learning-progress.js --test-coverage-include=web/js/learning-review.js --test-coverage-include=web/js/meihua-engine.js --test-coverage-include=web/js/quiz-engine.js --test-coverage-include=web/js/quiz-session.js --test-coverage-include=web/js/review-engine.js --test-coverage-include=web/js/review-session.js --test-coverage-include=web/js/learning-feedback.js --test-coverage-include=web/js/search-controller.js --test-coverage-include=web/js/star-relations.js --test-coverage-include=web/js/storage.js web/test/*.test.mjs
+
+✔ 首发目录包含十二枚可解释成就且标识唯一 (2.2206ms)
+✔ 能力维度和五阶三状态形成完整成长契约 (1.5014ms)
+✔ 事件工厂使用可注入时间与随机源并拒绝危险字段 (2.4107ms)
+✔ 完成首课与小试后解锁且重复事件保持幂等 (1.321ms)
+✔ 十二枚成就均可由真实学习证据达成 (16.0918ms)
+✔ 修改重交按同一案例保留较高成绩且独立边界确认按主题去重 (0.2799ms)
+✔ 无效状态安全降级、批处理忽略坏事件并支持旧版事件迁移 (0.269ms)
+✔ 损坏、缺失和旧版状态均安全加载 (3.4911ms)
+✔ localStorage getter 被拒绝时成就状态仍安全回退 (0.1583ms)
+✔ 事件处理可持久化且重复提交不重复写入 (0.2988ms)
+✔ 写入失败与非法状态返回明确结果 (0.4257ms)
+✔ 成就数据可导出、解析并导入另一存储 (2.1316ms)
+✔ 原术语按稳定ID展开并在外层归零后定位，保留上下文返回 (5.0427ms)
+✔ 术语已失效有真实原因与返回，不展开其他术语冒充原来源 (1.4195ms)
+✔ 销毁或替换DOM后来源定位不再滚动/抢焦点，返回也失效 (0.9264ms)
+✔ 黄历术语使用按钮，并提供完整的模态弹层键盘交互 (24.1493ms)
+✔ 黄历默认日期按 Asia/Shanghai 历日而非设备时区确定 (14.6105ms)
+✔ 机械转盘节奏先加速再减速并在落卦前停止 (0.726ms)
+✔ 机械转盘节奏拒绝无效和过短时长 (0.4622ms)
+✔ 各功能区域映射到对应声景且跳过禁用与转盘按钮 (0.2293ms)
+✔ 铜钱声由三枚铜钱的初次碰撞与逐级衰减反弹组成 (0.2301ms)
+✔ 机械转盘合成轮毂与棘轮声并以多层锁止音收尾 (2.9647ms)
+✔ viewport acknowledgement before media change waits for coherent quick-reading modality (2.5109ms)
+✔ deep reading waits for its panel and URL to agree with the stage (1.3973ms)
+✔ a permanently incorrect modal still fails with actual viewport and expected state (1.7784ms)
+✔ an inconsistent open panel or deep link cannot pass a quick-reading assertion (2.6644ms)
+✔ closed reading requires both the panel and deep link to be cleared (1.595ms)
+✔ visible-state convergence does not skip the existing readable-content assertion (1.7352ms)
+✔ WebGL 超大屏严格遵守五百万 backing-store 像素预算 (1.0237ms)
+✔ 天象舞台按模式与设备能力限制帧率 (0.1303ms)
+✔ 不可见或减少动态时停止连续渲染 (0.0642ms)
+✔ 空间系带保持端点准确并在中段抬升 (0.7056ms)
+✔ WebGL 舞台具备上下文恢复与资源释放保护 (0.8023ms)
+✔ 未完成内容保持发布门禁关闭，但来源目录可独立校验 (2.3759ms)
+✔ 发布状态要求底本已登记且六十四卦全部双人校对 (1.0272ms)
+✔ 缺项、空原文与单人校对会阻断发布 (0.2567ms)
+✔ 六十四卦原文、易传与项目导读均有明确且不混并的出处层级 (1.7817ms)
+✔ 象数条目明确标为传统资料并保留流派边界 (0.1901ms)
+✓ 欢迎三入口保留名称与模态交互，今日卦引文在窄屏可换行
+✔ web\test\daily-overlay-layout.test.mjs (966.6834ms)
+✔ 浏览器启动只取核心数据，功能数据首次进入时加载并复用 (12.7196ms)
+✔ HTTP 错误包含资源路径和状态码 (0.4631ms)
+✔ 核心数据自检覆盖数量、唯一性、卦序和爻码一致性 (4.8698ms)
+✔ 功能数据失败后可重试，索引和全文搜索可用 (4.3238ms)
+✔ 搜索与星图并发复用同一关键词加载，成功缓存可显式重置 (1.1042ms)
+✔ 关键词HTTP和JSON失败清理缓存，后续调用可重试 (0.3022ms)
+✔ 坏关键词结构拒绝并可重试，核心卦数据与正文搜索不受阻断 (14.2812ms)
+✔ 星图关键词结构失败保留无关键词降级，之后能复用修复资料 (0.3124ms)
+✔ 搜索六位码与卦序明确匹配，不把编码转成数字 (0.2818ms)
+✔ 上下卦搜索使用真实八卦数据和结构字段，保留自下而上编码 (0.6514ms)
+✔ 卦名和全称精确命中优先，普通文本结果按文王卦序稳定排序 (0.6899ms)
+✔ 多字段和重复数据命中去重，名称包含优先于关键词及正文 (0.2387ms)
+✔ 关键词是可选增强，缺失或损坏不阻断核心搜索 (0.926ms)
+✔ 空串及非法序号编码返回空结果，即使正文包含该字符串 (0.1064ms)
+✔ 铜钱和数正确映射四种爻象 (1.2481ms)
+✔ 六次老阴得到坤卦并全变为乾卦 (0.3796ms)
+✔ 无变爻取本卦卦辞，一变爻取对应爻辞 (0.5255ms)
+✔ 乾卦六爻全变取本卦用九，不误取之卦用六 (0.2218ms)
+✔ 坤卦六爻全变取本卦用六，不误取之卦用九 (0.1246ms)
+✔ 二爻变保留两条爻辞并以上爻为主，三爻变合看两卦 (0.5048ms)
+✔ 四爻变保留变卦两条不变爻并以下爻为主，五爻变取唯一不变爻 (0.6129ms)
+✔ 六爻全变且无用辞时回退到变卦卦辞 (0.161ms)
+✔ 非变爻起卦保持本卦不变 (0.1119ms)
+✔ 占筮记录按新到旧保存并可清空 (11.2924ms)
+✔ 旧版记录保留并明确标记为仅有卦象摘要 (0.9342ms)
+✔ 历史满50条后同一毫秒新增的案例仍有独立且持久的标识 (12.2303ms)
+✔ 非法历史、非法卦码和写入失败安全处理 (0.2708ms)
+✔ 生成案例标识失败时保留旧历史并返回保存失败 (0.4678ms)
+✔ 金钱卦解释为每一卦提供原文出处、通俗释义和现实边界 (2.3402ms)
+✔ 无变爻解释当前结构并说明不会形成之卦 (0.1424ms)
+✔ 乾坤全变引用用九、用六并给出对应通俗解释 (0.2505ms)
+✔ 梅花易数解释交代起卦公式、体用术语与简化边界 (0.282ms)
+✔ 梅花易数五种体用关系都有通俗解释 (0.1732ms)
+✔ 金钱V2同一历史重放重复提交沿用同一subject，导出导入后仍幂等 (35.4106ms)
+✔ 梅花完整历史重放保持既有稳定subject且不新增历史 (5.6879ms)
+✔ 旧摘要不生成分析证据或补造六爻；仅保留研读入口 (1.4488ms)
+✔ 主动新掷相同卦码仍产生独立案例并保留正常自动历史 (4.6417ms)
+✔ coin首次结果与首次历史回看提交属于同一案例 (3.8962ms)
+✔ coin历史保存失败时本次分析身份稳定，下一次起卦仍独立 (3.7635ms)
+✔ meihua首次结果与首次历史回看提交属于同一案例 (2.3646ms)
+✔ meihua历史保存失败时本次分析身份稳定，下一次起卦仍独立 (4.0024ms)
+✔ coin解卦结果为四段勾选自评反馈，不冒称结构化检验或添加后置入口 (2.9704ms)
+✔ coin自评保存失败锁定原事件，仅保存重试且成功部分不重写 (2.2093ms)
+✔ coin首次失败、重试失败与恢复后原状态节点只位于学习记录段 (2.4054ms)
+✔ meihua解卦结果为四段勾选自评反馈，不冒称结构化检验或添加后置入口 (1.7284ms)
+✔ meihua自评保存失败锁定原事件，仅保存重试且成功部分不重写 (1.6682ms)
+✔ meihua首次失败、重试失败与恢复后原状态节点只位于学习记录段 (1.9714ms)
+✔ 历史案例已有成绩时反馈说明保存的旧分，不声称本次不同自评分已入库 (3.5657ms)
+✔ 旧已处理标识缺研读明细时不补造或展示未定义分数 (2.6257ms)
+✔ 解卦保存失败及成功重试由产品滚动实际主行动再聚焦 (1.6427ms)
+✔ 解卦first-submit遇到read-failed不写成就，恢复后保留原事件与旧证据 (2.2644ms)
+✔ 解卦first-submit遇到invalid-json不写成就，恢复后保留原事件与旧证据 (2.2287ms)
+✔ 解卦first-submit遇到invalid-legacy不写成就，恢复后保留原事件与旧证据 (2.1481ms)
+✔ 解卦retry遇到read-failed不写成就，恢复后保留原事件与旧证据 (2.3755ms)
+✔ 解卦retry遇到invalid-json不写成就，恢复后保留原事件与旧证据 (2.7364ms)
+✔ 解卦retry遇到invalid-legacy不写成就，恢复后保留原事件与旧证据 (2.2187ms)
+✔ 解卦严格读取仍兼容有效V0成就事件，并只使用一次校验过的原始快照 (2.5543ms)
+✔ cleanup后旧解卦提交和重试不写入当前状态 (2.5542ms)
+✔ tab后旧解卦提交和重试不写入当前状态 (3.0101ms)
+✔ recast后旧解卦提交和重试不写入当前状态 (1.4479ms)
+✔ history后旧解卦提交和重试不写入当前状态 (1.305ms)
+✔ rerender后旧解卦提交和重试不写入当前状态 (1.6943ms)
+✔ tab后尚未提交的旧勾选控件不能补写旧案例 (1.0366ms)
+✔ recast后尚未提交的旧勾选控件不能补写旧案例 (1.2196ms)
+✔ history后尚未提交的旧勾选控件不能补写旧案例 (1.2349ms)
+✔ rerender后尚未提交的旧勾选控件不能补写旧案例 (1.1953ms)
+✔ 离页或换方式后旧起卦控件和排队RAF不写数据或抢焦点 (4.497ms)
+✔ 逐爻变化保持自下而上的位序并记录历史 (1.7834ms)
+✔ 撤销、重做和新分支会正确维护历史 (0.2416ms)
+✔ 错综互预设始终从原卦计算 (0.1263ms)
+✔ 重置可撤销，快照解析结果卦和控制状态 (0.1179ms)
+✔ 历史边界操作保持状态稳定，未知结果安全回退 (0.0609ms)
+✔ 演示帧按初爻到上爻依次生成且包含起止卦 (0.0947ms)
+✔ 无效卦码、爻位、预设和状态会被拒绝 (0.4377ms)
+✔ 当前卦义随帧解析并带有经传定位 (1.3582ms)
+✔ 单帧变化同时解析前后爻辞、小象和项目释义 (0.1683ms)
+✔ 无效分区、卦象和爻位会被拒绝 (0.3107ms)
+✔ 角度归一化并从顶部指针反推卦序索引 (1.5606ms)
+✔ 随机边界可抽中首卦与末卦并精确停在指针下 (0.2402ms)
+✔ 连续抽取从当前角度向前旋转且保持映射稳定 (0.1313ms)
+✔ 全部六十四个索引都能映射到固定指针 (0.0852ms)
+✔ 非法角度、数量、随机值和圈数会被拒绝 (0.3856ms)
+✔ orderRemark 说明当前卦承接前序的理由，且覆盖完整文王卦序 (1.6126ms)
+✔ 序卦上下经边界及末卦文本保持可靠链条 (0.1938ms)
+✔ fill-all 生成链不会回写旧版错位序卦说明 (139.31ms)
+✓ 互卦(泰111000)=归妹110100
+✓ 互卦(乾111111)=乾111111
+✓ 变卦(乾111111, pos1)=姤011111
+✓ 变卦(乾111111, pos2)=同人101111
+✓ 变卦(坤000000, pos1)=复100000
+✓ 泰错=否000111
+✓ 泰综=否000111
+✓ 泰互=归妹110100
+✓ 泰变是数组(6个)
+✓ 泰变[0]=升011000
+✓ 下卦/上卦拆分
+✓ 上下卦组合
+✓ 初九/六五/上六爻题
+✓ 阴阳当位判断
+✓ 非法卦码会拒绝
+✓ 非法爻位会拒绝
+
+全部通过
+✔ web\test\hexagram-utils.test.mjs (1009.5575ms)
+✔ 紧凑星仪常驻图式和关系，辅助内容由语义按钮控制并默认隐藏 (0.808ms)
+✔ 聚焦与阅读层提供独立入口，保留现有六导航及三种开始路径 (0.8082ms)
+✓ 布局响应式契约测试通过
+✔ web\test\layout-contract.test.mjs (988.0711ms)
+✔ 复讲lesson后旧success不写记录、不覆盖当前界面或finally状态 (5.2607ms)
+✔ 复讲lesson后旧failure不写记录、不覆盖当前界面或finally状态 (0.7909ms)
+✔ 复讲response后旧success不写记录、不覆盖当前界面或finally状态 (0.6324ms)
+✔ 复讲response后旧failure不写记录、不覆盖当前界面或finally状态 (0.5461ms)
+✔ 复讲self后旧success不写记录、不覆盖当前界面或finally状态 (0.671ms)
+✔ 复讲self后旧failure不写记录、不覆盖当前界面或finally状态 (1.1049ms)
+✔ 复讲quiz后旧success不写记录、不覆盖当前界面或finally状态 (2.9743ms)
+✔ 复讲quiz后旧failure不写记录、不覆盖当前界面或finally状态 (0.7773ms)
+✔ 复讲hub后旧success不写记录、不覆盖当前界面或finally状态 (0.7ms)
+✔ 复讲hub后旧failure不写记录、不覆盖当前界面或finally状态 (0.6749ms)
+✔ 复讲cleanup后旧success不写记录、不覆盖当前界面或finally状态 (1.3431ms)
+✔ 复讲cleanup后旧failure不写记录、不覆盖当前界面或finally状态 (0.7806ms)
+✔ 旧复讲finally不能解锁后继请求；双提交只发送一次当前请求 (1.7372ms)
+✔ ai复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩 (1.5083ms)
+✔ ai复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.7751ms)
+✔ ai复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.6858ms)
+✔ self复讲score保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.6933ms)
+✔ self复讲activity保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.7651ms)
+✔ self复讲both保存失败仅补失败部分，同轮双击不新增POST或成绩 (0.6242ms)
+✔ 复讲原文不足20字就地说明并聚焦，不POST、不保存 (0.6137ms)
+✔ 复讲自评结果由页面主动显示并获得焦点 (0.7191ms)
+✔ 复讲自评保存失败说明由页面主动显示并获得焦点 (0.6006ms)
+✔ 复讲结果定位帧在离页后失效，不抢回焦点 (0.6553ms)
+✔ 复讲失败可本地自评；四段反馈依据可读，模型文本转义且不存正文 (1.4545ms)
+✔ ai复讲成功结果指向本轮原课，离开不补写或新增评阅 (0.8549ms)
+✔ ai复讲保存失败结果指向本轮原课，离开不补写或新增评阅 (0.7015ms)
+✔ self复讲成功结果指向本轮原课，离开不补写或新增评阅 (0.5398ms)
+✔ self复讲保存失败结果指向本轮原课，离开不补写或新增评阅 (0.5916ms)
+✔ 复讲lesson后旧来源按钮不导航或保存 (0.6374ms)
+✔ 复讲response后旧来源按钮不导航或保存 (0.5283ms)
+✔ 复讲self后旧来源按钮不导航或保存 (1.7089ms)
+✔ 复讲new后旧来源按钮不导航或保存 (0.7506ms)
+✔ 复讲quiz后旧来源按钮不导航或保存 (0.7577ms)
+✔ 复讲hub后旧来源按钮不导航或保存 (0.7415ms)
+✔ 复讲cleanup后旧来源按钮不导航或保存 (0.5616ms)
+✔ 复讲retry后旧来源按钮不导航或保存 (0.8063ms)
+✔ 课程考评沿用四段反馈，既有依据、保存重试及返回行动仍可达 (1.7982ms)
+✔ 复讲入口选定具体课程并聚焦复讲，不误开小试或写学习成绩 (0.6302ms)
+✔ 明确复讲入口在外层标题RAF之后获得焦点，并声明本次焦点目标 (0.5464ms)
+✔ 复讲入口退出后旧RAF不聚焦已脱离的输入或新页面标题 (0.5059ms)
+✔ 容器整体移除后复讲RAF不再聚焦旧内容 (0.5287ms)
+✔ 清理保留DOM后初始题卷标题RAF不再滚动或聚焦 (0.4645ms)
+✔ 清理保留DOM后初始复讲入口RAF不再滚动或聚焦 (0.4305ms)
+✔ 重绘后旧表单change不读取新控件或改写仍保留的本轮草稿 (0.6765ms)
+✔ 旧未交卷表单submit不得改写新卷状态或移动新卷焦点 (0.7139ms)
+✔ 十题全错长卷保存失败定位保存状态，重试成功返回结果焦点 (2.0898ms)
+✔ 结果定位排队后清理页面不滚动或聚焦旧保存状态 (0.6924ms)
+✔ 原题回练保留默认三题，重绘沿用会话而不同原题开启新卷 (1.4936ms)
+✔ 失效原题或版本不随机替题，保留回原课和温故的真实回调 (0.8017ms)
+✔ 错题保存失败不显示已加入，原会话重试成功后按持久化记录显示 (1.597ms)
+✔ 结果原课携带原题，原题回练新会话答对后才显示本轮已纠正 (1.3283ms)
+✔ 结果内新开原题回练后，父页面同入口重绘仍保留该新卷及答案 (0.7842ms)
+✔ 结果重绘从持久化读取状态，不把已移除的旧记录仍说成已加入 (0.8184ms)
+✔ 结果不把 questionType 不同的 due 旧温习记录归于当前题 (1.2342ms)
+✔ 结果不把 questionType 不同的 resolved 旧温习记录归于当前题 (1.1362ms)
+✔ 结果不把 targetCode 不同的 due 旧温习记录归于当前题 (1.0987ms)
+✔ 结果不把 targetCode 不同的 resolved 旧温习记录归于当前题 (0.9748ms)
+✔ 结果不把 termId 不同的 due 旧温习记录归于当前题 (1.8423ms)
+✔ 结果不把 termId 不同的 resolved 旧温习记录归于当前题 (1.3967ms)
+✔ 结果不把 sourceKind 不同的 due 旧温习记录归于当前题 (1.0895ms)
+✔ 结果不把 sourceKind 不同的 resolved 旧温习记录归于当前题 (0.9999ms)
+✔ 温故发起的原题回练取消返回温故且不保存答卷 (0.5231ms)
+✔ 真实交卷处理函数重复触发和结果重绘只计一次，新一轮独立 (1.1749ms)
+✔ 本轮重绘保留题序与已选答案，离开后不恢复未提交卷 (0.526ms)
+✔ 重绘前已脱离页面的取消处理不能撤销已交卷结果 (0.6916ms)
+✔ 未答和篡改选项定位首个未答题，取消不保存 (0.7634ms)
+✔ 成绩保存失败可读且可重试，重试与重绘复用本轮 (0.8103ms)
+✔ 新用户抽查空态说明先学一课并可返回 (0.5085ms)
+✔ 仅成就保存失败时重试不重写成绩，沿用原session证据 (1.0065ms)
+✔ 小试交卷后进入修习谱不以旧时间戳再计同轮证据 (0.9793ms)
+✔ 修习谱回补采用本轮实际成绩，旧无session证据保持兼容 (0.9408ms)
+✔ 已处理ID缺少成绩凭据时显示缺证据，不重计分或生成成就 (0.6844ms)
+✔ 已有正式ID全部带真实凭据时，其他旧课程仍按旧汇总回补 (0.528ms)
+✔ 已有真实低分凭据重交高分不改变成绩，也不据当前答案回补高分成就 (0.8827ms)
+✔ 正式ID存在但没有凭据时修习谱不拿聚合最高分补造该轮成就 (0.4745ms)
+✔ 小试、抽查和阶段考评按范围组卷 (3.1903ms)
+✔ 交卷会逐题记录课程归属并统计成绩 (0.2358ms)
+✔ 同样的随机题序也为新一轮生成独立标识，结果保留本轮标识 (0.5773ms)
+✔ 只评定本卷完整且来自本题选项的答案 (0.1075ms)
+✔ 抽查没有已浏览课时不回退全库，题目不足按实际数量组卷 (0.0978ms)
+✔ 日课先推荐未浏览课程，再推荐小试成绩较低者 (0.1322ms)
+✔ 原题回练仍是新普通三题小试，指定题必入且不重复或改变题义 (0.4407ms)
+✔ 缺失、跨课或版本失效的原题引用明确拒绝，不随机替换题目 (0.1172ms)
+✔ 原题回练的可用题不足仍用实际题量，显式题数保持原规则 (0.1715ms)
+✔ 判分结果传递公开引用和真实题型，不复制题干或私文 (0.2427ms)
+✔ 旧题对象没有引用元数据时仍按旧形状判分，不补造当前版本 (0.0966ms)
+✔ 全部学习小节均有至少三道可判分题目 (11.685ms)
+✔ 课程覆盖五阶与所有资料栏目，并能生成复讲要点 (1.4107ms)
+✔ 题库公开引用保留真实题型，六爻卦与术语分别使用原始实体标识 (15.8821ms)
+✔ 术语定位来自实体ID，不从显示名称猜测；三爻题不补造六位码 (8.7766ms)
+✔ 反馈按结果、依据、实际记录、下一步的原生章节顺序呈现 (3.2988ms)
+✔ 保留一个主行动与最多两个次行动的原按钮属性及来源链接 (1.3174ms)
+✔ 省略次行动时只有主行动，不生成空按钮或占位链接 (0.5454ms)
+✔ 缺失或非法必填片段明确报出字段，不用空反馈掩盖调用错误 (0.4489ms)
+✔ 次行动超量或非法数组成员报错，不静默截断或跳过 (0.1695ms)
+✔ 每个行动片段只接受一个原生按钮或链接，不能藏入多个行动 (0.1466ms)
+✔ 可信片段只呈现一次，已转义正文不被重新转义或改写 (0.0967ms)
+✔ 重复渲染不访问DOM、存储或计时器，不修改冻结输入或制造全局身份 (0.2714ms)
+✔ 记录学习日并计算包含今天的连续天数 (3.0106ms)
+✔ 活动记录去重、损坏回退和失败写入可感知 (0.8736ms)
+✔ 旧版学习进度迁移为已浏览，并写入新版课程记录 (0.741ms)
+✔ 小试、抽查、复讲和阶段考评共同形成掌握度 (1.0521ms)
+✔ 学习记录拒绝无效评定，学阶覆盖全部阈值 (0.1615ms)
+✔ 同一session重复保存只计一次，下一轮相同成绩仍独立计入 (0.6703ms)
+✔ 保存失败后原session重试只增加一次，旧记录读取不补造session (0.4175ms)
+✔ 正式考评ID与成绩原子保存，历史截断后仍能判重 (9.5104ms)
+✔ 只有已处理ID而没有成绩凭据时不重新计分或补造凭据 (0.2828ms)
+✔ 旧真实session凭据只迁移ID，不重计成绩；无字段旧记录保持兼容 (0.2991ms)
+✔ 损坏的正式ID字段保留有效旧成绩且不允许后续写入覆盖 (0.3008ms)
+✔ 新考评拒绝非法ID，写失败不先消费ID (0.2083ms)
+✔ 另一课程的真实旧成绩不因已迁移session而丢失兼容凭据 (0.1543ms)
+✔ 已处理ID对应其他范围的凭据时不能当作当前卷成绩 (0.0888ms)
+✔ 三类正式交卷将成绩、ID、凭据和课程弱项一次写入，只保存公开引用 (0.7632ms)
+✔ 同题错误按新会话归并，只有同题同版本答对纠正，再错重新待练 (0.4248ms)
+✔ 不同版本、来源或定位不覆盖旧弱项；历史不存在题号仍可读 (0.5838ms)
+✔ 旧结果、无凭据ID和旧凭据不按当前题卷补造弱项 (0.1766ms)
+✔ 弱项和成绩写入失败一起保留旧状态，同轮重试只入队或纠正一次 (0.2769ms)
+✔ 新逐题引用残缺或非法不消费会话，也不保存部分成绩 (0.1886ms)
+✔ 损坏弱项不把有效旧成绩读取为空，所有写入口拒绝覆盖 (0.2013ms)
+✔ 弱项查询返回稳定的完整条目副本，默认待练并可包含纠正历史 (0.2394ms)
+✔ 八十条成绩截断不丢弱项与去重证据，特殊题号不写入原型 (9.4818ms)
+✔ 同一会话同题只增加一次，错误计数达到安全整数边界时拒绝整次保存 (0.401ms)
+✔ 历史来源只校验非空类型，不擅自限制旧课程或术语标识长度 (0.0973ms)
+✔ 新题引用必须属于存在的课程，小试不接受另一课结果，旧无元数据仍兼容 (0.2077ms)
+✔ 同题的新引用或正确值冲突时拒绝整次写入，不依赖逐题数组顺序 (0.1969ms)
+✔ 课程续读位置兼容旧缺字段和 null，逐字段校验课程、章节、位置和 ISO 时间 (0.4891ms)
+✔ 保存课程续读仅在既有学习键写最小位置，保留成绩、弱项和去重凭据 (0.6497ms)
+✔ 损坏续读不清旧成绩且阻止普通写入，显式保存合法位置只修复续读 (0.586ms)
+✔ 非法续读输入、无效时间及配额失败不覆盖上次位置，恢复存储后可重试 (0.4538ms)
+✔ 同课新小试不论分数都原子清除续读，配额失败保留盘上原位置且同轮可重试 (0.6158ms)
+✔ 重复旧会话、跨课小试、抽查和考评不清除当前续读 (0.7426ms)
+✔ 新用户主行动是首课，课程对象推荐API仍供原下拉框使用 (1.3581ms)
+✔ 明确未完课程优先于到期卦卡、弱项和下一未浏览课 (1.2749ms)
+✔ 无续读时先处理到期卦卡，按到期时间再编码稳定排序 (7.0233ms)
+✔ 未引入、损坏和未来卦卡不会抢占下一课 (0.2447ms)
+✔ 课程弱项按最近错误与稳定课序选择，due状态不冒充到期卦卡 (0.6394ms)
+✔ 课程薄弱项已纠正后不再推荐；旧测验卦码只进入错题模式 (0.1479ms)
+✔ 具体测验与黄历原题按最近错误参与课程弱项层级，旧卦码不能抢先 (0.3098ms)
+✔ 同时间跨来源弱项排序稳定，保留原课程课序且不依赖存储插入顺序 (0.2768ms)
+✔ 具体弱项不抢占续读和到期卡；已纠正项退回旧卦码且不重造引用 (0.1827ms)
+✔ 合法旧版具体弱项保留原引用供界面说明，坏集合不构造待练题 (0.1613ms)
+✔ 旧弱项课程已移除时不构造无效课程入口 (0.0929ms)
+✔ 没有续读与薄弱证据时进入稳定顺序的下一未浏览课 (0.0872ms)
+✔ 全部浏览后低分不伪造本轮未完成，进入既有复讲 (0.4561ms)
+✔ 同级复讲时间相同时保持课程序，反复渲染不改输入 (0.1567ms)
+✔ 坏恢复位置给明确提示并正常推荐，不清除成绩 (0.1827ms)
+✔ 空课程集合有真实空态，不生成00课或虚假入口 (0.1298ms)
+✔ 注入Date时间与毫秒时间得到相同到期判断 (0.1949ms)
+✔ 评阅配置只接受同源相对地址 (1.7461ms)
+✔ 智能评阅按固定协议提交并校验返回结果 (0.4246ms)
+✔ 智能评阅拒绝短文本、错误状态与异常数据 (0.8761ms)
+✓ 学习首课、典籍依据与滚动复位契约通过
+✔ web\test\learning-ui-contract.test.mjs (810.957ms)
+✔ 今日温故次入口仍区分课程与卦卡，不改变主行动目标 (3.2266ms)
+✔ 今日主行动展示真实推荐原因与完成标准，按任务类型进入目标而非泛首页 (4.8886ms)
+✔ 今日具体测验推荐透传原引用，总数说明覆盖课程与术语且支持区分别计数 (1.0175ms)
+✔ 单卦卡不遮课程队列，资料未加载仍按原引用进入回课和回练 (1.7827ms)
+✔ 温故使用已加载真实题库的题干，不持久化题干或显示技术编号 (1.8524ms)
+✔ 旧版本或失效引用不冒用当前题干，保留中性文案和进入后核对入口 (5.0452ms)
+✔ 坏薄弱项显示局部异常，不自动开唯一卦卡或伪称完成 (0.9202ms)
+✔ 全部纠正后保留空队列返回，旧单卦卡捷径仍可用 (1.2599ms)
+✔ 学习入口回原课后试章节保留原题，返回回到温故 (1.6922ms)
+✔ 术语来源初始入口、明确返回和cleanup保留测验引用，不误进今日或课程小试 (2.1254ms)
+✔ 学习模块切换先清理课程，外层cleanup幂等且旧回调不能重新导航 (1.3437ms)
+✔ 复讲子页在切页与离开学习模式时清理一次，旧导航回调失效 (1.8938ms)
+✔ 学习模块切页后旧课程聚焦失效，复讲目标不被通用标题抢焦点 (1.4514ms)
+✔ 已销毁学习模块的旧页签键盘处理不抢焦点 (0.7536ms)
+✔ 损坏的课程位置回今日并说明，保留原记录且不开替代课 (0.8367ms)
+✔ 温故进入首课概览的退出标签与回温故行为一致 (3.8441ms)
+✔ 温故进入普通课的两个退出入口都说明回温故，未承诺暂存 (3.455ms)
+✔ 首课正文仍先回概览，默认课程入口保持原退出层级 (9.1916ms)
+✔ 续读首课直接进入正文，外层归零后恢复原位置且不先覆盖为零 (5.4686ms)
+✔ 新课保留首课概览，明确开始生成最小指针；锚点保存真实章节与滚动 (2.2418ms)
+✔ 实际面板滚动保存章节，清理后旧监听与待执行帧不能写新页面 (0.8471ms)
+✔ 进入小试先收尾课程监听，成功交卷后旧cleanup不复活resume (0.6122ms)
+✔ 位置保存失败不阻断课程或覆盖最后有效位置，提供真实反馈 (0.8483ms)
+✔ 失效位置走安全回调，不展示或标记替代课程 (0.5518ms)
+✔ practice只定位试段阅读，不自动开启试卷 (0.6112ms)
+✔ 顶部进入小试也保存试段的阅读位置，清理不能将章节改回引 (0.7546ms)
+✔ 恢复帧执行前退出不覆盖原位置，也不留下后台保存监听 (0.7831ms)
+✔ 页面被替换后迟到的恢复帧不滚动新内容 (0.7444ms)
+✔ 已清理课程的旧按钮不导航、不打开正文或开始小试 (1.2ms)
+✔ 首课回概览先保存真实正文位置，不丢失尚未执行的滚动帧 (0.7577ms)
+✔ 滚回已保存位置时取消较早待写位置，不把旧滚动覆盖到磁盘 (0.6198ms)
+✔ 恢复帧之前点击章节以本次明确操作为准，不再跳回旧位置 (1.4341ms)
+✔ 正文只在六步阅读控件内显示一份保存反馈，恢复完成后给真实位置反馈 (0.7376ms)
+✔ 保存失败只在状态变化时播报，后续成功可见且不重复播报每次滚动 (0.6618ms)
+✔ 滚动章节采集从粘附阅读控件下方判断，位置本身仍保存实际scrollTop (0.7046ms)
+✔ 温故入口把课程与原题上下文传给加载完成后的学习页 (3.9244ms)
+✔ 学习页导航转发可选上下文，普通导航不沿用上一张原题 (0.9892ms)
+✔ 较旧的学习加载即使最后完成也不能覆盖新原题入口 (2.0387ms)
+✔ 课程加载失败不显示原题试卷，重试仍可使用同一入口上下文 (2.5339ms)
+✔ 关闭仍在加载的学习页立即清除忙碌状态，迟到resolve不重开页面 (0.9625ms)
+✔ 关闭仍在加载的学习页立即清除忙碌状态，迟到reject不重开页面 (0.6924ms)
+✔ 关闭后再次打开学习时，旧加载结束不清除新请求的忙碌状态 (0.8203ms)
+✔ 离开学习时在替换正文之前收尾，回星图重复清理仍只执行一次 (0.8334ms)
+✔ 较旧加载不会安装清理函数或销毁当前学习实例 (0.6316ms)
+✔ 占筮重新进入及切换模块前清理旧结果，重复离开不再次执行 (0.5619ms)
+✔ 推荐的旧错题入口明确传wrongOnly，普通测验不沿用 (0.5596ms)
+✔ 温故与测验转发完整原题和术语返回上下文，离开前执行各自cleanup (0.8237ms)
+✔ 旧卦码入口不补造原题引用，下一次普通测验不继承legacyCode (0.5266ms)
+✔ 迟到review加载不覆盖新入口、焦点或清理函数 (0.6152ms)
+✔ 迟到quiz加载不覆盖新入口、焦点或清理函数 (0.4436ms)
+✔ 原题必需资料加载失败不渲染随机题，重试仍携同一reference (0.5713ms)
+✔ 温故可选加载术语资料，失败不阻断队列；正式术语入口保留加载失败 (1.3456ms)
+✔ 欢迎的零基础路径直接进入首课，其他两条路径保持原含义 (0.8186ms)
+✔ 模式通用聚焦尊重复讲入口，旧帧不聚焦新页或已移除控件 (0.7142ms)
+✔ 术语summary目标优先于标题并保留原生Tab顺序 (0.5814ms)
+✔ 搜索查询更换清除旧 aria-activedescendant 与选项选择状态 (4.5871ms)
+✔ 搜索关闭后 Enter 不确认旧结果，方向键不操作隐藏选项 (1.3549ms)
+✔ 输入法组合期间 Enter 保留原生输入，不触发搜索动作 (1.8607ms)
+✔ 输入法组合期间 Escape 保留原生输入，不触发搜索动作 (1.773ms)
+✔ 展开搜索的 Escape 只关建议，第二次 Escape 可冒泡给阅读返回 (0.9186ms)
+✔ 核心索引未就绪只显示局部不可用，不确认看似可用的卦 (0.7135ms)
+✔ 可选关键词迟到不会重新打开已取消的搜索建议 (6.2252ms)
+✔ 可选关键词迟到只能更新当前查询，不能覆盖已经输入的新查询 (1.6694ms)
+✔ 点击外侧非聚焦区域也关闭建议，不改变当前聚焦卦 (0.7938ms)
+✔ 搜索快捷键不穿透 inert 背景或输入法组合 (0.8114ms)
+✔ 正常键盘和结果按钮确认只提交一次聚焦，不调用阅读入口 (1.9718ms)
+✔ 组合结束后按最终文本检索，但只有后续正常确认才聚焦 (0.8646ms)
+✔ 输入框已经失焦时组合结束不重新打开建议 (0.6571ms)
+✔ 关键词失败保留核心搜索，重新聚焦可重试且成功后移除降级提示 (3.3786ms)
+✔ 关键词迟到改变排序后仍按卦码保留键盘选项 (1.0578ms)
+✔ 入口搜索实际接入序号、六位编码和上下卦结构查询 (5.1419ms)
+✔ 非法结构查询清除旧结果并明确提示，空查询关闭建议 (2.359ms)
+✔ 真实滚动监听不因边框与亚像素舍入把已定位章节退回上一节 (4.9874ms)
+✔ 用户滚回上一节正文时仍按可见内容更新当前章节 (0.8188ms)
+✔ 关闭学习面板或直接进入读卦前收尾课程，重复退出不再次写位置 (2.8308ms)
+✔ 深读的两项保存失败可见，恢复后只补失败项且不重复奖励或卡片 (4.6286ms)
+✔ 拒绝localStorage getter仍可深读和关闭，恢复后重新进入只补未保存记录 (0.7196ms)
+✔ 失败等待期间的其他学习记录与已复习卡不被补保存覆盖，快读也不能重试 (0.775ms)
+✔ 部分保存后导入旧备份移除成功项，再次深读重新核对持久化证据 (1.2621ms)
+✔ 关闭工作台回到探索时恢复天象舞台及其场景 (0.5815ms)
+✔ 工作台搜索只聚焦并恢复天象舞台 (0.7354ms)
+✔ 快读与深读复用正文草稿，只有深读触发正式阅读和复习 (0.6735ms)
+✔ 切换图式同步退出快读和聚焦，不保留失效摘要 (0.8961ms)
+✔ 退出阅读恢复复制的星图快照且不修改旧布局偏好 (0.9641ms)
+✔ 桌面快读期间的新镜头与关系在关闭时保留 (1.0994ms)
+✔ 快读调整后深入研读，退出恢复深入前的镜头 (1.1725ms)
+✔ 直接深链退出后摘要与星图使用同一个聚焦卦 (0.5854ms)
+✔ 直接深链关闭时不把焦点还给 body，改回聚焦摘要入口 (0.6587ms)
+✔ 深读关系跳转后直接关闭仍保留新漫游轨迹 (0.6521ms)
+✔ 天象舞台尚未加载时返回探索不会保留过期暂停原因 (0.8026ms)
+✔ 返回探索只解除工作台暂停，保留仍打开的分享弹窗暂停 (0.8946ms)
+✔ 非模式关闭和无效卦码不提前恢复工作台背景 (0.4802ms)
+✔ 观察层级未变化时不重复改写 HUD DOM (0.6297ms)
+✔ 数字起卦按八取卦、按六取动爻 (0.9329ms)
+✔ 整除时余数取除数本身 (0.1517ms)
+✔ 数字起卦拒绝非正安全整数 (0.4549ms)
+✔ 数字起卦拒绝上数与下数溢出安全整数范围 (0.1077ms)
+✔ 时间起卦在同一输入下确定且标记来源 (2.0399ms)
+✔ 时间起卦拒绝无效日期 (0.1578ms)
+✔ 体用分析返回完整五行关系 (0.2758ms)
+✔ 体用五行覆盖生、克与反向关系 (0.2619ms)
+✔ 复习队列保留标题状态，单卡保存结果位于四段反馈的学习记录区 (0.9321ms)
+✔ 测验按实际保存结果先显示反馈或重试行动，再聚焦当前行动 (4.6454ms)
+✔ 占筮阶段与结果滚动尊重 reduced-motion (0.2038ms)
+✔ 动效错峰有界，避免长列表拖慢交互 (1.3928ms)
+✔ 动效协调器集中管理可见性、动态节点与清理 (2.4914ms)
+✔ 入口、离线缓存与样式都接入同一代动效系统 (2.4349ms)
+✔ 文件协议入口在加载样式和模块前转向本地 HTTP 服务 (1.1343ms)
+✔ HTTP 页面不会发生额外跳转 (0.4406ms)
+✔ 预缓存条目全部指向现有静态资源 (2.5663ms)
+✔ 预缓存只包含首屏核心模块，功能数据按访问缓存 (0.2203ms)
+✔ 缓存资源不再维护重复查询版本号 (0.7262ms)
+✔ 预缓存模块的静态本地依赖可在首次离线时加载 (7.4368ms)
+✔ 页面结构与脚本样式采用同代更新策略 (0.3537ms)
+✔ 生成 opposite 题时答案和候选项完整 (1.3325ms)
+✔ 生成 reversed 题时答案和候选项完整 (0.1617ms)
+✔ 生成 interlocking 题时答案和候选项完整 (0.1237ms)
+✔ 生成 name 题时答案和候选项完整 (0.1328ms)
+✔ 黄历题生成四个带稳定 id 的候选项 (0.4151ms)
+✔ 黄历题不足四项时拒绝出题 (0.715ms)
+✔ 黄历正向与反向题均使用同一稳定答案 id (0.2161ms)
+✔ 统计与错题本可持久化且忽略空 id (1.0988ms)
+✔ 损坏的本地统计和错题数据会安全回退 (0.2041ms)
+✔ 错题回练可指定目标卦，非法结构和写入失败安全回退 (0.2787ms)
+✔ 精确回练使用完整引用，同一题重复输入只交给协调器一次 (8.5314ms)
+✔ 原题失效显示原因并可返回温故，不随机换题 (1.7855ms)
+✔ 无可用题显示空态和返回学习，未创建作答 (1.0255ms)
+✔ 保存失败逐项说明，重试保留原题原答案，不重新判第二次作答 (2.8202ms)
+✔ 末项以实际保存队列决定返回随机，失败不提前宣称清空 (4.78ms)
+✔ 销毁后旧按钮与排队焦点回调不会写入或影响下一页面 (1.9852ms)
+✔ 旧摘要单独标明未知题型并按legacy身份回练 (1.3541ms)
+✔ 题目不能建立有效作答身份时显示不可用，不留可提交选项 (1.0792ms)
+✔ 旧版本冲突保留原项，显示保留而不是已保存具体错题或已纠正 (5.3958ms)
+✔ 术语题仍按almanac呈现，来源带真实方向引用并可回原规则 (3.8556ms)
+✔ 失败的原弱项仍在队列，重复重试成功后旧按钮不能改下一轮 (4.8788ms)
+✔ 真实协调器与页面联通：错误保存失败只重试未存部分，再按原规则纠正 (17.2263ms)
+✔ 精确引用与旧摘要同时传入时明确冲突，不生成或选择任一题 (1.338ms)
+✔ 测验结果按四段呈现，单次正确不宣称掌握且不整块播报 (3.3007ms)
+✔ 四段反馈呈现真实部分保存变化，重试不重建结果或重复提交成功部分 (3.6923ms)
+✔ 术语来源位于依据段，保留完整来路且不占下一步行动数量 (3.5073ms)
+✔ 四段反馈销毁后旧重试、下一题、温故及排队焦点都不影响新页面 (2.7189ms)
+✔ opposite generated reference identifies the actual rule and target (2.2954ms)
+✔ reversed generated reference identifies the actual rule and target (0.2356ms)
+✔ interlocking generated reference identifies the actual rule and target (0.1409ms)
+✔ name generated reference identifies the actual rule and target (0.239ms)
+✔ almanac name-to-meaning returns a stable independent reference (1.4773ms)
+✔ almanac meaning-to-name returns a stable independent reference (0.1243ms)
+✔ exact replay rejects changed versions, IDs, types and absent sources instead of random fallback (0.1549ms)
+✔ unavailable inputs and insufficient choices produce a safe empty question (0.0919ms)
+✔ statistics use a stable attempt receipt and reject identity reuse with a different result (0.4519ms)
+✔ a failed statistics write retries only once and preserves receipts through legacy calls (0.1898ms)
+✔ damaged optional receipts preserve readable totals but block writes and expose field errors (0.1124ms)
+✔ statistics read errors and invalid attempt metadata cannot overwrite existing records (0.1555ms)
+✔ invalid optional arguments are rejected without a throw or statistics write (0.1196ms)
+✔ 具体测验、术语和旧摘要各自可见，唯一到期卦卡不绕过温习列表 (8.3852ms)
+✔ 术语来源携带真实termId和返回温故，不把打开来源写成纠正 (2.0672ms)
+✔ 新旧队列全部完成后显示可理解空态，销毁后的按钮不能导航 (2.1075ms)
+✔ 术语资料尚未加载时显示待核对，来源仍保留真实引用 (3.3931ms)
+✔ 具体卦题来源进入原卦卡并可返回同一队列，打开来源不更改弱项 (5.8034ms)
+✔ 尚未引入间隔卡的卦题来源只读，翻面不出现评分，返回恢复原来源焦点 (6.7ms)
+✔ one wrong round stores a concrete rule, one card and activity without a legacy summary (8.904ms)
+✔ correct answer to another rule or random repetition does not clear the original weakness (0.9302ms)
+✔ matching almanac direction resolves with stored wrong/review evidence and no hexagram card (1.1772ms)
+✔ stats failure retries that part without re-saving successful effects (0.5017ms)
+✔ weak failure retries that part without re-saving successful effects (0.2316ms)
+✔ review failure retries that part without re-saving successful effects (0.5854ms)
+✔ activity failure retries that part without re-saving successful effects (0.4238ms)
+✔ achievement failure retries that part without re-saving successful effects (0.9958ms)
+✔ legacy failure retries that part without re-saving successful effects (0.4683ms)
+✔ failed weakness persistence cannot emit recovery; retry emits only after the receipt is saved (0.4245ms)
+✔ legacy answer only clears its summary and never fabricates concrete recovery (0.1647ms)
+✔ unreadable and malformed supporting stores are not overwritten (0.894ms)
+✔ invalid options and answers do not write; a round locks the first valid answer and copies its question (0.7679ms)
+✔ stored duplicate recovery uses its original receipt after a new mistake (0.6405ms)
+✔ an ID bound to a different stored question rejects all new effects (0.2208ms)
+✔ malformed question options return a safe invalid attempt (0.1695ms)
+✔ old same-ID weakness without a receipt does not fabricate statistics or other effects (0.3384ms)
+✔ inherited object names are not treated as existing attempt receipts (0.5773ms)
+✔ accepted long term IDs can save both directions of recovery without exceeding event limits (0.757ms)
+✔ 自由测验错误与独立回执同键保存，保留课程、位置和旧码摘要 (5.4393ms)
+✔ 只有原规则明确回练才纠正，随机正确和同卦其他题不清原错误 (1.4622ms)
+✔ 重复成功回执零写并保留原恢复证据，后续再次答错也不重推旧恢复 (0.4622ms)
+✔ 同attempt改变答案、模式或任何公开引用均拒绝，不返回恢复证据 (0.3195ms)
+✔ 旧弱项含相同attempt但无回执时保留缺证据状态，不重复累计或补造恢复 (0.3631ms)
+✔ 测验写入口读取异常或基础记录损坏时拒写，不用空回退覆盖旧数据 (0.3134ms)
+✔ 仅新学习键确实缺失才迁移旧浏览，旧源读取失败或损坏也拒写 (0.3783ms)
+✔ 不可用的localStorage getter不会抛出或伪报成功 (0.136ms)
+✔ 配额失败不保存候选或恢复证据，同attempt恢复后仅保存一次 (0.4557ms)
+✔ 黄历两种提问方向独立回练且不生成卦码 (0.3974ms)
+✔ 旧同ID不同版本或引用保留，回执说明引用冲突且不冒充纠正 (0.5466ms)
+✔ 待回练查询只读排序，按来源过滤并保留明确resolved开关 (0.4325ms)
+✔ 旧缺回执兼容，损坏回执加载保留旧成绩但所有写入口拒绝覆盖 (0.5509ms)
+✔ 新引用严格检查规范ID与版本，不存未知字段、题干、答案或私文 (0.4368ms)
+✔ 回执校验定位字段，恢复事实必须与正确回练和原错误标识一致 (0.2696ms)
+✔ reviewed可纠正但已resolved不重复造新恢复，首次正确不创建弱项 (0.2352ms)
+✔ 课程历史80条截断不裁自由测验回执，任意旧attempt重复仍零写 (9.2291ms)
+✔ 安全整数溢出拒写，特殊attempt键不污染原型且可稳定判重 (0.6107ms)
+✔ 研读正文提供同一份目录、暖纸主体和出处边注 (1.6008ms)
+✔ 快读的五个入口对应可见章节，目录保留所有原有锚点 (0.326ms)
+✔ 六爻正文按初爻至上爻阅读且保留卦象原始画法 (1.0878ms)
+✔ 窄屏目录与出处默认折叠，宽屏默认展开 (0.4987ms)
+✔ 正文新增的爻位属性不接受注入标记 (0.3213ms)
+✔ 阅读正文继续加载与保存原有笔记，并保留关系回调 (0.7662ms)
+✔ 聚焦和快读不产生正式深读，深读只在有效进入时记录 (1.6286ms)
+✔ 逐层返回保留卦码和章节，最后返回全景 (0.1258ms)
+✔ 无效编码和章节不污染状态；不同卦重新从概览开始 (0.367ms)
+✔ 错卦逐爻变化并准确到达目标卦 (1.4326ms)
+✔ 综卦只交换三对爻，不会在后续帧撤销翻转 (0.1501ms)
+✔ 互卦依次组成下卦与上卦 (0.0799ms)
+✔ 变卦只生成实际变化的爻，未知关系按变卦处理 (0.1205ms)
+✔ 无变化与非法卦码得到明确结果 (0.3168ms)
+✔ 浮层支持减少动态效果、焦点管理、Esc 与计时器清理 (2.3457ms)
+✔ 卦象关系入口使用原生按钮并保留演示按钮 (1.7773ms)
+✔ 卦象详情提供稳定页面标题与可同步的六爻折叠按钮 (0.4747ms)
+✔ 卦象与八卦 SVG 爻线继承当前文字颜色 (0.1708ms)
+✔ 新卡片立即到期并可持久化 (1.9763ms)
+✔ 只有明确加入的卦象才进入新手复习池 (0.3279ms)
+✔ 旧版本批量生成但从未复习的卡片不会继续制造 64 项待办 (0.1791ms)
+✔ 记得会提升阶段，忘记会记录失误并回到一天间隔 (0.3071ms)
+✔ 模糊不会把已学习卡片降为未学习 (0.3382ms)
+✔ saveReview 创建并保存卡片 (0.7695ms)
+✔ 阶段达到上限后保持封顶 (1.0493ms)
+✔ 损坏存储读取兼容空列表，保存失败不推进原内存卡 (0.33ms)
+✔ 非法自评不按记得处理且不修改卡 (0.4686ms)
+✔ 一次调度复用显式时间并保留原间隔序列 (0.1553ms)
+✔ 保存失败不修改已有卡或凭空加入内存新卡 (0.2128ms)
+✔ 保存当前卡合并最新其他卡，冲突不覆盖 (0.1669ms)
+✔ 结构不完整的复习数据会回退为空 (0.122ms)
+✔ 异常时间或计数溢出不会部分推进卡 (0.2244ms)
+✔ 存储损坏时即使写入可用也不从空集合覆盖 (0.1467ms)
+✔ 评分只能在翻面后提交，明确自评并按结果、依据、记录、行动顺序呈现 (17.3311ms)
+✔ card 写失败保留答案与原评分，重试仅补失败项且快速重复不重复排期 (4.9979ms)
+✔ activity 写失败保留答案与原评分，重试仅补失败项且快速重复不重复排期 (5.8013ms)
+✔ achievement 写失败保留答案与原评分，重试仅补失败项且快速重复不重复排期 (4.4448ms)
+✔ 成功反馈重显不增加证据，核对卦辞可返回反馈，再继续才离开本卡 (4.4279ms)
+✔ 同卡快照被其他页面更新时不覆盖，反馈给返回队列而非成功排期 (5.6947ms)
+✔ 非法评分与未翻面评分不写记录；cleanup阻止旧按钮、重试和迟到焦点 (3.1509ms)
+✔ same token saves one card/activity/event, returns independent snapshots and new round can advance (10.184ms)
+✔ card failure retries only unsaved effects with original rating and time (0.6169ms)
+✔ activity failure retries only unsaved effects with original rating and time (0.9807ms)
+✔ achievement failure retries only unsaved effects with original rating and time (0.6117ms)
+✔ rating and time validate before locking; changed rating after first valid submit cannot write (0.9748ms)
+✔ forged tokens, invalid snapshots and storage changes are rejected (0.3874ms)
+✔ unreadable or malformed card collection never replaces existing data or emits evidence (0.5745ms)
+✔ missing current card and same-card snapshot conflicts reject without adding evidence (0.9053ms)
+✔ retry merges latest other cards but never overwrites a changed current card (1.0398ms)
+✔ corrupt activity and achievement are preserved, then only their failed part is retried (0.9954ms)
+✔ already recorded activity day does not need a new write; legacy card without introducedAt remains usable (0.4241ms)
+✔ two supporting failures can recover independently without resaving the card or the recovered part (0.6917ms)
+✔ late supporting retry preserves a newer completed review card (0.5307ms)
+✔ a single validated raw read protects supporting writers from a later fallback read (0.2766ms)
+✔ supporting read failures preserve data and can retry without repeating successful writes (1.367ms)
+✔ unavailable default storage keeps the original submitted time for an explicit retry (0.6322ms)
+✔ 搜索解析先识别六位码，再识别卦序与第N卦 (2.9011ms)
+✔ 上下卦解析保留方向，不猜测无方向卦名 (0.3228ms)
+✔ 空串及非法数字查询不伪装为文本搜索 (0.1528ms)
+✔ 搜索选择支持循环方向键与首尾跳转 (0.0856ms)
+✔ 深链接只接受六位阴阳码并保留其他参数 (0.3479ms)
+✔ 卦象详情与课程锚点不会残留在彼此的阅读场景 (0.1039ms)
+✔ 分享卡片模型保持卦爻自上而下的视觉顺序 (2.8049ms)
+✔ 长文按画布宽度换行并在超出行数时省略 (0.2138ms)
+✔ 支持文件分享时发送 PNG 文件 (0.2034ms)
+✔ 不支持文件分享时下载 PNG (1.8733ms)
+✔ 背景星点密度可复现且随银河云尘变化，暗尘中保留疏空 (2.2353ms)
+✔ 银河纹理可重复生成，调整窗口不会随机更换星空 (42.3982ms)
+✔ 大屏和长屏的背景纹理有固定像素预算并保持比例 (189.639ms)
+✔ 银河保留暗部与亮尘带，所有像素不透明且亮度低于卦星 (24.1816ms)
+✔ 尚未完成布局或非法尺寸不生成无效画布 (0.1438ms)
+✔ 卦名与关键词共享 7px 间距，当前卦优先并尝试候选位置 (1.3959ms)
+✔ 长词与强制地标没有可用空间时隐藏，避免边缘裁切和强制叠字 (0.5567ms)
+✔ 同优先级按稳定标识排序，文字尺寸按字体与文本缓存 (5.3695ms)
+✔ 易象银河按下卦形成八个星团，并以八纯卦作为团内锚点 (1.3995ms)
+✔ 每卦生成六颗自下而上且阴阳可辨的爻星 (0.7397ms)
+✔ 八宫每宫八卦且完整覆盖六十四卦 (0.2609ms)
+✔ 十二消息卦保持复至乾、姤至坤的消长次序与常见月令 (0.6553ms)
+✔ 先天视图仅显示八纯卦并采用南上东左的传统图式方向 (0.2149ms)
+✔ 文王卦序与八宫布局覆盖六十四卦并保留可解释分组 (0.3186ms)
+✔ 十二消息视图只显示十二卦，未知布局安全回退易象银河 (0.2401ms)
+✔ Canvas 提供等价文字关系列表和实时状态，不误报浏览器不支持 (1.1362ms)
+✔ 星图提供五种明确标注来源的阅读图式 (0.3523ms)
+✔ 移动端六个导航入口采用紧凑单行并保留触控高度 (0.2116ms)
+✔ 两帧之间模拟推进时，星点命中与悬浮位置仍跟随最后绘制坐标 (1.502ms)
+✔ Canvas尺寸改变清屏时失效旧星点投影，避免在旧位置命中 (0.1813ms)
+✔ 星空背景在镜头转动和减少动态效果时始终使用有效绘制坐标 (1.1149ms)
+✔ 星图空闲时降到 30 FPS，交互或相机移动时恢复 60 FPS (0.1006ms)
+✔ 功能工作区把背景星图降到 15 FPS (0.0564ms)
+✔ 减少动态效果偏好固定使用低帧率 (0.0412ms)
+✔ 关系能量包循环前进并保持三段错峰 (0.1075ms)
+✔ 关键词按焦点、关系和纯卦语义逐层展开 (0.0835ms)
+✔ 视角读数把缩放层级和球面姿态转换为稳定的五度刻度 (0.3499ms)
+✔ 四态观察层级由缩放、焦点和详情阅读状态共同决定 (0.102ms)
+✔ 页面可见性恢复不会覆盖业务层暂停 (0.2157ms)
+✔ 减少动态时初始 D3 布局直接落在目标位置并停止模拟 (66.1279ms)
+✔ 减少动态时切图、resize 与 resume 不重启 D3，焦点相机随新目标同步 (0.7745ms)
+✔ 动态偏好切换立即稳定节点，业务暂停期间取消减少动态也不重启 (0.3802ms)
+✔ 星图把可见星群的中心、包围半径和镜头姿态同步给 WebGL 外轨 (0.2933ms)
+✔ 星图尺寸变化时同步缩放当前焦点相机，避免面板开合后坐标漂移 (0.206ms)
+✔ 关系漫游只保留最近 5 段轨迹 (0.1771ms)
+✔ 星图关系层只显示当前有向关系，变卦必须指定动爻 (0.2627ms)
+✔ 普通卦名使用实测宽度防碰撞，并优先保留重要标签 (0.3484ms)
+✔ 悬停、焦点和八纯卦标签通过换位避免强制叠字 (0.2198ms)
+✔ 入场每会话一次且减少动态时直接呈现 (0.098ms)
+✔ 星核上按下不选卦，抬起才确认，拖动超过 6px 或取消不误选 (0.4763ms)
+✔ 视角快照深复制镜头、焦点、关系、图式与自动巡天 (0.3152ms)
+✔ 快读与全景尺寸变化后恢复镜头按空间半径换算 (0.1593ms)
+✔ 聚焦镜头在 450ms 完成，减少动态立即完成 (0.1134ms)
+✔ 卦名和关键词共用布局，当前最多三词、关系最多一词 (0.3503ms)
+✔ 标签布局在 100ms 内复用，焦点或视口显著变化时立即更新 (0.8996ms)
+✔ 焦点标签不受入场标签延迟影响 (0.1709ms)
+✔ 经典图式总览只常驻结构地标，选卦后展开当前关系节点 (0.1662ms)
+✔ 普通卦名碰撞框保持 7px 屏幕间距 (4.855ms)
+✔ 相同重要度的碰撞标签优先保留前景卦名 (0.1773ms)
+✔ a second touch cancels the active drag and releases capture without selecting a star (1.5513ms)
+✔ a second touch also cancels a pending tap before the drag threshold (0.1445ms)
+✔ a second pointer outside the canvas also cancels the captured canvas gesture (0.1215ms)
+✔ window blur cancels a pending gesture, so a later pointerup cannot select (0.0859ms)
+✔ backgrounding clears the drag before pausing the scene (0.8371ms)
+✔ destroy cancels capture and removes its window blur listener (0.2212ms)
+✓ 节点数=4
+✓ 边数>=1
+✓ 乾→坤存在错卦边
+✓ 乾→坤边含 opposite 类型
+✓ 泰→否至少1条边
+✓ 节点含 degree
+✓ 111000—000111 保留多重关系
+✓ 111000→000111 保留有向关系
+✓ 011001—100110 保留多重关系
+✓ 011001→100110 保留有向关系
+✓ 001011—110100 保留多重关系
+✓ 001011→110100 保留有向关系
+✓ 101010—010101 保留多重关系
+✓ 101010→010101 保留有向关系
+✓ 变卦关系保存具体动爻条件
+✓ 互卦作为有向发生记录保留起点和终点
+
+全部通过
+✔ web\test\star-relations.test.mjs (199.6742ms)
+✔ 安全 JSON 读写、删除和结构判断 (4.1491ms)
+✔ 损坏、类型不符、无存储和异常均安全回退 (0.2777ms)
+✔ localStorage getter 被浏览器拒绝时也安全降级 (0.1306ms)
+✔ 界面、阅读与标题使用分工明确的中文字体栈 (0.7751ms)
+✔ 全站字号建立 15px 硬底线并按层级递增 (0.3537ms)
+✔ 中文短语按控件原子、均衡标题和正文三层处理换行 (2.2324ms)
+✔ 卦名复合标题在详情、分享、占筮和复习中使用同一不可拆分结构 (0.7953ms)
+✔ 详情、研读笺和辅助说明不再以裁切或横向滑动隐藏文本 (0.3804ms)
+✔ Canvas 经典图式标签和图式说明具有清晰的字号下限 (0.1489ms)
+✔ 卦序轮盘仅显示当前扇区，避免 64 个放大标签互相覆盖 (0.3805ms)
+✔ 本地 Lucide 图标只创建白名单 SVG，默认从辅助技术中隐藏 (2.5697ms)
+✔ 图标安装可重复调用，切换图标时只更新图形而保留宿主及按钮语义 (0.2693ms)
+✔ 导出仅包含项目数据并可重新导入 (2.3026ms)
+✔ 解析会拒绝损坏、超限或未知版本的备份 (1.0653ms)
+✔ 导入忽略未知键并按 null 删除已知键 (0.0927ms)
+✔ 坏复习卡在写入前被拒绝且不会覆盖旧数据 (0.1817ms)
+✔ 通用备份包含成就状态并可完整往返 (0.2412ms)
+✔ 正式考评ID随备份往返，旧备份缺字段仍合法 (0.2366ms)
+✔ 导入拒绝损坏考评ID并定位具体字段或元素，拒绝前不写其他键 (0.3396ms)
+✔ 课程弱项按原十一键备份往返，合法历史版本与来源定位不被重写 (0.5623ms)
+✔ 非法弱项逐字段定位，导入校验完成前不写任何其他键 (1.0733ms)
+✔ 旧备份缺弱项合法，学习键按缺失保留、null删除和整键替换恢复 (0.1184ms)
+✔ 导入写失败回滚旧成绩和弱项，其他键也恢复 (0.4167ms)
+✔ 续读位置沿原十一键备份往返，旧缺字段和 null 位置兼容 (0.6817ms)
+✔ 非法续读在导入前报告具体路径，不覆盖成绩、旧位置或其他键 (1.2351ms)
+✔ 含续读的备份写入失败尝试回滚原位置、成绩、弱项和其他键 (0.1885ms)
+✔ 自由测验回执与统计按原十一键往返，旧缺字段保持兼容 (0.4302ms)
+✔ 坏自由回执导入报告字段位置，验证前不写其他键 (0.4502ms)
+✔ 坏测验统计attempts导入使用引擎字段路径且保持旧值 (0.2383ms)
+✔ 导入回执后续键写失败仍尝试回滚学习与统计两套原证据 (0.6097ms)
+ℹ tests 629
+ℹ suites 0
+ℹ pass 629
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3091.9653
+ℹ start of coverage report
+ℹ -------------------------------------------------------------------------------
+ℹ file                           | line % | branch % | funcs % | uncovered lines
+ℹ -------------------------------------------------------------------------------
+ℹ web                            |        |          |         | 
+ℹ  js                            |        |          |         | 
+ℹ   achievement-catalog.js       | 100.00 |   100.00 |  100.00 | 
+ℹ   achievement-engine.js        | 100.00 |    93.14 |  100.00 | 
+ℹ   achievement-storage.js       | 100.00 |    92.11 |   90.00 | 
+ℹ   data-loader.js               |  99.01 |    97.41 |   97.14 | 104-105
+ℹ   divination-engine.js         | 100.00 |    98.36 |  100.00 | 
+ℹ   divination-history.js        | 100.00 |    93.02 |  100.00 | 
+ℹ   divination-interpretation.js |  99.01 |    85.00 |  100.00 | 19
+ℹ   evolution-state.js           | 100.00 |   100.00 |  100.00 | 
+ℹ   guaxu-wheel.js               | 100.00 |   100.00 |  100.00 | 
+ℹ   hexagram-utils.js            | 100.00 |   100.00 |  100.00 | 
+ℹ   learning-assessment.js       | 100.00 |    88.61 |  100.00 | 
+ℹ   learning-curriculum.js       |  98.78 |    93.68 |   98.04 | 213 222-223
+ℹ   learning-feedback.js         | 100.00 |   100.00 |  100.00 | 
+ℹ   learning-progress.js         | 100.00 |    97.37 |  100.00 | 
+ℹ   learning-review.js           | 100.00 |    88.89 |   90.00 | 
+ℹ   meihua-engine.js             | 100.00 |   100.00 |  100.00 | 
+ℹ   quiz-engine.js               | 100.00 |    92.05 |  100.00 | 
+ℹ   quiz-session.js              |  98.73 |    91.12 |   96.43 | 112-113
+ℹ   review-engine.js             |  98.55 |    91.09 |  100.00 | 125-126
+ℹ   review-session.js            | 100.00 |    90.70 |  100.00 | 
+ℹ   search-controller.js         | 100.00 |    97.78 |  100.00 | 
+ℹ   star-relations.js            | 100.00 |    80.49 |  100.00 | 
+ℹ   storage.js                   | 100.00 |   100.00 |  100.00 | 
+ℹ -------------------------------------------------------------------------------
+ℹ all files                      |  99.72 |    93.90 |   99.01 | 
+ℹ -------------------------------------------------------------------------------
+ℹ end of coverage report

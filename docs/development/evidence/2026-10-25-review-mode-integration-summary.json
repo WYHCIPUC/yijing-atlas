@@ -1,0 +1,134 @@
+{
+  "task": "T-LEARN-03",
+  "scope": "spaced-review page integration",
+  "status": "implemented-targeted-tests-passed-awaiting-integration-and-browser",
+  "files": [
+    {
+      "path": "web/js/modes/review-mode.js",
+      "sha256": "082b67ab4b38a63979024b7d5a6ca61c111d0c7c168f76227a7d756e4b39bc55"
+    },
+    {
+      "path": "web/test/quiz-review-pages.test.mjs",
+      "sha256": "639f279d04477e3f6a52c52f67f26e1f3093326c80eed62f7345d4685f173618"
+    },
+    {
+      "path": "web/test/review-mode-feedback.test.mjs",
+      "sha256": "8d682c9c7966697b3a16f8962f17fa87bcc500372c9997a8aaf45c85f89aa771"
+    }
+  ],
+  "runtime": "W:\\Node.js\\node.exe v22.23.1",
+  "runs": [
+    {
+      "raw": "docs/development/evidence/2026-10-25-review-mode-red.log",
+      "archive": "docs/development/evidence/2026-10-25-review-mode-red.log.gz",
+      "command": "W:\\Node.js\\node.exe --test web/test/review-mode-feedback.test.mjs web/test/quiz-review-pages.test.mjs",
+      "exitCode": 1,
+      "tests": 13,
+      "passed": 5,
+      "failed": 8,
+      "sha256": "75186b71b531876ba4c37e1586682f0012dd268487628637f3c7c17e05b955d0",
+      "gzipReadbackMatches": true
+    },
+    {
+      "raw": "docs/development/evidence/2026-10-25-review-mode-green-first.log",
+      "archive": "docs/development/evidence/2026-10-25-review-mode-green-first.log.gz",
+      "command": "W:\\Node.js\\node.exe --test web/test/review-mode-feedback.test.mjs web/test/quiz-review-pages.test.mjs",
+      "exitCode": 0,
+      "tests": 13,
+      "passed": 13,
+      "failed": 0,
+      "sha256": "b09965cb8959221a4e1ea87dbc1af04f86229b4205d2b6db137a3fa525adfba9",
+      "gzipReadbackMatches": true
+    },
+    {
+      "raw": "docs/development/evidence/2026-10-25-review-mode-integration-first.log",
+      "archive": "docs/development/evidence/2026-10-25-review-mode-integration-first.log.gz",
+      "command": "W:\\Node.js\\node.exe --test web/test/review-mode-feedback.test.mjs web/test/quiz-review-pages.test.mjs web/test/review-engine.test.mjs web/test/review-session.test.mjs web/test/learning-weak-questions-page.test.mjs web/test/layout-contract.test.mjs",
+      "exitCode": 0,
+      "tests": 63,
+      "passed": 63,
+      "failed": 0,
+      "sha256": "8ee794e1aab83387a02ae29c91120bc5ad9d5e582af6710bc1a8fda7969451dc",
+      "gzipReadbackMatches": true
+    },
+    {
+      "raw": "docs/development/evidence/2026-10-25-review-mode-return-focus-red.log",
+      "archive": "docs/development/evidence/2026-10-25-review-mode-return-focus-red.log.gz",
+      "command": "W:\\Node.js\\node.exe --test web/test/quiz-review-pages.test.mjs",
+      "exitCode": 1,
+      "tests": 6,
+      "passed": 5,
+      "failed": 1,
+      "sha256": "b1bbc37f408b0516c17ec0bf2a2869c4a2527f99c9858d441ccbde09205bb904",
+      "gzipReadbackMatches": true
+    },
+    {
+      "raw": "docs/development/evidence/2026-10-25-review-mode-integration-final.log",
+      "archive": "docs/development/evidence/2026-10-25-review-mode-integration-final.log.gz",
+      "command": "W:\\Node.js\\node.exe --test web/test/review-mode-feedback.test.mjs web/test/quiz-review-pages.test.mjs web/test/review-engine.test.mjs web/test/review-session.test.mjs web/test/learning-weak-questions-page.test.mjs web/test/layout-contract.test.mjs",
+      "exitCode": 0,
+      "tests": 63,
+      "passed": 63,
+      "failed": 0,
+      "sha256": "5e9f15ec88a391a1be5c030067b95e783792a1c02043d8502d3dec335417508f",
+      "gzipReadbackMatches": true
+    }
+  ],
+  "checks": [
+    {
+      "exitCode": 0,
+      "command": "node --check web/js/modes/review-mode.js"
+    },
+    {
+      "exitCode": 0,
+      "command": "node --check web/test/review-mode-feedback.test.mjs"
+    },
+    {
+      "note": "Git emitted existing LF-to-CRLF working-tree warnings, no whitespace errors",
+      "command": "git diff --check -- web/js/modes/review-mode.js web/test/quiz-review-pages.test.mjs web/test/review-mode-feedback.test.mjs",
+      "exitCode": 0
+    }
+  ],
+  "dataLayer": "Reuses existing createReviewAttempt/submitReviewAttempt. No review-engine/review-session changes in this page integration.",
+  "contracts": [
+    "Self-assessment labels are temporarily-unrecalled/unclear/clear-retelling in Chinese; hidden/unflipped/invalid rating cannot save",
+    "First valid choice disables all rating buttons and preserves original attempt/rating/time",
+    "Four shared feedback sections remain in result/basis/changes/actions order; only save-status paragraph is a live region",
+    "Card/activity/achievement failures keep the answer and selected rating; retry only previously unsuccessful effects",
+    "Saved card never rescheduled by supporting-save retry; conflict returns to queue without overwriting current record",
+    "Quiz source cards are explicitly read-only, including a hexagram with no persisted review card; return restores native source-button focus and scrolls it into view",
+    "Cleanup and replaced-root/old-button identity checks block stale writes and late focus"
+  ],
+  "selectors": [
+    ".flip-card",
+    "[data-rate=\"0\"]",
+    "[data-rate=\"1\"]",
+    "[data-rate=\"2\"]",
+    ".review-feedback",
+    "[data-review-result]",
+    ".review-storage-status",
+    "[data-action=\"review-retry\"]",
+    "[data-action=\"review-next\"]",
+    "[data-action=\"review-queue\"]",
+    "[data-action=\"review-source\"]",
+    "[data-action=\"review-feedback-return\"]"
+  ],
+  "browserSteps": [
+    "Introduce one synthetic persisted due card, flip using real input, select a rating, inspect four feedback sections and persisted state",
+    "Independently fail card/activity/achievement writes, observe visible status and retry; unblock and verify original timestamp/reps/stage and one event",
+    "Use review-source then review-feedback-return without writes; use review-next to leave the current result",
+    "Enter quiz-source from mixed queue with no review card, flip, verify no rating/no writes, return to original visible source button"
+  ],
+  "limitations": [
+    "No browser/real input executed by this page subgroup",
+    "DOM fixture tests assert structure, focus targets and scrolling calls, not actual pixels, hit testing or screen-reader announcements",
+    "Shared CSS and full validation/E2E are owned by root and remain outside these results",
+    "No production delivery, commit, push or task closure",
+    "No guarantee of cross-refresh recovery of unsaved in-memory feedback"
+  ],
+  "processState": {
+    "browserStarted": false,
+    "recordedRunsTerminal": true,
+    "activeExecSession": null
+  }
+}

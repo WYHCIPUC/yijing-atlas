@@ -1,11 +1,11 @@
 # 02 · 架构、运行服务与接口边界
 
-更新日期：2026-10-24。本文描述当前工作区，而非某个已发布版本。
+初始快照：2026-10-24；学习反馈与提交协调职责更新：2026-10-25。本文描述当前工作区，而非某个已发布版本。
 
 | 状态轴 | 当前结论 |
 | --- | --- |
 | 实现状态 | 原生静态网页、本地运行服务器、Windows 启动器和可选复讲评阅客户端已经存在；没有业务服务端、账号或数据库 |
-| 验证状态 | 本轮 `check`、`validate` 通过；覆盖率仅代表已配置模块；当前 E2E 有失败，详见证据专题，不能写为浏览器全通过 |
+| 验证状态 | 2026-10-24建档时 `check`、`validate` 通过而E2E有失败，保留历史适用范围；后续学习反馈的当前验证与交付状态见[本卡交接](evidence/2026-10-25-learning-feedback-integration.md)，不以限定回归或旧版本绿灯替代最终验收 |
 | 交付状态 | 本地开发工作区，包含未提交变更；不是远程发布完成或 Windows 新包已验收 |
 
 [返回开发建设总册](../DEVELOPMENT-MASTER.md) · [测试与证据](10-testing-evidence.md)
@@ -83,6 +83,8 @@ HTTP 提供方（三选一，不是三层业务服务）
 | 学习 | [learning-mode.js](../../web/js/modes/learning-mode.js)、[study-page.js](../../web/js/study-page.js) | 学习工作台、课程、典籍、数据入口 |
 | 课程和考校 | [learning-curriculum.js](../../web/js/learning-curriculum.js)、[learning-assessment.js](../../web/js/learning-assessment.js)、[learning-assessment-page.js](../../web/js/learning-assessment-page.js) | 课程引用、题库、判分、复讲与推荐 |
 | 复习与测验 | [review-engine.js](../../web/js/review-engine.js)、[quiz-engine.js](../../web/js/quiz-engine.js) 及各自 mode | 纯调度/判题与 DOM 分离，不在样式任务中修改判分 |
+| 本轮提交协调 | `web/js/review-session.js`（本地代码，尚未提交）、[quiz-session.js](../../web/js/quiz-session.js) | 不透明内存token锁定本轮评分/答案与时间，按实际保存结果重试未成功项；复习提交核对原卡快照并合并最新卡集合，不新增全局回执键 |
+| 共用修习反馈 | `web/js/learning-feedback.js`（本地代码，尚未提交） | 只组织本次结果、判断依据、学习记录、下一步四段，约束一个主行动和最多两个次行动；调用方负责动态文本转义、业务保存、事件绑定与焦点，它不是HTML净化器 |
 | 黄历 | [almanac-page.js](../../web/js/almanac-page.js)、[almanac/](../../web/js/almanac/) | 日期界面、天文、农历、干支、节气、择日与资料解读 |
 | 占筮 | [divination-engine.js](../../web/js/divination-engine.js)、[meihua-engine.js](../../web/js/meihua-engine.js)、[divination-interpretation.js](../../web/js/divination-interpretation.js) | 起卦、变爻取辞、体用与分层解释 |
 | 占筮记录 | [divination-history.js](../../web/js/divination-history.js) | 记录规范化、V1 兼容、V2 快照与隐私白名单 |
@@ -137,6 +139,8 @@ Three.js 氛围层由 `ensureCelestialStage()` 按意图加载。
 每次切换递增 `modeRequestId`；旧请求晚返回时不得覆盖后来选中的模式。
 成功后安装本地图标、设置入场、恢复滚动到页面开头并把焦点送到主标题。
 失败用 `role=alert` 的文本错误替换内容，最后移除 busy 状态。
+
+学习、测验、复习及占筮渲染器可返回清理函数，由 `main.js` 在切模式、关闭或进入探索时调用；学习模块另在切换内部栏目时清理课程或考评视图。复讲的请求世代、当前结果身份和排队焦点属于页面会话，清理后旧响应、控件及RAF不得写记录或影响新页；未保存结果不因离开而自动补写。实现细节与验收边界见[学习反馈交接](evidence/2026-10-25-learning-feedback-integration.md)。
 
 **建设目标**：新增模式仍遵守请求世代与焦点规则，不靠固定等待时间掩盖竞态。
 **失败边界**：快速点“学习→黄历→测验”，最后画面必须由最后一次操作决定。

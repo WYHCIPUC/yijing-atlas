@@ -1,20 +1,22 @@
 # 易象图谱开发建设总册
 
-版本：文档基线 1.23。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
+版本：文档基线 1.24。更新：2026-10-25（Asia/Shanghai）；首次建档快照仍保留10月24日的适用范围。
 
 **用途：其他 AI 或开发者只阅读本总册与关联专题，即可接手当前项目，按任务卡逐项开发、验证和交接。**
 
-**当前结论：产品尚未完成全面优化。** 总册与12份专题已建立；原48张卡现已完成T-DIV-01、T-SAVE-01、T-LEARN-05、T-SEARCH-01、T-LEARN-02、T-LEARN-01、T-QUIZ-01共7项，41项尚未闭环。最新具体错题与术语温习见[测验交接](development/evidence/2026-10-25-quiz-integration.md)，推荐/续读见[推荐交接](development/evidence/2026-10-25-learning-recommendation-integration.md)。内容与设备验收门禁继续保留。用户已要求GitHub开发分支、PR与任务同步；生产发布仍需另行安排。
+**当前结论：产品尚未完成全面优化。** 总册与12份专题已建立；原48卡已完成T-DIV-01、T-SAVE-01、T-LEARN-05、T-SEARCH-01、T-LEARN-02、T-LEARN-01、T-QUIZ-01及T-LEARN-03共8项，40项尚未闭环。内容、许可与设备验收门禁继续保留；GitHub开发分支、PR和任务同步，生产发布另行安排。
 
-需要查看剩余范围或复制目标时，阅读[未完成事项清单与目标文字](development/REMAINING-WORK-AND-GOAL.md)：逐项列出41项（30已确认、10建议、1独立发布）。三条既有专题要求的执行归属已明确；复习与复讲已有在制实现，梅花时间来源提示未完成，没有新增需求或采纳建议。
+上述8项按本地验收计数：7项业务已同步GitHub，T-LEARN-03业务代码尚未提交。本次盘点同步文档与任务状态，保留现有业务修改；文档提交的远程CI不能证明这份未提交业务已通过远程验收。
 
-**最新盘点边界**：本次起点`ac7025211b3aa45ea13c799c5689f03a19483c60`的[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40143608682)已核对completed/success，仅覆盖已提交版本。T-LEARN-03四段反馈、保存协调、生命周期、复讲原课入口及390px出处说明换行已有未提交实现；最新限定契约与页面回归96/96通过。当前专项逐份核对31个观测文件，11/51项与当前源码一致，其余40项尚无本候选接受通过记录。v8在复讲编辑旧响应场景两次Node原生中止后终止；v7/v8完整validate分别停在旧布局和旧焦点断言，契约已修，但完整validate与E2E尚未重新完成。历史批次不跨快照相加；最终验收、业务交接提交及对应远程CI仍缺，整卡开放。详见[最新盘点记录](development/evidence/2026-10-25-remaining-work-reconciled-review.md)。
+需要查看剩余范围或复制目标时，阅读[未完成事项清单与目标文字](development/REMAINING-WORK-AND-GOAL.md)：40项中29项已确认、10项建议、1项独立发布。间隔复习幂等与复讲会话/保存重试已随T-LEARN-03完成本地验收；梅花时间来源提示仍归T-DIV-03，没有新增需求或采纳建议。
+
+**最新本地交付边界**：T-LEARN-03完成本地验收：共享四段反馈、间隔复习同轮幂等及分项保存重试、复讲旧响应隔离及只重试保存、原课来源入口、考评/解卦生命周期和手机失败行动均已接通。v9完整validate退出0，75脚本、覆盖率阶段629/629；23显式模块行99.72%、分支93.90%、函数99.01%。最终51项专项逐一匹配31份观测文件，完整五视口E2E退出0、25图，171份源码保护一致。独立审阅无阻断；历史失败及Node原生中止保留，不把重跑通过改写为原失败通过。真机、读屏和真实200%仍归外部验收。见[最终验收](development/evidence/2026-10-25-learning-feedback-final-acceptance.json)和[交接](development/evidence/2026-10-25-learning-feedback-integration.md)。业务提交与对应远程CI按实际提交另记，不能用起点20b2e47的绿灯代替新业务。
 
 **测验业务交付版本3a5b797**：T-QUIZ-01完成本地验收：具体规则/术语方向的错题—温习—纠正、六项独立保存重试、旧摘要隔离及跨页清理已接通。320px定位与工具栏遮挡分别红→绿；修后validate退出0，72脚本、515/515，配置21模块行99.76%、分支94.04%、函数98.96%。最终18项独立专项、147次可信输入/49图通过；完整五视口E2E退出0、25图，173份源码哈希一致。原生200%偏好未生效，仍未验证。源码、测试与证据已交付；见[最终验收摘要](development/evidence/2026-10-25-quiz-final-acceptance.json)。[此前42项盘点](development/evidence/2026-10-25-remaining-work-toolbar-review.md)保留当时范围。
 
 **此前搜索交付**：T-SEARCH-01已完成结构搜索、真实资料接线、IME/ARIA与异步保护，以及手机六位码呈现。validate 62脚本、317/317及完整五视口E2E通过，含实际关键词正例的专项矩阵与手机字段红→绿均已记录。来源/完整限制见[搜索整合交接](development/evidence/2026-10-25-search-integration.md)；外部设备、读屏与真实200%不由模拟验收替代。
 
-**此前推荐交付边界**：T-LEARN-01推荐与续读完成本地验收，包含推荐排序/原因、最小恢复位置、欢迎首课、主行动接线、退出清理与可见保存反馈。最终validate为66脚本、427/427，增强1440/390专项6/6及320补充1/1，完整五视口E2E重试退出0并留25张截图。独立审阅无阻断，应用/测试与验收快照一致。首轮Node/libuv原生中止保留，真机、读屏与真实200%未被模拟输入替代。见[完整交接](development/evidence/2026-10-25-learning-recommendation-integration.md)。后继T-QUIZ-01亦已完成本地验收，学习闭环下一项为T-LEARN-03。
+**此前推荐交付边界**：T-LEARN-01推荐与续读完成本地验收，包含推荐排序/原因、最小恢复位置、欢迎首课、主行动接线、退出清理与可见保存反馈。最终validate为66脚本、427/427，增强1440/390专项6/6及320补充1/1，完整五视口E2E重试退出0并留25张截图。独立审阅无阻断，应用/测试与验收快照一致。首轮Node/libuv原生中止保留，真机、读屏与真实200%未被模拟输入替代。见[完整交接](development/evidence/2026-10-25-learning-recommendation-integration.md)。后继T-QUIZ-01亦已完成本地验收，T-LEARN-03亦已完成本地验收，继续按剩余卡原依赖执行。
 
 **GitHub**：课程业务与证据已推送开发分支，Draft PR继续同步。此前文档提交`710dba7`的[PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40130249757)已核对success；该绿灯不覆盖后续`995dd2c`，[995dd2c的PR Quality](https://github.com/WYHCIPUC/yijing-atlas/actions/runs/40130504986)已核对success（validate与Browser smoke均成功），仅覆盖已提交版本，本地验收不能代替远程CI。没有合并main或生产发布。
 

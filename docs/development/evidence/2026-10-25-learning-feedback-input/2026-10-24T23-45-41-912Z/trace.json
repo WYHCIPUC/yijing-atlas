@@ -1,0 +1,3179 @@
+{
+  "startedAt": "2026-10-24T23:45:41.963Z",
+  "command": [
+    "node",
+    "scripts/test-learning-feedback.mjs",
+    "--scope",
+    "390-oral-self-activity-retry"
+  ],
+  "head": "ac7025211b3aa45ea13c799c5689f03a19483c60",
+  "node": "v22.23.1",
+  "uv": "1.51.0",
+  "browserPath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "profile": "C:\\Users\\1\\AppData\\Local\\Temp\\yijing-learning-feedback-h27cD4",
+  "output": "Y:\\易经学习项目\\docs\\development\\evidence\\2026-10-25-learning-feedback-input\\2026-10-24T23-45-41-912Z",
+  "scope": "390-oral-self-activity-retry",
+  "sourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "a403744525846aad387912a8f48b174251d5ea563189ef546851a09faba22bcd",
+    "web/js/learning-feedback.js": "297b8116a05c6c2543e31dc2fdf0915f82f49d9d61f8d7af016ec6ad0ce93c28",
+    "web/js/review-session.js": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54",
+    "web/js/review-engine.js": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-review.js": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/learning-assessment-page.js": "95c1a93e0d453b6feb2940308e5816f8fa04580cfd59f02ccf907c4cc9627e5d",
+    "web/js/modes/learning-mode.js": "5a6009b61e2a846b5ab0a9b92e9a7fc6711d0c81bcdfd6431b2e764f42962bef",
+    "web/js/modes/review-mode.js": "082b67ab4b38a63979024b7d5a6ca61c111d0c7c168f76227a7d756e4b39bc55",
+    "web/js/modes/quiz-mode.js": "9a4e0828ddcf2788efc6d84eb49c0e937a9420edb7ada494ecb0ddf848ee3090",
+    "web/js/modes/divination-mode.js": "de316cb98d507712af99b63947bff6f9b666c8c57e11a2d2680e7193e25445cb",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/divination-history.js": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660",
+    "web/js/meihua-engine.js": "3310a0ede88f2f05ad1663aed48efed99c64828bcb4fced4a51e4733fdd45074",
+    "web/js/divination-interpretation.js": "1fa8bf21fea4c8856e98fa139c1b4fdf551eeedcead8e63e6b048804a28238cf",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "03d697b4e5f7b129c96615176915b43df9d93920c06a4b28a0f9713b89ddcc7a",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/sw.js": "cdc31bd2491a6964a5af9b5e3f4a387617b2f53fb596e166fddb09ac110a2055",
+    "scripts/serve.mjs": "21ffdb9e9c86d3e75038a4256a7c4874696739fa4e194d34a4a320c02918c3c4",
+    "scripts/test-learning-feedback.mjs": "811426cd08b3b7eaf5300a2263e8cdef5b2b849d5b566d5a86079ee8240a9329"
+  },
+  "status": "failed",
+  "scenarios": [
+    {
+      "name": "390-oral-self-activity-retry",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inputMode": "touch",
+      "emulatedMobile": true,
+      "status": "failed",
+      "inputs": [
+        {
+          "kind": "touch",
+          "label": "[data-entry=\"explore\"]",
+          "x": 195,
+          "y": 447.75,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "touch",
+          "label": ".mode-btn[data-mode=\"learning\"]",
+          "x": 164.5,
+          "y": 82.90811157226562,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        },
+        {
+          "kind": "touch",
+          "label": "[data-section-target=\"assessment\"]",
+          "x": 195,
+          "y": 503.63584899902344,
+          "hit": {
+            "tag": "STRONG",
+            "id": ""
+          }
+        },
+        {
+          "kind": "touch",
+          "label": "[data-action=\"self-review\"]",
+          "x": 152,
+          "y": 700.609375,
+          "hit": {
+            "tag": "BUTTON",
+            "id": "",
+            "action": "self-review"
+          }
+        },
+        {
+          "kind": "touch",
+          "label": "[data-score=\"80\"]",
+          "x": 272.234375,
+          "y": 658.296875,
+          "hit": {
+            "tag": "BUTTON",
+            "id": ""
+          }
+        }
+      ],
+      "checks": [
+        {
+          "label": "automatic-feedback-before-locator-scroll",
+          "container": ".oral-review-output",
+          "failed": true,
+          "structure": {
+            "sections": [
+              "result",
+              "basis",
+              "changes",
+              "actions"
+            ],
+            "primary": 1,
+            "secondary": 2,
+            "wholeLive": null,
+            "focus": {
+              "tag": "P",
+              "inside": true,
+              "visible": true,
+              "hit": true,
+              "rect": {
+                "x": 48,
+                "y": 449.015625,
+                "width": 294,
+                "height": 61.1875,
+                "top": 449.015625,
+                "right": 342,
+                "bottom": 510.203125,
+                "left": 48
+              }
+            },
+            "selection": ""
+          },
+          "result": {
+            "rect": {
+              "x": 48,
+              "y": -349.390625,
+              "width": 294,
+              "height": 174.6875,
+              "top": -349.390625,
+              "right": 342,
+              "bottom": -174.703125,
+              "left": 48
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "本次结果\n基于要点的自评80 分\n\n这是个人对要点掌握情况的自评，不作为客观考评结果。",
+            "visible": false,
+            "full": false,
+            "hit": false
+          },
+          "status": {
+            "rect": {
+              "x": 48,
+              "y": 449.015625,
+              "width": 294,
+              "height": 61.1875,
+              "top": 449.015625,
+              "right": 342,
+              "bottom": 510.203125,
+              "left": 48
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "复讲成绩已保存；学习日记录未能保存。",
+            "visible": true,
+            "full": true,
+            "hit": true
+          },
+          "primary": {
+            "rect": {
+              "x": 48,
+              "y": 597.703125,
+              "width": 294,
+              "height": 47.59375,
+              "top": 597.703125,
+              "right": 342,
+              "bottom": 645.296875,
+              "left": 48
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "仅重试保存本轮记录",
+            "visible": true,
+            "full": true,
+            "hit": true,
+            "disabled": false
+          },
+          "retry": {
+            "rect": {
+              "x": 48,
+              "y": 597.703125,
+              "width": 294,
+              "height": 47.59375,
+              "top": 597.703125,
+              "right": 342,
+              "bottom": 645.296875,
+              "left": 48
+            },
+            "clip": {
+              "left": 0,
+              "top": 116,
+              "right": 390,
+              "bottom": 844
+            },
+            "text": "仅重试保存本轮记录",
+            "visible": true,
+            "full": true,
+            "hit": true,
+            "disabled": false
+          }
+        },
+        {
+          "label": "oral-source-notice-horizontal-fit",
+          "provenance": {
+            "text": "本结果未附原典出处定位，出处与校验状态待核对；请回原课查看。",
+            "rect": {
+              "x": 48,
+              "y": 324.921875,
+              "width": 556.609375,
+              "height": 36.59375,
+              "top": 324.921875,
+              "right": 604.609375,
+              "bottom": 361.515625,
+              "left": 48
+            },
+            "container": {
+              "x": 48,
+              "y": -174.703125,
+              "width": 294,
+              "height": 560.21875,
+              "top": -174.703125,
+              "right": 342,
+              "bottom": 385.515625,
+              "left": 48
+            },
+            "scrollWidth": 555,
+            "clientWidth": 555,
+            "display": "inline-flex",
+            "whiteSpace": "nowrap"
+          }
+        }
+      ],
+      "requests": [],
+      "fixtures": [
+        {
+          "at": "2026-10-24T23:45:43.427Z",
+          "values": {}
+        }
+      ],
+      "faults": [
+        {
+          "operation": "setItem",
+          "storageKeys": [
+            "yijing-activity-v1"
+          ],
+          "at": "2026-10-24T23:45:44.497Z",
+          "synthetic": true
+        }
+      ],
+      "screenshots": [
+        "390-oral-self-activity-retry-automatic-0.png",
+        "390-oral-self-activity-retry-failure.png"
+      ],
+      "failure": {
+        "message": "The oral source notice overflows its reading column",
+        "stack": "AssertionError [ERR_ASSERTION]: The oral source notice overflows its reading column\n    at inspectFeedback (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:322:12)\n    at async oralSelf (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:373:37)\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:709:102)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:756:77"
+      },
+      "failureState": {
+        "data": {
+          "card": null,
+          "record": {
+            "version": 2,
+            "lessons": {},
+            "spotChecks": [],
+            "exams": [],
+            "oralReviews": [
+              {
+                "lessonId": "l1-1",
+                "score": 80,
+                "mode": "self",
+                "at": "2026-10-24T23:45:44.591Z"
+              }
+            ]
+          },
+          "activity": null,
+          "achievement": null,
+          "stats": null,
+          "legacy": null,
+          "config": null,
+          "history": null
+        },
+        "raw": {
+          "card": null,
+          "record": "{\"version\":2,\"lessons\":{},\"spotChecks\":[],\"exams\":[],\"oralReviews\":[{\"lessonId\":\"l1-1\",\"score\":80,\"mode\":\"self\",\"at\":\"2026-10-24T23:45:44.591Z\"}]}",
+          "activity": null,
+          "achievement": null,
+          "stats": null,
+          "legacy": null,
+          "config": null,
+          "history": null
+        },
+        "reads": [
+          {
+            "key": "yijing.study.v1",
+            "readable": true,
+            "at": 539.8000000119209
+          },
+          {
+            "key": "yijing-learning-record-v2",
+            "readable": true,
+            "at": 540
+          },
+          {
+            "key": "yijing-review-cards",
+            "readable": true,
+            "at": 540.3000000119209
+          },
+          {
+            "key": "yijing-quiz-wrong",
+            "readable": true,
+            "at": 540.3000000119209
+          },
+          {
+            "key": "yijing-quiz-wrong",
+            "readable": true,
+            "at": 540.5
+          },
+          {
+            "key": "yijing-activity-v1",
+            "readable": true,
+            "at": 540.5
+          },
+          {
+            "key": "yijing.study.v1",
+            "readable": true,
+            "at": 943.8000000119209
+          },
+          {
+            "key": "yijing-learning-record-v2",
+            "readable": true,
+            "at": 943.8000000119209
+          },
+          {
+            "key": "yijing-learning-review-config-v1",
+            "readable": true,
+            "at": 945.0999999940395
+          },
+          {
+            "key": "yijing.study.v1",
+            "readable": true,
+            "at": 1153.5999999940395
+          },
+          {
+            "key": "yijing-learning-record-v2",
+            "readable": true,
+            "at": 1153.5999999940395
+          },
+          {
+            "key": "yijing-activity-v1",
+            "readable": true,
+            "at": 1153.800000011921
+          }
+        ],
+        "writes": [
+          {
+            "key": "yijing-learning-record-v2",
+            "saved": true,
+            "at": 1153.800000011921,
+            "value": {
+              "version": 2,
+              "lessons": {},
+              "spotChecks": [],
+              "exams": [],
+              "oralReviews": [
+                {
+                  "lessonId": "l1-1",
+                  "score": 80,
+                  "mode": "self",
+                  "at": "2026-10-24T23:45:44.591Z"
+                }
+              ]
+            }
+          },
+          {
+            "key": "yijing-activity-v1",
+            "saved": false,
+            "at": 1153.9000000059605,
+            "value": {
+              "days": [
+                "2026-10-25"
+              ]
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "type": "touchstart",
+            "trusted": true,
+            "at": 444.40000000596046,
+            "target": "mode-btn magnetic-control motion-pressed"
+          },
+          {
+            "type": "touchend",
+            "trusted": true,
+            "at": 455.30000001192093,
+            "target": "mode-btn magnetic-control motion-pressed"
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "at": 456.19999998807907,
+            "x": 165,
+            "y": 83,
+            "target": "mode-btn magnetic-control motion-pressed"
+          },
+          {
+            "type": "touchstart",
+            "trusted": true,
+            "at": 919.9000000059605,
+            "target": "STRONG"
+          },
+          {
+            "type": "touchend",
+            "trusted": true,
+            "at": 936.6999999880791,
+            "target": "STRONG"
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "at": 937.8000000119209,
+            "x": 195,
+            "y": 504,
+            "target": "STRONG"
+          },
+          {
+            "type": "touchstart",
+            "trusted": true,
+            "at": 1037,
+            "target": "text-button motion-pressed",
+            "action": "self-review"
+          },
+          {
+            "type": "touchend",
+            "trusted": true,
+            "at": 1053.300000011921,
+            "target": "text-button motion-pressed",
+            "action": "self-review"
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "at": 1054,
+            "x": 152,
+            "y": 701,
+            "target": "text-button motion-pressed",
+            "action": "self-review"
+          },
+          {
+            "type": "touchstart",
+            "trusted": true,
+            "at": 1137.5,
+            "target": "motion-pressed"
+          },
+          {
+            "type": "touchend",
+            "trusted": true,
+            "at": 1152.699999988079,
+            "target": "motion-pressed"
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "at": 1153.5,
+            "x": 272,
+            "y": 658,
+            "target": "motion-pressed"
+          }
+        ],
+        "mode": "learning",
+        "focus": {
+          "tag": "P",
+          "id": ""
+        },
+        "oralText": "本次结果\n基于要点的自评80 分\n\n这是个人对要点掌握情况的自评，不作为客观考评结果。\n\n判断依据\n项目课程要点\n\n课程：阴阳之道\n\n阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。\n阴（--）：主静、柔顺、暗、寒、女、地、偶数。爻象为中断的两短横。\n阴阳互根：阴中有阳，阳中有阴，相互依存、相互转化。\n阴阳消长：阴阳二气的盛衰推移，构成四时变化与万物生杀。十二消息卦即明此理。\n\n本结果未附原典出处定位，出处与校验状态待核对；请回原课查看。\n\n学习记录\n\n复讲成绩已保存；学习日记录未能保存。\n\n下一步\n仅重试保存本轮记录\n开始新的复讲\n回原课温习",
+        "oralLesson": "l1-1",
+        "aiDisabled": true,
+        "feedback": [
+          "本次结果\n基于要点的自评80 分\n\n这是个人对要点掌握情况的自评，不作为客观考评结果。\n\n判断依据\n项目课程要点\n\n课程：阴阳之道\n\n阳（—）：主动、刚健、明亮、热、男、天、奇数。爻象为不中断的一长横。\n阴（--）：主静、柔顺、暗、寒、女、地、偶数。爻象为中断的两短横。\n阴阳互根：阴中有阳，阳中有阴，相互依存、相互转化。\n阴阳消长：阴阳二气的盛衰推移，构成四时变化与万物生杀。十二消息卦即明此理。\n\n本结果未附原典出处定位，出处与校验状态待核对；请回原课查看。\n\n学习记录\n\n复讲成绩已保存；学习日记录未能保存。\n\n下一步\n仅重试保存本轮记录\n开始新的复讲\n回原课温习"
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Synthetic isolated profile and origin; no existing user data, private text or authenticated service is accessed.",
+    "Desktop headless Chromium / CDP touch and CSS viewport checks only; no physical device, screen reader or native browser zoom proof.",
+    "Storage fixtures/read/quota faults and Fetch replies are deliberate test injections. No DOM.click or browser application function is invoked.",
+    "Evidence snapshots bypass injected reads through saved native getItem; application reads use the patched prototype and can throw.",
+    "Input actions use actual hit coordinates or keyboard focus. Locator scrollIntoView is allowed only after automatic result visibility capture.",
+    "AI replies are synthetic and intercepted before network dispatch. This does not validate a deployed backend or real model quality.",
+    "Oral drafts and pending retries are page-memory only. Leaving a page does not promise persistence of an unsaved submission.",
+    "1280x720 and 768x1024 cover five representative feedback/retry flows only. Meihua time has the same result renderer; its distinct time-button entry is covered at 1440/390, not additionally claimed at these two representative viewports."
+  ],
+  "server": {
+    "pid": 29716,
+    "runtime": "W:\\Node.js\\node.exe",
+    "url": "http://127.0.0.1:62081/",
+    "startedAt": "2026-10-24T23:45:42.019Z",
+    "stdout": "易象图谱开发服务器：http://127.0.0.1:62081/\n",
+    "stderr": "",
+    "exit": {
+      "code": null,
+      "signal": "SIGTERM",
+      "at": "2026-10-24T23:45:45.449Z",
+      "duringCleanup": true
+    },
+    "close": {
+      "code": null,
+      "signal": "SIGTERM",
+      "at": "2026-10-24T23:45:45.450Z"
+    }
+  },
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "failure": {
+    "message": "The oral source notice overflows its reading column",
+    "stack": "AssertionError [ERR_ASSERTION]: The oral source notice overflows its reading column\n    at inspectFeedback (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:322:12)\n    at async oralSelf (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:373:37)\n    at async runScenario (file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:709:102)\n    at async file:///Y:/%E6%98%93%E7%BB%8F%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/scripts/test-learning-feedback.mjs:756:77"
+  },
+  "finishedAt": "2026-10-24T23:45:45.365Z",
+  "finalSourceHashes": {
+    "web/index.html": "3c604aeb4bb02d51177d2f42eb4ec0294039f2362894c70b257a1d0f3846dbe6",
+    "web/js/main.js": "a403744525846aad387912a8f48b174251d5ea563189ef546851a09faba22bcd",
+    "web/js/learning-feedback.js": "297b8116a05c6c2543e31dc2fdf0915f82f49d9d61f8d7af016ec6ad0ce93c28",
+    "web/js/review-session.js": "e2b0b2fb10e9b63c9ac1c3b91cd89ea9e6d7252c98e506509c1c27f91373cf54",
+    "web/js/review-engine.js": "257086f86fed01fddf94642d7e47a636da4c8736bdc1d603d806e10224806c43",
+    "web/js/learning-progress.js": "1692f462acac695d5a671637e073b677d06d98279cf34a643725727051f5da06",
+    "web/js/learning-review.js": "d9156a5b75385883596ee5c9073a4f50b707ccc752bea6e13443ab52206f18ad",
+    "web/js/learning-assessment.js": "a55c447f3eb42b5fe348ec24945ba7dc12e3578233821850680f6a523364986b",
+    "web/js/learning-assessment-page.js": "95c1a93e0d453b6feb2940308e5816f8fa04580cfd59f02ccf907c4cc9627e5d",
+    "web/js/modes/learning-mode.js": "5a6009b61e2a846b5ab0a9b92e9a7fc6711d0c81bcdfd6431b2e764f42962bef",
+    "web/js/modes/review-mode.js": "082b67ab4b38a63979024b7d5a6ca61c111d0c7c168f76227a7d756e4b39bc55",
+    "web/js/modes/quiz-mode.js": "9a4e0828ddcf2788efc6d84eb49c0e937a9420edb7ada494ecb0ddf848ee3090",
+    "web/js/modes/divination-mode.js": "de316cb98d507712af99b63947bff6f9b666c8c57e11a2d2680e7193e25445cb",
+    "web/js/quiz-session.js": "554cd14ff51a479bb7e9be032adece108c8c8f29b725a9cf9f08b6f3e894455a",
+    "web/js/quiz-engine.js": "446d134fb1a7d1c1075e7565dbe0fbfc02afd0822f6f3b6abfe119ba74904969",
+    "web/js/achievement-engine.js": "f7d007d83413221b7644578f5fb8235f09e0872c6c164394d38e7c2348c4bea0",
+    "web/js/achievement-storage.js": "411db6c51fd2d1f208c9929610b2fbc6b0cc468d49c9938b767299ed9ccf6098",
+    "web/js/divination-history.js": "477c92f073dfe74578082ee3e4f04024ab3db37d3e2d2b99e60302dfb3cc0660",
+    "web/js/meihua-engine.js": "3310a0ede88f2f05ad1663aed48efed99c64828bcb4fced4a51e4733fdd45074",
+    "web/js/divination-interpretation.js": "1fa8bf21fea4c8856e98fa139c1b4fdf551eeedcead8e63e6b048804a28238cf",
+    "web/js/learning-curriculum.js": "8c2a1cb8c31692ca6e761fc9bf751b876bd5fc1c088c7d5a1f9d9d3c7ec8cd8e",
+    "web/styles/main.css": "98d6875db0dbac3801748f69531db1343688e58b4f3d0a35bf895ad51e9d6268",
+    "web/styles/immersive.css": "03d697b4e5f7b129c96615176915b43df9d93920c06a4b28a0f9713b89ddcc7a",
+    "web/data/hexagrams.json": "95ebb8d7c98c437c32aa90e06634888ae97201416310798929f6b104f4ecb080",
+    "web/data/trigrams.json": "9b22d1efbc01cf4977d579ac1ead789b4e6d7aacd8bfb833593c39300746c6e8",
+    "web/data/wings.json": "999dfd74a7bc33957d748716e6dc1f227ddb22a98d40bcb7edae73adf404b721",
+    "web/data/theorems.json": "06cb4edceb0ac0ae556a871b9617f089836e7ef8ad65af9ea8fd437357a84bc3",
+    "web/data/almanac-terms.json": "883d0d29a9153adbe87f843b3008dd5f4e9eaeb85f7cb968201d08179cfb7aad",
+    "web/sw.js": "cdc31bd2491a6964a5af9b5e3f4a387617b2f53fb596e166fddb09ac110a2055",
+    "scripts/serve.mjs": "21ffdb9e9c86d3e75038a4256a7c4874696739fa4e194d34a4a320c02918c3c4",
+    "scripts/test-learning-feedback.mjs": "811426cd08b3b7eaf5300a2263e8cdef5b2b849d5b566d5a86079ee8240a9329"
+  },
+  "sourceStableDuringRun": true,
+  "pageErrors": [],
+  "browserLogs": [],
+  "networkRequests": [
+    {
+      "requestId": "177C64B067EB56C6D3CC2E25498F3616",
+      "url": "http://127.0.0.1:62081/?feedback-probe=390-oral-self-activity-retry",
+      "method": "GET",
+      "type": "Document",
+      "timestamp": 253246.357965
+    },
+    {
+      "requestId": "25464.2",
+      "url": "http://127.0.0.1:62081/js/protocol-guard.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.705773
+    },
+    {
+      "requestId": "25464.3",
+      "url": "http://127.0.0.1:62081/assets/academy-astrolabe-bg.webp",
+      "method": "GET",
+      "type": "Image",
+      "timestamp": 253246.722306
+    },
+    {
+      "requestId": "25464.4",
+      "url": "http://127.0.0.1:62081/lib/vendor/lenis.css",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253246.722389
+    },
+    {
+      "requestId": "25464.5",
+      "url": "http://127.0.0.1:62081/styles/main.css?v=51",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253246.722421
+    },
+    {
+      "requestId": "25464.6",
+      "url": "http://127.0.0.1:62081/styles/immersive.css?v=51",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253246.722441
+    },
+    {
+      "requestId": "25464.7",
+      "url": "http://127.0.0.1:62081/lib/vendor/gsap.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.723707
+    },
+    {
+      "requestId": "25464.8",
+      "url": "http://127.0.0.1:62081/lib/vendor/lenis.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.723763
+    },
+    {
+      "requestId": "25464.9",
+      "url": "http://127.0.0.1:62081/js/main.js?v=51",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.723827
+    },
+    {
+      "requestId": "25464.10",
+      "url": "http://127.0.0.1:62081/manifest.webmanifest",
+      "method": "GET",
+      "type": "Manifest",
+      "timestamp": 253246.723995
+    },
+    {
+      "requestId": "25464.11",
+      "url": "http://127.0.0.1:62081/js/audio-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.782661
+    },
+    {
+      "requestId": "25464.12",
+      "url": "http://127.0.0.1:62081/js/achievement-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.782765
+    },
+    {
+      "requestId": "25464.13",
+      "url": "http://127.0.0.1:62081/js/achievement-storage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.782802
+    },
+    {
+      "requestId": "25464.14",
+      "url": "http://127.0.0.1:62081/js/data-loader.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.782826
+    },
+    {
+      "requestId": "25464.15",
+      "url": "http://127.0.0.1:62081/js/evolution-lab.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.782849
+    },
+    {
+      "requestId": "25464.16",
+      "url": "http://127.0.0.1:62081/js/share-card.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.782906
+    },
+    {
+      "requestId": "25464.17",
+      "url": "http://127.0.0.1:62081/js/modes/guaxu-mode.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.782932
+    },
+    {
+      "requestId": "25464.18",
+      "url": "http://127.0.0.1:62081/js/cinematic-motion.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.782962
+    },
+    {
+      "requestId": "25464.19",
+      "url": "http://127.0.0.1:62081/js/motion-system.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.782989
+    },
+    {
+      "requestId": "25464.20",
+      "url": "http://127.0.0.1:62081/js/render.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.783017
+    },
+    {
+      "requestId": "25464.21",
+      "url": "http://127.0.0.1:62081/js/review-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.783043
+    },
+    {
+      "requestId": "25464.22",
+      "url": "http://127.0.0.1:62081/js/reading-state.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.783087
+    },
+    {
+      "requestId": "25464.23",
+      "url": "http://127.0.0.1:62081/js/search-controller.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.783151
+    },
+    {
+      "requestId": "25464.24",
+      "url": "http://127.0.0.1:62081/js/star-relations.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.783263
+    },
+    {
+      "requestId": "25464.25",
+      "url": "http://127.0.0.1:62081/js/star-map.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.78331
+    },
+    {
+      "requestId": "25464.26",
+      "url": "http://127.0.0.1:62081/js/svg-painter.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.783417
+    },
+    {
+      "requestId": "25464.27",
+      "url": "http://127.0.0.1:62081/js/ui-icons.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.783447
+    },
+    {
+      "requestId": "25464.28",
+      "url": "http://127.0.0.1:62081/js/storage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.790684
+    },
+    {
+      "requestId": "25464.29",
+      "url": "http://127.0.0.1:62081/js/achievement-catalog.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.791442
+    },
+    {
+      "requestId": "25464.30",
+      "url": "http://127.0.0.1:62081/js/evolution-state.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.793381
+    },
+    {
+      "requestId": "25464.31",
+      "url": "http://127.0.0.1:62081/js/evolution-semantics.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.793445
+    },
+    {
+      "requestId": "25464.32",
+      "url": "http://127.0.0.1:62081/js/hexagram-utils.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.793473
+    },
+    {
+      "requestId": "25464.33",
+      "url": "http://127.0.0.1:62081/js/guaxu-wheel.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.795497
+    },
+    {
+      "requestId": "25464.34",
+      "url": "http://127.0.0.1:62081/js/relation-animation.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.79589
+    },
+    {
+      "requestId": "25464.35",
+      "url": "http://127.0.0.1:62081/js/content-provenance.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.795943
+    },
+    {
+      "requestId": "25464.36",
+      "url": "http://127.0.0.1:62081/lib/d3-force.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.802991
+    },
+    {
+      "requestId": "25464.37",
+      "url": "http://127.0.0.1:62081/js/star-layouts.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.803049
+    },
+    {
+      "requestId": "25464.38",
+      "url": "http://127.0.0.1:62081/js/star-atmosphere.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.803068
+    },
+    {
+      "requestId": "25464.39",
+      "url": "http://127.0.0.1:62081/js/star-label-layout.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253246.803083
+    },
+    {
+      "requestId": "25464.40",
+      "url": "http://127.0.0.1:62081/data/hexagrams.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253246.832062
+    },
+    {
+      "requestId": "25464.41",
+      "url": "http://127.0.0.1:62081/data/trigrams.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253246.832168
+    },
+    {
+      "requestId": "25464.42",
+      "url": "http://127.0.0.1:62081/assets/favicon.svg",
+      "method": "GET",
+      "type": "Other",
+      "timestamp": 253246.836586
+    },
+    {
+      "requestId": "25464.43",
+      "url": "http://127.0.0.1:62081/assets/favicon.svg",
+      "method": "GET",
+      "type": "Other",
+      "timestamp": 253246.839466
+    },
+    {
+      "requestId": "25464.44",
+      "url": "http://127.0.0.1:62081/data/commentaries/manifest.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253246.845173
+    },
+    {
+      "requestId": "25464.45",
+      "url": "http://127.0.0.1:62081/data/hexagram-keywords.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253246.856339
+    },
+    {
+      "requestId": "25464.100",
+      "url": "http://127.0.0.1:62081/js/celestial-stage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.011654
+    },
+    {
+      "requestId": "25464.101",
+      "url": "http://127.0.0.1:62081/lib/vendor/three.module.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.108071
+    },
+    {
+      "requestId": "D49EB31A116D1FA6BE16DA5F6E0E4D98",
+      "url": "http://127.0.0.1:62081/?feedback-probe=390-oral-self-activity-retry",
+      "method": "GET",
+      "type": "Document",
+      "timestamp": 253247.120612
+    },
+    {
+      "requestId": "25464.103",
+      "url": "http://127.0.0.1:62081/lib/vendor/three.core.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.119388
+    },
+    {
+      "requestId": "25464.107",
+      "url": "http://127.0.0.1:62081/js/protocol-guard.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.137555
+    },
+    {
+      "requestId": "25464.109",
+      "url": "http://127.0.0.1:62081/assets/academy-astrolabe-bg.webp",
+      "method": "GET",
+      "type": "Image",
+      "timestamp": 253247.140884
+    },
+    {
+      "requestId": "25464.110",
+      "url": "http://127.0.0.1:62081/lib/vendor/lenis.css",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253247.140965
+    },
+    {
+      "requestId": "25464.111",
+      "url": "http://127.0.0.1:62081/styles/main.css?v=51",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253247.141001
+    },
+    {
+      "requestId": "25464.112",
+      "url": "http://127.0.0.1:62081/styles/immersive.css?v=51",
+      "method": "GET",
+      "type": "Stylesheet",
+      "timestamp": 253247.141034
+    },
+    {
+      "requestId": "25464.116",
+      "url": "http://127.0.0.1:62081/lib/vendor/gsap.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.141648
+    },
+    {
+      "requestId": "25464.117",
+      "url": "http://127.0.0.1:62081/lib/vendor/lenis.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.141691
+    },
+    {
+      "requestId": "25464.118",
+      "url": "http://127.0.0.1:62081/js/main.js?v=51",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.141731
+    },
+    {
+      "requestId": "25464.123",
+      "url": "http://127.0.0.1:62081/manifest.webmanifest",
+      "method": "GET",
+      "type": "Manifest",
+      "timestamp": 253247.145017
+    },
+    {
+      "requestId": "25464.125",
+      "url": "http://127.0.0.1:62081/js/audio-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.158773
+    },
+    {
+      "requestId": "25464.126",
+      "url": "http://127.0.0.1:62081/js/achievement-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159022
+    },
+    {
+      "requestId": "25464.127",
+      "url": "http://127.0.0.1:62081/js/achievement-storage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159081
+    },
+    {
+      "requestId": "25464.128",
+      "url": "http://127.0.0.1:62081/js/data-loader.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159103
+    },
+    {
+      "requestId": "25464.129",
+      "url": "http://127.0.0.1:62081/js/evolution-lab.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159127
+    },
+    {
+      "requestId": "25464.130",
+      "url": "http://127.0.0.1:62081/js/share-card.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159149
+    },
+    {
+      "requestId": "25464.131",
+      "url": "http://127.0.0.1:62081/js/modes/guaxu-mode.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159186
+    },
+    {
+      "requestId": "25464.132",
+      "url": "http://127.0.0.1:62081/js/cinematic-motion.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159219
+    },
+    {
+      "requestId": "25464.133",
+      "url": "http://127.0.0.1:62081/js/motion-system.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159253
+    },
+    {
+      "requestId": "25464.134",
+      "url": "http://127.0.0.1:62081/js/render.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159304
+    },
+    {
+      "requestId": "25464.136",
+      "url": "http://127.0.0.1:62081/js/review-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159396
+    },
+    {
+      "requestId": "25464.137",
+      "url": "http://127.0.0.1:62081/js/reading-state.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159486
+    },
+    {
+      "requestId": "25464.139",
+      "url": "http://127.0.0.1:62081/js/search-controller.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159584
+    },
+    {
+      "requestId": "25464.140",
+      "url": "http://127.0.0.1:62081/js/star-relations.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159618
+    },
+    {
+      "requestId": "25464.142",
+      "url": "http://127.0.0.1:62081/js/star-map.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159674
+    },
+    {
+      "requestId": "25464.143",
+      "url": "http://127.0.0.1:62081/js/svg-painter.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159702
+    },
+    {
+      "requestId": "25464.144",
+      "url": "http://127.0.0.1:62081/js/ui-icons.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.159771
+    },
+    {
+      "requestId": "25464.159",
+      "url": "http://127.0.0.1:62081/js/storage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.1659
+    },
+    {
+      "requestId": "25464.161",
+      "url": "http://127.0.0.1:62081/js/evolution-state.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.167051
+    },
+    {
+      "requestId": "25464.162",
+      "url": "http://127.0.0.1:62081/js/evolution-semantics.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.167106
+    },
+    {
+      "requestId": "25464.163",
+      "url": "http://127.0.0.1:62081/js/hexagram-utils.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.167136
+    },
+    {
+      "requestId": "25464.164",
+      "url": "http://127.0.0.1:62081/js/achievement-catalog.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.167182
+    },
+    {
+      "requestId": "25464.169",
+      "url": "http://127.0.0.1:62081/js/guaxu-wheel.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.170436
+    },
+    {
+      "requestId": "25464.170",
+      "url": "http://127.0.0.1:62081/js/relation-animation.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.170519
+    },
+    {
+      "requestId": "25464.171",
+      "url": "http://127.0.0.1:62081/js/content-provenance.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.170544
+    },
+    {
+      "requestId": "25464.175",
+      "url": "http://127.0.0.1:62081/lib/d3-force.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.178
+    },
+    {
+      "requestId": "25464.176",
+      "url": "http://127.0.0.1:62081/js/star-layouts.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.178136
+    },
+    {
+      "requestId": "25464.177",
+      "url": "http://127.0.0.1:62081/js/star-atmosphere.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.178213
+    },
+    {
+      "requestId": "25464.178",
+      "url": "http://127.0.0.1:62081/js/star-label-layout.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.178245
+    },
+    {
+      "requestId": "25464.183",
+      "url": "http://127.0.0.1:62081/data/hexagrams.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253247.192782
+    },
+    {
+      "requestId": "25464.184",
+      "url": "http://127.0.0.1:62081/data/trigrams.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253247.192884
+    },
+    {
+      "requestId": "25464.187",
+      "url": "http://127.0.0.1:62081/data/commentaries/manifest.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253247.199125
+    },
+    {
+      "requestId": "25464.188",
+      "url": "http://127.0.0.1:62081/assets/favicon.svg",
+      "method": "GET",
+      "type": "Other",
+      "timestamp": 253247.199284
+    },
+    {
+      "requestId": "25464.191",
+      "url": "http://127.0.0.1:62081/data/hexagram-keywords.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253247.210314
+    },
+    {
+      "requestId": "25464.193",
+      "url": "http://127.0.0.1:62081/js/celestial-stage.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.575941
+    },
+    {
+      "requestId": "25464.195",
+      "url": "http://127.0.0.1:62081/js/modes/learning-mode.js?v=51",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.605637
+    },
+    {
+      "requestId": "25464.196",
+      "url": "http://127.0.0.1:62081/data/wings.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253247.605878
+    },
+    {
+      "requestId": "25464.197",
+      "url": "http://127.0.0.1:62081/data/theorems.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253247.605953
+    },
+    {
+      "requestId": "25464.198",
+      "url": "http://127.0.0.1:62081/data/almanac-terms.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253247.606027
+    },
+    {
+      "requestId": "25464.200",
+      "url": "http://127.0.0.1:62081/data/almanac-yiji.json",
+      "method": "GET",
+      "type": "Fetch",
+      "timestamp": 253247.60609
+    },
+    {
+      "requestId": "25464.205",
+      "url": "http://127.0.0.1:62081/lib/vendor/three.module.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.62899
+    },
+    {
+      "requestId": "25464.206",
+      "url": "http://127.0.0.1:62081/js/almanac-knowledge.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.629092
+    },
+    {
+      "requestId": "25464.207",
+      "url": "http://127.0.0.1:62081/js/learning-assessment-page.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.629129
+    },
+    {
+      "requestId": "25464.208",
+      "url": "http://127.0.0.1:62081/js/learning-assessment.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.629157
+    },
+    {
+      "requestId": "25464.209",
+      "url": "http://127.0.0.1:62081/js/learning-curriculum.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.629182
+    },
+    {
+      "requestId": "25464.210",
+      "url": "http://127.0.0.1:62081/js/learning-progress.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.62921
+    },
+    {
+      "requestId": "25464.211",
+      "url": "http://127.0.0.1:62081/js/learning-review.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.629244
+    },
+    {
+      "requestId": "25464.212",
+      "url": "http://127.0.0.1:62081/js/quiz-engine.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.629276
+    },
+    {
+      "requestId": "25464.213",
+      "url": "http://127.0.0.1:62081/js/study-page.js?v=50",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.629302
+    },
+    {
+      "requestId": "25464.214",
+      "url": "http://127.0.0.1:62081/js/user-data.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.629326
+    },
+    {
+      "requestId": "25464.219",
+      "url": "http://127.0.0.1:62081/assets/favicon.svg",
+      "method": "GET",
+      "type": "Other",
+      "timestamp": 253247.631003
+    },
+    {
+      "requestId": "25464.227",
+      "url": "http://127.0.0.1:62081/js/learning-feedback.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.637753
+    },
+    {
+      "requestId": "25464.229",
+      "url": "http://127.0.0.1:62081/lib/vendor/three.core.min.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.649998
+    },
+    {
+      "requestId": "25464.231",
+      "url": "http://127.0.0.1:62081/js/divination-history.js",
+      "method": "GET",
+      "type": "Script",
+      "timestamp": 253247.651008
+    }
+  ],
+  "networkResponses": [
+    {
+      "requestId": "177C64B067EB56C6D3CC2E25498F3616",
+      "type": "Document",
+      "timestamp": 253246.700874,
+      "url": "http://127.0.0.1:62081/?feedback-probe=390-oral-self-activity-retry",
+      "status": 200,
+      "mimeType": "text/html",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "requestId": "25464.2",
+      "type": "Script",
+      "timestamp": 253246.721888,
+      "url": "http://127.0.0.1:62081/js/protocol-guard.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.4",
+      "type": "Stylesheet",
+      "timestamp": 253246.729491,
+      "url": "http://127.0.0.1:62081/lib/vendor/lenis.css",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "25464.3",
+      "type": "Image",
+      "timestamp": 253246.72961,
+      "url": "http://127.0.0.1:62081/assets/academy-astrolabe-bg.webp",
+      "status": 200,
+      "mimeType": "image/webp",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "image/webp"
+    },
+    {
+      "requestId": "25464.5",
+      "type": "Stylesheet",
+      "timestamp": 253246.730127,
+      "url": "http://127.0.0.1:62081/styles/main.css?v=51",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "25464.6",
+      "type": "Stylesheet",
+      "timestamp": 253246.730227,
+      "url": "http://127.0.0.1:62081/styles/immersive.css?v=51",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "25464.10",
+      "type": "Manifest",
+      "timestamp": 253246.778651,
+      "url": "http://127.0.0.1:62081/manifest.webmanifest",
+      "status": 200,
+      "mimeType": "application/manifest+json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/manifest+json"
+    },
+    {
+      "requestId": "25464.8",
+      "type": "Script",
+      "timestamp": 253246.778982,
+      "url": "http://127.0.0.1:62081/lib/vendor/lenis.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.9",
+      "type": "Script",
+      "timestamp": 253246.779047,
+      "url": "http://127.0.0.1:62081/js/main.js?v=51",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.7",
+      "type": "Script",
+      "timestamp": 253246.779283,
+      "url": "http://127.0.0.1:62081/lib/vendor/gsap.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.13",
+      "type": "Script",
+      "timestamp": 253246.790405,
+      "url": "http://127.0.0.1:62081/js/achievement-storage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.16",
+      "type": "Script",
+      "timestamp": 253246.790844,
+      "url": "http://127.0.0.1:62081/js/share-card.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.12",
+      "type": "Script",
+      "timestamp": 253246.791232,
+      "url": "http://127.0.0.1:62081/js/achievement-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.11",
+      "type": "Script",
+      "timestamp": 253246.791719,
+      "url": "http://127.0.0.1:62081/js/audio-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.14",
+      "type": "Script",
+      "timestamp": 253246.79206,
+      "url": "http://127.0.0.1:62081/js/data-loader.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.15",
+      "type": "Script",
+      "timestamp": 253246.793109,
+      "url": "http://127.0.0.1:62081/js/evolution-lab.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.17",
+      "type": "Script",
+      "timestamp": 253246.795076,
+      "url": "http://127.0.0.1:62081/js/modes/guaxu-mode.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.19",
+      "type": "Script",
+      "timestamp": 253246.795337,
+      "url": "http://127.0.0.1:62081/js/motion-system.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.18",
+      "type": "Script",
+      "timestamp": 253246.795604,
+      "url": "http://127.0.0.1:62081/js/cinematic-motion.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.20",
+      "type": "Script",
+      "timestamp": 253246.795669,
+      "url": "http://127.0.0.1:62081/js/render.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.22",
+      "type": "Script",
+      "timestamp": 253246.797658,
+      "url": "http://127.0.0.1:62081/js/reading-state.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.21",
+      "type": "Script",
+      "timestamp": 253246.797779,
+      "url": "http://127.0.0.1:62081/js/review-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.23",
+      "type": "Script",
+      "timestamp": 253246.79837,
+      "url": "http://127.0.0.1:62081/js/search-controller.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.26",
+      "type": "Script",
+      "timestamp": 253246.799916,
+      "url": "http://127.0.0.1:62081/js/svg-painter.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.24",
+      "type": "Script",
+      "timestamp": 253246.800028,
+      "url": "http://127.0.0.1:62081/js/star-relations.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.28",
+      "type": "Script",
+      "timestamp": 253246.802045,
+      "url": "http://127.0.0.1:62081/js/storage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.27",
+      "type": "Script",
+      "timestamp": 253246.802172,
+      "url": "http://127.0.0.1:62081/js/ui-icons.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.25",
+      "type": "Script",
+      "timestamp": 253246.802776,
+      "url": "http://127.0.0.1:62081/js/star-map.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.29",
+      "type": "Script",
+      "timestamp": 253246.804386,
+      "url": "http://127.0.0.1:62081/js/achievement-catalog.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.30",
+      "type": "Script",
+      "timestamp": 253246.804532,
+      "url": "http://127.0.0.1:62081/js/evolution-state.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.31",
+      "type": "Script",
+      "timestamp": 253246.804651,
+      "url": "http://127.0.0.1:62081/js/evolution-semantics.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.32",
+      "type": "Script",
+      "timestamp": 253246.811127,
+      "url": "http://127.0.0.1:62081/js/hexagram-utils.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.33",
+      "type": "Script",
+      "timestamp": 253246.81123,
+      "url": "http://127.0.0.1:62081/js/guaxu-wheel.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.34",
+      "type": "Script",
+      "timestamp": 253246.81127,
+      "url": "http://127.0.0.1:62081/js/relation-animation.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.35",
+      "type": "Script",
+      "timestamp": 253246.817416,
+      "url": "http://127.0.0.1:62081/js/content-provenance.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.36",
+      "type": "Script",
+      "timestamp": 253246.817785,
+      "url": "http://127.0.0.1:62081/lib/d3-force.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.37",
+      "type": "Script",
+      "timestamp": 253246.823176,
+      "url": "http://127.0.0.1:62081/js/star-layouts.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.38",
+      "type": "Script",
+      "timestamp": 253246.823282,
+      "url": "http://127.0.0.1:62081/js/star-atmosphere.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.39",
+      "type": "Script",
+      "timestamp": 253246.823513,
+      "url": "http://127.0.0.1:62081/js/star-label-layout.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.41",
+      "type": "Fetch",
+      "timestamp": 253246.838773,
+      "url": "http://127.0.0.1:62081/data/trigrams.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.40",
+      "type": "Fetch",
+      "timestamp": 253246.839713,
+      "url": "http://127.0.0.1:62081/data/hexagrams.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.42",
+      "type": "Other",
+      "timestamp": 253246.845569,
+      "url": "http://127.0.0.1:62081/assets/favicon.svg",
+      "status": 200,
+      "mimeType": "image/svg+xml",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "requestId": "25464.43",
+      "type": "Other",
+      "timestamp": 253246.848708,
+      "url": "http://127.0.0.1:62081/assets/favicon.svg",
+      "status": 200,
+      "mimeType": "image/svg+xml",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "requestId": "25464.44",
+      "type": "Fetch",
+      "timestamp": 253246.852095,
+      "url": "http://127.0.0.1:62081/data/commentaries/manifest.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.45",
+      "type": "Fetch",
+      "timestamp": 253246.903956,
+      "url": "http://127.0.0.1:62081/data/hexagram-keywords.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.100",
+      "type": "Script",
+      "timestamp": 253247.107534,
+      "url": "http://127.0.0.1:62081/js/celestial-stage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": false,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.101",
+      "type": "Script",
+      "timestamp": 253247.11909,
+      "url": "http://127.0.0.1:62081/lib/vendor/three.module.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "D49EB31A116D1FA6BE16DA5F6E0E4D98",
+      "type": "Document",
+      "timestamp": 253247.12699,
+      "url": "http://127.0.0.1:62081/?feedback-probe=390-oral-self-activity-retry",
+      "status": 200,
+      "mimeType": "text/html",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "requestId": "25464.107",
+      "type": "Script",
+      "timestamp": 253247.140549,
+      "url": "http://127.0.0.1:62081/js/protocol-guard.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.109",
+      "type": "Image",
+      "timestamp": 253247.142298,
+      "url": "http://127.0.0.1:62081/assets/academy-astrolabe-bg.webp",
+      "status": 200,
+      "mimeType": "image/webp",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "image/webp"
+    },
+    {
+      "requestId": "25464.110",
+      "type": "Stylesheet",
+      "timestamp": 253247.146654,
+      "url": "http://127.0.0.1:62081/lib/vendor/lenis.css",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "25464.123",
+      "type": "Manifest",
+      "timestamp": 253247.147002,
+      "url": "http://127.0.0.1:62081/manifest.webmanifest",
+      "status": 200,
+      "mimeType": "application/manifest+json",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "application/manifest+json"
+    },
+    {
+      "requestId": "25464.112",
+      "type": "Stylesheet",
+      "timestamp": 253247.147152,
+      "url": "http://127.0.0.1:62081/styles/immersive.css?v=51",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "25464.111",
+      "type": "Stylesheet",
+      "timestamp": 253247.147401,
+      "url": "http://127.0.0.1:62081/styles/main.css?v=51",
+      "status": 200,
+      "mimeType": "text/css",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "requestId": "25464.117",
+      "type": "Script",
+      "timestamp": 253247.152781,
+      "url": "http://127.0.0.1:62081/lib/vendor/lenis.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.118",
+      "type": "Script",
+      "timestamp": 253247.157706,
+      "url": "http://127.0.0.1:62081/js/main.js?v=51",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.116",
+      "type": "Script",
+      "timestamp": 253247.157934,
+      "url": "http://127.0.0.1:62081/lib/vendor/gsap.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.127",
+      "type": "Script",
+      "timestamp": 253247.165705,
+      "url": "http://127.0.0.1:62081/js/achievement-storage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.125",
+      "type": "Script",
+      "timestamp": 253247.166495,
+      "url": "http://127.0.0.1:62081/js/audio-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.128",
+      "type": "Script",
+      "timestamp": 253247.16662,
+      "url": "http://127.0.0.1:62081/js/data-loader.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.129",
+      "type": "Script",
+      "timestamp": 253247.166795,
+      "url": "http://127.0.0.1:62081/js/evolution-lab.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.126",
+      "type": "Script",
+      "timestamp": 253247.166902,
+      "url": "http://127.0.0.1:62081/js/achievement-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.130",
+      "type": "Script",
+      "timestamp": 253247.166973,
+      "url": "http://127.0.0.1:62081/js/share-card.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.133",
+      "type": "Script",
+      "timestamp": 253247.169876,
+      "url": "http://127.0.0.1:62081/js/motion-system.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.131",
+      "type": "Script",
+      "timestamp": 253247.169998,
+      "url": "http://127.0.0.1:62081/js/modes/guaxu-mode.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.132",
+      "type": "Script",
+      "timestamp": 253247.170104,
+      "url": "http://127.0.0.1:62081/js/cinematic-motion.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.136",
+      "type": "Script",
+      "timestamp": 253247.170167,
+      "url": "http://127.0.0.1:62081/js/review-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.137",
+      "type": "Script",
+      "timestamp": 253247.170229,
+      "url": "http://127.0.0.1:62081/js/reading-state.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.134",
+      "type": "Script",
+      "timestamp": 253247.170299,
+      "url": "http://127.0.0.1:62081/js/render.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.143",
+      "type": "Script",
+      "timestamp": 253247.173555,
+      "url": "http://127.0.0.1:62081/js/svg-painter.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.140",
+      "type": "Script",
+      "timestamp": 253247.17366,
+      "url": "http://127.0.0.1:62081/js/star-relations.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.144",
+      "type": "Script",
+      "timestamp": 253247.173841,
+      "url": "http://127.0.0.1:62081/js/ui-icons.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.139",
+      "type": "Script",
+      "timestamp": 253247.173883,
+      "url": "http://127.0.0.1:62081/js/search-controller.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.159",
+      "type": "Script",
+      "timestamp": 253247.174093,
+      "url": "http://127.0.0.1:62081/js/storage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.142",
+      "type": "Script",
+      "timestamp": 253247.177499,
+      "url": "http://127.0.0.1:62081/js/star-map.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.161",
+      "type": "Script",
+      "timestamp": 253247.177795,
+      "url": "http://127.0.0.1:62081/js/evolution-state.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.162",
+      "type": "Script",
+      "timestamp": 253247.17788,
+      "url": "http://127.0.0.1:62081/js/evolution-semantics.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.163",
+      "type": "Script",
+      "timestamp": 253247.178353,
+      "url": "http://127.0.0.1:62081/js/hexagram-utils.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.164",
+      "type": "Script",
+      "timestamp": 253247.178455,
+      "url": "http://127.0.0.1:62081/js/achievement-catalog.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.169",
+      "type": "Script",
+      "timestamp": 253247.178535,
+      "url": "http://127.0.0.1:62081/js/guaxu-wheel.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.171",
+      "type": "Script",
+      "timestamp": 253247.183861,
+      "url": "http://127.0.0.1:62081/js/content-provenance.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.170",
+      "type": "Script",
+      "timestamp": 253247.184354,
+      "url": "http://127.0.0.1:62081/js/relation-animation.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.177",
+      "type": "Script",
+      "timestamp": 253247.187536,
+      "url": "http://127.0.0.1:62081/js/star-atmosphere.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.178",
+      "type": "Script",
+      "timestamp": 253247.187734,
+      "url": "http://127.0.0.1:62081/js/star-label-layout.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.175",
+      "type": "Script",
+      "timestamp": 253247.187828,
+      "url": "http://127.0.0.1:62081/lib/d3-force.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.176",
+      "type": "Script",
+      "timestamp": 253247.187917,
+      "url": "http://127.0.0.1:62081/js/star-layouts.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.183",
+      "type": "Fetch",
+      "timestamp": 253247.196693,
+      "url": "http://127.0.0.1:62081/data/hexagrams.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.184",
+      "type": "Fetch",
+      "timestamp": 253247.196855,
+      "url": "http://127.0.0.1:62081/data/trigrams.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.188",
+      "type": "Other",
+      "timestamp": 253247.204894,
+      "url": "http://127.0.0.1:62081/assets/favicon.svg",
+      "status": 200,
+      "mimeType": "image/svg+xml",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "requestId": "25464.187",
+      "type": "Fetch",
+      "timestamp": 253247.207478,
+      "url": "http://127.0.0.1:62081/data/commentaries/manifest.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.191",
+      "type": "Fetch",
+      "timestamp": 253247.242061,
+      "url": "http://127.0.0.1:62081/data/hexagram-keywords.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.193",
+      "type": "Script",
+      "timestamp": 253247.627671,
+      "url": "http://127.0.0.1:62081/js/celestial-stage.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.195",
+      "type": "Script",
+      "timestamp": 253247.628135,
+      "url": "http://127.0.0.1:62081/js/modes/learning-mode.js?v=51",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.196",
+      "type": "Fetch",
+      "timestamp": 253247.628383,
+      "url": "http://127.0.0.1:62081/data/wings.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.197",
+      "type": "Fetch",
+      "timestamp": 253247.628529,
+      "url": "http://127.0.0.1:62081/data/theorems.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.200",
+      "type": "Fetch",
+      "timestamp": 253247.62866,
+      "url": "http://127.0.0.1:62081/data/almanac-yiji.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.198",
+      "type": "Fetch",
+      "timestamp": 253247.628712,
+      "url": "http://127.0.0.1:62081/data/almanac-terms.json",
+      "status": 200,
+      "mimeType": "application/json",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "requestId": "25464.219",
+      "type": "Other",
+      "timestamp": 253247.633512,
+      "url": "http://127.0.0.1:62081/assets/favicon.svg",
+      "status": 200,
+      "mimeType": "image/svg+xml",
+      "fromServiceWorker": true,
+      "fromDiskCache": true,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "requestId": "25464.206",
+      "type": "Script",
+      "timestamp": 253247.637367,
+      "url": "http://127.0.0.1:62081/js/almanac-knowledge.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.208",
+      "type": "Script",
+      "timestamp": 253247.637486,
+      "url": "http://127.0.0.1:62081/js/learning-assessment.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.207",
+      "type": "Script",
+      "timestamp": 253247.637588,
+      "url": "http://127.0.0.1:62081/js/learning-assessment-page.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.212",
+      "type": "Script",
+      "timestamp": 253247.643675,
+      "url": "http://127.0.0.1:62081/js/quiz-engine.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.211",
+      "type": "Script",
+      "timestamp": 253247.644154,
+      "url": "http://127.0.0.1:62081/js/learning-review.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.209",
+      "type": "Script",
+      "timestamp": 253247.64424,
+      "url": "http://127.0.0.1:62081/js/learning-curriculum.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.210",
+      "type": "Script",
+      "timestamp": 253247.644614,
+      "url": "http://127.0.0.1:62081/js/learning-progress.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.213",
+      "type": "Script",
+      "timestamp": 253247.644762,
+      "url": "http://127.0.0.1:62081/js/study-page.js?v=50",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.205",
+      "type": "Script",
+      "timestamp": 253247.64967,
+      "url": "http://127.0.0.1:62081/lib/vendor/three.module.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.214",
+      "type": "Script",
+      "timestamp": 253247.650766,
+      "url": "http://127.0.0.1:62081/js/user-data.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.227",
+      "type": "Script",
+      "timestamp": 253247.650912,
+      "url": "http://127.0.0.1:62081/js/learning-feedback.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.231",
+      "type": "Script",
+      "timestamp": 253247.657899,
+      "url": "http://127.0.0.1:62081/js/divination-history.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "requestId": "25464.229",
+      "type": "Script",
+      "timestamp": 253247.675246,
+      "url": "http://127.0.0.1:62081/lib/vendor/three.core.min.js",
+      "status": 200,
+      "mimeType": "text/javascript",
+      "fromServiceWorker": true,
+      "fromDiskCache": false,
+      "contentType": "text/javascript; charset=utf-8"
+    }
+  ],
+  "networkFailures": [],
+  "networkFinished": [
+    {
+      "requestId": "177C64B067EB56C6D3CC2E25498F3616",
+      "timestamp": 253246.700089,
+      "encodedDataLength": 5679
+    },
+    {
+      "requestId": "25464.2",
+      "timestamp": 253246.721236,
+      "encodedDataLength": 447
+    },
+    {
+      "requestId": "25464.4",
+      "timestamp": 253246.72821,
+      "encodedDataLength": 499
+    },
+    {
+      "requestId": "25464.3",
+      "timestamp": 253246.728499,
+      "encodedDataLength": 68911
+    },
+    {
+      "requestId": "25464.6",
+      "timestamp": 253246.728956,
+      "encodedDataLength": 10523
+    },
+    {
+      "requestId": "25464.5",
+      "timestamp": 253246.733198,
+      "encodedDataLength": 43245
+    },
+    {
+      "requestId": "25464.10",
+      "timestamp": 253246.739478,
+      "encodedDataLength": 604
+    },
+    {
+      "requestId": "25464.8",
+      "timestamp": 253246.736229,
+      "encodedDataLength": 5698
+    },
+    {
+      "requestId": "25464.9",
+      "timestamp": 253246.735833,
+      "encodedDataLength": 18431
+    },
+    {
+      "requestId": "25464.7",
+      "timestamp": 253246.736117,
+      "encodedDataLength": 28698
+    },
+    {
+      "requestId": "25464.13",
+      "timestamp": 253246.788665,
+      "encodedDataLength": 1327
+    },
+    {
+      "requestId": "25464.16",
+      "timestamp": 253246.788775,
+      "encodedDataLength": 3257
+    },
+    {
+      "requestId": "25464.12",
+      "timestamp": 253246.789901,
+      "encodedDataLength": 4528
+    },
+    {
+      "requestId": "25464.11",
+      "timestamp": 253246.789997,
+      "encodedDataLength": 5311
+    },
+    {
+      "requestId": "25464.14",
+      "timestamp": 253246.790895,
+      "encodedDataLength": 2918
+    },
+    {
+      "requestId": "25464.15",
+      "timestamp": 253246.791025,
+      "encodedDataLength": 5141
+    },
+    {
+      "requestId": "25464.17",
+      "timestamp": 253246.792506,
+      "encodedDataLength": 4078
+    },
+    {
+      "requestId": "25464.19",
+      "timestamp": 253246.792612,
+      "encodedDataLength": 3075
+    },
+    {
+      "requestId": "25464.20",
+      "timestamp": 253246.794072,
+      "encodedDataLength": 6055
+    },
+    {
+      "requestId": "25464.18",
+      "timestamp": 253246.793793,
+      "encodedDataLength": 4630
+    },
+    {
+      "requestId": "25464.21",
+      "timestamp": 253246.796332,
+      "encodedDataLength": 2376
+    },
+    {
+      "requestId": "25464.22",
+      "timestamp": 253246.79624,
+      "encodedDataLength": 946
+    },
+    {
+      "requestId": "25464.23",
+      "timestamp": 253246.796829,
+      "encodedDataLength": 1143
+    },
+    {
+      "requestId": "25464.26",
+      "timestamp": 253246.799197,
+      "encodedDataLength": 1202
+    },
+    {
+      "requestId": "25464.24",
+      "timestamp": 253246.799406,
+      "encodedDataLength": 1630
+    },
+    {
+      "requestId": "25464.28",
+      "timestamp": 253246.800742,
+      "encodedDataLength": 903
+    },
+    {
+      "requestId": "25464.27",
+      "timestamp": 253246.800662,
+      "encodedDataLength": 2018
+    },
+    {
+      "requestId": "25464.25",
+      "timestamp": 253246.80105,
+      "encodedDataLength": 22385
+    },
+    {
+      "requestId": "25464.29",
+      "timestamp": 253246.802803,
+      "encodedDataLength": 1957
+    },
+    {
+      "requestId": "25464.30",
+      "timestamp": 253246.80329,
+      "encodedDataLength": 1408
+    },
+    {
+      "requestId": "25464.31",
+      "timestamp": 253246.80338,
+      "encodedDataLength": 1498
+    },
+    {
+      "requestId": "25464.32",
+      "timestamp": 253246.810428,
+      "encodedDataLength": 1590
+    },
+    {
+      "requestId": "25464.33",
+      "timestamp": 253246.81053,
+      "encodedDataLength": 1085
+    },
+    {
+      "requestId": "25464.34",
+      "timestamp": 253246.810612,
+      "encodedDataLength": 4686
+    },
+    {
+      "requestId": "25464.35",
+      "timestamp": 253246.817065,
+      "encodedDataLength": 1740
+    },
+    {
+      "requestId": "25464.36",
+      "timestamp": 253246.817394,
+      "encodedDataLength": 6224
+    },
+    {
+      "requestId": "25464.37",
+      "timestamp": 253246.822484,
+      "encodedDataLength": 3600
+    },
+    {
+      "requestId": "25464.38",
+      "timestamp": 253246.822614,
+      "encodedDataLength": 1712
+    },
+    {
+      "requestId": "25464.39",
+      "timestamp": 253246.822713,
+      "encodedDataLength": 1196
+    },
+    {
+      "requestId": "25464.41",
+      "timestamp": 253246.8369,
+      "encodedDataLength": 592
+    },
+    {
+      "requestId": "25464.40",
+      "timestamp": 253246.839076,
+      "encodedDataLength": 42900
+    },
+    {
+      "requestId": "25464.42",
+      "timestamp": 253246.844792,
+      "encodedDataLength": 503
+    },
+    {
+      "requestId": "25464.43",
+      "timestamp": 253246.84651,
+      "encodedDataLength": 503
+    },
+    {
+      "requestId": "25464.44",
+      "timestamp": 253246.851687,
+      "encodedDataLength": 681
+    },
+    {
+      "requestId": "25464.45",
+      "timestamp": 253246.860784,
+      "encodedDataLength": 3381
+    },
+    {
+      "requestId": "25464.100",
+      "timestamp": 253247.015775,
+      "encodedDataLength": 8600
+    },
+    {
+      "requestId": "25464.101",
+      "timestamp": 253247.117172,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "D49EB31A116D1FA6BE16DA5F6E0E4D98",
+      "timestamp": 253247.128573,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.107",
+      "timestamp": 253247.140264,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.109",
+      "timestamp": 253247.142243,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.110",
+      "timestamp": 253247.146545,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.123",
+      "timestamp": 253247.14716,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.112",
+      "timestamp": 253247.147619,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.111",
+      "timestamp": 253247.150859,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.117",
+      "timestamp": 253247.150671,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.118",
+      "timestamp": 253247.153747,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.116",
+      "timestamp": 253247.153706,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.127",
+      "timestamp": 253247.165449,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.125",
+      "timestamp": 253247.165779,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.128",
+      "timestamp": 253247.165944,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.129",
+      "timestamp": 253247.166171,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.126",
+      "timestamp": 253247.166039,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.130",
+      "timestamp": 253247.166285,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.133",
+      "timestamp": 253247.169529,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.131",
+      "timestamp": 253247.169272,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.132",
+      "timestamp": 253247.169482,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.136",
+      "timestamp": 253247.169541,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.137",
+      "timestamp": 253247.169487,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.134",
+      "timestamp": 253247.169547,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.140",
+      "timestamp": 253247.173601,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.139",
+      "timestamp": 253247.173563,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.143",
+      "timestamp": 253247.173848,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.144",
+      "timestamp": 253247.173859,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.159",
+      "timestamp": 253247.173855,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.142",
+      "timestamp": 253247.177288,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.161",
+      "timestamp": 253247.177297,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.162",
+      "timestamp": 253247.177452,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.163",
+      "timestamp": 253247.177679,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.164",
+      "timestamp": 253247.177712,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.169",
+      "timestamp": 253247.178347,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.171",
+      "timestamp": 253247.183547,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.170",
+      "timestamp": 253247.183897,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.177",
+      "timestamp": 253247.187191,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.178",
+      "timestamp": 253247.187369,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.175",
+      "timestamp": 253247.187184,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.176",
+      "timestamp": 253247.187305,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.183",
+      "timestamp": 253247.194606,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.184",
+      "timestamp": 253247.194614,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.188",
+      "timestamp": 253247.204668,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.187",
+      "timestamp": 253247.207851,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.191",
+      "timestamp": 253247.215617,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.193",
+      "timestamp": 253247.579536,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.195",
+      "timestamp": 253247.609325,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.196",
+      "timestamp": 253247.610776,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.197",
+      "timestamp": 253247.610782,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.200",
+      "timestamp": 253247.612333,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.198",
+      "timestamp": 253247.616532,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.219",
+      "timestamp": 253247.633359,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.206",
+      "timestamp": 253247.635666,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.208",
+      "timestamp": 253247.635968,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.207",
+      "timestamp": 253247.636122,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.212",
+      "timestamp": 253247.642959,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.211",
+      "timestamp": 253247.64351,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.209",
+      "timestamp": 253247.643445,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.210",
+      "timestamp": 253247.643804,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.213",
+      "timestamp": 253247.643965,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.205",
+      "timestamp": 253247.648898,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.214",
+      "timestamp": 253247.650502,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.227",
+      "timestamp": 253247.650753,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.231",
+      "timestamp": 253247.657557,
+      "encodedDataLength": 0
+    },
+    {
+      "requestId": "25464.229",
+      "timestamp": 253247.662394,
+      "encodedDataLength": 0
+    }
+  ],
+  "serviceWorker": {
+    "controller": {
+      "scriptURL": "http://127.0.0.1:62081/sw.js",
+      "state": "activated"
+    },
+    "registrations": [
+      {
+        "scope": "http://127.0.0.1:62081/",
+        "active": "activated"
+      }
+    ]
+  },
+  "cleanupStartedAt": "2026-10-24T23:45:45.371Z",
+  "exitCode": 1,
+  "profileRemoved": false,
+  "profileRetainedReason": "Synthetic profile retained for diagnosis. No user profile was touched or deleted."
+}

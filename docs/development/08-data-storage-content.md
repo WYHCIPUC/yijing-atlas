@@ -1,6 +1,6 @@
 # 08 · 数据、持久化、内容来源与发布门禁
 
-初始事实快照：2026-10-24；学习记录与 §7.1 契约增量更新：2026-10-25。自由测验新增回执与分项保存见 §7.1.6，T-QUIZ-01已完成本地验收，交付随本次提交。旧日期的验证结论保留原适用范围，不把目录有效等同于内容已校勘。
+初始事实快照：2026-10-24；学习记录、§6.5内存会话与 §7.1 契约增量更新：2026-10-25。自由测验新增回执与分项保存见 §7.1.6，T-QUIZ-01已完成本地验收，交付随本次提交。旧日期的验证结论保留原适用范围，不把目录有效等同于内容已校勘。
 
 | 状态轴 | 当前结论 |
 | --- | --- |
@@ -294,10 +294,24 @@ V1 的 `legacySummaryOnly:true` 表明不能复现六爻老少、全部动爻与
 | readingDrafts | JavaScript Map | 未保存笔记草稿 | 不包含 |
 | readingSnapshot | JavaScript 对象 | 镜头、关系、轨迹等返回上下文 | 不包含 |
 | 自由测验attempt/答案 | quiz-session的WeakMap及当前页面闭包 | 本轮候选、正确答案、所选值、原回执与分项重试状态；离开/刷新不承诺恢复 | 不包含；仅必要公开引用与判分事实另按§7.1.6持久化 |
+| 间隔复习token/本轮结果 | review-session的WeakMap及当前页面闭包 | 原卡副本、固定评分/时间、一次计算的目标卡、存储对象与各项保存状态；离开/刷新不恢复未保存轮次 | 不包含；已保存卡、活动及成就沿用原键 |
+| 复讲pending/结果/正文 | learning-assessment-page的当前页面闭包与textarea | 请求世代、pending、当前提交身份、分数/模式/课程/时间、成绩和活动的保存标记，以及本次正文和点评 | 不包含；仅既有成绩摘要与学习日另行保存，不持久化正文或点评 |
 | history.state | 浏览历史 | 阅读层级、章节等导航状态 | 不包含 |
 
 布局/抽屉偏好不能被新快读/深读层级写回覆盖。
 备份是学习记录备份，不是整个浏览器配置或项目源码备份。
+
+**T-LEARN-03间隔复习提交契约（已实现）**：
+
+- `createReviewAttempt(cardSnapshot)` 只校验并复制卡结构，合法时返回不透明token，无效返回null；不创建持久卡，也不证明该卡仍存在于存储。
+- `submitReviewAttempt(token, rating, {now?, storage?}={})` 仅接受数值0/1/2；首次有效提交校验日期并锁定评分、时间和计算后的目标卡。重试复用原时间和目标卡，不能改评分或切换已绑定的存储对象。原间隔序列与调度规则不变。
+- 卡写入通过 `commitReviewCard(previousCard, nextCard, storage)` 重新读取并校验最新集合，要求本卡仍存在且与原快照一致，合并其他最新卡后一次写回。读取异常、损坏集合、卡已删除或同卡已变化均返回失败，不以空集合覆盖旧数据。卡写失败时页面不推进持有的卡状态；成功后才尝试活动与成就。
+- 返回包含 `saved`、`rating`、`reviewedAt`（毫秒）、`previousCard`、`card`、`changes`、`errorCode`及`error`；卡对象为副本。`changes.card/activity/achievement`各含`applicable/saved/errorCode`，顶层`saved`仅在适用项全部成功时为true。活动与成就读取也先校验，失败不借空值覆盖旧记录；后续重试只补未保存项，不再次增加reps/stage或重记已成功部分。这是分项协调，不是跨键事务。
+- 成就沿既有`review.completed`事件，`subjectId`为卦码，`metadata`为`{hexagramCode,reviewKind:'spaced'}`，时间沿用本轮，幂等键为`review:<卦码>:<token的id>`。token本身不持久化，不新增复习全局回执键、备份键或格式版本；刷新后的新轮次不冒称恢复了旧失败项。
+
+**复讲会话契约（已实现）**：`generation/pending/submission`只属当前页面。首次接受的自评或评阅结果锁定`lessonId/score/mode/at`；成绩与活动分别用`reviewSaved/activitySaved`记录成功，保存重试复用这些值，只补失败部分，不再调用评阅。切课、编辑正文、开始新复讲或清理页面会使旧响应、控件和排队焦点失效；离开不自动补写，回原课动作只传本轮课程ID。正文和点评仍只在内存，持久化成绩不夹带它们，关闭/刷新不承诺恢复。
+
+实现位置：`web/js/review-session.js`（本地代码，尚未提交）、[review-engine.js](../../web/js/review-engine.js)、[learning-assessment-page.js](../../web/js/learning-assessment-page.js)。整体专项、门禁与交付状态统一见[学习反馈交接](evidence/2026-10-25-learning-feedback-integration.md)；不以这些契约已实现推定整卡或所有备份加固均已验收。
 
 ## 7. 迁移规则
 

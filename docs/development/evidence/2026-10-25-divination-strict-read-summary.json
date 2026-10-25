@@ -1,0 +1,71 @@
+{
+  "recordedAt": "2026-10-24T22:58:07.188Z",
+  "task": "T-LEARN-03",
+  "result": "Resolved reproduced divination retry overwrite after unreadable achievement storage; source frozen for browser integration",
+  "scope": [
+    "web/js/modes/divination-mode.js",
+    "web/test/divination-replay.test.mjs"
+  ],
+  "sourceHashes": {
+    "web/js/modes/divination-mode.js": "959f7503eecd06c00577d9848b606aa7de9a8dbb14a2e04e58360f5efa7f6db4",
+    "web/test/divination-replay.test.mjs": "cd95a9cd94d823819ef030cbaa8d106ee4e17d823066c13f72edb2c809be00da"
+  },
+  "reproduction": "2026-10-25-feedback-readonly-review-repro.json",
+  "runs": [
+    {
+      "command": "node --test web/test/divination-replay.test.mjs",
+      "runtime": "C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "exitCode": 1,
+      "tests": 32,
+      "pass": 26,
+      "fail": 6,
+      "log": "2026-10-25-divination-strict-read-red.log",
+      "reason": "All six failures assert forbidden writes on unreadable/invalid prior achievement data; not API or fixture errors."
+    },
+    {
+      "command": "node --test web/test/divination-replay.test.mjs web/test/divination-history.test.mjs web/test/divination-interpretation.test.mjs web/test/divination-engine.test.mjs web/test/meihua-engine.test.mjs",
+      "runtime": "C:\\Users\\1\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "exitCode": 0,
+      "tests": 59,
+      "pass": 59,
+      "fail": 0,
+      "log": "2026-10-25-divination-strict-read-green.log"
+    },
+    {
+      "command": "node --check web/js/modes/divination-mode.js",
+      "exitCode": 0
+    },
+    {
+      "command": "node --check web/test/divination-replay.test.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check -- web/js/modes/divination-mode.js web/test/divination-replay.test.mjs",
+      "exitCode": 0
+    }
+  ],
+  "verified": [
+    "First submission and same-event retry reject getItem failure, invalid JSON and malformed V0 events before writes",
+    "Original raw stored value is preserved on failure and retry remains visible/focused in DOM fixture",
+    "Restored storage preserves previous reading/event and saves original score/time once",
+    "Valid V0 migration and a single validated raw snapshot remain supported",
+    "Existing stable case identity, replay, cleanup, gesture-independent controls and algorithms retained"
+  ],
+  "independentReview": {
+    "files": [
+      "web/js/review-session.js",
+      "web/js/review-engine.js",
+      "web/js/modes/review-mode.js",
+      "web/js/modes/quiz-mode.js",
+      "web/js/learning-feedback.js"
+    ],
+    "conclusion": "No further reproducible business blocker found in reviewed persistence and lifecycle paths; not browser acceptance"
+  },
+  "limitations": [
+    "No browser, physical device, screen reader or full validate/E2E run by this subgroup",
+    "Quiz long feedback and narrow-screen primary-action visibility still need actual geometry/input evidence",
+    "DOM fixture scroll/focus assertions do not establish visible pixels",
+    "No change to global achievement-storage fallback, other task APIs, scoring/scheduling or persistent schema",
+    "Oral/assessment integration reviewed by another subgroup; final acceptance and Git delivery owned by root"
+  ]
+}

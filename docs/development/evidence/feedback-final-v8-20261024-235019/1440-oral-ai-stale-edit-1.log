@@ -1,0 +1,3 @@
+START 2026-10-24T23-50-27-436Z v24.19.0 C:\Users\1\AppData\Local\Temp\yijing-learning-feedback-rrzjD1
+RUN 1440-oral-ai-stale-edit
+Assertion failed: new_time >= loop->time, file src\win\core.c, line 327
